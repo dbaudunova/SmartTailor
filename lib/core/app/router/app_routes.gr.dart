@@ -15,13 +15,33 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    ConfirmationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ConfirmationScreen(),
+      );
+    },
     RegistrationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const RegistrationScreen(),
       );
-    }
+    },
   };
+}
+
+/// generated route for
+/// [ConfirmationScreen]
+class ConfirmationRoute extends PageRouteInfo<void> {
+  const ConfirmationRoute({List<PageRouteInfo>? children})
+      : super(
+          ConfirmationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ConfirmationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

@@ -10,9 +10,6 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: SF-Pro-Display
-  static const String sFProDisplay = 'SF-Pro-Display';
-
   /// Font family: SF-Pro-Text
   static const String sFProText = 'SF-Pro-Text';
 }

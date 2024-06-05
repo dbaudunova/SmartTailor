@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
 class RegistrationScreen extends StatefulWidget {
@@ -11,174 +13,126 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final surname = TextEditingController();
   final name = TextEditingController();
-  final gmail = TextEditingController();
-  final password = TextEditingController();
-  final rePassword = TextEditingController();
+  final fatherName = TextEditingController();
+  final email = TextEditingController();
+  final phone = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
+    surname.dispose();
     name.dispose();
-    gmail.dispose();
-    password.dispose();
-    rePassword.dispose();
+    fatherName.dispose();
+    email.dispose();
+    phone.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
-          child: Column(children: [
-            Center(child: Text('text'))
-            // ColoredContainer(
-            //   t.SignupTitle1,
-            //   t.SignupTitle2,
-            //   '',
-            //   0.27,
-            // ),
-            // SizedBox(height: 36),
-            // _builldTextFields(),
-            // SizedBox(height: 24),
-            // _buildButton(),
-            // Align(
-            //   alignment: Alignment.bottomCenter,
-            //   child: _buildTextButton(),
-            // ),
-          ]),
+    double statusBarHeight = MediaQuery.of(context).padding.top;
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 60 + statusBarHeight),
+              Form(key: _formKey, child: _buildFields()),
+              const SizedBox(height: 16),
+              _buildCheckBox(),
+              const SizedBox(height: 16),
+            ],
+          ),
         ),
+      ),
+      floatingActionButton: ElevatedButtonWidget(
+        text: t.register,
+        onTap: () {
+          if (_formKey.currentState!.validate()) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Processing Data')),
+            );
+          }
+        },
       ),
     );
   }
 
-  // BlocBuilder<RegistrationBloc, RegistrationState> _buildButton() {
-  //   return BlocBuilder<RegistrationBloc, RegistrationState>(
-  //     builder: (context, state) {
-  //       print(state.validationModel.isButtonAvailable);
-  //       return state.validationModel.isButtonAvailable
-  //           ? MyElevatedButtonWidget(
-  //               text: t.SignUp,
-  //               onTap: () {
-  //                 final registrationModel = RegistrationModel(
-  //                   name: state.validationModel.loginString,
-  //                   email: state.validationModel.emailString,
-  //                   password: state.validationModel.password,
-  //                   confirmPassword: state.validationModel.passwordRepeat,
-  //                 );
+  Row _buildCheckBox() {
+    return Row(
+      children: [
+        SizedBox(
+          height: 24.0,
+          width: 24.0,
+          child: Checkbox(
+            value: true,
+            onChanged: (s) {},
+            activeColor: AppColors.darkBlue,
+          ),
+        ),
+        const SizedBox(width: 11),
+        Text(
+          t.rememberMe,
+          style: AppTextStyle.textField16.copyWith(fontSize: 16),
+        ),
+      ],
+    );
+  }
 
-  //                 context.read<RegistrationBloc>().add(
-  //                       Registration(
-  //                         registrationModel: registrationModel,
-  //                       ),
-  //                     );
-  //                 AutoRouter.of(context).replace(
-  //                   AuthorizationRoute(),
-  //                 );
-  //               },
-  //             )
-  //           : MyElevatedButtonWidget(text: t.SignUp);
-  //     },
-  //   );
-  // }
-
-  // Padding _buildTextButton() {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(bottom: 30),
-  //     child: MyTextButtonWidget(
-  //         onTap: () {
-  //           AutoRouter.of(context).replace(
-  //             AuthorizationRoute(),
-  //           );
-  //         },
-  //         text: t.HaveAnAccount),
-  //   );
-  // }
-
-  // Padding _builldTextFields() {
-  //   return Padding(
-  //     padding: const EdgeInsets.symmetric(horizontal: 20.0),
-  //     child: SingleChildScrollView(
-  //       child: Column(
-  //         children: [
-  //           _buildName(),
-  //           SizedBox(height: 16),
-  //           _buildEmail(),
-  //           SizedBox(height: 16),
-  //           _buildPassword(),
-  //           SizedBox(height: 16),
-  //           _buildRePassword(),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // MyTextFieldWidget _buildRePassword() {
-  //   return MyTextFieldWidget(
-  //     onChanged: (value) {
-  //       context.read<RegistrationBloc>().add(
-  //             ValidationPasswordRepeat(
-  //               passwordRepeat: value,
-  //             ),
-  //           );
-  //     },
-  //     hintText: t.RePassword,
-  //     obscure: true,
-  //     controller: rePassword,
-  //     suffixIcon: [Icons.visibility, Icons.visibility_off],
-  //     label: true,
-  //   );
-  // }
-
-  // MyTextFieldWidget _buildPassword() {
-  //   return MyTextFieldWidget(
-  //     onChanged: (value) {
-  //       context.read<RegistrationBloc>().add(
-  //             ValidationPassword(
-  //               password: value,
-  //             ),
-  //           );
-  //     },
-  //     hintText: t.Password,
-  //     obscure: true,
-  //     controller: password,
-  //     suffixIcon: [Icons.visibility, Icons.visibility_off],
-  //     label: true,
-  //   );
-  // }
-
-  // MyTextFieldWidget _buildEmail() {
-  //   return MyTextFieldWidget(
-  //     onChanged: (value) {
-  //       context.read<RegistrationBloc>().add(
-  //             ValidationEmail(
-  //               email: value,
-  //             ),
-  //           );
-  //     },
-  //     hintText: t.Gmail,
-  //     controller: gmail,
-  //     suffixIcon: [Icons.alternate_email],
-  //     label: true,
-  //   );
-  // }
-
-  // MyTextFieldWidget _buildName() {
-  //   return MyTextFieldWidget(
-  //     onChanged: (value) {
-  //       context.read<RegistrationBloc>().add(
-  //             ValidationLogin(
-  //               login: value,
-  //             ),
-  //           );
-  //     },
-  //     hintText: t.Name,
-  //     obscure: false,
-  //     controller: name,
-  //     suffixIcon: [Icons.person_2_outlined],
-  //     label: true,
-  //   );
-  // }
+  Column _buildFields() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          t.registration,
+          style: AppTextStyle.title24,
+        ),
+        const SizedBox(height: 32),
+        TextFormFieldWidget(
+          titleName: t.surname,
+          onChanged: (s) {},
+          controller: surname,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          titleName: t.name,
+          onChanged: (s) {},
+          controller: name,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          titleName: t.FatherName,
+          onChanged: (s) {},
+          controller: fatherName,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          titleName: t.email,
+          validator: (value) {
+            if (value == null || !value.contains('@')) {
+              return 'Почта указана неверно';
+            }
+            return null;
+          },
+          onChanged: (s) {},
+          controller: email,
+          keyboardType: TextInputType.emailAddress,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
+          titleName: t.phoneNum,
+          onChanged: (s) {},
+          controller: phone,
+          keyboardType: TextInputType.phone,
+        ),
+      ],
+    );
+  }
 }

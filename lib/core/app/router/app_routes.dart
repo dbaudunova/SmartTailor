@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmation_screen.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/registration_screen.dart';
 
 part 'app_routes.gr.dart';
@@ -18,6 +19,11 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: RegistrationRoute.page,
           path: '/registration',
+          // initial: true,
+        ),
+        AutoRoute(
+          page: ConfirmationRoute.page,
+          path: '/confirmation',
           initial: true,
         ),
         // AutoRoute(

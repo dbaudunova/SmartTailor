@@ -31,6 +31,18 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/SF-Pro-Display-Thin.otf
   String get sFProDisplayThin => 'assets/fonts/SF-Pro-Display-Thin.otf';
 
+  /// File path: assets/fonts/SF-Pro-Text-Black.otf
+  String get sFProTextBlack => 'assets/fonts/SF-Pro-Text-Black.otf';
+
+  /// File path: assets/fonts/SF-Pro-Text-Bold.otf
+  String get sFProTextBold => 'assets/fonts/SF-Pro-Text-Bold.otf';
+
+  /// File path: assets/fonts/SF-Pro-Text-Heavy.otf
+  String get sFProTextHeavy => 'assets/fonts/SF-Pro-Text-Heavy.otf';
+
+  /// File path: assets/fonts/SF-Pro-Text-Light.otf
+  String get sFProTextLight => 'assets/fonts/SF-Pro-Text-Light.otf';
+
   /// File path: assets/fonts/SF-Pro-Text-Medium.otf
   String get sFProTextMedium => 'assets/fonts/SF-Pro-Text-Medium.otf';
 
@@ -39,6 +51,12 @@ class $AssetsFontsGen {
 
   /// File path: assets/fonts/SF-Pro-Text-Semibold.otf
   String get sFProTextSemibold => 'assets/fonts/SF-Pro-Text-Semibold.otf';
+
+  /// File path: assets/fonts/SF-Pro-Text-Thin.otf
+  String get sFProTextThin => 'assets/fonts/SF-Pro-Text-Thin.otf';
+
+  /// File path: assets/fonts/SF-Pro-Text-Ultralight.otf
+  String get sFProTextUltralight => 'assets/fonts/SF-Pro-Text-Ultralight.otf';
 
   /// List of all assets
   List<String> get values => [
@@ -49,9 +67,15 @@ class $AssetsFontsGen {
         sFProDisplayRegular,
         sFProDisplaySemibold,
         sFProDisplayThin,
+        sFProTextBlack,
+        sFProTextBold,
+        sFProTextHeavy,
+        sFProTextLight,
         sFProTextMedium,
         sFProTextRegular,
-        sFProTextSemibold
+        sFProTextSemibold,
+        sFProTextThin,
+        sFProTextUltralight
       ];
 }
 
