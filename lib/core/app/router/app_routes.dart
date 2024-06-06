@@ -1,7 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmation_screen.dart';
+import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/profile_screen.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/registration_screen.dart';
+import 'package:neobis_smart_tailor/features/search/presentation/pages/search_screen.dart';
 
 part 'app_routes.gr.dart';
 
@@ -26,18 +31,18 @@ class AppRouter extends _$AppRouter {
           path: '/confirmation',
           initial: true,
         ),
-        // AutoRoute(
-        //   path: '/',
-        //   page: BottomMenuRoute.page,
-        //   initial: true,
-        //   guards: [
-        //     AuthGuard(authService: authService),
-        //   ],
-        //   children: [
-        //     AutoRoute(page: HomeRoute.page, maintainState: false),
-        //     AutoRoute(page: SearchRoute.page),
-        //     AutoRoute(page: ProfileRoute.page, maintainState: false),
-        //   ],
-        // ),
+        AutoRoute(
+          path: '/',
+          page: BottomNavRoute.page,
+          guards: [
+            //AuthGuard(authService: authService),
+          ],
+          children: [
+            AutoRoute(page: HomeRoute.page, maintainState: false),
+            AutoRoute(page: SearchRoute.page),
+            AutoRoute(page: MarketplaceRoute.page),
+            AutoRoute(page: ProfileRoute.page, maintainState: false),
+          ],
+        ),
       ];
 }
