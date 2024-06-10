@@ -1,4 +1,5 @@
 {
+  
   "registration": "Регистрация",
   "surname": "Фамилия*",
   "name": "Имя*",
@@ -11,7 +12,20 @@
   "repeatSendCode": "Код введен неверно, попробуйте еще раз",
   "repeatSendCodeTime": "Отправить код повторно через",
   "repeatSendCodeButton": "Отправить код повторно",
-  "Enter": "Войти"
+  "Enter": "Войти",
+
+  "marketplace": "Маркетплейс",
+  "equipment": "Оборудование",
+  "service": "Услуги",
+  "orders": "Заказы",
+  "som": "сом"
+  
+
+
+
+
+
+
 
 
 

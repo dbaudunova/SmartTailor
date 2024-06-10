@@ -24,14 +24,15 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: RegistrationRoute.page,
           path: '/registration',
-          // initial: true,
+          initial: true,
         ),
         AutoRoute(
           page: ConfirmationRoute.page,
           path: '/confirmation',
-          initial: true,
+          // initial: true,
         ),
         AutoRoute(
+          // initial: true,
           path: '/',
           page: BottomNavRoute.page,
           guards: [
