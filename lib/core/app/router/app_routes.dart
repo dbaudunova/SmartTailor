@@ -4,9 +4,11 @@ import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmation_screen.dart';
 import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
+import 'package:neobis_smart_tailor/features/my_purchases/presentation/pages/my_purchases_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/profile_screen.dart';
+import 'package:neobis_smart_tailor/features/purchase_detail/presentation/pages/purchase_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/registration_screen.dart';
-import 'package:neobis_smart_tailor/features/search/presentation/pages/search_screen.dart';
+import 'package:neobis_smart_tailor/features/search/presentation/pages/place_order.dart';
 
 part 'app_routes.gr.dart';
 
@@ -15,8 +17,7 @@ part 'app_routes.gr.dart';
 class AppRouter extends _$AppRouter {
   // final AuthService authService;
 
-  AppRouter(
-      // this.authService
+  AppRouter(// this.authService
       );
 
   @override
@@ -43,6 +44,14 @@ class AppRouter extends _$AppRouter {
             AutoRoute(page: MarketplaceRoute.page),
             AutoRoute(page: ProfileRoute.page, maintainState: false),
           ],
+        ),
+        AutoRoute(
+          page: MyPurchasesRoute.page,
+          path: '/my_purchases',
+        ),
+        AutoRoute(
+          page: PurchaseDetailRoute.page,
+          path: '/purchase_detail',
         ),
       ];
 }

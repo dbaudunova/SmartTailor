@@ -12,4 +12,5 @@ class AppColors {
   static const Color buttonUnavailableBack = Color(0xFFD9D9D9);
   static const Color error = Color(0xFFFF3B30);
   static const Color yellow = Color(0xFFFFCC00);
+  static const Color orange = Color(0xFFFF9500);
 }

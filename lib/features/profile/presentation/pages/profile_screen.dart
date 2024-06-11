@@ -1,7 +1,9 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/profile_button_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/subscribe_container_style.dart';
@@ -16,6 +18,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool _isHistoryOfOrdersButtonVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +56,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(height: AppProps.kTwentyMargin),
             SubscribeContainerStyle(
               buttonTitle: 'Отправить запрос',
-              onButtonPressed: () {},
+              onButtonPressed: () {
+                _buildShowDialog(context);
+              },
             ),
             const SizedBox(height: AppProps.kPageMargin),
             SizedBox(
@@ -75,20 +81,70 @@ class _ProfileScreenState extends State<ProfileScreen> {
               width: MediaQuery.of(context).size.width,
               child: ProfileButtonStyle(
                 title: 'Мои покупки',
-                onPressed: () {},
+                onPressed: () {
+                  context.router.push(const MyPurchasesRoute());
+                },
               ),
             ),
-            const SizedBox(height: AppProps.kPageMargin),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: ProfileButtonStyle(
-                title: 'История заказов',
-                onPressed: () {},
+            if (_isHistoryOfOrdersButtonVisible) ...[
+              const SizedBox(height: AppProps.kPageMargin),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: ProfileButtonStyle(
+                  title: 'История заказов',
+                  onPressed: () {},
+                ),
               ),
-            ),
+            ],
           ],
         ),
       ),
+    );
+  }
+
+  void _buildShowDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: _alertDialogBuilder,
+    );
+  }
+
+  Widget _alertDialogBuilder(context) {
+    return CupertinoAlertDialog(
+      title: Text(
+        'Ура!',
+        style: AppTextStyle.textField16.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Text(
+          'Подписка уже в пути!',
+          style: AppTextStyle.textField16.copyWith(
+            fontSize: 14,
+          ),
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            setState(() {
+              _isHistoryOfOrdersButtonVisible = true;
+            });
+            AutoRouter.of(context).maybePop();
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: Text(
+              'Понятно',
+              style: AppTextStyle.textField16.copyWith(
+                color: AppColors.modalBlue,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

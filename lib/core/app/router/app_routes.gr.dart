@@ -39,10 +39,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MarketplaceScreen(),
       );
     },
+    MyPurchasesRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MyPurchasesScreen(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfileScreen(),
+      );
+    },
+    PurchaseDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PurchaseDetailScreen(),
       );
     },
     RegistrationRoute.name: (routeData) {
@@ -117,6 +129,20 @@ class MarketplaceRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MyPurchasesScreen]
+class MyPurchasesRoute extends PageRouteInfo<void> {
+  const MyPurchasesRoute({List<PageRouteInfo>? children})
+      : super(
+          MyPurchasesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyPurchasesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ProfileScreen]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})
@@ -126,6 +152,20 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PurchaseDetailScreen]
+class PurchaseDetailRoute extends PageRouteInfo<void> {
+  const PurchaseDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          PurchaseDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PurchaseDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -15,4 +15,11 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
     height: 1.214,
   );
+
+  static const s12w400 = TextStyle(
+    fontSize: 12,
+    color: AppColors.black,
+    fontFamily: FontFamily.sFProText,
+    fontWeight: FontWeight.w400,
+  );
 }

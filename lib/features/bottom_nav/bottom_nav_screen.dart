@@ -76,7 +76,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           assetName: [
             Assets.icons.search,
           ],
-          title: 'Поиск',
+          title: 'Разместить товар',
         ),
         isActive: activeIndex == 1,
         onSelectedItem: onSelectedItem,
@@ -122,8 +122,8 @@ Widget _buildNavItem({
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: AppProps.kTwentyMargin,
-          height: AppProps.kTwentyMargin,
+          width: AppProps.kBigMargin,
+          height: AppProps.kBigMargin,
           child: SvgPicture.asset(
             item.assetName[0],
             colorFilter: ColorFilter.mode(
@@ -134,6 +134,8 @@ Widget _buildNavItem({
         ),
         Text(
           item.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: isActive ? selectedColor : unselectedColor,
             fontSize: AppProps.kMediumMargin,

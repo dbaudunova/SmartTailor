@@ -91,7 +91,7 @@ class $AssetsIconsGen {
   String get home => 'assets/icons/home.svg';
 
   /// File path: assets/icons/person.svg
-  String get person => 'icons/person.svg';
+  String get person => 'assets/icons/person.svg';
 
   /// File path: assets/icons/profile.svg
   String get profile => 'assets/icons/profile.svg';
@@ -107,7 +107,7 @@ class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// File path: assets/images/present.png
-  AssetGenImage get present => const AssetGenImage('images/present.png');
+  AssetGenImage get present => const AssetGenImage('assets/images/present.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [present];

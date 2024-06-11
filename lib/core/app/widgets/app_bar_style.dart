@@ -5,9 +5,11 @@ class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
   const AppBarStyle({
     super.key,
     required this.title,
+    this.leading,
   });
 
   final String title;
+  final Widget? leading;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -15,6 +17,8 @@ class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
+      leading: leading,
       backgroundColor: AppColors.background,
       title: Text(
         title,
