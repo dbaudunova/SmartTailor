@@ -1,7 +1,8 @@
 // import 'package:injectable/injectable.dart';
-// import 'package:neobis_flutter_cooks_corner_rodion/features/registration/data/data_source/registration_data_source.dart';
-// import 'package:neobis_flutter_cooks_corner_rodion/features/registration/data/models/registration_model/registration_model.dart';
-// import 'package:neobis_flutter_cooks_corner_rodion/features/registration/domain/repository/repository.dart';
+// import 'package:neobis_smart_tailor/features/confirmation/data/data_source/registration_data_source.dart';
+// import 'package:neobis_smart_tailor/features/confirmation/data/models/registration_model/registration_model.dart';
+// import 'package:neobis_smart_tailor/features/confirmation/domain/repository/repository.dart';
+// import 'package:neobis_smart_tailor/features/registration/presentation/bloc/registration_bloc.dart';
 
 // @Injectable(as: RegistrationRepo)
 // class RegistrationRepoImpl implements RegistrationRepo {
@@ -12,9 +13,15 @@
 //   );
 
 //   @override
-//   Future<void> registration(
-//     RegistrationModel? registrationModel,
-//   ) async {
-//     await _dataSource.registration(registrationModel: registrationModel);
+//   Future<void> registration(RegistrationModel? registrationModel) {
+//     // TODO: implement registration
+//     throw UnimplementedError();
 //   }
+
+//   // @override
+//   // Future<void> registration(
+//   //   RegistrationModel? registrationModel,
+//   // ) async {
+//   //   await _dataSource.registration(registrationModel: registrationModel);
+//   // }
 // }

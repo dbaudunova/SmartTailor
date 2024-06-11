@@ -1,37 +1,43 @@
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/registration/data/models/registration_model/registration_model.dart';
+import 'package:neobis_smart_tailor/features/registration/domain/useCase/registration_use_case.dart';
 
 part 'registration_event.dart';
 part 'registration_state.dart';
+part 'registration_bloc.freezed.dart';
 
 @singleton
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
-  // final RegistrationUseCase registrationUseCase;
+  final RegistrationUseCase registrationUseCase;
 
-  RegistrationBloc(
-      // {required this.registrationUseCase}
-      )
+  RegistrationBloc({required this.registrationUseCase})
       : super(
-          RegistrationState(
-            RegistrationModel.initial(),
-          ),
+          RegistrationState(stateStatus: const StateStatus.initial(), registrationModel: RegistrationModel.initial()),
         ) {
-    // on<ValidationPassword>(_validationPassword);
+    // on<_Registration>(_validationPassword);
     // on<ValidationEmail>(_validationEmail);
     // on<ValidationLogin>(_validationLogin);
     // on<ValidationPasswordRepeat>(_validationPasswordRepeat);
 
-    on<Registration>(_registration);
+    on<_Registration>(_registration);
   }
 
   Future<void> _registration(
-    Registration event,
+    _Registration event,
     Emitter<RegistrationState> emit,
   ) async {
     final registrationModel = event.registrationModel;
-    // await registrationUseCase.call(
-    //   registrationModel,
-    // );
+    final result = await registrationUseCase.call(
+      registrationModel,
+    );
+    result.fold((l) {
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: l.message ?? l.toString())));
+    }, (r) {
+      emit(state.copyWith(stateStatus: const StateStatus.success()));
+    });
   }
 
   // void _validationPasswordRepeat(

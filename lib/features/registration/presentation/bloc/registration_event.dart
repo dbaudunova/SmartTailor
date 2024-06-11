@@ -1,10 +1,6 @@
 part of 'registration_bloc.dart';
 
-abstract class RegistrationEvent {}
-
-class Registration extends RegistrationEvent {
-  final RegistrationModel registrationModel;
-  Registration({
-    required this.registrationModel,
-  });
+@freezed
+class RegistrationEvent with _$RegistrationEvent {
+  const factory RegistrationEvent.registration({required RegistrationModel registrationModel}) = _Registration;
 }

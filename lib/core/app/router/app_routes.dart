@@ -25,12 +25,17 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: RegistrationRoute.page,
           path: '/registration',
-          // initial: true,
+          initial: true,
         ),
         AutoRoute(
           page: EnterRoute.page,
           path: '/enter',
           initial: true,
+        ),
+        AutoRoute(
+          page: ConfirmationRoute.page,
+          path: '/confirmation',
+          // initial: true,
         ),
         AutoRoute(
           page: RegistrationRoute.page,
