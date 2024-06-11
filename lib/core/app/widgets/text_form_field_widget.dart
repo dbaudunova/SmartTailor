@@ -38,8 +38,14 @@ class TextFormFieldWidget extends StatelessWidget {
           inputFormatters: formatters,
           keyboardType: keyboardType,
           onChanged: onChanged,
+
           decoration: InputDecoration(
-            errorBorder: InputBorder.none,
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 1, color: AppColors.fieldBorder),
+              borderRadius: BorderRadius.circular(
+                6,
+              ),
+            ),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.transparent,
@@ -49,7 +55,7 @@ class TextFormFieldWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(
                 6,
               ),
-              borderSide: BorderSide.none,
+              borderSide: const BorderSide(width: 1, color: AppColors.fieldBorder),
             ),
             fillColor: AppColors.white,
             filled: true,

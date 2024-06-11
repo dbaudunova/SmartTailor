@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 18
+/// Strings: 20
 ///
-/// Built on 2024-06-07 at 07:30 UTC
+/// Built on 2024-06-10 at 05:55 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -160,6 +160,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get repeatSendCodeTime => 'Отправить код повторно через';
 	String get repeatSendCodeButton => 'Отправить код повторно';
 	String get Enter => 'Войти';
+	String get SmartTailor => 'SmartTailor';
+	String get enterText => 'Мониторинг и управление\nшвейным производством';
 	String get marketplace => 'Маркетплейс';
 	String get equipment => 'Оборудование';
 	String get service => 'Услуги';
@@ -186,6 +188,8 @@ extension on Translations {
 			case 'repeatSendCodeTime': return 'Отправить код повторно через';
 			case 'repeatSendCodeButton': return 'Отправить код повторно';
 			case 'Enter': return 'Войти';
+			case 'SmartTailor': return 'SmartTailor';
+			case 'enterText': return 'Мониторинг и управление\nшвейным производством';
 			case 'marketplace': return 'Маркетплейс';
 			case 'equipment': return 'Оборудование';
 			case 'service': return 'Услуги';

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmation_screen.dart';
+import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/profile_screen.dart';
@@ -24,7 +25,17 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: RegistrationRoute.page,
           path: '/registration',
+          // initial: true,
+        ),
+        AutoRoute(
+          page: EnterRoute.page,
+          path: '/enter',
           initial: true,
+        ),
+        AutoRoute(
+          page: RegistrationRoute.page,
+          path: '/registration',
+          // initial: true,
         ),
         AutoRoute(
           page: ConfirmationRoute.page,
@@ -33,7 +44,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           // initial: true,
-          path: '/',
+          // path: '/',
           page: BottomNavRoute.page,
           guards: [
             //AuthGuard(authService: authService),

@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 class TimerScreen extends StatefulWidget {
   const TimerScreen({super.key});
@@ -55,10 +57,19 @@ class _TimerScreenState extends State<TimerScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 26),
-      child: Text(
-        timerText,
-        style: const TextStyle(fontSize: 24),
+      padding: const EdgeInsets.only(top: 24),
+      child: Column(
+        children: [
+          Text(
+            t.repeatSendCodeTime,
+            style: AppTextStyle.text14,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            timerText,
+            style: const TextStyle(fontSize: 24),
+          ),
+        ],
       ),
     );
   }

@@ -50,8 +50,9 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
               t.sendPinCode,
               style: AppTextStyle.textField16,
             ),
-            const TimerScreen(),
+            const SizedBox(height: 24),
             PinCodeField(pinCode: pinCode),
+            const TimerScreen(),
             const Spacer(),
             ElevatedButtonWidget(
               text: t.Enter,
