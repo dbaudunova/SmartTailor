@@ -91,7 +91,7 @@ class $AssetsIconsGen {
   String get bell => 'assets/icons/bell.svg';
 
   /// File path: assets/icons/edit.svg
-  String get edit => 'icons/edit.svg';
+  String get edit => 'assets/icons/edit.svg';
 
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
@@ -133,9 +133,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

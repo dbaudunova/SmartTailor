@@ -71,7 +71,7 @@ class AppRouter extends _$AppRouter {
           page: PurchaseDetailRoute.page,
           path: '/purchase_detail',
         ),
-    AutoRoute(
+        AutoRoute(
           page: PersonalDataRoute.page,
           path: '/personal_data',
         ),
