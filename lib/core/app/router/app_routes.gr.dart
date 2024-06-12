@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MyPurchasesScreen(),
       );
     },
+    PersonalDataRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PersonalDataScreen(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -138,6 +144,20 @@ class MyPurchasesRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MyPurchasesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PersonalDataScreen]
+class PersonalDataRoute extends PageRouteInfo<void> {
+  const PersonalDataRoute({List<PageRouteInfo>? children})
+      : super(
+          PersonalDataRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PersonalDataRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

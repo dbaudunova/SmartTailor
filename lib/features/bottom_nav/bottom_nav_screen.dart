@@ -76,7 +76,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           assetName: [
             Assets.icons.search,
           ],
-          title: 'Разместить товар',
+          title: 'Поиск',
         ),
         isActive: activeIndex == 1,
         onSelectedItem: onSelectedItem,

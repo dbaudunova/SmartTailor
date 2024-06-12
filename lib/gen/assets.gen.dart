@@ -87,6 +87,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/basket.svg
   String get basket => 'assets/icons/basket.svg';
 
+  /// File path: assets/icons/bell.svg
+  String get bell => 'assets/icons/bell.svg';
+
+  /// File path: assets/icons/edit.svg
+  String get edit => 'icons/edit.svg';
+
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
@@ -100,7 +106,8 @@ class $AssetsIconsGen {
   String get search => 'assets/icons/search.svg';
 
   /// List of all assets
-  List<String> get values => [basket, home, person, profile, search];
+  List<String> get values =>
+      [basket, bell, edit, home, person, profile, search];
 }
 
 class $AssetsImagesGen {

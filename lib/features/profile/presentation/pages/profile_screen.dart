@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/profile_button_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/subscribe_container_style.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
@@ -19,6 +20,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool _isHistoryOfOrdersButtonVisible = false;
+  bool _isSubscribeContainerVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +53,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(width: AppProps.kSmallMargin),
                 _buildColumn(),
+                const Spacer(),
+                IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    Assets.icons.bell,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: AppProps.kTwentyMargin),
-            SubscribeContainerStyle(
-              buttonTitle: 'Отправить запрос',
-              onButtonPressed: () {
-                _buildShowDialog(context);
-              },
-            ),
+            if (_isSubscribeContainerVisible)
+              SubscribeContainerStyle(
+                buttonTitle: 'Отправить запрос',
+                onButtonPressed: () {
+                  _buildShowDialog(context);
+                },
+              ),
             const SizedBox(height: AppProps.kPageMargin),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ProfileButtonStyle(
                 title: 'Личные данные',
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(const PersonalDataRoute());
+                },
               ),
             ),
             const SizedBox(height: AppProps.kPageMargin),
@@ -82,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ProfileButtonStyle(
                 title: 'Мои покупки',
                 onPressed: () {
-                  context.router.push(const MyPurchasesRoute());
+                  AutoRouter.of(context).push(const MyPurchasesRoute());
                 },
               ),
             ),
@@ -96,9 +108,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ],
+            const Spacer(),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: ElevatedButtonWidget(
+                text: 'Выйти из профиля',
+                onTap: () {
+                  _buildExitDialog(context);
+                },
+              ),
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       ),
+    );
+  }
+
+  void _buildExitDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return ExitAlert(
+          yes: 'Да',
+          no: 'Нет',
+          onYesButton: () {
+            AutoRouter.of(context).push(const RegistrationRoute());
+          },
+          onNoButton: () {
+            AutoRouter.of(context).maybePop();
+          },
+        );
+      },
     );
   }
 
@@ -110,41 +151,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _alertDialogBuilder(context) {
-    return CupertinoAlertDialog(
-      title: Text(
-        'Ура!',
-        style: AppTextStyle.textField16.copyWith(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      content: Padding(
-        padding: const EdgeInsets.only(top: 8),
-        child: Text(
-          'Подписка уже в пути!',
-          style: AppTextStyle.textField16.copyWith(
-            fontSize: 14,
-          ),
-        ),
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            setState(() {
-              _isHistoryOfOrdersButtonVisible = true;
-            });
-            AutoRouter.of(context).maybePop();
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Text(
-              'Понятно',
-              style: AppTextStyle.textField16.copyWith(
-                color: AppColors.modalBlue,
-              ),
-            ),
-          ),
-        ),
-      ],
+    return AlertDialogStyle(
+      title: 'Ура!',
+      content: 'Подписка уже в пути!',
+      buttonText: 'Понятно',
+      onButtonPressed: () {
+        setState(() {
+          _isHistoryOfOrdersButtonVisible = true;
+          _isSubscribeContainerVisible = false;
+        });
+        AutoRouter.of(context).maybePop();
+      },
     );
   }
 
