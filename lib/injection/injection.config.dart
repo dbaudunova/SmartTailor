@@ -17,6 +17,10 @@ import 'package:neobis_smart_tailor/core/network/http_client.dart' as _i7;
 import 'package:neobis_smart_tailor/core/services/auth_service.dart' as _i4;
 import 'package:neobis_smart_tailor/core/services/secure_storage_service.dart'
     as _i13;
+import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/bloc/timer_bloc.dart'
+    as _i15;
+import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc.dart'
+    as _i16;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/impl/registration_data_source_impl.dart'
     as _i9;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/registration_data_source.dart'
@@ -28,8 +32,8 @@ import 'package:neobis_smart_tailor/features/registration/domain/repository/regi
 import 'package:neobis_smart_tailor/features/registration/domain/useCase/registration_use_case.dart'
     as _i12;
 import 'package:neobis_smart_tailor/features/registration/presentation/bloc/registration_bloc.dart'
-    as _i15;
-import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i16;
+    as _i17;
+import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i18;
 import 'package:shared_preferences/shared_preferences.dart' as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -61,10 +65,15 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.prefs,
       preResolve: true,
     );
-    gh.singleton<_i15.RegistrationBloc>(() => _i15.RegistrationBloc(
+    gh.singleton<_i15.Ticker>(() => const _i15.Ticker());
+    gh.singleton<_i15.TimerBloc>(
+        () => _i15.TimerBloc(ticker: gh<_i15.Ticker>()));
+    gh.singleton<_i16.ConfirmationBloc>(() => _i16.ConfirmationBloc(
+        registrationUseCase: gh<_i12.RegistrationUseCase>()));
+    gh.singleton<_i17.RegistrationBloc>(() => _i17.RegistrationBloc(
         registrationUseCase: gh<_i12.RegistrationUseCase>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i16.RegisterModule {}
+class _$RegisterModule extends _i18.RegisterModule {}

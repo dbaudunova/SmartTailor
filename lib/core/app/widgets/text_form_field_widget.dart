@@ -38,18 +38,25 @@ class TextFormFieldWidget extends StatelessWidget {
           inputFormatters: formatters,
           keyboardType: keyboardType,
           onChanged: onChanged,
+
           decoration: InputDecoration(
-            errorBorder: InputBorder.none,
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.transparent,
-              ), // Убирает подчеркивание, когда поле активно
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(width: 1, color: AppColors.fieldBorder),
+              borderRadius: BorderRadius.circular(
+                6,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(
+                6,
+              ),
+              borderSide: const BorderSide(width: 1, color: AppColors.fieldBorder),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(
                 6,
               ),
-              borderSide: BorderSide.none,
+              borderSide: const BorderSide(width: 1, color: AppColors.fieldBorder),
             ),
             fillColor: AppColors.white,
             filled: true,

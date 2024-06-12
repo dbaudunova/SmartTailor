@@ -1,4 +1,5 @@
 {
+  
   "registration": "Регистрация",
   "surname": "Фамилия*",
   "name": "Имя*",
@@ -11,7 +12,32 @@
   "repeatSendCode": "Код введен неверно, попробуйте еще раз",
   "repeatSendCodeTime": "Отправить код повторно через",
   "repeatSendCodeButton": "Отправить код повторно",
-  "Enter": "Войти"
+  "Enter": "Войти",
+  "SmartTailor": "SmartTailor",
+  "enterText": "Мониторинг и управление\nшвейным производством",
+
+  "marketplace": "Маркетплейс",
+  "equipment": "Оборудование",
+  "service": "Услуги",
+  "orders": "Заказы",
+  "som": "сом",
+
+  "order": "Заказ",
+  "orderDesc": "Описание заказа",
+  "srok": "Срок",
+  "nitki": "Нитки",
+  "equipmentDesk": "Описание инвентаря",
+  "needIronman": "Требуется утюжник",
+  "serviceDesc": "Мужские брюки"
+
+
+  
+
+
+
+
+
+
 
 
 

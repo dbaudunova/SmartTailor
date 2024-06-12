@@ -17,13 +17,14 @@ class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      surfaceTintColor: Colors.transparent,
+      // surfaceTintColor: Colors.transparent,
       leading: leading,
+      surfaceTintColor: AppColors.background,
       backgroundColor: AppColors.background,
       title: Text(
         title,
       ),
-      centerTitle: true,
+      centerTitle: false,
       titleTextStyle: AppTextStyle.title24.copyWith(
         fontSize: AppProps.kTwentyRadius,
       ),

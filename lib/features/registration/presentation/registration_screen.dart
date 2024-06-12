@@ -98,18 +98,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           titleName: t.surname,
           onChanged: (s) {},
           controller: surname,
+          validator: (value) {
+            if (value == '') {
+              return 'Поле не может быть пустым';
+            }
+            return null;
+          },
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.name,
           onChanged: (s) {},
           controller: name,
+          validator: (value) {
+            if (value == '') {
+              return 'Поле не может быть пустым';
+            }
+            return null;
+          },
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.FatherName,
           onChanged: (s) {},
           controller: fatherName,
+          validator: (value) {
+            if (value == '') {
+              return 'Поле не может быть пустым';
+            }
+            return null;
+          },
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
@@ -128,6 +146,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         TextFormFieldWidget(
           formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
           titleName: t.phoneNum,
+          validator: (value) {
+            if (value == '') {
+              return 'Введинет номер телефона';
+            }
+            return null;
+          },
           onChanged: (s) {},
           controller: phone,
           keyboardType: TextInputType.phone,

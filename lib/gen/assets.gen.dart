@@ -113,11 +113,15 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/background.jpg
+  AssetGenImage get background =>
+      const AssetGenImage('assets/images/background.jpg');
+
   /// File path: assets/images/present.png
   AssetGenImage get present => const AssetGenImage('assets/images/present.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [present];
+  List<AssetGenImage> get values => [background, present];
 }
 
 class Assets {
@@ -129,11 +133,9 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size = null});
+  const AssetGenImage(this._assetName);
 
   final String _assetName;
-
-  final Size? size;
 
   Image image({
     Key? key,
