@@ -1,6 +1,8 @@
-// part of 'registration_bloc.dart';
+part of 'confirmation_bloc.dart';
 
-// @freezed
-// class RegistrationEvent with _$RegistrationEvent {
-//   const factory RegistrationEvent.registration({required RegistrationModel registrationModel}) = _Registration;
-// }
+@freezed
+class ConfirmationEvent with _$ConfirmationEvent {
+  // const factory ConfirmationEvent.repeatCode({required bool repeatCode}) = _RepeatCode;
+  const factory ConfirmationEvent.activateButton() = _Activate;
+  const factory ConfirmationEvent.deactivateButton() = _Deactivate;
+}

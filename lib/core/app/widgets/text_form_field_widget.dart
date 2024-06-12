@@ -46,10 +46,11 @@ class TextFormFieldWidget extends StatelessWidget {
                 6,
               ),
             ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.transparent,
-              ), // Убирает подчеркивание, когда поле активно
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(
+                6,
+              ),
+              borderSide: const BorderSide(width: 1, color: AppColors.fieldBorder),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(

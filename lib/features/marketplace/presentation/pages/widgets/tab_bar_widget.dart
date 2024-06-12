@@ -11,37 +11,43 @@ class TabBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(2),
-      height: 34,
-      decoration: BoxDecoration(
-        color: AppColors.buttonUnavailableBack,
-        borderRadius: BorderRadius.circular(7),
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: AppProps.kPageMargin,
+        right: AppProps.kPageMargin,
       ),
-      child: TabBar(
-          dividerHeight: AppProps.kBigMargin,
-          controller: tabController,
-          onTap: (S) {},
-          tabAlignment: TabAlignment.fill,
-          dividerColor: AppColors.buttonUnavailableBack,
-          unselectedLabelStyle: AppTextStyle.textField16.copyWith(
-            color: AppColors.black,
-            height: 1.5,
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          ),
-          labelStyle: AppTextStyle.textField16.copyWith(
-            height: 1.5,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            color: AppColors.black,
-          ),
-          tabs: Labels.tabs,
-          indicatorSize: TabBarIndicatorSize.tab,
-          indicator: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(7)),
-            color: AppColors.white,
-          )),
+      child: Container(
+        padding: const EdgeInsets.all(2),
+        height: 34,
+        decoration: BoxDecoration(
+          color: AppColors.buttonUnavailableBack,
+          borderRadius: BorderRadius.circular(7),
+        ),
+        child: TabBar(
+            dividerHeight: AppProps.kBigMargin,
+            controller: tabController,
+            onTap: (S) {},
+            tabAlignment: TabAlignment.fill,
+            dividerColor: AppColors.buttonUnavailableBack,
+            unselectedLabelStyle: AppTextStyle.textField16.copyWith(
+              color: AppColors.black,
+              height: 1.5,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+            ),
+            labelStyle: AppTextStyle.textField16.copyWith(
+              height: 1.5,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: AppColors.black,
+            ),
+            tabs: Labels.tabs,
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicator: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(7)),
+              color: AppColors.white,
+            )),
+      ),
     );
   }
 }

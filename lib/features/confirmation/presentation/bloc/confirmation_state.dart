@@ -1,9 +1,11 @@
-// part of 'registration_bloc.dart';
+part of 'confirmation_bloc.dart';
 
-// @freezed
-// class RegistrationState with _$RegistrationState {
-//   const factory RegistrationState({
-//     required final StateStatus stateStatus,
-//     required final RegistrationModel registrationModel,
-//   }) = _RegistrationState;
-// }
+@freezed
+class ConfirmationState with _$ConfirmationState {
+  // const factory ConfirmationState({
+  //   required final StateStatus stateStatus,
+  //   required final ConfirmationModel confirmationModel,
+  // }) = _ConfirmationState;
+  const factory ConfirmationState.buttonActive() = _Active;
+  const factory ConfirmationState.buttonInactive() = _Inactive;
+}

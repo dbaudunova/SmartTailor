@@ -8,6 +8,13 @@ class AppTextStyle {
     fontWeight: FontWeight.w600,
     height: 1.208,
   );
+  static const timer24regular = TextStyle(
+    fontSize: 24,
+    color: AppColors.black,
+    fontFamily: FontFamily.sFProText,
+    fontWeight: FontWeight.w400,
+    height: 1.208,
+  );
   static const text14 = TextStyle(
     fontSize: 14,
     color: AppColors.black,
