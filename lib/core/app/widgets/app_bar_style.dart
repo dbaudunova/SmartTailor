@@ -24,7 +24,7 @@ class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
       ),
-      centerTitle: false,
+      centerTitle: true,
       titleTextStyle: AppTextStyle.title24.copyWith(
         fontSize: AppProps.kTwentyRadius,
       ),

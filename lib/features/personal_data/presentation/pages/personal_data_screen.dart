@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
@@ -136,7 +137,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           content: 'Ваши данные сохранены!',
           buttonText: 'Закрыть',
           onButtonPressed: () {
-            AutoRouter.of(context).maybePop();
+            AutoRouter.of(context).push(const ProfileRoute());
           },
         );
       },
@@ -175,14 +176,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
         ),
         const SizedBox(height: 4),
         Text(
-          'Подписка оформлена!',
-          style: AppTextStyle.title24.copyWith(
-            fontSize: AppProps.kMediumMargin,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        Text(
-          'Срок до 1 августа 2024',
+          'Изменить фото профиля',
           style: AppTextStyle.title24.copyWith(
             fontSize: AppProps.kMediumMargin,
             fontWeight: FontWeight.w500,

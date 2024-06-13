@@ -104,7 +104,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 width: MediaQuery.of(context).size.width,
                 child: ProfileButtonStyle(
                   title: 'История заказов',
-                  onPressed: () {},
+                  onPressed: () {
+                    AutoRouter.of(context).push(const OrderHistoryRoute());
+                  },
                 ),
               ),
             ],
@@ -177,7 +179,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         const SizedBox(height: 4),
         Text(
-          'Изменить фото профиля',
+          'Подписка оформлена!',
+          style: AppTextStyle.title24.copyWith(
+            fontSize: AppProps.kMediumMargin,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          'Срок до 1 августа 2024',
           style: AppTextStyle.title24.copyWith(
             fontSize: AppProps.kMediumMargin,
             fontWeight: FontWeight.w500,
