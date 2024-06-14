@@ -93,16 +93,25 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       children: [
         TextFormFieldWidget(
           titleName: 'Фамилия*',
+          validator: (value) {
+            return _nullValidation(value);
+          },
           controller: _surnameController,
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: 'Имя*',
+          validator: (value) {
+            return _nullValidation(value);
+          },
           controller: _nameController,
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: 'Отчество*',
+          validator: (value) {
+            return _nullValidation(value);
+          },
           controller: _fathersNameController,
         ),
         const SizedBox(height: 16),
@@ -111,14 +120,14 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           validator: (value) {
-            if (value == null || !value.contains('@')) {
-              return 'Почта указана неверно';
-            }
-            return null;
+            return _emailValidation(value);
           },
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
+          validator: (value) {
+            return _nullValidation(value);
+          },
           titleName: 'Номер телефона*',
           keyboardType: TextInputType.phone,
           formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
@@ -126,6 +135,22 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
         ),
       ],
     );
+  }
+
+  String? _nullValidation(String? value) {
+    if (value!.isEmpty) {
+      return 'Поле не может быть пустое';
+    }
+    return null;
+  }
+
+  String? _emailValidation(String? value) {
+    if (value!.isEmpty) {
+      return 'Поле не может быть пустое';
+    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+      return 'Почта указана неверно';
+    }
+    return null;
   }
 
   void _buildShowDialog(BuildContext context) {
