@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class MarketplaceCard extends StatelessWidget {
+  final void Function() onTap;
   final TabController tabController;
   final DateTime? data;
   final int? price;
@@ -14,12 +15,13 @@ class MarketplaceCard extends StatelessWidget {
     this.price = 10,
     required this.description,
     required this.title,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
         padding: const EdgeInsets.only(bottom: 8, left: 8, right: 16, top: 8),

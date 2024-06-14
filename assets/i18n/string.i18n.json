@@ -1,4 +1,11 @@
 {
+
+  "orderPlace": "Разместить заказ",
+  "organization": "Организация",
+  "profile": "Профиль",
+  
+
+
   
   "registration": "Регистрация",
   "surname": "Фамилия*",
@@ -21,6 +28,15 @@
   "service": "Услуги",
   "orders": "Заказы",
   "som": "сом",
+  "equipmentDetail": "Детали оборудования",
+
+  "orderDetail": "Детали заказа",
+  "author": "Автор объявления",
+  "acceptOrder": "Принять заказ",
+  "buy": "Купить",
+  
+
+
 
   "order": "Заказ",
   "orderDesc": "Описание заказа",

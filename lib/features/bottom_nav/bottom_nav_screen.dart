@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
+import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
 class BottomNavScreen extends StatefulWidget {
@@ -15,9 +16,9 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   final List<PageRouteInfo> _buildRoutes = const [
-    HomeRoute(),
-    SearchRoute(),
     MarketplaceRoute(),
+    OrderPlaceRoute(),
+    OrganizationRoute(),
     ProfileRoute(),
   ];
 
@@ -64,8 +65,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       _buildNavItem(
         item: BottomMenuItem(
           index: 0,
-          assetName: [Assets.icons.home],
-          title: 'Главная',
+          assetName: [Assets.icons.basket],
+          title: t.marketplace,
         ),
         isActive: activeIndex == 0,
         onSelectedItem: onSelectedItem,
@@ -73,10 +74,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       _buildNavItem(
         item: BottomMenuItem(
           index: 1,
-          assetName: [
-            Assets.icons.search,
-          ],
-          title: 'Поиск',
+          assetName: [Assets.icons.order1],
+          title: t.orderPlace,
         ),
         isActive: activeIndex == 1,
         onSelectedItem: onSelectedItem,
@@ -84,10 +83,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       _buildNavItem(
         item: BottomMenuItem(
           index: 2,
-          assetName: [
-            Assets.icons.basket,
-          ],
-          title: 'Маркетплейс',
+          assetName: [Assets.icons.organization1],
+          title: t.organization,
         ),
         isActive: activeIndex == 2,
         onSelectedItem: onSelectedItem,
@@ -95,10 +92,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       _buildNavItem(
         item: BottomMenuItem(
           index: 3,
-          assetName: [
-            Assets.icons.profile,
-          ],
-          title: 'Профиль',
+          assetName: [Assets.icons.profile],
+          title: t.profile,
         ),
         isActive: activeIndex == 3,
         onSelectedItem: onSelectedItem,

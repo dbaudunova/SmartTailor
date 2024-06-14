@@ -6,10 +6,12 @@ class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     this.leading,
+    this.centerTitle = false,
   });
 
   final String title;
   final Widget? leading;
+  final bool? centerTitle;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -24,7 +26,7 @@ class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
       ),
-      centerTitle: false,
+      centerTitle: centerTitle,
       titleTextStyle: AppTextStyle.title24.copyWith(
         fontSize: AppProps.kTwentyRadius,
       ),

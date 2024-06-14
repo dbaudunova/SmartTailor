@@ -39,6 +39,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
+    MarketplaceDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<MarketplaceDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MarketplaceDetailScreen(
+          date: args.date,
+          acceptOrderButton: args.acceptOrderButton,
+          buyButton: args.buyButton,
+          title: args.title,
+        ),
+      );
+    },
     MarketplaceRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -49,6 +61,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const MyPurchasesScreen(),
+      );
+    },
+    OrderPlaceRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrderPlaceScreen(),
+      );
+    },
+    OrganizationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrganizationScreen(),
       );
     },
     PersonalDataRoute.name: (routeData) {
@@ -141,6 +165,54 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MarketplaceDetailScreen]
+class MarketplaceDetailRoute extends PageRouteInfo<MarketplaceDetailRouteArgs> {
+  MarketplaceDetailRoute({
+    DateTime? date,
+    required bool acceptOrderButton,
+    required bool buyButton,
+    required String title,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MarketplaceDetailRoute.name,
+          args: MarketplaceDetailRouteArgs(
+            date: date,
+            acceptOrderButton: acceptOrderButton,
+            buyButton: buyButton,
+            title: title,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MarketplaceDetailRoute';
+
+  static const PageInfo<MarketplaceDetailRouteArgs> page =
+      PageInfo<MarketplaceDetailRouteArgs>(name);
+}
+
+class MarketplaceDetailRouteArgs {
+  const MarketplaceDetailRouteArgs({
+    this.date,
+    required this.acceptOrderButton,
+    required this.buyButton,
+    required this.title,
+  });
+
+  final DateTime? date;
+
+  final bool acceptOrderButton;
+
+  final bool buyButton;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'MarketplaceDetailRouteArgs{date: $date, acceptOrderButton: $acceptOrderButton, buyButton: $buyButton, title: $title}';
+  }
+}
+
+/// generated route for
 /// [MarketplaceScreen]
 class MarketplaceRoute extends PageRouteInfo<void> {
   const MarketplaceRoute({List<PageRouteInfo>? children})
@@ -164,6 +236,34 @@ class MyPurchasesRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MyPurchasesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrderPlaceScreen]
+class OrderPlaceRoute extends PageRouteInfo<void> {
+  const OrderPlaceRoute({List<PageRouteInfo>? children})
+      : super(
+          OrderPlaceRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderPlaceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrganizationScreen]
+class OrganizationRoute extends PageRouteInfo<void> {
+  const OrganizationRoute({List<PageRouteInfo>? children})
+      : super(
+          OrganizationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrganizationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

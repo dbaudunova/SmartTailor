@@ -96,6 +96,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
+  /// File path: assets/icons/order1.svg
+  String get order1 => 'assets/icons/order1.svg';
+
+  /// File path: assets/icons/orderPlace.svg
+  String get orderPlace => 'assets/icons/orderPlace.svg';
+
+  /// File path: assets/icons/organization.svg
+  String get organization => 'assets/icons/organization.svg';
+
+  /// File path: assets/icons/organization1.svg
+  String get organization1 => 'assets/icons/organization1.svg';
+
   /// File path: assets/icons/person.svg
   String get person => 'assets/icons/person.svg';
 
@@ -106,8 +118,19 @@ class $AssetsIconsGen {
   String get search => 'assets/icons/search.svg';
 
   /// List of all assets
-  List<String> get values =>
-      [basket, bell, edit, home, person, profile, search];
+  List<String> get values => [
+        basket,
+        bell,
+        edit,
+        home,
+        order1,
+        orderPlace,
+        organization,
+        organization1,
+        person,
+        profile,
+        search
+      ];
 }
 
 class $AssetsImagesGen {
@@ -117,11 +140,27 @@ class $AssetsImagesGen {
   AssetGenImage get background =>
       const AssetGenImage('assets/images/background.jpg');
 
+  /// File path: assets/images/photo1.jpg
+  AssetGenImage get photo1 => const AssetGenImage('assets/images/photo1.jpg');
+
+  /// File path: assets/images/photo2.jpg
+  AssetGenImage get photo2 => const AssetGenImage('assets/images/photo2.jpg');
+
+  /// File path: assets/images/photo3.jpg
+  AssetGenImage get photo3 => const AssetGenImage('assets/images/photo3.jpg');
+
+  /// File path: assets/images/photo4.jpg
+  AssetGenImage get photo4 => const AssetGenImage('assets/images/photo4.jpg');
+
+  /// File path: assets/images/photo5.jpg
+  AssetGenImage get photo5 => const AssetGenImage('assets/images/photo5.jpg');
+
   /// File path: assets/images/present.png
   AssetGenImage get present => const AssetGenImage('assets/images/present.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [background, present];
+  List<AssetGenImage> get values =>
+      [background, photo1, photo2, photo3, photo4, photo5, present];
 }
 
 class Assets {
@@ -133,11 +172,9 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size = null});
+  const AssetGenImage(this._assetName);
 
   final String _assetName;
-
-  final Size? size;
 
   Image image({
     Key? key,
