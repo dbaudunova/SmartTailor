@@ -35,7 +35,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: EnterRoute.page,
           path: '/enter',
-          // initial: true,
+          initial: true,
         ),
         AutoRoute(
           page: ConfirmationRoute.page,
@@ -53,7 +53,7 @@ class AppRouter extends _$AppRouter {
           // initial: true,
         ),
         AutoRoute(
-          initial: true,
+          // initial: true,
           // path: '/',
           page: BottomNavRoute.page,
           guards: [

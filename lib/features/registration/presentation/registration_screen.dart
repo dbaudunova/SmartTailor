@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
@@ -55,9 +56,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         text: t.register,
         onTap: () {
           if (_formKey.currentState!.validate()) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Processing Data')),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(content: Text('Processing Data')),
+            // );
+            AutoRouter.of(context).push(const ConfirmationRoute());
           }
         },
       ),
