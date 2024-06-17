@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/my_announcements/presentation/widgets/announcement_container.dart';
-import 'package:neobis_smart_tailor/features/my_announcements/presentation/widgets/customer_container.dart';
 
 @RoutePage()
 class MyAnnouncementsScreen extends StatefulWidget {
@@ -16,7 +15,7 @@ class MyAnnouncementsScreen extends StatefulWidget {
 class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  final List<String> _labels = ['Мои объявления', 'Список покупателей'];
+  final List<String> _labels = ['Заказы', 'Обрудование'];
 
   @override
   void initState() {
@@ -72,7 +71,7 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
             horizontal: 16,
             vertical: 4,
           ),
-          child: CustomerContainer(),
+          child: AnnouncementsContainer(),
         );
       },
     );

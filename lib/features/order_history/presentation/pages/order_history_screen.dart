@@ -53,31 +53,37 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
             child: TabBarView(
               controller: _tabController,
               children: [
-                ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: ActiveOrderContainer(),
-                    );
-                  },
-                ),
-                ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      child: CompletedOrderContainer(),
-                    );
-                  },
-                ),
+                _buildActiveOrderListView(),
+                _buildCompletedOrderListView(),
               ],
             ),
           )
         ],
       ),
+    );
+  }
+
+  ListView _buildCompletedOrderListView() {
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: CompletedOrderContainer(),
+        );
+      },
+    );
+  }
+
+  ListView _buildActiveOrderListView() {
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: ActiveOrderContainer(),
+        );
+      },
     );
   }
 }
