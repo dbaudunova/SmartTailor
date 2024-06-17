@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MarketplaceScreen(),
       );
     },
+    MyAnnouncementsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MyAnnouncementsScreen(),
+      );
+    },
     MyPurchasesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -156,6 +162,20 @@ class MarketplaceRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MarketplaceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MyAnnouncementsScreen]
+class MyAnnouncementsRoute extends PageRouteInfo<void> {
+  const MyAnnouncementsRoute({List<PageRouteInfo>? children})
+      : super(
+          MyAnnouncementsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyAnnouncementsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

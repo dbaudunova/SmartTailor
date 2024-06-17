@@ -39,16 +39,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 48,
-                  width: 48,
-                  child: CircleAvatar(
-                    backgroundColor: AppColors.yellow,
-                    child: SvgPicture.asset(
-                      Assets.icons.person,
-                      width: AppProps.kBigMargin,
-                      height: AppProps.kBigMargin,
-                    ),
+                CircleAvatar(
+                  radius: 24,
+                  backgroundColor: AppColors.yellow,
+                  child: SvgPicture.asset(
+                    Assets.icons.person,
+                    width: AppProps.kBigMargin,
+                    height: AppProps.kBigMargin,
                   ),
                 ),
                 const SizedBox(width: AppProps.kSmallMargin),
@@ -85,7 +82,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               width: MediaQuery.of(context).size.width,
               child: ProfileButtonStyle(
                 title: 'Мои объявления',
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(const MyAnnouncementsRoute());
+                },
               ),
             ),
             const SizedBox(height: AppProps.kPageMargin),

@@ -36,53 +36,55 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  height: 48,
-                  width: 48,
-                  child: CircleAvatar(
-                    backgroundColor: AppColors.yellow,
-                    child: SvgPicture.asset(
-                      Assets.icons.person,
-                      width: AppProps.kBigMargin,
-                      height: AppProps.kBigMargin,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    height: 48,
+                    width: 48,
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.yellow,
+                      child: SvgPicture.asset(
+                        Assets.icons.person,
+                        width: AppProps.kBigMargin,
+                        height: AppProps.kBigMargin,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 16),
-                _buildColumn(),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    Assets.icons.bell,
+                  const SizedBox(width: 16),
+                  _buildColumn(),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(
+                      Assets.icons.bell,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            _buildPersonalDataRow(),
-            const SizedBox(height: 40),
-            Form(key: _formKey, child: _buildFields()),
-            const Spacer(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: ElevatedButtonWidget(
-                text: 'Сохранить данные',
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    _buildShowDialog(context);
-                  }
-                },
+                ],
               ),
-            ),
-            const SizedBox(height: 16),
-          ],
+              const SizedBox(height: 16),
+              _buildPersonalDataRow(),
+              const SizedBox(height: 40),
+              Form(key: _formKey, child: _buildFields()),
+              const Spacer(),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButtonWidget(
+                  text: 'Сохранить данные',
+                  onTap: () {
+                    if (_formKey.currentState!.validate()) {
+                      _buildShowDialog(context);
+                    }
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
         ),
       ),
     );

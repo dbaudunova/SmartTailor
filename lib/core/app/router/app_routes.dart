@@ -5,6 +5,7 @@ import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmat
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
+import 'package:neobis_smart_tailor/features/my_announcements/presentation/pages/my_announcements_screen.dart';
 import 'package:neobis_smart_tailor/features/my_purchases/presentation/pages/my_purchases_screen.dart';
 import 'package:neobis_smart_tailor/features/order_history/presentation/pages/order_history_screen.dart';
 import 'package:neobis_smart_tailor/features/personal_data/presentation/pages/personal_data_screen.dart';
@@ -79,6 +80,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: OrderHistoryRoute.page,
           path: '/order_history',
-        )
+        ),
+        AutoRoute(
+          page: MyAnnouncementsRoute.page,
+          path: '/my_announcements',
+        ),
       ];
 }
