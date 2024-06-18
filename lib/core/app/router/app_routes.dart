@@ -5,12 +5,15 @@ import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmat
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
-import 'package:neobis_smart_tailor/features/my_announcements/presentation/pages/my_announcements_screen.dart';
-import 'package:neobis_smart_tailor/features/my_purchases/presentation/pages/my_purchases_screen.dart';
-import 'package:neobis_smart_tailor/features/order_history/presentation/pages/order_history_screen.dart';
-import 'package:neobis_smart_tailor/features/personal_data/presentation/pages/personal_data_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/my_announcements_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/my_purchases_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/order_history_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace_detail_screen/marketplace_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/order_place_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/organization_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/personal_data/personal_data_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/profile_screen.dart';
-import 'package:neobis_smart_tailor/features/purchase_detail/presentation/pages/purchase_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/purchase_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/registration_screen.dart';
 import 'package:neobis_smart_tailor/features/search/presentation/pages/search_screen.dart';
 
@@ -59,9 +62,9 @@ class AppRouter extends _$AppRouter {
             //AuthGuard(authService: authService),
           ],
           children: [
-            AutoRoute(page: HomeRoute.page, maintainState: false),
-            AutoRoute(page: SearchRoute.page),
             AutoRoute(page: MarketplaceRoute.page),
+            AutoRoute(page: OrderPlaceRoute.page),
+            AutoRoute(page: OrganizationRoute.page),
             AutoRoute(page: ProfileRoute.page, maintainState: false),
           ],
         ),
@@ -84,6 +87,11 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: MyAnnouncementsRoute.page,
           path: '/my_announcements',
+        ),
+        AutoRoute(
+          page: MarketplaceDetailRoute.page,
+          path: '/marketplace_detail',
+          // initial: true,
         ),
       ];
 }

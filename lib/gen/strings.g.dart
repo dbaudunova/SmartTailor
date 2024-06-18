@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 27
+/// Strings: 35
 ///
-/// Built on 2024-06-13 at 15:45 UTC
+/// Built on 2024-06-14 at 06:53 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -147,6 +147,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
+	String get orderPlace => 'Разместить заказ';
+	String get organization => 'Организация';
+	String get profile => 'Профиль';
 	String get registration => 'Регистрация';
 	String get surname => 'Фамилия*';
 	String get name => 'Имя*';
@@ -167,6 +170,11 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get service => 'Услуги';
 	String get orders => 'Заказы';
 	String get som => 'сом';
+	String get equipmentDetail => 'Детали оборудования';
+	String get orderDetail => 'Детали заказа';
+	String get author => 'Автор объявления';
+	String get acceptOrder => 'Принять заказ';
+	String get buy => 'Купить';
 	String get order => 'Заказ';
 	String get orderDesc => 'Описание заказа';
 	String get srok => 'Срок';
@@ -182,6 +190,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'orderPlace': return 'Разместить заказ';
+			case 'organization': return 'Организация';
+			case 'profile': return 'Профиль';
 			case 'registration': return 'Регистрация';
 			case 'surname': return 'Фамилия*';
 			case 'name': return 'Имя*';
@@ -202,6 +213,11 @@ extension on Translations {
 			case 'service': return 'Услуги';
 			case 'orders': return 'Заказы';
 			case 'som': return 'сом';
+			case 'equipmentDetail': return 'Детали оборудования';
+			case 'orderDetail': return 'Детали заказа';
+			case 'author': return 'Автор объявления';
+			case 'acceptOrder': return 'Принять заказ';
+			case 'buy': return 'Купить';
 			case 'order': return 'Заказ';
 			case 'orderDesc': return 'Описание заказа';
 			case 'srok': return 'Срок';

@@ -26,6 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarStyle(
+        centerTitle: true,
         title: 'Профиль',
       ),
       body: Padding(
