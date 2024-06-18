@@ -4,18 +4,20 @@ class TextFormFieldWidget extends StatelessWidget {
   final List<TextInputFormatter>? formatters;
   final String? Function(String?)? validator;
   final TextEditingController controller;
-  final String titleName;
+  final String? titleName;
+  final String? hintText;
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
 
   const TextFormFieldWidget({
     super.key,
-    required this.titleName,
+    this.titleName,
     this.onChanged,
     required this.controller,
     this.keyboardType,
     this.formatters = const [],
     this.validator,
+    this.hintText,
   });
 
   @override
@@ -23,12 +25,14 @@ class TextFormFieldWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          titleName,
-          style: controller.text.isEmpty
-              ? AppTextStyle.textField16
-              : AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.60)),
-        ),
+        titleName != null
+            ? Text(
+                titleName!,
+                style: controller.text.isEmpty
+                    ? AppTextStyle.textField16
+                    : AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.10)),
+              )
+            : Container(),
         const SizedBox(
           height: 12,
         ),
@@ -40,6 +44,7 @@ class TextFormFieldWidget extends StatelessWidget {
           onChanged: onChanged,
 
           decoration: InputDecoration(
+            hintText: hintText ?? "",
             errorBorder: OutlineInputBorder(
               borderSide: const BorderSide(width: 1, color: AppColors.fieldBorder),
               borderRadius: BorderRadius.circular(

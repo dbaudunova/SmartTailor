@@ -22,6 +22,7 @@
   "Enter": "Войти",
   "SmartTailor": "SmartTailor",
   "enterText": "Мониторинг и управление\nшвейным производством",
+  "emailHintText": "Введите электронный адрес",
 
   "marketplace": "Маркетплейс",
   "equipment": "Оборудование",
@@ -36,15 +37,34 @@
   "buy": "Купить",
   
 
-
-
   "order": "Заказ",
   "orderDesc": "Описание заказа",
   "srok": "Срок",
   "nitki": "Нитки",
   "equipmentDesk": "Описание инвентаря",
   "needIronman": "Требуется утюжник",
-  "serviceDesc": "Мужские брюки"
+  "serviceDesc": "Мужские брюки",
+
+
+  "typeOrder": "Тип объявления*",
+  "typeOrderHint": "Оборудование или Заказ",
+  "nameOrder": "Название*",
+  "necessaryField": "Обязательное поле",
+  "descriptionOrder": "Описание*",
+  "addPhotos": "Добавить фото*",
+  "max5photos": "Максимальное количество фото 5",
+  "sizeFieldText": "Только для типа объявления Заказ",
+  "maxWords": "Максимум 1000 слов",
+  "sizes": "Размеры*",
+  "ddmmyy": "ДД/ММ/ГГ",
+  "lastDate": "Крайняя дата выполнения",
+  "contactInfo": "Контактная информация*",
+  "inputPhoneNumber": "Введите номер телефона или почту",
+  "orderSumm": "Сумма заказа*",
+  "inputDigits": "Введите цифры",
+  "inputSize": "Введите размер",
+  "cancel":"Отмена"
+
 
 
   

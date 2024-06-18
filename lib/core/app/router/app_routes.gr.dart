@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ConfirmationScreen(),
       );
     },
+    EmailInputRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EmailInputScreen(),
+      );
+    },
     EnterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -132,6 +138,20 @@ class ConfirmationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ConfirmationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EmailInputScreen]
+class EmailInputRoute extends PageRouteInfo<void> {
+  const EmailInputRoute({List<PageRouteInfo>? children})
+      : super(
+          EmailInputRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EmailInputRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

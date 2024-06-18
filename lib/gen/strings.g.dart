@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 35
+/// Strings: 54
 ///
-/// Built on 2024-06-14 at 06:53 UTC
+/// Built on 2024-06-17 at 17:54 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -165,6 +165,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get Enter => 'Войти';
 	String get SmartTailor => 'SmartTailor';
 	String get enterText => 'Мониторинг и управление\nшвейным производством';
+	String get emailHintText => 'Введите электронный адрес';
 	String get marketplace => 'Маркетплейс';
 	String get equipment => 'Оборудование';
 	String get service => 'Услуги';
@@ -182,6 +183,24 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get equipmentDesk => 'Описание инвентаря';
 	String get needIronman => 'Требуется утюжник';
 	String get serviceDesc => 'Мужские брюки';
+	String get typeOrder => 'Тип объявления*';
+	String get typeOrderHint => 'Оборудование или Заказ';
+	String get nameOrder => 'Название*';
+	String get necessaryField => 'Обязательное поле';
+	String get descriptionOrder => 'Описание*';
+	String get addPhotos => 'Добавить фото*';
+	String get max5photos => 'Максимальное количество фото 5';
+	String get sizeFieldText => 'Только для типа объявления Заказ';
+	String get maxWords => 'Максимум 1000 слов';
+	String get sizes => 'Размеры*';
+	String get ddmmyy => 'ДД/ММ/ГГ';
+	String get lastDate => 'Крайняя дата выполнения';
+	String get contactInfo => 'Контактная информация*';
+	String get inputPhoneNumber => 'Введите номер телефона или почту';
+	String get orderSumm => 'Сумма заказа*';
+	String get inputDigits => 'Введите цифры';
+	String get inputSize => 'Введите размер';
+	String get cancel => 'Отмена';
 }
 
 /// Flat map(s) containing all translations.
@@ -208,6 +227,7 @@ extension on Translations {
 			case 'Enter': return 'Войти';
 			case 'SmartTailor': return 'SmartTailor';
 			case 'enterText': return 'Мониторинг и управление\nшвейным производством';
+			case 'emailHintText': return 'Введите электронный адрес';
 			case 'marketplace': return 'Маркетплейс';
 			case 'equipment': return 'Оборудование';
 			case 'service': return 'Услуги';
@@ -225,6 +245,24 @@ extension on Translations {
 			case 'equipmentDesk': return 'Описание инвентаря';
 			case 'needIronman': return 'Требуется утюжник';
 			case 'serviceDesc': return 'Мужские брюки';
+			case 'typeOrder': return 'Тип объявления*';
+			case 'typeOrderHint': return 'Оборудование или Заказ';
+			case 'nameOrder': return 'Название*';
+			case 'necessaryField': return 'Обязательное поле';
+			case 'descriptionOrder': return 'Описание*';
+			case 'addPhotos': return 'Добавить фото*';
+			case 'max5photos': return 'Максимальное количество фото 5';
+			case 'sizeFieldText': return 'Только для типа объявления Заказ';
+			case 'maxWords': return 'Максимум 1000 слов';
+			case 'sizes': return 'Размеры*';
+			case 'ddmmyy': return 'ДД/ММ/ГГ';
+			case 'lastDate': return 'Крайняя дата выполнения';
+			case 'contactInfo': return 'Контактная информация*';
+			case 'inputPhoneNumber': return 'Введите номер телефона или почту';
+			case 'orderSumm': return 'Сумма заказа*';
+			case 'inputDigits': return 'Введите цифры';
+			case 'inputSize': return 'Введите размер';
+			case 'cancel': return 'Отмена';
 			default: return null;
 		}
 	}

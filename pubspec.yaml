@@ -8,6 +8,7 @@ environment:
   sdk: '>=3.2.1 <4.0.0'
 
 dependencies:
+
   flutter:
     sdk: flutter
 
@@ -43,8 +44,8 @@ dependencies:
   freezed: ^2.5.2
 
   # Localization
-  slang: 3.29.0
-  slang_flutter: 3.29.0
+  slang: ^3.31.0
+  slang_flutter: ^3.31.0
   flutter_localizations:
     sdk: flutter
  
@@ -55,6 +56,7 @@ dependencies:
   mask_text_input_formatter: ^2.8.0
   pin_code_fields: ^8.0.1
   fpdart: ^1.1.0
+  modal_bottom_sheet: ^2.1.2
   
 
 
@@ -68,10 +70,10 @@ dev_dependencies:
   auto_route_generator: ^7.3.2
   flutter_gen_runner:
   injectable_generator: ^2.4.1
-  slang_build_runner: 3.29.0
+  slang_build_runner: ^3.31.0
   
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 
 flutter:

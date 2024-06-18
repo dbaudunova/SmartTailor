@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmation_screen.dart';
+import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_screen.dart';
+import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/email_input_screen.dart';
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
@@ -30,6 +31,11 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: RegistrationRoute.page,
           path: '/registration',
+          // initial: true,
+        ),
+        AutoRoute(
+          page: EmailInputRoute.page,
+          path: '/emailInput',
           // initial: true,
         ),
         AutoRoute(

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
@@ -13,36 +14,38 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  final surname = TextEditingController();
-  final name = TextEditingController();
-  final fatherName = TextEditingController();
-  final email = TextEditingController();
-  final phone = TextEditingController();
+  final surnameController = TextEditingController();
+  final nameController = TextEditingController();
+  final fatherNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    surname.dispose();
-    name.dispose();
-    fatherName.dispose();
-    email.dispose();
-    phone.dispose();
+    surnameController.dispose();
+    nameController.dispose();
+    fatherNameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    double statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: AppBarStyle(title: t.registration),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin),
+          padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin).copyWith(bottom: 96),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 60 + statusBarHeight),
+              const SizedBox(height: 60
+                  //  + statusBarHeight
+                  ),
               Form(key: _formKey, child: _buildFields()),
               const SizedBox(height: 16),
               _buildCheckBox(),
@@ -55,8 +58,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         text: t.register,
         onTap: () {
           if (_formKey.currentState!.validate()) {
+            AutoRouter.of(context).pushNamed('/confirmation');
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Processing Data')),
+              const SnackBar(content: Text('Processing Data')),
             );
           }
         },
@@ -89,74 +93,64 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          t.registration,
-          style: AppTextStyle.title24,
-        ),
-        const SizedBox(height: 32),
+        // Text(
+        //   t.registration,
+        //   style: AppTextStyle.title24,
+        // ),
+        // const SizedBox(height: 32),
         TextFormFieldWidget(
           titleName: t.surname,
           onChanged: (s) {},
-          controller: surname,
-          validator: (value) {
-            if (value == '') {
-              return 'Поле не может быть пустым';
-            }
-            return null;
-          },
+          controller: surnameController,
+          validator: (value) => _validateField(value, FieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.name,
           onChanged: (s) {},
-          controller: name,
-          validator: (value) {
-            if (value == '') {
-              return 'Поле не может быть пустым';
-            }
-            return null;
-          },
+          controller: nameController,
+          validator: (value) => _validateField(value, FieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.FatherName,
           onChanged: (s) {},
-          controller: fatherName,
-          validator: (value) {
-            if (value == '') {
-              return 'Поле не может быть пустым';
-            }
-            return null;
-          },
+          controller: fatherNameController,
+          validator: (value) => _validateField(value, FieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.email,
-          validator: (value) {
-            if (value == null || !value.contains('@')) {
-              return 'Почта указана неверно';
-            }
-            return null;
-          },
+          validator: (value) => _validateField(value, FieldType.email),
           onChanged: (s) {},
-          controller: email,
+          controller: emailController,
           keyboardType: TextInputType.emailAddress,
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
           titleName: t.phoneNum,
-          validator: (value) {
-            if (value == '') {
-              return 'Введинет номер телефона';
-            }
-            return null;
-          },
+          validator: (value) => _validateField(value, FieldType.phone),
           onChanged: (s) {},
-          controller: phone,
+          controller: phoneController,
           keyboardType: TextInputType.phone,
         ),
       ],
     );
   }
+
+  String? _validateField(String? value, FieldType fieldType) {
+    if (fieldType == FieldType.text && value!.isEmpty) {
+      return 'Поле не может быть пустым';
+    }
+    if (fieldType == FieldType.email && !value!.contains('@')) {
+      return 'Почта указана неверно';
+    }
+    if (fieldType == FieldType.phone && value!.isEmpty) {
+      return 'Введинет номер телефона';
+    }
+    return null;
+  }
 }
+
+enum FieldType { text, phone, email }

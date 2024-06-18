@@ -3,14 +3,14 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class MarketplaceCard extends StatelessWidget {
   final void Function() onTap;
-  final TabController tabController;
+  final int tabIndex;
   final DateTime? data;
   final int? price;
   final String description;
   final String title;
   const MarketplaceCard({
     super.key,
-    required this.tabController,
+    required this.tabIndex,
     this.data,
     this.price = 10,
     required this.description,
@@ -66,7 +66,7 @@ class MarketplaceCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      tabController.index == 0
+                      tabIndex == 0
                           ? Text(
                               data.toString(),
                               style: AppTextStyle.textField16.copyWith(
@@ -85,14 +85,14 @@ class MarketplaceCard extends StatelessWidget {
   }
 
   Widget _buildPriceText() {
-    if (tabController.index == 0) {
+    if (tabIndex == 0) {
       return Text(
         '1000 сом',
         style: AppTextStyle.textField16.copyWith(
           color: AppColors.black.withOpacity(0.60),
         ),
       );
-    } else if (tabController.index == 1) {
+    } else if (tabIndex == 1) {
       return Text(
         '1000 сом',
         style: AppTextStyle.textField16.copyWith(

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
@@ -15,9 +16,9 @@ class EnterScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(Assets.images.background.path),
-            fit: BoxFit.cover,
-          ),
+              image: AssetImage(Assets.images.background.path),
+              fit: BoxFit.cover,
+              colorFilter: const ColorFilter.srgbToLinearGamma()),
         ),
         child: Column(
           children: [
@@ -34,38 +35,26 @@ class EnterScreen extends StatelessWidget {
   Align _buildText() {
     return Align(
       alignment: Alignment.center,
-      child: Expanded(
-        child: Column(
-          children: [
-            Container(
-              height: 110,
-              width: 110,
-              decoration: const BoxDecoration(
-                color: AppColors.yellow,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(16.57),
-                ),
-              ),
-              child: const Center(child: Text('ST', style: AppTextStyle.bold40)),
+      child: Column(
+        children: [
+          SvgPicture.asset(Assets.icons.logo),
+          const SizedBox(height: 36),
+          Text(
+            t.SmartTailor,
+            style: AppTextStyle.bold40.copyWith(
+              color: AppColors.white,
             ),
-            const SizedBox(height: 36),
-            Text(
-              t.SmartTailor,
-              style: AppTextStyle.bold40.copyWith(
-                color: AppColors.white,
-              ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            textAlign: TextAlign.center,
+            t.enterText,
+            style: AppTextStyle.title24.copyWith(
+              fontWeight: FontWeight.w300,
+              color: AppColors.white,
             ),
-            const SizedBox(height: 20),
-            Text(
-              textAlign: TextAlign.center,
-              t.enterText,
-              style: AppTextStyle.title24.copyWith(
-                fontWeight: FontWeight.w300,
-                color: AppColors.white,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -80,14 +69,14 @@ class EnterScreen extends StatelessWidget {
             ElevatedButtonWidget(
               text: t.Enter,
               onTap: () {
-                AutoRouter.of(context).push(const ConfirmationRoute());
+                AutoRouter.of(context).pushNamed('/confirmation');
               },
             ),
             const SizedBox(height: 16),
             ElevatedButtonWidget(
                 text: t.registration,
                 onTap: () {
-                  AutoRouter.of(context).push(const RegistrationRoute());
+                  AutoRouter.of(context).pushNamed('/registration');
                 }),
           ],
         ),

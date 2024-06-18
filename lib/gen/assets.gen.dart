@@ -84,11 +84,17 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Drill-in.svg
+  String get drillIn => 'assets/icons/Drill-in.svg';
+
   /// File path: assets/icons/basket.svg
   String get basket => 'assets/icons/basket.svg';
 
   /// File path: assets/icons/bell.svg
   String get bell => 'assets/icons/bell.svg';
+
+  /// File path: assets/icons/cross.svg
+  String get cross => 'assets/icons/cross.svg';
 
   /// File path: assets/icons/edit.svg
   String get edit => 'assets/icons/edit.svg';
@@ -96,14 +102,11 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.svg
   String get home => 'assets/icons/home.svg';
 
+  /// File path: assets/icons/logo.svg
+  String get logo => 'assets/icons/logo.svg';
+
   /// File path: assets/icons/order1.svg
   String get order1 => 'assets/icons/order1.svg';
-
-  /// File path: assets/icons/orderPlace.svg
-  String get orderPlace => 'assets/icons/orderPlace.svg';
-
-  /// File path: assets/icons/organization.svg
-  String get organization => 'assets/icons/organization.svg';
 
   /// File path: assets/icons/organization1.svg
   String get organization1 => 'assets/icons/organization1.svg';
@@ -119,13 +122,14 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
+        drillIn,
         basket,
         bell,
+        cross,
         edit,
         home,
+        logo,
         order1,
-        orderPlace,
-        organization,
         organization1,
         person,
         profile,
@@ -172,9 +176,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

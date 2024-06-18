@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/marketplace_tabbar_view.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
@@ -13,41 +15,114 @@ class MarketplaceScreen extends StatefulWidget {
   State<MarketplaceScreen> createState() => _MarketplaceScreenState();
 }
 
-class _MarketplaceScreenState extends State<MarketplaceScreen> with TickerProviderStateMixin {
-  late TabController tabController;
+int selectedSegment = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(
-      length: Labels.values.length,
-      vsync: this,
-    );
+class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationMixin {
+  RestorableInt currentSegment = RestorableInt(0);
+  final PageController _pageController = PageController(initialPage: 0);
 
-    // context.read<HomeBloc>().add(Load());
-    tabController.addListener(() {
-      setState(() {});
-      // if (tabController.indexIsChanging) {
-      //   context.read<HomeBloc>().add(
-      //         Load(),
-      //       );
-      // }
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   tabController = TabController(
+  //     length: Labels.values.length,
+  //     vsync: this,
+  //   );
+
+  //   // context.read<HomeBloc>().add(Load());
+  //   tabController.addListener(() {
+  //     setState(() {});
+  //     // if (tabController.indexIsChanging) {
+  //     //   context.read<HomeBloc>().add(
+  //     //         Load(),
+  //     //       );
+  //     // }
+  //   });
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _pageController = PageController(initialPage: currentSegment.value);
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarStyle(
-        title: t.marketplace,
+    const segmentedControlMaxWidth = double.infinity;
+    final children = <int, Widget>{
+      0: Text(t.order),
+      1: Text(t.equipment),
+      2: Text(t.service),
+    };
+
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        backgroundColor: AppColors.background,
+        leading: Text(
+          t.marketplace,
+          style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w600),
+        ),
       ),
-      body: Column(
+      child: Column(
         children: [
-          TabBarWidget(tabController: tabController),
+          CupertinoNavigationBar(
+            backgroundColor: AppColors.background,
+            automaticallyImplyLeading: false,
+            middle: SizedBox(
+              width: segmentedControlMaxWidth,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CupertinoSlidingSegmentedControl<int>(
+                  children: children,
+                  // onValueChanged: onValueChanged,
+                  onValueChanged: (int? newValue) {
+                    if (newValue != null) {
+                      onValueChanged(newValue);
+                      _pageController.animateToPage(
+                        newValue,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
+                  groupValue: currentSegment.value,
+                ),
+              ),
+            ),
+          ),
           const SizedBox(height: 16),
-          Expanded(child: MarketplaceTabBarView(tabController: tabController))
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  currentSegment.value = index;
+                });
+              },
+              children: const [
+                MarketplaceTabBarView(tabIndex: 0),
+                MarketplaceTabBarView(tabIndex: 1),
+                MarketplaceTabBarView(tabIndex: 2),
+              ],
+            ),
+          ),
+          // Expanded(child: MarketplaceTabBarView(tabIndex: currentSegment.value))
         ],
       ),
     );
+  }
+
+  @override
+  String get restorationId => 'cupertino_segmented_control';
+
+  @override
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
+    registerForRestoration(currentSegment, 'current_segment');
+  }
+
+  void onValueChanged(int? newValue) {
+    setState(() {
+      currentSegment.value = newValue!;
+    });
   }
 }

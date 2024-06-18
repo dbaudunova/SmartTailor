@@ -18,13 +18,13 @@ class ConfirmationScreen extends StatefulWidget {
 }
 
 class _ConfirmationScreenState extends State<ConfirmationScreen> {
-  final pinCode = TextEditingController();
+  final pinCodeController = TextEditingController();
 
-  @override
-  void dispose() {
-    pinCode.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   pinCodeController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                 style: AppTextStyle.textField16,
               ),
               const SizedBox(height: 24),
-              PinCodeField(pinCode: pinCode),
+              PinCodeField(pinCode: pinCodeController),
               const TimerScreen(),
               const Spacer(),
               ElevatedButtonWidget(
