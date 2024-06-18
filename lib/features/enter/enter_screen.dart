@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 

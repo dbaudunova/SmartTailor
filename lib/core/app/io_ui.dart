@@ -2,7 +2,6 @@ library io_ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/gen/fonts.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 

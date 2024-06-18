@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/state_model/confirmation_model.dart';
 import 'package:neobis_smart_tailor/features/registration/domain/useCase/registration_use_case.dart';
 
 part 'confirmation_event.dart';

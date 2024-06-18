@@ -1,9 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/auth_info.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
