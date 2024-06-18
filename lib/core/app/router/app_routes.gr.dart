@@ -63,10 +63,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MarketplaceScreen(),
       );
     },
+    MyAnnouncementsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MyAnnouncementsScreen(),
+      );
+    },
     MyPurchasesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const MyPurchasesScreen(),
+      );
+    },
+    OrderHistoryRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrderHistoryScreen(),
       );
     },
     OrderPlaceRoute.name: (routeData) {
@@ -247,6 +259,20 @@ class MarketplaceRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MyAnnouncementsScreen]
+class MyAnnouncementsRoute extends PageRouteInfo<void> {
+  const MyAnnouncementsRoute({List<PageRouteInfo>? children})
+      : super(
+          MyAnnouncementsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyAnnouncementsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [MyPurchasesScreen]
 class MyPurchasesRoute extends PageRouteInfo<void> {
   const MyPurchasesRoute({List<PageRouteInfo>? children})
@@ -256,6 +282,20 @@ class MyPurchasesRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MyPurchasesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrderHistoryScreen]
+class OrderHistoryRoute extends PageRouteInfo<void> {
+  const OrderHistoryRoute({List<PageRouteInfo>? children})
+      : super(
+          OrderHistoryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderHistoryRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

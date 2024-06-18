@@ -9,7 +9,8 @@ class PurchaseCardItem extends StatelessWidget {
     required this.orderNumber,
     required this.price,
     required this.authorName,
-    required this.description, required this.onTap,
+    required this.description,
+    required this.onTap,
   });
 
   final String purchaseImage;
@@ -39,8 +40,14 @@ class PurchaseCardItem extends StatelessWidget {
                 height: 104,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: CachedNetworkImage(
-                    imageUrl: purchaseImage,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: purchaseImage,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -68,12 +75,9 @@ class PurchaseCardItem extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        const SizedBox(
-                          width: 30,
-                          height: 30,
-                          child: CircleAvatar(
-                            backgroundColor: AppColors.greyText,
-                          ),
+                        const CircleAvatar(
+                          radius: 15,
+                          backgroundColor: AppColors.greyText,
                         ),
                         const SizedBox(width: 8),
                         Column(
