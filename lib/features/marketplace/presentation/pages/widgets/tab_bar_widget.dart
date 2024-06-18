@@ -5,9 +5,11 @@ class TabBarWidget extends StatelessWidget {
   const TabBarWidget({
     super.key,
     required this.tabController,
+    required this.labels,
   });
 
   final TabController tabController;
+  final List<String> labels;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class TabBarWidget extends StatelessWidget {
               fontWeight: FontWeight.w600,
               color: AppColors.black,
             ),
-            tabs: Labels.tabs,
+            tabs: labels.map((label) => Tab(text: label)).toList(),
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(7)),
@@ -52,12 +54,14 @@ class TabBarWidget extends StatelessWidget {
   }
 }
 
-enum Labels {
+/*enum Labels {
   orders('Заказы'),
   equipment('Оборудование'),
   services("Услуги");
 
   const Labels(this.label);
+
   final String label;
-  static List<Tab> tabs = Labels.values.map((title) => Tab(text: title.label)).toList();
-}
+  static List<Tab> tabs =
+      Labels.values.map((title) => Tab(text: title.label)).toList();
+}*/

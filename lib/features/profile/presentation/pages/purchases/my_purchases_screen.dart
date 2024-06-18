@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/my_purchases/presentation/widgets/purchase_card_item.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_card_item.dart';
 
 @RoutePage()
 class MyPurchasesScreen extends StatefulWidget {
@@ -17,6 +17,7 @@ class _MyPurchasesScreenState extends State<MyPurchasesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarStyle(
+        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             AutoRouter.of(context).maybePop();

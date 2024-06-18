@@ -13,14 +13,16 @@ class MarketplaceScreen extends StatefulWidget {
   State<MarketplaceScreen> createState() => _MarketplaceScreenState();
 }
 
-class _MarketplaceScreenState extends State<MarketplaceScreen> with TickerProviderStateMixin {
+class _MarketplaceScreenState extends State<MarketplaceScreen>
+    with TickerProviderStateMixin {
   late TabController tabController;
+  final List<String> _labels = ['Заказы', 'Оборудование', 'Услуги'];
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(
-      length: Labels.values.length,
+      length: _labels.length,
       vsync: this,
     );
 
@@ -43,7 +45,10 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with TickerProvid
       ),
       body: Column(
         children: [
-          TabBarWidget(tabController: tabController),
+          TabBarWidget(
+            tabController: tabController,
+            labels: _labels,
+          ),
           const SizedBox(height: 16),
           Expanded(child: MarketplaceTabBarView(tabController: tabController))
         ],
