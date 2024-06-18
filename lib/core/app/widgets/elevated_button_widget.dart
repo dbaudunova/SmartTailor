@@ -44,7 +44,7 @@ class ElevatedButtonWidget extends StatelessWidget {
       child: Text(
         text,
         style: AppTextStyle.textField16.copyWith(
-          color: onTap != null ? AppColors.white : AppColors.darkBlue,
+          color: color == AppColors.white ? AppColors.black : (onTap != null ? AppColors.white : AppColors.darkBlue),
           fontSize: 20,
         ),
       ),

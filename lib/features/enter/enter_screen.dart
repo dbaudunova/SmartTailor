@@ -74,6 +74,7 @@ class EnterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ElevatedButtonWidget(
+                color: AppColors.white,
                 text: t.registration,
                 onTap: () {
                   AutoRouter.of(context).pushNamed('/registration');

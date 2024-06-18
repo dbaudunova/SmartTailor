@@ -58,9 +58,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         text: t.register,
         onTap: () {
           if (_formKey.currentState!.validate()) {
-            AutoRouter.of(context).pushNamed('/confirmation');
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Processing Data')),
+              SnackBar(content: Text('Processing Data')),
             );
           }
         },
