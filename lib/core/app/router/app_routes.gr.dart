@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ConfirmationScreen(),
       );
     },
+    CreateOrganizationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreateOrganizationScreen(),
+      );
+    },
     EmailInputRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -170,6 +176,20 @@ class ConfirmationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ConfirmationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreateOrganizationScreen]
+class CreateOrganizationRoute extends PageRouteInfo<void> {
+  const CreateOrganizationRoute({List<PageRouteInfo>? children})
+      : super(
+          CreateOrganizationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateOrganizationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
