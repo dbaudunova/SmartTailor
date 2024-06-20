@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AnnouncementDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AnnouncementDetailScreen(),
+      );
+    },
     BottomNavRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -118,6 +124,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AnnouncementDetailScreen]
+class AnnouncementDetailRoute extends PageRouteInfo<void> {
+  const AnnouncementDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          AnnouncementDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AnnouncementDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

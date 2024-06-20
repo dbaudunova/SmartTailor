@@ -99,12 +99,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/order1.svg
   String get order1 => 'assets/icons/order1.svg';
 
-  /// File path: assets/icons/orderPlace.svg
-  String get orderPlace => 'assets/icons/orderPlace.svg';
-
-  /// File path: assets/icons/organization.svg
-  String get organization => 'assets/icons/organization.svg';
-
   /// File path: assets/icons/organization1.svg
   String get organization1 => 'assets/icons/organization1.svg';
 
@@ -124,8 +118,6 @@ class $AssetsIconsGen {
         edit,
         home,
         order1,
-        orderPlace,
-        organization,
         organization1,
         person,
         profile,
@@ -172,9 +164,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

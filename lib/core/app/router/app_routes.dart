@@ -5,6 +5,7 @@ import 'package:neobis_smart_tailor/features/confirmation/presentation/confirmat
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/announcement_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/my_announcements_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/my_purchases_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/order_history_screen.dart';
@@ -92,6 +93,10 @@ class AppRouter extends _$AppRouter {
           page: MarketplaceDetailRoute.page,
           path: '/marketplace_detail',
           // initial: true,
+        ),
+        AutoRoute(
+          page: AnnouncementDetailRoute.page,
+          path: '/announcement_detail',
         ),
       ];
 }
