@@ -50,7 +50,7 @@ class AnnouncementsContainer extends StatelessWidget {
                   Text(
                     'Швейная машинка',
                     style: AppTextStyle.textField16.copyWith(
-                      color: AppColors.dartGrey,
+                      color: AppColors.darkGrey,
                     ),
                   ),
                   const SizedBox(height: 4),
