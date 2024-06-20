@@ -14,5 +14,6 @@ class AppColors {
   static const Color error = Color(0xFFFF3B30);
   static const Color yellow = Color(0xFFFFCC00);
   static const Color orange = Color(0xFFFF9500);
-  static const Color dartGrey = Color(0xFF3C3C43);
+  static const Color darkGrey = Color(0xFF3C3C43);
+  static const Color lightOrange = Color(0xFFFFD9A1);
 }

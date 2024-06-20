@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
@@ -67,12 +68,18 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(
+        return Padding(
+          padding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 4,
           ),
-          child: AnnouncementsContainer(),
+          child: AnnouncementsContainer(
+            onTap: () {
+              AutoRouter.of(context).push(
+                const AnnouncementDetailRoute(),
+              );
+            },
+          ),
         );
       },
     );
@@ -82,12 +89,18 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(
+        return Padding(
+          padding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 4,
           ),
-          child: AnnouncementsContainer(),
+          child: AnnouncementsContainer(
+            onTap: () {
+              AutoRouter.of(context).push(
+                const AnnouncementDetailRoute(),
+              );
+            },
+          ),
         );
       },
     );
