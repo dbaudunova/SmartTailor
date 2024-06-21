@@ -57,6 +57,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
+    InviteEmployeeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const InviteEmployeeScreen(),
+      );
+    },
     MarketplaceDetailRoute.name: (routeData) {
       final args = routeData.argsAs<MarketplaceDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -238,6 +244,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [InviteEmployeeScreen]
+class InviteEmployeeRoute extends PageRouteInfo<void> {
+  const InviteEmployeeRoute({List<PageRouteInfo>? children})
+      : super(
+          InviteEmployeeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'InviteEmployeeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

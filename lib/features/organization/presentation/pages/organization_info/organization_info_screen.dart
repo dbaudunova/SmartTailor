@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info.dart';
@@ -122,7 +123,9 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: ElevatedButtonWidget(
                 text: 'Пригласить сотрудника',
-                onTap: () {},
+                onTap: () {
+                  AutoRouter.of(context).push(const InviteEmployeeRoute());
+                },
               ),
             ),
           ),

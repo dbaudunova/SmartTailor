@@ -71,7 +71,7 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
 
   String? _fieldValidation(String? value) {
     if (value!.isEmpty) {
-      return 'Поле не может быть пустое';
+      return 'Поле не может быть пустым';
     } else if (value.length < 5 || value.length > 50) {
       return 'Максимум 50 символов, минимум 5';
     }
