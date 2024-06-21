@@ -57,7 +57,10 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
               controller: _tabController,
               children: [
                 _buildEmployeeListView(),
-                _buildEmployeeListView(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: _buildEmployeePositionTab(),
+                ),
                 _buildEmployeeListView(),
               ],
             ),
@@ -67,16 +70,64 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
     );
   }
 
-  ListView _buildEmployeeListView() {
-    return ListView.builder(
-      itemCount: 10,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
-          child: const EmployeeItemContainer(),
-        );
-      },
+  Stack _buildEmployeePositionTab() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Center(
+          child: Text(
+            'У вас пока нет должностей',
+            style: AppTextStyle.textField16.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 16,
+          left: 0,
+          right: 0,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: ElevatedButtonWidget(
+              text: 'Добавить должность',
+              onTap: () {},
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Stack _buildEmployeeListView() {
+    return Stack(
+      children: [
+        ListView.builder(
+          itemCount: 10,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16)
+                  .copyWith(bottom: 12),
+              child: const EmployeeItemContainer(),
+            );
+          },
+        ),
+        Positioned(
+          bottom: 16,
+          left: 0,
+          right: 0,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ElevatedButtonWidget(
+                text: 'Пригласить сотрудника',
+                onTap: () {},
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
