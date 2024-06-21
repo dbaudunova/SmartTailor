@@ -99,6 +99,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrderPlaceScreen(),
       );
     },
+    OrganizationInfoRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrganizationInfoScreen(),
+      );
+    },
     OrganizationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -350,6 +356,20 @@ class OrderPlaceRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OrderPlaceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrganizationInfoScreen]
+class OrganizationInfoRoute extends PageRouteInfo<void> {
+  const OrganizationInfoRoute({List<PageRouteInfo>? children})
+      : super(
+          OrganizationInfoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrganizationInfoRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

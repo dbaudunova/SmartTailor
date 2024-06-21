@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 
 @RoutePage()
@@ -56,7 +57,9 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
               child: ElevatedButtonWidget(
                 text: 'Создать организацию',
                 onTap: () {
-                  _formKey.currentState!.validate();
+                  if (_formKey.currentState!.validate()) {
+                    AutoRouter.of(context).push(const OrganizationInfoRoute());
+                  }
                 },
               ),
             ),
