@@ -101,26 +101,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           titleName: t.surname,
           onChanged: (s) {},
           controller: surnameController,
-          validator: (value) => _validateField(value, FieldType.text),
+          validator: (value) => _validateField(value, RegistrationFieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.name,
           onChanged: (s) {},
           controller: nameController,
-          validator: (value) => _validateField(value, FieldType.text),
+          validator: (value) => _validateField(value, RegistrationFieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.FatherName,
           onChanged: (s) {},
           controller: fatherNameController,
-          validator: (value) => _validateField(value, FieldType.text),
+          validator: (value) => _validateField(value, RegistrationFieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.email,
-          validator: (value) => _validateField(value, FieldType.email),
+          validator: (value) => _validateField(value, RegistrationFieldType.email),
           onChanged: (s) {},
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
@@ -129,7 +129,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         TextFormFieldWidget(
           formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
           titleName: t.phoneNum,
-          validator: (value) => _validateField(value, FieldType.phone),
+          validator: (value) => _validateField(value, RegistrationFieldType.phone),
           onChanged: (s) {},
           controller: phoneController,
           keyboardType: TextInputType.phone,
@@ -138,18 +138,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
-  String? _validateField(String? value, FieldType fieldType) {
-    if (fieldType == FieldType.text && value!.isEmpty) {
+  String? _validateField(String? value, RegistrationFieldType fieldType) {
+    if (fieldType == RegistrationFieldType.text && value!.isEmpty) {
       return 'Поле не может быть пустым';
     }
-    if (fieldType == FieldType.email && !value!.contains('@')) {
+    if (fieldType == RegistrationFieldType.email && !value!.contains('@')) {
       return 'Почта указана неверно';
     }
-    if (fieldType == FieldType.phone && value!.isEmpty) {
+    if (fieldType == RegistrationFieldType.phone && value!.isEmpty) {
       return 'Введинет номер телефона';
     }
     return null;
   }
 }
 
-enum FieldType { text, phone, email }
+enum RegistrationFieldType { text, phone, email }

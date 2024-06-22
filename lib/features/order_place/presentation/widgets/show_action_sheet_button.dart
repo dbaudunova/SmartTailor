@@ -2,29 +2,34 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ShowActionSheetButton extends StatefulWidget {
+  String? announcementType;
   final SheetType actionType;
   final String title;
   final String hintText;
 
-  const ShowActionSheetButton({
+  ShowActionSheetButton({
     super.key,
     required this.title,
     required this.hintText,
     required this.actionType,
+    this.announcementType,
   });
 
   @override
   State<ShowActionSheetButton> createState() => _ShowActionSheetButtonState();
 }
 
-File? _image;
+List<File> _images = [];
 
 class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
   @override
@@ -39,7 +44,7 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
         const SizedBox(height: 6),
         GestureDetector(
           onTap: () {
-            _handleAction(widget.actionType);
+            _handleAction(widget.actionType, context);
           },
           child: Container(
             padding: const EdgeInsets.only(bottom: 12, left: 12, top: 15),
@@ -53,9 +58,16 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  widget.hintText,
-                  style: AppTextStyle.textField16.copyWith(fontSize: 16, color: AppColors.greyText),
+                BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
+                  builder: (context, state) {
+                    return Text(
+                      state.orderPlaceModel.type != '' ? state.orderPlaceModel.type : widget.hintText,
+                      // widget.announcementType != null ? widget.announcementType! : widget.hintText,
+                      style: widget.announcementType != null
+                          ? AppTextStyle.textField16
+                          : AppTextStyle.textField16.copyWith(color: AppColors.greyText),
+                    );
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 21),
@@ -65,17 +77,26 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
             ),
           ),
         ),
+        if (_images.isNotEmpty)
+          Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: _images.map((image) {
+              return Image.file(image, width: 100, height: 100, fit: BoxFit.cover);
+            }).toList(),
+          ),
       ],
     );
   }
 
-  void _handleAction(SheetType actionType) {
+  void _handleAction(SheetType actionType, BuildContext ctx) {
     switch (actionType) {
-      case SheetType.pickImage:
-        _pickImage();
+      case SheetType.showActionSheetPhotos:
+        _showActionSheet(ctx, SheetType.showActionSheetPhotos);
+        // _pickImage();
         break;
-      case SheetType.showActionSheet:
-        _showActionSheet(context);
+      case SheetType.showActionSheetType:
+        _showActionSheet(ctx, SheetType.showActionSheetType);
         break;
       case SheetType.callBottomSheet:
         _callBottomSheet();
@@ -92,30 +113,37 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
     );
   }
 
-  void _showActionSheet(BuildContext context) {
+  void _showActionSheet(BuildContext context, SheetType type) {
     showCupertinoModalPopup(
       context: context,
       builder: (BuildContext context) => CupertinoActionSheet(
-        actions: <CupertinoActionSheetAction>[
-          CupertinoActionSheetAction(
-            child: Text(
-              t.order,
-              style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
-            ),
-            onPressed: () {
-              // Navigator.pop(context, 'Action 1');
-            },
-          ),
-          CupertinoActionSheetAction(
-            child: Text(
-              t.equipment,
-              style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
-            ),
-            onPressed: () {
-              // Navigator.pop(context, 'Action 2');
-            },
-          ),
-        ],
+        actions: type == SheetType.showActionSheetType
+            ? [
+                _actionSheet(t.order, () {
+                  context.read<OrderPlaceBloc>().add(
+                        OrderPlaceEvent.showFields(type: t.order),
+                      );
+                  Navigator.pop(context);
+                }),
+                _actionSheet(t.equipment, () {
+                  setState(() {
+                    context.read<OrderPlaceBloc>().add(
+                          OrderPlaceEvent.showFields(type: t.equipment),
+                        );
+                  });
+                  Navigator.pop(context);
+                }),
+              ]
+            : [
+                _actionSheet('Выбрать фотографии', () {
+                  _pickMultipleImages();
+                  Navigator.pop(context);
+                }),
+                _actionSheet('Сделать фотографии', () {
+                  _pickMultipleImagesFromCamera();
+                  Navigator.pop(context);
+                }),
+              ],
         cancelButton: CupertinoActionSheetAction(
           child: Text(
             t.cancel,
@@ -129,13 +157,45 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
     );
   }
 
-  Future<void> _pickImage() async {
-    final ImagePicker picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  CupertinoActionSheetAction _actionSheet(String text, Function() onPressed) {
+    return CupertinoActionSheetAction(
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
 
-    if (pickedFile != null) {
+  Future<void> _pickMultipleImages() async {
+    final ImagePicker picker = ImagePicker();
+    final pickedFiles = await picker.pickMultiImage();
+
+    if (pickedFiles != null) {
       setState(() {
-        _image = File(pickedFile.path);
+        _images = pickedFiles.take(5).map((file) => File(file.path)).toList();
+        print(_images.length);
+      });
+    }
+  }
+
+  Future<void> _pickMultipleImagesFromCamera() async {
+    final ImagePicker picker = ImagePicker();
+    List<File> newImages = [];
+
+    for (int i = 0; i < 5; i++) {
+      final pickedFile = await picker.pickImage(source: ImageSource.camera);
+
+      if (pickedFile != null) {
+        newImages.add(File(pickedFile.path));
+      } else {
+        break; // если пользователь отменил съемку, выйти из цикла
+      }
+    }
+
+    if (newImages.isNotEmpty) {
+      setState(() {
+        _images = newImages;
       });
     }
   }
@@ -192,4 +252,4 @@ class _SizeSelectionBottomSheetState extends State<_SizeSelectionBottomSheet> {
   }
 }
 
-enum SheetType { pickImage, showActionSheet, callBottomSheet }
+enum SheetType { showActionSheetPhotos, showActionSheetType, callBottomSheet }
