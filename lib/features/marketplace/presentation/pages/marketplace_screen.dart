@@ -19,42 +19,19 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
   RestorableInt currentSegment = RestorableInt(0);
   final PageController _pageController = PageController(initialPage: 0);
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   tabController = TabController(
-  //     length: Labels.values.length,
-  //     vsync: this,
-  //   );
-
-  //   // context.read<HomeBloc>().add(Load());
-  //   tabController.addListener(() {
-  //     setState(() {});
-  //     // if (tabController.indexIsChanging) {
-  //     //   context.read<HomeBloc>().add(
-  //     //         Load(),
-  //     //       );
-  //     // }
-  //   });
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _pageController = PageController(initialPage: currentSegment.value);
-  // }
-
   @override
   Widget build(BuildContext context) {
     const segmentedControlMaxWidth = double.infinity;
     final children = <int, Widget>{
-      0: Text(t.order),
-      1: Text(t.equipment),
-      2: Text(t.service),
+      0: _buildSegmentText(t.order, 0),
+      1: _buildSegmentText(t.equipment, 1),
+      2: _buildSegmentText(t.service, 2),
     };
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
+        padding: const EdgeInsetsDirectional.only(top: 16, start: 16),
+        border: const Border(),
         backgroundColor: AppColors.background,
         leading: Text(
           t.marketplace,
@@ -64,6 +41,7 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
       child: Column(
         children: [
           CupertinoNavigationBar(
+            border: const Border(),
             backgroundColor: AppColors.background,
             automaticallyImplyLeading: false,
             middle: SizedBox(
@@ -72,10 +50,8 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: CupertinoSlidingSegmentedControl<int>(
                   children: children,
-                  // onValueChanged: onValueChanged,
                   onValueChanged: (int? newValue) {
                     if (newValue != null) {
-                      onValueChanged(newValue);
                       _pageController.animateToPage(
                         newValue,
                         duration: const Duration(milliseconds: 300),
@@ -104,9 +80,17 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
               ],
             ),
           ),
-          // Expanded(child: MarketplaceTabBarView(tabIndex: currentSegment.value))
         ],
       ),
+    );
+  }
+
+  Text _buildSegmentText(String label, int index) {
+    return Text(
+      label,
+      style: currentSegment.value == index
+          ? AppTextStyle.text14.copyWith(fontWeight: FontWeight.w600)
+          : AppTextStyle.text14,
     );
   }
 

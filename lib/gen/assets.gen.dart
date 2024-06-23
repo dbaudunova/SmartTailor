@@ -144,6 +144,9 @@ class $AssetsImagesGen {
   AssetGenImage get background =>
       const AssetGenImage('assets/images/background.jpg');
 
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
   /// File path: assets/images/photo1.jpg
   AssetGenImage get photo1 => const AssetGenImage('assets/images/photo1.jpg');
 
@@ -164,7 +167,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [background, photo1, photo2, photo3, photo4, photo5, present];
+      [background, logo, photo1, photo2, photo3, photo4, photo5, present];
 }
 
 class Assets {
