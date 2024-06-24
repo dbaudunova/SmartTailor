@@ -1,13 +1,14 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/show_action_sheet_button.dart';
+import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
-import 'package:neobis_smart_tailor/injection/injection.dart';
 
 @RoutePage()
 class OrderPlaceScreen extends StatefulWidget {
@@ -23,8 +24,6 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
   final contactInfoController = TextEditingController();
   final summController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final String? announcementType = null;
-  // final ValueNotifier<bool> _isLoading = ValueNotifier(false);
 
   @override
   void dispose() {
@@ -61,82 +60,123 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
     );
   }
 
-  Column _buildFields() {
-    return Column(
-      children: [
-        ShowActionSheetButton(
-          title: t.typeOrder,
-          hintText: t.typeOrderHint,
-          actionType: SheetType.showActionSheetType,
-          announcementType: announcementType,
-        ),
-        const SizedBox(height: AppProps.kPageMargin),
-        TextFormFieldWidget(
-          // maxLenght: 250,
-          controller: nameController,
-          hintText: t.necessaryField,
-          titleName: t.nameOrder,
-        ),
-        const SizedBox(height: AppProps.kPageMargin),
-        TextFormFieldWidget(
-          // maxLenght: 1000,
-          controller: descriptionController,
-          hintText: t.maxWords,
-          titleName: t.descriptionOrder,
-        ),
-        const SizedBox(height: AppProps.kPageMargin),
-        ShowActionSheetButton(
-          title: t.addPhotos,
-          hintText: t.max5photos,
-          actionType: SheetType.showActionSheetPhotos,
-        ),
-        const SizedBox(height: AppProps.kPageMargin),
-        _buildDateAndSize(),
-        TextFormFieldWidget(
-          controller: descriptionController,
-          hintText: t.inputPhoneNumber,
-          titleName: t.contactInfo,
-        ),
-        const SizedBox(height: AppProps.kPageMargin),
-        TextFormFieldWidget(
-          controller: summController,
-          hintText: t.inputDigits,
-          titleName: t.orderSumm,
-          keyboardType: TextInputType.number,
-        ),
-        const SizedBox(height: 88)
-      ],
+  BlocBuilder<OrderPlaceBloc, OrderPlaceState> _buildFields() {
+    return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            ShowActionSheetButton(
+              chosenText: state.orderPlaceModel.type,
+              title: t.typeOrder,
+              hintText: t.typeOrderHint,
+              actionType: SheetType.type,
+              // announcementType: announcementType,
+            ),
+            const SizedBox(height: AppProps.kPageMargin),
+            TextFormFieldWidget(
+              // maxLenght: 250,
+              controller: nameController,
+              hintText: t.necessaryField,
+              titleName: t.nameOrder,
+            ),
+            const SizedBox(height: AppProps.kPageMargin),
+            TextFormFieldWidget(
+              // maxLenght: 1000,
+              controller: descriptionController,
+              hintText: t.maxWords,
+              titleName: t.descriptionOrder,
+            ),
+            const SizedBox(height: AppProps.kPageMargin),
+            ShowActionSheetButton(
+              chosenText: 'Выбрано ${state.orderPlaceModel.images.length} фото',
+              title: t.addPhotos,
+              hintText: t.max5photos,
+              actionType: SheetType.photos,
+            ),
+            const SizedBox(height: AppProps.kPageMargin),
+            _buildPhotosPreview(),
+            const SizedBox(height: AppProps.kPageMargin),
+            _buildDateAndSize(state),
+            TextFormFieldWidget(
+              controller: descriptionController,
+              hintText: t.inputPhoneNumber,
+              titleName: t.contactInfo,
+            ),
+            const SizedBox(height: AppProps.kPageMargin),
+            TextFormFieldWidget(
+              controller: summController,
+              hintText: t.inputDigits,
+              titleName: t.orderSumm,
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 88)
+          ],
+        );
+      },
     );
   }
 
-  BlocBuilder<OrderPlaceBloc, OrderPlaceState> _buildDateAndSize() {
+  BlocBuilder<OrderPlaceBloc, OrderPlaceState> _buildPhotosPreview() {
     return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
       builder: (context, state) {
-        return AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          transitionBuilder: (Widget child, Animation<double> animation) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-          child: state.showFields == true
-              ? Column(
-                  children: [
-                    ShowActionSheetButton(
-                      title: t.sizes,
-                      hintText: t.sizeFieldText,
-                      actionType: SheetType.callBottomSheet,
-                    ),
-                    const SizedBox(height: AppProps.kPageMargin),
-                    TextFormFieldWidget(
-                      controller: descriptionController,
-                      hintText: t.lastDate,
-                      titleName: t.ddmmyy,
-                    ),
-                    const SizedBox(height: AppProps.kPageMargin),
-                  ],
-                )
-              : Container(),
-        );
+        final photos = state.orderPlaceModel.images;
+        return photos != []
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(photos.length, (index) {
+                  return Row(
+                    children: [
+                      Container(
+                        height: 64,
+                        width: 64,
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: AppColors.fieldBorder),
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: FileImage(
+                              File(photos[index]),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      )
+                    ],
+                  );
+                }),
+              )
+            : Container();
       },
+    );
+  }
+
+  AnimatedSwitcher _buildDateAndSize(OrderPlaceState state) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      child: state.showFields == true
+          ? Column(
+              children: [
+                ShowActionSheetButton(
+                  chosenText: 'l',
+                  title: t.sizes,
+                  hintText: t.sizeFieldText,
+                  actionType: SheetType.size,
+                ),
+                const SizedBox(height: AppProps.kPageMargin),
+                TextFormFieldWidget(
+                  controller: descriptionController,
+                  hintText: t.lastDate,
+                  titleName: t.ddmmyy,
+                ),
+                const SizedBox(height: AppProps.kPageMargin),
+              ],
+            )
+          : Container(),
     );
   }
 

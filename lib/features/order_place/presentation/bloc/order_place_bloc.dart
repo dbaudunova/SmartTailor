@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -18,7 +20,47 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     on<OrderPlaceEvent>((event, emit) {});
 
     on<_ShowFields>(_showFields);
+    on<_AddPhotos>(_addPhotos);
     // on<_AddType>(_addType);
+  }
+
+  void _addPhotos(
+    _AddPhotos event,
+    Emitter<OrderPlaceState> emit,
+  ) {
+    final orderPlaceModel = state.orderPlaceModel;
+    // final model = OrderPlaceModel.initial();
+    List<File> photos = event.photos;
+    List<String> photosPath = photos.map((photo) => photo.path).toList();
+    print(photos);
+    // orderPlaceModel.copyWith
+    emit(
+      state.copyWith(
+        stateStatus: const StateStatus.success(),
+        orderPlaceModel: orderPlaceModel.copyWith(images: photosPath),
+      ),
+    );
+    print(state.orderPlaceModel);
+
+    // if (type == t.order) {
+    //   emit(
+    //     state.copyWith(
+    //       stateStatus: const StateStatus.success(),
+    //       showFields: true,
+    //       orderPlaceModel: orderPlaceModel.copyWith(type: type),
+    //     ),
+    //   );
+    //   print(state.orderPlaceModel);
+    // } else {
+    //   emit(
+    //     state.copyWith(
+    //       stateStatus: const StateStatus.success(),
+    //       showFields: false,
+    //       orderPlaceModel: orderPlaceModel.copyWith(type: type),
+    //     ),
+    //   );
+    //   print(state.orderPlaceModel);
+    // }
   }
 
   void _showFields(
@@ -27,7 +69,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
   ) {
     final orderPlaceModel = state.orderPlaceModel;
     // final model = OrderPlaceModel.initial();
-    String type = event.type;
+    String type = event.fieldType;
     if (type == t.order) {
       emit(
         state.copyWith(

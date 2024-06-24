@@ -16,23 +16,25 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OrderPlaceEvent {
-  String get type => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type) showFields,
+    required TResult Function(String fieldType) showFields,
     required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type)? showFields,
+    TResult? Function(String fieldType)? showFields,
     TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type)? showFields,
+    TResult Function(String fieldType)? showFields,
     TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,24 +42,23 @@ mixin _$OrderPlaceEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_ShowFields value) showFields,
     required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ShowFields value)? showFields,
     TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ShowFields value)? showFields,
     TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $OrderPlaceEventCopyWith<OrderPlaceEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -66,8 +67,6 @@ abstract class $OrderPlaceEventCopyWith<$Res> {
   factory $OrderPlaceEventCopyWith(
           OrderPlaceEvent value, $Res Function(OrderPlaceEvent) then) =
       _$OrderPlaceEventCopyWithImpl<$Res, OrderPlaceEvent>;
-  @useResult
-  $Res call({String type});
 }
 
 /// @nodoc
@@ -79,30 +78,15 @@ class _$OrderPlaceEventCopyWithImpl<$Res, $Val extends OrderPlaceEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$ShowFieldsImplCopyWith<$Res>
-    implements $OrderPlaceEventCopyWith<$Res> {
+abstract class _$$ShowFieldsImplCopyWith<$Res> {
   factory _$$ShowFieldsImplCopyWith(
           _$ShowFieldsImpl value, $Res Function(_$ShowFieldsImpl) then) =
       __$$ShowFieldsImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String type});
+  $Res call({String fieldType});
 }
 
 /// @nodoc
@@ -116,12 +100,12 @@ class __$$ShowFieldsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
+    Object? fieldType = null,
   }) {
     return _then(_$ShowFieldsImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      fieldType: null == fieldType
+          ? _value.fieldType
+          : fieldType // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -130,14 +114,14 @@ class __$$ShowFieldsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ShowFieldsImpl implements _ShowFields {
-  const _$ShowFieldsImpl({required this.type});
+  const _$ShowFieldsImpl({required this.fieldType});
 
   @override
-  final String type;
+  final String fieldType;
 
   @override
   String toString() {
-    return 'OrderPlaceEvent.showFields(type: $type)';
+    return 'OrderPlaceEvent.showFields(fieldType: $fieldType)';
   }
 
   @override
@@ -145,11 +129,12 @@ class _$ShowFieldsImpl implements _ShowFields {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShowFieldsImpl &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.fieldType, fieldType) ||
+                other.fieldType == fieldType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type);
+  int get hashCode => Object.hash(runtimeType, fieldType);
 
   @JsonKey(ignore: true)
   @override
@@ -160,30 +145,33 @@ class _$ShowFieldsImpl implements _ShowFields {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type) showFields,
+    required TResult Function(String fieldType) showFields,
     required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
   }) {
-    return showFields(type);
+    return showFields(fieldType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type)? showFields,
+    TResult? Function(String fieldType)? showFields,
     TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
   }) {
-    return showFields?.call(type);
+    return showFields?.call(fieldType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type)? showFields,
+    TResult Function(String fieldType)? showFields,
     TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
     required TResult orElse(),
   }) {
     if (showFields != null) {
-      return showFields(type);
+      return showFields(fieldType);
     }
     return orElse();
   }
@@ -193,6 +181,7 @@ class _$ShowFieldsImpl implements _ShowFields {
   TResult map<TResult extends Object?>({
     required TResult Function(_ShowFields value) showFields,
     required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
   }) {
     return showFields(this);
   }
@@ -202,6 +191,7 @@ class _$ShowFieldsImpl implements _ShowFields {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ShowFields value)? showFields,
     TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
   }) {
     return showFields?.call(this);
   }
@@ -211,6 +201,7 @@ class _$ShowFieldsImpl implements _ShowFields {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ShowFields value)? showFields,
     TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
     required TResult orElse(),
   }) {
     if (showFields != null) {
@@ -221,23 +212,20 @@ class _$ShowFieldsImpl implements _ShowFields {
 }
 
 abstract class _ShowFields implements OrderPlaceEvent {
-  const factory _ShowFields({required final String type}) = _$ShowFieldsImpl;
+  const factory _ShowFields({required final String fieldType}) =
+      _$ShowFieldsImpl;
 
-  @override
-  String get type;
-  @override
+  String get fieldType;
   @JsonKey(ignore: true)
   _$$ShowFieldsImplCopyWith<_$ShowFieldsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddTypeImplCopyWith<$Res>
-    implements $OrderPlaceEventCopyWith<$Res> {
+abstract class _$$AddTypeImplCopyWith<$Res> {
   factory _$$AddTypeImplCopyWith(
           _$AddTypeImpl value, $Res Function(_$AddTypeImpl) then) =
       __$$AddTypeImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String type});
 }
@@ -297,8 +285,9 @@ class _$AddTypeImpl implements _AddType {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String type) showFields,
+    required TResult Function(String fieldType) showFields,
     required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
   }) {
     return addType(type);
   }
@@ -306,8 +295,9 @@ class _$AddTypeImpl implements _AddType {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String type)? showFields,
+    TResult? Function(String fieldType)? showFields,
     TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
   }) {
     return addType?.call(type);
   }
@@ -315,8 +305,9 @@ class _$AddTypeImpl implements _AddType {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type)? showFields,
+    TResult Function(String fieldType)? showFields,
     TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -330,6 +321,7 @@ class _$AddTypeImpl implements _AddType {
   TResult map<TResult extends Object?>({
     required TResult Function(_ShowFields value) showFields,
     required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
   }) {
     return addType(this);
   }
@@ -339,6 +331,7 @@ class _$AddTypeImpl implements _AddType {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ShowFields value)? showFields,
     TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
   }) {
     return addType?.call(this);
   }
@@ -348,6 +341,7 @@ class _$AddTypeImpl implements _AddType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ShowFields value)? showFields,
     TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -360,11 +354,155 @@ class _$AddTypeImpl implements _AddType {
 abstract class _AddType implements OrderPlaceEvent {
   const factory _AddType({required final String type}) = _$AddTypeImpl;
 
-  @override
   String get type;
-  @override
   @JsonKey(ignore: true)
   _$$AddTypeImplCopyWith<_$AddTypeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddPhotosImplCopyWith<$Res> {
+  factory _$$AddPhotosImplCopyWith(
+          _$AddPhotosImpl value, $Res Function(_$AddPhotosImpl) then) =
+      __$$AddPhotosImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<File> photos});
+}
+
+/// @nodoc
+class __$$AddPhotosImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$AddPhotosImpl>
+    implements _$$AddPhotosImplCopyWith<$Res> {
+  __$$AddPhotosImplCopyWithImpl(
+      _$AddPhotosImpl _value, $Res Function(_$AddPhotosImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photos = null,
+  }) {
+    return _then(_$AddPhotosImpl(
+      photos: null == photos
+          ? _value._photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<File>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddPhotosImpl implements _AddPhotos {
+  const _$AddPhotosImpl({required final List<File> photos}) : _photos = photos;
+
+  final List<File> _photos;
+  @override
+  List<File> get photos {
+    if (_photos is EqualUnmodifiableListView) return _photos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.addPhotos(photos: $photos)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddPhotosImpl &&
+            const DeepCollectionEquality().equals(other._photos, _photos));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_photos));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddPhotosImplCopyWith<_$AddPhotosImpl> get copyWith =>
+      __$$AddPhotosImplCopyWithImpl<_$AddPhotosImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fieldType) showFields,
+    required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
+  }) {
+    return addPhotos(photos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String fieldType)? showFields,
+    TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
+  }) {
+    return addPhotos?.call(photos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fieldType)? showFields,
+    TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
+    required TResult orElse(),
+  }) {
+    if (addPhotos != null) {
+      return addPhotos(photos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowFields value) showFields,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
+  }) {
+    return addPhotos(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ShowFields value)? showFields,
+    TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
+  }) {
+    return addPhotos?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowFields value)? showFields,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
+    required TResult orElse(),
+  }) {
+    if (addPhotos != null) {
+      return addPhotos(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddPhotos implements OrderPlaceEvent {
+  const factory _AddPhotos({required final List<File> photos}) =
+      _$AddPhotosImpl;
+
+  List<File> get photos;
+  @JsonKey(ignore: true)
+  _$$AddPhotosImplCopyWith<_$AddPhotosImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
