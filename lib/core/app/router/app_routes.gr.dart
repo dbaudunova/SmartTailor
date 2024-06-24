@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AnnouncementDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AnnouncementDetailScreen(),
+      );
+    },
     BottomNavRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -25,6 +31,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ConfirmationScreen(),
+      );
+    },
+    CreateOrganizationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreateOrganizationScreen(),
       );
     },
     EmailInputRoute.name: (routeData) {
@@ -43,6 +55,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomeScreen(),
+      );
+    },
+    InviteEmployeeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const InviteEmployeeScreen(),
       );
     },
     MarketplaceDetailRoute.name: (routeData) {
@@ -87,6 +105,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrderPlaceScreen(),
       );
     },
+    OrganizationInfoRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrganizationInfoScreen(),
+      );
+    },
     OrganizationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -127,6 +151,20 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [AnnouncementDetailScreen]
+class AnnouncementDetailRoute extends PageRouteInfo<void> {
+  const AnnouncementDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          AnnouncementDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AnnouncementDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [BottomNavScreen]
 class BottomNavRoute extends PageRouteInfo<void> {
   const BottomNavRoute({List<PageRouteInfo>? children})
@@ -150,6 +188,20 @@ class ConfirmationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ConfirmationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreateOrganizationScreen]
+class CreateOrganizationRoute extends PageRouteInfo<void> {
+  const CreateOrganizationRoute({List<PageRouteInfo>? children})
+      : super(
+          CreateOrganizationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateOrganizationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -192,6 +244,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [InviteEmployeeScreen]
+class InviteEmployeeRoute extends PageRouteInfo<void> {
+  const InviteEmployeeRoute({List<PageRouteInfo>? children})
+      : super(
+          InviteEmployeeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'InviteEmployeeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -310,6 +376,20 @@ class OrderPlaceRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OrderPlaceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrganizationInfoScreen]
+class OrganizationInfoRoute extends PageRouteInfo<void> {
+  const OrganizationInfoRoute({List<PageRouteInfo>? children})
+      : super(
+          OrganizationInfoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrganizationInfoRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

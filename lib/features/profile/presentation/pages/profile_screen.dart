@@ -132,8 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (context) {
         return ExitAlert(
-          yes: 'Да',
-          no: 'Нет',
+          title: 'Вы действительно хотите выйти?',
           onYesButton: () {
             AutoRouter.of(context).push(const RegistrationRoute());
           },
