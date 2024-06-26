@@ -45,16 +45,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const EmailInputScreen(),
       );
     },
+    EmployeePositionRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EmployeePositionScreen(),
+      );
+    },
     EnterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EnterScreen(),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomeScreen(),
       );
     },
     InviteEmployeeRoute.name: (routeData) {
@@ -141,12 +141,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RegistrationScreen(),
       );
     },
-    SearchRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const SearchScreen(),
-      );
-    },
   };
 }
 
@@ -221,6 +215,20 @@ class EmailInputRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EmployeePositionScreen]
+class EmployeePositionRoute extends PageRouteInfo<void> {
+  const EmployeePositionRoute({List<PageRouteInfo>? children})
+      : super(
+          EmployeePositionRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EmployeePositionRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [EnterScreen]
 class EnterRoute extends PageRouteInfo<void> {
   const EnterRoute({List<PageRouteInfo>? children})
@@ -230,20 +238,6 @@ class EnterRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EnterRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [HomeScreen]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -460,20 +454,6 @@ class RegistrationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RegistrationRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [SearchScreen]
-class SearchRoute extends PageRouteInfo<void> {
-  const SearchRoute({List<PageRouteInfo>? children})
-      : super(
-          SearchRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SearchRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

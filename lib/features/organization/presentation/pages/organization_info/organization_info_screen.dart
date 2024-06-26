@@ -91,7 +91,9 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
             width: MediaQuery.of(context).size.width,
             child: ElevatedButtonWidget(
               text: 'Добавить должность',
-              onTap: () {},
+              onTap: () {
+                AutoRouter.of(context).push(const EmployeePositionRoute());
+              },
             ),
           ),
         ),

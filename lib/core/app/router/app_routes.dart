@@ -4,9 +4,9 @@ import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/email_input_screen.dart';
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
-import 'package:neobis_smart_tailor/features/home/presentation/pages/home_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_position_screen/employee_position_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/invite_employee/invite_employee_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization_info/organization_info_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/announcement_detail_screen.dart';
@@ -20,7 +20,6 @@ import 'package:neobis_smart_tailor/features/profile/presentation/pages/personal
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/profile_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/purchase_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/registration_screen.dart';
-import 'package:neobis_smart_tailor/features/search/presentation/pages/search_screen.dart';
 
 part 'app_routes.gr.dart';
 
@@ -118,6 +117,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: InviteEmployeeRoute.page,
           path: '/invite_employee',
+        ),
+        AutoRoute(
+          page: EmployeePositionRoute.page,
+          path: '/employee_position',
         ),
       ];
 }
