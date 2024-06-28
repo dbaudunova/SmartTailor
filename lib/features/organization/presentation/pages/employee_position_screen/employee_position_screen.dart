@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
@@ -80,8 +81,21 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
                   text: 'Добавить должность',
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      AutoRouter.of(context)
-                          .push(const OrganizationInfoRoute());
+                      _showCustomDialog(
+                        context: context,
+                        contentText: 'Созданные должности будут находиться ниже по Иерархии, и им нельзя выдать права доступа, которые недоступны человеку создающему новую роль',
+                        buttonText: 'Понятно',
+                        onButtonPressed: () {
+                          _showCustomDialog(
+                            context: context,
+                            contentText: 'Выдача прав доступа сохранена!',
+                            buttonText: 'Понятно',
+                            onButtonPressed: () {
+                              AutoRouter.of(context).push(const OrganizationInfoRoute());
+                            },
+                          );
+                        },
+                      );
                     }
                   },
                 ),
@@ -92,6 +106,43 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
       ),
     );
   }
+
+  void _showCustomDialog({
+    required BuildContext context,
+    required String contentText,
+    required String buttonText,
+    required VoidCallback onButtonPressed,
+  }) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          content: Text(
+            contentText,
+            style: AppTextStyle.text14.copyWith(fontWeight: FontWeight.w600),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                AutoRouter.of(context).maybePop();
+                onButtonPressed();
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Text(
+                  buttonText,
+                  style: AppTextStyle.textField16.copyWith(
+                    color: AppColors.modalBlue,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   Container _buildCheckBoxContainer() {
     return Container(
