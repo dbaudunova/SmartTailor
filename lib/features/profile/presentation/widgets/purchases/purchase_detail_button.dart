@@ -6,7 +6,7 @@ class PurchaseDetailButton extends StatelessWidget {
     required this.child,
   });
 
-  final Row child;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {

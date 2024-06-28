@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
 
 @RoutePage()
 class CreateOrganizationScreen extends StatefulWidget {
@@ -45,20 +47,56 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Form(
-                key: _formKey,
-                child: _buildTextFields(),
+            Form(
+              key: _formKey,
+              child: _buildTextFields(),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Ваш логотип*',
+              style: AppTextStyle.textField16,
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: PurchaseDetailButton(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Text(
+                      'Загрузить фото',
+                      style: AppTextStyle.textField16.copyWith(
+                        color: AppColors.greyText,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
+            const Spacer(),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ElevatedButtonWidget(
                 text: 'Создать организацию',
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
-                    AutoRouter.of(context).push(const OrganizationInfoRoute());
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialogStyle(
+                          title: 'Ура!',
+                          content: 'Вы создали организацию!',
+                          buttonText: 'Понятно',
+                          onButtonPressed: () {
+                            AutoRouter.of(context)
+                                .push(const OrganizationInfoRoute());
+                          },
+                        );
+                      },
+                    );
                   }
                 },
               ),
@@ -97,12 +135,6 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
           },
           titleName: 'Описание*',
           hintText: 'Максимум 50 символов, минимум 5',
-        ),
-        const SizedBox(height: 16),
-        TextFormFieldWidget(
-          controller: _logoController,
-          titleName: 'Ваш логотип*',
-          hintText: 'Загрузить фото*',
         ),
       ],
     );
