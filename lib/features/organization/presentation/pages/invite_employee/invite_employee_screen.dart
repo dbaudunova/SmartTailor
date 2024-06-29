@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 
 @RoutePage()
@@ -55,7 +57,22 @@ class _InviteEmployeeScreenState extends State<InviteEmployeeScreen> {
                 child: ElevatedButtonWidget(
                   text: 'Отправить приглашение',
                   onTap: () {
-                    _formKey.currentState!.validate();
+                    if (_formKey.currentState!.validate()) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialogStyle(
+                            title: 'Ура!',
+                            content: 'Ваше приглашение отправлено!',
+                            buttonText: 'Понятно',
+                            onButtonPressed: () {
+                              AutoRouter.of(context)
+                                  .push(const OrganizationInfoRoute());
+                            },
+                          );
+                        },
+                      );
+                    }
                   },
                 ),
               ),

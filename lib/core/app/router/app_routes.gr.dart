@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const EmailInputScreen(),
       );
     },
+    EmployeeDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const EmployeeDetailScreen(),
+      );
+    },
     EmployeePositionRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -210,6 +216,20 @@ class EmailInputRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EmailInputRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EmployeeDetailScreen]
+class EmployeeDetailRoute extends PageRouteInfo<void> {
+  const EmployeeDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          EmployeeDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'EmployeeDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

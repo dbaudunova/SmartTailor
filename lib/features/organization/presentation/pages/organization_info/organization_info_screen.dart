@@ -111,7 +111,11 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16)
                   .copyWith(bottom: 12),
-              child: const EmployeeItemContainer(),
+              child: EmployeeItemContainer(
+                onTap: () {
+                  AutoRouter.of(context).push(const EmployeeDetailRoute());
+                },
+              ),
             );
           },
         ),

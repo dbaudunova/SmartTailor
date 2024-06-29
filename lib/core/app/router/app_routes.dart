@@ -6,6 +6,7 @@ import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/ema
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_detail/employee_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_position_screen/employee_position_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/invite_employee/invite_employee_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization_info/organization_info_screen.dart';
@@ -121,6 +122,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: EmployeePositionRoute.page,
           path: '/employee_position',
+        ),
+        AutoRoute(
+          page: EmployeeDetailRoute.page,
+          path: '/employee_detail',
         ),
       ];
 }
