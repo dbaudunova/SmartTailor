@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/date_picker_widget.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/size_selection_widget.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
@@ -81,6 +82,9 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
         } else if (sheetType == SheetType.size && state.orderPlaceModel.sizes.isNotEmpty) {
           displayText = widget.chosenText;
           textStyle = AppTextStyle.textField16;
+        } else if (sheetType == SheetType.data && state.orderPlaceModel.date != null) {
+          displayText = widget.chosenText;
+          textStyle = AppTextStyle.textField16;
         }
 
         return Text(
@@ -96,6 +100,9 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
       case SheetType.photos:
       case SheetType.type:
         _showActionSheet(ctx, actionType);
+        break;
+      case SheetType.data:
+        _callDatePicker();
         break;
       case SheetType.size:
         _callBottomSheet();
@@ -121,6 +128,17 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
       ),
     );
   }
+
+  void _callDatePicker() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return DatePickerWidget(
+          onDateSelected: (DateTime selectedDate) {},
+        );
+      },
+    );
+  }
 }
 
-enum SheetType { photos, type, size }
+enum SheetType { photos, type, size, data }

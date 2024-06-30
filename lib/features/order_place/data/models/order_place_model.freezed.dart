@@ -24,8 +24,8 @@ mixin _$OrderPlaceModel {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
-  List<String> get sizes => throw _privateConstructorUsedError;
-  String get date => throw _privateConstructorUsedError;
+  Set<String> get sizes => throw _privateConstructorUsedError;
+  DateTime? get date => throw _privateConstructorUsedError;
   String get contactInfo => throw _privateConstructorUsedError;
   int? get summ => throw _privateConstructorUsedError;
 
@@ -46,8 +46,8 @@ abstract class $OrderPlaceModelCopyWith<$Res> {
       String name,
       String description,
       List<String> images,
-      List<String> sizes,
-      String date,
+      Set<String> sizes,
+      DateTime? date,
       String contactInfo,
       int? summ});
 }
@@ -70,7 +70,7 @@ class _$OrderPlaceModelCopyWithImpl<$Res, $Val extends OrderPlaceModel>
     Object? description = null,
     Object? images = null,
     Object? sizes = null,
-    Object? date = null,
+    Object? date = freezed,
     Object? contactInfo = null,
     Object? summ = freezed,
   }) {
@@ -94,11 +94,11 @@ class _$OrderPlaceModelCopyWithImpl<$Res, $Val extends OrderPlaceModel>
       sizes: null == sizes
           ? _value.sizes
           : sizes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      date: null == date
+              as Set<String>,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime?,
       contactInfo: null == contactInfo
           ? _value.contactInfo
           : contactInfo // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ abstract class _$$OrderPlaceModelImplCopyWith<$Res>
       String name,
       String description,
       List<String> images,
-      List<String> sizes,
-      String date,
+      Set<String> sizes,
+      DateTime? date,
       String contactInfo,
       int? summ});
 }
@@ -146,7 +146,7 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
     Object? description = null,
     Object? images = null,
     Object? sizes = null,
-    Object? date = null,
+    Object? date = freezed,
     Object? contactInfo = null,
     Object? summ = freezed,
   }) {
@@ -170,11 +170,11 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
       sizes: null == sizes
           ? _value._sizes
           : sizes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      date: null == date
+              as Set<String>,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime?,
       contactInfo: null == contactInfo
           ? _value.contactInfo
           : contactInfo // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
       required this.name,
       required this.description,
       required final List<String> images,
-      required final List<String> sizes,
+      required final Set<String> sizes,
       required this.date,
       required this.contactInfo,
       required this.summ})
@@ -219,16 +219,16 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
     return EqualUnmodifiableListView(_images);
   }
 
-  final List<String> _sizes;
+  final Set<String> _sizes;
   @override
-  List<String> get sizes {
-    if (_sizes is EqualUnmodifiableListView) return _sizes;
+  Set<String> get sizes {
+    if (_sizes is EqualUnmodifiableSetView) return _sizes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_sizes);
+    return EqualUnmodifiableSetView(_sizes);
   }
 
   @override
-  final String date;
+  final DateTime? date;
   @override
   final String contactInfo;
   @override
@@ -290,8 +290,8 @@ abstract class _OrderPlaceModel implements OrderPlaceModel {
       required final String name,
       required final String description,
       required final List<String> images,
-      required final List<String> sizes,
-      required final String date,
+      required final Set<String> sizes,
+      required final DateTime? date,
       required final String contactInfo,
       required final int? summ}) = _$OrderPlaceModelImpl;
 
@@ -307,9 +307,9 @@ abstract class _OrderPlaceModel implements OrderPlaceModel {
   @override
   List<String> get images;
   @override
-  List<String> get sizes;
+  Set<String> get sizes;
   @override
-  String get date;
+  DateTime? get date;
   @override
   String get contactInfo;
   @override

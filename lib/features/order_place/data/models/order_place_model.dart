@@ -12,19 +12,19 @@ class OrderPlaceModel with _$OrderPlaceModel {
       required String name,
       required String description,
       required List<String> images,
-      required List<String> sizes,
-      required String date,
+      required Set<String> sizes,
+      required DateTime? date,
       required String contactInfo,
       required int? summ}) = _OrderPlaceModel;
 
   factory OrderPlaceModel.initial() {
-    return const OrderPlaceModel(
+    return OrderPlaceModel(
       type: '',
       name: '',
       description: '',
       images: [],
-      sizes: [],
-      date: '',
+      sizes: {},
+      date: null,
       contactInfo: '',
       summ: null,
     );

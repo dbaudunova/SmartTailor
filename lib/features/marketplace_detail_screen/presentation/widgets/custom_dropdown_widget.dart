@@ -9,8 +9,8 @@ class CustomDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownMenu(
-      dropdownMenuEntries: MealLabel.values.map<DropdownMenuEntry<MealLabel>>((MealLabel label) {
-        return DropdownMenuEntry<MealLabel>(
+      dropdownMenuEntries: Sizes.values.map<DropdownMenuEntry<Sizes>>((Sizes label) {
+        return DropdownMenuEntry<Sizes>(
           value: label,
           label: label.label,
           style: MenuItemButton.styleFrom(
@@ -44,12 +44,13 @@ class CustomDropdown extends StatelessWidget {
   }
 }
 
-enum MealLabel {
-  Breakfast('M'),
-  Lunch('S'),
-  Dinner('L');
+enum Sizes {
+  m('M'),
+  s('S'),
+  l('L'),
+  xl('XL');
 
-  const MealLabel(this.label);
+  const Sizes(this.label);
   final String label;
   final Color color = AppColors.black;
 }

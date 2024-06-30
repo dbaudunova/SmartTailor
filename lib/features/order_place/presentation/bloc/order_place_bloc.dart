@@ -21,7 +21,70 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
 
     on<_ShowFields>(_showFields);
     on<_AddPhotos>(_addPhotos);
-    // on<_AddType>(_addType);
+    on<_RemovePhoto>(_removePhoto);
+    on<_AddSize>(_addSize);
+    on<_RemoveSize>(_removeSize);
+    on<_AddDate>(_addDate);
+  }
+
+  void _addDate(
+    _AddDate event,
+    Emitter<OrderPlaceState> emit,
+  ) {
+    final orderPlaceModel = state.orderPlaceModel.copyWith(date: event.date);
+    emit(
+      state.copyWith(
+        stateStatus: const StateStatus.success(),
+        orderPlaceModel: orderPlaceModel,
+      ),
+    );
+    print(orderPlaceModel);
+  }
+
+  void _removePhoto(
+    _RemovePhoto event,
+    Emitter<OrderPlaceState> emit,
+  ) {
+    final updateImages = List<String>.from(state.orderPlaceModel.images)..remove(event.photo);
+    final orderPlaceModel = state.orderPlaceModel.copyWith(images: updateImages);
+    emit(
+      state.copyWith(
+        stateStatus: const StateStatus.success(),
+        orderPlaceModel: orderPlaceModel,
+      ),
+    );
+    print(orderPlaceModel);
+  }
+
+  void _removeSize(
+    _RemoveSize event,
+    Emitter<OrderPlaceState> emit,
+  ) {
+    print('done');
+    final updatedSizes = Set<String>.from(state.orderPlaceModel.sizes)..remove(event.size);
+    final orderPlaceModel = state.orderPlaceModel.copyWith(sizes: updatedSizes);
+    emit(
+      state.copyWith(
+        stateStatus: const StateStatus.success(),
+        orderPlaceModel: orderPlaceModel,
+      ),
+    );
+    print(orderPlaceModel);
+  }
+
+  void _addSize(
+    _AddSize event,
+    Emitter<OrderPlaceState> emit,
+  ) {
+    final updatedSizes = Set<String>.from(state.orderPlaceModel.sizes)..add(event.size);
+    final orderPlaceModel = state.orderPlaceModel.copyWith(sizes: updatedSizes);
+    emit(
+      state.copyWith(
+        stateStatus: const StateStatus.success(),
+        orderPlaceModel: orderPlaceModel,
+      ),
+    );
+    print(orderPlaceModel);
   }
 
   void _addPhotos(
@@ -29,38 +92,15 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     final orderPlaceModel = state.orderPlaceModel;
-    // final model = OrderPlaceModel.initial();
     List<File> photos = event.photos;
     List<String> photosPath = photos.map((photo) => photo.path).toList();
-    print(photos);
-    // orderPlaceModel.copyWith
     emit(
       state.copyWith(
         stateStatus: const StateStatus.success(),
         orderPlaceModel: orderPlaceModel.copyWith(images: photosPath),
       ),
     );
-    print(state.orderPlaceModel);
-
-    // if (type == t.order) {
-    //   emit(
-    //     state.copyWith(
-    //       stateStatus: const StateStatus.success(),
-    //       showFields: true,
-    //       orderPlaceModel: orderPlaceModel.copyWith(type: type),
-    //     ),
-    //   );
-    //   print(state.orderPlaceModel);
-    // } else {
-    //   emit(
-    //     state.copyWith(
-    //       stateStatus: const StateStatus.success(),
-    //       showFields: false,
-    //       orderPlaceModel: orderPlaceModel.copyWith(type: type),
-    //     ),
-    //   );
-    //   print(state.orderPlaceModel);
-    // }
+    print(orderPlaceModel);
   }
 
   void _showFields(
@@ -68,7 +108,6 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     final orderPlaceModel = state.orderPlaceModel;
-    // final model = OrderPlaceModel.initial();
     String type = event.fieldType;
     if (type == t.order) {
       emit(
@@ -78,7 +117,6 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
           orderPlaceModel: orderPlaceModel.copyWith(type: type),
         ),
       );
-      print(state.orderPlaceModel);
     } else {
       emit(
         state.copyWith(
@@ -87,23 +125,6 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
           orderPlaceModel: orderPlaceModel.copyWith(type: type),
         ),
       );
-      print(state.orderPlaceModel);
     }
   }
-
-  // void _addType(
-  //   _AddType event,
-  //   Emitter<OrderPlaceState> emit,
-  // ) {
-  //   final orderPlaceModel = state.orderPlaceModel;
-
-  //   String type = event.type;
-  //   if (type == t.order) {
-  //     emit(state.copyWith(
-  //         stateStatus: const StateStatus.success(), showFields: true, orderPlaceModel: model.copyWith(type: type)));
-  //   } else {
-  //     emit(state.copyWith(
-  //         stateStatus: const StateStatus.success(), showFields: false, orderPlaceModel: model.copyWith(type: type)));
-  //   }
-  // }
 }

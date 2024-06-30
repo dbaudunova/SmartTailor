@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/photos_previes_widget.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/show_action_sheet_button.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
@@ -70,7 +72,6 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
               title: t.typeOrder,
               hintText: t.typeOrderHint,
               actionType: SheetType.type,
-              // announcementType: announcementType,
             ),
             const SizedBox(height: AppProps.kPageMargin),
             TextFormFieldWidget(
@@ -94,8 +95,7 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
               actionType: SheetType.photos,
             ),
             const SizedBox(height: AppProps.kPageMargin),
-            _buildPhotosPreview(),
-            const SizedBox(height: AppProps.kPageMargin),
+            PhotosPreviewWidget(),
             _buildDateAndSize(state),
             TextFormFieldWidget(
               controller: descriptionController,
@@ -116,43 +116,11 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
     );
   }
 
-  BlocBuilder<OrderPlaceBloc, OrderPlaceState> _buildPhotosPreview() {
-    return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
-      builder: (context, state) {
-        final photos = state.orderPlaceModel.images;
-        return photos != []
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(photos.length, (index) {
-                  return Row(
-                    children: [
-                      Container(
-                        height: 64,
-                        width: 64,
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: AppColors.fieldBorder),
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: FileImage(
-                              File(photos[index]),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      )
-                    ],
-                  );
-                }),
-              )
-            : Container();
-      },
-    );
-  }
-
   AnimatedSwitcher _buildDateAndSize(OrderPlaceState state) {
+    // Set<String> sizes = state.orderPlaceModel.sizes;
+    String chosenText = state.orderPlaceModel.sizes.join(', ');
+
+    // late String? formattedDate = DateFormat.yMMMMEEEEd().format(state.orderPlaceModel.date );
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
       transitionBuilder: (Widget child, Animation<double> animation) {
@@ -162,16 +130,22 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
           ? Column(
               children: [
                 ShowActionSheetButton(
-                  chosenText: 'l',
+                  chosenText: chosenText,
                   title: t.sizes,
                   hintText: t.sizeFieldText,
                   actionType: SheetType.size,
                 ),
                 const SizedBox(height: AppProps.kPageMargin),
-                TextFormFieldWidget(
-                  controller: descriptionController,
+                // TextFormFieldWidget(
+                //   controller: descriptionController,
+                //   hintText: t.lastDate,
+                //   titleName: t.ddmmyy,
+                // ),
+                ShowActionSheetButton(
+                  chosenText: state.orderPlaceModel.date.toString(),
+                  title: "Дата",
                   hintText: t.lastDate,
-                  titleName: t.ddmmyy,
+                  actionType: SheetType.data,
                 ),
                 const SizedBox(height: AppProps.kPageMargin),
               ],

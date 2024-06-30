@@ -30,6 +30,10 @@ class ActionSheetWidget extends StatelessWidget {
                 bloc.add(OrderPlaceEvent.showFields(fieldType: t.equipment));
                 Navigator.pop(context);
               }),
+              _actionSheet(t.service, () {
+                bloc.add(OrderPlaceEvent.showFields(fieldType: t.service));
+                Navigator.pop(context);
+              }),
             ]
           : [
               _actionSheet('Выбрать фотографии', () {

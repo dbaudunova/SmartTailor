@@ -21,6 +21,10 @@ mixin _$OrderPlaceEvent {
     required TResult Function(String fieldType) showFields,
     required TResult Function(String type) addType,
     required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +32,10 @@ mixin _$OrderPlaceEvent {
     TResult? Function(String fieldType)? showFields,
     TResult? Function(String type)? addType,
     TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +43,10 @@ mixin _$OrderPlaceEvent {
     TResult Function(String fieldType)? showFields,
     TResult Function(String type)? addType,
     TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +55,10 @@ mixin _$OrderPlaceEvent {
     required TResult Function(_ShowFields value) showFields,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +66,10 @@ mixin _$OrderPlaceEvent {
     TResult? Function(_ShowFields value)? showFields,
     TResult? Function(_AddType value)? addType,
     TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +77,10 @@ mixin _$OrderPlaceEvent {
     TResult Function(_ShowFields value)? showFields,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +172,10 @@ class _$ShowFieldsImpl implements _ShowFields {
     required TResult Function(String fieldType) showFields,
     required TResult Function(String type) addType,
     required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
   }) {
     return showFields(fieldType);
   }
@@ -158,6 +186,10 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult? Function(String fieldType)? showFields,
     TResult? Function(String type)? addType,
     TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
   }) {
     return showFields?.call(fieldType);
   }
@@ -168,6 +200,10 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult Function(String fieldType)? showFields,
     TResult Function(String type)? addType,
     TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
     required TResult orElse(),
   }) {
     if (showFields != null) {
@@ -182,6 +218,10 @@ class _$ShowFieldsImpl implements _ShowFields {
     required TResult Function(_ShowFields value) showFields,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
   }) {
     return showFields(this);
   }
@@ -192,6 +232,10 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult? Function(_ShowFields value)? showFields,
     TResult? Function(_AddType value)? addType,
     TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
   }) {
     return showFields?.call(this);
   }
@@ -202,6 +246,10 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult Function(_ShowFields value)? showFields,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
     required TResult orElse(),
   }) {
     if (showFields != null) {
@@ -288,6 +336,10 @@ class _$AddTypeImpl implements _AddType {
     required TResult Function(String fieldType) showFields,
     required TResult Function(String type) addType,
     required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
   }) {
     return addType(type);
   }
@@ -298,6 +350,10 @@ class _$AddTypeImpl implements _AddType {
     TResult? Function(String fieldType)? showFields,
     TResult? Function(String type)? addType,
     TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
   }) {
     return addType?.call(type);
   }
@@ -308,6 +364,10 @@ class _$AddTypeImpl implements _AddType {
     TResult Function(String fieldType)? showFields,
     TResult Function(String type)? addType,
     TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -322,6 +382,10 @@ class _$AddTypeImpl implements _AddType {
     required TResult Function(_ShowFields value) showFields,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
   }) {
     return addType(this);
   }
@@ -332,6 +396,10 @@ class _$AddTypeImpl implements _AddType {
     TResult? Function(_ShowFields value)? showFields,
     TResult? Function(_AddType value)? addType,
     TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
   }) {
     return addType?.call(this);
   }
@@ -342,6 +410,10 @@ class _$AddTypeImpl implements _AddType {
     TResult Function(_ShowFields value)? showFields,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -433,6 +505,10 @@ class _$AddPhotosImpl implements _AddPhotos {
     required TResult Function(String fieldType) showFields,
     required TResult Function(String type) addType,
     required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
   }) {
     return addPhotos(photos);
   }
@@ -443,6 +519,10 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult? Function(String fieldType)? showFields,
     TResult? Function(String type)? addType,
     TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
   }) {
     return addPhotos?.call(photos);
   }
@@ -453,6 +533,10 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult Function(String fieldType)? showFields,
     TResult Function(String type)? addType,
     TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
     required TResult orElse(),
   }) {
     if (addPhotos != null) {
@@ -467,6 +551,10 @@ class _$AddPhotosImpl implements _AddPhotos {
     required TResult Function(_ShowFields value) showFields,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
   }) {
     return addPhotos(this);
   }
@@ -477,6 +565,10 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult? Function(_ShowFields value)? showFields,
     TResult? Function(_AddType value)? addType,
     TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
   }) {
     return addPhotos?.call(this);
   }
@@ -487,6 +579,10 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult Function(_ShowFields value)? showFields,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
     required TResult orElse(),
   }) {
     if (addPhotos != null) {
@@ -503,6 +599,658 @@ abstract class _AddPhotos implements OrderPlaceEvent {
   List<File> get photos;
   @JsonKey(ignore: true)
   _$$AddPhotosImplCopyWith<_$AddPhotosImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemovePhotoImplCopyWith<$Res> {
+  factory _$$RemovePhotoImplCopyWith(
+          _$RemovePhotoImpl value, $Res Function(_$RemovePhotoImpl) then) =
+      __$$RemovePhotoImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String photo});
+}
+
+/// @nodoc
+class __$$RemovePhotoImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$RemovePhotoImpl>
+    implements _$$RemovePhotoImplCopyWith<$Res> {
+  __$$RemovePhotoImplCopyWithImpl(
+      _$RemovePhotoImpl _value, $Res Function(_$RemovePhotoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photo = null,
+  }) {
+    return _then(_$RemovePhotoImpl(
+      photo: null == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemovePhotoImpl implements _RemovePhoto {
+  const _$RemovePhotoImpl({required this.photo});
+
+  @override
+  final String photo;
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.removePhoto(photo: $photo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemovePhotoImpl &&
+            (identical(other.photo, photo) || other.photo == photo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, photo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemovePhotoImplCopyWith<_$RemovePhotoImpl> get copyWith =>
+      __$$RemovePhotoImplCopyWithImpl<_$RemovePhotoImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fieldType) showFields,
+    required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
+  }) {
+    return removePhoto(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String fieldType)? showFields,
+    TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
+  }) {
+    return removePhoto?.call(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fieldType)? showFields,
+    TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
+    required TResult orElse(),
+  }) {
+    if (removePhoto != null) {
+      return removePhoto(photo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowFields value) showFields,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
+  }) {
+    return removePhoto(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ShowFields value)? showFields,
+    TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
+  }) {
+    return removePhoto?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowFields value)? showFields,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
+    required TResult orElse(),
+  }) {
+    if (removePhoto != null) {
+      return removePhoto(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemovePhoto implements OrderPlaceEvent {
+  const factory _RemovePhoto({required final String photo}) = _$RemovePhotoImpl;
+
+  String get photo;
+  @JsonKey(ignore: true)
+  _$$RemovePhotoImplCopyWith<_$RemovePhotoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddSizeImplCopyWith<$Res> {
+  factory _$$AddSizeImplCopyWith(
+          _$AddSizeImpl value, $Res Function(_$AddSizeImpl) then) =
+      __$$AddSizeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String size});
+}
+
+/// @nodoc
+class __$$AddSizeImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$AddSizeImpl>
+    implements _$$AddSizeImplCopyWith<$Res> {
+  __$$AddSizeImplCopyWithImpl(
+      _$AddSizeImpl _value, $Res Function(_$AddSizeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+  }) {
+    return _then(_$AddSizeImpl(
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddSizeImpl implements _AddSize {
+  const _$AddSizeImpl({required this.size});
+
+  @override
+  final String size;
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.addSize(size: $size)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddSizeImpl &&
+            (identical(other.size, size) || other.size == size));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, size);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddSizeImplCopyWith<_$AddSizeImpl> get copyWith =>
+      __$$AddSizeImplCopyWithImpl<_$AddSizeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fieldType) showFields,
+    required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
+  }) {
+    return addSize(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String fieldType)? showFields,
+    TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
+  }) {
+    return addSize?.call(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fieldType)? showFields,
+    TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
+    required TResult orElse(),
+  }) {
+    if (addSize != null) {
+      return addSize(size);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowFields value) showFields,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
+  }) {
+    return addSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ShowFields value)? showFields,
+    TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
+  }) {
+    return addSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowFields value)? showFields,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
+    required TResult orElse(),
+  }) {
+    if (addSize != null) {
+      return addSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddSize implements OrderPlaceEvent {
+  const factory _AddSize({required final String size}) = _$AddSizeImpl;
+
+  String get size;
+  @JsonKey(ignore: true)
+  _$$AddSizeImplCopyWith<_$AddSizeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveSizeImplCopyWith<$Res> {
+  factory _$$RemoveSizeImplCopyWith(
+          _$RemoveSizeImpl value, $Res Function(_$RemoveSizeImpl) then) =
+      __$$RemoveSizeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String size});
+}
+
+/// @nodoc
+class __$$RemoveSizeImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$RemoveSizeImpl>
+    implements _$$RemoveSizeImplCopyWith<$Res> {
+  __$$RemoveSizeImplCopyWithImpl(
+      _$RemoveSizeImpl _value, $Res Function(_$RemoveSizeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+  }) {
+    return _then(_$RemoveSizeImpl(
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveSizeImpl implements _RemoveSize {
+  const _$RemoveSizeImpl({required this.size});
+
+  @override
+  final String size;
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.removeSize(size: $size)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveSizeImpl &&
+            (identical(other.size, size) || other.size == size));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, size);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveSizeImplCopyWith<_$RemoveSizeImpl> get copyWith =>
+      __$$RemoveSizeImplCopyWithImpl<_$RemoveSizeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fieldType) showFields,
+    required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
+  }) {
+    return removeSize(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String fieldType)? showFields,
+    TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
+  }) {
+    return removeSize?.call(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fieldType)? showFields,
+    TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
+    required TResult orElse(),
+  }) {
+    if (removeSize != null) {
+      return removeSize(size);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowFields value) showFields,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
+  }) {
+    return removeSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ShowFields value)? showFields,
+    TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
+  }) {
+    return removeSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowFields value)? showFields,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
+    required TResult orElse(),
+  }) {
+    if (removeSize != null) {
+      return removeSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveSize implements OrderPlaceEvent {
+  const factory _RemoveSize({required final String size}) = _$RemoveSizeImpl;
+
+  String get size;
+  @JsonKey(ignore: true)
+  _$$RemoveSizeImplCopyWith<_$RemoveSizeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddDateImplCopyWith<$Res> {
+  factory _$$AddDateImplCopyWith(
+          _$AddDateImpl value, $Res Function(_$AddDateImpl) then) =
+      __$$AddDateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime date});
+}
+
+/// @nodoc
+class __$$AddDateImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$AddDateImpl>
+    implements _$$AddDateImplCopyWith<$Res> {
+  __$$AddDateImplCopyWithImpl(
+      _$AddDateImpl _value, $Res Function(_$AddDateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$AddDateImpl(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddDateImpl implements _AddDate {
+  const _$AddDateImpl({required this.date});
+
+  @override
+  final DateTime date;
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.addDate(date: $date)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddDateImpl &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddDateImplCopyWith<_$AddDateImpl> get copyWith =>
+      __$$AddDateImplCopyWithImpl<_$AddDateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fieldType) showFields,
+    required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
+  }) {
+    return addDate(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String fieldType)? showFields,
+    TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
+  }) {
+    return addDate?.call(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fieldType)? showFields,
+    TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
+    required TResult orElse(),
+  }) {
+    if (addDate != null) {
+      return addDate(date);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowFields value) showFields,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
+  }) {
+    return addDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ShowFields value)? showFields,
+    TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
+  }) {
+    return addDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowFields value)? showFields,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
+    required TResult orElse(),
+  }) {
+    if (addDate != null) {
+      return addDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddDate implements OrderPlaceEvent {
+  const factory _AddDate({required final DateTime date}) = _$AddDateImpl;
+
+  DateTime get date;
+  @JsonKey(ignore: true)
+  _$$AddDateImplCopyWith<_$AddDateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

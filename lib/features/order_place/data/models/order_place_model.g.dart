@@ -14,8 +14,9 @@ _$OrderPlaceModelImpl _$$OrderPlaceModelImplFromJson(
       description: json['description'] as String,
       images:
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-      sizes: (json['sizes'] as List<dynamic>).map((e) => e as String).toList(),
-      date: json['date'] as String,
+      sizes: (json['sizes'] as List<dynamic>).map((e) => e as String).toSet(),
+      date:
+          json['date'] == null ? null : DateTime.parse(json['date'] as String),
       contactInfo: json['contactInfo'] as String,
       summ: (json['summ'] as num?)?.toInt(),
     );
@@ -27,8 +28,8 @@ Map<String, dynamic> _$$OrderPlaceModelImplToJson(
       'name': instance.name,
       'description': instance.description,
       'images': instance.images,
-      'sizes': instance.sizes,
-      'date': instance.date,
+      'sizes': instance.sizes.toList(),
+      'date': instance.date?.toIso8601String(),
       'contactInfo': instance.contactInfo,
       'summ': instance.summ,
     };
