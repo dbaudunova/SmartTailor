@@ -8,6 +8,8 @@ class TextFormFieldWidget extends StatelessWidget {
   final String? hintText;
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
+  final int? maxLenght;
+  final int? minLenght;
 
   const TextFormFieldWidget({
     super.key,
@@ -18,6 +20,8 @@ class TextFormFieldWidget extends StatelessWidget {
     this.formatters = const [],
     this.validator,
     this.hintText,
+    this.maxLenght,
+    this.minLenght,
   });
 
   @override
@@ -37,6 +41,7 @@ class TextFormFieldWidget extends StatelessWidget {
           height: 12,
         ),
         TextFormField(
+          maxLength: maxLenght,
           validator: validator,
           style: titleName == t.email ? AppTextStyle.textField16.copyWith(fontSize: 14) : AppTextStyle.textField16,
           inputFormatters: formatters,

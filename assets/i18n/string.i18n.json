@@ -47,7 +47,7 @@
 
 
   "typeOrder": "Тип объявления*",
-  "typeOrderHint": "Оборудование или Заказ",
+  "typeOrderHint": "Оборудование,Заказ или Услуги",
   "nameOrder": "Название*",
   "necessaryField": "Обязательное поле",
   "descriptionOrder": "Описание*",

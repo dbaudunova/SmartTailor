@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:neobis_smart_tailor/core/app/app.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 
 FutureOr<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await configureDependencies();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -16,4 +18,5 @@ FutureOr<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await configureDependencies();
   runApp(const MyApp());
+  FlutterNativeSplash.remove();
 }

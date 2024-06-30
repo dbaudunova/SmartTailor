@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 54
 ///
-/// Built on 2024-06-20 at 17:38 UTC
+/// Built on 2024-06-24 at 09:20 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -184,7 +184,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get needIronman => 'Требуется утюжник';
 	String get serviceDesc => 'Мужские брюки';
 	String get typeOrder => 'Тип объявления*';
-	String get typeOrderHint => 'Оборудование или Заказ';
+	String get typeOrderHint => 'Оборудование,Заказ или Услуги';
 	String get nameOrder => 'Название*';
 	String get necessaryField => 'Обязательное поле';
 	String get descriptionOrder => 'Описание*';
@@ -246,7 +246,7 @@ extension on Translations {
 			case 'needIronman': return 'Требуется утюжник';
 			case 'serviceDesc': return 'Мужские брюки';
 			case 'typeOrder': return 'Тип объявления*';
-			case 'typeOrderHint': return 'Оборудование или Заказ';
+			case 'typeOrderHint': return 'Оборудование,Заказ или Услуги';
 			case 'nameOrder': return 'Название*';
 			case 'necessaryField': return 'Обязательное поле';
 			case 'descriptionOrder': return 'Описание*';

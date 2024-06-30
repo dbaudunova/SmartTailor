@@ -1,30 +1,31 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/date_picker_widget.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/size_selection_widget.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
-import 'package:neobis_smart_tailor/gen/strings.g.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ShowActionSheetButton extends StatefulWidget {
   final SheetType actionType;
   final String title;
   final String hintText;
+  final String chosenText;
 
-  const ShowActionSheetButton({
+  ShowActionSheetButton({
     super.key,
     required this.title,
     required this.hintText,
     required this.actionType,
+    required this.chosenText,
   });
 
   @override
   State<ShowActionSheetButton> createState() => _ShowActionSheetButtonState();
 }
-
-File? _image;
 
 class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
   @override
@@ -39,7 +40,7 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
         const SizedBox(height: 6),
         GestureDetector(
           onTap: () {
-            _handleAction(widget.actionType);
+            _handleAction(widget.actionType, context);
           },
           child: Container(
             padding: const EdgeInsets.only(bottom: 12, left: 12, top: 15),
@@ -53,10 +54,7 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  widget.hintText,
-                  style: AppTextStyle.textField16.copyWith(fontSize: 16, color: AppColors.greyText),
-                ),
+                _buildText(widget.actionType),
                 Padding(
                   padding: const EdgeInsets.only(right: 21),
                   child: SvgPicture.asset(Assets.icons.drillIn),
@@ -69,15 +67,44 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
     );
   }
 
-  void _handleAction(SheetType actionType) {
+  BlocBuilder<OrderPlaceBloc, OrderPlaceState> _buildText(SheetType sheetType) {
+    return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
+      builder: (context, state) {
+        String displayText = widget.hintText;
+        TextStyle textStyle = AppTextStyle.textField16.copyWith(color: AppColors.greyText);
+
+        if (sheetType == SheetType.type && state.orderPlaceModel.type.isNotEmpty) {
+          displayText = widget.chosenText;
+          textStyle = AppTextStyle.textField16;
+        } else if (sheetType == SheetType.photos && state.orderPlaceModel.images.isNotEmpty) {
+          displayText = widget.chosenText;
+          textStyle = AppTextStyle.textField16;
+        } else if (sheetType == SheetType.size && state.orderPlaceModel.sizes.isNotEmpty) {
+          displayText = widget.chosenText;
+          textStyle = AppTextStyle.textField16;
+        } else if (sheetType == SheetType.data && state.orderPlaceModel.date != null) {
+          displayText = widget.chosenText;
+          textStyle = AppTextStyle.textField16;
+        }
+
+        return Text(
+          displayText,
+          style: textStyle,
+        );
+      },
+    );
+  }
+
+  void _handleAction(SheetType actionType, BuildContext ctx) {
     switch (actionType) {
-      case SheetType.pickImage:
-        _pickImage();
+      case SheetType.photos:
+      case SheetType.type:
+        _showActionSheet(ctx, actionType);
         break;
-      case SheetType.showActionSheet:
-        _showActionSheet(context);
+      case SheetType.data:
+        _callDatePicker();
         break;
-      case SheetType.callBottomSheet:
+      case SheetType.size:
         _callBottomSheet();
         break;
     }
@@ -87,109 +114,31 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
-        return _SizeSelectionBottomSheet();
+        return const SizeSelectionBottomSheet();
       },
     );
   }
 
-  void _showActionSheet(BuildContext context) {
+  void _showActionSheet(BuildContext context, SheetType type) {
     showCupertinoModalPopup(
       context: context,
-      builder: (BuildContext context) => CupertinoActionSheet(
-        actions: <CupertinoActionSheetAction>[
-          CupertinoActionSheetAction(
-            child: Text(
-              t.order,
-              style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
-            ),
-            onPressed: () {
-              // Navigator.pop(context, 'Action 1');
-            },
-          ),
-          CupertinoActionSheetAction(
-            child: Text(
-              t.equipment,
-              style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
-            ),
-            onPressed: () {
-              // Navigator.pop(context, 'Action 2');
-            },
-          ),
-        ],
-        cancelButton: CupertinoActionSheetAction(
-          child: Text(
-            t.cancel,
-            style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
-          ),
-          onPressed: () {
-            Navigator.pop(context, 'Cancel');
-          },
-        ),
+      builder: (BuildContext context) => ActionSheetWidget(
+        type: type,
+        bloc: context.read<OrderPlaceBloc>(),
       ),
     );
   }
 
-  Future<void> _pickImage() async {
-    final ImagePicker picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
-  }
-}
-
-class _SizeSelectionBottomSheet extends StatefulWidget {
-  @override
-  _SizeSelectionBottomSheetState createState() => _SizeSelectionBottomSheetState();
-}
-
-class _SizeSelectionBottomSheetState extends State<_SizeSelectionBottomSheet> {
-  final TextEditingController _controller = TextEditingController();
-  final List<String> _sizes = ['S', 'M', 'L', 'XL'];
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            t.inputSize,
-            style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black),
-          ),
-          TextField(
-            controller: _controller,
-          ),
-          SizedBox(height: 16.0),
-          Wrap(
-            spacing: 16.0,
-            children: _sizes.map((size) {
-              return Chip(
-                deleteIcon: SvgPicture.asset(Assets.icons.cross),
-                label: Text(size),
-                onDeleted: () {
-                  setState(() {
-                    _sizes.remove(size);
-                  });
-                },
-              );
-            }).toList(),
-          ),
-        ],
-      ),
+  void _callDatePicker() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return DatePickerWidget(
+          onDateSelected: (DateTime selectedDate) {},
+        );
+      },
     );
   }
 }
 
-enum SheetType { pickImage, showActionSheet, callBottomSheet }
+enum SheetType { photos, type, size, data }
