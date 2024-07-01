@@ -1,8 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/marketplace_tabbar_view.dart';
+import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
@@ -38,49 +40,58 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
           style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w600),
         ),
       ),
-      child: Column(
+      child: Stack(
         children: [
-          CupertinoNavigationBar(
-            border: const Border(),
-            backgroundColor: AppColors.background,
-            automaticallyImplyLeading: false,
-            middle: SizedBox(
-              width: segmentedControlMaxWidth,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: CupertinoSlidingSegmentedControl<int>(
-                  children: children,
-                  onValueChanged: (int? newValue) {
-                    if (newValue != null) {
-                      _pageController.animateToPage(
-                        newValue,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    }
+          Column(
+            children: [
+              _buildNavBar(segmentedControlMaxWidth, children),
+              const SizedBox(height: 16),
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentSegment.value = index;
+                    });
                   },
-                  groupValue: currentSegment.value,
+                  children: const [
+                    MarketplaceTabBarView(tabIndex: 0),
+                    MarketplaceTabBarView(tabIndex: 1),
+                    MarketplaceTabBarView(tabIndex: 2),
+                  ],
                 ),
               ),
-            ),
+            ],
           ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  currentSegment.value = index;
-                });
-              },
-              children: const [
-                MarketplaceTabBarView(tabIndex: 0),
-                MarketplaceTabBarView(tabIndex: 1),
-                MarketplaceTabBarView(tabIndex: 2),
-              ],
-            ),
-          ),
+          FabButtonWidget(onTap: () {}),
         ],
+      ),
+    );
+  }
+
+  CupertinoNavigationBar _buildNavBar(double segmentedControlMaxWidth, Map<int, Widget> children) {
+    return CupertinoNavigationBar(
+      border: const Border(),
+      backgroundColor: AppColors.background,
+      automaticallyImplyLeading: false,
+      middle: SizedBox(
+        width: segmentedControlMaxWidth,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: CupertinoSlidingSegmentedControl<int>(
+            children: children,
+            onValueChanged: (int? newValue) {
+              if (newValue != null) {
+                _pageController.animateToPage(
+                  newValue,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              }
+            },
+            groupValue: currentSegment.value,
+          ),
+        ),
       ),
     );
   }
@@ -106,5 +117,37 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
     setState(() {
       currentSegment.value = newValue!;
     });
+  }
+}
+
+class FabButtonWidget extends StatelessWidget {
+  final void Function() onTap;
+
+  const FabButtonWidget({
+    required this.onTap,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 4,
+      right: MediaQuery.of(context).size.width / 2 - 24,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            color: AppColors.yellow,
+          ),
+          padding: const EdgeInsets.all(16),
+          child: Assets.images.vector.image(
+            width: 24,
+            height: 24,
+            color: AppColors.black,
+          ),
+        ),
+      ),
+    );
   }
 }
