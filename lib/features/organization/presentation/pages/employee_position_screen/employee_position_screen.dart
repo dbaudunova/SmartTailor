@@ -124,7 +124,7 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                AutoRouter.of(context).maybePop();
+                Navigator.pop(context);
                 onButtonPressed();
               },
               child: Padding(

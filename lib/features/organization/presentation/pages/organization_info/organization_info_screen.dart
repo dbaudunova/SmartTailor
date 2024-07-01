@@ -6,6 +6,7 @@ import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
 
 @RoutePage()
 class OrganizationInfoScreen extends StatefulWidget {
@@ -27,6 +28,12 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
       length: _labels.length,
       vsync: this,
     );
+
+    _tabController.addListener(() {
+      if (_tabController.index == 2) {
+        AutoRouter.of(context).push(const OrderRoute());
+      }
+    });
   }
 
   @override
@@ -62,7 +69,20 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: _buildEmployeePositionTab(),
                 ),
-                _buildEmployeeListView(),
+                ListView.builder(
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16)
+                          .copyWith(bottom: 12),
+                      child: AnnouncementsContainer(
+                        onTap: () {},
+                        price: '1000 сом',
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),

@@ -6,9 +6,11 @@ class AnnouncementsContainer extends StatelessWidget {
   const AnnouncementsContainer({
     super.key,
     required this.onTap,
+    this.price,
   });
 
   final VoidCallback onTap;
+  final String? price;
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +47,22 @@ class AnnouncementsContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Оборудование',
-                      style: AppTextStyle.textField16.copyWith(
-                        color: AppColors.listGreen,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Оборудование',
+                          style: AppTextStyle.textField16.copyWith(
+                            color: AppColors.listGreen,
+                          ),
+                        ),
+                        Text(
+                          price ?? '',
+                          style: AppTextStyle.textField16.copyWith(
+                            color: AppColors.orange,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 4),
                     Text(
