@@ -66,8 +66,7 @@ class _InviteEmployeeScreenState extends State<InviteEmployeeScreen> {
                             content: 'Ваше приглашение отправлено!',
                             buttonText: 'Понятно',
                             onButtonPressed: () {
-                              AutoRouter.of(context)
-                                  .push(const OrganizationInfoRoute());
+                              AutoRouter.of(context).push(const OrganizationInfoRoute());
                             },
                           );
                         },

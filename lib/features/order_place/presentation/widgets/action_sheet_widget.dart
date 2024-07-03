@@ -10,41 +10,44 @@ import 'package:neobis_smart_tailor/gen/strings.g.dart';
 class ActionSheetWidget extends StatelessWidget {
   final SheetType type;
   final OrderPlaceBloc bloc;
+  final List<AppActionSheetWidget> actions;
 
   const ActionSheetWidget({
-    super.key,
     required this.type,
     required this.bloc,
+    required this.actions,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return CupertinoActionSheet(
-      actions: type == SheetType.type
-          ? [
-              _actionSheet(t.order, () {
-                bloc.add(OrderPlaceEvent.showFields(fieldType: t.order));
-                Navigator.pop(context);
-              }),
-              _actionSheet(t.equipment, () {
-                bloc.add(OrderPlaceEvent.showFields(fieldType: t.equipment));
-                Navigator.pop(context);
-              }),
-              _actionSheet(t.service, () {
-                bloc.add(OrderPlaceEvent.showFields(fieldType: t.service));
-                Navigator.pop(context);
-              }),
-            ]
-          : [
-              _actionSheet('Выбрать фотографии', () {
-                _pickMultipleImages().then((images) {});
-                Navigator.pop(context);
-              }),
-              _actionSheet('Сделать фотографии', () {
-                _pickMultipleImagesFromCamera().then((images) {});
-                Navigator.pop(context);
-              }),
-            ],
+      actions: actions,
+      // type == SheetType.type
+      //     ? [
+      //         _actionSheet(t.order, () {
+      //           bloc.add(OrderPlaceEvent.showFields(fieldType: t.order));
+      //           Navigator.pop(context);
+      //         }),
+      //         _actionSheet(t.equipment, () {
+      //           bloc.add(OrderPlaceEvent.showFields(fieldType: t.equipment));
+      //           Navigator.pop(context);
+      //         }),
+      //         _actionSheet(t.service, () {
+      //           bloc.add(OrderPlaceEvent.showFields(fieldType: t.service));
+      //           Navigator.pop(context);
+      //         }),
+      //       ]
+      //     : [
+      //         _actionSheet('Выбрать фотографии', () {
+      //           _pickMultipleImages().then((images) {});
+      //           Navigator.pop(context);
+      //         }),
+      //         _actionSheet('Сделать фотографии', () {
+      //           _pickMultipleImagesFromCamera().then((images) {});
+      //           Navigator.pop(context);
+      //         }),
+      //       ],
       cancelButton: CupertinoActionSheetAction(
         child: Text(
           t.cancel,
@@ -92,5 +95,26 @@ class ActionSheetWidget extends StatelessWidget {
     bloc.add(OrderPlaceEvent.addPhotos(photos: newImages));
 
     return newImages;
+  }
+}
+
+class AppActionSheetWidget extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String text;
+  const AppActionSheetWidget({
+    required this.onPressed,
+    required this.text,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoActionSheetAction(
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
+      ),
+    );
   }
 }

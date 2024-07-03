@@ -1,10 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/marketplace_tabbar_view.dart';
-import 'package:neobis_smart_tailor/gen/assets.gen.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
@@ -32,12 +32,16 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
+        transitionBetweenRoutes: false,
         padding: const EdgeInsetsDirectional.only(top: 16, start: 16),
         border: const Border(),
         backgroundColor: AppColors.background,
         leading: Text(
           t.marketplace,
-          style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w600),
+          style: AppTextStyle.s20w400Orange.copyWith(
+            color: AppColors.black,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       child: Stack(
@@ -63,14 +67,26 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
               ),
             ],
           ),
-          FabButtonWidget(onTap: () {}),
+          FabButtonWidget(onTap: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return const SearchOrderSheet();
+              },
+            );
+          }),
         ],
       ),
     );
   }
 
-  CupertinoNavigationBar _buildNavBar(double segmentedControlMaxWidth, Map<int, Widget> children) {
+  CupertinoNavigationBar _buildNavBar(
+    double segmentedControlMaxWidth,
+    Map<int, Widget> children,
+  ) {
     return CupertinoNavigationBar(
+      // heroTag: '3',
+      // transitionBetweenRoutes: true,
       border: const Border(),
       backgroundColor: AppColors.background,
       automaticallyImplyLeading: false,
@@ -100,7 +116,9 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
     return Text(
       label,
       style: currentSegment.value == index
-          ? AppTextStyle.text14.copyWith(fontWeight: FontWeight.w600)
+          ? AppTextStyle.text14.copyWith(
+              fontWeight: FontWeight.w600,
+            )
           : AppTextStyle.text14,
     );
   }
@@ -109,7 +127,10 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
   String get restorationId => 'cupertino_segmented_control';
 
   @override
-  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
+  void restoreState(
+    RestorationBucket? oldBucket,
+    bool initialRestore,
+  ) {
     registerForRestoration(currentSegment, 'current_segment');
   }
 
@@ -117,37 +138,5 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
     setState(() {
       currentSegment.value = newValue!;
     });
-  }
-}
-
-class FabButtonWidget extends StatelessWidget {
-  final void Function() onTap;
-
-  const FabButtonWidget({
-    required this.onTap,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 4,
-      right: MediaQuery.of(context).size.width / 2 - 24,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            color: AppColors.yellow,
-          ),
-          padding: const EdgeInsets.all(16),
-          child: Assets.images.vector.image(
-            width: 24,
-            height: 24,
-            color: AppColors.black,
-          ),
-        ),
-      ),
-    );
   }
 }

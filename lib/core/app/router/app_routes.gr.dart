@@ -74,10 +74,10 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: MarketplaceDetailScreen(
-          date: args.date,
           acceptOrderButton: args.acceptOrderButton,
           buyButton: args.buyButton,
           title: args.title,
+          date: args.date,
         ),
       );
     },
@@ -280,37 +280,34 @@ class InviteEmployeeRoute extends PageRouteInfo<void> {
 /// [MarketplaceDetailScreen]
 class MarketplaceDetailRoute extends PageRouteInfo<MarketplaceDetailRouteArgs> {
   MarketplaceDetailRoute({
-    DateTime? date,
     required bool acceptOrderButton,
     required bool buyButton,
     required String title,
+    DateTime? date,
     List<PageRouteInfo>? children,
   }) : super(
           MarketplaceDetailRoute.name,
           args: MarketplaceDetailRouteArgs(
-            date: date,
             acceptOrderButton: acceptOrderButton,
             buyButton: buyButton,
             title: title,
+            date: date,
           ),
           initialChildren: children,
         );
 
   static const String name = 'MarketplaceDetailRoute';
 
-  static const PageInfo<MarketplaceDetailRouteArgs> page =
-      PageInfo<MarketplaceDetailRouteArgs>(name);
+  static const PageInfo<MarketplaceDetailRouteArgs> page = PageInfo<MarketplaceDetailRouteArgs>(name);
 }
 
 class MarketplaceDetailRouteArgs {
   const MarketplaceDetailRouteArgs({
-    this.date,
     required this.acceptOrderButton,
     required this.buyButton,
     required this.title,
+    this.date,
   });
-
-  final DateTime? date;
 
   final bool acceptOrderButton;
 
@@ -318,9 +315,13 @@ class MarketplaceDetailRouteArgs {
 
   final String title;
 
+  // final Key? key;
+
+  final DateTime? date;
+
   @override
   String toString() {
-    return 'MarketplaceDetailRouteArgs{date: $date, acceptOrderButton: $acceptOrderButton, buyButton: $buyButton, title: $title}';
+    return 'MarketplaceDetailRouteArgs{acceptOrderButton: $acceptOrderButton, buyButton: $buyButton, title: $title, date: $date}';
   }
 }
 

@@ -30,8 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: 'Профиль',
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin)
-            .copyWith(
+        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin).copyWith(
           top: AppProps.kSmallMargin,
         ),
         child: Column(

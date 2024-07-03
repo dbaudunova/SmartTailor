@@ -155,8 +155,7 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
         break;
       }
     }
-    _selectedPositionText =
-        selectedPosition.isNotEmpty ? selectedPosition : 'Выберите должность';
+    _selectedPositionText = selectedPosition.isNotEmpty ? selectedPosition : 'Выберите должность';
   }
 
   Row _buildRow({
@@ -174,9 +173,7 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded
-                ? Icons.keyboard_arrow_up_rounded
-                : Icons.keyboard_arrow_down_rounded,
+            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),

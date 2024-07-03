@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 
 class DatePickerWidget extends StatefulWidget {
   final Function(DateTime) onDateSelected;
 
-  const DatePickerWidget({Key? key, required this.onDateSelected}) : super(key: key);
+  const DatePickerWidget({required this.onDateSelected, super.key});
 
   @override
   _DatePickerWidgetState createState() => _DatePickerWidgetState();
@@ -32,8 +31,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                   height: constraints.maxHeight * 0.5,
                   child: CupertinoDatePicker(
                     mode: CupertinoDatePickerMode.date,
-                    maximumYear: 2050,
-                    minimumYear: 2024,
+                    maximumYear: DateTime.now().year + 25,
+                    minimumYear: DateTime.now().year,
                     onDateTimeChanged: (DateTime dateTime) {
                       setState(() {
                         _selectedDate = dateTime;

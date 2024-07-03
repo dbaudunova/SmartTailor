@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -67,35 +68,57 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
       builder: (context, state) {
         return Column(
           children: [
-            ShowActionSheetButton(
-              chosenText: state.orderPlaceModel.type,
-              title: t.typeOrder,
-              hintText: t.typeOrderHint,
+            // ShowActionSheetButton(
+            //   chosenText: state.orderPlaceModel.type,
+            //   title: t.typeOrder,
+            //   hintText: t.typeOrderHint,
+            //   actionType: SheetType.type,
+            //   onSelect: (type) {
+            //     context.read<OrderPlaceBloc>().add(OrderPlaceEvent.showFields(fieldType: type.toString()));
+            //   },
+            // ),
+            TextFormFieldWidget(
               actionType: SheetType.type,
+              enabled: false,
+              suffixIcon: Icons.keyboard_arrow_down_sharp,
+              // ontap: () {},
+              onSelect: (type) {
+                context.read<OrderPlaceBloc>().add(OrderPlaceEvent.showFields(fieldType: type.name));
+              },
+              controller: TextEditingController(text: state.orderPlaceModel.type),
+              hintText: t.typeOrderHint,
+              titleName: t.typeOrder,
             ),
             const SizedBox(height: AppProps.kPageMargin),
             TextFormFieldWidget(
-              // maxLenght: 250,
               controller: nameController,
               hintText: t.necessaryField,
               titleName: t.nameOrder,
             ),
             const SizedBox(height: AppProps.kPageMargin),
             TextFormFieldWidget(
-              // maxLenght: 1000,
               controller: descriptionController,
               hintText: t.maxWords,
               titleName: t.descriptionOrder,
             ),
             const SizedBox(height: AppProps.kPageMargin),
-            ShowActionSheetButton(
-              chosenText: 'Выбрано ${state.orderPlaceModel.images.length} фото',
-              title: t.addPhotos,
-              hintText: t.max5photos,
+            // ShowActionSheetButton(
+            //   chosenText: 'Выбрано ${state.orderPlaceModel.images.length} фото',
+            //   title: t.addPhotos,
+            //   hintText: t.descriptionOrder,
+            //   actionType: SheetType.photos,
+            // ),
+            TextFormFieldWidget(
+              enabled: false,
+              suffixIcon: Icons.keyboard_arrow_down_sharp,
               actionType: SheetType.photos,
+              ontap: () {},
+              controller: TextEditingController(text: 'Выбрано ${state.orderPlaceModel.images.length} фото'),
+              hintText: t.max5photos,
+              titleName: t.addPhotos,
             ),
             const SizedBox(height: AppProps.kPageMargin),
-            PhotosPreviewWidget(),
+            const PhotosPreviewWidget(),
             _buildDateAndSize(state),
             TextFormFieldWidget(
               controller: descriptionController,
@@ -118,7 +141,8 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
 
   AnimatedSwitcher _buildDateAndSize(OrderPlaceState state) {
     // Set<String> sizes = state.orderPlaceModel.sizes;
-    String chosenText = state.orderPlaceModel.sizes.join(', ');
+    var chosenTextSize = state.orderPlaceModel.sizes.join(', ');
+    var chosenTextDate = state.orderPlaceModel.date.toString();
 
     // late String? formattedDate = DateFormat.yMMMMEEEEd().format(state.orderPlaceModel.date );
     return AnimatedSwitcher(
@@ -129,24 +153,37 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
       child: state.showFields == true
           ? Column(
               children: [
-                ShowActionSheetButton(
-                  chosenText: chosenText,
-                  title: t.sizes,
-                  hintText: t.sizeFieldText,
+                TextFormFieldWidget(
+                  enabled: false,
+                  suffixIcon: Icons.keyboard_arrow_down_sharp,
+                  ontap: () {},
                   actionType: SheetType.size,
+                  controller: TextEditingController(text: chosenTextSize),
+                  hintText: t.sizeFieldText,
+                  titleName: t.sizes,
                 ),
-                const SizedBox(height: AppProps.kPageMargin),
-                // TextFormFieldWidget(
-                //   controller: descriptionController,
-                //   hintText: t.lastDate,
-                //   titleName: t.ddmmyy,
-                // ),
-                ShowActionSheetButton(
-                  chosenText: state.orderPlaceModel.date.toString(),
-                  title: "Дата",
-                  hintText: t.lastDate,
+                TextFormFieldWidget(
+                  enabled: false,
+                  suffixIcon: Icons.keyboard_arrow_down_sharp,
+                  ontap: () {},
                   actionType: SheetType.data,
+                  controller: TextEditingController(text: chosenTextDate),
+                  hintText: t.lastDate,
+                  titleName: 'Дата',
                 ),
+                // ShowActionSheetButton(
+                //   chosenText: chosenText,
+                //   title: t.sizes,
+                //   hintText: t.sizeFieldText,
+                //   actionType: SheetType.size,
+                // ),
+                // const SizedBox(height: AppProps.kPageMargin),
+                // ShowActionSheetButton(
+                //   chosenText: state.orderPlaceModel.date.toString(),
+                //   title: 'Дата',
+                //   hintText: t.lastDate,
+                //   actionType: SheetType.data,
+                // ),
                 const SizedBox(height: AppProps.kPageMargin),
               ],
             )

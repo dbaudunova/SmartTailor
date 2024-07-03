@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
+        
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true">
         android:label="neobis_smart_tailor"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

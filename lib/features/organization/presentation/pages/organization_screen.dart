@@ -55,8 +55,7 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
                 child: ElevatedButtonWidget(
                   text: 'Создать',
                   onTap: () {
-                    AutoRouter.of(context)
-                        .push(const CreateOrganizationRoute());
+                    AutoRouter.of(context).push(const CreateOrganizationRoute());
                   },
                 ),
               ),

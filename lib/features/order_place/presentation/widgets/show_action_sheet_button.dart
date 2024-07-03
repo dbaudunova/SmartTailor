@@ -1,26 +1,27 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/date_picker_widget.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/size_selection_widget.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
+
+enum OrderType { order, equipment, services }
 
 class ShowActionSheetButton extends StatefulWidget {
   final SheetType actionType;
   final String title;
   final String hintText;
   final String chosenText;
+  final void Function(OrderType type)? onSelect;
 
-  ShowActionSheetButton({
-    super.key,
+  const ShowActionSheetButton({
     required this.title,
     required this.hintText,
     required this.actionType,
     required this.chosenText,
+    super.key,
+    this.onSelect,
   });
 
   @override
@@ -40,7 +41,7 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
         const SizedBox(height: 6),
         GestureDetector(
           onTap: () {
-            _handleAction(widget.actionType, context);
+            _showActionSheet(context, widget.actionType);
           },
           child: Container(
             padding: const EdgeInsets.only(bottom: 12, left: 12, top: 15),
@@ -95,29 +96,29 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
     );
   }
 
-  void _handleAction(SheetType actionType, BuildContext ctx) {
-    switch (actionType) {
-      case SheetType.photos:
-      case SheetType.type:
-        _showActionSheet(ctx, actionType);
-        break;
-      case SheetType.data:
-        _callDatePicker();
-        break;
-      case SheetType.size:
-        _callBottomSheet();
-        break;
-    }
-  }
+  // void _handleAction(BuildContext ctx, SheetType actionType) {
+  //   switch (actionType) {
+  //     case SheetType.photos:
+  //     case SheetType.type:
+  //       _showActionSheet(ctx, actionType);
+  //       break;
+  //     case SheetType.data:
+  //       _callDatePicker();
+  //       break;
+  //     case SheetType.size:
+  //       _callBottomSheet();
+  //       break;
+  //   }
+  // }
 
-  void _callBottomSheet() {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return const SizeSelectionBottomSheet();
-      },
-    );
-  }
+  // void _callBottomSheet() {
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return const SizeSelectionBottomSheet();
+  //     },
+  //   );
+  // }
 
   void _showActionSheet(BuildContext context, SheetType type) {
     showCupertinoModalPopup(
@@ -125,20 +126,31 @@ class _ShowActionSheetButtonState extends State<ShowActionSheetButton> {
       builder: (BuildContext context) => ActionSheetWidget(
         type: type,
         bloc: context.read<OrderPlaceBloc>(),
+        actions: OrderType.values
+            .map(
+              (e) => AppActionSheetWidget(
+                onPressed: () {
+                  Navigator.pop(context);
+                  widget.onSelect?.call(e);
+                },
+                text: e.name,
+              ),
+            )
+            .toList(),
       ),
     );
   }
 
-  void _callDatePicker() {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return DatePickerWidget(
-          onDateSelected: (DateTime selectedDate) {},
-        );
-      },
-    );
-  }
+  // void _callDatePicker() {
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return DatePickerWidget(
+  //         onDateSelected: (DateTime selectedDate) {},
+  //       );
+  //     },
+  //   );
+  // }
 }
 
 enum SheetType { photos, type, size, data }

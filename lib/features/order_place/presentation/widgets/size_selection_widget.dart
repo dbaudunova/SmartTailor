@@ -22,8 +22,8 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
       padding: const EdgeInsets.all(16.0),
       child: BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
         builder: (context, state) {
-          Set<String> sizes = state.orderPlaceModel.sizes;
-          String chosenText = sizes.join(', ');
+          var sizes = state.orderPlaceModel.sizes;
+          var chosenText = sizes.join(', ');
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,

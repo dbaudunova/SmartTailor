@@ -13,8 +13,12 @@ class MarketplaceDetailScreen extends StatefulWidget {
   final DateTime? date;
   final bool acceptOrderButton;
   final bool buyButton;
-  const MarketplaceDetailScreen(
-      {this.date, required this.acceptOrderButton, required this.buyButton, required this.title});
+  const MarketplaceDetailScreen({
+    required this.acceptOrderButton,
+    required this.buyButton,
+    required this.title,
+    this.date,
+  });
 
   @override
   State<MarketplaceDetailScreen> createState() => _MarketplaceDetailScreenState();
