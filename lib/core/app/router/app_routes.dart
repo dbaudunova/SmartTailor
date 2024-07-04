@@ -6,8 +6,10 @@ import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/ema
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/pages/current_order_detail/current_order_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_detail/employee_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_position_screen/employee_position_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/pages/history_detail/history_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/invite_employee/invite_employee_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/order/order_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization_info/organization_info_screen.dart';
@@ -131,6 +133,14 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: OrderRoute.page,
           path: '/order',
+        ),
+        AutoRoute(
+          page: HistoryDetailRoute.page,
+          path: '/history_detail',
+        ),
+        AutoRoute(
+          page: CurrentOrderDetailRoute.page,
+          path: '/current_order_detail',
         ),
       ];
 }

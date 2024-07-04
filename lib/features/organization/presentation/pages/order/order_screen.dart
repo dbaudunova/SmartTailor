@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/order/current_order_container.dart';
@@ -54,34 +55,50 @@ class _OrderScreenState extends State<OrderScreen>
             child: TabBarView(
               controller: _tabController,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return const Padding(
-                        padding: EdgeInsets.only(bottom: 8),
-                        child: CurrentOrdersContainer(),
-                      );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return const Padding(
-                        padding: EdgeInsets.only(bottom: 8),
-                        child: CompletedOrderContainer(),
-                      );
-                    },
-                  ),
-                ),
+                _buildCurrentOrdersListView(),
+                _buildCompletedOrdersListView(),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Padding _buildCompletedOrdersListView() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: CompletedOrderContainer(
+              onTap: () {
+                AutoRouter.of(context).push(const HistoryDetailRoute());
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Padding _buildCurrentOrdersListView() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: CurrentOrdersContainer(
+              onTap: () {
+                AutoRouter.of(context).push(const CurrentOrderDetailRoute());
+              },
+            ),
+          );
+        },
       ),
     );
   }

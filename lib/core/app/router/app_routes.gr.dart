@@ -39,6 +39,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateOrganizationScreen(),
       );
     },
+    CurrentOrderDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CurrentOrderDetailScreen(),
+      );
+    },
     EmailInputRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -61,6 +67,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const EnterScreen(),
+      );
+    },
+    HistoryDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HistoryDetailScreen(),
       );
     },
     InviteEmployeeRoute.name: (routeData) {
@@ -213,6 +225,20 @@ class CreateOrganizationRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CurrentOrderDetailScreen]
+class CurrentOrderDetailRoute extends PageRouteInfo<void> {
+  const CurrentOrderDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          CurrentOrderDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CurrentOrderDetailRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [EmailInputScreen]
 class EmailInputRoute extends PageRouteInfo<void> {
   const EmailInputRoute({List<PageRouteInfo>? children})
@@ -264,6 +290,20 @@ class EnterRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'EnterRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HistoryDetailScreen]
+class HistoryDetailRoute extends PageRouteInfo<void> {
+  const HistoryDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          HistoryDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HistoryDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
