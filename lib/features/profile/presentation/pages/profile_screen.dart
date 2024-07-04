@@ -53,7 +53,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildColumn(),
                 const Spacer(),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AutoRouter.of(context).push(const NotificationRoute());
+                  },
                   icon: SvgPicture.asset(
                     Assets.icons.bell,
                   ),

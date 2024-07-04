@@ -15,6 +15,7 @@ import 'package:neobis_smart_tailor/features/organization/presentation/pages/ord
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization_info/organization_info_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/announcement_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/my_announcements_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/notification_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/my_purchases_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/order_history_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/marketplace_detail_screen.dart';
@@ -141,6 +142,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: CurrentOrderDetailRoute.page,
           path: '/current_order_detail',
+        ),
+        AutoRoute(
+          page: NotificationRoute.page,
+          path: '/notification',
         ),
       ];
 }
