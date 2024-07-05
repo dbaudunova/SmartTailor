@@ -84,7 +84,8 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
                     if (_formKey.currentState!.validate()) {
                       _showCustomDialog(
                         context: context,
-                        contentText: 'Созданные должности будут находиться ниже по Иерархии, и им нельзя выдать права доступа, которые недоступны человеку создающему новую роль',
+                        contentText:
+                            'Созданные должности будут находиться ниже по Иерархии, и им нельзя выдать права доступа, которые недоступны человеку создающему новую роль',
                         buttonText: 'Понятно',
                         onButtonPressed: () {
                           _showCustomDialog(
@@ -144,7 +145,6 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
     );
   }
 
-
   Container _buildCheckBoxContainer() {
     return Container(
       decoration: BoxDecoration(
@@ -155,8 +155,7 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
             child: Text(
               'Выдача прав доступа',
               style: AppTextStyle.textField16.copyWith(

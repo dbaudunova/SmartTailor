@@ -15,8 +15,7 @@ FutureOr<void> main() async {
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await configureDependencies();
+
   runApp(const MyApp());
   FlutterNativeSplash.remove();
 }

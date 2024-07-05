@@ -11,8 +11,7 @@ class CreateOrganizationScreen extends StatefulWidget {
   const CreateOrganizationScreen({super.key});
 
   @override
-  State<CreateOrganizationScreen> createState() =>
-      _CreateOrganizationScreenState();
+  State<CreateOrganizationScreen> createState() => _CreateOrganizationScreenState();
 }
 
 class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
@@ -91,8 +90,7 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
                           content: 'Вы создали организацию!',
                           buttonText: 'Понятно',
                           onButtonPressed: () {
-                            AutoRouter.of(context)
-                                .push(const OrganizationInfoRoute());
+                            AutoRouter.of(context).push(const OrganizationInfoRoute());
                           },
                         );
                       },

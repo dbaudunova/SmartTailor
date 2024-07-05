@@ -1,6 +1,8 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
@@ -13,8 +15,12 @@ class MarketplaceDetailScreen extends StatefulWidget {
   final DateTime? date;
   final bool acceptOrderButton;
   final bool buyButton;
-  const MarketplaceDetailScreen(
-      {this.date, required this.acceptOrderButton, required this.buyButton, required this.title});
+  const MarketplaceDetailScreen({
+    required this.acceptOrderButton,
+    required this.buyButton,
+    required this.title,
+    this.date,
+  });
 
   @override
   State<MarketplaceDetailScreen> createState() => _MarketplaceDetailScreenState();
@@ -68,6 +74,22 @@ class _MarketplaceDetailScreenState extends State<MarketplaceDetailScreen> {
     );
   }
 
+  void _showAlertDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialogStyle(
+          title: 'Ваш заказ в обработке',
+          content: 'Заказ отображается в вашем личном кабинете',
+          buttonText: 'Понятно',
+          onButtonPressed: () {
+            AutoRouter.of(context).maybePop();
+          },
+        );
+      },
+    );
+  }
+
   Column _buildButtons() {
     return Column(
       children: [
@@ -82,7 +104,9 @@ class _MarketplaceDetailScreenState extends State<MarketplaceDetailScreen> {
         widget.buyButton == true
             ? ElevatedButtonWidget(
                 text: t.buy,
-                onTap: () {},
+                onTap: () {
+                  _showAlertDialog();
+                },
                 color: AppColors.orange,
               )
             : Container(),
