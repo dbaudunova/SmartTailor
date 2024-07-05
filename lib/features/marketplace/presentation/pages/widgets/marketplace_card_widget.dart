@@ -31,7 +31,7 @@ class MarketplaceCard extends StatelessWidget {
           color: AppColors.white,
         ),
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -78,7 +78,7 @@ class MarketplaceCard extends StatelessWidget {
                   ),
                 ],
               ),
-              _buildPriceText()
+              Flexible(child: _buildPriceText())
             ]),
       ),
     );

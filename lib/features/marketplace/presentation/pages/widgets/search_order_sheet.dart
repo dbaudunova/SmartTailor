@@ -56,7 +56,7 @@ class _SearchOrderSheetState extends State<SearchOrderSheet> {
                     if (await microphoneHandler.isSpeechRecognitionAvailable()) {
                       microphoneHandler.startSpeechRecognition(searchController);
                     } else {
-                      _buildShowDialog();
+                      _showAlertDialog();
                     }
                   },
                   child: Icon(
@@ -92,20 +92,22 @@ class _SearchOrderSheetState extends State<SearchOrderSheet> {
     );
   }
 
-  void _buildShowDialog() {
+  void _showAlertDialog() {
     showDialog(
       context: context,
-      builder: _alertDialogBuilder,
-    );
-  }
-
-  Widget _alertDialogBuilder(context) {
-    return AlertDialogStyle(
-      title: 'Ошибка',
-      content: 'Микрофон не доступен',
-      buttonText: 'Закрыть',
-      onButtonPressed: () {
-        AutoRouter.of(context).maybePop();
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Ошибка'),
+          content: Text('Микрофон не доступен'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Закрыть'),
+              onPressed: () {
+                AutoRouter.of(context).maybePop();
+              },
+            ),
+          ],
+        );
       },
     );
   }

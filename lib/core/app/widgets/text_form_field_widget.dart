@@ -14,7 +14,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final List<TextInputFormatter>? formatters;
   final String? Function(String?)? validator;
   final void Function(OrderType type)? onSelect;
-  final SheetType? actionType;
+  // final SheetType? actionType;
   final Function? ontap;
   final bool? enabled;
   final IconData? suffixIcon;
@@ -41,7 +41,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.enabled,
     this.suffixIcon,
     this.onSelect,
-    this.actionType,
+    // this.actionType,
   });
 
   @override
@@ -50,20 +50,21 @@ class TextFormFieldWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         titleName != null
-            ? Text(
-                titleName!,
-                style: controller.text.isEmpty
-                    ? AppTextStyle.textField16
-                    : AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.10)),
-              )
+            ? Text(titleName!,
+                style:
+                    // controller.text.isEmpty
+                    AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.60))
+                // : AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.10)),
+                )
             : Container(),
         const SizedBox(
           height: 12,
         ),
         GestureDetector(
           onTap: () {
-            _handleAction(context, actionType!);
-            // _showActionSheet();
+            if (ontap != null) {
+              ontap!();
+            }
           },
           child: TextFormField(
             enabled: enabled,
@@ -99,31 +100,31 @@ class TextFormFieldWidget extends StatelessWidget {
     );
   }
 
-  void _handleAction(BuildContext ctx, SheetType actionType) {
-    print(actionType.toString());
-    switch (actionType) {
-      case SheetType.photos:
-        _showActionSheet(ctx, actionType);
-      case SheetType.type:
-        _showActionSheet(ctx, actionType);
-        break;
-      case SheetType.data:
-        _callDatePicker(ctx);
-        break;
-      case SheetType.size:
-        _callBottomSheet(ctx);
-        break;
-    }
-  }
+  // void _handleAction(BuildContext ctx, SheetType actionType) {
+  //   print(actionType.toString());
+  //   switch (actionType) {
+  //     case SheetType.photos:
+  //       _showActionSheet(ctx, actionType);
+  //     case SheetType.type:
+  //       _showActionSheet(ctx, actionType);
+  //       break;
+  //     case SheetType.data:
+  //       _callDatePicker(ctx);
+  //       break;
+  //     case SheetType.size:
+  //       _callBottomSheet(ctx);
+  //       break;
+  //   }
+  // }
 
-  void _callBottomSheet(BuildContext context) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return const SizeSelectionBottomSheet();
-      },
-    );
-  }
+  // void _callBottomSheet(BuildContext context) {
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return const SizeSelectionBottomSheet();
+  //     },
+  //   );
+  // }
 
   // void _showActionSheet(BuildContext context, SheetType type) {
   //   showCupertinoModalPopup(
@@ -146,38 +147,38 @@ class TextFormFieldWidget extends StatelessWidget {
   //   );
   // }
 
-  void _callDatePicker(BuildContext context) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return DatePickerWidget(
-          onDateSelected: (DateTime selectedDate) {},
-        );
-      },
-    );
-  }
+  // void _callDatePicker(BuildContext context) {
+  //   showModalBottomSheet<void>(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return DatePickerWidget(
+  //         onDateSelected: (DateTime selectedDate) {},
+  //       );
+  //     },
+  //   );
+  // }
 
-  void _showActionSheet(BuildContext context, SheetType type) {
-    showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) => ActionSheetWidget(
-        type: type,
-        bloc: context.read<OrderPlaceBloc>(),
-        actions: OrderType.values
-            .map(
-              (e) => AppActionSheetWidget(
-                onPressed: () {
-                  controller.text = e.name;
-                  Navigator.pop(context);
-                  onSelect?.call(e);
-                },
-                text: e.name,
-              ),
-            )
-            .toList(),
-      ),
-    );
-  }
+  // void _showActionSheet(BuildContext context, SheetType type) {
+  //   showCupertinoModalPopup(
+  //     context: context,
+  //     builder: (BuildContext context) => ActionSheetWidget(
+  //       // type: type,
+  //       // bloc: context.read<OrderPlaceBloc>(),
+  //       actions: OrderType.values
+  //           .map(
+  //             (e) => AppActionSheetWidget(
+  //               onPressed: () {
+  //                 controller.text = e.name;
+  //                 Navigator.pop(context);
+  //                 onSelect?.call(e);
+  //               },
+  //               text: e.name,
+  //             ),
+  //           )
+  //           .toList(),
+  //     ),
+  //   );
+  // }
 
   OutlineInputBorder _buildBorder() {
     return OutlineInputBorder(

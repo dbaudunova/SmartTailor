@@ -6,8 +6,9 @@ import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order
 
 class DatePickerWidget extends StatefulWidget {
   final Function(DateTime) onDateSelected;
+  final TextEditingController dateController;
 
-  const DatePickerWidget({required this.onDateSelected, super.key});
+  const DatePickerWidget({required this.onDateSelected, required this.dateController, super.key});
 
   @override
   _DatePickerWidgetState createState() => _DatePickerWidgetState();
@@ -36,6 +37,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                     onDateTimeChanged: (DateTime dateTime) {
                       setState(() {
                         _selectedDate = dateTime;
+                        widget.dateController.text = _selectedDate.toString();
                       });
                       widget.onDateSelected(dateTime);
                     },

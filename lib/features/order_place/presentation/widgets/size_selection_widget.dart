@@ -7,7 +7,10 @@ import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 class SizeSelectionBottomSheet extends StatefulWidget {
-  const SizeSelectionBottomSheet({super.key});
+  final Function(String) onSizeSelected;
+  final TextEditingController sizeController;
+
+  const SizeSelectionBottomSheet({required this.onSizeSelected, required this.sizeController, super.key});
 
   @override
   _SizeSelectionBottomSheetState createState() => _SizeSelectionBottomSheetState();
@@ -35,7 +38,7 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
               const SizedBox(height: AppProps.kPageMargin),
               _buildDropDownMenu(chosenText, context),
               const SizedBox(height: AppProps.kPageMargin),
-              _buildChips(state, context)
+              _buildChips(state, context, chosenText)
             ],
           );
         },
@@ -43,7 +46,7 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
     );
   }
 
-  Wrap _buildChips(OrderPlaceState state, BuildContext context) {
+  Wrap _buildChips(OrderPlaceState state, BuildContext context, String chosenText) {
     return Wrap(
       direction: Axis.vertical,
       spacing: 16.0,
@@ -53,6 +56,7 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
           label: Text(size),
           onDeleted: () {
             context.read<OrderPlaceBloc>().add(OrderPlaceEvent.removeSize(size: size));
+            // widget.sizeController.text = context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ');
           },
         );
       }).toList(),
@@ -95,13 +99,13 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
           ),
         ),
       ),
-      onSelected: (Object? size) {
-        if (size is String) {
-          context.read<OrderPlaceBloc>().add(
-                OrderPlaceEvent.addSize(size: size),
-              );
-        }
+      onSelected: (String? size) {
+        // context.read<OrderPlaceBloc>().add(OrderPlaceEvent.addSize(size: size));
+        widget.onSizeSelected(size!);
+        widget.sizeController.text = context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ');
+        // widget.sizeController.text = context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ');
       },
+      controller: TextEditingController(text: context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ')),
     );
   }
 }
