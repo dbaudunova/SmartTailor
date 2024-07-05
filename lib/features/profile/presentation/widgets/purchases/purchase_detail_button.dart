@@ -4,19 +4,20 @@ class PurchaseDetailButton extends StatelessWidget {
   const PurchaseDetailButton({
     super.key,
     required this.child,
+    this.padding,
   });
 
   final Widget child;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {},
       style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.white),
+        padding: MaterialStateProperty.all(padding),
         overlayColor: MaterialStateProperty.all(Colors.transparent),
-        padding: MaterialStateProperty.all(
-          const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-        ),
         elevation: MaterialStateProperty.all(0),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(

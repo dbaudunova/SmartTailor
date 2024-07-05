@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/response_item.dart';
@@ -67,24 +68,20 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
                       ),
                     ),
                   const SizedBox(height: 24),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: PurchaseDetailButton(
-                      child: _buildRow(
-                        title: 'Размеры',
-                        isExpanded: _isSizeExpanded,
-                        onPressed: () {
-                          setState(() {
-                            _isSizeExpanded = !_isSizeExpanded;
-                          });
-                        },
-                      ),
+                  CustomDropdown(
+                    style: AppTextStyle.textField16.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
                     ),
                   ),
                   const SizedBox(height: 12),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: PurchaseDetailButton(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       child: _buildRow(
                         title: 'Отклики',
                         isExpanded: _isResponseExpanded,
@@ -187,9 +184,10 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          title.toUpperCase(),
+          title,
           style: AppTextStyle.textField16.copyWith(
             fontWeight: FontWeight.w500,
+            fontSize: 20,
           ),
         ),
         IconButton(

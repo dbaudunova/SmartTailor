@@ -43,6 +43,7 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBarStyle(
         title: 'Детали сотрудника',
         centerTitle: true,

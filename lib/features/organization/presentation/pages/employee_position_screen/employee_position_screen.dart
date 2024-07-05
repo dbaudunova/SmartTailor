@@ -38,6 +38,7 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBarStyle(
         title: 'Должности',
         centerTitle: true,
