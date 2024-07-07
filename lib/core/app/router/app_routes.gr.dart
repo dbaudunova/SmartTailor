@@ -153,6 +153,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const PersonalDataScreen(),
       );
     },
+    ProfileOrganizationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileOrganizationScreen(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -350,7 +356,8 @@ class MarketplaceDetailRoute extends PageRouteInfo<MarketplaceDetailRouteArgs> {
 
   static const String name = 'MarketplaceDetailRoute';
 
-  static const PageInfo<MarketplaceDetailRouteArgs> page = PageInfo<MarketplaceDetailRouteArgs>(name);
+  static const PageInfo<MarketplaceDetailRouteArgs> page =
+      PageInfo<MarketplaceDetailRouteArgs>(name);
 }
 
 class MarketplaceDetailRouteArgs {
@@ -366,8 +373,6 @@ class MarketplaceDetailRouteArgs {
   final bool buyButton;
 
   final String title;
-
-  // final Key? key;
 
   final DateTime? date;
 
@@ -513,6 +518,20 @@ class PersonalDataRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'PersonalDataRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileOrganizationScreen]
+class ProfileOrganizationRoute extends PageRouteInfo<void> {
+  const ProfileOrganizationRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileOrganizationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileOrganizationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -110,6 +110,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
               ),
+              const SizedBox(height: AppProps.kPageMargin),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: ProfileButtonStyle(
+                  title: 'Организация',
+                  onPressed: () {
+                    AutoRouter.of(context).push(const ProfileOrganizationRoute());
+                  },
+                ),
+              )
             ],
             const Spacer(),
             SizedBox(

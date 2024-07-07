@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
@@ -25,10 +26,10 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
   String _selectedPositionText = 'Выберите должность';
 
   final List<Map> _statusList = [
-    {'name': 'Швея', "isChecked": false},
-    {'name': 'Утюжник', "isChecked": false},
-    {'name': 'Закройщик', "isChecked": false},
-    {'name': 'Технолог', "isChecked": false},
+    {'name': 'Швея', 'isChecked': false},
+    {'name': 'Утюжник', 'isChecked': false},
+    {'name': 'Закройщик', 'isChecked': false},
+    {'name': 'Технолог', 'isChecked': false},
   ];
 
   @override
@@ -43,7 +44,6 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBarStyle(
         title: 'Детали сотрудника',
         centerTitle: true,
@@ -56,74 +56,81 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Form(
-              key: _formKey,
-              child: _buildTextFieldsColumn(),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Form(
+                  key: _formKey,
+                  child: _buildTextFieldsColumn(),
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'Должность*',
+                  style: AppTextStyle.textField16,
+                ),
+                const SizedBox(height: 8),
+                PurchaseDetailButton(
+                  child: _buildRow(
+                    title: _selectedPositionText,
+                    isExpanded: _isPositionExpanded,
+                    onPressed: () {
+                      setState(() {
+                        _isPositionExpanded = !_isPositionExpanded;
+                      });
+                    },
+                  ),
+                ),
+                const SizedBox(height: 4),
+                if (_isPositionExpanded)
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+                      children: _statusList.map((list) {
+                        return _buildCheckboxList(list);
+                      }).toList(),
+                    ),
+                  ),
+              ],
             ),
-            const SizedBox(height: 16),
-            const Text(
-              'Должность*',
-              style: AppTextStyle.textField16,
-            ),
-            const SizedBox(height: 8),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: PurchaseDetailButton(
-                child: _buildRow(
-                  title: _selectedPositionText,
-                  isExpanded: _isPositionExpanded,
-                  onPressed: () {
-                    setState(() {
-                      _isPositionExpanded = !_isPositionExpanded;
-                    });
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButtonWidget(
+                  text: 'Удалить сотрудника',
+                  color: AppColors.error,
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return ExitAlert(
+                          onYesButton: () {
+                            AutoRouter.of(context)
+                                .push(const OrganizationInfoRoute());
+                          },
+                          onNoButton: () {
+                            AutoRouter.of(context).maybePop();
+                          },
+                          title: 'Вы действительно хотите удалить сотрудника?',
+                        );
+                      },
+                    );
                   },
                 ),
               ),
             ),
-            const SizedBox(height: 4),
-            if (_isPositionExpanded)
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Column(
-                  children: _statusList.map((list) {
-                    return _buildCheckboxList(list);
-                  }).toList(),
-                ),
-              ),
-            const Spacer(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: ElevatedButtonWidget(
-                text: 'Удалить сотрудника',
-                color: AppColors.error,
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return ExitAlert(
-                        onYesButton: () {
-                          AutoRouter.of(context).push(const OrganizationInfoRoute());
-                        },
-                        onNoButton: () {
-                          AutoRouter.of(context).maybePop();
-                        },
-                        title: 'Вы действительно хотите удалить сотрудника?',
-                      );
-                    },
-                  );
-                },
-              ),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -149,20 +156,21 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
   }
 
   void _updateSelectedPositionText() {
-    String selectedPosition = '';
+    var selectedPosition = '';
     for (var status in _statusList) {
       if (status['isChecked'] == true) {
         selectedPosition = status['name'];
         break;
       }
     }
-    _selectedPositionText = selectedPosition.isNotEmpty ? selectedPosition : 'Выберите должность';
+    _selectedPositionText =
+    selectedPosition.isNotEmpty ? selectedPosition : 'Выберите должность';
   }
 
   Row _buildRow({
-    String? title,
     required bool isExpanded,
     required Function() onPressed,
+    String? title,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -174,7 +182,9 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+            isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),

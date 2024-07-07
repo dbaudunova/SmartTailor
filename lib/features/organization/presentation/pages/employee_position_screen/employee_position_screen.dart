@@ -19,14 +19,14 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final List<Map> _statusList = [
-    {'name': 'Создание заказа', "isChecked": false},
-    {'name': 'Создание и выдача Должности', "isChecked": false},
-    {'name': 'Изменение прав доступа у Должностей', "isChecked": false},
-    {'name': 'Изменение статуса заказа', "isChecked": false},
-    {'name': 'Добавление работника', "isChecked": false},
-    {'name': 'Удаление заказа', "isChecked": false},
-    {'name': 'Удаление работника', "isChecked": false},
-    {'name': 'Удаление должности', "isChecked": false},
+    {'name': 'Создание заказа', 'isChecked': false},
+    {'name': 'Создание и выдача Должности', 'isChecked': false},
+    {'name': 'Изменение прав доступа у Должностей', 'isChecked': false},
+    {'name': 'Изменение статуса заказа', 'isChecked': false},
+    {'name': 'Добавление работника', 'isChecked': false},
+    {'name': 'Удаление заказа', 'isChecked': false},
+    {'name': 'Удаление работника', 'isChecked': false},
+    {'name': 'Удаление должности', 'isChecked': false},
   ];
 
   @override
