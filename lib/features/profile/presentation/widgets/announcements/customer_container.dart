@@ -19,7 +19,6 @@ class CustomerContainer extends StatelessWidget {
           horizontal: 16,
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CircleAvatar(
               backgroundColor: AppColors.greyText,

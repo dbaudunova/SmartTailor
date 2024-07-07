@@ -4,8 +4,8 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class AnnouncementsContainer extends StatelessWidget {
   const AnnouncementsContainer({
-    super.key,
     required this.onTap,
+    super.key,
     this.price,
   });
 

@@ -16,7 +16,8 @@ class OrganizationInfoScreen extends StatefulWidget {
   State<OrganizationInfoScreen> createState() => _OrganizationInfoScreenState();
 }
 
-class _OrganizationInfoScreenState extends State<OrganizationInfoScreen> with TickerProviderStateMixin {
+class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
+    with TickerProviderStateMixin {
   late TabController _tabController;
   final List<String> _labels = ['Сотрудники', 'Должности', 'Заказы'];
 
@@ -68,25 +69,31 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen> with Ti
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: _buildEmployeePositionTab(),
                 ),
-                ListView.builder(
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16)
-                          .copyWith(bottom: 12),
-                      child: AnnouncementsContainer(
-                        onTap: () {},
-                        price: '1000 сом',
-                      ),
-                    );
-                  },
-                ),
+                _buildOrderListView(),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  ListView _buildOrderListView() {
+    return ListView.builder(
+      itemCount: 10,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding:
+              const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
+          child: AnnouncementsContainer(
+            onTap: () {
+              AutoRouter.of(context).push(const CurrentOrderDetailRoute());
+            },
+            price: '1000 сом',
+          ),
+        );
+      },
     );
   }
 
@@ -128,7 +135,8 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen> with Ti
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16)
+                  .copyWith(bottom: 12),
               child: EmployeeItemContainer(
                 onTap: () {
                   AutoRouter.of(context).push(const EmployeeDetailRoute());
@@ -170,7 +178,8 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen> with Ti
               width: 92,
               height: 92,
               child: CachedNetworkImage(
-                imageUrl: 'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
+                imageUrl:
+                    'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
                 fit: BoxFit.cover,
               ),
             ),

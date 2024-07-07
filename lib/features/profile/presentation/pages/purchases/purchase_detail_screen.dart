@@ -17,7 +17,6 @@ class PurchaseDetailScreen extends StatefulWidget {
 
 class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
   bool _isDescriptionExpanded = true;
-  bool _isSizeExpanded = false;
   bool _isResponseExpanded = false;
 
   @override

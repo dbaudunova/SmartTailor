@@ -4,7 +4,10 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/customer_container.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/response_item.dart';
 
 @RoutePage()
 class AnnouncementDetailScreen extends StatefulWidget {
@@ -16,6 +19,9 @@ class AnnouncementDetailScreen extends StatefulWidget {
 }
 
 class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
+  bool _isCustomerExpanded = false;
+  bool _isResponseExpanded = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +58,49 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                         ),
                         const SizedBox(height: 16),
                         _buildAuthorInfo(),
+                        const SizedBox(height: 24),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: PurchaseDetailButton(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            child: _buildRow(
+                              title: 'Список покупателей',
+                              isExpanded: _isCustomerExpanded,
+                              onPressed: () {
+                                setState(() {
+                                  _isCustomerExpanded = !_isCustomerExpanded;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        if (_isCustomerExpanded) _buildCustomerContainer(),
+                        const SizedBox(height: 8),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: PurchaseDetailButton(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            child: _buildRow(
+                              title: 'Отклики',
+                              isExpanded: _isResponseExpanded,
+                              onPressed: () {
+                                setState(() {
+                                  _isResponseExpanded = !_isResponseExpanded;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        if (_isResponseExpanded) _buildCustomerContainer(),
+                        const SizedBox(height: 64),
                       ],
                     ),
                   ),
@@ -108,6 +157,54 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Container _buildCustomerContainer() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: CustomerContainer(),
+          );
+        },
+      ),
+    );
+  }
+
+  Row _buildRow({
+    required String title,
+    required bool isExpanded,
+    required Function() onPressed,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: AppTextStyle.textField16.copyWith(
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+          ),
+        ),
+        IconButton(
+          onPressed: onPressed,
+          icon: Icon(
+            isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
+            color: Colors.black,
+          ),
+        ),
+      ],
     );
   }
 
