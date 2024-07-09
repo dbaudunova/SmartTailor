@@ -5,6 +5,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/user_info.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
 @RoutePage()
@@ -42,35 +43,14 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
           child: Column(
             children: [
-              Row(
-                children: [
-                  SizedBox(
-                    height: 48,
-                    width: 48,
-                    child: CircleAvatar(
-                      backgroundColor: AppColors.yellow,
-                      child: SvgPicture.asset(
-                        Assets.icons.person,
-                        width: AppProps.kBigMargin,
-                        height: AppProps.kBigMargin,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  _buildColumn(),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      Assets.icons.bell,
-                    ),
-                  ),
-                ],
+              const UserInfo(
+                showBellIcon: false,
+                secondRowText: 'Изменить фото профиля',
               ),
               const SizedBox(height: 16),
               _buildPersonalDataRow(),
               const SizedBox(height: 40),
-              Form(key: _formKey, child: _buildFields()),
+              Form(key: _formKey, child: _buildTextFields()),
               const Spacer(),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
@@ -91,7 +71,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
     );
   }
 
-  Column _buildFields() {
+  Column _buildTextFields() {
     return Column(
       children: [
         TextFormFieldWidget(
@@ -182,34 +162,12 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           ),
         ),
         const Spacer(),
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(
-            Assets.icons.edit,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Column _buildColumn() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Имя Фамилия',
-          style: AppTextStyle.title24.copyWith(
-            fontSize: 18,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          'Изменить фото профиля',
-          style: AppTextStyle.title24.copyWith(
-            fontSize: AppProps.kMediumMargin,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+         Padding(
+           padding: const EdgeInsets.only(right: 16, top: 16),
+           child: SvgPicture.asset(
+              Assets.icons.edit,
+            ),
+         ),
       ],
     );
   }

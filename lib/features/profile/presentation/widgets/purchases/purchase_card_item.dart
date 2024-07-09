@@ -4,13 +4,13 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class PurchaseCardItem extends StatelessWidget {
   const PurchaseCardItem({
-    super.key,
     required this.purchaseImage,
     required this.orderNumber,
     required this.price,
     required this.authorName,
     required this.description,
     required this.onTap,
+    super.key,
   });
 
   final String purchaseImage;
@@ -57,12 +57,12 @@ class PurchaseCardItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           orderNumber,
                           style: AppTextStyle.textField16,
                         ),
-                        const Spacer(),
                         Text(
                           price,
                           style: AppTextStyle.textField16.copyWith(
