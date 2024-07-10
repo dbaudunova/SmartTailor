@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
-class CompletedOrderContainer extends StatelessWidget {
-  const CompletedOrderContainer({
+class OrderContainer extends StatelessWidget {
+  const OrderContainer({
+    required this.onTap,
+    this.isActive = true,
     super.key,
-    this.onTap,
   });
 
-  final VoidCallback? onTap;
+  final bool isActive;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -18,44 +20,61 @@ class CompletedOrderContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(16),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Заказы:',
                     style: AppTextStyle.textField16,
                   ),
-                  SizedBox(height: 8),
-                  Text(
+                  const SizedBox(height: 8),
+                  const Text(
                     'Сумма:',
                     style: AppTextStyle.textField16,
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Дата завершения:',
+                  if (isActive) ...[
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Статус:',
+                      style: AppTextStyle.textField16,
+                    ),
+                  ],
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Дата принятия:',
                     style: AppTextStyle.textField16,
                   ),
                 ],
               ),
-              Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     '№234',
                     style: AppTextStyle.textField16,
                   ),
-                  SizedBox(height: 8),
-                  Text(
+                  const SizedBox(height: 8),
+                  const Text(
                     '100 сом',
                     style: AppTextStyle.textField16,
                   ),
-                  SizedBox(height: 8),
-                  Text(
+                  if (isActive) ...[
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      'Прибыл',
+                      style: AppTextStyle.textField16
+                          .copyWith(color: Colors.green),
+                    ),
+                  ],
+                  const SizedBox(height: 8),
+                  const Text(
                     '10.04.2024',
                     style: AppTextStyle.textField16,
                   ),

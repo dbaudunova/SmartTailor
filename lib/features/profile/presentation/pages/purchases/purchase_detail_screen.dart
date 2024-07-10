@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/author_info.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
@@ -16,7 +17,7 @@ class PurchaseDetailScreen extends StatefulWidget {
 }
 
 class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
-  bool _isDescriptionExpanded = true;
+  bool _isDescriptionExpanded = false;
   bool _isResponseExpanded = false;
 
   @override
@@ -34,72 +35,74 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const GalleryScreen(),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildPriceAndOrder(),
-                  const SizedBox(height: 16),
-                  _buildOrderStatusRow(),
-                  const SizedBox(height: 24),
-                  _buildAuthorInfo(),
-                  const SizedBox(height: 24),
-                  _buildRow(
-                    title: 'Описание',
-                    isExpanded: _isDescriptionExpanded,
-                    onPressed: () {
-                      setState(() {
-                        _isDescriptionExpanded = !_isDescriptionExpanded;
-                      });
-                    },
-                  ),
-                  if (_isDescriptionExpanded)
-                    Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+      body: Column(
+        children: [
+          const GalleryScreen(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16)
+                    .copyWith(top: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildPriceAndOrder(),
+                    const SizedBox(height: 16),
+                    _buildOrderStatusRow(),
+                    const SizedBox(height: 24),
+                    const AuthorInfo(),
+                    const SizedBox(height: 24),
+                    _buildRow(
+                      title: 'Описание',
+                      isExpanded: _isDescriptionExpanded,
+                      onPressed: () {
+                        setState(() {
+                          _isDescriptionExpanded = !_isDescriptionExpanded;
+                        });
+                      },
+                    ),
+                    if (_isDescriptionExpanded)
+                      Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+                        style: AppTextStyle.textField16.copyWith(
+                          color: AppColors.greyText,
+                        ),
+                      ),
+                    const SizedBox(height: 24),
+                    CustomDropdown(
                       style: AppTextStyle.textField16.copyWith(
-                        color: AppColors.greyText,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
                       ),
                     ),
-                  const SizedBox(height: 24),
-                  CustomDropdown(
-                    style: AppTextStyle.textField16.copyWith(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: PurchaseDetailButton(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      child: _buildRow(
-                        title: 'Отклики',
-                        isExpanded: _isResponseExpanded,
-                        onPressed: () {
-                          setState(() {
-                            _isResponseExpanded = !_isResponseExpanded;
-                          });
-                        },
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: PurchaseDetailButton(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        child: _buildRow(
+                          title: 'Отклики',
+                          isExpanded: _isResponseExpanded,
+                          onPressed: () {
+                            setState(() {
+                              _isResponseExpanded = !_isResponseExpanded;
+                            });
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  if (_isResponseExpanded) _buildResponseContainer(),
-                  const SizedBox(height: 16),
-                ],
+                    const SizedBox(height: 4),
+                    if (_isResponseExpanded) _buildResponseContainer(),
+                    const SizedBox(height: 16),
+                  ],
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -162,14 +165,16 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: 10,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-            child: ResponseItem(
-              onButtonPressed: () {},
-            ),
-          );
-        },
+        itemBuilder: _buildResponseItemBuilder,
+      ),
+    );
+  }
+
+  Widget? _buildResponseItemBuilder(context, index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+      child: ResponseItem(
+        onButtonPressed: () {},
       ),
     );
   }
@@ -196,45 +201,6 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
                 ? Icons.keyboard_arrow_up_rounded
                 : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Row _buildAuthorInfo() {
-    return Row(
-      children: [
-        const CircleAvatar(
-          radius: 32,
-          backgroundColor: AppColors.greyText,
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              'Sandy Wilder Cheng',
-              style: AppTextStyle.text14.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              'Автор объявления',
-              style: AppTextStyle.text14.copyWith(
-                color: AppColors.greyText,
-              ),
-            )
-          ],
-        ),
-        const Spacer(),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.phone,
-            color: AppColors.listGreen,
           ),
         ),
       ],

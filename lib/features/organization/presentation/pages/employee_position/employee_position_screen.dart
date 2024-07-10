@@ -73,7 +73,7 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
               ],
             ),
             Positioned(
-              bottom: 16,
+              bottom: 32,
               left: 0,
               right: 0,
               child: SizedBox(

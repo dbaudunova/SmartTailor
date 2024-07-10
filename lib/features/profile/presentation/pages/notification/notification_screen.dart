@@ -60,22 +60,25 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
   }
 
-  Row _buildReadAllRow() {
-    return Row(
-      children: [
-        const SizedBox(width: 28),
-        const Icon(
-          Icons.visibility_outlined,
-          color: AppColors.greyText,
-        ),
-        const SizedBox(width: 16),
-        Text(
-          'Отметить все прочитанным',
-          style: AppTextStyle.text14.copyWith(
-            fontWeight: FontWeight.w500,
+  GestureDetector _buildReadAllRow() {
+    return GestureDetector(
+      onTap: (){},
+      child: Row(
+        children: [
+          const SizedBox(width: 28),
+          const Icon(
+            Icons.visibility_outlined,
+            color: AppColors.greyText,
           ),
-        ),
-      ],
+          const SizedBox(width: 16),
+          Text(
+            'Отметить все прочитанным',
+            style: AppTextStyle.text14.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

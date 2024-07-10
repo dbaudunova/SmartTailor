@@ -12,6 +12,15 @@ class NotificationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Container(
+          width: 8,
+          height: 8,
+          decoration: const BoxDecoration(
+            color: AppColors.orange,
+            shape: BoxShape.circle,
+          ),
+        ),
+        const SizedBox(width: 12),
         CircleAvatar(
           radius: 16,
           backgroundColor: AppColors.lightBLue,

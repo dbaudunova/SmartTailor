@@ -2,8 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/active_order.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/completed_order.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/order_container.dart';
 
 @RoutePage()
 class OrderHistoryScreen extends StatefulWidget {
@@ -68,9 +67,12 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: CompletedOrderContainer(),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: OrderContainer(
+            isActive: false,
+            onTap: () {},
+          ),
         );
       },
     );
@@ -80,9 +82,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: ActiveOrderContainer(),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: OrderContainer(
+            onTap: () {},
+          ),
         );
       },
     );

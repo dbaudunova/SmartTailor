@@ -4,7 +4,7 @@ import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/order/current_order_container.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/completed_order.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/order_container.dart';
 
 @RoutePage()
 class OrderScreen extends StatefulWidget {
@@ -73,7 +73,8 @@ class _OrderScreenState extends State<OrderScreen>
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: CompletedOrderContainer(
+            child: OrderContainer(
+              isActive: false,
               onTap: () {
                 AutoRouter.of(context).push(const HistoryDetailRoute());
               },

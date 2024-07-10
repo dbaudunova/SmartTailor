@@ -76,25 +76,19 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       children: [
         TextFormFieldWidget(
           titleName: 'Фамилия*',
-          validator: (value) {
-            return _nullValidation(value);
-          },
+          validator: _nullValidation,
           controller: _surnameController,
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: 'Имя*',
-          validator: (value) {
-            return _nullValidation(value);
-          },
+          validator: _nullValidation,
           controller: _nameController,
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: 'Отчество*',
-          validator: (value) {
-            return _nullValidation(value);
-          },
+          validator: _nullValidation,
           controller: _fathersNameController,
         ),
         const SizedBox(height: 16),
@@ -102,15 +96,11 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           titleName: 'Почта*',
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
-          validator: (value) {
-            return _emailValidation(value);
-          },
+          validator: _emailValidation,
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
-          validator: (value) {
-            return _nullValidation(value);
-          },
+          validator: _nullValidation,
           titleName: 'Номер телефона*',
           keyboardType: TextInputType.phone,
           formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
@@ -162,12 +152,12 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           ),
         ),
         const Spacer(),
-         Padding(
-           padding: const EdgeInsets.only(right: 16, top: 16),
-           child: SvgPicture.asset(
-              Assets.icons.edit,
-            ),
-         ),
+        Padding(
+          padding: const EdgeInsets.only(right: 16, top: 16),
+          child: SvgPicture.asset(
+            Assets.icons.edit,
+          ),
+        ),
       ],
     );
   }

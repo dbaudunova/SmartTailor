@@ -4,8 +4,8 @@ import 'package:neobis_smart_tailor/features/organization/presentation/widgets/e
 
 class StatusBottomSheet extends StatelessWidget {
   const StatusBottomSheet({
-    super.key,
     required List<Map> statusList,
+    super.key,
   }) : _statusList = statusList;
 
   final List<Map> _statusList;

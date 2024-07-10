@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info_row.dart';
 
 @RoutePage()
 class ProfileOrganizationScreen extends StatefulWidget {
@@ -17,7 +16,7 @@ class ProfileOrganizationScreen extends StatefulWidget {
 class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  final List<String> _labels = ['Текущие заказы', 'Список сотрудников'];
+  final List<String> _labels = ['Текущие заказы', 'Сотрудники'];
 
   @override
   void initState() {
@@ -45,58 +44,13 @@ class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen>
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              _buildOrganizationInfo(),
-            ],
+          const OrganizationInfoRow(
+            isDateContainerVisible: false,
           ),
           const SizedBox(height: 24),
           TabBarWidget(
             tabController: _tabController,
             labels: _labels,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Padding _buildOrganizationInfo() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: SizedBox(
-              width: 70,
-              height: 70,
-              child: CachedNetworkImage(
-                imageUrl:
-                    'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          const SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Название организации',
-                style: AppTextStyle.s20w400Orange.copyWith(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                'Мониторинг и управление\nшвейным производством',
-                style: AppTextStyle.text14.copyWith(
-                  color: AppColors.greyText,
-                ),
-              ),
-            ],
           ),
         ],
       ),

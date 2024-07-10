@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/author_info.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/customer_container.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/response_item.dart';
 
 @RoutePage()
 class AnnouncementDetailScreen extends StatefulWidget {
@@ -57,7 +57,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                           color: AppColors.black.withOpacity(0.36),
                         ),
                         const SizedBox(height: 16),
-                        _buildAuthorInfo(),
+                       const AuthorInfo(),
                         const SizedBox(height: 24),
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
@@ -136,11 +136,11 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                             context: context,
                             builder: (context) {
                               return ExitAlert(
-                                onYesButton: () {
+                                confirmButton: () {
                                   AutoRouter.of(context)
                                       .push(const MyAnnouncementsRoute());
                                 },
-                                onNoButton: () {
+                                cancelButton: () {
                                   AutoRouter.of(context).maybePop();
                                 },
                                 title: 'Удалить объявление?',
@@ -259,45 +259,6 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         Text(
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
           style: AppTextStyle.text14.copyWith(color: AppColors.greyText),
-        ),
-      ],
-    );
-  }
-
-  Row _buildAuthorInfo() {
-    return Row(
-      children: [
-        const CircleAvatar(
-          radius: 32,
-          backgroundColor: AppColors.greyText,
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              'Sandy Wilder Cheng',
-              style: AppTextStyle.text14.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              'Автор объявления',
-              style: AppTextStyle.text14.copyWith(
-                color: AppColors.greyText,
-              ),
-            )
-          ],
-        ),
-        const Spacer(),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.phone,
-            color: AppColors.listGreen,
-          ),
         ),
       ],
     );

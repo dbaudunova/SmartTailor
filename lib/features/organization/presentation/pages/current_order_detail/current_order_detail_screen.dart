@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
-import 'package:neobis_smart_tailor/features/organization/presentation/widgets/order/status_bottom_sheey.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/widgets/order/status_bottom_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 
 @RoutePage()
@@ -16,13 +16,13 @@ class CurrentOrderDetailScreen extends StatefulWidget {
 }
 
 class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
-  bool _isEmployeeExpanded = true;
+  bool _isEmployeeExpanded = false;
   final List<Map> _statusList = [
-    {'name': 'Прибыл', "isChecked": false},
-    {'name': 'В работе', "isChecked": false},
-    {'name': 'В ожидании', "isChecked": false},
-    {'name': 'Отправка', "isChecked": false},
-    {'name': 'Проверка', "isChecked": false},
+    {'name': 'Прибыл', 'isChecked': false},
+    {'name': 'В работе', 'isChecked': false},
+    {'name': 'В ожидании', 'isChecked': false},
+    {'name': 'Отправка', 'isChecked': false},
+    {'name': 'Проверка', 'isChecked': false},
   ];
 
   @override
@@ -40,135 +40,145 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const GalleryScreen(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16)
-                        .copyWith(top: 24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildStatusRow(),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Сшить костюм',
-                          style: AppTextStyle.textField16.copyWith(
-                            fontWeight: FontWeight.w500,
+      body: Column(
+        children: [
+          const GalleryScreen(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16)
+                          .copyWith(top: 24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildStatusRow(),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Сшить костюм',
+                            style: AppTextStyle.textField16.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-                          style: AppTextStyle.s12w400.copyWith(
-                            color: AppColors.greyText,
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
+                          const SizedBox(height: 8),
+                          Text(
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+                            style: AppTextStyle.s12w400.copyWith(
                               color: AppColors.greyText,
                             ),
                           ),
-                          child: _buildRow(
-                            isExpanded: _isEmployeeExpanded,
-                            onPressed: () {
-                              setState(() {
-                                _isEmployeeExpanded = !_isEmployeeExpanded;
-                              });
-                            },
-                            title: 'Сотрудники',
-                          ),
-                        ),
-                        if (_isEmployeeExpanded) _buildEmployeeListView(),
-                        const SizedBox(height: 16),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Сумма заказа',
-                              style: AppTextStyle.textField16.copyWith(
-                                fontWeight: FontWeight.w500,
+                          const SizedBox(height: 16),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColors.greyText,
                               ),
                             ),
-                            Text(
-                              '1000 сом',
-                              style: AppTextStyle.textField16.copyWith(
-                                color: AppColors.orange,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(
-                            top: 16,
-                            bottom: 24,
-                          ),
-                          child: Divider(
-                            color: AppColors.greyText,
-                          ),
-                        ),
-                        _buildAuthorInfo(),
-                        const SizedBox(height: 16),
-                        _buildTransparentButton(
-                          backgroundColor: Colors.white,
-                          strokeColor: AppColors.greyText,
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return ExitAlert(
-                                  onYesButton: () {
-                                    Navigator.pop(context);
-                                    _buildShowModalBottomSheet(context);
-                                  },
-                                  onNoButton: () {
-                                    AutoRouter.of(context).maybePop();
-                                  },
-                                  title: 'Хотите изменить статус?',
-                                );
+                            child: _buildRow(
+                              isExpanded: _isEmployeeExpanded,
+                              onPressed: () {
+                                setState(() {
+                                  _isEmployeeExpanded = !_isEmployeeExpanded;
+                                });
                               },
-                            );
-                          },
-                          text: 'Изменить статус',
-                        ),
-                        const SizedBox(height: 8),
-                        _buildTransparentButton(
-                          backgroundColor: AppColors.error,
-                          onPressed: () {},
-                          textColor: Colors.white,
-                          text: 'Отменить заказ',
-                        ),
-                      ],
+                              title: 'Сотрудники',
+                            ),
+                          ),
+                          if (_isEmployeeExpanded) _buildEmployeeListView(),
+                          const SizedBox(height: 16),
+                          _buildPriceRow(),
+                          const Padding(
+                            padding: EdgeInsets.only(
+                              top: 16,
+                              bottom: 24,
+                            ),
+                            child: Divider(
+                              color: AppColors.greyText,
+                            ),
+                          ),
+                          _buildAuthorInfo(),
+                          const SizedBox(height: 16),
+                          _buildTransparentButton(
+                            backgroundColor: Colors.white,
+                            strokeColor: AppColors.greyText,
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return ExitAlert(
+                                    confirmButton: () {
+                                      Navigator.pop(context);
+                                      _buildShowModalBottomSheet(context);
+                                    },
+                                    cancelButton: () {
+                                      AutoRouter.of(context).maybePop();
+                                    },
+                                    title: 'Хотите изменить статус?',
+                                  );
+                                },
+                              );
+                            },
+                            text: 'Изменить статус',
+                          ),
+                          const SizedBox(height: 8),
+                          _buildTransparentButton(
+                            backgroundColor: AppColors.error,
+                            onPressed: () {},
+                            textColor: Colors.white,
+                            text: 'Отменить заказ',
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  Future<dynamic> _buildShowModalBottomSheet(BuildContext context) {
-    return showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+  Row _buildPriceRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'Сумма заказа',
+          style: AppTextStyle.textField16.copyWith(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          '1000 сом',
+          style: AppTextStyle.textField16.copyWith(
+            color: AppColors.orange,
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _buildShowModalBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8),
+          topRight: Radius.circular(8),
+        ),
       ),
       context: context,
       builder: (context) {
@@ -303,9 +313,9 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
   }
 
   Row _buildRow({
-    String? title,
     required bool isExpanded,
     required Function() onPressed,
+    String? title,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -331,4 +341,3 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
     );
   }
 }
-

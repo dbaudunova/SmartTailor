@@ -4,14 +4,15 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class ExitAlert extends StatelessWidget {
   const ExitAlert({
+    required this.confirmButton,
+    required this.cancelButton,
+    required this.title,
     super.key,
-    required this.onYesButton,
-    required this.onNoButton, required this.title,
   });
 
   final String title;
-  final VoidCallback onYesButton;
-  final VoidCallback onNoButton;
+  final VoidCallback confirmButton;
+  final VoidCallback cancelButton;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ExitAlert extends StatelessWidget {
       title: Text(title),
       actions: [
         TextButton(
-          onPressed: onNoButton,
+          onPressed: cancelButton,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
@@ -31,7 +32,7 @@ class ExitAlert extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: onYesButton,
+          onPressed: confirmButton,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(

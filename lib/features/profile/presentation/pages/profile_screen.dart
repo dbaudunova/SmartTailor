@@ -98,10 +98,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       builder: (context) {
         return ExitAlert(
           title: 'Вы действительно хотите выйти?',
-          onYesButton: () {
+          confirmButton: () {
             AutoRouter.of(context).push(const RegistrationRoute());
           },
-          onNoButton: () {
+          cancelButton: () {
             AutoRouter.of(context).maybePop();
           },
         );

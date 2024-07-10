@@ -10,7 +10,7 @@ import 'package:neobis_smart_tailor/features/order_place/presentation/order_plac
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/current_order_detail/current_order_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_detail/employee_detail_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_position_screen/employee_position_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_position/employee_position_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/history_detail/history_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/invite_employee/invite_employee_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/order/order_screen.dart';

@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
@@ -92,45 +91,48 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Column(
-                      children: _statusList.map((list) {
-                        return _buildCheckboxList(list);
-                      }).toList(),
+                      children: _statusList.map(_buildCheckboxList).toList(),
                     ),
                   ),
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ElevatedButtonWidget(
-                  text: 'Удалить сотрудника',
-                  color: AppColors.error,
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return ExitAlert(
-                          onYesButton: () {
-                            AutoRouter.of(context)
-                                .push(const OrganizationInfoRoute());
-                          },
-                          onNoButton: () {
-                            AutoRouter.of(context).maybePop();
-                          },
-                          title: 'Вы действительно хотите удалить сотрудника?',
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
+          _buildAlignButton(context),
         ],
+      ),
+    );
+  }
+
+  Align _buildAlignButton(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Padding(
+        padding:
+            const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 32),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: ElevatedButtonWidget(
+            text: 'Удалить сотрудника',
+            color: AppColors.error,
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return ExitAlert(
+                    confirmButton: () {
+                      AutoRouter.of(context)
+                          .push(const OrganizationInfoRoute());
+                    },
+                    cancelButton: () {
+                      AutoRouter.of(context).maybePop();
+                    },
+                    title: 'Вы действительно хотите удалить сотрудника?',
+                  );
+                },
+              );
+            },
+          ),
+        ),
       ),
     );
   }
@@ -164,7 +166,7 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
       }
     }
     _selectedPositionText =
-    selectedPosition.isNotEmpty ? selectedPosition : 'Выберите должность';
+        selectedPosition.isNotEmpty ? selectedPosition : 'Выберите должность';
   }
 
   Row _buildRow({
