@@ -13,7 +13,7 @@ class FabButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 4,
+      bottom: 8,
       right: MediaQuery.of(context).size.width / 2 - 24,
       child: GestureDetector(
         onTap: onTap,

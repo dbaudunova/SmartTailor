@@ -4,7 +4,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/author_info.dart';
-import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/customer_container.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
@@ -57,7 +57,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                           color: AppColors.black.withOpacity(0.36),
                         ),
                         const SizedBox(height: 16),
-                       const AuthorInfo(),
+                        const AuthorInfo(),
                         const SizedBox(height: 24),
                         SizedBox(
                           width: MediaQuery.of(context).size.width,

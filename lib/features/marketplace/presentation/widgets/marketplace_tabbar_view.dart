@@ -1,13 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/marketplace_card_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/marketplace_card_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 class MarketplaceTabBarView extends StatelessWidget {
   const MarketplaceTabBarView({
-    super.key,
     required this.tabIndex,
+    super.key,
   });
 
   final int tabIndex;
@@ -23,6 +25,7 @@ class MarketplaceTabBarView extends StatelessWidget {
             onTap: () {
               AutoRouter.of(context).push(
                 MarketplaceDetailRoute(
+                  sizeWidget: const CustomDropdown(),
                   title: t.orderDetail,
                   acceptOrderButton: true,
                   buyButton: true,
@@ -34,7 +37,12 @@ class MarketplaceTabBarView extends StatelessWidget {
             description: t.orderDesc,
             title: t.order,
             data: DateTime(2014, 4, 10),
-            price: 1000,
+            price: Text(
+              '2000 сом',
+              style: AppTextStyle.textField16.copyWith(
+                color: AppColors.black.withOpacity(0.60),
+              ),
+            ),
           );
         },
       );
@@ -53,7 +61,12 @@ class MarketplaceTabBarView extends StatelessWidget {
               );
             },
             title: t.nitki,
-            price: 2000,
+            price: Text(
+              '1000 сом',
+              style: AppTextStyle.textField16.copyWith(
+                color: AppColors.yellow,
+              ),
+            ),
             description: t.equipmentDesk,
             tabIndex: tabIndex,
           );

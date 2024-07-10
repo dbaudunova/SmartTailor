@@ -1,7 +1,7 @@
 class HttpPaths {
-  static const baseUrl = 'https://supportive-love-cook2.up.railway.app';
+  static const baseUrl = 'http://34.107.28.98';
 
-  static const registration = '$baseUrl/api/auth/register';
+  static const registration = '$baseUrl/api/account/register/';
   static const authorization = '$baseUrl/api/auth/login';
   static const refreshToken = '$baseUrl/api/auth/refresh-token';
 

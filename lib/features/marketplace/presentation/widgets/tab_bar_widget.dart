@@ -3,9 +3,9 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class TabBarWidget extends StatelessWidget {
   const TabBarWidget({
-    super.key,
     required this.tabController,
     required this.labels,
+    super.key,
   });
 
   final TabController tabController;
@@ -53,15 +53,3 @@ class TabBarWidget extends StatelessWidget {
     );
   }
 }
-
-/*enum Labels {
-  orders('Заказы'),
-  equipment('Оборудование'),
-  services("Услуги");
-
-  const Labels(this.label);
-
-  final String label;
-  static List<Tab> tabs =
-      Labels.values.map((title) => Tab(text: title.label)).toList();
-}*/

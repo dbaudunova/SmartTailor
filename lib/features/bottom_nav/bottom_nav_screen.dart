@@ -44,7 +44,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             ],
           ),
           child: SizedBox(
-            height: AppProps.kPageMarginX5,
+            height: 90,
             child: Row(
               children: _navBarsItems(
                 activeIndex: tabsRouter.activeIndex,
@@ -103,9 +103,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 }
 
 Widget _buildNavItem({
-  bool isActive = true,
   required BottomMenuItem item,
   required Function(int index) onSelectedItem,
+  bool isActive = true,
 }) {
   const selectedColor = AppColors.darkBlue;
   const unselectedColor = AppColors.greyText;
@@ -114,6 +114,7 @@ Widget _buildNavItem({
       onSelectedItem(item.index);
     },
     child: Column(
+      // crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
@@ -128,9 +129,10 @@ Widget _buildNavItem({
           ),
         ),
         Text(
+          textAlign: TextAlign.center,
           item.title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          // maxLines: 1,
+          // overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: isActive ? selectedColor : unselectedColor,
             fontSize: AppProps.kMediumMargin,

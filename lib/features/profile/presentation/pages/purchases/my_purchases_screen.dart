@@ -43,12 +43,12 @@ class _MyPurchasesScreenState extends State<MyPurchasesScreen> {
       width: MediaQuery.of(context).size.width,
       child: PurchaseCardItem(
         purchaseImage:
-            'https://images.squarespace-cdn.com/content/v1/56f4747c2eeb8139660284f2/1493401211825-00J1I9Y6J2AJOEHOPRX4/IMG_7335.JPG',
+        'https://images.squarespace-cdn.com/content/v1/56f4747c2eeb8139660284f2/1493401211825-00J1I9Y6J2AJOEHOPRX4/IMG_7335.JPG',
         orderNumber: 'Заказ №5',
         price: '1000 сом',
         authorName: 'Sandy Wilder Cheng',
         description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing eliе...',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing eliе...',
         onTap: () {
           AutoRouter.of(context).push(const PurchaseDetailRoute());
         },

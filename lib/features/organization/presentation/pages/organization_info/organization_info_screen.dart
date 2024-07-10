@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/tab_bar_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/employee_item.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info_row.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
@@ -85,7 +85,7 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
       itemBuilder: (context, index) {
         return Padding(
           padding:
-              const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
+          const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
           child: AnnouncementsContainer(
             onTap: () {
               AutoRouter.of(context).push(const CurrentOrderDetailRoute());
