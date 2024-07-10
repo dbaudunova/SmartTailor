@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 
 @RoutePage()
@@ -11,8 +11,7 @@ class AnnouncementDetailScreen extends StatefulWidget {
   const AnnouncementDetailScreen({super.key});
 
   @override
-  State<AnnouncementDetailScreen> createState() =>
-      _AnnouncementDetailScreenState();
+  State<AnnouncementDetailScreen> createState() => _AnnouncementDetailScreenState();
 }
 
 class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
@@ -39,8 +38,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        bottom: 80, left: 16, right: 16, top: 24),
+                    padding: const EdgeInsets.only(bottom: 80, left: 16, right: 16, top: 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -74,8 +72,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                       backgroundColor: Colors.white,
                       strokeColor: AppColors.greyText,
                       onPressed: () {
-                        AutoRouter.of(context)
-                            .push(const MyAnnouncementsRoute());
+                        AutoRouter.of(context).push(const MyAnnouncementsRoute());
                       },
                       text: 'Скрыть объявление',
                     ),
@@ -88,8 +85,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                             builder: (context) {
                               return ExitAlert(
                                 onYesButton: () {
-                                  AutoRouter.of(context)
-                                      .push(const MyAnnouncementsRoute());
+                                  AutoRouter.of(context).push(const MyAnnouncementsRoute());
                                 },
                                 onNoButton: () {
                                   AutoRouter.of(context).maybePop();

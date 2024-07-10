@@ -5,17 +5,17 @@ class MarketplaceCard extends StatelessWidget {
   final void Function() onTap;
   final int tabIndex;
   final DateTime? data;
-  final int? price;
+  final Text? price;
   final String description;
   final String title;
   const MarketplaceCard({
-    super.key,
     required this.tabIndex,
-    this.data,
-    this.price = 10,
     required this.description,
     required this.title,
     required this.onTap,
+    super.key,
+    this.data,
+    this.price,
   });
 
   @override
@@ -31,7 +31,7 @@ class MarketplaceCard extends StatelessWidget {
           color: AppColors.white,
         ),
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -78,29 +78,29 @@ class MarketplaceCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Flexible(child: _buildPriceText())
+              if (price != null) Flexible(child: price!),
             ]),
       ),
     );
   }
 
-  Widget _buildPriceText() {
-    if (tabIndex == 0) {
-      return Text(
-        '1000 сом',
-        style: AppTextStyle.textField16.copyWith(
-          color: AppColors.black.withOpacity(0.60),
-        ),
-      );
-    } else if (tabIndex == 1) {
-      return Text(
-        '1000 сом',
-        style: AppTextStyle.textField16.copyWith(
-          color: AppColors.yellow,
-        ),
-      );
-    } else {
-      return Container();
-    }
-  }
+  // Widget _buildPriceText() {
+  //   if (tabIndex == 0) {
+  //     return Text(
+  //       '$price сом',
+  //       style: AppTextStyle.textField16.copyWith(
+  //         color: AppColors.black.withOpacity(0.60),
+  //       ),
+  //     );
+  //   } else if (tabIndex == 1) {
+  //     return Text(
+  //       '1000 сом',
+  //       style: AppTextStyle.textField16.copyWith(
+  //         color: AppColors.yellow,
+  //       ),
+  //     );
+  //   } else {
+  //     return Container();
+  //   }
+  // }
 }

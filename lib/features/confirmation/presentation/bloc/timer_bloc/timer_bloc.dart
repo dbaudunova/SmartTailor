@@ -9,7 +9,7 @@ part 'timer_bloc.freezed.dart';
 
 @singleton
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
-  static const int _initialDuration = 60;
+  static const int _initialDuration = 3;
   late final Ticker _ticker;
   StreamSubscription<int>? _tickerSubscription;
 
@@ -17,12 +17,13 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
       : _ticker = ticker,
         super(const TimerState.initial(_initialDuration)) {
     on<_Started>(_onStarted);
-    on<_Ticked>(_onTicked);
-    // on<_Activate>((event, emit) => emit(const ConfirmationState.buttonActive()));
-    // on<_Deactivate>((event, emit) => emit(const ConfirmationState.buttonInactive()));
+    on<_Ticked>(_onTicked); // Зарегистрируйте обработчик события _Ticked
   }
 
-  void _onStarted(_Started event, Emitter<TimerState> emit) {
+  void _onStarted(
+    _Started event,
+    Emitter<TimerState> emit,
+  ) {
     final currentDuration = state.maybeWhen(
       orElse: () => _initialDuration,
       initial: (duration) => duration,

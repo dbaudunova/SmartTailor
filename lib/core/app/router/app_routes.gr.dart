@@ -77,7 +77,9 @@ abstract class _$AppRouter extends RootStackRouter {
           acceptOrderButton: args.acceptOrderButton,
           buyButton: args.buyButton,
           title: args.title,
+          key: args.key,
           date: args.date,
+          sizeWidget: args.sizeWidget,
         ),
       );
     },
@@ -283,7 +285,9 @@ class MarketplaceDetailRoute extends PageRouteInfo<MarketplaceDetailRouteArgs> {
     required bool acceptOrderButton,
     required bool buyButton,
     required String title,
+    Key? key,
     DateTime? date,
+    CustomDropdown? sizeWidget,
     List<PageRouteInfo>? children,
   }) : super(
           MarketplaceDetailRoute.name,
@@ -291,7 +295,9 @@ class MarketplaceDetailRoute extends PageRouteInfo<MarketplaceDetailRouteArgs> {
             acceptOrderButton: acceptOrderButton,
             buyButton: buyButton,
             title: title,
+            key: key,
             date: date,
+            sizeWidget: sizeWidget,
           ),
           initialChildren: children,
         );
@@ -306,7 +312,9 @@ class MarketplaceDetailRouteArgs {
     required this.acceptOrderButton,
     required this.buyButton,
     required this.title,
+    this.key,
     this.date,
+    this.sizeWidget,
   });
 
   final bool acceptOrderButton;
@@ -315,13 +323,15 @@ class MarketplaceDetailRouteArgs {
 
   final String title;
 
-  // final Key? key;
+  final Key? key;
 
   final DateTime? date;
 
+  final CustomDropdown? sizeWidget;
+
   @override
   String toString() {
-    return 'MarketplaceDetailRouteArgs{acceptOrderButton: $acceptOrderButton, buyButton: $buyButton, title: $title, date: $date}';
+    return 'MarketplaceDetailRouteArgs{acceptOrderButton: $acceptOrderButton, buyButton: $buyButton, title: $title, key: $key, date: $date, sizeWidget: $sizeWidget}';
   }
 }
 

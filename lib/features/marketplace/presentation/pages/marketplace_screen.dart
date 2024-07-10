@@ -2,9 +2,9 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/fab_button_widget.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/marketplace_tabbar_view.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/widgets/search_order_sheet.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/fab_button_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/marketplace_tabbar_view.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
@@ -85,8 +85,6 @@ class _MarketplaceScreenState extends State<MarketplaceScreen> with RestorationM
     Map<int, Widget> children,
   ) {
     return CupertinoNavigationBar(
-      // heroTag: '3',
-      // transitionBetweenRoutes: true,
       border: const Border(),
       backgroundColor: AppColors.background,
       automaticallyImplyLeading: false,

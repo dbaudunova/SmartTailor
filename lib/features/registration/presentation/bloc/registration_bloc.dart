@@ -15,7 +15,10 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
   RegistrationBloc({required this.registrationUseCase})
       : super(
-          RegistrationState(stateStatus: const StateStatus.initial(), registrationModel: RegistrationModel.initial()),
+          RegistrationState(
+              stateStatus: const StateStatus.initial(),
+              registrationModel: RegistrationModel.initial(),
+              isButtonAvailable: false),
         ) {
     // on<_Registration>(_validationPassword);
     // on<ValidationEmail>(_validationEmail);
@@ -23,6 +26,51 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     // on<ValidationPasswordRepeat>(_validationPasswordRepeat);
 
     on<_Registration>(_registration);
+    on<_AddSurname>(_addSurname);
+    on<_AddName>(_addName);
+    on<_AddFatherName>(_addFatherName);
+    on<_AddEmail>(_addEmail);
+    on<_AddPhone>(_addPhone);
+  }
+
+  void _addSurname(
+    _AddSurname event,
+    Emitter<RegistrationState> emit,
+  ) {
+    var surname = event.surname;
+    emit(state.copyWith(registrationModel: state.registrationModel.copyWith(surname: surname)));
+  }
+
+  void _addName(
+    _AddName event,
+    Emitter<RegistrationState> emit,
+  ) {
+    var name = event.name;
+    emit(state.copyWith(registrationModel: state.registrationModel.copyWith(name: name)));
+  }
+
+  void _addFatherName(
+    _AddFatherName event,
+    Emitter<RegistrationState> emit,
+  ) {
+    var fatherName = event.fatherName;
+    emit(state.copyWith(registrationModel: state.registrationModel.copyWith(fatherName: fatherName)));
+  }
+
+  void _addEmail(
+    _AddEmail event,
+    Emitter<RegistrationState> emit,
+  ) {
+    var email = event.email;
+    emit(state.copyWith(registrationModel: state.registrationModel.copyWith(email: email)));
+  }
+
+  void _addPhone(
+    _AddPhone event,
+    Emitter<RegistrationState> emit,
+  ) {
+    var phone = event.phone;
+    emit(state.copyWith(registrationModel: state.registrationModel.copyWith(phone: phone)));
   }
 
   Future<void> _registration(

@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/email_input_screen.dart';
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
-import 'package:neobis_smart_tailor/features/marketplace_detail_screen/marketplace_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/marketplace_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/order_place_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/employee_detail/employee_detail_screen.dart';
@@ -47,7 +49,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: EnterRoute.page,
           path: '/enter',
-          // initial: true,
+          initial: true,
         ),
         AutoRoute(
           page: ConfirmationRoute.page,
@@ -65,8 +67,8 @@ class AppRouter extends _$AppRouter {
           // initial: true,
         ),
         AutoRoute(
-          initial: true,
-          // path: '/',
+          // initial: true,
+          path: '/main',
           page: BottomNavRoute.page,
           guards: [
             //AuthGuard(authService: authService),

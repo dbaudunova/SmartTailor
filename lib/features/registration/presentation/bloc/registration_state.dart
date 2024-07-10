@@ -5,5 +5,6 @@ class RegistrationState with _$RegistrationState {
   const factory RegistrationState({
     required final StateStatus stateStatus,
     required final RegistrationModel registrationModel,
+    required final bool isButtonAvailable,
   }) = _RegistrationState;
 }

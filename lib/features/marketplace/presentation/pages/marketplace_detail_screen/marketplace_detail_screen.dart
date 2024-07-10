@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
-import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
@@ -15,11 +15,14 @@ class MarketplaceDetailScreen extends StatefulWidget {
   final DateTime? date;
   final bool acceptOrderButton;
   final bool buyButton;
+  final CustomDropdown? sizeWidget;
   const MarketplaceDetailScreen({
     required this.acceptOrderButton,
     required this.buyButton,
     required this.title,
+    super.key,
     this.date,
+    this.sizeWidget,
   });
 
   @override
@@ -30,46 +33,50 @@ class _MarketplaceDetailScreenState extends State<MarketplaceDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _buildButtons(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBarStyle(title: widget.title, centerTitle: true),
-      body: Column(
-        children: [
-          GalleryScreen(date: widget.date),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-              ),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.550,
-                color: AppColors.white,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 10, left: 16, right: 16, top: 24),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildDetailInfo(),
-                        const SizedBox(height: 24),
-                        Divider(
-                          height: 1,
-                          color: AppColors.black.withOpacity(0.36),
-                        ),
-                        const SizedBox(height: 20),
-                        const CustomDropdown(),
-                        _buildAuthorInfo(),
-                        const SizedBox(height: 24),
-                        _buildButtons(),
-                      ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            GalleryScreen(date: widget.date),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.550,
+                  color: AppColors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10, left: 16, right: 16, top: 24),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildDetailInfo(),
+                          const SizedBox(height: 24),
+                          Divider(
+                            height: 0.33,
+                            color: AppColors.buttonUnavailableBack.withOpacity(0.6),
+                          ),
+                          const SizedBox(height: 20),
+                          Container(child: widget.sizeWidget),
+                          _buildAuthorInfo(),
+                          const SizedBox(height: 24),
+                          // _buildButtons(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -92,6 +99,7 @@ class _MarketplaceDetailScreenState extends State<MarketplaceDetailScreen> {
 
   Column _buildButtons() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         widget.acceptOrderButton == true
             ? ElevatedButtonWidget(
@@ -169,10 +177,13 @@ class _MarketplaceDetailScreenState extends State<MarketplaceDetailScreen> {
             ),
           ],
         ),
-        const Icon(
-          size: 24,
-          Icons.phone,
-          color: AppColors.listGreen,
+        const Padding(
+          padding: EdgeInsets.only(right: AppProps.kPageMargin),
+          child: Icon(
+            size: 24,
+            Icons.phone,
+            color: AppColors.listGreen,
+          ),
         )
       ],
     );
