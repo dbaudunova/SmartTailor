@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
@@ -12,6 +13,7 @@ class EnterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // floatingActionButton: _buildButtons(context),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -68,15 +70,15 @@ class EnterScreen extends StatelessWidget {
             ElevatedButtonWidget(
               text: t.Enter,
               onTap: () {
-                AutoRouter.of(context).pushNamed('/confirmation');
+                AutoRouter.of(context).replace(const EmailInputRoute());
               },
             ),
             const SizedBox(height: 16),
             ElevatedButtonWidget(
                 color: AppColors.white,
-                text: t.registration,
+                text: t.register,
                 onTap: () {
-                  AutoRouter.of(context).pushNamed('/registration');
+                  AutoRouter.of(context).pushNamed('/confirmation');
                 }),
           ],
         ),

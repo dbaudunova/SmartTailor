@@ -1,13 +1,13 @@
-part of io_ui;
+part of '../io_ui.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
   final VoidCallback? onTap;
   final String text;
   final Color color;
   const ElevatedButtonWidget({
+    required this.text,
     super.key,
     this.onTap,
-    required this.text,
     this.color = AppColors.darkBlue,
   });
 
@@ -17,7 +17,7 @@ class ElevatedButtonWidget extends StatelessWidget {
       style: ButtonStyle(
         side: MaterialStateProperty.resolveWith<BorderSide>((state) {
           if (color == AppColors.white) {
-            return BorderSide(width: 1);
+            return const BorderSide(width: 2);
           }
           return BorderSide.none;
         }),
@@ -44,7 +44,9 @@ class ElevatedButtonWidget extends StatelessWidget {
       child: Text(
         text,
         style: AppTextStyle.textField16.copyWith(
-          color: color == AppColors.white ? AppColors.black : (onTap != null ? AppColors.white : AppColors.darkBlue),
+          color: (color == AppColors.white || color == AppColors.buttonUnavailableBack)
+              ? AppColors.darkBlue
+              : AppColors.white,
           fontSize: 20,
         ),
       ),
