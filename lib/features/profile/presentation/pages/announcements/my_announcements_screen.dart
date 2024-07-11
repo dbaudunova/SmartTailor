@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/fab_button_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
 
@@ -42,23 +44,35 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
           ),
         ),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          const SizedBox(height: 16),
-          TabBarWidget(
-            tabController: _tabController,
-            labels: _labels,
+          Column(
+            children: [
+              const SizedBox(height: 16),
+              TabBarWidget(
+                tabController: _tabController,
+                labels: _labels,
+              ),
+              const SizedBox(height: 16),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    _buildAnnouncementListView(),
+                    _buildCustomerListView(),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                _buildAnnouncementListView(),
-                _buildCustomerListView(),
-              ],
-            ),
-          ),
+          FabButtonWidget(onTap: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return const SearchOrderSheet();
+              },
+            );
+          }),
         ],
       ),
     );

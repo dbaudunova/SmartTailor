@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/fab_button_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/order_container.dart';
 
@@ -41,23 +43,35 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
           ),
         ),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          const SizedBox(height: 16),
-          TabBarWidget(
-            tabController: _tabController,
-            labels: _labels,
+          Column(
+            children: [
+              const SizedBox(height: 16),
+              TabBarWidget(
+                tabController: _tabController,
+                labels: _labels,
+              ),
+              const SizedBox(height: 16),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    _buildActiveOrderListView(),
+                    _buildCompletedOrderListView(),
+                  ],
+                ),
+              )
+            ],
           ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                _buildActiveOrderListView(),
-                _buildCompletedOrderListView(),
-              ],
-            ),
-          )
+          FabButtonWidget(onTap: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return const SearchOrderSheet();
+              },
+            );
+          }),
         ],
       ),
     );

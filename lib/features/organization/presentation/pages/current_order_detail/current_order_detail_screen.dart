@@ -24,6 +24,7 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
     {'name': 'Отправка', 'isChecked': false},
     {'name': 'Проверка', 'isChecked': false},
   ];
+  final DateTime _orderDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
       ),
       body: Column(
         children: [
-          const GalleryScreen(),
+           GalleryScreen(date: _orderDate),
           Expanded(
             child: SingleChildScrollView(
               child: Align(

@@ -40,6 +40,7 @@ class StatusBottomSheet extends StatelessWidget {
                         }
                         list['isChecked'] = value;
                       });
+                      Navigator.pop(context);
                     },
                   );
                 }).toList(),
