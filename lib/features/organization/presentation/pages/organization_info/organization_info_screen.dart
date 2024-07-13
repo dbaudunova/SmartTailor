@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/employee_item.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info_row.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/order_container.dart';
 
-@RoutePage()
 class OrganizationInfoScreen extends StatefulWidget {
   const OrganizationInfoScreen({super.key});
 
@@ -17,27 +17,20 @@ class OrganizationInfoScreen extends StatefulWidget {
 }
 
 class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
-    with TickerProviderStateMixin {
-  late TabController _tabController;
-  final List<String> _labels = ['Сотрудники', 'Должности', 'Заказы'];
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-      length: _labels.length,
-      vsync: this,
-    );
-
-    _tabController.addListener(() {
-      if (_tabController.index == 2) {
-        AutoRouter.of(context).push(const OrderRoute());
-      }
-    });
-  }
+    with TickerProviderStateMixin, RestorationMixin {
+  RestorableInt currentSegment = RestorableInt(0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
+    const segmentedControlMaxWidth = double.infinity;
+    final children = <int, Widget>{
+      0: _buildSegmentText('Сотрудники', 0),
+      1: _buildSegmentText('Должности', 1),
+      2: _buildSegmentText('Текущие заказы', 2),
+      3: _buildSegmentText('История', 3),
+    };
+
     return Scaffold(
       appBar: AppBarStyle(
         title: 'Организация',
@@ -55,14 +48,16 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
         children: [
           const OrganizationInfoRow(),
           const SizedBox(height: 16),
-          TabBarWidget(
-            tabController: _tabController,
-            labels: _labels,
-          ),
+          _buildNavBar(segmentedControlMaxWidth, children),
           const SizedBox(height: 16),
           Expanded(
-            child: TabBarView(
-              controller: _tabController,
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  currentSegment.value = index;
+                });
+              },
               children: [
                 _buildEmployeeListView(),
                 Padding(
@@ -70,11 +65,83 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
                   child: _buildEmployeePositionTab(),
                 ),
                 _buildOrderListView(),
+                _buildCompletedOrdersListView(),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Padding _buildCompletedOrdersListView() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: OrderContainer(
+              isActive: false,
+              onTap: () {
+                AutoRouter.of(context).push(const HistoryDetailRoute());
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  CupertinoNavigationBar _buildNavBar(
+      double segmentedControlMaxWidth,
+      Map<int, Widget> children,
+      ) {
+    return CupertinoNavigationBar(
+      border: const Border(),
+      backgroundColor: AppColors.background,
+      automaticallyImplyLeading: false,
+      middle: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: segmentedControlMaxWidth,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: CupertinoSlidingSegmentedControl<int>(
+                  children: children,
+                  onValueChanged: (int? newValue) {
+                    if (newValue != null) {
+                      _pageController.animateToPage(
+                        newValue,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
+                  groupValue: currentSegment.value,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+
+  Text _buildSegmentText(String label, int index) {
+    return Text(
+      label,
+      style: currentSegment.value == index
+          ? AppTextStyle.text14.copyWith(
+        fontWeight: FontWeight.w600,
+      )
+          : AppTextStyle.text14,
     );
   }
 
@@ -84,8 +151,7 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return Padding(
-          padding:
-          const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
           child: AnnouncementsContainer(
             onTap: () {
               AutoRouter.of(context).push(const CurrentOrderDetailRoute());
@@ -165,5 +231,19 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
         },
       ),
     );
+  }
+
+  @override
+  String get restorationId => 'cupertino_segmented_control';
+
+  @override
+  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
+    registerForRestoration(currentSegment, 'current_segment');
+  }
+
+  void onValueChanged(int? newValue) {
+    setState(() {
+      currentSegment.value = newValue!;
+    });
   }
 }

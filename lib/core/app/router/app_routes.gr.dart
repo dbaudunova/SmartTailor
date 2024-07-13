@@ -131,12 +131,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrderPlaceScreen(),
       );
     },
-    OrderRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OrderScreen(),
-      );
-    },
     OrganizationInfoRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,

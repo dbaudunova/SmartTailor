@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
-import 'package:neobis_smart_tailor/features/organization/presentation/widgets/order/status_bottom_sheet.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/status_bottom_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 
 @RoutePage()
