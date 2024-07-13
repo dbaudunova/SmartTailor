@@ -3,11 +3,11 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class EmployeeItemContainer extends StatelessWidget {
   const EmployeeItemContainer({
-    required this.onTap,
+    this.onTap,
     super.key,
   });
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

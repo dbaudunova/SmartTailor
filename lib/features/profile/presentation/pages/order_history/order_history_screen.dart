@@ -61,7 +61,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
                     _buildCompletedOrderListView(),
                   ],
                 ),
-              )
+              ),
             ],
           ),
           FabButtonWidget(onTap: () {
