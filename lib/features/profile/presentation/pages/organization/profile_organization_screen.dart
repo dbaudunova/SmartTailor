@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/fab_button_widget.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/search_order_sheet.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/tab_bar_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/employee_item.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info_row.dart';
@@ -13,12 +13,10 @@ class ProfileOrganizationScreen extends StatefulWidget {
   const ProfileOrganizationScreen({super.key});
 
   @override
-  State<ProfileOrganizationScreen> createState() =>
-      _ProfileOrganizationScreenState();
+  State<ProfileOrganizationScreen> createState() => _ProfileOrganizationScreenState();
 }
 
-class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen>
-    with TickerProviderStateMixin {
+class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen> with TickerProviderStateMixin {
   late TabController _tabController;
   final List<String> _labels = ['Текущие заказы', 'Сотрудники'];
 
@@ -104,8 +102,7 @@ class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen>
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
           child: const AnnouncementsContainer(
             price: '1000 сом',
           ),
