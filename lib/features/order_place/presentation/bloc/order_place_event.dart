@@ -9,4 +9,5 @@ class OrderPlaceEvent with _$OrderPlaceEvent {
   const factory OrderPlaceEvent.addSize({required String size}) = _AddSize;
   const factory OrderPlaceEvent.removeSize({required String size}) = _RemoveSize;
   const factory OrderPlaceEvent.addDate({required DateTime date}) = _AddDate;
+  const factory OrderPlaceEvent.resetState() = _ResetState; // Добавляем это событие
 }

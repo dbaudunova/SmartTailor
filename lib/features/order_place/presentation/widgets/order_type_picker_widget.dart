@@ -10,14 +10,15 @@ enum OrderType {
   services('Услуги');
 
   final String name;
-
   const OrderType(this.name);
 }
 
 class OrderTypePicker extends StatefulWidget {
   final void Function(OrderType type)? onSelect;
-
-  const OrderTypePicker({this.onSelect, super.key});
+  const OrderTypePicker({
+    this.onSelect,
+    super.key,
+  });
 
   @override
   State<OrderTypePicker> createState() => _OrderTypePickerState();
@@ -35,8 +36,13 @@ class _OrderTypePickerState extends State<OrderTypePicker> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: _onTap,
       child: TextFormFieldWidget(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Выберите тип объявления';
+          }
+          return null;
+        },
         controller: _orderTypeController,
         enabled: false,
         ontap: _onTap,
@@ -58,9 +64,7 @@ class _OrderTypePickerState extends State<OrderTypePicker> {
                   setState(() {
                     _orderTypeController.text = type.name;
                   });
-
                   widget.onSelect?.call(type);
-
                   Navigator.pop(context);
                 },
                 text: type.name,

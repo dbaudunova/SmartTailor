@@ -24,13 +24,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
-  void dispose() {
-    surnameController.dispose();
-    nameController.dispose();
-    fatherNameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    context.read<RegistrationBloc>().add(const RegistrationEvent.reset()); // Добавляем событие сброса состояния
   }
 
   @override
@@ -41,18 +37,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin).copyWith(bottom: 96),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 40
-                  //  + statusBarHeight
-                  ),
-              Form(key: _formKey, child: _buildFields()),
-              const SizedBox(height: 16),
-              _buildCheckBox(),
-              const SizedBox(height: 16),
-            ],
+          child: BlocListener<RegistrationBloc, RegistrationState>(
+            listener: _listenerBloc,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 40
+                    //  + statusBarHeight
+                    ),
+                Form(key: _formKey, child: _buildFields()),
+                const SizedBox(height: 16),
+                _buildCheckBox(),
+                const SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),
@@ -60,23 +59,28 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
+  void _listenerBloc(BuildContext context, RegistrationState state) {
+    state.stateStatus.whenOrNull(
+      success: (val) {
+        AutoRouter.of(context).replaceNamed('/confirmation');
+      },
+      failure: (msg) {
+        AppSnackBar.show(context: context, titleText: msg, error: true);
+      },
+    );
+  }
+
   BlocBuilder<RegistrationBloc, RegistrationState> _buildButton(BuildContext context) {
     return BlocBuilder<RegistrationBloc, RegistrationState>(
       builder: (context, state) {
-        print(state.registrationModel.isButtonAvailable);
         return state.registrationModel.isButtonAvailable
             ? ElevatedButtonWidget(
                 text: t.register,
                 onTap: () {
-                  print(state.registrationModel);
                   if (_formKey.currentState!.validate()) {
                     context.read<RegistrationBloc>().add(
                           RegistrationEvent.registration(registrationModel: state.registrationModel),
                         );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Processing Data')),
-                    );
-                    AutoRouter.of(context).replaceNamed('/confirmation');
                   }
                 },
               )
@@ -112,11 +116,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Text(
-        //   t.registration,
-        //   style: AppTextStyle.title24,
-        // ),
-        // const SizedBox(height: 32),
         TextFormFieldWidget(
           titleName: t.surname,
           onChanged: (value) {
@@ -170,7 +169,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             context.read<RegistrationBloc>().add(
                   RegistrationEvent.addPhone(phone: value),
                 );
-            print(value.length);
           },
           controller: phoneController,
           keyboardType: TextInputType.phone,
@@ -190,6 +188,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       return 'Введинет номер телефона';
     }
     return null;
+  }
+
+  @override
+  void dispose() {
+    surnameController.dispose();
+    nameController.dispose();
+    fatherNameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    super.dispose();
   }
 }
 

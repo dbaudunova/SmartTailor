@@ -5,10 +5,10 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/date_widgets/date_picker.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/image_picker_widget.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/images_widgets/image_picker_widget.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/images_widgets/photos_previes_widget.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/order_type_picker_widget.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/photos_previes_widget.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/size_picker_widget.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/size_widgets/size_picker_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 @RoutePage()
@@ -38,6 +38,12 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    context.read<OrderPlaceBloc>().add(const OrderPlaceEvent.resetState());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarStyle(
@@ -48,6 +54,13 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
       floatingActionButton: ElevatedButtonWidget(
         text: t.orderPlace,
         color: AppColors.white,
+        onTap: () {
+          if (_formKey.currentState!.validate()) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Done')),
+            );
+          }
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.only(
@@ -81,26 +94,37 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
               controller: nameController,
               hintText: t.necessaryField,
               titleName: t.nameOrder,
+              validator: (value) => _validateField(
+                value,
+              ),
             ),
             const SizedBox(height: AppProps.kPageMargin),
             TextFormFieldWidget(
               controller: descriptionController,
               hintText: t.maxWords,
               titleName: t.descriptionOrder,
+              validator: (value) => _validateField(
+                value,
+              ),
             ),
             const SizedBox(height: AppProps.kPageMargin),
             ImagePickerWidget(
               onSelectFiles: (photos) {
-                context.read<OrderPlaceBloc>().add(OrderPlaceEvent.addPhotos(photos: photos));
+                context.read<OrderPlaceBloc>().add(
+                      OrderPlaceEvent.addPhotos(photos: photos),
+                    );
               },
             ),
             const SizedBox(height: AppProps.kPageMargin),
             const PhotosPreviewWidget(),
             _buildDateAndSize(state),
             TextFormFieldWidget(
-              controller: descriptionController,
+              controller: contactInfoController,
               hintText: t.inputPhoneNumber,
               titleName: t.contactInfo,
+              validator: (value) => _validateField(
+                value,
+              ),
             ),
             const SizedBox(height: AppProps.kPageMargin),
             TextFormFieldWidget(
@@ -108,6 +132,9 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
               hintText: t.inputDigits,
               titleName: t.orderSumm,
               keyboardType: TextInputType.number,
+              validator: (value) => _validateField(
+                value,
+              ),
             ),
             const SizedBox(height: 88),
           ],
@@ -125,15 +152,6 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
       child: state.showFields == true
           ? Column(
               children: [
-                // TextFormFieldWidget(
-                //   enabled: false,
-                //   suffixIcon: Icons.keyboard_arrow_down_sharp,
-                //   ontap: () {},
-                //   actionType: SheetType.size,
-                //   controller: TextEditingController(text: chosenTextSize),
-                //   hintText: t.sizeFieldText,
-                //   titleName: t.sizes,
-                // ),
                 SizePickerFieldWidget(
                   onSizeSelected: (size) {
                     context.read<OrderPlaceBloc>().add(
@@ -144,7 +162,9 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
                 const SizedBox(height: AppProps.kPageMargin),
                 DatePickerFieldWidget(
                   onDateSelected: (date) {
-                    context.read<OrderPlaceBloc>().add(OrderPlaceEvent.addDate(date: date));
+                    context.read<OrderPlaceBloc>().add(
+                          OrderPlaceEvent.addDate(date: date),
+                        );
                   },
                 ),
                 const SizedBox(height: AppProps.kPageMargin),
@@ -154,18 +174,18 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
     );
   }
 
-  String? _validateField(String? value, AddOrderFieldType fieldType) {
-    if (fieldType == AddOrderFieldType.text && value!.isEmpty) {
-      return 'Поле не может быть пустым';
-    }
-    if (fieldType == AddOrderFieldType.email && !value!.contains('@')) {
-      return 'Почта указана неверно';
-    }
-    if (fieldType == AddOrderFieldType.phone && value!.isEmpty) {
-      return 'Введинет номер телефона';
+  String? _validateField(String? value) {
+    if (value!.isEmpty) {
+      return 'Заполните обязательные поля';
     }
     return null;
   }
 }
 
-enum AddOrderFieldType { text, phone, email }
+enum FieldType {
+  type,
+  text,
+  photo,
+  size,
+  date,
+}

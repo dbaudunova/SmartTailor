@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/fab_button_widget.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/search_order_sheet.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/response_item.dart';
 

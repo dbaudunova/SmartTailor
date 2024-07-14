@@ -6,7 +6,7 @@ part 'auth_info.g.dart';
 @freezed
 class AuthData with _$AuthData {
   factory AuthData({
-    required String? username,
+    required String? message,
     required String? accessToken,
     required String? refreshToken,
 
@@ -16,14 +16,3 @@ class AuthData with _$AuthData {
 
   factory AuthData.fromJson(Map<String, dynamic> json) => _$AuthDataFromJson(json);
 }
-
-// @freezed
-// class AuthInfo with _$AuthInfo {
-//   factory AuthInfo({
-//     required int? phone,
-//     required String? name,
-//     required int? statusId,
-//   }) = _AuthInfo;
-
-//   factory AuthInfo.fromJson(Map<String, dynamic> json) => _$AuthInfoFromJson(json);
-// }

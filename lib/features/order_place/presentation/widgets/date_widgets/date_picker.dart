@@ -28,6 +28,12 @@ class _DatePickerFieldWidgetState extends State<DatePickerFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormFieldWidget(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Выберите крайнюю дату выполнения';
+        }
+        return null;
+      },
       controller: _dateController,
       enabled: false,
       hintText: t.lastDate,

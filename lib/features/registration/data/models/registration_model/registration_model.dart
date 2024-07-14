@@ -14,6 +14,7 @@ class RegistrationModel with _$RegistrationModel {
     required String email,
     required String phone,
     required bool rememberMe,
+    required String code,
   }) = _RegistrationModel;
 
   factory RegistrationModel.initial() {
@@ -24,6 +25,7 @@ class RegistrationModel with _$RegistrationModel {
       email: '',
       phone: '',
       rememberMe: true,
+      code: '',
     );
   }
 

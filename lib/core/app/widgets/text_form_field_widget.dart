@@ -1,4 +1,4 @@
-part of io_ui;
+part of '../io_ui.dart';
 
 enum OrderType {
   order('Заказ'),
@@ -14,7 +14,6 @@ class TextFormFieldWidget extends StatelessWidget {
   final List<TextInputFormatter>? formatters;
   final String? Function(String?)? validator;
   final void Function(OrderType type)? onSelect;
-  // final SheetType? actionType;
   final Function? ontap;
   final bool? enabled;
   final IconData? suffixIcon;
@@ -41,7 +40,6 @@ class TextFormFieldWidget extends StatelessWidget {
     this.enabled,
     this.suffixIcon,
     this.onSelect,
-    // this.actionType,
   });
 
   @override
@@ -51,11 +49,9 @@ class TextFormFieldWidget extends StatelessWidget {
       children: [
         titleName != null
             ? Text(titleName!,
-                style:
-                    // controller.text.isEmpty
-                    AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.60))
-                // : AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.10)),
-                )
+                style: AppTextStyle.textField16.copyWith(
+                  color: AppColors.black.withOpacity(0.60),
+                ))
             : Container(),
         const SizedBox(
           height: 12,
@@ -74,17 +70,19 @@ class TextFormFieldWidget extends StatelessWidget {
             inputFormatters: formatters,
             keyboardType: keyboardType,
             onChanged: onChanged,
-
             decoration: InputDecoration(
               suffixIcon: Icon(
                 suffixIcon,
                 color: AppColors.fieldBorder,
               ),
               hintText: hintText ?? '',
-              border: _buildBorder(),
-              errorBorder: _buildBorder(),
+              hintStyle: AppTextStyle.textField16.copyWith(color: Colors.grey),
+              errorBorder: _buildErrorBorder(),
+              focusedErrorBorder: _buildErrorBorder(),
+              errorStyle: AppTextStyle.s12w400.copyWith(color: AppColors.error),
               focusedBorder: _buildBorder(),
               enabledBorder: _buildBorder(),
+              disabledBorder: _buildBorder(),
               fillColor: AppColors.white,
               filled: true,
               contentPadding: const EdgeInsets.symmetric(
@@ -92,7 +90,6 @@ class TextFormFieldWidget extends StatelessWidget {
                 vertical: 12,
               ),
             ),
-            // validator: widget.validator,
             controller: controller,
           ),
         ),
@@ -100,85 +97,12 @@ class TextFormFieldWidget extends StatelessWidget {
     );
   }
 
-  // void _handleAction(BuildContext ctx, SheetType actionType) {
-  //   print(actionType.toString());
-  //   switch (actionType) {
-  //     case SheetType.photos:
-  //       _showActionSheet(ctx, actionType);
-  //     case SheetType.type:
-  //       _showActionSheet(ctx, actionType);
-  //       break;
-  //     case SheetType.data:
-  //       _callDatePicker(ctx);
-  //       break;
-  //     case SheetType.size:
-  //       _callBottomSheet(ctx);
-  //       break;
-  //   }
-  // }
-
-  // void _callBottomSheet(BuildContext context) {
-  //   showModalBottomSheet<void>(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return const SizeSelectionBottomSheet();
-  //     },
-  //   );
-  // }
-
-  // void _showActionSheet(BuildContext context, SheetType type) {
-  //   showCupertinoModalPopup(
-  //     context: context,
-  //     builder: (BuildContext context) => ActionSheetWidget(
-  //       type: type,
-  //       bloc: context.read<OrderPlaceBloc>(),
-  //       actions: OrderType.values
-  //           .map(
-  //             (e) => AppActionSheetWidget(
-  //               onPressed: () {
-  //                 Navigator.pop(context);
-  //                 widget.onSelect?.call(e);
-  //               },
-  //               text: e.name,
-  //             ),
-  //           )
-  //           .toList(),
-  //     ),
-  //   );
-  // }
-
-  // void _callDatePicker(BuildContext context) {
-  //   showModalBottomSheet<void>(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return DatePickerWidget(
-  //         onDateSelected: (DateTime selectedDate) {},
-  //       );
-  //     },
-  //   );
-  // }
-
-  // void _showActionSheet(BuildContext context, SheetType type) {
-  //   showCupertinoModalPopup(
-  //     context: context,
-  //     builder: (BuildContext context) => ActionSheetWidget(
-  //       // type: type,
-  //       // bloc: context.read<OrderPlaceBloc>(),
-  //       actions: OrderType.values
-  //           .map(
-  //             (e) => AppActionSheetWidget(
-  //               onPressed: () {
-  //                 controller.text = e.name;
-  //                 Navigator.pop(context);
-  //                 onSelect?.call(e);
-  //               },
-  //               text: e.name,
-  //             ),
-  //           )
-  //           .toList(),
-  //     ),
-  //   );
-  // }
+  OutlineInputBorder _buildErrorBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(width: 0.7, color: AppColors.error),
+    );
+  }
 
   OutlineInputBorder _buildBorder() {
     return OutlineInputBorder(

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.background, // Установите нужный цвет фона
+          scaffoldBackgroundColor: AppColors.background,
         ),
         debugShowCheckedModeBanner: false,
         routerConfig: getIt<AppRouter>().config(),

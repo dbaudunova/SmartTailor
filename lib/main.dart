@@ -7,7 +7,7 @@ import 'package:neobis_smart_tailor/core/app/app.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 
 FutureOr<void> main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  var widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await configureDependencies();
 

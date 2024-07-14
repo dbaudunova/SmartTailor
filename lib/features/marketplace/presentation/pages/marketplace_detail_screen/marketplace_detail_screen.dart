@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
@@ -16,6 +15,7 @@ class MarketplaceDetailScreen extends StatefulWidget {
   final bool acceptOrderButton;
   final bool buyButton;
   final CustomDropdown? sizeWidget;
+
   const MarketplaceDetailScreen({
     required this.acceptOrderButton,
     required this.buyButton,
@@ -52,7 +52,12 @@ class _MarketplaceDetailScreenState extends State<MarketplaceDetailScreen> {
                   height: MediaQuery.of(context).size.height * 0.550,
                   color: AppColors.white,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10, left: 16, right: 16, top: 24),
+                    padding: const EdgeInsets.only(
+                      bottom: 10,
+                      left: 16,
+                      right: 16,
+                      top: 24,
+                    ),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +72,6 @@ class _MarketplaceDetailScreenState extends State<MarketplaceDetailScreen> {
                           Container(child: widget.sizeWidget),
                           _buildAuthorInfo(),
                           const SizedBox(height: 24),
-                          // _buildButtons(),
                         ],
                       ),
                     ),

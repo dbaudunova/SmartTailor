@@ -25,6 +25,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     on<_AddSize>(_addSize);
     on<_RemoveSize>(_removeSize);
     on<_AddDate>(_addDate);
+    on<_ResetState>(_resetState);
   }
 
   void _addDate(
@@ -54,6 +55,17 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
       ),
     );
     print(orderPlaceModel);
+  }
+
+  void _resetState(
+    _ResetState event,
+    Emitter<OrderPlaceState> emit,
+  ) {
+    emit(OrderPlaceState(
+      stateStatus: const StateStatus.initial(),
+      orderPlaceModel: OrderPlaceModel.initial(),
+      showFields: null,
+    ));
   }
 
   void _removeSize(

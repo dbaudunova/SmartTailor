@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
@@ -42,54 +43,60 @@ class _GalleryScreenState extends State<GalleryScreen> {
                   ),
                 ),
               ),
-              widget.date == null
-                  ? Container()
-                  : Positioned(
-                      bottom: 12,
-                      right: 12,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: AppColors.yellow,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          'Cрок: ${widget.date.toString()}',
-                          style: AppTextStyle.text14,
-                        ),
-                      ),
-                    ),
+              widget.date == null ? Container() : _buildDate(),
             ],
           ),
           const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List.generate(_images.length, (index) {
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
-                child: Container(
-                  height: 64,
-                  width: 64,
-                  decoration: BoxDecoration(
-                    border: _selectedIndex == index ? Border.all(width: 2, color: AppColors.yellow) : null,
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(
-                        _images[index],
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            }),
-          ),
+          _buildList(),
           const SizedBox(height: 8),
         ],
+      ),
+    );
+  }
+
+  Row _buildList() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(_images.length, (index) {
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          child: Container(
+            height: 64,
+            width: 64,
+            decoration: BoxDecoration(
+              border: _selectedIndex == index ? Border.all(width: 2, color: AppColors.yellow) : null,
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(
+                  _images[index],
+                ),
+              ),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+
+  Positioned _buildDate() {
+    return Positioned(
+      bottom: 12,
+      right: 12,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+        decoration: BoxDecoration(
+          color: AppColors.yellow,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Text(
+          'Срок: ${DateFormat.yMMMMd().format(widget.date!)}',
+          style: AppTextStyle.text14,
+        ),
       ),
     );
   }

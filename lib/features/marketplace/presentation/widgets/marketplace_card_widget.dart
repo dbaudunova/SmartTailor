@@ -31,24 +31,13 @@ class MarketplaceCard extends StatelessWidget {
           color: AppColors.white,
         ),
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 71,
-                    width: 80,
-                    margin: const EdgeInsets.only(
-                      right: 16,
-                    ),
-                    decoration: const BoxDecoration(
-                        color: AppColors.error,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        )),
-                  ),
+                  _buildImage(),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,23 +73,18 @@ class MarketplaceCard extends StatelessWidget {
     );
   }
 
-  // Widget _buildPriceText() {
-  //   if (tabIndex == 0) {
-  //     return Text(
-  //       '1000 сом',
-  //       style: AppTextStyle.textField16.copyWith(
-  //         color: AppColors.black.withOpacity(0.60),
-  //       ),
-  //     );
-  //   } else if (tabIndex == 1) {
-  //     return Text(
-  //       '1000 сом',
-  //       style: AppTextStyle.textField16.copyWith(
-  //         color: AppColors.yellow,
-  //       ),
-  //     );
-  //   } else {
-  //     return Container();
-  //   }
-  // }
+  Container _buildImage() {
+    return Container(
+      height: 71,
+      width: 80,
+      margin: const EdgeInsets.only(
+        right: 16,
+      ),
+      decoration: const BoxDecoration(
+          color: AppColors.error,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          )),
+    );
+  }
 }

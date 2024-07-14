@@ -20,7 +20,7 @@ AuthData _$AuthDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthData {
-  String? get username => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
   String? get accessToken => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
 
@@ -35,7 +35,7 @@ abstract class $AuthDataCopyWith<$Res> {
   factory $AuthDataCopyWith(AuthData value, $Res Function(AuthData) then) =
       _$AuthDataCopyWithImpl<$Res, AuthData>;
   @useResult
-  $Res call({String? username, String? accessToken, String? refreshToken});
+  $Res call({String? message, String? accessToken, String? refreshToken});
 }
 
 /// @nodoc
@@ -51,14 +51,14 @@ class _$AuthDataCopyWithImpl<$Res, $Val extends AuthData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = freezed,
+    Object? message = freezed,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
     return _then(_value.copyWith(
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
       accessToken: freezed == accessToken
           ? _value.accessToken
@@ -80,7 +80,7 @@ abstract class _$$AuthDataImplCopyWith<$Res>
       __$$AuthDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? username, String? accessToken, String? refreshToken});
+  $Res call({String? message, String? accessToken, String? refreshToken});
 }
 
 /// @nodoc
@@ -94,14 +94,14 @@ class __$$AuthDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = freezed,
+    Object? message = freezed,
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
     return _then(_$AuthDataImpl(
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String?,
       accessToken: freezed == accessToken
           ? _value.accessToken
@@ -119,7 +119,7 @@ class __$$AuthDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AuthDataImpl implements _AuthData {
   _$AuthDataImpl(
-      {required this.username,
+      {required this.message,
       required this.accessToken,
       required this.refreshToken});
 
@@ -127,7 +127,7 @@ class _$AuthDataImpl implements _AuthData {
       _$$AuthDataImplFromJson(json);
 
   @override
-  final String? username;
+  final String? message;
   @override
   final String? accessToken;
   @override
@@ -135,7 +135,7 @@ class _$AuthDataImpl implements _AuthData {
 
   @override
   String toString() {
-    return 'AuthData(username: $username, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'AuthData(message: $message, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -143,8 +143,7 @@ class _$AuthDataImpl implements _AuthData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthDataImpl &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
@@ -154,7 +153,7 @@ class _$AuthDataImpl implements _AuthData {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, username, accessToken, refreshToken);
+      Object.hash(runtimeType, message, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -172,7 +171,7 @@ class _$AuthDataImpl implements _AuthData {
 
 abstract class _AuthData implements AuthData {
   factory _AuthData(
-      {required final String? username,
+      {required final String? message,
       required final String? accessToken,
       required final String? refreshToken}) = _$AuthDataImpl;
 
@@ -180,7 +179,7 @@ abstract class _AuthData implements AuthData {
       _$AuthDataImpl.fromJson;
 
   @override
-  String? get username;
+  String? get message;
   @override
   String? get accessToken;
   @override

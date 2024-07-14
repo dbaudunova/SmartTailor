@@ -8,14 +8,14 @@ part of 'auth_info.dart';
 
 _$AuthDataImpl _$$AuthDataImplFromJson(Map<String, dynamic> json) =>
     _$AuthDataImpl(
-      username: json['username'] as String?,
+      message: json['message'] as String?,
       accessToken: json['accessToken'] as String?,
       refreshToken: json['refreshToken'] as String?,
     );
 
 Map<String, dynamic> _$$AuthDataImplToJson(_$AuthDataImpl instance) =>
     <String, dynamic>{
-      'username': instance.username,
+      'message': instance.message,
       'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,
     };
