@@ -20,6 +20,7 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
     with TickerProviderStateMixin, RestorationMixin {
   RestorableInt currentSegment = RestorableInt(0);
   final PageController _pageController = PageController(initialPage: 0);
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +58,7 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
                 setState(() {
                   currentSegment.value = index;
                 });
+                _scrollToCurrentSegment(index);
               },
               children: [
                 _buildEmployeeListView(),
@@ -94,10 +96,7 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
     );
   }
 
-  CupertinoNavigationBar _buildNavBar(
-      double segmentedControlMaxWidth,
-      Map<int, Widget> children,
-      ) {
+  CupertinoNavigationBar _buildNavBar(double segmentedControlMaxWidth, Map<int, Widget> children) {
     return CupertinoNavigationBar(
       border: const Border(),
       backgroundColor: AppColors.background,
@@ -105,6 +104,7 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
       middle: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
+            controller: _scrollController,
             scrollDirection: Axis.horizontal,
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -121,6 +121,10 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeInOut,
                       );
+                      setState(() {
+                        currentSegment.value = newValue;
+                      });
+                      _scrollToCurrentSegment(newValue);
                     }
                   },
                   groupValue: currentSegment.value,
@@ -130,6 +134,16 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
           );
         },
       ),
+    );
+  }
+
+  void _scrollToCurrentSegment(int index) {
+    const segmentWidth = 60.0;
+    final position = index * segmentWidth;
+    _scrollController.animateTo(
+      position,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
     );
   }
 
