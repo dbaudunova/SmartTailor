@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return ExitAlert(
           title: 'Вы действительно хотите выйти?',
           confirmButton: () {
-            AutoRouter.of(context).push(const RegistrationRoute());
+            AutoRouter.of(context).replaceNamed('/registration');
           },
           cancelButton: () {
             AutoRouter.of(context).maybePop();

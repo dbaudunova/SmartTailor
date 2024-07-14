@@ -67,8 +67,7 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
                           content: 'Вы создали организацию!',
                           buttonText: 'Понятно',
                           onButtonPressed: () {
-                            AutoRouter.of(context)
-                                .push(const OrganizationInfoRoute());
+                            AutoRouter.of(context).replaceNamed('/organization_info');
                           },
                         );
                       },
