@@ -24,6 +24,9 @@ mixin _$RegistrationEvent {
     required TResult Function(String fatherName) addFatherName,
     required TResult Function(String email) addEmail,
     required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +37,9 @@ mixin _$RegistrationEvent {
     TResult? Function(String fatherName)? addFatherName,
     TResult? Function(String email)? addEmail,
     TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +50,9 @@ mixin _$RegistrationEvent {
     TResult Function(String fatherName)? addFatherName,
     TResult Function(String email)? addEmail,
     TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +64,9 @@ mixin _$RegistrationEvent {
     required TResult Function(_AddFatherName value) addFatherName,
     required TResult Function(_AddEmail value) addEmail,
     required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +77,9 @@ mixin _$RegistrationEvent {
     TResult? Function(_AddFatherName value)? addFatherName,
     TResult? Function(_AddEmail value)? addEmail,
     TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +90,9 @@ mixin _$RegistrationEvent {
     TResult Function(_AddFatherName value)? addFatherName,
     TResult Function(_AddEmail value)? addEmail,
     TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -179,6 +197,9 @@ class _$RegistrationImpl implements _Registration {
     required TResult Function(String fatherName) addFatherName,
     required TResult Function(String email) addEmail,
     required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
   }) {
     return registration(registrationModel);
   }
@@ -192,6 +213,9 @@ class _$RegistrationImpl implements _Registration {
     TResult? Function(String fatherName)? addFatherName,
     TResult? Function(String email)? addEmail,
     TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
   }) {
     return registration?.call(registrationModel);
   }
@@ -205,6 +229,9 @@ class _$RegistrationImpl implements _Registration {
     TResult Function(String fatherName)? addFatherName,
     TResult Function(String email)? addEmail,
     TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
     required TResult orElse(),
   }) {
     if (registration != null) {
@@ -222,6 +249,9 @@ class _$RegistrationImpl implements _Registration {
     required TResult Function(_AddFatherName value) addFatherName,
     required TResult Function(_AddEmail value) addEmail,
     required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
   }) {
     return registration(this);
   }
@@ -235,6 +265,9 @@ class _$RegistrationImpl implements _Registration {
     TResult? Function(_AddFatherName value)? addFatherName,
     TResult? Function(_AddEmail value)? addEmail,
     TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
   }) {
     return registration?.call(this);
   }
@@ -248,6 +281,9 @@ class _$RegistrationImpl implements _Registration {
     TResult Function(_AddFatherName value)? addFatherName,
     TResult Function(_AddEmail value)? addEmail,
     TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
     required TResult orElse(),
   }) {
     if (registration != null) {
@@ -338,6 +374,9 @@ class _$AddNameImpl implements _AddName {
     required TResult Function(String fatherName) addFatherName,
     required TResult Function(String email) addEmail,
     required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
   }) {
     return addName(name);
   }
@@ -351,6 +390,9 @@ class _$AddNameImpl implements _AddName {
     TResult? Function(String fatherName)? addFatherName,
     TResult? Function(String email)? addEmail,
     TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
   }) {
     return addName?.call(name);
   }
@@ -364,6 +406,9 @@ class _$AddNameImpl implements _AddName {
     TResult Function(String fatherName)? addFatherName,
     TResult Function(String email)? addEmail,
     TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
     required TResult orElse(),
   }) {
     if (addName != null) {
@@ -381,6 +426,9 @@ class _$AddNameImpl implements _AddName {
     required TResult Function(_AddFatherName value) addFatherName,
     required TResult Function(_AddEmail value) addEmail,
     required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
   }) {
     return addName(this);
   }
@@ -394,6 +442,9 @@ class _$AddNameImpl implements _AddName {
     TResult? Function(_AddFatherName value)? addFatherName,
     TResult? Function(_AddEmail value)? addEmail,
     TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
   }) {
     return addName?.call(this);
   }
@@ -407,6 +458,9 @@ class _$AddNameImpl implements _AddName {
     TResult Function(_AddFatherName value)? addFatherName,
     TResult Function(_AddEmail value)? addEmail,
     TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
     required TResult orElse(),
   }) {
     if (addName != null) {
@@ -495,6 +549,9 @@ class _$AddSurnameImpl implements _AddSurname {
     required TResult Function(String fatherName) addFatherName,
     required TResult Function(String email) addEmail,
     required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
   }) {
     return addSurname(surname);
   }
@@ -508,6 +565,9 @@ class _$AddSurnameImpl implements _AddSurname {
     TResult? Function(String fatherName)? addFatherName,
     TResult? Function(String email)? addEmail,
     TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
   }) {
     return addSurname?.call(surname);
   }
@@ -521,6 +581,9 @@ class _$AddSurnameImpl implements _AddSurname {
     TResult Function(String fatherName)? addFatherName,
     TResult Function(String email)? addEmail,
     TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
     required TResult orElse(),
   }) {
     if (addSurname != null) {
@@ -538,6 +601,9 @@ class _$AddSurnameImpl implements _AddSurname {
     required TResult Function(_AddFatherName value) addFatherName,
     required TResult Function(_AddEmail value) addEmail,
     required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
   }) {
     return addSurname(this);
   }
@@ -551,6 +617,9 @@ class _$AddSurnameImpl implements _AddSurname {
     TResult? Function(_AddFatherName value)? addFatherName,
     TResult? Function(_AddEmail value)? addEmail,
     TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
   }) {
     return addSurname?.call(this);
   }
@@ -564,6 +633,9 @@ class _$AddSurnameImpl implements _AddSurname {
     TResult Function(_AddFatherName value)? addFatherName,
     TResult Function(_AddEmail value)? addEmail,
     TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
     required TResult orElse(),
   }) {
     if (addSurname != null) {
@@ -653,6 +725,9 @@ class _$AddFatherNameImpl implements _AddFatherName {
     required TResult Function(String fatherName) addFatherName,
     required TResult Function(String email) addEmail,
     required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
   }) {
     return addFatherName(fatherName);
   }
@@ -666,6 +741,9 @@ class _$AddFatherNameImpl implements _AddFatherName {
     TResult? Function(String fatherName)? addFatherName,
     TResult? Function(String email)? addEmail,
     TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
   }) {
     return addFatherName?.call(fatherName);
   }
@@ -679,6 +757,9 @@ class _$AddFatherNameImpl implements _AddFatherName {
     TResult Function(String fatherName)? addFatherName,
     TResult Function(String email)? addEmail,
     TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
     required TResult orElse(),
   }) {
     if (addFatherName != null) {
@@ -696,6 +777,9 @@ class _$AddFatherNameImpl implements _AddFatherName {
     required TResult Function(_AddFatherName value) addFatherName,
     required TResult Function(_AddEmail value) addEmail,
     required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
   }) {
     return addFatherName(this);
   }
@@ -709,6 +793,9 @@ class _$AddFatherNameImpl implements _AddFatherName {
     TResult? Function(_AddFatherName value)? addFatherName,
     TResult? Function(_AddEmail value)? addEmail,
     TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
   }) {
     return addFatherName?.call(this);
   }
@@ -722,6 +809,9 @@ class _$AddFatherNameImpl implements _AddFatherName {
     TResult Function(_AddFatherName value)? addFatherName,
     TResult Function(_AddEmail value)? addEmail,
     TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
     required TResult orElse(),
   }) {
     if (addFatherName != null) {
@@ -811,6 +901,9 @@ class _$AddEmailImpl implements _AddEmail {
     required TResult Function(String fatherName) addFatherName,
     required TResult Function(String email) addEmail,
     required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
   }) {
     return addEmail(email);
   }
@@ -824,6 +917,9 @@ class _$AddEmailImpl implements _AddEmail {
     TResult? Function(String fatherName)? addFatherName,
     TResult? Function(String email)? addEmail,
     TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
   }) {
     return addEmail?.call(email);
   }
@@ -837,6 +933,9 @@ class _$AddEmailImpl implements _AddEmail {
     TResult Function(String fatherName)? addFatherName,
     TResult Function(String email)? addEmail,
     TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
     required TResult orElse(),
   }) {
     if (addEmail != null) {
@@ -854,6 +953,9 @@ class _$AddEmailImpl implements _AddEmail {
     required TResult Function(_AddFatherName value) addFatherName,
     required TResult Function(_AddEmail value) addEmail,
     required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
   }) {
     return addEmail(this);
   }
@@ -867,6 +969,9 @@ class _$AddEmailImpl implements _AddEmail {
     TResult? Function(_AddFatherName value)? addFatherName,
     TResult? Function(_AddEmail value)? addEmail,
     TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
   }) {
     return addEmail?.call(this);
   }
@@ -880,6 +985,9 @@ class _$AddEmailImpl implements _AddEmail {
     TResult Function(_AddFatherName value)? addFatherName,
     TResult Function(_AddEmail value)? addEmail,
     TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
     required TResult orElse(),
   }) {
     if (addEmail != null) {
@@ -968,6 +1076,9 @@ class _$AddPhoneImpl implements _AddPhone {
     required TResult Function(String fatherName) addFatherName,
     required TResult Function(String email) addEmail,
     required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
   }) {
     return addPhone(phone);
   }
@@ -981,6 +1092,9 @@ class _$AddPhoneImpl implements _AddPhone {
     TResult? Function(String fatherName)? addFatherName,
     TResult? Function(String email)? addEmail,
     TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
   }) {
     return addPhone?.call(phone);
   }
@@ -994,6 +1108,9 @@ class _$AddPhoneImpl implements _AddPhone {
     TResult Function(String fatherName)? addFatherName,
     TResult Function(String email)? addEmail,
     TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
     required TResult orElse(),
   }) {
     if (addPhone != null) {
@@ -1011,6 +1128,9 @@ class _$AddPhoneImpl implements _AddPhone {
     required TResult Function(_AddFatherName value) addFatherName,
     required TResult Function(_AddEmail value) addEmail,
     required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
   }) {
     return addPhone(this);
   }
@@ -1024,6 +1144,9 @@ class _$AddPhoneImpl implements _AddPhone {
     TResult? Function(_AddFatherName value)? addFatherName,
     TResult? Function(_AddEmail value)? addEmail,
     TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
   }) {
     return addPhone?.call(this);
   }
@@ -1037,6 +1160,9 @@ class _$AddPhoneImpl implements _AddPhone {
     TResult Function(_AddFatherName value)? addFatherName,
     TResult Function(_AddEmail value)? addEmail,
     TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
     required TResult orElse(),
   }) {
     if (addPhone != null) {
@@ -1052,6 +1178,500 @@ abstract class _AddPhone implements RegistrationEvent {
   String get phone;
   @JsonKey(ignore: true)
   _$$AddPhoneImplCopyWith<_$AddPhoneImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$RegistrationEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
+
+  @override
+  String toString() {
+    return 'RegistrationEvent.reset()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RegistrationModel registrationModel) registration,
+    required TResult Function(String name) addName,
+    required TResult Function(String surname) addSurname,
+    required TResult Function(String fatherName) addFatherName,
+    required TResult Function(String email) addEmail,
+    required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RegistrationModel registrationModel)? registration,
+    TResult? Function(String name)? addName,
+    TResult? Function(String surname)? addSurname,
+    TResult? Function(String fatherName)? addFatherName,
+    TResult? Function(String email)? addEmail,
+    TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RegistrationModel registrationModel)? registration,
+    TResult Function(String name)? addName,
+    TResult Function(String surname)? addSurname,
+    TResult Function(String fatherName)? addFatherName,
+    TResult Function(String email)? addEmail,
+    TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Registration value) registration,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddSurname value) addSurname,
+    required TResult Function(_AddFatherName value) addFatherName,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Registration value)? registration,
+    TResult? Function(_AddName value)? addName,
+    TResult? Function(_AddSurname value)? addSurname,
+    TResult? Function(_AddFatherName value)? addFatherName,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Registration value)? registration,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddSurname value)? addSurname,
+    TResult Function(_AddFatherName value)? addFatherName,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements RegistrationEvent {
+  const factory _Reset() = _$ResetImpl;
+}
+
+/// @nodoc
+abstract class _$$SendPinImplCopyWith<$Res> {
+  factory _$$SendPinImplCopyWith(
+          _$SendPinImpl value, $Res Function(_$SendPinImpl) then) =
+      __$$SendPinImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String pinCode});
+}
+
+/// @nodoc
+class __$$SendPinImplCopyWithImpl<$Res>
+    extends _$RegistrationEventCopyWithImpl<$Res, _$SendPinImpl>
+    implements _$$SendPinImplCopyWith<$Res> {
+  __$$SendPinImplCopyWithImpl(
+      _$SendPinImpl _value, $Res Function(_$SendPinImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pinCode = null,
+  }) {
+    return _then(_$SendPinImpl(
+      null == pinCode
+          ? _value.pinCode
+          : pinCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendPinImpl implements _SendPin {
+  const _$SendPinImpl(this.pinCode);
+
+  @override
+  final String pinCode;
+
+  @override
+  String toString() {
+    return 'RegistrationEvent.sendPin(pinCode: $pinCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendPinImpl &&
+            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pinCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendPinImplCopyWith<_$SendPinImpl> get copyWith =>
+      __$$SendPinImplCopyWithImpl<_$SendPinImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RegistrationModel registrationModel) registration,
+    required TResult Function(String name) addName,
+    required TResult Function(String surname) addSurname,
+    required TResult Function(String fatherName) addFatherName,
+    required TResult Function(String email) addEmail,
+    required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
+  }) {
+    return sendPin(pinCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RegistrationModel registrationModel)? registration,
+    TResult? Function(String name)? addName,
+    TResult? Function(String surname)? addSurname,
+    TResult? Function(String fatherName)? addFatherName,
+    TResult? Function(String email)? addEmail,
+    TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
+  }) {
+    return sendPin?.call(pinCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RegistrationModel registrationModel)? registration,
+    TResult Function(String name)? addName,
+    TResult Function(String surname)? addSurname,
+    TResult Function(String fatherName)? addFatherName,
+    TResult Function(String email)? addEmail,
+    TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
+    required TResult orElse(),
+  }) {
+    if (sendPin != null) {
+      return sendPin(pinCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Registration value) registration,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddSurname value) addSurname,
+    required TResult Function(_AddFatherName value) addFatherName,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
+  }) {
+    return sendPin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Registration value)? registration,
+    TResult? Function(_AddName value)? addName,
+    TResult? Function(_AddSurname value)? addSurname,
+    TResult? Function(_AddFatherName value)? addFatherName,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
+  }) {
+    return sendPin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Registration value)? registration,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddSurname value)? addSurname,
+    TResult Function(_AddFatherName value)? addFatherName,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
+    required TResult orElse(),
+  }) {
+    if (sendPin != null) {
+      return sendPin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendPin implements RegistrationEvent {
+  const factory _SendPin(final String pinCode) = _$SendPinImpl;
+
+  String get pinCode;
+  @JsonKey(ignore: true)
+  _$$SendPinImplCopyWith<_$SendPinImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddPinImplCopyWith<$Res> {
+  factory _$$AddPinImplCopyWith(
+          _$AddPinImpl value, $Res Function(_$AddPinImpl) then) =
+      __$$AddPinImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String pinCode});
+}
+
+/// @nodoc
+class __$$AddPinImplCopyWithImpl<$Res>
+    extends _$RegistrationEventCopyWithImpl<$Res, _$AddPinImpl>
+    implements _$$AddPinImplCopyWith<$Res> {
+  __$$AddPinImplCopyWithImpl(
+      _$AddPinImpl _value, $Res Function(_$AddPinImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pinCode = null,
+  }) {
+    return _then(_$AddPinImpl(
+      null == pinCode
+          ? _value.pinCode
+          : pinCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddPinImpl implements _AddPin {
+  const _$AddPinImpl(this.pinCode);
+
+  @override
+  final String pinCode;
+
+  @override
+  String toString() {
+    return 'RegistrationEvent.addPin(pinCode: $pinCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddPinImpl &&
+            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pinCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddPinImplCopyWith<_$AddPinImpl> get copyWith =>
+      __$$AddPinImplCopyWithImpl<_$AddPinImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RegistrationModel registrationModel) registration,
+    required TResult Function(String name) addName,
+    required TResult Function(String surname) addSurname,
+    required TResult Function(String fatherName) addFatherName,
+    required TResult Function(String email) addEmail,
+    required TResult Function(String phone) addPhone,
+    required TResult Function() reset,
+    required TResult Function(String pinCode) sendPin,
+    required TResult Function(String pinCode) addPin,
+  }) {
+    return addPin(pinCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RegistrationModel registrationModel)? registration,
+    TResult? Function(String name)? addName,
+    TResult? Function(String surname)? addSurname,
+    TResult? Function(String fatherName)? addFatherName,
+    TResult? Function(String email)? addEmail,
+    TResult? Function(String phone)? addPhone,
+    TResult? Function()? reset,
+    TResult? Function(String pinCode)? sendPin,
+    TResult? Function(String pinCode)? addPin,
+  }) {
+    return addPin?.call(pinCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RegistrationModel registrationModel)? registration,
+    TResult Function(String name)? addName,
+    TResult Function(String surname)? addSurname,
+    TResult Function(String fatherName)? addFatherName,
+    TResult Function(String email)? addEmail,
+    TResult Function(String phone)? addPhone,
+    TResult Function()? reset,
+    TResult Function(String pinCode)? sendPin,
+    TResult Function(String pinCode)? addPin,
+    required TResult orElse(),
+  }) {
+    if (addPin != null) {
+      return addPin(pinCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Registration value) registration,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddSurname value) addSurname,
+    required TResult Function(_AddFatherName value) addFatherName,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_AddPhone value) addPhone,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_SendPin value) sendPin,
+    required TResult Function(_AddPin value) addPin,
+  }) {
+    return addPin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Registration value)? registration,
+    TResult? Function(_AddName value)? addName,
+    TResult? Function(_AddSurname value)? addSurname,
+    TResult? Function(_AddFatherName value)? addFatherName,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_AddPhone value)? addPhone,
+    TResult? Function(_Reset value)? reset,
+    TResult? Function(_SendPin value)? sendPin,
+    TResult? Function(_AddPin value)? addPin,
+  }) {
+    return addPin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Registration value)? registration,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddSurname value)? addSurname,
+    TResult Function(_AddFatherName value)? addFatherName,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_AddPhone value)? addPhone,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_SendPin value)? sendPin,
+    TResult Function(_AddPin value)? addPin,
+    required TResult orElse(),
+  }) {
+    if (addPin != null) {
+      return addPin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddPin implements RegistrationEvent {
+  const factory _AddPin(final String pinCode) = _$AddPinImpl;
+
+  String get pinCode;
+  @JsonKey(ignore: true)
+  _$$AddPinImplCopyWith<_$AddPinImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

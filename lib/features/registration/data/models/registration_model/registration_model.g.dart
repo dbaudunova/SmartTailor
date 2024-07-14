@@ -15,6 +15,7 @@ _$RegistrationModelImpl _$$RegistrationModelImplFromJson(
       email: json['email'] as String,
       phone: json['phone'] as String,
       rememberMe: json['rememberMe'] as bool,
+      code: json['code'] as String,
     );
 
 Map<String, dynamic> _$$RegistrationModelImplToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$RegistrationModelImplToJson(
       'email': instance.email,
       'phone': instance.phone,
       'rememberMe': instance.rememberMe,
+      'code': instance.code,
     };

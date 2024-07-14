@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
+import 'package:intl/intl.dart';
 
 class DatePickerWidget extends StatefulWidget {
   final Function(DateTime) onDateSelected;
@@ -36,8 +37,9 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                     minimumYear: DateTime.now().year,
                     onDateTimeChanged: (DateTime dateTime) {
                       setState(() {
+                        var date = DateFormat.yMd().format(dateTime);
                         _selectedDate = dateTime;
-                        widget.dateController.text = _selectedDate.toString();
+                        widget.dateController.text = date;
                       });
                       widget.onDateSelected(dateTime);
                     },

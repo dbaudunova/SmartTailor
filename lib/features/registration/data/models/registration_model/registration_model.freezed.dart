@@ -26,6 +26,7 @@ mixin _$RegistrationModel {
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   bool get rememberMe => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,8 @@ abstract class $RegistrationModelCopyWith<$Res> {
       String fatherName,
       String email,
       String phone,
-      bool rememberMe});
+      bool rememberMe,
+      String code});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$RegistrationModelCopyWithImpl<$Res, $Val extends RegistrationModel>
     Object? email = null,
     Object? phone = null,
     Object? rememberMe = null,
+    Object? code = null,
   }) {
     return _then(_value.copyWith(
       surname: null == surname
@@ -93,6 +96,10 @@ class _$RegistrationModelCopyWithImpl<$Res, $Val extends RegistrationModel>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -111,7 +118,8 @@ abstract class _$$RegistrationModelImplCopyWith<$Res>
       String fatherName,
       String email,
       String phone,
-      bool rememberMe});
+      bool rememberMe,
+      String code});
 }
 
 /// @nodoc
@@ -131,6 +139,7 @@ class __$$RegistrationModelImplCopyWithImpl<$Res>
     Object? email = null,
     Object? phone = null,
     Object? rememberMe = null,
+    Object? code = null,
   }) {
     return _then(_$RegistrationModelImpl(
       surname: null == surname
@@ -157,6 +166,10 @@ class __$$RegistrationModelImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +183,8 @@ class _$RegistrationModelImpl extends _RegistrationModel {
       required this.fatherName,
       required this.email,
       required this.phone,
-      required this.rememberMe})
+      required this.rememberMe,
+      required this.code})
       : super._();
 
   factory _$RegistrationModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -188,10 +202,12 @@ class _$RegistrationModelImpl extends _RegistrationModel {
   final String phone;
   @override
   final bool rememberMe;
+  @override
+  final String code;
 
   @override
   String toString() {
-    return 'RegistrationModel(surname: $surname, name: $name, fatherName: $fatherName, email: $email, phone: $phone, rememberMe: $rememberMe)';
+    return 'RegistrationModel(surname: $surname, name: $name, fatherName: $fatherName, email: $email, phone: $phone, rememberMe: $rememberMe, code: $code)';
   }
 
   @override
@@ -206,13 +222,14 @@ class _$RegistrationModelImpl extends _RegistrationModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
+                other.rememberMe == rememberMe) &&
+            (identical(other.code, code) || other.code == code));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, surname, name, fatherName, email, phone, rememberMe);
+      runtimeType, surname, name, fatherName, email, phone, rememberMe, code);
 
   @JsonKey(ignore: true)
   @override
@@ -236,7 +253,8 @@ abstract class _RegistrationModel extends RegistrationModel {
       required final String fatherName,
       required final String email,
       required final String phone,
-      required final bool rememberMe}) = _$RegistrationModelImpl;
+      required final bool rememberMe,
+      required final String code}) = _$RegistrationModelImpl;
   const _RegistrationModel._() : super._();
 
   factory _RegistrationModel.fromJson(Map<String, dynamic> json) =
@@ -254,6 +272,8 @@ abstract class _RegistrationModel extends RegistrationModel {
   String get phone;
   @override
   bool get rememberMe;
+  @override
+  String get code;
   @override
   @JsonKey(ignore: true)
   _$$RegistrationModelImplCopyWith<_$RegistrationModelImpl> get copyWith =>

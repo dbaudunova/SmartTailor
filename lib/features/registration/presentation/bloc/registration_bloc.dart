@@ -20,17 +20,24 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
               registrationModel: RegistrationModel.initial(),
               isButtonAvailable: false),
         ) {
-    // on<_Registration>(_validationPassword);
-    // on<ValidationEmail>(_validationEmail);
-    // on<ValidationLogin>(_validationLogin);
-    // on<ValidationPasswordRepeat>(_validationPasswordRepeat);
-
     on<_Registration>(_registration);
     on<_AddSurname>(_addSurname);
     on<_AddName>(_addName);
     on<_AddFatherName>(_addFatherName);
     on<_AddEmail>(_addEmail);
     on<_AddPhone>(_addPhone);
+    on<_Reset>(_reset);
+  }
+
+  void _reset(
+    _Reset event,
+    Emitter<RegistrationState> emit,
+  ) {
+    emit(RegistrationState(
+      stateStatus: const StateStatus.initial(),
+      registrationModel: RegistrationModel.initial(),
+      isButtonAvailable: false,
+    ));
   }
 
   void _addSurname(
@@ -77,16 +84,34 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     _Registration event,
     Emitter<RegistrationState> emit,
   ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
     final registrationModel = event.registrationModel;
     final result = await registrationUseCase.call(
       registrationModel,
     );
     result.fold((l) {
-      emit(state.copyWith(stateStatus: StateStatus.failure(message: l.message ?? l.toString())));
+      emit(
+        state.copyWith(
+          stateStatus: StateStatus.failure(
+            message: l.message ?? l.toString(),
+          ),
+        ),
+      );
     }, (r) {
-      emit(state.copyWith(stateStatus: const StateStatus.success()));
+      if (r == 200) {
+        emit(state.copyWith(stateStatus: const StateStatus.success()));
+      } else {
+        emit(
+          state.copyWith(
+            stateStatus: StateStatus.failure(message: 'Неизвестный код статуса: $r'),
+          ),
+        );
+      }
     });
   }
+}
+
+
 
   // void _validationPasswordRepeat(
   //   ValidationPasswordRepeat event,
@@ -184,5 +209,5 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   //       ),
   //     ),
   //   );
-  // }
-}
+  
+

@@ -25,6 +25,7 @@ mixin _$OrderPlaceEvent {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$OrderPlaceEvent {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$OrderPlaceEvent {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,7 @@ mixin _$OrderPlaceEvent {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$OrderPlaceEvent {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$OrderPlaceEvent {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -176,6 +182,7 @@ class _$ShowFieldsImpl implements _ShowFields {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) {
     return showFields(fieldType);
   }
@@ -190,6 +197,7 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) {
     return showFields?.call(fieldType);
   }
@@ -204,6 +212,7 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (showFields != null) {
@@ -222,6 +231,7 @@ class _$ShowFieldsImpl implements _ShowFields {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return showFields(this);
   }
@@ -236,6 +246,7 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return showFields?.call(this);
   }
@@ -250,6 +261,7 @@ class _$ShowFieldsImpl implements _ShowFields {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (showFields != null) {
@@ -340,6 +352,7 @@ class _$AddTypeImpl implements _AddType {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) {
     return addType(type);
   }
@@ -354,6 +367,7 @@ class _$AddTypeImpl implements _AddType {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) {
     return addType?.call(type);
   }
@@ -368,6 +382,7 @@ class _$AddTypeImpl implements _AddType {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -386,6 +401,7 @@ class _$AddTypeImpl implements _AddType {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return addType(this);
   }
@@ -400,6 +416,7 @@ class _$AddTypeImpl implements _AddType {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return addType?.call(this);
   }
@@ -414,6 +431,7 @@ class _$AddTypeImpl implements _AddType {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -509,6 +527,7 @@ class _$AddPhotosImpl implements _AddPhotos {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) {
     return addPhotos(photos);
   }
@@ -523,6 +542,7 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) {
     return addPhotos?.call(photos);
   }
@@ -537,6 +557,7 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (addPhotos != null) {
@@ -555,6 +576,7 @@ class _$AddPhotosImpl implements _AddPhotos {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return addPhotos(this);
   }
@@ -569,6 +591,7 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return addPhotos?.call(this);
   }
@@ -583,6 +606,7 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (addPhotos != null) {
@@ -673,6 +697,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) {
     return removePhoto(photo);
   }
@@ -687,6 +712,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) {
     return removePhoto?.call(photo);
   }
@@ -701,6 +727,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (removePhoto != null) {
@@ -719,6 +746,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return removePhoto(this);
   }
@@ -733,6 +761,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return removePhoto?.call(this);
   }
@@ -747,6 +776,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (removePhoto != null) {
@@ -836,6 +866,7 @@ class _$AddSizeImpl implements _AddSize {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) {
     return addSize(size);
   }
@@ -850,6 +881,7 @@ class _$AddSizeImpl implements _AddSize {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) {
     return addSize?.call(size);
   }
@@ -864,6 +896,7 @@ class _$AddSizeImpl implements _AddSize {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (addSize != null) {
@@ -882,6 +915,7 @@ class _$AddSizeImpl implements _AddSize {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return addSize(this);
   }
@@ -896,6 +930,7 @@ class _$AddSizeImpl implements _AddSize {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return addSize?.call(this);
   }
@@ -910,6 +945,7 @@ class _$AddSizeImpl implements _AddSize {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (addSize != null) {
@@ -999,6 +1035,7 @@ class _$RemoveSizeImpl implements _RemoveSize {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) {
     return removeSize(size);
   }
@@ -1013,6 +1050,7 @@ class _$RemoveSizeImpl implements _RemoveSize {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) {
     return removeSize?.call(size);
   }
@@ -1027,6 +1065,7 @@ class _$RemoveSizeImpl implements _RemoveSize {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (removeSize != null) {
@@ -1045,6 +1084,7 @@ class _$RemoveSizeImpl implements _RemoveSize {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return removeSize(this);
   }
@@ -1059,6 +1099,7 @@ class _$RemoveSizeImpl implements _RemoveSize {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return removeSize?.call(this);
   }
@@ -1073,6 +1114,7 @@ class _$RemoveSizeImpl implements _RemoveSize {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (removeSize != null) {
@@ -1162,6 +1204,7 @@ class _$AddDateImpl implements _AddDate {
     required TResult Function(String size) addSize,
     required TResult Function(String size) removeSize,
     required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
   }) {
     return addDate(date);
   }
@@ -1176,6 +1219,7 @@ class _$AddDateImpl implements _AddDate {
     TResult? Function(String size)? addSize,
     TResult? Function(String size)? removeSize,
     TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
   }) {
     return addDate?.call(date);
   }
@@ -1190,6 +1234,7 @@ class _$AddDateImpl implements _AddDate {
     TResult Function(String size)? addSize,
     TResult Function(String size)? removeSize,
     TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
     required TResult orElse(),
   }) {
     if (addDate != null) {
@@ -1208,6 +1253,7 @@ class _$AddDateImpl implements _AddDate {
     required TResult Function(_AddSize value) addSize,
     required TResult Function(_RemoveSize value) removeSize,
     required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
   }) {
     return addDate(this);
   }
@@ -1222,6 +1268,7 @@ class _$AddDateImpl implements _AddDate {
     TResult? Function(_AddSize value)? addSize,
     TResult? Function(_RemoveSize value)? removeSize,
     TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
   }) {
     return addDate?.call(this);
   }
@@ -1236,6 +1283,7 @@ class _$AddDateImpl implements _AddDate {
     TResult Function(_AddSize value)? addSize,
     TResult Function(_RemoveSize value)? removeSize,
     TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
     required TResult orElse(),
   }) {
     if (addDate != null) {
@@ -1252,6 +1300,144 @@ abstract class _AddDate implements OrderPlaceEvent {
   @JsonKey(ignore: true)
   _$$AddDateImplCopyWith<_$AddDateImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetStateImplCopyWith<$Res> {
+  factory _$$ResetStateImplCopyWith(
+          _$ResetStateImpl value, $Res Function(_$ResetStateImpl) then) =
+      __$$ResetStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResetStateImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$ResetStateImpl>
+    implements _$$ResetStateImplCopyWith<$Res> {
+  __$$ResetStateImplCopyWithImpl(
+      _$ResetStateImpl _value, $Res Function(_$ResetStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResetStateImpl implements _ResetState {
+  const _$ResetStateImpl();
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.resetState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResetStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String fieldType) showFields,
+    required TResult Function(String type) addType,
+    required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(String photo) removePhoto,
+    required TResult Function(String size) addSize,
+    required TResult Function(String size) removeSize,
+    required TResult Function(DateTime date) addDate,
+    required TResult Function() resetState,
+  }) {
+    return resetState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String fieldType)? showFields,
+    TResult? Function(String type)? addType,
+    TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(String photo)? removePhoto,
+    TResult? Function(String size)? addSize,
+    TResult? Function(String size)? removeSize,
+    TResult? Function(DateTime date)? addDate,
+    TResult? Function()? resetState,
+  }) {
+    return resetState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String fieldType)? showFields,
+    TResult Function(String type)? addType,
+    TResult Function(List<File> photos)? addPhotos,
+    TResult Function(String photo)? removePhoto,
+    TResult Function(String size)? addSize,
+    TResult Function(String size)? removeSize,
+    TResult Function(DateTime date)? addDate,
+    TResult Function()? resetState,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowFields value) showFields,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddSize value) addSize,
+    required TResult Function(_RemoveSize value) removeSize,
+    required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
+  }) {
+    return resetState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ShowFields value)? showFields,
+    TResult? Function(_AddType value)? addType,
+    TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddSize value)? addSize,
+    TResult? Function(_RemoveSize value)? removeSize,
+    TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
+  }) {
+    return resetState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowFields value)? showFields,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddSize value)? addSize,
+    TResult Function(_RemoveSize value)? removeSize,
+    TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
+    required TResult orElse(),
+  }) {
+    if (resetState != null) {
+      return resetState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetState implements OrderPlaceEvent {
+  const factory _ResetState() = _$ResetStateImpl;
 }
 
 /// @nodoc

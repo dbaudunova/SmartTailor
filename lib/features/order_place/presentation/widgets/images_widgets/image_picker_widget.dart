@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
@@ -27,6 +29,7 @@ class ImagePickerWidget extends StatefulWidget {
 
 class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   final _imageController = TextEditingController();
+  final picker = ImagePicker();
 
   @override
   void dispose() {
@@ -36,13 +39,30 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormFieldWidget(
-      controller: _imageController,
-      enabled: false,
-      ontap: _onTap,
-      hintText: t.max5photos,
-      titleName: t.addPhotos,
-      suffixIcon: Icons.keyboard_arrow_down_sharp,
+    return BlocListener<OrderPlaceBloc, OrderPlaceState>(
+      listener: (context, state) {
+        final photos = state.orderPlaceModel.images;
+        _imageController.text = photos.isEmpty ? '' : 'Выбрано ${photos.length} фото';
+      },
+      child: BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
+        builder: (context, state) {
+          final photos = state.orderPlaceModel.images;
+          return TextFormFieldWidget(
+            validator: (value) {
+              if (photos.isEmpty) {
+                return 'Выберите фотографии';
+              }
+              return null;
+            },
+            controller: _imageController,
+            enabled: false,
+            ontap: _onTap,
+            hintText: t.max5photos,
+            titleName: t.addPhotos,
+            suffixIcon: Icons.keyboard_arrow_down_sharp,
+          );
+        },
+      ),
     );
   }
 
@@ -55,7 +75,6 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
               (type) => AppActionSheetWidget(
                 onPressed: () {
                   _onTypeHandler(type);
-
                   Navigator.pop(context);
                 },
                 text: type.name,
@@ -76,7 +95,6 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   }
 
   Future<List<File>> _pickMultipleImages() async {
-    final picker = ImagePicker();
     final pickedFiles = await picker.pickMultiImage();
     final images = pickedFiles.take(5).map((file) => File(file.path)).toList();
     setState(() {
@@ -87,9 +105,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   }
 
   Future<List<File>> _pickMultipleImagesFromCamera() async {
-    final picker = ImagePicker();
     var newImages = <File>[];
-
     for (var i = 0; i < 5; i++) {
       final pickedFile = await picker.pickImage(source: ImageSource.camera);
 
@@ -100,7 +116,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
       }
     }
     setState(() {
-      _imageController.text = 'Выбрано ${newImages.length} фото';
+      _imageController.text = 'Сделано ${newImages.length} фото';
     });
 
     return newImages;

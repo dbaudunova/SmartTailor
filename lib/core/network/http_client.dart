@@ -83,7 +83,7 @@ class HttpClient {
     if (response.statusCode == 200) {
       final data = response.data;
       final updatedAuthData = AuthData(
-        username: data['username'],
+        message: data['message'],
         accessToken: data['newAccessToken'],
         refreshToken: _authService.cachedUser!.refreshToken,
       );

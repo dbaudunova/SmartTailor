@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_screen.dart';
+import 'package:neobis_smart_tailor/features/registration/presentation/confirmation_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/email_input_screen.dart';
 import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
@@ -41,6 +41,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
+          maintainState: false,
           page: RegistrationRoute.page,
           path: '/registration',
           // initial: true,
@@ -79,7 +80,7 @@ class AppRouter extends _$AppRouter {
           ],
           children: [
             AutoRoute(page: MarketplaceRoute.page),
-            AutoRoute(page: OrderPlaceRoute.page),
+            AutoRoute(page: OrderPlaceRoute.page, maintainState: false),
             AutoRoute(page: OrganizationRoute.page),
             AutoRoute(page: ProfileRoute.page, maintainState: false),
           ],

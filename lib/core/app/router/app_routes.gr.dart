@@ -356,7 +356,8 @@ class MarketplaceDetailRoute extends PageRouteInfo<MarketplaceDetailRouteArgs> {
 
   static const String name = 'MarketplaceDetailRoute';
 
-  static const PageInfo<MarketplaceDetailRouteArgs> page = PageInfo<MarketplaceDetailRouteArgs>(name);
+  static const PageInfo<MarketplaceDetailRouteArgs> page =
+      PageInfo<MarketplaceDetailRouteArgs>(name);
 }
 
 class MarketplaceDetailRouteArgs {

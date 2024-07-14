@@ -15,6 +15,7 @@ class PhotosPreviewWidget extends StatelessWidget {
     return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
       builder: (context, state) {
         final photos = state.orderPlaceModel.images;
+        print(photos.length);
         return photos != []
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +51,11 @@ class PhotosPreviewWidget extends StatelessWidget {
         top: 4,
         child: GestureDetector(
           onTap: () {
-            context.read<OrderPlaceBloc>().add(OrderPlaceEvent.removePhoto(photo: photos[index]));
+            context.read<OrderPlaceBloc>().add(
+                  OrderPlaceEvent.removePhoto(
+                    photo: photos[index],
+                  ),
+                );
           },
           child: const Icon(
             Icons.highlight_remove,

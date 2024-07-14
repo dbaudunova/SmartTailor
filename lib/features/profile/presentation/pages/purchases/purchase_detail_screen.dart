@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/author_info.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/fab_button_widget.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/search_order_sheet.dart';
-import 'package:neobis_smart_tailor/features/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/response_item.dart';
 
@@ -46,8 +46,7 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16)
-                        .copyWith(top: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -75,11 +74,12 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
                           ),
                         const SizedBox(height: 24),
                         CustomDropdown(
-                          style: AppTextStyle.textField16.copyWith(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                          ),
-                        ),
+
+                            // style: AppTextStyle.textField16.copyWith(
+                            //   fontWeight: FontWeight.w500,
+                            //   fontSize: 20,
+                            // ),
+                            ),
                         const SizedBox(height: 12),
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
@@ -212,9 +212,7 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded
-                ? Icons.keyboard_arrow_up_rounded
-                : Icons.keyboard_arrow_down_rounded,
+            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),

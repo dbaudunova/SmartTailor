@@ -8,4 +8,7 @@ class RegistrationEvent with _$RegistrationEvent {
   const factory RegistrationEvent.addFatherName({required String fatherName}) = _AddFatherName;
   const factory RegistrationEvent.addEmail({required String email}) = _AddEmail;
   const factory RegistrationEvent.addPhone({required String phone}) = _AddPhone;
+  const factory RegistrationEvent.reset() = _Reset;
+  const factory RegistrationEvent.sendPin(String pinCode) = _SendPin;
+  const factory RegistrationEvent.addPin(String pinCode) = _AddPin;
 }

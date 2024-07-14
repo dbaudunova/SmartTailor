@@ -55,8 +55,9 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
           deleteIcon: SvgPicture.asset(Assets.icons.cross),
           label: Text(size),
           onDeleted: () {
-            context.read<OrderPlaceBloc>().add(OrderPlaceEvent.removeSize(size: size));
-            // widget.sizeController.text = context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ');
+            context.read<OrderPlaceBloc>().add(
+                  OrderPlaceEvent.removeSize(size: size),
+                );
           },
         );
       }).toList(),
@@ -100,12 +101,12 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
         ),
       ),
       onSelected: (String? size) {
-        // context.read<OrderPlaceBloc>().add(OrderPlaceEvent.addSize(size: size));
         widget.onSizeSelected(size!);
         widget.sizeController.text = context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ');
-        // widget.sizeController.text = context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ');
       },
-      controller: TextEditingController(text: context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ')),
+      controller: TextEditingController(
+        text: context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', '),
+      ),
     );
   }
 }
