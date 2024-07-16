@@ -12,15 +12,6 @@ import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/ac
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/user_info.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
-enum _ImagePickType {
-  selectPhoto('Выбрать фото'),
-  takePhoto('Сделать фото');
-
-  final String name;
-
-  const _ImagePickType(this.name);
-}
-
 @RoutePage()
 class PersonalDataScreen extends StatefulWidget {
   const PersonalDataScreen({super.key});
@@ -119,14 +110,14 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
     showCupertinoModalPopup(
       context: context,
       builder: (context) => ActionSheetWidget(
-        actions: _ImagePickType.values
+        actions: ImagePickType.values
             .map(
               (type) => AppActionSheetWidget(
                 onPressed: () {
                   Navigator.pop(context);
-                  if (type == _ImagePickType.selectPhoto) {
+                  if (type == ImagePickType.selectPhoto) {
                     _pickImage(ImageSource.gallery);
-                  } else if (type == _ImagePickType.takePhoto) {
+                  } else if (type == ImagePickType.takePhoto) {
                     _pickImage(ImageSource.camera);
                   }
                 },
@@ -228,4 +219,13 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       ],
     );
   }
+}
+
+enum ImagePickType {
+  selectPhoto('Выбрать фото'),
+  takePhoto('Сделать фото');
+
+  final String name;
+
+  const ImagePickType(this.name);
 }
