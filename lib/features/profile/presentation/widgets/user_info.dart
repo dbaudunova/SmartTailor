@@ -10,26 +10,24 @@ class UserInfo extends StatelessWidget {
     super.key,
     this.secondRowText,
     this.thirdRowText,
+    this.onTap,
+    this.avatar,
   });
 
   final String? secondRowText;
   final String? thirdRowText;
-  final VoidCallback? onIconPressed;
+  final VoidCallback? onIconPressed, onTap;
   final bool showBellIcon;
+  final Widget? avatar;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        CircleAvatar(
-          radius: 24,
-          backgroundColor: AppColors.yellow,
-          child: SvgPicture.asset(
-            Assets.icons.person,
-            width: AppProps.kBigMargin,
-            height: AppProps.kBigMargin,
-          ),
+        GestureDetector(
+          onTap: onTap,
+          child: avatar,
         ),
         const SizedBox(width: AppProps.kSmallMargin),
         Column(
