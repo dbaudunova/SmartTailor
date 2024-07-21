@@ -1,13 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neobis_smart_tailor/core/app/router/auth_route_guard.dart';
+import 'package:neobis_smart_tailor/core/app/router/routes_path_const.dart';
+import 'package:neobis_smart_tailor/core/services/auth_service.dart';
 import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
-import 'package:neobis_smart_tailor/features/registration/presentation/confirmation_screen.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/email_input_screen.dart';
-import 'package:neobis_smart_tailor/features/enter/enter_screen.dart';
+import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_screen.dart';
+import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/enter_screen.dart';
+import 'package:neobis_smart_tailor/features/login/presentation/email_input_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/marketplace_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/marketplace_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/order_place_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/current_order_detail/current_order_detail_screen.dart';
@@ -33,50 +36,43 @@ part 'app_routes.gr.dart';
 @singleton
 @AutoRouterConfig()
 class AppRouter extends _$AppRouter {
-  // final AuthService authService;
+  final AuthService authService;
 
-  AppRouter(// this.authService
-      );
+  AppRouter(this.authService);
 
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          maintainState: false,
-          page: RegistrationRoute.page,
-          path: '/registration',
-          // initial: true,
-        ),
-        AutoRoute(
           page: EmailInputRoute.page,
-          path: '/emailInput',
+          path: RoutesPaths.emailInput,
           // initial: true,
         ),
         AutoRoute(
           page: EnterRoute.page,
-          path: '/enter',
-          initial: true,
-        ),
-        AutoRoute(
-          page: ConfirmationRoute.page,
-          path: '/confirmation',
+          path: RoutesPaths.enter,
           // initial: true,
         ),
+        // AutoRoute(
+        //   page: ConfirmationRoute.page,
+        //   path: '/confirmation',
+        //   // initial: true,
+        // ),
         AutoRoute(
           page: RegistrationRoute.page,
-          path: '/registration',
+          path: RoutesPaths.registration,
           // initial: true,
         ),
         AutoRoute(
           page: ConfirmationRoute.page,
-          path: '/confirmation',
+          path: RoutesPaths.confirmation,
           // initial: true,
         ),
         AutoRoute(
-          // initial: true,
+          initial: true,
           path: '/main',
           page: BottomNavRoute.page,
           guards: [
-            //AuthGuard(authService: authService),
+            AuthGuard(authService: authService),
           ],
           children: [
             AutoRoute(page: MarketplaceRoute.page),
@@ -107,7 +103,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: MarketplaceDetailRoute.page,
-          path: '/marketplace_detail',
+          path: RoutesPaths.marketplaceDetail,
           // initial: true,
         ),
         AutoRoute(

@@ -9,23 +9,19 @@ part of 'registration_model.dart';
 _$RegistrationModelImpl _$$RegistrationModelImplFromJson(
         Map<String, dynamic> json) =>
     _$RegistrationModelImpl(
-      surname: json['surname'] as String,
-      name: json['name'] as String,
-      fatherName: json['fatherName'] as String,
       email: json['email'] as String,
-      phone: json['phone'] as String,
-      rememberMe: json['rememberMe'] as bool,
-      code: json['code'] as String,
+      name: json['name'] as String,
+      surname: json['surname'] as String,
+      patronymic: json['patronymic'] as String,
+      phoneNumber: json['phoneNumber'] as String,
     );
 
 Map<String, dynamic> _$$RegistrationModelImplToJson(
         _$RegistrationModelImpl instance) =>
     <String, dynamic>{
-      'surname': instance.surname,
-      'name': instance.name,
-      'fatherName': instance.fatherName,
       'email': instance.email,
-      'phone': instance.phone,
-      'rememberMe': instance.rememberMe,
-      'code': instance.code,
+      'name': instance.name,
+      'surname': instance.surname,
+      'patronymic': instance.patronymic,
+      'phoneNumber': instance.phoneNumber,
     };

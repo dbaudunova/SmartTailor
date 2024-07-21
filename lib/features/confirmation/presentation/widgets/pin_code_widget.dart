@@ -6,8 +6,10 @@ import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/conf
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class PinCodeField extends StatefulWidget {
+  final TextEditingController controller;
   final String? Function(String?)? validator;
   const PinCodeField({
+    required this.controller,
     super.key,
     this.validator,
   });
@@ -17,28 +19,22 @@ class PinCodeField extends StatefulWidget {
 }
 
 class _PinCodeFieldState extends State<PinCodeField> {
-  final pinCodeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 200,
       child: PinCodeTextField(
         appContext: context,
-        onCompleted: (pin) {
-          print(pin);
-          context.read<ConfirmationBloc>().add(ConfirmationEvent.addPin(pin));
-        },
-        // validator: (value) {
-        //   if (value != '4444') {
-        //     return 'ERRR';
-        //   }
+
+        // onCompleted: (pin) {
+        //   context.read<ConfirmationBloc>().add(ConfirmationEvent.addPin(pin));
         // },
         validator: widget.validator,
         autoFocus: true,
         errorTextSpace: 20,
         cursorColor: AppColors.white,
         length: 4,
-        controller: pinCodeController,
+        controller: widget.controller,
         enableActiveFill: true,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         pinTheme: PinTheme(

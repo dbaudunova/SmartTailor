@@ -46,13 +46,13 @@ class HttpClient {
         },
         onResponse: (response, handler) {
           log('onResponseInterceptor ${response.requestOptions.method} ${response.realUri.path} - ${response.statusCode}');
-          if (response.statusCode! >= badRequest) {
+          if (response.statusCode! >= HttpErrors.badRequest) {
             return handler.reject(DioException(response: response, requestOptions: response.requestOptions));
           }
           return handler.next(response);
         },
         onError: (error, handler) async {
-          if (error.response?.statusCode == unauthorizedError) {
+          if (error.response?.statusCode == HttpErrors.unauthorizedError) {
             await _refreshToken();
             final newToken = _authService.cachedUser?.accessToken;
 
@@ -60,7 +60,7 @@ class HttpClient {
 
             final response = await _retry(error.requestOptions);
             return handler.resolve(response);
-          } else if (error.response?.statusCode == forbiddenError) {
+          } else if (error.response?.statusCode == HttpErrors.forbiddenError) {
             _authService.cachedUser = null;
             throw Authorization(message: 'Cached user is null or refresh token is null');
           } else {

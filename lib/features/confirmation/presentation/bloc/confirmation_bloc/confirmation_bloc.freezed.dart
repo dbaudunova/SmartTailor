@@ -16,48 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConfirmationEvent {
-  String get pinCode => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pinCode) sendPin,
-    required TResult Function(String pinCode) addPin,
+    required TResult Function(String pinCode, String email) login,
+    required TResult Function(String email) addEmail,
+    required TResult Function() resendPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String pinCode)? sendPin,
-    TResult? Function(String pinCode)? addPin,
+    TResult? Function(String pinCode, String email)? login,
+    TResult? Function(String email)? addEmail,
+    TResult? Function()? resendPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pinCode)? sendPin,
-    TResult Function(String pinCode)? addPin,
+    TResult Function(String pinCode, String email)? login,
+    TResult Function(String email)? addEmail,
+    TResult Function()? resendPin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendPin value) sendPin,
-    required TResult Function(_AddPin value) addPin,
+    required TResult Function(_SendPin value) login,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_ResendPinToEmail value) resendPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendPin value)? sendPin,
-    TResult? Function(_AddPin value)? addPin,
+    TResult? Function(_SendPin value)? login,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_ResendPinToEmail value)? resendPin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendPin value)? sendPin,
-    TResult Function(_AddPin value)? addPin,
+    TResult Function(_SendPin value)? login,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_ResendPinToEmail value)? resendPin,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ConfirmationEventCopyWith<ConfirmationEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -66,8 +67,6 @@ abstract class $ConfirmationEventCopyWith<$Res> {
   factory $ConfirmationEventCopyWith(
           ConfirmationEvent value, $Res Function(ConfirmationEvent) then) =
       _$ConfirmationEventCopyWithImpl<$Res, ConfirmationEvent>;
-  @useResult
-  $Res call({String pinCode});
 }
 
 /// @nodoc
@@ -79,30 +78,15 @@ class _$ConfirmationEventCopyWithImpl<$Res, $Val extends ConfirmationEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pinCode = null,
-  }) {
-    return _then(_value.copyWith(
-      pinCode: null == pinCode
-          ? _value.pinCode
-          : pinCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$SendPinImplCopyWith<$Res>
-    implements $ConfirmationEventCopyWith<$Res> {
+abstract class _$$SendPinImplCopyWith<$Res> {
   factory _$$SendPinImplCopyWith(
           _$SendPinImpl value, $Res Function(_$SendPinImpl) then) =
       __$$SendPinImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String pinCode});
+  $Res call({String pinCode, String email});
 }
 
 /// @nodoc
@@ -117,11 +101,16 @@ class __$$SendPinImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pinCode = null,
+    Object? email = null,
   }) {
     return _then(_$SendPinImpl(
-      null == pinCode
+      pinCode: null == pinCode
           ? _value.pinCode
           : pinCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -130,14 +119,16 @@ class __$$SendPinImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SendPinImpl implements _SendPin {
-  const _$SendPinImpl(this.pinCode);
+  const _$SendPinImpl({required this.pinCode, required this.email});
 
   @override
   final String pinCode;
+  @override
+  final String email;
 
   @override
   String toString() {
-    return 'ConfirmationEvent.sendPin(pinCode: $pinCode)';
+    return 'ConfirmationEvent.login(pinCode: $pinCode, email: $email)';
   }
 
   @override
@@ -145,11 +136,12 @@ class _$SendPinImpl implements _SendPin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendPinImpl &&
-            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
+            (identical(other.pinCode, pinCode) || other.pinCode == pinCode) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pinCode);
+  int get hashCode => Object.hash(runtimeType, pinCode, email);
 
   @JsonKey(ignore: true)
   @override
@@ -160,30 +152,33 @@ class _$SendPinImpl implements _SendPin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pinCode) sendPin,
-    required TResult Function(String pinCode) addPin,
+    required TResult Function(String pinCode, String email) login,
+    required TResult Function(String email) addEmail,
+    required TResult Function() resendPin,
   }) {
-    return sendPin(pinCode);
+    return login(pinCode, email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String pinCode)? sendPin,
-    TResult? Function(String pinCode)? addPin,
+    TResult? Function(String pinCode, String email)? login,
+    TResult? Function(String email)? addEmail,
+    TResult? Function()? resendPin,
   }) {
-    return sendPin?.call(pinCode);
+    return login?.call(pinCode, email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pinCode)? sendPin,
-    TResult Function(String pinCode)? addPin,
+    TResult Function(String pinCode, String email)? login,
+    TResult Function(String email)? addEmail,
+    TResult Function()? resendPin,
     required TResult orElse(),
   }) {
-    if (sendPin != null) {
-      return sendPin(pinCode);
+    if (login != null) {
+      return login(pinCode, email);
     }
     return orElse();
   }
@@ -191,74 +186,76 @@ class _$SendPinImpl implements _SendPin {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendPin value) sendPin,
-    required TResult Function(_AddPin value) addPin,
+    required TResult Function(_SendPin value) login,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_ResendPinToEmail value) resendPin,
   }) {
-    return sendPin(this);
+    return login(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendPin value)? sendPin,
-    TResult? Function(_AddPin value)? addPin,
+    TResult? Function(_SendPin value)? login,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_ResendPinToEmail value)? resendPin,
   }) {
-    return sendPin?.call(this);
+    return login?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendPin value)? sendPin,
-    TResult Function(_AddPin value)? addPin,
+    TResult Function(_SendPin value)? login,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_ResendPinToEmail value)? resendPin,
     required TResult orElse(),
   }) {
-    if (sendPin != null) {
-      return sendPin(this);
+    if (login != null) {
+      return login(this);
     }
     return orElse();
   }
 }
 
 abstract class _SendPin implements ConfirmationEvent {
-  const factory _SendPin(final String pinCode) = _$SendPinImpl;
+  const factory _SendPin(
+      {required final String pinCode,
+      required final String email}) = _$SendPinImpl;
 
-  @override
   String get pinCode;
-  @override
+  String get email;
   @JsonKey(ignore: true)
   _$$SendPinImplCopyWith<_$SendPinImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddPinImplCopyWith<$Res>
-    implements $ConfirmationEventCopyWith<$Res> {
-  factory _$$AddPinImplCopyWith(
-          _$AddPinImpl value, $Res Function(_$AddPinImpl) then) =
-      __$$AddPinImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$AddEmailImplCopyWith<$Res> {
+  factory _$$AddEmailImplCopyWith(
+          _$AddEmailImpl value, $Res Function(_$AddEmailImpl) then) =
+      __$$AddEmailImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String pinCode});
+  $Res call({String email});
 }
 
 /// @nodoc
-class __$$AddPinImplCopyWithImpl<$Res>
-    extends _$ConfirmationEventCopyWithImpl<$Res, _$AddPinImpl>
-    implements _$$AddPinImplCopyWith<$Res> {
-  __$$AddPinImplCopyWithImpl(
-      _$AddPinImpl _value, $Res Function(_$AddPinImpl) _then)
+class __$$AddEmailImplCopyWithImpl<$Res>
+    extends _$ConfirmationEventCopyWithImpl<$Res, _$AddEmailImpl>
+    implements _$$AddEmailImplCopyWith<$Res> {
+  __$$AddEmailImplCopyWithImpl(
+      _$AddEmailImpl _value, $Res Function(_$AddEmailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pinCode = null,
+    Object? email = null,
   }) {
-    return _then(_$AddPinImpl(
-      null == pinCode
-          ? _value.pinCode
-          : pinCode // ignore: cast_nullable_to_non_nullable
+    return _then(_$AddEmailImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -266,61 +263,64 @@ class __$$AddPinImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddPinImpl implements _AddPin {
-  const _$AddPinImpl(this.pinCode);
+class _$AddEmailImpl implements _AddEmail {
+  const _$AddEmailImpl({required this.email});
 
   @override
-  final String pinCode;
+  final String email;
 
   @override
   String toString() {
-    return 'ConfirmationEvent.addPin(pinCode: $pinCode)';
+    return 'ConfirmationEvent.addEmail(email: $email)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddPinImpl &&
-            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
+            other is _$AddEmailImpl &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pinCode);
+  int get hashCode => Object.hash(runtimeType, email);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddPinImplCopyWith<_$AddPinImpl> get copyWith =>
-      __$$AddPinImplCopyWithImpl<_$AddPinImpl>(this, _$identity);
+  _$$AddEmailImplCopyWith<_$AddEmailImpl> get copyWith =>
+      __$$AddEmailImplCopyWithImpl<_$AddEmailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String pinCode) sendPin,
-    required TResult Function(String pinCode) addPin,
+    required TResult Function(String pinCode, String email) login,
+    required TResult Function(String email) addEmail,
+    required TResult Function() resendPin,
   }) {
-    return addPin(pinCode);
+    return addEmail(email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String pinCode)? sendPin,
-    TResult? Function(String pinCode)? addPin,
+    TResult? Function(String pinCode, String email)? login,
+    TResult? Function(String email)? addEmail,
+    TResult? Function()? resendPin,
   }) {
-    return addPin?.call(pinCode);
+    return addEmail?.call(email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String pinCode)? sendPin,
-    TResult Function(String pinCode)? addPin,
+    TResult Function(String pinCode, String email)? login,
+    TResult Function(String email)? addEmail,
+    TResult Function()? resendPin,
     required TResult orElse(),
   }) {
-    if (addPin != null) {
-      return addPin(pinCode);
+    if (addEmail != null) {
+      return addEmail(email);
     }
     return orElse();
   }
@@ -328,50 +328,159 @@ class _$AddPinImpl implements _AddPin {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendPin value) sendPin,
-    required TResult Function(_AddPin value) addPin,
+    required TResult Function(_SendPin value) login,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_ResendPinToEmail value) resendPin,
   }) {
-    return addPin(this);
+    return addEmail(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendPin value)? sendPin,
-    TResult? Function(_AddPin value)? addPin,
+    TResult? Function(_SendPin value)? login,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_ResendPinToEmail value)? resendPin,
   }) {
-    return addPin?.call(this);
+    return addEmail?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendPin value)? sendPin,
-    TResult Function(_AddPin value)? addPin,
+    TResult Function(_SendPin value)? login,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_ResendPinToEmail value)? resendPin,
     required TResult orElse(),
   }) {
-    if (addPin != null) {
-      return addPin(this);
+    if (addEmail != null) {
+      return addEmail(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddPin implements ConfirmationEvent {
-  const factory _AddPin(final String pinCode) = _$AddPinImpl;
+abstract class _AddEmail implements ConfirmationEvent {
+  const factory _AddEmail({required final String email}) = _$AddEmailImpl;
+
+  String get email;
+  @JsonKey(ignore: true)
+  _$$AddEmailImplCopyWith<_$AddEmailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResendPinToEmailImplCopyWith<$Res> {
+  factory _$$ResendPinToEmailImplCopyWith(_$ResendPinToEmailImpl value,
+          $Res Function(_$ResendPinToEmailImpl) then) =
+      __$$ResendPinToEmailImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResendPinToEmailImplCopyWithImpl<$Res>
+    extends _$ConfirmationEventCopyWithImpl<$Res, _$ResendPinToEmailImpl>
+    implements _$$ResendPinToEmailImplCopyWith<$Res> {
+  __$$ResendPinToEmailImplCopyWithImpl(_$ResendPinToEmailImpl _value,
+      $Res Function(_$ResendPinToEmailImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResendPinToEmailImpl implements _ResendPinToEmail {
+  const _$ResendPinToEmailImpl();
 
   @override
-  String get pinCode;
+  String toString() {
+    return 'ConfirmationEvent.resendPin()';
+  }
+
   @override
-  @JsonKey(ignore: true)
-  _$$AddPinImplCopyWith<_$AddPinImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResendPinToEmailImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pinCode, String email) login,
+    required TResult Function(String email) addEmail,
+    required TResult Function() resendPin,
+  }) {
+    return resendPin();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pinCode, String email)? login,
+    TResult? Function(String email)? addEmail,
+    TResult? Function()? resendPin,
+  }) {
+    return resendPin?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pinCode, String email)? login,
+    TResult Function(String email)? addEmail,
+    TResult Function()? resendPin,
+    required TResult orElse(),
+  }) {
+    if (resendPin != null) {
+      return resendPin();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendPin value) login,
+    required TResult Function(_AddEmail value) addEmail,
+    required TResult Function(_ResendPinToEmail value) resendPin,
+  }) {
+    return resendPin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendPin value)? login,
+    TResult? Function(_AddEmail value)? addEmail,
+    TResult? Function(_ResendPinToEmail value)? resendPin,
+  }) {
+    return resendPin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendPin value)? login,
+    TResult Function(_AddEmail value)? addEmail,
+    TResult Function(_ResendPinToEmail value)? resendPin,
+    required TResult orElse(),
+  }) {
+    if (resendPin != null) {
+      return resendPin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResendPinToEmail implements ConfirmationEvent {
+  const factory _ResendPinToEmail() = _$ResendPinToEmailImpl;
 }
 
 /// @nodoc
 mixin _$ConfirmationState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
-  int? get pinCode => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ConfirmationStateCopyWith<ConfirmationState> get copyWith =>
@@ -384,7 +493,7 @@ abstract class $ConfirmationStateCopyWith<$Res> {
           ConfirmationState value, $Res Function(ConfirmationState) then) =
       _$ConfirmationStateCopyWithImpl<$Res, ConfirmationState>;
   @useResult
-  $Res call({StateStatus stateStatus, int? pinCode});
+  $Res call({StateStatus stateStatus, String email});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -403,17 +512,17 @@ class _$ConfirmationStateCopyWithImpl<$Res, $Val extends ConfirmationState>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? pinCode = freezed,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      pinCode: freezed == pinCode
-          ? _value.pinCode
-          : pinCode // ignore: cast_nullable_to_non_nullable
-              as int?,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -434,7 +543,7 @@ abstract class _$$ConfirmationStateImplCopyWith<$Res>
       __$$ConfirmationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus, int? pinCode});
+  $Res call({StateStatus stateStatus, String email});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -452,17 +561,17 @@ class __$$ConfirmationStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? pinCode = freezed,
+    Object? email = null,
   }) {
     return _then(_$ConfirmationStateImpl(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      pinCode: freezed == pinCode
-          ? _value.pinCode
-          : pinCode // ignore: cast_nullable_to_non_nullable
-              as int?,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -470,16 +579,17 @@ class __$$ConfirmationStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ConfirmationStateImpl implements _ConfirmationState {
-  const _$ConfirmationStateImpl({required this.stateStatus, this.pinCode});
+  const _$ConfirmationStateImpl(
+      {required this.stateStatus, required this.email});
 
   @override
   final StateStatus stateStatus;
   @override
-  final int? pinCode;
+  final String email;
 
   @override
   String toString() {
-    return 'ConfirmationState(stateStatus: $stateStatus, pinCode: $pinCode)';
+    return 'ConfirmationState(stateStatus: $stateStatus, email: $email)';
   }
 
   @override
@@ -489,11 +599,11 @@ class _$ConfirmationStateImpl implements _ConfirmationState {
             other is _$ConfirmationStateImpl &&
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
-            (identical(other.pinCode, pinCode) || other.pinCode == pinCode));
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus, pinCode);
+  int get hashCode => Object.hash(runtimeType, stateStatus, email);
 
   @JsonKey(ignore: true)
   @override
@@ -506,12 +616,12 @@ class _$ConfirmationStateImpl implements _ConfirmationState {
 abstract class _ConfirmationState implements ConfirmationState {
   const factory _ConfirmationState(
       {required final StateStatus stateStatus,
-      final int? pinCode}) = _$ConfirmationStateImpl;
+      required final String email}) = _$ConfirmationStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
-  int? get pinCode;
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$$ConfirmationStateImplCopyWith<_$ConfirmationStateImpl> get copyWith =>

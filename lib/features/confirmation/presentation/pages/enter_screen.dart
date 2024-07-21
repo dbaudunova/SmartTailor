@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
+import 'package:neobis_smart_tailor/core/app/router/routes_path_const.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
@@ -70,16 +71,17 @@ class EnterScreen extends StatelessWidget {
             ElevatedButtonWidget(
               text: t.Enter,
               onTap: () {
-                AutoRouter.of(context).replace(const EmailInputRoute());
+                AutoRouter.of(context).pushNamed(RoutesPaths.emailInput);
               },
             ),
             const SizedBox(height: 16),
             ElevatedButtonWidget(
-                color: AppColors.white,
-                text: t.register,
-                onTap: () {
-                  AutoRouter.of(context).pushNamed('/confirmation');
-                }),
+              color: AppColors.white,
+              text: t.register,
+              onTap: () {
+                AutoRouter.of(context).pushNamed(RoutesPaths.registration);
+              },
+            ),
           ],
         ),
       ),

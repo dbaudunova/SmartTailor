@@ -1,60 +1,44 @@
-// import 'package:dio/dio.dart';
-// import 'package:fpdart/fpdart.dart';
-// import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
-
-// Left<Failure, T> onRepositoryException<T>(dynamic exception) {
-//   late final Failure failure;
-
-//   if (exception is DioException) {
-//     if (exception.type == DioExceptionType.connectionTimeout ||
-//         exception.type == DioExceptionType.receiveTimeout ||
-//         exception.type == DioExceptionType.sendTimeout) {
-//       failure = ConnectionFailure(message: exception.type.toString());
-//     } else {
-//       if (exception.response?.statusCode == 403) {
-//         failure = Authorization(message: 'Token invalidate');
-//       } else
-//        {
-//         if (exception.response != null && exception.response?.data['msg'].toString() != null) {
-//           failure = OtherFailure(message: exception.response?.data['msg']);
-//         } else {
-//           failure = OtherFailure(message: exception.message);
-//         }
-//       }
-//     }
-//   } else {
-//     failure = OtherFailure(message: exception.toString());
-//   }
-
-//   return Left(failure);
-// }
-
 import 'package:dio/dio.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 
-Left<Failure, T> onRepositoryException<T>(dynamic exception) {
-  late final Failure failure;
+Failure handleDioException(DioException exception) {
+  switch (exception.type) {
+    case DioExceptionType.connectionTimeout:
+    case DioExceptionType.receiveTimeout:
+    case DioExceptionType.sendTimeout:
+      return Failure.connection(message: exception.type.toString());
 
-  if (exception is DioException) {
-    if (exception.type == DioExceptionType.connectionTimeout ||
-        exception.type == DioExceptionType.receiveTimeout ||
-        exception.type == DioExceptionType.sendTimeout) {
-      failure = ConnectionFailure(message: 'Проблема с соединением. Попробуйте снова.');
-    } else {
-      if (exception.response?.statusCode == 403) {
-        failure = Authorization(message: 'Токен истёк. Пожалуйста, войдите снова.');
-      } else if (exception.response?.statusCode == 409) {
-        failure = OtherFailure(message: 'Данная почта уже зарегистрирована');
-      } else if (exception.response != null && exception.response?.data['msg'] != null) {
-        failure = OtherFailure(message: exception.response?.data['msg'].toString());
-      } else {
-        failure = OtherFailure(message: 'Произошла ошибка. Попробуйте снова.');
+    case DioExceptionType.badResponse:
+      switch (exception.response?.statusCode) {
+        case 400:
+          return Failure.request(message: 'Неправильный запрос', status: 400);
+        case 401:
+          return Failure.request(message: 'Неавторизован', status: 401);
+        case 403:
+          return Failure.request(message: 'Доступ запрещен', status: 403);
+        case 404:
+          return Failure.request(message: 'Ресурс не найден', status: 404);
+        case 409:
+          return Failure.request(message: 'Произошел конфликт', status: 409);
+        // case 500:
+        //   return Failure.server(message: 'Внутренняя ошибка сервера', status: 500);
+        default:
+          if (exception.response?.data['msg'] != null) {
+            return Failure.other(message: exception.response?.data['msg'].toString());
+          } else {
+            return Failure.other(message: 'Неизвестная ошибка');
+          }
       }
-    }
-  } else {
-    failure = OtherFailure(message: 'Неизвестная ошибка: ${exception.toString()}');
-  }
 
-  return Left(failure);
+    default:
+      if (exception.response?.data['msg'] != null) {
+        return Failure.other(message: exception.response?.data['msg'].toString());
+      } else {
+        return Failure.other(message: exception.message);
+      }
+  }
+}
+
+Failure handleGeneralException(Object exception) {
+  return Failure.other(message: exception.toString());
 }

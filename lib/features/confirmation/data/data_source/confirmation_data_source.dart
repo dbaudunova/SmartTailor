@@ -5,4 +5,8 @@ abstract class ConfirmationDataSource {
   Future<AuthData> confirmation({
     ConfirmationModel? confirmationModel,
   });
+
+  Future<void> resendPin({
+    String? email,
+  });
 }

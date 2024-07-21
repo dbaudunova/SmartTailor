@@ -4,14 +4,14 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/timer_bloc/timer_bloc.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
-class TimerScreen extends StatefulWidget {
-  const TimerScreen({super.key});
+class TimerWidget extends StatefulWidget {
+  const TimerWidget({super.key});
 
   @override
-  State<TimerScreen> createState() => _TimerScreenState();
+  State<TimerWidget> createState() => _TimerWidgetState();
 }
 
-class _TimerScreenState extends State<TimerScreen> {
+class _TimerWidgetState extends State<TimerWidget> {
   @override
   void initState() {
     super.initState();
@@ -34,6 +34,8 @@ class _TimerScreenState extends State<TimerScreen> {
         builder: (context, state) {
           return state.when(
               initial: (duration) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         t.repeatSendCodeTime,
@@ -47,6 +49,7 @@ class _TimerScreenState extends State<TimerScreen> {
                     ],
                   ),
               runInProgress: (duration) => Column(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
                         t.repeatSendCodeTime,
@@ -59,21 +62,7 @@ class _TimerScreenState extends State<TimerScreen> {
                       ),
                     ],
                   ),
-              runComplete: () => Container()
-              // Column(
-              //   children: [
-              //     Text(
-              //       t.repeatSendCodeTime,
-              //       style: AppTextStyle.text14,
-              //     ),
-              //     const SizedBox(height: 16),
-              //     const Text(
-              //       '00:00',
-              //       style: AppTextStyle.timer24regular,
-              //     ),
-              //   ],
-              // ),
-              );
+              runComplete: () => Container());
         },
       ),
     );

@@ -4,7 +4,8 @@ part of 'confirmation_bloc.dart';
 class ConfirmationState with _$ConfirmationState {
   const factory ConfirmationState({
     required final StateStatus stateStatus,
-    final int? pinCode,
+    required final String email,
+    // final int? pinCode,
   }) = _ConfirmationState;
 }
 

@@ -473,20 +473,6 @@ class OrderPlaceRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [OrderScreen]
-class OrderRoute extends PageRouteInfo<void> {
-  const OrderRoute({List<PageRouteInfo>? children})
-      : super(
-          OrderRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [OrganizationInfoScreen]
 class OrganizationInfoRoute extends PageRouteInfo<void> {
   const OrganizationInfoRoute({List<PageRouteInfo>? children})

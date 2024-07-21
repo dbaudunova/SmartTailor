@@ -9,6 +9,7 @@ import 'package:neobis_smart_tailor/features/organization/presentation/widgets/o
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/order_container.dart';
 
+@RoutePage()
 class OrganizationInfoScreen extends StatefulWidget {
   const OrganizationInfoScreen({super.key});
 
@@ -147,14 +148,13 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
     );
   }
 
-
   Text _buildSegmentText(String label, int index) {
     return Text(
       label,
       style: currentSegment.value == index
           ? AppTextStyle.text14.copyWith(
-        fontWeight: FontWeight.w600,
-      )
+              fontWeight: FontWeight.w600,
+            )
           : AppTextStyle.text14,
     );
   }

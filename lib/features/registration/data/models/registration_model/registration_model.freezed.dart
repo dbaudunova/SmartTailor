@@ -20,13 +20,11 @@ RegistrationModel _$RegistrationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegistrationModel {
-  String get surname => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get fatherName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
-  bool get rememberMe => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get surname => throw _privateConstructorUsedError;
+  String get patronymic => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +39,11 @@ abstract class $RegistrationModelCopyWith<$Res> {
       _$RegistrationModelCopyWithImpl<$Res, RegistrationModel>;
   @useResult
   $Res call(
-      {String surname,
+      {String email,
       String name,
-      String fatherName,
-      String email,
-      String phone,
-      bool rememberMe,
-      String code});
+      String surname,
+      String patronymic,
+      String phoneNumber});
 }
 
 /// @nodoc
@@ -63,42 +59,32 @@ class _$RegistrationModelCopyWithImpl<$Res, $Val extends RegistrationModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? surname = null,
-    Object? name = null,
-    Object? fatherName = null,
     Object? email = null,
-    Object? phone = null,
-    Object? rememberMe = null,
-    Object? code = null,
+    Object? name = null,
+    Object? surname = null,
+    Object? patronymic = null,
+    Object? phoneNumber = null,
   }) {
     return _then(_value.copyWith(
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      fatherName: null == fatherName
-          ? _value.fatherName
-          : fatherName // ignore: cast_nullable_to_non_nullable
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      patronymic: null == patronymic
+          ? _value.patronymic
+          : patronymic // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      rememberMe: null == rememberMe
-          ? _value.rememberMe
-          : rememberMe // ignore: cast_nullable_to_non_nullable
-              as bool,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -113,13 +99,11 @@ abstract class _$$RegistrationModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String surname,
+      {String email,
       String name,
-      String fatherName,
-      String email,
-      String phone,
-      bool rememberMe,
-      String code});
+      String surname,
+      String patronymic,
+      String phoneNumber});
 }
 
 /// @nodoc
@@ -133,42 +117,32 @@ class __$$RegistrationModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? surname = null,
-    Object? name = null,
-    Object? fatherName = null,
     Object? email = null,
-    Object? phone = null,
-    Object? rememberMe = null,
-    Object? code = null,
+    Object? name = null,
+    Object? surname = null,
+    Object? patronymic = null,
+    Object? phoneNumber = null,
   }) {
     return _then(_$RegistrationModelImpl(
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      fatherName: null == fatherName
-          ? _value.fatherName
-          : fatherName // ignore: cast_nullable_to_non_nullable
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      patronymic: null == patronymic
+          ? _value.patronymic
+          : patronymic // ignore: cast_nullable_to_non_nullable
               as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      rememberMe: null == rememberMe
-          ? _value.rememberMe
-          : rememberMe // ignore: cast_nullable_to_non_nullable
-              as bool,
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -178,36 +152,30 @@ class __$$RegistrationModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RegistrationModelImpl extends _RegistrationModel {
   const _$RegistrationModelImpl(
-      {required this.surname,
+      {required this.email,
       required this.name,
-      required this.fatherName,
-      required this.email,
-      required this.phone,
-      required this.rememberMe,
-      required this.code})
+      required this.surname,
+      required this.patronymic,
+      required this.phoneNumber})
       : super._();
 
   factory _$RegistrationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegistrationModelImplFromJson(json);
 
   @override
-  final String surname;
+  final String email;
   @override
   final String name;
   @override
-  final String fatherName;
+  final String surname;
   @override
-  final String email;
+  final String patronymic;
   @override
-  final String phone;
-  @override
-  final bool rememberMe;
-  @override
-  final String code;
+  final String phoneNumber;
 
   @override
   String toString() {
-    return 'RegistrationModel(surname: $surname, name: $name, fatherName: $fatherName, email: $email, phone: $phone, rememberMe: $rememberMe, code: $code)';
+    return 'RegistrationModel(email: $email, name: $name, surname: $surname, patronymic: $patronymic, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -215,21 +183,19 @@ class _$RegistrationModelImpl extends _RegistrationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegistrationModelImpl &&
-            (identical(other.surname, surname) || other.surname == surname) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.fatherName, fatherName) ||
-                other.fatherName == fatherName) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.patronymic, patronymic) ||
+                other.patronymic == patronymic) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, surname, name, fatherName, email, phone, rememberMe, code);
+  int get hashCode =>
+      Object.hash(runtimeType, email, name, surname, patronymic, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -248,32 +214,26 @@ class _$RegistrationModelImpl extends _RegistrationModel {
 
 abstract class _RegistrationModel extends RegistrationModel {
   const factory _RegistrationModel(
-      {required final String surname,
+      {required final String email,
       required final String name,
-      required final String fatherName,
-      required final String email,
-      required final String phone,
-      required final bool rememberMe,
-      required final String code}) = _$RegistrationModelImpl;
+      required final String surname,
+      required final String patronymic,
+      required final String phoneNumber}) = _$RegistrationModelImpl;
   const _RegistrationModel._() : super._();
 
   factory _RegistrationModel.fromJson(Map<String, dynamic> json) =
       _$RegistrationModelImpl.fromJson;
 
   @override
-  String get surname;
+  String get email;
   @override
   String get name;
   @override
-  String get fatherName;
+  String get surname;
   @override
-  String get email;
+  String get patronymic;
   @override
-  String get phone;
-  @override
-  bool get rememberMe;
-  @override
-  String get code;
+  String get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$RegistrationModelImplCopyWith<_$RegistrationModelImpl> get copyWith =>
