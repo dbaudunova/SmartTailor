@@ -1,10 +1,14 @@
+import 'dart:io';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/user_info.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
@@ -23,6 +27,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  File? _imageFile;
 
   @override
   void dispose() {
@@ -34,6 +39,15 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
     super.dispose();
   }
 
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,10 +57,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
           child: Column(
             children: [
-              const UserInfo(
-                showBellIcon: false,
-                secondRowText: 'Изменить фото профиля',
-              ),
+              _buildUserInfo(context),
               const SizedBox(height: 16),
               _buildPersonalDataRow(),
               const SizedBox(height: 40),
@@ -67,6 +78,53 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  UserInfo _buildUserInfo(BuildContext context) {
+    return UserInfo(
+      onTap: () {
+        _showPhotoOptions(context);
+      },
+      showBellIcon: false,
+      secondRowText: 'Изменить фото профиля',
+      avatar: _imageFile == null
+          ? CircleAvatar(
+              radius: 24,
+              backgroundColor: AppColors.yellow,
+              child: SvgPicture.asset(
+                Assets.icons.person,
+                width: AppProps.kBigMargin,
+                height: AppProps.kBigMargin,
+              ),
+            )
+          : CircleAvatar(
+              backgroundImage: FileImage(_imageFile!),
+              radius: 24,
+            ),
+    );
+  }
+
+  void _showPhotoOptions(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) => ActionSheetWidget(
+        actions: ImagePickType.values
+            .map(
+              (type) => AppActionSheetWidget(
+                onPressed: () {
+                  Navigator.pop(context);
+                  if (type == ImagePickType.selectPhoto) {
+                    _pickImage(ImageSource.gallery);
+                  } else if (type == ImagePickType.takePhoto) {
+                    _pickImage(ImageSource.camera);
+                  }
+                },
+                text: type.name,
+              ),
+            )
+            .toList(),
       ),
     );
   }
@@ -161,4 +219,13 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       ],
     );
   }
+}
+
+enum ImagePickType {
+  selectPhoto('Выбрать фото'),
+  takePhoto('Сделать фото');
+
+  final String name;
+
+  const ImagePickType(this.name);
 }

@@ -1,9 +1,13 @@
+import 'dart:io';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/personal_data/personal_data_screen.dart';
 
 @RoutePage()
 class CreateOrganizationScreen extends StatefulWidget {
@@ -19,6 +23,7 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
   final _descriptionController = TextEditingController();
   final _logoController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  File? _imageFile;
 
   @override
   void dispose() {
@@ -28,9 +33,20 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
     super.dispose();
   }
 
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+        _logoController.text = 'Фото выбрано';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBarStyle(
         title: 'Организация',
         centerTitle: true,
@@ -52,33 +68,74 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
               key: _formKey,
               child: _buildTextFields(),
             ),
+            const SizedBox(height: 16),
+            _buildImagePreview(),
             const Spacer(),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ElevatedButtonWidget(
                 text: 'Создать организацию',
                 onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialogStyle(
-                          title: 'Ура!',
-                          content: 'Вы создали организацию!',
-                          buttonText: 'Понятно',
-                          onButtonPressed: () {
-                            AutoRouter.of(context).replaceNamed('/organization_info');
-                          },
-                        );
-                      },
-                    );
-                  }
+                  _alertValidate(context);
                 },
               ),
             ),
             const SizedBox(height: 16),
           ],
         ),
+      ),
+    );
+  }
+
+  void _alertValidate(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialogStyle(
+            title: 'Ура!',
+            content: 'Вы создали организацию!',
+            buttonText: 'Понятно',
+            onButtonPressed: () {
+              AutoRouter.of(context)
+                  .replaceNamed('/organization_info');
+            },
+          );
+        },
+      );
+    }
+  }
+
+  Widget _buildImagePreview() {
+    if (_imageFile == null) {
+      return const SizedBox.shrink();
+    }
+    return Center(
+      child: Stack(
+        children: [
+          SizedBox(
+            width: 92,
+            height: 92,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.file(
+                _imageFile!,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            width: 92,
+            height: 92,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: AppColors.greyText,
+                width: 2,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -90,6 +147,29 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
       return 'Максимум 50 символов, минимум 5';
     }
     return null;
+  }
+
+  void _showPhotoOptions(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) => ActionSheetWidget(
+        actions: ImagePickType.values
+            .map(
+              (type) => AppActionSheetWidget(
+            onPressed: () {
+              Navigator.pop(context);
+              if (type == ImagePickType.selectPhoto) {
+                _pickImage(ImageSource.gallery);
+              } else if (type == ImagePickType.takePhoto) {
+                _pickImage(ImageSource.camera);
+              }
+            },
+            text: type.name,
+          ),
+        )
+            .toList(),
+      ),
+    );
   }
 
   Column _buildTextFields() {
@@ -111,6 +191,9 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
         const SizedBox(height: 16),
         TextFormFieldWidget(
           enabled: false,
+          ontap: () {
+            _showPhotoOptions(context);
+          },
           titleName: 'Ваш логотип*',
           hintText: 'Загрузить фото',
           controller: _logoController,
