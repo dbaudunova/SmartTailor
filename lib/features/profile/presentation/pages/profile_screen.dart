@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
+import 'package:neobis_smart_tailor/core/app/router/routes_path_const.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/profile_button_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/subscribe_container_style.dart';
@@ -31,8 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: 'Профиль',
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin)
-            .copyWith(
+        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin).copyWith(
           top: AppProps.kSmallMargin,
         ),
         child: Column(
@@ -63,21 +65,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
             const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(
-                context, 'Личные данные', const PersonalDataRoute()),
+            _buildProfileButton(context, 'Личные данные', const PersonalDataRoute()),
             const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(
-                context, 'Мои объявления', const MyAnnouncementsRoute()),
+            _buildProfileButton(context, 'Мои объявления', const MyAnnouncementsRoute()),
             const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(
-                context, 'Мои покупки', const MyPurchasesRoute()),
+            _buildProfileButton(context, 'Мои покупки', const MyPurchasesRoute()),
             if (_isHistoryOfOrdersButtonVisible) ...[
               const SizedBox(height: AppProps.kPageMargin),
-              _buildProfileButton(
-                  context, 'История заказов', const OrderHistoryRoute()),
+              _buildProfileButton(context, 'История заказов', const OrderHistoryRoute()),
               const SizedBox(height: AppProps.kPageMargin),
-              _buildProfileButton(
-                  context, 'Организация', const ProfileOrganizationRoute()),
+              _buildProfileButton(context, 'Организация', const ProfileOrganizationRoute()),
             ],
             const Spacer(),
             SizedBox(
@@ -96,8 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildProfileButton(
-      BuildContext context, String title, PageRouteInfo route) {
+  Widget _buildProfileButton(BuildContext context, String title, PageRouteInfo route) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: ProfileButtonStyle(
@@ -116,7 +112,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return ExitAlert(
           title: 'Вы действительно хотите выйти?',
           confirmButton: () {
-            AutoRouter.of(context).replaceNamed('/registration');
+            context.read<ProfileBloc>().add(const ProfileEvent.signOut());
+            AutoRouter.of(context).replaceNamed(RoutesPaths.enter);
           },
           cancelButton: () {
             AutoRouter.of(context).maybePop();

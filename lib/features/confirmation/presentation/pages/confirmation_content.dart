@@ -72,8 +72,8 @@ class _ConfirmationContentState extends State<ConfirmationContent> {
                     builder: (context, state) {
                       return pinCodeController.text.length != 4
                           ? const TimerWidget()
-                          : const Expanded(
-                              child: SizedBox(),
+                          : const SizedBox(
+                              width: double.infinity,
                             );
                     },
                   ),

@@ -1,6 +1,8 @@
 part of 'profile_bloc.dart';
 
-@immutable
-sealed class ProfileState {}
-
-final class ProfileInitial extends ProfileState {}
+@freezed
+class ProfileState with _$ProfileState {
+  const factory ProfileState({
+    required final StateStatus stateStatus,
+  }) = _ProfileState;
+}

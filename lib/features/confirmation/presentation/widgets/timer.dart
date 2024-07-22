@@ -48,19 +48,22 @@ class _TimerWidgetState extends State<TimerWidget> {
                       ),
                     ],
                   ),
-              runInProgress: (duration) => Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        t.repeatSendCodeTime,
-                        style: AppTextStyle.text14,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        getTimerText(duration),
-                        style: AppTextStyle.timer24regular,
-                      ),
-                    ],
+              runInProgress: (duration) => SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          t.repeatSendCodeTime,
+                          style: AppTextStyle.text14,
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          getTimerText(duration),
+                          style: AppTextStyle.timer24regular,
+                        ),
+                      ],
+                    ),
                   ),
               runComplete: () => Container());
         },

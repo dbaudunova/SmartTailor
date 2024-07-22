@@ -5,6 +5,7 @@ import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/timer_bloc/timer_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 
 class MyApp extends StatelessWidget {
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<ConfirmationBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<ProfileBloc>(),
         ),
       ],
       child: MaterialApp.router(
