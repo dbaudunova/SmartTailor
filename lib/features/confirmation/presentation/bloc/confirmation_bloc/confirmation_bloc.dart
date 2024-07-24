@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -22,10 +20,11 @@ class ConfirmationBloc extends Bloc<ConfirmationEvent, ConfirmationState> {
     this.confirmationUseCse,
     this.resendPinUseCase,
   ) : super(
-          const ConfirmationState(stateStatus: StateStatus.initial(), email: ''),
+          const ConfirmationState(
+            stateStatus: StateStatus.initial(),
+          ),
         ) {
     on<_SendPin>(_sendPin);
-    on<_AddEmail>(_addEmail);
     on<_ResendPinToEmail>(_resendPinToEmail);
   }
 
@@ -35,9 +34,8 @@ class ConfirmationBloc extends Bloc<ConfirmationEvent, ConfirmationState> {
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
-      print(state.email + '111');
-      await resendPinUseCase.call(state.email);
-      emit(state.copyWith(stateStatus: const StateStatus.success(successType.repeatCode)));
+      await resendPinUseCase.call(event.email);
+      emit(state.copyWith(stateStatus: const StateStatus.success(SuccessType.repeatCode)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
@@ -49,26 +47,17 @@ class ConfirmationBloc extends Bloc<ConfirmationEvent, ConfirmationState> {
     Emitter<ConfirmationState> emit,
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
-    print(state.email);
-    final confirmationModel = ConfirmationModel(email: state.email, code: event.pinCode);
+    final confirmationModel = ConfirmationModel(email: event.email, code: event.pinCode);
     try {
       await confirmationUseCse.call(
         confirmationModel,
       );
-      print(confirmationModel);
-      emit(state.copyWith(stateStatus: const StateStatus.success(successType.login)));
+      emit(state.copyWith(stateStatus: const StateStatus.success(SuccessType.login)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
-
-  void _addEmail(
-    _AddEmail event,
-    Emitter<ConfirmationState> emit,
-  ) {
-    emit(state.copyWith(email: event.email));
-  }
 }
 
-enum successType { repeatCode, login }
+enum SuccessType { repeatCode, login }

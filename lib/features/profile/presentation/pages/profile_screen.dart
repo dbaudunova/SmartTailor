@@ -113,7 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: 'Вы действительно хотите выйти?',
           confirmButton: () {
             context.read<ProfileBloc>().add(const ProfileEvent.signOut());
-            AutoRouter.of(context).replaceNamed(RoutesPaths.enter);
+            // AutoRouter.of(context).replaceNamed(RoutesPaths.enter);
           },
           cancelButton: () {
             AutoRouter.of(context).maybePop();

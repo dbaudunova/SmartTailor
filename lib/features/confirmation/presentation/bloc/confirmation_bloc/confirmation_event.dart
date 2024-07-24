@@ -6,6 +6,7 @@ class ConfirmationEvent with _$ConfirmationEvent {
     required String pinCode,
     required String email,
   }) = _SendPin;
-  const factory ConfirmationEvent.addEmail({required String email}) = _AddEmail;
-  const factory ConfirmationEvent.resendPin() = _ResendPinToEmail;
+  const factory ConfirmationEvent.resendPin({
+    required String email,
+  }) = _ResendPinToEmail;
 }

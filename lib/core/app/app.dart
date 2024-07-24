@@ -18,12 +18,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => OrderPlaceBloc(),
         ),
-        BlocProvider(
-          create: (context) => getIt<TimerBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<ConfirmationBloc>(),
-        ),
+        // BlocProvider(
+        //   create: (context) => getIt<TimerBloc>(),
+        // ),
         BlocProvider(
           create: (context) => getIt<ProfileBloc>(),
         ),

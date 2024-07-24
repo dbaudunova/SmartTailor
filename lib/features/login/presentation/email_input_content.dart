@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/login/presentation/bloc/login_bloc.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
@@ -12,12 +12,13 @@ class EmailInputContent extends StatefulWidget {
   const EmailInputContent({super.key});
 
   @override
-  State<EmailInputContent> createState() => _EmailInputContentState();
+  State<EmailInputContent> createState() => EmailInputContentState();
 }
 
-class _EmailInputContentState extends State<EmailInputContent> {
+class EmailInputContentState extends State<EmailInputContent> {
   final emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  String get email => emailController.text;
 
   @override
   void dispose() {
@@ -50,6 +51,7 @@ class _EmailInputContentState extends State<EmailInputContent> {
                         if (value!.isEmpty) {
                           return 'Поле не может быть пустым';
                         }
+                        return null;
                       },
                       controller: emailController,
                       hintText: t.emailHintText,
@@ -66,28 +68,51 @@ class _EmailInputContentState extends State<EmailInputContent> {
     );
   }
 
-  Column _buildButtons() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ElevatedButtonWidget(
-          text: t.Enter,
-          onTap: () {
-            if (_formKey.currentState!.validate()) {
-              context.read<LoginBloc>().add(LoginEvent.sendPinToEmail(email: emailController.text));
-              context.read<ConfirmationBloc>().add(ConfirmationEvent.addEmail(email: emailController.text));
-            }
-          },
-        ),
-        const SizedBox(height: 16),
-        ElevatedButtonWidget(
-          text: t.register,
-          color: AppColors.buttonUnavailableBack,
-          onTap: () {
-            AutoRouter.of(context).pushNamed('/registration');
-          },
-        ),
-      ],
+  Widget _buildButtons() {
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return state.stateStatus != const StateStatus.loading()
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButtonWidget(
+                    text: t.Enter,
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        context.read<LoginBloc>().add(
+                              LoginEvent.sendPinToEmail(
+                                email: emailController.text,
+                              ),
+                            );
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButtonWidget(
+                    text: t.register,
+                    color: AppColors.buttonUnavailableBack,
+                    onTap: () {
+                      AutoRouter.of(context).pushNamed('/registration');
+                    },
+                  ),
+                ],
+              )
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButtonWidget(
+                    text: t.Enter,
+                    onTap: null,
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButtonWidget(
+                    text: t.register,
+                    color: AppColors.buttonUnavailableBack,
+                    onTap: null,
+                  ),
+                ],
+              );
+      },
     );
   }
 }

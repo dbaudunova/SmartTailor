@@ -31,11 +31,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       await loginUseCase.call(
         event.email,
       );
-      emit(state.copyWith(stateStatus: StateStatus.success('dfdsf')));
+      emit(state.copyWith(stateStatus: const StateStatus.success()));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
-    print(state.stateStatus);
   }
 }

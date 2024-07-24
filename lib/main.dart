@@ -29,7 +29,6 @@ FutureOr<void> main() async {
   }, (error, stackTrace) {
     if (error is Authorization) {
       if (getIt<AppRouter>().current.name != RoutesPaths.enter) {
-        print(getIt<AppRouter>().current.name);
         getIt<AppRouter>().push(
           const EnterRoute(),
         );

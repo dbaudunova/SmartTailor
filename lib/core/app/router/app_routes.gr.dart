@@ -28,9 +28,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ConfirmationRoute.name: (routeData) {
+      final args = routeData.argsAs<ConfirmationRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ConfirmationScreen(),
+        child: ConfirmationScreen(
+          email: args.email,
+          key: args.key,
+        ),
       );
     },
     CreateOrganizationRoute.name: (routeData) {
@@ -46,9 +50,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     EmailInputRoute.name: (routeData) {
+      final args = routeData.argsAs<EmailInputRouteArgs>(
+          orElse: () => const EmailInputRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const EmailInputScreen(),
+        child: EmailInputScreen(key: args.key),
       );
     },
     EmployeeDetailRoute.name: (routeData) {
@@ -168,9 +174,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     RegistrationRoute.name: (routeData) {
+      final args = routeData.argsAs<RegistrationRouteArgs>(
+          orElse: () => const RegistrationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const RegistrationScreen(),
+        child: RegistrationScreen(key: args.key),
       );
     },
   };
@@ -206,16 +214,40 @@ class BottomNavRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ConfirmationScreen]
-class ConfirmationRoute extends PageRouteInfo<void> {
-  const ConfirmationRoute({List<PageRouteInfo>? children})
-      : super(
+class ConfirmationRoute extends PageRouteInfo<ConfirmationRouteArgs> {
+  ConfirmationRoute({
+    required String? email,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           ConfirmationRoute.name,
+          args: ConfirmationRouteArgs(
+            email: email,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ConfirmationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ConfirmationRouteArgs> page =
+      PageInfo<ConfirmationRouteArgs>(name);
+}
+
+class ConfirmationRouteArgs {
+  const ConfirmationRouteArgs({
+    required this.email,
+    this.key,
+  });
+
+  final String? email;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ConfirmationRouteArgs{email: $email, key: $key}';
+  }
 }
 
 /// generated route for
@@ -248,16 +280,31 @@ class CurrentOrderDetailRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [EmailInputScreen]
-class EmailInputRoute extends PageRouteInfo<void> {
-  const EmailInputRoute({List<PageRouteInfo>? children})
-      : super(
+class EmailInputRoute extends PageRouteInfo<EmailInputRouteArgs> {
+  EmailInputRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           EmailInputRoute.name,
+          args: EmailInputRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'EmailInputRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<EmailInputRouteArgs> page =
+      PageInfo<EmailInputRouteArgs>(name);
+}
+
+class EmailInputRouteArgs {
+  const EmailInputRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EmailInputRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -558,14 +605,29 @@ class PurchaseDetailRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [RegistrationScreen]
-class RegistrationRoute extends PageRouteInfo<void> {
-  const RegistrationRoute({List<PageRouteInfo>? children})
-      : super(
+class RegistrationRoute extends PageRouteInfo<RegistrationRouteArgs> {
+  RegistrationRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           RegistrationRoute.name,
+          args: RegistrationRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'RegistrationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<RegistrationRouteArgs> page =
+      PageInfo<RegistrationRouteArgs>(name);
+}
+
+class RegistrationRouteArgs {
+  const RegistrationRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'RegistrationRouteArgs{key: $key}';
+  }
 }
