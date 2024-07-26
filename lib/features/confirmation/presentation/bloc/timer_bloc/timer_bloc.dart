@@ -17,7 +17,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
       : _ticker = ticker,
         super(const TimerState.initial(_initialDuration)) {
     on<_Started>(_onStarted);
-    on<_Ticked>(_onTicked); // Зарегистрируйте обработчик события _Ticked
+    on<_Ticked>(_onTicked);
   }
 
   void _onStarted(

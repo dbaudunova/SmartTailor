@@ -3,9 +3,9 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class ProfileButtonStyle extends StatelessWidget {
   const ProfileButtonStyle({
-    super.key,
     required this.title,
     required this.onPressed,
+    super.key,
   });
 
   final String title;

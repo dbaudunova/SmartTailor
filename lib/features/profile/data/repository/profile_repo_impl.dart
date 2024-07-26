@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
+// import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
@@ -17,7 +17,7 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   Future<void> signOut() async {
-    await _dataSource.signOut();
+    // await _dataSource.signOut();
     await _authService.signOut();
   }
 

@@ -23,10 +23,6 @@ class _PinCodeFieldState extends State<PinCodeField> {
       width: 200,
       child: PinCodeTextField(
         appContext: context,
-
-        // onCompleted: (pin) {
-        //   context.read<ConfirmationBloc>().add(ConfirmationEvent.addPin(pin));
-        // },
         validator: widget.validator,
         autoFocus: true,
         errorTextSpace: 20,

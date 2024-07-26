@@ -9,7 +9,9 @@ import 'package:neobis_smart_tailor/injection/injection.dart';
 
 @RoutePage()
 class RegistrationScreen extends StatelessWidget {
-  const RegistrationScreen({super.key});
+  RegistrationScreen({super.key});
+
+  final _contentKey = GlobalKey<RegistrationContentState>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +27,11 @@ class RegistrationScreen extends StatelessWidget {
   void _listenerBloc(BuildContext context, RegistrationState state) {
     state.stateStatus.whenOrNull(
       success: (val) {
+        var email = _contentKey.currentState?.email;
         AutoRouter.of(context).replace(
           ConfirmationRoute(
-              // email: state.registrationModel.email,
-              ),
+            email: email,
+          ),
         );
       },
       failure: (msg) {

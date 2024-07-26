@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart';
 import 'package:neobis_smart_tailor/features/registration/data/models/registration_model/registration_model.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/bloc/registration_bloc.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
@@ -12,10 +11,10 @@ class RegistrationContent extends StatefulWidget {
   const RegistrationContent({super.key});
 
   @override
-  State<RegistrationContent> createState() => _RegistrationContentState();
+  State<RegistrationContent> createState() => RegistrationContentState();
 }
 
-class _RegistrationContentState extends State<RegistrationContent> {
+class RegistrationContentState extends State<RegistrationContent> {
   final surnameController = TextEditingController();
   final nameController = TextEditingController();
   final fatherNameController = TextEditingController();
@@ -34,6 +33,8 @@ class _RegistrationContentState extends State<RegistrationContent> {
     emailController.addListener(_updateButtonState);
     phoneController.addListener(_updateButtonState);
   }
+
+  String get email => emailController.text;
 
   RegistrationBloc get _bloc => context.read<RegistrationBloc>();
 
@@ -157,11 +158,11 @@ class _RegistrationContentState extends State<RegistrationContent> {
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
           validator: (value) => _validateField(value, RegistrationFieldType.email),
-          onChanged: (val) {
-            context.read<ConfirmationBloc>().add(
-                  ConfirmationEvent.addEmail(email: val),
-                );
-          },
+          // onChanged: (val) {
+          //   context.read<ConfirmationBloc>().add(
+          //         ConfirmationEvent.addEmail(email: val),
+          //       );
+          // },
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(

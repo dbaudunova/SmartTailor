@@ -8,11 +8,8 @@ import 'package:neobis_smart_tailor/injection/injection.dart';
 
 @RoutePage()
 class ConfirmationScreen extends StatelessWidget {
-  // final String email;
-  const ConfirmationScreen(
-      {
-      // required this.email,
-      super.key});
+  final String? email;
+  const ConfirmationScreen({required this.email, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +18,8 @@ class ConfirmationScreen extends StatelessWidget {
       child: BlocListener<ConfirmationBloc, ConfirmationState>(
         listener: _listenerBloc,
         child: ConfirmationContent(
-            // email: email,
-            ),
+          email: email,
+        ),
       ),
     );
   }
@@ -31,10 +28,10 @@ class ConfirmationScreen extends StatelessWidget {
     state.stateStatus.whenOrNull(
       success: (val) {
         switch (val) {
-          case successType.login:
+          case SuccessType.login:
             AutoRouter.of(context).replaceNamed('/main');
             break;
-          case successType.repeatCode:
+          case SuccessType.repeatCode:
             break;
         }
       },

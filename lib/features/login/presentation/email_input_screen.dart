@@ -9,7 +9,9 @@ import 'package:neobis_smart_tailor/injection/injection.dart';
 
 @RoutePage()
 class EmailInputScreen extends StatelessWidget {
-  const EmailInputScreen({super.key});
+  EmailInputScreen({super.key});
+
+  final _contentKey = GlobalKey<EmailInputContentState>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class EmailInputScreen extends StatelessWidget {
       value: getIt<LoginBloc>(),
       child: BlocListener<LoginBloc, LoginState>(
         listener: _listenerBloc,
-        child: const EmailInputContent(),
+        child: EmailInputContent(key: _contentKey),
       ),
     );
   }
@@ -25,12 +27,12 @@ class EmailInputScreen extends StatelessWidget {
   void _listenerBloc(BuildContext context, LoginState state) {
     print('Listener state: ${state.stateStatus}');
     state.stateStatus.whenOrNull(
-      success: (val) {
-        print('Success with value: $val');
+      success: (_) {
+        var email = _contentKey.currentState?.email;
         AutoRouter.of(context).replace(
           ConfirmationRoute(
-              // email: state.registrationModel.email,
-              ),
+            email: email,
+          ),
         );
       },
       failure: (msg) {
