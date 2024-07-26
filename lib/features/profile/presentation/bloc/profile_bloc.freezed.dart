@@ -19,32 +19,38 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signOut,
+    required TResult Function() getProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signOut,
+    TResult? Function()? getProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signOut,
+    TResult Function()? getProfileInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_GetProfileInfo value) getProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_GetProfileInfo value)? getProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_GetProfileInfo value)? getProfileInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() signOut,
+    required TResult Function() getProfileInfo,
   }) {
     return signOut();
   }
@@ -115,6 +122,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signOut,
+    TResult? Function()? getProfileInfo,
   }) {
     return signOut?.call();
   }
@@ -123,6 +131,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signOut,
+    TResult Function()? getProfileInfo,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -135,6 +144,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_GetProfileInfo value) getProfileInfo,
   }) {
     return signOut(this);
   }
@@ -143,6 +153,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_GetProfileInfo value)? getProfileInfo,
   }) {
     return signOut?.call(this);
   }
@@ -151,6 +162,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_GetProfileInfo value)? getProfileInfo,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -165,8 +177,111 @@ abstract class _SignOut implements ProfileEvent {
 }
 
 /// @nodoc
+abstract class _$$GetProfileInfoImplCopyWith<$Res> {
+  factory _$$GetProfileInfoImplCopyWith(_$GetProfileInfoImpl value,
+          $Res Function(_$GetProfileInfoImpl) then) =
+      __$$GetProfileInfoImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetProfileInfoImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$GetProfileInfoImpl>
+    implements _$$GetProfileInfoImplCopyWith<$Res> {
+  __$$GetProfileInfoImplCopyWithImpl(
+      _$GetProfileInfoImpl _value, $Res Function(_$GetProfileInfoImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetProfileInfoImpl implements _GetProfileInfo {
+  const _$GetProfileInfoImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.getProfileInfo()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetProfileInfoImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signOut,
+    required TResult Function() getProfileInfo,
+  }) {
+    return getProfileInfo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signOut,
+    TResult? Function()? getProfileInfo,
+  }) {
+    return getProfileInfo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signOut,
+    TResult Function()? getProfileInfo,
+    required TResult orElse(),
+  }) {
+    if (getProfileInfo != null) {
+      return getProfileInfo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_GetProfileInfo value) getProfileInfo,
+  }) {
+    return getProfileInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_GetProfileInfo value)? getProfileInfo,
+  }) {
+    return getProfileInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_GetProfileInfo value)? getProfileInfo,
+    required TResult orElse(),
+  }) {
+    if (getProfileInfo != null) {
+      return getProfileInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetProfileInfo implements ProfileEvent {
+  const factory _GetProfileInfo() = _$GetProfileInfoImpl;
+}
+
+/// @nodoc
 mixin _$ProfileState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
+  ProfileEntity? get profile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -179,7 +294,7 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({StateStatus stateStatus});
+  $Res call({StateStatus stateStatus, ProfileEntity? profile});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -198,12 +313,17 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @override
   $Res call({
     Object? stateStatus = null,
+    Object? profile = freezed,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      profile: freezed == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as ProfileEntity?,
     ) as $Val);
   }
 
@@ -224,7 +344,7 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
       __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus});
+  $Res call({StateStatus stateStatus, ProfileEntity? profile});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -242,12 +362,17 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
+    Object? profile = freezed,
   }) {
     return _then(_$ProfileStateImpl(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      profile: freezed == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as ProfileEntity?,
     ));
   }
 }
@@ -255,14 +380,16 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProfileStateImpl implements _ProfileState {
-  const _$ProfileStateImpl({required this.stateStatus});
+  const _$ProfileStateImpl({required this.stateStatus, this.profile});
 
   @override
   final StateStatus stateStatus;
+  @override
+  final ProfileEntity? profile;
 
   @override
   String toString() {
-    return 'ProfileState(stateStatus: $stateStatus)';
+    return 'ProfileState(stateStatus: $stateStatus, profile: $profile)';
   }
 
   @override
@@ -271,11 +398,12 @@ class _$ProfileStateImpl implements _ProfileState {
         (other.runtimeType == runtimeType &&
             other is _$ProfileStateImpl &&
             (identical(other.stateStatus, stateStatus) ||
-                other.stateStatus == stateStatus));
+                other.stateStatus == stateStatus) &&
+            (identical(other.profile, profile) || other.profile == profile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus);
+  int get hashCode => Object.hash(runtimeType, stateStatus, profile);
 
   @JsonKey(ignore: true)
   @override
@@ -285,11 +413,14 @@ class _$ProfileStateImpl implements _ProfileState {
 }
 
 abstract class _ProfileState implements ProfileState {
-  const factory _ProfileState({required final StateStatus stateStatus}) =
-      _$ProfileStateImpl;
+  const factory _ProfileState(
+      {required final StateStatus stateStatus,
+      final ProfileEntity? profile}) = _$ProfileStateImpl;
 
   @override
   StateStatus get stateStatus;
+  @override
+  ProfileEntity? get profile;
   @override
   @JsonKey(ignore: true)
   _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>

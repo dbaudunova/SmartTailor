@@ -7,4 +7,5 @@ class HttpPaths {
   static const login = '$baseUrl/api/auth/login';
   static const resendConfirmationCode = '$baseUrl/api/auth/resend-confirmation-code';
   static const signOut = '$baseUrl/api/auth/log-out';
+  static const getProfile = '$baseUrl/api/account/profile';
 }

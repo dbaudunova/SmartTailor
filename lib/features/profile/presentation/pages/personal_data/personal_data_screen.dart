@@ -89,7 +89,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       },
       showBellIcon: false,
       secondRowText: 'Изменить фото профиля',
-      avatar: _imageFile == null
+      /*avatar: _imageFile == null
           ? CircleAvatar(
               radius: 24,
               backgroundColor: AppColors.yellow,
@@ -102,7 +102,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           : CircleAvatar(
               backgroundImage: FileImage(_imageFile!),
               radius: 24,
-            ),
+            ),*/
     );
   }
 

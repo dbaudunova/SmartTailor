@@ -9,7 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i3;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i8;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart' as _i19;
@@ -26,13 +26,13 @@ import 'package:neobis_smart_tailor/features/confirmation/data/repository/confir
 import 'package:neobis_smart_tailor/features/confirmation/domain/repository/confirmation_repo.dart'
     as _i28;
 import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/confirmation_use_case.dart'
-    as _i33;
-import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/resend_pin_use_case%20copy.dart'
     as _i34;
+import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/resend_pin_use_case%20copy.dart'
+    as _i35;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart'
     as _i36;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/timer_bloc/timer_bloc.dart'
-    as _i5;
+    as _i8;
 import 'package:neobis_smart_tailor/features/login/data/data_source/impl/login_data_source_impl.dart'
     as _i12;
 import 'package:neobis_smart_tailor/features/login/data/data_source/login_data_source.dart'
@@ -46,7 +46,7 @@ import 'package:neobis_smart_tailor/features/login/domain/useCase/login_use_case
 import 'package:neobis_smart_tailor/features/login/presentation/bloc/login_bloc.dart'
     as _i30;
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart'
-    as _i6;
+    as _i5;
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart'
     as _i15;
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source_impl/profile_data_source_impl.dart'
@@ -55,10 +55,12 @@ import 'package:neobis_smart_tailor/features/profile/data/repository/profile_rep
     as _i22;
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart'
     as _i21;
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_profile_info_use_case.dart'
+    as _i32;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/sign_out_use_case.dart'
     as _i31;
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart'
-    as _i35;
+    as _i37;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/impl/registration_data_source_impl.dart'
     as _i14;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/registration_data_source.dart'
@@ -70,9 +72,9 @@ import 'package:neobis_smart_tailor/features/registration/domain/repository/regi
 import 'package:neobis_smart_tailor/features/registration/domain/useCase/registration_use_case.dart'
     as _i27;
 import 'package:neobis_smart_tailor/features/registration/presentation/bloc/registration_bloc.dart'
-    as _i32;
-import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i37;
-import 'package:shared_preferences/shared_preferences.dart' as _i7;
+    as _i33;
+import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i38;
+import 'package:shared_preferences/shared_preferences.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -88,17 +90,17 @@ extension GetItInjectableX on _i1.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i3.Dio>(() => registerModule.dio);
     gh.singleton<_i4.AuthService>(() => _i4.AuthService());
-    gh.singleton<_i5.Ticker>(() => const _i5.Ticker());
-    gh.singleton<_i6.OrderPlaceBloc>(() => _i6.OrderPlaceBloc());
-    await gh.singletonAsync<_i7.SharedPreferences>(
+    gh.singleton<_i5.OrderPlaceBloc>(() => _i5.OrderPlaceBloc());
+    await gh.singletonAsync<_i6.SharedPreferences>(
       () => registerModule.prefs,
       preResolve: true,
     );
-    gh.singleton<_i8.FlutterSecureStorage>(() => registerModule.storage);
+    gh.singleton<_i7.FlutterSecureStorage>(() => registerModule.storage);
+    gh.singleton<_i8.Ticker>(() => const _i8.Ticker());
     gh.singleton<_i9.HttpClient>(() => _i9.HttpClient(gh<_i3.Dio>()));
-    gh.singleton<_i5.TimerBloc>(() => _i5.TimerBloc(ticker: gh<_i5.Ticker>()));
+    gh.singleton<_i8.TimerBloc>(() => _i8.TimerBloc(ticker: gh<_i8.Ticker>()));
     gh.singleton<_i10.SecureStorageService>(
-        () => _i10.SecureStorageService(gh<_i8.FlutterSecureStorage>()));
+        () => _i10.SecureStorageService(gh<_i7.FlutterSecureStorage>()));
     gh.factory<_i11.LoginDataSource>(
         () => _i12.LoginDataSourceImpl(gh<_i9.HttpClient>()));
     gh.factory<_i13.RegistrationDataSource>(
@@ -128,20 +130,24 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i30.LoginBloc(loginUseCase: gh<_i20.LoginUseCase>()));
     gh.singleton<_i31.SignOutUseCase>(
         () => _i31.SignOutUseCase(repo: gh<_i21.ProfileRepo>()));
-    gh.factory<_i32.RegistrationBloc>(() => _i32.RegistrationBloc(
+    gh.singleton<_i32.GetProfileInfoUseCase>(
+        () => _i32.GetProfileInfoUseCase(repo: gh<_i21.ProfileRepo>()));
+    gh.factory<_i33.RegistrationBloc>(() => _i33.RegistrationBloc(
         registrationUseCase: gh<_i27.RegistrationUseCase>()));
-    gh.singleton<_i33.ConfirmationUseCase>(
-        () => _i33.ConfirmationUseCase(repo: gh<_i28.ConfirmationRepo>()));
-    gh.singleton<_i34.ResendPinUseCase>(
-        () => _i34.ResendPinUseCase(repo: gh<_i28.ConfirmationRepo>()));
-    gh.factory<_i35.ProfileBloc>(
-        () => _i35.ProfileBloc(signOutUseCase: gh<_i31.SignOutUseCase>()));
+    gh.singleton<_i34.ConfirmationUseCase>(
+        () => _i34.ConfirmationUseCase(repo: gh<_i28.ConfirmationRepo>()));
+    gh.singleton<_i35.ResendPinUseCase>(
+        () => _i35.ResendPinUseCase(repo: gh<_i28.ConfirmationRepo>()));
     gh.singleton<_i36.ConfirmationBloc>(() => _i36.ConfirmationBloc(
-          gh<_i33.ConfirmationUseCase>(),
-          gh<_i34.ResendPinUseCase>(),
+          gh<_i34.ConfirmationUseCase>(),
+          gh<_i35.ResendPinUseCase>(),
+        ));
+    gh.factory<_i37.ProfileBloc>(() => _i37.ProfileBloc(
+          signOutUseCase: gh<_i31.SignOutUseCase>(),
+          getProfileInfoUseCase: gh<_i32.GetProfileInfoUseCase>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i37.RegisterModule {}
+class _$RegisterModule extends _i38.RegisterModule {}
