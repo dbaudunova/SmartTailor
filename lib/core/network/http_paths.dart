@@ -10,4 +10,14 @@ class HttpPaths {
   static const login = '$baseUrl/api/auth/login';
   static const resendConfirmationCode = '$baseUrl/api/auth/resend-confirmation-code';
   static const signOut = '$baseUrl/api/auth/log-out';
+
+  static const createOrder = '$baseUrl/api/order/add-order';
+  static const createEquipment = '$baseUrl/api/equipment/add-equipment';
+  static const createService = '$baseUrl/api/service/add';
+
+  static const getService = '$baseUrl/api/service';
+  static const getOrders = '$baseUrl/api/order/get-all-orders';
+  static const getEquipments = '$baseUrl/api/equipment/get-all-equipments';
+
+  static const getProfile = '$baseUrl/api/account/profile';
 }
