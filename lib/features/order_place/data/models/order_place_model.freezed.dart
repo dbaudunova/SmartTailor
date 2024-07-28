@@ -20,14 +20,14 @@ OrderPlaceModel _$OrderPlaceModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderPlaceModel {
-  String get type => throw _privateConstructorUsedError;
+// required String type,
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
-  Set<String> get sizes => throw _privateConstructorUsedError;
-  DateTime? get date => throw _privateConstructorUsedError;
+  List<Item> get items => throw _privateConstructorUsedError;
+  String? get dateOfExecution => throw _privateConstructorUsedError;
   String get contactInfo => throw _privateConstructorUsedError;
-  int? get summ => throw _privateConstructorUsedError;
+  String? get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,14 +42,13 @@ abstract class $OrderPlaceModelCopyWith<$Res> {
       _$OrderPlaceModelCopyWithImpl<$Res, OrderPlaceModel>;
   @useResult
   $Res call(
-      {String type,
-      String name,
+      {String name,
       String description,
       List<String> images,
-      Set<String> sizes,
-      DateTime? date,
+      List<Item> items,
+      String? dateOfExecution,
       String contactInfo,
-      int? summ});
+      String? price});
 }
 
 /// @nodoc
@@ -65,20 +64,15 @@ class _$OrderPlaceModelCopyWithImpl<$Res, $Val extends OrderPlaceModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
     Object? name = null,
     Object? description = null,
     Object? images = null,
-    Object? sizes = null,
-    Object? date = freezed,
+    Object? items = null,
+    Object? dateOfExecution = freezed,
     Object? contactInfo = null,
-    Object? summ = freezed,
+    Object? price = freezed,
   }) {
     return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -91,22 +85,22 @@ class _$OrderPlaceModelCopyWithImpl<$Res, $Val extends OrderPlaceModel>
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      sizes: null == sizes
-          ? _value.sizes
-          : sizes // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<Item>,
+      dateOfExecution: freezed == dateOfExecution
+          ? _value.dateOfExecution
+          : dateOfExecution // ignore: cast_nullable_to_non_nullable
+              as String?,
       contactInfo: null == contactInfo
           ? _value.contactInfo
           : contactInfo // ignore: cast_nullable_to_non_nullable
               as String,
-      summ: freezed == summ
-          ? _value.summ
-          : summ // ignore: cast_nullable_to_non_nullable
-              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -120,14 +114,13 @@ abstract class _$$OrderPlaceModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String type,
-      String name,
+      {String name,
       String description,
       List<String> images,
-      Set<String> sizes,
-      DateTime? date,
+      List<Item> items,
+      String? dateOfExecution,
       String contactInfo,
-      int? summ});
+      String? price});
 }
 
 /// @nodoc
@@ -141,20 +134,15 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
     Object? name = null,
     Object? description = null,
     Object? images = null,
-    Object? sizes = null,
-    Object? date = freezed,
+    Object? items = null,
+    Object? dateOfExecution = freezed,
     Object? contactInfo = null,
-    Object? summ = freezed,
+    Object? price = freezed,
   }) {
     return _then(_$OrderPlaceModelImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -167,22 +155,22 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      sizes: null == sizes
-          ? _value._sizes
-          : sizes // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<Item>,
+      dateOfExecution: freezed == dateOfExecution
+          ? _value.dateOfExecution
+          : dateOfExecution // ignore: cast_nullable_to_non_nullable
+              as String?,
       contactInfo: null == contactInfo
           ? _value.contactInfo
           : contactInfo // ignore: cast_nullable_to_non_nullable
               as String,
-      summ: freezed == summ
-          ? _value.summ
-          : summ // ignore: cast_nullable_to_non_nullable
-              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -190,23 +178,21 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OrderPlaceModelImpl implements _OrderPlaceModel {
-  const _$OrderPlaceModelImpl(
-      {required this.type,
-      required this.name,
+  _$OrderPlaceModelImpl(
+      {required this.name,
       required this.description,
       required final List<String> images,
-      required final Set<String> sizes,
-      required this.date,
+      required final List<Item> items,
+      required this.dateOfExecution,
       required this.contactInfo,
-      required this.summ})
+      required this.price})
       : _images = images,
-        _sizes = sizes;
+        _items = items;
 
   factory _$OrderPlaceModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderPlaceModelImplFromJson(json);
 
-  @override
-  final String type;
+// required String type,
   @override
   final String name;
   @override
@@ -219,24 +205,24 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
     return EqualUnmodifiableListView(_images);
   }
 
-  final Set<String> _sizes;
+  final List<Item> _items;
   @override
-  Set<String> get sizes {
-    if (_sizes is EqualUnmodifiableSetView) return _sizes;
+  List<Item> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_sizes);
+    return EqualUnmodifiableListView(_items);
   }
 
   @override
-  final DateTime? date;
+  final String? dateOfExecution;
   @override
   final String contactInfo;
   @override
-  final int? summ;
+  final String? price;
 
   @override
   String toString() {
-    return 'OrderPlaceModel(type: $type, name: $name, description: $description, images: $images, sizes: $sizes, date: $date, contactInfo: $contactInfo, summ: $summ)';
+    return 'OrderPlaceModel(name: $name, description: $description, images: $images, items: $items, dateOfExecution: $dateOfExecution, contactInfo: $contactInfo, price: $price)';
   }
 
   @override
@@ -244,30 +230,29 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderPlaceModelImpl &&
-            (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality().equals(other._sizes, _sizes) &&
-            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.dateOfExecution, dateOfExecution) ||
+                other.dateOfExecution == dateOfExecution) &&
             (identical(other.contactInfo, contactInfo) ||
                 other.contactInfo == contactInfo) &&
-            (identical(other.summ, summ) || other.summ == summ));
+            (identical(other.price, price) || other.price == price));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      type,
       name,
       description,
       const DeepCollectionEquality().hash(_images),
-      const DeepCollectionEquality().hash(_sizes),
-      date,
+      const DeepCollectionEquality().hash(_items),
+      dateOfExecution,
       contactInfo,
-      summ);
+      price);
 
   @JsonKey(ignore: true)
   @override
@@ -285,37 +270,183 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
 }
 
 abstract class _OrderPlaceModel implements OrderPlaceModel {
-  const factory _OrderPlaceModel(
-      {required final String type,
-      required final String name,
+  factory _OrderPlaceModel(
+      {required final String name,
       required final String description,
       required final List<String> images,
-      required final Set<String> sizes,
-      required final DateTime? date,
+      required final List<Item> items,
+      required final String? dateOfExecution,
       required final String contactInfo,
-      required final int? summ}) = _$OrderPlaceModelImpl;
+      required final String? price}) = _$OrderPlaceModelImpl;
 
   factory _OrderPlaceModel.fromJson(Map<String, dynamic> json) =
       _$OrderPlaceModelImpl.fromJson;
 
-  @override
-  String get type;
-  @override
+  @override // required String type,
   String get name;
   @override
   String get description;
   @override
   List<String> get images;
   @override
-  Set<String> get sizes;
+  List<Item> get items;
   @override
-  DateTime? get date;
+  String? get dateOfExecution;
   @override
   String get contactInfo;
   @override
-  int? get summ;
+  String? get price;
   @override
   @JsonKey(ignore: true)
   _$$OrderPlaceModelImplCopyWith<_$OrderPlaceModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Item _$ItemFromJson(Map<String, dynamic> json) {
+  return _Item.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Item {
+  String get size => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ItemCopyWith<$Res> {
+  factory $ItemCopyWith(Item value, $Res Function(Item) then) =
+      _$ItemCopyWithImpl<$Res, Item>;
+  @useResult
+  $Res call({String size, int quantity});
+}
+
+/// @nodoc
+class _$ItemCopyWithImpl<$Res, $Val extends Item>
+    implements $ItemCopyWith<$Res> {
+  _$ItemCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+    Object? quantity = null,
+  }) {
+    return _then(_value.copyWith(
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
+  factory _$$ItemImplCopyWith(
+          _$ItemImpl value, $Res Function(_$ItemImpl) then) =
+      __$$ItemImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String size, int quantity});
+}
+
+/// @nodoc
+class __$$ItemImplCopyWithImpl<$Res>
+    extends _$ItemCopyWithImpl<$Res, _$ItemImpl>
+    implements _$$ItemImplCopyWith<$Res> {
+  __$$ItemImplCopyWithImpl(_$ItemImpl _value, $Res Function(_$ItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+    Object? quantity = null,
+  }) {
+    return _then(_$ItemImpl(
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ItemImpl implements _Item {
+  _$ItemImpl({required this.size, required this.quantity});
+
+  factory _$ItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ItemImplFromJson(json);
+
+  @override
+  final String size;
+  @override
+  final int quantity;
+
+  @override
+  String toString() {
+    return 'Item(size: $size, quantity: $quantity)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ItemImpl &&
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, size, quantity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
+      __$$ItemImplCopyWithImpl<_$ItemImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ItemImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Item implements Item {
+  factory _Item({required final String size, required final int quantity}) =
+      _$ItemImpl;
+
+  factory _Item.fromJson(Map<String, dynamic> json) = _$ItemImpl.fromJson;
+
+  @override
+  String get size;
+  @override
+  int get quantity;
+  @override
+  @JsonKey(ignore: true)
+  _$$ItemImplCopyWith<_$ItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

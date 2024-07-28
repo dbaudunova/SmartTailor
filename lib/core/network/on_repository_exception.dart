@@ -12,10 +12,10 @@ Failure handleDioException(DioException exception) {
       switch (exception.response?.statusCode) {
         case 400:
           return Failure.request(message: 'Неправильный запрос', status: 400);
-        case 401:
-          return Failure.request(message: 'Неавторизован', status: 401);
         case 403:
-          return Failure.request(message: 'Доступ запрещен', status: 403);
+          return Failure.request(message: 'Неавторизован', status: 403);
+        case 401:
+          return Failure.request(message: 'Доступ запрещен', status: 401);
         case 404:
           return Failure.request(message: 'Ресурс не найден', status: 404);
         case 409:

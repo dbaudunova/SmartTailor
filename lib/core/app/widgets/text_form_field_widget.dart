@@ -1,14 +1,14 @@
 part of '../io_ui.dart';
 
-enum OrderType {
-  order('Заказ'),
-  equipment('Оборудование'),
-  services('Услуги');
+// enum OrderType {
+//   order('Заказ'),
+//   equipment('Оборудование'),
+//   services('Услуги');
 
-  final String name;
+//   final String name;
 
-  const OrderType(this.name);
-}
+//   const OrderType(this.name);
+// }
 
 class TextFormFieldWidget extends StatelessWidget {
   final List<TextInputFormatter>? formatters;

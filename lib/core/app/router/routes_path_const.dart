@@ -4,4 +4,5 @@ class RoutesPaths {
   static const enter = '/enter';
   static const emailInput = '/emailInput';
   static const marketplaceDetail = '/marketplace_detail';
+  static const main = '/main';
 }

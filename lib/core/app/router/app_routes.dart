@@ -69,7 +69,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           initial: true,
-          path: '/main',
+          path: RoutesPaths.main,
           page: BottomNavRoute.page,
           guards: [
             AuthGuard(authService: authService),

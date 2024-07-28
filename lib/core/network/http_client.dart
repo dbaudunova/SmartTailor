@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/auth_info.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
@@ -36,11 +37,12 @@ class HttpClient {
   }
 
   void _addPrivateInterceptor(bool isRefresh) async {
-    _dio.interceptors.add(PrettyDioLogger());
+    // _dio.interceptors.add(PrettyDioLogger());
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           _addPrivateHeaders(options);
+          print(options.data);
           log('onRequestInterceptor ${options.path} ${options.data}');
           return handler.next(options);
         },
@@ -77,9 +79,13 @@ class HttpClient {
     }
     print('proverka');
     print(_authService.cachedUser!.refreshToken!);
-    final response = await post(HttpPaths.refreshToken,
-        queryParameters: {'refreshToken': _authService.cachedUser!.refreshToken!}, isSecure: false);
+    print(_authService.cachedUser!.accessToken!);
+    final response = await post(
+      HttpPaths.refreshToken,
+      queryParameters: {'refreshToken': _authService.cachedUser!.refreshToken!},
+    );
     print(response.statusCode);
+    print(response.data);
     if (response.statusCode == 200) {
       final data = response.data;
       final updatedAuthData = AuthData(

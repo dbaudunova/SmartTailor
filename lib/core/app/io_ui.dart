@@ -2,6 +2,7 @@ library io_ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/order_type_picker_widget.dart';
 import 'package:neobis_smart_tailor/gen/fonts.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 

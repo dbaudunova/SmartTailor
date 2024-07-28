@@ -7,28 +7,43 @@ part 'order_place_model.g.dart';
 
 @freezed
 class OrderPlaceModel with _$OrderPlaceModel {
-  const factory OrderPlaceModel(
-      {required String type,
+  factory OrderPlaceModel(
+      {
+      // required String type,
       required String name,
       required String description,
       required List<String> images,
-      required Set<String> sizes,
-      required DateTime? date,
+      required List<Item> items,
+      required String? dateOfExecution,
       required String contactInfo,
-      required int? summ}) = _OrderPlaceModel;
+      required String? price}) = _OrderPlaceModel;
 
   factory OrderPlaceModel.initial() {
     return OrderPlaceModel(
-      type: '',
+      // type: '',
       name: '',
       description: '',
       images: [],
-      sizes: {},
-      date: null,
+      items: [],
+      dateOfExecution: null,
       contactInfo: '',
-      summ: null,
+      price: '',
     );
   }
 
   factory OrderPlaceModel.fromJson(Map<String, dynamic> json) => _$OrderPlaceModelFromJson(json);
+}
+
+@freezed
+class Item with _$Item {
+  factory Item({
+    required String size,
+    required int quantity,
+  }) = _Item;
+
+  factory Item.initial() {
+    return Item(size: '', quantity: 1);
+  }
+
+  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
 }

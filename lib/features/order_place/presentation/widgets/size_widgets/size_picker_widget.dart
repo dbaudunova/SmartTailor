@@ -4,9 +4,11 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/size_widgets/size_selection_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
+import 'package:neobis_smart_tailor/injection/injection.dart';
 
 class SizePickerFieldWidget extends StatefulWidget {
   final Function(String) onSizeSelected;
+
   const SizePickerFieldWidget({
     required this.onSizeSelected,
     super.key,
@@ -17,35 +19,50 @@ class SizePickerFieldWidget extends StatefulWidget {
 }
 
 class _SizePickerFieldWidgetState extends State<SizePickerFieldWidget> {
-  final _sizeController = TextEditingController();
+  late Map<String, TextEditingController> _quantityControllers;
+  final TextEditingController _sizeController = TextEditingController();
 
   @override
-  void dispose() {
-    _sizeController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    _initializeControllers();
+  }
+
+  void _initializeControllers() {
+    final items = context.read<OrderPlaceBloc>().state.orderPlaceModel.items;
+    _quantityControllers = {
+      for (var item in items)
+        item.size: TextEditingController(
+          text: item.quantity.toString(),
+        ),
+    };
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<OrderPlaceBloc, OrderPlaceState>(
       listener: (context, state) {
-        final sizes = state.orderPlaceModel.sizes;
-        _sizeController.text = sizes.isEmpty ? '' : sizes.join(', ');
+        final items = state.orderPlaceModel.items;
+        _sizeController.text = items.isEmpty ? '' : items.map((item) => '${item.size} - ${item.quantity}').join(', ');
       },
-      child: TextFormFieldWidget(
-        validator: (value) {
-          if (value!.isEmpty) {
-            return 'Выберите размеры';
-          }
-          return null;
-        },
-        controller: _sizeController,
-        enabled: false,
-        ontap: _callBottomSheet,
-        hintText: t.sizeFieldText,
-        titleName: t.sizes,
-        suffixIcon: Icons.keyboard_arrow_down_sharp,
-      ),
+      child: _buildTextFormField(),
+    );
+  }
+
+  TextFormFieldWidget _buildTextFormField() {
+    return TextFormFieldWidget(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Выберите размеры';
+        }
+        return null;
+      },
+      controller: _sizeController,
+      enabled: false,
+      ontap: _callBottomSheet,
+      hintText: t.sizeFieldText,
+      titleName: t.sizes,
+      suffixIcon: Icons.keyboard_arrow_down_sharp,
     );
   }
 
@@ -53,11 +70,15 @@ class _SizePickerFieldWidgetState extends State<SizePickerFieldWidget> {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
-        return SizeSelectionBottomSheet(
-          sizeController: _sizeController,
-          onSizeSelected: (selectedSize) {
-            widget.onSizeSelected(selectedSize);
-          },
+        return BlocProvider.value(
+          value: getIt<OrderPlaceBloc>(),
+          child: SizeSelectionBottomSheet(
+            sizeController: _sizeController,
+            onSizeSelected: (selectedSize) {
+              widget.onSizeSelected(selectedSize);
+            },
+            quantityControllers: _quantityControllers,
+          ),
         );
       },
     );

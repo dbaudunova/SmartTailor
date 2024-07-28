@@ -9,27 +9,37 @@ part of 'order_place_model.dart';
 _$OrderPlaceModelImpl _$$OrderPlaceModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderPlaceModelImpl(
-      type: json['type'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
       images:
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-      sizes: (json['sizes'] as List<dynamic>).map((e) => e as String).toSet(),
-      date:
-          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      items: (json['items'] as List<dynamic>)
+          .map((e) => Item.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      dateOfExecution: json['dateOfExecution'] as String?,
       contactInfo: json['contactInfo'] as String,
-      summ: (json['summ'] as num?)?.toInt(),
+      price: json['price'] as String?,
     );
 
 Map<String, dynamic> _$$OrderPlaceModelImplToJson(
         _$OrderPlaceModelImpl instance) =>
     <String, dynamic>{
-      'type': instance.type,
       'name': instance.name,
       'description': instance.description,
       'images': instance.images,
-      'sizes': instance.sizes.toList(),
-      'date': instance.date?.toIso8601String(),
+      'items': instance.items,
+      'dateOfExecution': instance.dateOfExecution,
       'contactInfo': instance.contactInfo,
-      'summ': instance.summ,
+      'price': instance.price,
+    };
+
+_$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
+      size: json['size'] as String,
+      quantity: (json['quantity'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
+    <String, dynamic>{
+      'size': instance.size,
+      'quantity': instance.quantity,
     };

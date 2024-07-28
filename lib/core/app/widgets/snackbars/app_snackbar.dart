@@ -10,7 +10,7 @@ class AppSnackBar {
     ScaffoldMessenger.of(context)
         .showSnackBar(
           SnackBar(
-            backgroundColor: error ? Colors.red[400] : AppColors.error,
+            backgroundColor: error ? Colors.red[400] : AppColors.darkBlue,
             padding: const EdgeInsets.only(left: 16, top: 8, bottom: 8),
             margin: const EdgeInsets.only(bottom: 32, left: 16, right: 16),
             elevation: 5,

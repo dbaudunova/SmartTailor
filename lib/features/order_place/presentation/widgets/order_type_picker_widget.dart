@@ -5,7 +5,7 @@ import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/ac
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 enum OrderType {
-  order('Заказ'),
+  order('Заказы'),
   equipment('Оборудование'),
   services('Услуги');
 
@@ -14,9 +14,9 @@ enum OrderType {
 }
 
 class OrderTypePicker extends StatefulWidget {
-  final void Function(OrderType type)? onSelect;
+  final TextEditingController controller;
   const OrderTypePicker({
-    this.onSelect,
+    required this.controller,
     super.key,
   });
 
@@ -25,14 +25,6 @@ class OrderTypePicker extends StatefulWidget {
 }
 
 class _OrderTypePickerState extends State<OrderTypePicker> {
-  final _orderTypeController = TextEditingController();
-
-  @override
-  void dispose() {
-    _orderTypeController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -43,7 +35,7 @@ class _OrderTypePickerState extends State<OrderTypePicker> {
           }
           return null;
         },
-        controller: _orderTypeController,
+        controller: widget.controller,
         enabled: false,
         ontap: _onTap,
         suffixIcon: Icons.keyboard_arrow_down_sharp,
@@ -62,9 +54,8 @@ class _OrderTypePickerState extends State<OrderTypePicker> {
               (type) => AppActionSheetWidget(
                 onPressed: () {
                   setState(() {
-                    _orderTypeController.text = type.name;
+                    widget.controller.text = type.name;
                   });
-                  widget.onSelect?.call(type);
                   Navigator.pop(context);
                 },
                 text: type.name,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/order_place/data/models/order_place_model.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
@@ -9,24 +10,29 @@ import 'package:neobis_smart_tailor/gen/strings.g.dart';
 class SizeSelectionBottomSheet extends StatefulWidget {
   final Function(String) onSizeSelected;
   final TextEditingController sizeController;
+  final Map<String, TextEditingController> quantityControllers;
 
-  const SizeSelectionBottomSheet({required this.onSizeSelected, required this.sizeController, super.key});
+  const SizeSelectionBottomSheet({
+    required this.onSizeSelected,
+    required this.sizeController,
+    required this.quantityControllers,
+    super.key,
+  });
 
   @override
-  _SizeSelectionBottomSheetState createState() => _SizeSelectionBottomSheetState();
+  State<SizeSelectionBottomSheet> createState() => _SizeSelectionBottomSheetState();
 }
 
-class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
-  final List<String> _sizes = ['S', 'M', 'L', 'XL'];
+final List<String> _sizes = ['S', 'M', 'L', 'XL'];
 
+class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
         builder: (context, state) {
-          var sizes = state.orderPlaceModel.sizes;
-          var chosenText = sizes.join(', ');
+          var itemsString = _getItemsString(state);
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -36,9 +42,9 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
                 style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black),
               ),
               const SizedBox(height: AppProps.kPageMargin),
-              _buildDropDownMenu(chosenText, context),
+              _buildDropDownMenu(state, context, itemsString),
               const SizedBox(height: AppProps.kPageMargin),
-              _buildChips(state, context, chosenText)
+              _buildChips(state, context)
             ],
           );
         },
@@ -46,17 +52,28 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
     );
   }
 
-  Wrap _buildChips(OrderPlaceState state, BuildContext context, String chosenText) {
+  String _getItemsString(OrderPlaceState state) {
+    return state.orderPlaceModel.items.map((item) => '${item.size} - ${item.quantity}').join(', ');
+  }
+
+  Wrap _buildChips(OrderPlaceState state, BuildContext context) {
     return Wrap(
       direction: Axis.vertical,
       spacing: 16.0,
-      children: state.orderPlaceModel.sizes.map((size) {
+      children: state.orderPlaceModel.items.map((item) {
         return Chip(
           deleteIcon: SvgPicture.asset(Assets.icons.cross),
-          label: Text(size),
+          label: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(item.size),
+              const SizedBox(width: 8),
+              _buildQuantityFields(item, context),
+            ],
+          ),
           onDeleted: () {
             context.read<OrderPlaceBloc>().add(
-                  OrderPlaceEvent.removeSize(size: size),
+                  OrderPlaceEvent.removeItem(item: item),
                 );
           },
         );
@@ -64,7 +81,29 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
     );
   }
 
-  DropdownMenu<String> _buildDropDownMenu(String chosenText, BuildContext context) {
+  SizedBox _buildQuantityFields(Item item, BuildContext context) {
+    return SizedBox(
+      width: 120,
+      child: TextField(
+        controller: widget.quantityControllers[item.size],
+        decoration: InputDecoration(
+          label: Text(item.quantity.toString()),
+          hintText: 'Количество',
+          border: const OutlineInputBorder(),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+        ),
+        keyboardType: TextInputType.number,
+        onChanged: (quantity) {
+          var quantityInt = int.tryParse(quantity) ?? 0;
+          context
+              .read<OrderPlaceBloc>()
+              .add(OrderPlaceEvent.updateQuantity(item: item.copyWith(quantity: quantityInt)));
+        },
+      ),
+    );
+  }
+
+  DropdownMenu<String> _buildDropDownMenu(OrderPlaceState state, BuildContext context, String itemsString) {
     return DropdownMenu(
       dropdownMenuEntries: _sizes.map<DropdownMenuEntry<String>>((String chosenText) {
         return DropdownMenuEntry<String>(
@@ -74,7 +113,7 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
       }).toList(),
       textStyle: AppTextStyle.textField16,
       requestFocusOnTap: false,
-      label: Text(chosenText.isNotEmpty ? chosenText : 'Выберите размеры'),
+      label: Text(state.orderPlaceModel.items.isNotEmpty ? itemsString : 'Выберите размеры'),
       width: MediaQuery.of(context).size.width - 40,
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 20),
@@ -90,10 +129,10 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
         fillColor: AppColors.white,
       ),
       menuStyle: MenuStyle(
-        backgroundColor: const MaterialStatePropertyAll(
+        backgroundColor: const WidgetStatePropertyAll(
           AppColors.white,
         ),
-        shape: MaterialStatePropertyAll(
+        shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
             side: BorderSide.none,
@@ -102,10 +141,10 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
       ),
       onSelected: (String? size) {
         widget.onSizeSelected(size!);
-        widget.sizeController.text = context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', ');
+        widget.sizeController.text = itemsString;
       },
       controller: TextEditingController(
-        text: context.read<OrderPlaceBloc>().state.orderPlaceModel.sizes.join(', '),
+        text: itemsString,
       ),
     );
   }

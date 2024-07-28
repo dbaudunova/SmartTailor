@@ -87,21 +87,17 @@ class RegistrationContentState extends State<RegistrationContent> {
           onTap: isButtonEnabled
               ? () {
                   if (_formKey.currentState!.validate()) {
-                    _bloc
-                      // ..add(
-                      //   RegistrationEvent.addEmail(email: emailController.text),
-                      // )
-                      ..add(
-                        RegistrationEvent.registration(
-                          registrationModel: RegistrationModel(
-                            name: nameController.text,
-                            surname: surnameController.text,
-                            email: emailController.text,
-                            patronymic: fatherNameController.text,
-                            phoneNumber: phoneController.text,
-                          ),
+                    _bloc.add(
+                      RegistrationEvent.registration(
+                        registrationModel: RegistrationModel(
+                          name: nameController.text,
+                          surname: surnameController.text,
+                          email: emailController.text,
+                          patronymic: fatherNameController.text,
+                          phoneNumber: phoneController.text,
                         ),
-                      );
+                      ),
+                    );
                   }
                 }
               : null,

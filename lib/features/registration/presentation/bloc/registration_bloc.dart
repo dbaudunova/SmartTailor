@@ -16,29 +16,11 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
   RegistrationBloc({required this.registrationUseCase})
       : super(
-          RegistrationState(
-            stateStatus: const StateStatus.initial(),
-          ),
+          const RegistrationState(stateStatus: StateStatus.initial()),
         ) {
     on<_Registration>(_registration);
     on<_Reset>(_reset);
-    // on<_AddEmail>(_addEmail);
   }
-
-  // void _addEmail(
-  //   _AddEmail event,
-  //   Emitter<RegistrationState> emit,
-  // ) {
-  //   var email = event.email;
-  //   emit(
-  //     state.copyWith(
-  //       registrationModel: state.registrationModel.copyWith(
-  //         email: email,
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Future<void> _registration(
     _Registration event,
     Emitter<RegistrationState> emit,
@@ -60,21 +42,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     _Reset event,
     Emitter<RegistrationState> emit,
   ) {
-    emit(RegistrationState(
-      stateStatus: const StateStatus.initial(),
+    emit(const RegistrationState(
+      stateStatus: StateStatus.initial(),
     ));
   }
 }
-
-
-  // Future<void> _registration(
-  //   _Registration event,
-  //   Emitter<RegistrationState> emit,
-  // ) async {
-  //   emit(state.copyWith(stateStatus: const StateStatus.loading()));
-  //   final registrationModel = event.registrationModel;
-  //   await registrationUseCase.call(
-  //     registrationModel,
-  //   );
-  //   emit(state.copyWith(stateStatus: const StateStatus.success()));
-  // }

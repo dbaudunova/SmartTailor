@@ -37,7 +37,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                     minimumYear: DateTime.now().year,
                     onDateTimeChanged: (DateTime dateTime) {
                       setState(() {
-                        var date = DateFormat.yMd().format(dateTime);
+                        var date = DateFormat('yyyy-MM-dd').format(dateTime);
                         _selectedDate = dateTime;
                         widget.dateController.text = date;
                       });
@@ -52,12 +52,13 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                   style: AppTextStyle.textField16,
                 ),
                 onPressed: () {
-                  if (_selectedDate != null) {
-                    context.read<OrderPlaceBloc>().add(
-                          OrderPlaceEvent.addDate(date: _selectedDate!),
-                        );
-                  }
+                  // if (_selectedDate != null) {
+                  //   var date = DateFormat('yyyy-MM-dd').format(_selectedDate!);
+                  //   context.read<OrderPlaceBloc>().add(
+                  //         OrderPlaceEvent.addDate(dateOfExecution: date),
+                  //       );
                   Navigator.of(context).pop();
+                  // }
                 },
               ),
             ],

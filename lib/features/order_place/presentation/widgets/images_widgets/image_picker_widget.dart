@@ -41,12 +41,12 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   Widget build(BuildContext context) {
     return BlocListener<OrderPlaceBloc, OrderPlaceState>(
       listener: (context, state) {
-        final photos = state.orderPlaceModel.images;
+        final photos = state.images;
         _imageController.text = photos.isEmpty ? '' : 'Выбрано ${photos.length} фото';
       },
       child: BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
         builder: (context, state) {
-          final photos = state.orderPlaceModel.images;
+          final photos = state.images;
           return TextFormFieldWidget(
             validator: (value) {
               if (photos.isEmpty) {

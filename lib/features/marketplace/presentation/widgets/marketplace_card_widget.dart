@@ -42,16 +42,24 @@ class MarketplaceCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: AppTextStyle.textField16,
+                      SizedBox(
+                        width: 200,
+                        child: Text(
+                          maxLines: 1,
+                          title,
+                          style: AppTextStyle.textField16,
+                        ),
                       ),
                       const SizedBox(height: 8),
-                      Text(
-                        description,
-                        style: AppTextStyle.textField16.copyWith(
-                          fontSize: 14,
-                          color: AppColors.greyText,
+                      SizedBox(
+                        width: 200,
+                        child: Text(
+                          maxLines: 1,
+                          description,
+                          style: AppTextStyle.textField16.copyWith(
+                            fontSize: 14,
+                            color: AppColors.greyText,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 8),

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
@@ -14,8 +13,8 @@ class PhotosPreviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
       builder: (context, state) {
-        final photos = state.orderPlaceModel.images;
-        print(photos.length);
+        final photos = state.images;
+        // print(photos.length);
         return photos != []
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +44,7 @@ class PhotosPreviewWidget extends StatelessWidget {
     );
   }
 
-  Positioned _buildCross(BuildContext context, List<String> photos, int index) {
+  Positioned _buildCross(BuildContext context, List<File> photos, int index) {
     return Positioned(
         right: 4,
         top: 4,
@@ -65,7 +64,7 @@ class PhotosPreviewWidget extends StatelessWidget {
         ));
   }
 
-  Container _buildPhoto(List<String> photos, int index) {
+  Container _buildPhoto(List<File> photos, int index) {
     return Container(
       height: 64,
       width: 64,
@@ -78,7 +77,7 @@ class PhotosPreviewWidget extends StatelessWidget {
         image: DecorationImage(
           fit: BoxFit.cover,
           image: FileImage(
-            File(photos[index]),
+            File(photos[index].path),
           ),
         ),
       ),
