@@ -1,18 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/router/routes_path_const.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/profile_button_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/subscribe_container_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/user_info.dart';
-import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
 @RoutePage()
 class ProfileScreen extends StatefulWidget {
@@ -27,6 +26,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool _isSubscribeContainerVisible = true;
 
   @override
+  void initState() {
+    BlocProvider.of<ProfileBloc>(context)
+        .add(const ProfileEvent.getProfileInfo());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarStyle(
@@ -34,28 +40,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: 'Профиль',
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin).copyWith(
+        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin)
+            .copyWith(
           top: AppProps.kSmallMargin,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            UserInfo(
-              avatar: CircleAvatar(
-                radius: 24,
-                backgroundColor: AppColors.yellow,
-                child: SvgPicture.asset(
-                  Assets.icons.person,
-                  width: AppProps.kBigMargin,
-                  height: AppProps.kBigMargin,
-                ),
-              ),
-              secondRowText: 'Подписка оформлена!',
-              thirdRowText: 'Срок до 1 августа 2024',
-              onIconPressed: () {
-                AutoRouter.of(context).push(const NotificationRoute());
-              },
-            ),
+            _buildBlocBuilder(),
             const SizedBox(height: AppProps.kTwentyMargin),
             if (_isSubscribeContainerVisible)
               SubscribeContainerStyle(
@@ -65,16 +57,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
             const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(context, 'Личные данные', const PersonalDataRoute()),
+            _buildProfileButton(
+                context, 'Личные данные', const PersonalDataRoute()),
             const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(context, 'Мои объявления', const MyAnnouncementsRoute()),
+            _buildProfileButton(
+                context, 'Мои объявления', const MyAnnouncementsRoute()),
             const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(context, 'Мои покупки', const MyPurchasesRoute()),
+            _buildProfileButton(
+                context, 'Мои покупки', const MyPurchasesRoute()),
             if (_isHistoryOfOrdersButtonVisible) ...[
               const SizedBox(height: AppProps.kPageMargin),
-              _buildProfileButton(context, 'История заказов', const OrderHistoryRoute()),
+              _buildProfileButton(
+                  context, 'История заказов', const OrderHistoryRoute()),
               const SizedBox(height: AppProps.kPageMargin),
-              _buildProfileButton(context, 'Организация', const ProfileOrganizationRoute()),
+              _buildProfileButton(
+                  context, 'Организация', const ProfileOrganizationRoute()),
             ],
             const Spacer(),
             SizedBox(
@@ -93,7 +90,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildProfileButton(BuildContext context, String title, PageRouteInfo route) {
+  BlocBuilder<ProfileBloc, ProfileState> _buildBlocBuilder() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        if (state.stateStatus == const StateStatus.loading()) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (state.stateStatus ==
+            StateStatus.failure(message: '${state.stateStatus}')) {
+          return AppSnackBar.show(
+              context: context,
+              titleText: 'Не удалось загрузить данные',
+              error: true);
+        }
+        if (state.stateStatus == const StateStatus.success()) {
+          return UserInfo(
+            profileEntity: state.profile,
+            secondRowText: 'Подписка оформлена!',
+            thirdRowText: 'Срок до 1 августа 2024',
+            onIconPressed: () {
+              AutoRouter.of(context).push(const NotificationRoute());
+            },
+          );
+        }
+        return const Center(
+          child: Text('Что-то пошло не так'),
+        );
+      },
+    );
+  }
+
+  Widget _buildProfileButton(
+      BuildContext context, String title, PageRouteInfo route) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: ProfileButtonStyle(
@@ -113,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: 'Вы действительно хотите выйти?',
           confirmButton: () {
             context.read<ProfileBloc>().add(const ProfileEvent.signOut());
-            // AutoRouter.of(context).replaceNamed(RoutesPaths.enter);
+            AutoRouter.of(context).replaceNamed(RoutesPaths.enter);
           },
           cancelButton: () {
             AutoRouter.of(context).maybePop();

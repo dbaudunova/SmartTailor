@@ -1,14 +1,13 @@
-import 'dart:io';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/user_info.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
@@ -27,7 +26,13 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  File? _imageFile;
+
+  @override
+  void initState() {
+    BlocProvider.of<ProfileBloc>(context)
+        .add(const ProfileEvent.getProfileInfo());
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -37,15 +42,6 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
     _emailController.dispose();
     _phoneNumberController.dispose();
     super.dispose();
-  }
-
-  Future<void> _pickImage(ImageSource source) async {
-    final pickedFile = await ImagePicker().pickImage(source: source);
-    if (pickedFile != null) {
-      setState(() {
-        _imageFile = File(pickedFile.path);
-      });
-    }
   }
 
   @override
@@ -64,7 +60,10 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
               Form(key: _formKey, child: _buildTextFields()),
               const Spacer(),
               SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
                 child: ElevatedButtonWidget(
                   text: 'Сохранить данные',
                   onTap: () {
@@ -82,90 +81,93 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
     );
   }
 
-  UserInfo _buildUserInfo(BuildContext context) {
-    return UserInfo(
-      onTap: () {
-        _showPhotoOptions(context);
+  BlocBuilder<ProfileBloc, ProfileState> _buildUserInfo(BuildContext context) {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        if (state.stateStatus == const StateStatus.loading()) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (state.stateStatus ==
+            StateStatus.failure(message: '${state.stateStatus}')) {
+          return AppSnackBar.show(
+              context: context,
+              titleText: 'Не удалось загрузить данные',
+              error: true);
+        }
+        if (state.stateStatus == const StateStatus.success()) {
+          return UserInfo(
+            profileEntity: state.profile,
+            secondRowText: 'Изменить фото профиля',
+            showBellIcon: false,
+          );
+        }
+        return const Center(
+          child: Text('Что-то пошло не так'),
+        );
       },
-      showBellIcon: false,
-      secondRowText: 'Изменить фото профиля',
-      avatar: _imageFile == null
-          ? CircleAvatar(
-              radius: 24,
-              backgroundColor: AppColors.yellow,
-              child: SvgPicture.asset(
-                Assets.icons.person,
-                width: AppProps.kBigMargin,
-                height: AppProps.kBigMargin,
-              ),
-            )
-          : CircleAvatar(
-              backgroundImage: FileImage(_imageFile!),
-              radius: 24,
+    );
+  }
+
+  BlocBuilder<ProfileBloc, dynamic> _buildTextFields() {
+    return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
+      if (state.stateStatus == const StateStatus.loading()) {
+        return const Center(child: CircularProgressIndicator());
+      }
+      if (state.stateStatus ==
+          StateStatus.failure(message: '${state.stateStatus}')) {
+        return AppSnackBar.show(
+            context: context,
+            titleText: 'Не удалось загрузить данные',
+            error: true);
+      }
+      if (state.stateStatus == const StateStatus.success()) {
+        _surnameController.text = state.profile?.surname ?? '';
+        _nameController.text = state.profile?.name ?? '';
+        _fathersNameController.text = state.profile?.patronymic ?? '';
+        _emailController.text = state.profile?.email ?? '';
+        _phoneNumberController.text = state.profile?.phoneNumber ?? '';
+
+        return Column(
+          children: [
+            TextFormFieldWidget(
+              titleName: 'Фамилия*',
+              validator: _nullValidation,
+              controller: _surnameController,
             ),
-    );
-  }
-
-  void _showPhotoOptions(BuildContext context) {
-    showCupertinoModalPopup(
-      context: context,
-      builder: (context) => ActionSheetWidget(
-        actions: ImagePickType.values
-            .map(
-              (type) => AppActionSheetWidget(
-                onPressed: () {
-                  Navigator.pop(context);
-                  if (type == ImagePickType.selectPhoto) {
-                    _pickImage(ImageSource.gallery);
-                  } else if (type == ImagePickType.takePhoto) {
-                    _pickImage(ImageSource.camera);
-                  }
-                },
-                text: type.name,
-              ),
-            )
-            .toList(),
-      ),
-    );
-  }
-
-  Column _buildTextFields() {
-    return Column(
-      children: [
-        TextFormFieldWidget(
-          titleName: 'Фамилия*',
-          validator: _nullValidation,
-          controller: _surnameController,
-        ),
-        const SizedBox(height: 16),
-        TextFormFieldWidget(
-          titleName: 'Имя*',
-          validator: _nullValidation,
-          controller: _nameController,
-        ),
-        const SizedBox(height: 16),
-        TextFormFieldWidget(
-          titleName: 'Отчество*',
-          validator: _nullValidation,
-          controller: _fathersNameController,
-        ),
-        const SizedBox(height: 16),
-        TextFormFieldWidget(
-          titleName: 'Почта*',
-          controller: _emailController,
-          keyboardType: TextInputType.emailAddress,
-          validator: _emailValidation,
-        ),
-        const SizedBox(height: 16),
-        TextFormFieldWidget(
-          validator: _nullValidation,
-          titleName: 'Номер телефона*',
-          keyboardType: TextInputType.phone,
-          formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
-          controller: _phoneNumberController,
-        ),
-      ],
-    );
+            const SizedBox(height: 16),
+            TextFormFieldWidget(
+              titleName: 'Имя*',
+              validator: _nullValidation,
+              controller: _nameController,
+            ),
+            const SizedBox(height: 16),
+            TextFormFieldWidget(
+              titleName: 'Отчество*',
+              validator: _nullValidation,
+              controller: _fathersNameController,
+            ),
+            const SizedBox(height: 16),
+            TextFormFieldWidget(
+              titleName: 'Почта*',
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              validator: _emailValidation,
+            ),
+            const SizedBox(height: 16),
+            TextFormFieldWidget(
+              validator: _nullValidation,
+              titleName: 'Номер телефона*',
+              keyboardType: TextInputType.phone,
+              formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
+              controller: _phoneNumberController,
+            ),
+          ],
+        );
+      }
+      return const Center(
+        child: Text('Что-то пошло не так'),
+      );
+    });
   }
 
   String? _nullValidation(String? value) {
@@ -219,13 +221,4 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       ],
     );
   }
-}
-
-enum ImagePickType {
-  selectPhoto('Выбрать фото'),
-  takePhoto('Сделать фото');
-
-  final String name;
-
-  const ImagePickType(this.name);
 }

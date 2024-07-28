@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
 class UserInfo extends StatelessWidget {
@@ -11,14 +13,14 @@ class UserInfo extends StatelessWidget {
     this.secondRowText,
     this.thirdRowText,
     this.onTap,
-    this.avatar,
+    this.profileEntity,
   });
 
   final String? secondRowText;
   final String? thirdRowText;
   final VoidCallback? onIconPressed, onTap;
   final bool showBellIcon;
-  final Widget? avatar;
+  final ProfileEntity? profileEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +29,27 @@ class UserInfo extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: onTap,
-          child: avatar,
+          child: CircleAvatar(
+            radius: 24,
+            backgroundColor: AppColors.yellow,
+            backgroundImage: profileEntity?.imagePath != null
+                ? CachedNetworkImageProvider(profileEntity?.imagePath ?? '')
+                : null,
+            child: profileEntity?.imagePath == null
+                ? SvgPicture.asset(
+              Assets.icons.person,
+              width: AppProps.kBigMargin,
+              height: AppProps.kBigMargin,
+            )
+                : null,
+          ),
         ),
         const SizedBox(width: AppProps.kSmallMargin),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Имя Фамилия',
+              '${profileEntity?.name} ${profileEntity?.surname}',
               style: AppTextStyle.title24.copyWith(
                 fontSize: 18,
               ),

@@ -7,7 +7,6 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/pages/personal_data/personal_data_screen.dart';
 
 @RoutePage()
 class CreateOrganizationScreen extends StatefulWidget {
@@ -201,4 +200,13 @@ class _CreateOrganizationScreenState extends State<CreateOrganizationScreen> {
       ],
     );
   }
+}
+
+enum ImagePickType {
+  selectPhoto('Выбрать фото'),
+  takePhoto('Сделать фото');
+
+  final String name;
+
+  const ImagePickType(this.name);
 }
