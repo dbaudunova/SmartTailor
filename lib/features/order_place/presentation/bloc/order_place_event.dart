@@ -3,7 +3,7 @@ part of 'order_place_bloc.dart';
 @freezed
 class OrderPlaceEvent with _$OrderPlaceEvent {
   const factory OrderPlaceEvent.showFields({required OrderType fieldType}) = _ShowFields;
-  const factory OrderPlaceEvent.createOrder({required OrderPlaceModel orderPlaceModel, required String orderType}) =
+  const factory OrderPlaceEvent.createOrder({required OrderPlaceModel orderPlaceModel, required OrderType orderType}) =
       _CreateOrder;
   const factory OrderPlaceEvent.addPhotos({required List<File> photos}) = _AddPhotos;
   const factory OrderPlaceEvent.removePhoto({required File photo}) = _RemovePhoto;

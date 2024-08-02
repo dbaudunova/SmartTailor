@@ -68,6 +68,7 @@ class _SizePickerFieldWidgetState extends State<SizePickerFieldWidget> {
 
   void _callBottomSheet() {
     showModalBottomSheet<void>(
+      isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
         return BlocProvider.value(

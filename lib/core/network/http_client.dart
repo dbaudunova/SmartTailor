@@ -2,15 +2,13 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/auth_info.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
-import 'package:neobis_smart_tailor/core/network/http_error_codes.dart';
+import 'package:neobis_smart_tailor/core/network/http_codes.dart';
 import 'package:neobis_smart_tailor/core/network/http_paths.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 // EventTransformer<E> debounceSequential<E>(Duration duration) {
 //   return (events, mapper) {
@@ -42,12 +40,12 @@ class HttpClient {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           _addPrivateHeaders(options);
-          print(options.data);
           log('onRequestInterceptor ${options.path} ${options.data}');
           return handler.next(options);
         },
         onResponse: (response, handler) {
           log('onResponseInterceptor ${response.requestOptions.method} ${response.realUri.path} - ${response.statusCode}');
+          print(response.statusCode);
           if (response.statusCode! >= HttpErrors.badRequest) {
             return handler.reject(DioException(response: response, requestOptions: response.requestOptions));
           }
@@ -77,26 +75,18 @@ class HttpClient {
     if (_authService.cachedUser == null || _authService.cachedUser!.accessToken == null) {
       throw Authorization(message: 'Cached user is null or refresh token is null');
     }
-    print('proverka');
-    print(_authService.cachedUser!.refreshToken!);
-    print(_authService.cachedUser!.accessToken!);
-    final response = await post(
-      HttpPaths.refreshToken,
-      queryParameters: {'refreshToken': _authService.cachedUser!.refreshToken!},
-    );
-    print(response.statusCode);
-    print(response.data);
+    final response = await post(HttpPaths.refreshToken,
+        queryParameters: {'refreshToken': _authService.cachedUser!.refreshToken!}, isSecure: false);
     if (response.statusCode == 200) {
       final data = response.data;
       final updatedAuthData = AuthData(
         message: data['message'],
-        accessToken: data['newAccessToken'],
+        accessToken: data['accessToken'],
         refreshToken: _authService.cachedUser!.refreshToken,
       );
-      print(updatedAuthData.refreshToken);
       _authService.cachedUser = updatedAuthData;
     } else {
-      _authService.cachedUser = null;
+      // _authService.cachedUser = null;
       throw Authorization(message: 'Cached user is null or refresh token is null');
     }
   }

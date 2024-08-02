@@ -20,13 +20,13 @@ EquipmentModel _$EquipmentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EquipmentModel {
-  int get equipmentId => throw _privateConstructorUsedError;
-  String get equipmentPhotoUrl => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
-  String get authorImageUrl => throw _privateConstructorUsedError;
-  String get authorFullName => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
+  String get equipmentImageUrl => throw _privateConstructorUsedError;
+  String get authorFullName => throw _privateConstructorUsedError;
+  String get authorImageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +41,13 @@ abstract class $EquipmentModelCopyWith<$Res> {
       _$EquipmentModelCopyWithImpl<$Res, EquipmentModel>;
   @useResult
   $Res call(
-      {int equipmentId,
-      String equipmentPhotoUrl,
+      {int id,
       String name,
+      String description,
       int price,
-      String authorImageUrl,
+      String equipmentImageUrl,
       String authorFullName,
-      String description});
+      String authorImageUrl});
 }
 
 /// @nodoc
@@ -63,42 +63,42 @@ class _$EquipmentModelCopyWithImpl<$Res, $Val extends EquipmentModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? equipmentId = null,
-    Object? equipmentPhotoUrl = null,
+    Object? id = null,
     Object? name = null,
-    Object? price = null,
-    Object? authorImageUrl = null,
-    Object? authorFullName = null,
     Object? description = null,
+    Object? price = null,
+    Object? equipmentImageUrl = null,
+    Object? authorFullName = null,
+    Object? authorImageUrl = null,
   }) {
     return _then(_value.copyWith(
-      equipmentId: null == equipmentId
-          ? _value.equipmentId
-          : equipmentId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      equipmentPhotoUrl: null == equipmentPhotoUrl
-          ? _value.equipmentPhotoUrl
-          : equipmentPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      authorImageUrl: null == authorImageUrl
-          ? _value.authorImageUrl
-          : authorImageUrl // ignore: cast_nullable_to_non_nullable
+      equipmentImageUrl: null == equipmentImageUrl
+          ? _value.equipmentImageUrl
+          : equipmentImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       authorFullName: null == authorFullName
           ? _value.authorFullName
           : authorFullName // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      authorImageUrl: null == authorImageUrl
+          ? _value.authorImageUrl
+          : authorImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -113,13 +113,13 @@ abstract class _$$EquipmentModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int equipmentId,
-      String equipmentPhotoUrl,
+      {int id,
       String name,
+      String description,
       int price,
-      String authorImageUrl,
+      String equipmentImageUrl,
       String authorFullName,
-      String description});
+      String authorImageUrl});
 }
 
 /// @nodoc
@@ -133,42 +133,42 @@ class __$$EquipmentModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? equipmentId = null,
-    Object? equipmentPhotoUrl = null,
+    Object? id = null,
     Object? name = null,
-    Object? price = null,
-    Object? authorImageUrl = null,
-    Object? authorFullName = null,
     Object? description = null,
+    Object? price = null,
+    Object? equipmentImageUrl = null,
+    Object? authorFullName = null,
+    Object? authorImageUrl = null,
   }) {
     return _then(_$EquipmentModelImpl(
-      equipmentId: null == equipmentId
-          ? _value.equipmentId
-          : equipmentId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      equipmentPhotoUrl: null == equipmentPhotoUrl
-          ? _value.equipmentPhotoUrl
-          : equipmentPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      authorImageUrl: null == authorImageUrl
-          ? _value.authorImageUrl
-          : authorImageUrl // ignore: cast_nullable_to_non_nullable
+      equipmentImageUrl: null == equipmentImageUrl
+          ? _value.equipmentImageUrl
+          : equipmentImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       authorFullName: null == authorFullName
           ? _value.authorFullName
           : authorFullName // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      authorImageUrl: null == authorImageUrl
+          ? _value.authorImageUrl
+          : authorImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -178,35 +178,35 @@ class __$$EquipmentModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EquipmentModelImpl implements _EquipmentModel {
   _$EquipmentModelImpl(
-      {required this.equipmentId,
-      required this.equipmentPhotoUrl,
+      {required this.id,
       required this.name,
+      required this.description,
       required this.price,
-      required this.authorImageUrl,
+      required this.equipmentImageUrl,
       required this.authorFullName,
-      required this.description});
+      required this.authorImageUrl});
 
   factory _$EquipmentModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EquipmentModelImplFromJson(json);
 
   @override
-  final int equipmentId;
-  @override
-  final String equipmentPhotoUrl;
+  final int id;
   @override
   final String name;
   @override
+  final String description;
+  @override
   final int price;
   @override
-  final String authorImageUrl;
+  final String equipmentImageUrl;
   @override
   final String authorFullName;
   @override
-  final String description;
+  final String authorImageUrl;
 
   @override
   String toString() {
-    return 'EquipmentModel(equipmentId: $equipmentId, equipmentPhotoUrl: $equipmentPhotoUrl, name: $name, price: $price, authorImageUrl: $authorImageUrl, authorFullName: $authorFullName, description: $description)';
+    return 'EquipmentModel(id: $id, name: $name, description: $description, price: $price, equipmentImageUrl: $equipmentImageUrl, authorFullName: $authorFullName, authorImageUrl: $authorImageUrl)';
   }
 
   @override
@@ -214,24 +214,23 @@ class _$EquipmentModelImpl implements _EquipmentModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EquipmentModelImpl &&
-            (identical(other.equipmentId, equipmentId) ||
-                other.equipmentId == equipmentId) &&
-            (identical(other.equipmentPhotoUrl, equipmentPhotoUrl) ||
-                other.equipmentPhotoUrl == equipmentPhotoUrl) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.authorImageUrl, authorImageUrl) ||
-                other.authorImageUrl == authorImageUrl) &&
+            (identical(other.equipmentImageUrl, equipmentImageUrl) ||
+                other.equipmentImageUrl == equipmentImageUrl) &&
             (identical(other.authorFullName, authorFullName) ||
                 other.authorFullName == authorFullName) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.authorImageUrl, authorImageUrl) ||
+                other.authorImageUrl == authorImageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, equipmentId, equipmentPhotoUrl,
-      name, price, authorImageUrl, authorFullName, description);
+  int get hashCode => Object.hash(runtimeType, id, name, description, price,
+      equipmentImageUrl, authorFullName, authorImageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -250,31 +249,31 @@ class _$EquipmentModelImpl implements _EquipmentModel {
 
 abstract class _EquipmentModel implements EquipmentModel {
   factory _EquipmentModel(
-      {required final int equipmentId,
-      required final String equipmentPhotoUrl,
+      {required final int id,
       required final String name,
+      required final String description,
       required final int price,
-      required final String authorImageUrl,
+      required final String equipmentImageUrl,
       required final String authorFullName,
-      required final String description}) = _$EquipmentModelImpl;
+      required final String authorImageUrl}) = _$EquipmentModelImpl;
 
   factory _EquipmentModel.fromJson(Map<String, dynamic> json) =
       _$EquipmentModelImpl.fromJson;
 
   @override
-  int get equipmentId;
-  @override
-  String get equipmentPhotoUrl;
+  int get id;
   @override
   String get name;
   @override
+  String get description;
+  @override
   int get price;
   @override
-  String get authorImageUrl;
+  String get equipmentImageUrl;
   @override
   String get authorFullName;
   @override
-  String get description;
+  String get authorImageUrl;
   @override
   @JsonKey(ignore: true)
   _$$EquipmentModelImplCopyWith<_$EquipmentModelImpl> get copyWith =>

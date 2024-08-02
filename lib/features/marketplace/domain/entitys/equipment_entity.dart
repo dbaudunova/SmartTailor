@@ -1,6 +1,6 @@
 class EquipmentEntity {
   final int? equipmentId;
-  final String? equipmentPhotoUrl;
+  final String? equipmentImageUrl;
   final String? name;
   final int? price;
   final String? authorImageUrl;
@@ -9,7 +9,7 @@ class EquipmentEntity {
 
   EquipmentEntity({
     required this.equipmentId,
-    required this.equipmentPhotoUrl,
+    required this.equipmentImageUrl,
     required this.name,
     required this.price,
     required this.authorImageUrl,

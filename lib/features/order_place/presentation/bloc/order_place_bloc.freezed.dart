@@ -19,7 +19,8 @@ mixin _$OrderPlaceEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -33,7 +34,7 @@ mixin _$OrderPlaceEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -47,7 +48,7 @@ mixin _$OrderPlaceEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -185,7 +186,8 @@ class _$ShowFieldsImpl implements _ShowFields {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -202,7 +204,7 @@ class _$ShowFieldsImpl implements _ShowFields {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -219,7 +221,7 @@ class _$ShowFieldsImpl implements _ShowFields {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -305,7 +307,7 @@ abstract class _$$CreateOrderImplCopyWith<$Res> {
           _$CreateOrderImpl value, $Res Function(_$CreateOrderImpl) then) =
       __$$CreateOrderImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrderPlaceModel orderPlaceModel, String orderType});
+  $Res call({OrderPlaceModel orderPlaceModel, OrderType orderType});
 
   $OrderPlaceModelCopyWith<$Res> get orderPlaceModel;
 }
@@ -332,7 +334,7 @@ class __$$CreateOrderImplCopyWithImpl<$Res>
       orderType: null == orderType
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderType,
     ));
   }
 
@@ -354,7 +356,7 @@ class _$CreateOrderImpl implements _CreateOrder {
   @override
   final OrderPlaceModel orderPlaceModel;
   @override
-  final String orderType;
+  final OrderType orderType;
 
   @override
   String toString() {
@@ -385,7 +387,8 @@ class _$CreateOrderImpl implements _CreateOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -402,7 +405,7 @@ class _$CreateOrderImpl implements _CreateOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -419,7 +422,7 @@ class _$CreateOrderImpl implements _CreateOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -492,10 +495,10 @@ class _$CreateOrderImpl implements _CreateOrder {
 abstract class _CreateOrder implements OrderPlaceEvent {
   const factory _CreateOrder(
       {required final OrderPlaceModel orderPlaceModel,
-      required final String orderType}) = _$CreateOrderImpl;
+      required final OrderType orderType}) = _$CreateOrderImpl;
 
   OrderPlaceModel get orderPlaceModel;
-  String get orderType;
+  OrderType get orderType;
   @JsonKey(ignore: true)
   _$$CreateOrderImplCopyWith<_$CreateOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -572,7 +575,8 @@ class _$AddPhotosImpl implements _AddPhotos {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -589,7 +593,7 @@ class _$AddPhotosImpl implements _AddPhotos {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -606,7 +610,7 @@ class _$AddPhotosImpl implements _AddPhotos {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -751,7 +755,8 @@ class _$RemovePhotoImpl implements _RemovePhoto {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -768,7 +773,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -785,7 +790,7 @@ class _$RemovePhotoImpl implements _RemovePhoto {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -939,7 +944,8 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -956,7 +962,7 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -973,7 +979,7 @@ class _$AddItemImpl implements _AddItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -1128,7 +1134,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -1145,7 +1152,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -1162,7 +1169,7 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -1317,7 +1324,8 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -1334,7 +1342,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -1351,7 +1359,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -1496,7 +1504,8 @@ class _$AddDateImpl implements _AddDate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -1513,7 +1522,7 @@ class _$AddDateImpl implements _AddDate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -1530,7 +1539,7 @@ class _$AddDateImpl implements _AddDate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,
@@ -1649,7 +1658,8 @@ class _$ResetStateImpl implements _ResetState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(OrderType fieldType) showFields,
-    required TResult Function(OrderPlaceModel orderPlaceModel, String orderType)
+    required TResult Function(
+            OrderPlaceModel orderPlaceModel, OrderType orderType)
         createOrder,
     required TResult Function(List<File> photos) addPhotos,
     required TResult Function(File photo) removePhoto,
@@ -1666,7 +1676,7 @@ class _$ResetStateImpl implements _ResetState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(OrderType fieldType)? showFields,
-    TResult? Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult? Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult? Function(List<File> photos)? addPhotos,
     TResult? Function(File photo)? removePhoto,
@@ -1683,7 +1693,7 @@ class _$ResetStateImpl implements _ResetState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(OrderType fieldType)? showFields,
-    TResult Function(OrderPlaceModel orderPlaceModel, String orderType)?
+    TResult Function(OrderPlaceModel orderPlaceModel, OrderType orderType)?
         createOrder,
     TResult Function(List<File> photos)? addPhotos,
     TResult Function(File photo)? removePhoto,

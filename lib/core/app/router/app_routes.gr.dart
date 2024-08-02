@@ -50,11 +50,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     EmailInputRoute.name: (routeData) {
-      final args = routeData.argsAs<EmailInputRouteArgs>(
-          orElse: () => const EmailInputRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: EmailInputScreen(key: args.key),
+        child: const EmailInputScreen(),
       );
     },
     EmployeeDetailRoute.name: (routeData) {
@@ -75,6 +73,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const EnterScreen(),
       );
     },
+    EquipmentDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<EquipmentDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EquipmentDetailScreen(
+          id: args.id,
+          key: args.key,
+        ),
+      );
+    },
     HistoryDetailRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -85,20 +93,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const InviteEmployeeScreen(),
-      );
-    },
-    MarketplaceDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<MarketplaceDetailRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: MarketplaceDetailScreen(
-          acceptOrderButton: args.acceptOrderButton,
-          buyButton: args.buyButton,
-          title: args.title,
-          key: args.key,
-          date: args.date,
-          sizeWidget: args.sizeWidget,
-        ),
       );
     },
     MarketplaceRoute.name: (routeData) {
@@ -123,6 +117,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const NotificationScreen(),
+      );
+    },
+    OrderDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderDetailScreen(
+          id: args.id,
+          key: args.key,
+        ),
       );
     },
     OrderHistoryRoute.name: (routeData) {
@@ -174,11 +178,19 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     RegistrationRoute.name: (routeData) {
-      final args = routeData.argsAs<RegistrationRouteArgs>(
-          orElse: () => const RegistrationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: RegistrationScreen(key: args.key),
+        child: const RegistrationScreen(),
+      );
+    },
+    ServiceDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ServiceDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ServiceDetailScreen(
+          id: args.id,
+          key: args.key,
+        ),
       );
     },
   };
@@ -280,31 +292,16 @@ class CurrentOrderDetailRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [EmailInputScreen]
-class EmailInputRoute extends PageRouteInfo<EmailInputRouteArgs> {
-  EmailInputRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class EmailInputRoute extends PageRouteInfo<void> {
+  const EmailInputRoute({List<PageRouteInfo>? children})
+      : super(
           EmailInputRoute.name,
-          args: EmailInputRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'EmailInputRoute';
 
-  static const PageInfo<EmailInputRouteArgs> page =
-      PageInfo<EmailInputRouteArgs>(name);
-}
-
-class EmailInputRouteArgs {
-  const EmailInputRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'EmailInputRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -350,6 +347,44 @@ class EnterRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [EquipmentDetailScreen]
+class EquipmentDetailRoute extends PageRouteInfo<EquipmentDetailRouteArgs> {
+  EquipmentDetailRoute({
+    required int id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EquipmentDetailRoute.name,
+          args: EquipmentDetailRouteArgs(
+            id: id,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EquipmentDetailRoute';
+
+  static const PageInfo<EquipmentDetailRouteArgs> page =
+      PageInfo<EquipmentDetailRouteArgs>(name);
+}
+
+class EquipmentDetailRouteArgs {
+  const EquipmentDetailRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final int id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EquipmentDetailRouteArgs{id: $id, key: $key}';
+  }
+}
+
+/// generated route for
 /// [HistoryDetailScreen]
 class HistoryDetailRoute extends PageRouteInfo<void> {
   const HistoryDetailRoute({List<PageRouteInfo>? children})
@@ -375,64 +410,6 @@ class InviteEmployeeRoute extends PageRouteInfo<void> {
   static const String name = 'InviteEmployeeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [MarketplaceDetailScreen]
-class MarketplaceDetailRoute extends PageRouteInfo<MarketplaceDetailRouteArgs> {
-  MarketplaceDetailRoute({
-    required bool acceptOrderButton,
-    required bool buyButton,
-    required String title,
-    Key? key,
-    DateTime? date,
-    CustomDropdown? sizeWidget,
-    List<PageRouteInfo>? children,
-  }) : super(
-          MarketplaceDetailRoute.name,
-          args: MarketplaceDetailRouteArgs(
-            acceptOrderButton: acceptOrderButton,
-            buyButton: buyButton,
-            title: title,
-            key: key,
-            date: date,
-            sizeWidget: sizeWidget,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'MarketplaceDetailRoute';
-
-  static const PageInfo<MarketplaceDetailRouteArgs> page =
-      PageInfo<MarketplaceDetailRouteArgs>(name);
-}
-
-class MarketplaceDetailRouteArgs {
-  const MarketplaceDetailRouteArgs({
-    required this.acceptOrderButton,
-    required this.buyButton,
-    required this.title,
-    this.key,
-    this.date,
-    this.sizeWidget,
-  });
-
-  final bool acceptOrderButton;
-
-  final bool buyButton;
-
-  final String title;
-
-  final Key? key;
-
-  final DateTime? date;
-
-  final CustomDropdown? sizeWidget;
-
-  @override
-  String toString() {
-    return 'MarketplaceDetailRouteArgs{acceptOrderButton: $acceptOrderButton, buyButton: $buyButton, title: $title, key: $key, date: $date, sizeWidget: $sizeWidget}';
-  }
 }
 
 /// generated route for
@@ -489,6 +466,44 @@ class NotificationRoute extends PageRouteInfo<void> {
   static const String name = 'NotificationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrderDetailScreen]
+class OrderDetailRoute extends PageRouteInfo<OrderDetailRouteArgs> {
+  OrderDetailRoute({
+    required int id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderDetailRoute.name,
+          args: OrderDetailRouteArgs(
+            id: id,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderDetailRoute';
+
+  static const PageInfo<OrderDetailRouteArgs> page =
+      PageInfo<OrderDetailRouteArgs>(name);
+}
+
+class OrderDetailRouteArgs {
+  const OrderDetailRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final int id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'OrderDetailRouteArgs{id: $id, key: $key}';
+  }
 }
 
 /// generated route for
@@ -605,29 +620,52 @@ class PurchaseDetailRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [RegistrationScreen]
-class RegistrationRoute extends PageRouteInfo<RegistrationRouteArgs> {
-  RegistrationRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class RegistrationRoute extends PageRouteInfo<void> {
+  const RegistrationRoute({List<PageRouteInfo>? children})
+      : super(
           RegistrationRoute.name,
-          args: RegistrationRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'RegistrationRoute';
 
-  static const PageInfo<RegistrationRouteArgs> page =
-      PageInfo<RegistrationRouteArgs>(name);
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
-class RegistrationRouteArgs {
-  const RegistrationRouteArgs({this.key});
+/// generated route for
+/// [ServiceDetailScreen]
+class ServiceDetailRoute extends PageRouteInfo<ServiceDetailRouteArgs> {
+  ServiceDetailRoute({
+    required int id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ServiceDetailRoute.name,
+          args: ServiceDetailRouteArgs(
+            id: id,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ServiceDetailRoute';
+
+  static const PageInfo<ServiceDetailRouteArgs> page =
+      PageInfo<ServiceDetailRouteArgs>(name);
+}
+
+class ServiceDetailRouteArgs {
+  const ServiceDetailRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final int id;
 
   final Key? key;
 
   @override
   String toString() {
-    return 'RegistrationRouteArgs{key: $key}';
+    return 'ServiceDetailRouteArgs{id: $id, key: $key}';
   }
 }

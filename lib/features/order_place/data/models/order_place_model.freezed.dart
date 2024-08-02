@@ -24,10 +24,11 @@ mixin _$OrderPlaceModel {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
-  List<Item> get items => throw _privateConstructorUsedError;
+  Set<Item> get items => throw _privateConstructorUsedError;
   String? get dateOfExecution => throw _privateConstructorUsedError;
   String get contactInfo => throw _privateConstructorUsedError;
   String? get price => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,10 +46,11 @@ abstract class $OrderPlaceModelCopyWith<$Res> {
       {String name,
       String description,
       List<String> images,
-      List<Item> items,
+      Set<Item> items,
       String? dateOfExecution,
       String contactInfo,
-      String? price});
+      String? price,
+      int? quantity});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$OrderPlaceModelCopyWithImpl<$Res, $Val extends OrderPlaceModel>
     Object? dateOfExecution = freezed,
     Object? contactInfo = null,
     Object? price = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -88,7 +91,7 @@ class _$OrderPlaceModelCopyWithImpl<$Res, $Val extends OrderPlaceModel>
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
+              as Set<Item>,
       dateOfExecution: freezed == dateOfExecution
           ? _value.dateOfExecution
           : dateOfExecution // ignore: cast_nullable_to_non_nullable
@@ -101,6 +104,10 @@ class _$OrderPlaceModelCopyWithImpl<$Res, $Val extends OrderPlaceModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
+      quantity: freezed == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -117,10 +124,11 @@ abstract class _$$OrderPlaceModelImplCopyWith<$Res>
       {String name,
       String description,
       List<String> images,
-      List<Item> items,
+      Set<Item> items,
       String? dateOfExecution,
       String contactInfo,
-      String? price});
+      String? price,
+      int? quantity});
 }
 
 /// @nodoc
@@ -141,6 +149,7 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
     Object? dateOfExecution = freezed,
     Object? contactInfo = null,
     Object? price = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_$OrderPlaceModelImpl(
       name: null == name
@@ -158,7 +167,7 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<Item>,
+              as Set<Item>,
       dateOfExecution: freezed == dateOfExecution
           ? _value.dateOfExecution
           : dateOfExecution // ignore: cast_nullable_to_non_nullable
@@ -171,6 +180,10 @@ class __$$OrderPlaceModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as String?,
+      quantity: freezed == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -182,10 +195,11 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
       {required this.name,
       required this.description,
       required final List<String> images,
-      required final List<Item> items,
+      required final Set<Item> items,
       required this.dateOfExecution,
       required this.contactInfo,
-      required this.price})
+      required this.price,
+      required this.quantity})
       : _images = images,
         _items = items;
 
@@ -205,12 +219,12 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
     return EqualUnmodifiableListView(_images);
   }
 
-  final List<Item> _items;
+  final Set<Item> _items;
   @override
-  List<Item> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
+  Set<Item> get items {
+    if (_items is EqualUnmodifiableSetView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableSetView(_items);
   }
 
   @override
@@ -219,10 +233,12 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
   final String contactInfo;
   @override
   final String? price;
+  @override
+  final int? quantity;
 
   @override
   String toString() {
-    return 'OrderPlaceModel(name: $name, description: $description, images: $images, items: $items, dateOfExecution: $dateOfExecution, contactInfo: $contactInfo, price: $price)';
+    return 'OrderPlaceModel(name: $name, description: $description, images: $images, items: $items, dateOfExecution: $dateOfExecution, contactInfo: $contactInfo, price: $price, quantity: $quantity)';
   }
 
   @override
@@ -239,7 +255,9 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
                 other.dateOfExecution == dateOfExecution) &&
             (identical(other.contactInfo, contactInfo) ||
                 other.contactInfo == contactInfo) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @JsonKey(ignore: true)
@@ -252,7 +270,8 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
       const DeepCollectionEquality().hash(_items),
       dateOfExecution,
       contactInfo,
-      price);
+      price,
+      quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -274,10 +293,11 @@ abstract class _OrderPlaceModel implements OrderPlaceModel {
       {required final String name,
       required final String description,
       required final List<String> images,
-      required final List<Item> items,
+      required final Set<Item> items,
       required final String? dateOfExecution,
       required final String contactInfo,
-      required final String? price}) = _$OrderPlaceModelImpl;
+      required final String? price,
+      required final int? quantity}) = _$OrderPlaceModelImpl;
 
   factory _OrderPlaceModel.fromJson(Map<String, dynamic> json) =
       _$OrderPlaceModelImpl.fromJson;
@@ -289,13 +309,15 @@ abstract class _OrderPlaceModel implements OrderPlaceModel {
   @override
   List<String> get images;
   @override
-  List<Item> get items;
+  Set<Item> get items;
   @override
   String? get dateOfExecution;
   @override
   String get contactInfo;
   @override
   String? get price;
+  @override
+  int? get quantity;
   @override
   @JsonKey(ignore: true)
   _$$OrderPlaceModelImplCopyWith<_$OrderPlaceModelImpl> get copyWith =>

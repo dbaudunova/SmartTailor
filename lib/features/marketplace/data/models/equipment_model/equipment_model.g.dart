@@ -8,23 +8,23 @@ part of 'equipment_model.dart';
 
 _$EquipmentModelImpl _$$EquipmentModelImplFromJson(Map<String, dynamic> json) =>
     _$EquipmentModelImpl(
-      equipmentId: (json['equipmentId'] as num).toInt(),
-      equipmentPhotoUrl: json['equipmentPhotoUrl'] as String,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      price: (json['price'] as num).toInt(),
-      authorImageUrl: json['authorImageUrl'] as String,
-      authorFullName: json['authorFullName'] as String,
       description: json['description'] as String,
+      price: (json['price'] as num).toInt(),
+      equipmentImageUrl: json['equipmentImageUrl'] as String,
+      authorFullName: json['authorFullName'] as String,
+      authorImageUrl: json['authorImageUrl'] as String,
     );
 
 Map<String, dynamic> _$$EquipmentModelImplToJson(
         _$EquipmentModelImpl instance) =>
     <String, dynamic>{
-      'equipmentId': instance.equipmentId,
-      'equipmentPhotoUrl': instance.equipmentPhotoUrl,
+      'id': instance.id,
       'name': instance.name,
-      'price': instance.price,
-      'authorImageUrl': instance.authorImageUrl,
-      'authorFullName': instance.authorFullName,
       'description': instance.description,
+      'price': instance.price,
+      'equipmentImageUrl': instance.equipmentImageUrl,
+      'authorFullName': instance.authorFullName,
+      'authorImageUrl': instance.authorImageUrl,
     };

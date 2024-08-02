@@ -1,6 +1,3 @@
-import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_equipment_use_case.dart';
-import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart';
-
 class HttpPaths {
   static const baseUrl = 'https://smarttailor.xyz';
 
@@ -13,11 +10,18 @@ class HttpPaths {
 
   static const createOrder = '$baseUrl/api/order/add-order';
   static const createEquipment = '$baseUrl/api/equipment/add-equipment';
-  static const createService = '$baseUrl/api/service/add';
+  static const createService = '$baseUrl/api/service/add-service';
 
-  static const getService = '$baseUrl/api/service';
+  static const getService = '$baseUrl/api/service/get-all-services';
   static const getOrders = '$baseUrl/api/order/get-all-orders';
   static const getEquipments = '$baseUrl/api/equipment/get-all-equipments';
+
+  static const getEquipmentById = '$baseUrl/api/equipment/get-equipment-detailed/';
+  static const getOrderById = '$baseUrl/api/order/get-order-detailed/';
+  static const getServiceById = '$baseUrl/api/service/get-service-detailed/';
+
+  static const postRequestToExecute = '$baseUrl/api/order/send-request-to-execute-order/';
+  static const postBuyEquipment = '$baseUrl/api/equipment/buy-equipment/';
 
   static const getProfile = '$baseUrl/api/account/profile';
 }

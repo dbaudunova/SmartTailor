@@ -3,9 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/equipment_entity.dart';
-import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/order_entity.dart';
-import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/service_entity.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_equipments_use_case.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_orders_use_case.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_services_ude_case.dart';
@@ -39,6 +37,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getEuipmentsUseCase.call(null);
+      print(result);
       emit(state.copyWith(stateStatus: const StateStatus.success(), equipments: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
@@ -53,6 +52,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getOrdersUseCase.call(null);
+      print(result);
       emit(state.copyWith(stateStatus: const StateStatus.success(), orders: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
@@ -67,6 +67,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getServicesUseCase.call(null);
+      print(result);
       emit(state.copyWith(stateStatus: const StateStatus.success(), services: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
@@ -86,10 +87,9 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
         getEuipmentsUseCase.call(null),
       ]);
 
-      final services = results[0] as List<ServiceEntity>;
-      final orders = results[1] as List<OrderEntity>;
-      final equipments = results[2] as List<EquipmentEntity>;
-
+      final services = results[0];
+      final orders = results[1];
+      final equipments = results[2];
       print(services);
       print(orders);
       print(equipments);

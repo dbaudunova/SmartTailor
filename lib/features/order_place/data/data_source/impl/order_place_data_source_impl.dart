@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/http_client.dart';
+import 'package:neobis_smart_tailor/core/network/http_codes.dart';
 import 'package:neobis_smart_tailor/core/network/http_paths.dart';
 import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
@@ -36,7 +37,7 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
         ),
         data: formData,
       );
-      if (response.statusCode != 200) {
+      if (response.statusCode != HttpSuccess.created) {
         // ignore: only_throw_errors
         throw Failure.request(
           status: response.statusCode,
@@ -59,8 +60,8 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
       for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
     ];
     final formData = FormData.fromMap({
-      'equipmentDto': jsonString,
-      'photos': imagesList,
+      'images': imagesList,
+      'equipment': jsonString,
     });
     try {
       final response = await _client.post(
@@ -70,7 +71,7 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
         ),
         data: formData,
       );
-      if (response.statusCode != 200) {
+      if (response.statusCode != HttpSuccess.created) {
         // ignore: only_throw_errors
         throw Failure.request(
           status: response.statusCode,
@@ -93,8 +94,8 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
       for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
     ];
     final formData = FormData.fromMap({
-      'photos': imagesList,
-      'dto': jsonString,
+      'service': jsonString,
+      'images': imagesList,
     });
     try {
       final response = await _client.post(
@@ -104,7 +105,7 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
         ),
         data: formData,
       );
-      if (response.statusCode != 200) {
+      if (response.statusCode != HttpSuccess.created) {
         // ignore: only_throw_errors
         throw Failure.request(
           status: response.statusCode,

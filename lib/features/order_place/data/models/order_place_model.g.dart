@@ -15,10 +15,11 @@ _$OrderPlaceModelImpl _$$OrderPlaceModelImplFromJson(
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
       items: (json['items'] as List<dynamic>)
           .map((e) => Item.fromJson(e as Map<String, dynamic>))
-          .toList(),
+          .toSet(),
       dateOfExecution: json['dateOfExecution'] as String?,
       contactInfo: json['contactInfo'] as String,
       price: json['price'] as String?,
+      quantity: (json['quantity'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$OrderPlaceModelImplToJson(
@@ -27,10 +28,11 @@ Map<String, dynamic> _$$OrderPlaceModelImplToJson(
       'name': instance.name,
       'description': instance.description,
       'images': instance.images,
-      'items': instance.items,
+      'items': instance.items.toList(),
       'dateOfExecution': instance.dateOfExecution,
       'contactInfo': instance.contactInfo,
       'price': instance.price,
+      'quantity': instance.quantity,
     };
 
 _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(

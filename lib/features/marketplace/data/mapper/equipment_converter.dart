@@ -9,8 +9,8 @@ class EquipmentMapper extends Converter<EquipmentModel, EquipmentEntity> {
   @override
   EquipmentEntity convert(EquipmentModel input) {
     return EquipmentEntity(
-      equipmentId: input.equipmentId,
-      equipmentPhotoUrl: input.equipmentPhotoUrl,
+      equipmentId: input.id,
+      equipmentImageUrl: input.equipmentImageUrl,
       name: input.name,
       price: input.price,
       authorImageUrl: input.authorImageUrl,

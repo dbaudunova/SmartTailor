@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/registration/data/models/registration_model/registration_model.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/bloc/registration_bloc.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
@@ -66,8 +67,6 @@ class RegistrationContentState extends State<RegistrationContent> {
                     child: _buildFields(state),
                   ),
                   const SizedBox(height: 16),
-                  _buildCheckBox(),
-                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -82,48 +81,29 @@ class RegistrationContentState extends State<RegistrationContent> {
     return ValueListenableBuilder<bool>(
       valueListenable: _buttonEnabledNotifier,
       builder: (context, isButtonEnabled, _) {
-        return ElevatedButtonWidget(
-          text: t.register,
-          onTap: isButtonEnabled
-              ? () {
-                  if (_formKey.currentState!.validate()) {
-                    _bloc.add(
-                      RegistrationEvent.registration(
-                        registrationModel: RegistrationModel(
-                          name: nameController.text,
-                          surname: surnameController.text,
-                          email: emailController.text,
-                          patronymic: fatherNameController.text,
-                          phoneNumber: phoneController.text,
-                        ),
-                      ),
-                    );
-                  }
-                }
-              : null,
-        );
+        return state.stateStatus != const StateStatus.loading()
+            ? ElevatedButtonWidget(
+                text: t.register,
+                onTap: isButtonEnabled
+                    ? () {
+                        if (_formKey.currentState!.validate()) {
+                          _bloc.add(
+                            RegistrationEvent.registration(
+                              registrationModel: RegistrationModel(
+                                name: nameController.text,
+                                surname: surnameController.text,
+                                email: emailController.text,
+                                patronymic: fatherNameController.text,
+                                phoneNumber: phoneController.text,
+                              ),
+                            ),
+                          );
+                        }
+                      }
+                    : null,
+              )
+            : ElevatedButtonWidget(text: t.register, onTap: null);
       },
-    );
-  }
-
-  Row _buildCheckBox() {
-    return Row(
-      children: [
-        SizedBox(
-          height: 24.0,
-          width: 24.0,
-          child: Checkbox(
-            value: true,
-            onChanged: (s) {},
-            activeColor: AppColors.darkBlue,
-          ),
-        ),
-        const SizedBox(width: 11),
-        Text(
-          t.rememberMe,
-          style: AppTextStyle.textField16.copyWith(fontSize: 16),
-        ),
-      ],
     );
   }
 

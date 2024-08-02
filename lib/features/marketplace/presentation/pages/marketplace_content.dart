@@ -27,13 +27,6 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
   void initState() {
     super.initState();
     _bloc.add(const MarketplaceEvent.getAll());
-    // tabController.addListener(() {
-    //   if (tabController.indexIsChanging) {
-    //     context.read<HomeBloc>().add(
-    //           Load(),
-    //         );
-    //   }
-    // });
   }
 
   @override

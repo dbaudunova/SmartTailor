@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_place_model.freezed.dart';
@@ -13,22 +11,22 @@ class OrderPlaceModel with _$OrderPlaceModel {
       required String name,
       required String description,
       required List<String> images,
-      required List<Item> items,
+      required Set<Item> items,
       required String? dateOfExecution,
       required String contactInfo,
-      required String? price}) = _OrderPlaceModel;
+      required String? price,
+      required int? quantity}) = _OrderPlaceModel;
 
   factory OrderPlaceModel.initial() {
     return OrderPlaceModel(
-      // type: '',
-      name: '',
-      description: '',
-      images: [],
-      items: [],
-      dateOfExecution: null,
-      contactInfo: '',
-      price: '',
-    );
+        name: '',
+        description: '',
+        images: [],
+        items: {},
+        dateOfExecution: null,
+        contactInfo: '',
+        price: '',
+        quantity: 0);
   }
 
   factory OrderPlaceModel.fromJson(Map<String, dynamic> json) => _$OrderPlaceModelFromJson(json);
