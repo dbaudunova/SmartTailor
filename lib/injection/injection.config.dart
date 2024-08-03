@@ -28,11 +28,11 @@ import 'package:neobis_smart_tailor/features/confirmation/data/repository/confir
 import 'package:neobis_smart_tailor/features/confirmation/domain/repository/confirmation_repo.dart'
     as _i49;
 import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/confirmation_use_case.dart'
-    as _i55;
-import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/resend_pin_use_case%20copy.dart'
     as _i56;
+import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/resend_pin_use_case%20copy.dart'
+    as _i57;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart'
-    as _i61;
+    as _i63;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/timer_bloc/timer_bloc.dart'
     as _i5;
 import 'package:neobis_smart_tailor/features/login/data/data_source/impl/login_data_source_impl.dart'
@@ -90,13 +90,13 @@ import 'package:neobis_smart_tailor/features/order_place/data/repository/order_p
 import 'package:neobis_smart_tailor/features/order_place/domain/repository/order_place_repo.dart'
     as _i44;
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_equipment_use_case.dart'
-    as _i57;
-import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_order_use_case.dart'
     as _i58;
-import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart'
+import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_order_use_case.dart'
     as _i59;
-import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart'
+import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart'
     as _i60;
+import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart'
+    as _i61;
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart'
     as _i26;
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source_impl/profile_data_source_impl.dart'
@@ -105,6 +105,8 @@ import 'package:neobis_smart_tailor/features/profile/data/repository/profile_rep
     as _i39;
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart'
     as _i38;
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/edit_profile_info_use_case.dart'
+    as _i54;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_profile_info_use_case.dart'
     as _i52;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/sign_out_use_case.dart'
@@ -122,8 +124,8 @@ import 'package:neobis_smart_tailor/features/registration/domain/repository/regi
 import 'package:neobis_smart_tailor/features/registration/domain/useCase/registration_use_case.dart'
     as _i48;
 import 'package:neobis_smart_tailor/features/registration/presentation/bloc/registration_bloc.dart'
-    as _i54;
-import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i63;
+    as _i55;
+import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i64;
 import 'package:shared_preferences/shared_preferences.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -212,33 +214,36 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i52.GetProfileInfoUseCase(repo: gh<_i38.ProfileRepo>()));
     gh.singleton<_i53.SignOutUseCase>(
         () => _i53.SignOutUseCase(repo: gh<_i38.ProfileRepo>()));
-    gh.factory<_i54.RegistrationBloc>(() => _i54.RegistrationBloc(
+    gh.singleton<_i54.EditProfileInfoUseCase>(
+        () => _i54.EditProfileInfoUseCase(repo: gh<_i38.ProfileRepo>()));
+    gh.factory<_i55.RegistrationBloc>(() => _i55.RegistrationBloc(
         registrationUseCase: gh<_i48.RegistrationUseCase>()));
-    gh.singleton<_i55.ConfirmationUseCase>(
-        () => _i55.ConfirmationUseCase(repo: gh<_i49.ConfirmationRepo>()));
-    gh.singleton<_i56.ResendPinUseCase>(
-        () => _i56.ResendPinUseCase(repo: gh<_i49.ConfirmationRepo>()));
-    gh.singleton<_i57.CreateEquipmentUseCase>(
-        () => _i57.CreateEquipmentUseCase(repo: gh<_i44.OrderPlaceRepo>()));
-    gh.singleton<_i58.CreateOrderUseCase>(
-        () => _i58.CreateOrderUseCase(repo: gh<_i44.OrderPlaceRepo>()));
-    gh.singleton<_i59.CreateServiceUseCase>(
-        () => _i59.CreateServiceUseCase(repo: gh<_i44.OrderPlaceRepo>()));
-    gh.singleton<_i60.OrderPlaceBloc>(() => _i60.OrderPlaceBloc(
-          gh<_i57.CreateEquipmentUseCase>(),
-          gh<_i59.CreateServiceUseCase>(),
-          gh<_i58.CreateOrderUseCase>(),
-        ));
-    gh.singleton<_i61.ConfirmationBloc>(() => _i61.ConfirmationBloc(
-          gh<_i55.ConfirmationUseCase>(),
-          gh<_i56.ResendPinUseCase>(),
+    gh.singleton<_i56.ConfirmationUseCase>(
+        () => _i56.ConfirmationUseCase(repo: gh<_i49.ConfirmationRepo>()));
+    gh.singleton<_i57.ResendPinUseCase>(
+        () => _i57.ResendPinUseCase(repo: gh<_i49.ConfirmationRepo>()));
+    gh.singleton<_i58.CreateEquipmentUseCase>(
+        () => _i58.CreateEquipmentUseCase(repo: gh<_i44.OrderPlaceRepo>()));
+    gh.singleton<_i59.CreateOrderUseCase>(
+        () => _i59.CreateOrderUseCase(repo: gh<_i44.OrderPlaceRepo>()));
+    gh.singleton<_i60.CreateServiceUseCase>(
+        () => _i60.CreateServiceUseCase(repo: gh<_i44.OrderPlaceRepo>()));
+    gh.singleton<_i61.OrderPlaceBloc>(() => _i61.OrderPlaceBloc(
+          gh<_i58.CreateEquipmentUseCase>(),
+          gh<_i60.CreateServiceUseCase>(),
+          gh<_i59.CreateOrderUseCase>(),
         ));
     gh.factory<_i62.ProfileBloc>(() => _i62.ProfileBloc(
           signOutUseCase: gh<_i53.SignOutUseCase>(),
           getProfileInfoUseCase: gh<_i52.GetProfileInfoUseCase>(),
+          editProfileInfoUseCase: gh<_i54.EditProfileInfoUseCase>(),
+        ));
+    gh.singleton<_i63.ConfirmationBloc>(() => _i63.ConfirmationBloc(
+          gh<_i56.ConfirmationUseCase>(),
+          gh<_i57.ResendPinUseCase>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i63.RegisterModule {}
+class _$RegisterModule extends _i64.RegisterModule {}

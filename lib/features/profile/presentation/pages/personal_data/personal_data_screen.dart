@@ -7,6 +7,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/user_info.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
@@ -26,12 +27,13 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
   final _emailController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool _isInitialized = false;
 
   @override
   void initState() {
+    super.initState();
     BlocProvider.of<ProfileBloc>(context)
         .add(const ProfileEvent.getProfileInfo());
-    super.initState();
   }
 
   @override
@@ -49,32 +51,42 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
-          child: Column(
-            children: [
-              _buildUserInfo(context),
-              const SizedBox(height: 16),
-              _buildPersonalDataRow(),
-              const SizedBox(height: 40),
-              Form(key: _formKey, child: _buildTextFields()),
-              const Spacer(),
-              SizedBox(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                child: ElevatedButtonWidget(
-                  text: 'Сохранить данные',
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      _buildShowDialog(context);
-                    }
-                  },
+        child: BlocListener<ProfileBloc, ProfileState>(
+          listener: (context, state) {
+            if (state.stateStatus == const StateStatus.success()) {
+              _buildShowDialog(context);
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+            child: Column(
+              children: [
+                _buildUserInfo(context),
+                const SizedBox(height: 16),
+                _buildPersonalDataRow(),
+                const SizedBox(height: 40),
+                Form(key: _formKey, child: _buildTextFields()),
+                const Spacer(),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButtonWidget(
+                    text: 'Сохранить данные',
+                    onTap: () {
+                      final profile = ProfileEntity(
+                        surname: _surnameController.text,
+                        name: _nameController.text,
+                        patronymic: _fathersNameController.text,
+                        phoneNumber: _phoneNumberController.text,
+                      );
+                      if (_formKey.currentState!.validate()) {
+                        context.read<ProfileBloc>().add(ProfileEvent.editProfileInfo(profile));
+                      }
+                    },
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-            ],
+                const SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),
@@ -87,46 +99,41 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
         if (state.stateStatus == const StateStatus.loading()) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state.stateStatus ==
-            StateStatus.failure(message: '${state.stateStatus}')) {
+        if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
           return AppSnackBar.show(
               context: context,
               titleText: 'Не удалось загрузить данные',
               error: true);
         }
-        if (state.stateStatus == const StateStatus.success()) {
-          return UserInfo(
-            profileEntity: state.profile,
-            secondRowText: 'Изменить фото профиля',
-            showBellIcon: false,
-          );
+        if (state.stateStatus == const StateStatus.success() && !_isInitialized) {
+          _surnameController.text = state.profile?.surname ?? '';
+          _nameController.text = state.profile?.name ?? '';
+          _fathersNameController.text = state.profile?.patronymic ?? '';
+          _emailController.text = state.profile?.email ?? '';
+          _phoneNumberController.text = state.profile?.phoneNumber ?? '';
+          _isInitialized = true;
         }
-        return const Center(
-          child: Text('Что-то пошло не так'),
+        return UserInfo(
+          profileEntity: state.profile,
+          secondRowText: 'Изменить фото профиля',
+          showBellIcon: false,
         );
       },
     );
   }
 
-  BlocBuilder<ProfileBloc, dynamic> _buildTextFields() {
+  BlocBuilder<ProfileBloc, ProfileState> _buildTextFields() {
     return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
       if (state.stateStatus == const StateStatus.loading()) {
         return const Center(child: CircularProgressIndicator());
       }
-      if (state.stateStatus ==
-          StateStatus.failure(message: '${state.stateStatus}')) {
+      if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
         return AppSnackBar.show(
             context: context,
             titleText: 'Не удалось загрузить данные',
             error: true);
       }
       if (state.stateStatus == const StateStatus.success()) {
-        _surnameController.text = state.profile?.surname ?? '';
-        _nameController.text = state.profile?.name ?? '';
-        _fathersNameController.text = state.profile?.patronymic ?? '';
-        _emailController.text = state.profile?.email ?? '';
-        _phoneNumberController.text = state.profile?.phoneNumber ?? '';
-
         return Column(
           children: [
             TextFormFieldWidget(
