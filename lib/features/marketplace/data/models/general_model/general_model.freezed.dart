@@ -24,7 +24,7 @@ mixin _$GeneralOrderModel {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  String get equipmentImageUrl => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
   String get authorFullName => throw _privateConstructorUsedError;
   String get authorImageUrl => throw _privateConstructorUsedError;
 
@@ -45,7 +45,7 @@ abstract class $GeneralOrderModelCopyWith<$Res> {
       String name,
       String description,
       int price,
-      String equipmentImageUrl,
+      String imageUrl,
       String authorFullName,
       String authorImageUrl});
 }
@@ -67,7 +67,7 @@ class _$GeneralOrderModelCopyWithImpl<$Res, $Val extends GeneralOrderModel>
     Object? name = null,
     Object? description = null,
     Object? price = null,
-    Object? equipmentImageUrl = null,
+    Object? imageUrl = null,
     Object? authorFullName = null,
     Object? authorImageUrl = null,
   }) {
@@ -88,9 +88,9 @@ class _$GeneralOrderModelCopyWithImpl<$Res, $Val extends GeneralOrderModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      equipmentImageUrl: null == equipmentImageUrl
-          ? _value.equipmentImageUrl
-          : equipmentImageUrl // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       authorFullName: null == authorFullName
           ? _value.authorFullName
@@ -117,7 +117,7 @@ abstract class _$$GeneralModelImplCopyWith<$Res>
       String name,
       String description,
       int price,
-      String equipmentImageUrl,
+      String imageUrl,
       String authorFullName,
       String authorImageUrl});
 }
@@ -137,7 +137,7 @@ class __$$GeneralModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
     Object? price = null,
-    Object? equipmentImageUrl = null,
+    Object? imageUrl = null,
     Object? authorFullName = null,
     Object? authorImageUrl = null,
   }) {
@@ -158,9 +158,9 @@ class __$$GeneralModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      equipmentImageUrl: null == equipmentImageUrl
-          ? _value.equipmentImageUrl
-          : equipmentImageUrl // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       authorFullName: null == authorFullName
           ? _value.authorFullName
@@ -182,7 +182,7 @@ class _$GeneralModelImpl implements _GeneralModel {
       required this.name,
       required this.description,
       required this.price,
-      required this.equipmentImageUrl,
+      required this.imageUrl,
       required this.authorFullName,
       required this.authorImageUrl});
 
@@ -198,7 +198,7 @@ class _$GeneralModelImpl implements _GeneralModel {
   @override
   final int price;
   @override
-  final String equipmentImageUrl;
+  final String imageUrl;
   @override
   final String authorFullName;
   @override
@@ -206,7 +206,7 @@ class _$GeneralModelImpl implements _GeneralModel {
 
   @override
   String toString() {
-    return 'GeneralOrderModel(id: $id, name: $name, description: $description, price: $price, equipmentImageUrl: $equipmentImageUrl, authorFullName: $authorFullName, authorImageUrl: $authorImageUrl)';
+    return 'GeneralOrderModel(id: $id, name: $name, description: $description, price: $price, imageUrl: $imageUrl, authorFullName: $authorFullName, authorImageUrl: $authorImageUrl)';
   }
 
   @override
@@ -219,8 +219,8 @@ class _$GeneralModelImpl implements _GeneralModel {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.equipmentImageUrl, equipmentImageUrl) ||
-                other.equipmentImageUrl == equipmentImageUrl) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.authorFullName, authorFullName) ||
                 other.authorFullName == authorFullName) &&
             (identical(other.authorImageUrl, authorImageUrl) ||
@@ -230,7 +230,7 @@ class _$GeneralModelImpl implements _GeneralModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, description, price,
-      equipmentImageUrl, authorFullName, authorImageUrl);
+      imageUrl, authorFullName, authorImageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -252,7 +252,7 @@ abstract class _GeneralModel implements GeneralOrderModel {
       required final String name,
       required final String description,
       required final int price,
-      required final String equipmentImageUrl,
+      required final String imageUrl,
       required final String authorFullName,
       required final String authorImageUrl}) = _$GeneralModelImpl;
 
@@ -268,7 +268,7 @@ abstract class _GeneralModel implements GeneralOrderModel {
   @override
   int get price;
   @override
-  String get equipmentImageUrl;
+  String get imageUrl;
   @override
   String get authorFullName;
   @override

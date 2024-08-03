@@ -33,7 +33,7 @@ class MarketplaceTabBarView extends StatelessWidget {
                         ),
                       );
                     },
-                    image: orders[index].equipmentImageUrl!,
+                    image: orders[index].imageUrl!,
                     tabIndex: tabIndex,
                     description: orders[index].description!,
                     title: orders[index].name!,
@@ -62,7 +62,7 @@ class MarketplaceTabBarView extends StatelessWidget {
                         ),
                       );
                     },
-                    image: equipments[index].equipmentImageUrl!,
+                    image: equipments[index].imageUrl!,
                     title: equipments[index].name!,
                     price: Text(
                       '${equipments[index].price!} сом',
@@ -88,7 +88,7 @@ class MarketplaceTabBarView extends StatelessWidget {
                         id: services[index].id!,
                       ));
                     },
-                    image: services[index].equipmentImageUrl!,
+                    image: services[index].imageUrl!,
                     description: services[index].description!,
                     title: services[index].name!,
                     tabIndex: tabIndex,

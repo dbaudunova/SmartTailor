@@ -12,7 +12,7 @@ _$GeneralModelImpl _$$GeneralModelImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       description: json['description'] as String,
       price: (json['price'] as num).toInt(),
-      equipmentImageUrl: json['equipmentImageUrl'] as String,
+      imageUrl: json['imageUrl'] as String,
       authorFullName: json['authorFullName'] as String,
       authorImageUrl: json['authorImageUrl'] as String,
     );
@@ -23,7 +23,7 @@ Map<String, dynamic> _$$GeneralModelImplToJson(_$GeneralModelImpl instance) =>
       'name': instance.name,
       'description': instance.description,
       'price': instance.price,
-      'equipmentImageUrl': instance.equipmentImageUrl,
+      'imageUrl': instance.imageUrl,
       'authorFullName': instance.authorFullName,
       'authorImageUrl': instance.authorImageUrl,
     };

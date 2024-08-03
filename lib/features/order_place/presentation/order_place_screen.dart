@@ -26,7 +26,7 @@ class OrderPlaceScreen extends StatelessWidget {
     state.stateStatus.whenOrNull(
       success: (val) {
         // AppSnackBar.show(context: context, titleText: val, error: false);
-        AutoRouter.of(context).pop();
+        // AutoRouter.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
               content: Text(

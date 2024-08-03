@@ -65,6 +65,7 @@ class MarketplaceDataSourceImpl implements MarketplaceDataSource {
         );
       } else {
         var list = (response.data as List).map((model) => GeneralOrderModel.fromJson(model)).toList();
+        print(list);
         return list;
       }
     } on DioException catch (e) {
@@ -94,7 +95,7 @@ class MarketplaceDataSourceImpl implements MarketplaceDataSource {
           message: 'Неудалось загрузить, код ошибки: ${response.statusCode}',
         );
       } else {
-        print(response.data);
+        // print(response.data);
         var list = (response.data as List).map((model) => GeneralOrderModel.fromJson(model)).toList();
         print(list);
         return list;

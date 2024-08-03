@@ -13,7 +13,7 @@ class EquipmentMapper extends Converter<GeneralOrderModel, GeneralEntity> {
       name: input.name,
       description: input.description,
       price: input.price,
-      equipmentImageUrl: input.equipmentImageUrl,
+      imageUrl: input.imageUrl,
       authorFullName: input.authorFullName,
       authorImageUrl: input.authorImageUrl,
       // dateOfExecution: input.dateOfExecution,
