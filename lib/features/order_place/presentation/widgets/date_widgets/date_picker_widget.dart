@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class DatePickerWidget extends StatefulWidget {
   final Function(DateTime) onDateSelected;
@@ -16,8 +14,6 @@ class DatePickerWidget extends StatefulWidget {
 }
 
 class _DatePickerWidgetState extends State<DatePickerWidget> {
-  DateTime? _selectedDate;
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -38,7 +34,6 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                     onDateTimeChanged: (DateTime dateTime) {
                       setState(() {
                         var date = DateFormat('yyyy-MM-dd').format(dateTime);
-                        _selectedDate = dateTime;
                         widget.dateController.text = date;
                       });
                       widget.onDateSelected(dateTime);
@@ -52,11 +47,6 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                   style: AppTextStyle.textField16,
                 ),
                 onPressed: () {
-                  // if (_selectedDate != null) {
-                  //   var date = DateFormat('yyyy-MM-dd').format(_selectedDate!);
-                  //   context.read<OrderPlaceBloc>().add(
-                  //         OrderPlaceEvent.addDate(dateOfExecution: date),
-                  //       );
                   Navigator.of(context).pop();
                   // }
                 },

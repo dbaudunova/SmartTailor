@@ -18,15 +18,6 @@ class DatePickerFieldWidget extends StatefulWidget {
 }
 
 class _DatePickerFieldWidgetState extends State<DatePickerFieldWidget> {
-  // final _dateController = TextEditingController();
-
-  // @override
-  // void dispose() {
-  //   _dateController.dispose();
-
-  //   super.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return TextFormFieldWidget(

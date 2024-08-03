@@ -203,18 +203,25 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
                   children: [
                     SizePickerFieldWidget(
                       onSizeSelected: (size) {
-                        context.read<OrderPlaceBloc>().add(
-                              OrderPlaceEvent.addItem(item: Item(size: size, quantity: 1)),
-                            );
+                        _bloc.add(
+                          OrderPlaceEvent.addItem(
+                            item: Item(
+                              size: size,
+                              quantity: 1,
+                            ),
+                          ),
+                        );
                       },
                     ),
                     const SizedBox(height: AppProps.kPageMargin),
                     DatePickerFieldWidget(
                       controller: dateController,
                       onDateSelected: (date) {
-                        context.read<OrderPlaceBloc>().add(
-                              OrderPlaceEvent.addDate(dateOfExecution: date),
-                            );
+                        _bloc.add(
+                          OrderPlaceEvent.addDate(
+                            dateOfExecution: date,
+                          ),
+                        );
                       },
                     ),
                     const SizedBox(height: AppProps.kPageMargin),
@@ -232,7 +239,7 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
         return orderType;
       }
     }
-    return null; // Or handle this case as per your requirement
+    return null;
   }
 
   String? _validateField(String? value) {

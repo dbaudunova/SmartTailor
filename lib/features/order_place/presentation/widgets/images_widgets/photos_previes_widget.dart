@@ -14,7 +14,6 @@ class PhotosPreviewWidget extends StatelessWidget {
     return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
       builder: (context, state) {
         final photos = state.images;
-        // print(photos.length);
         return photos != []
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,

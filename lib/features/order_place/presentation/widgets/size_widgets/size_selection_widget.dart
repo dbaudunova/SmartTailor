@@ -27,6 +27,7 @@ class SizeSelectionBottomSheet extends StatefulWidget {
 final List<String> _sizes = ['S', 'M', 'L', 'XL'];
 
 class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
+  OrderPlaceBloc get _bloc => context.read<OrderPlaceBloc>();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -41,7 +42,9 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
               children: [
                 Text(
                   t.inputSize,
-                  style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black),
+                  style: AppTextStyle.s20w400Orange.copyWith(
+                    color: AppColors.black,
+                  ),
                 ),
                 const SizedBox(height: AppProps.kPageMargin),
                 _buildDropDownMenu(state, context, itemsString),
@@ -75,9 +78,9 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
             ],
           ),
           onDeleted: () {
-            context.read<OrderPlaceBloc>().add(
-                  OrderPlaceEvent.removeItem(item: item),
-                );
+            _bloc.add(
+              OrderPlaceEvent.removeItem(item: item),
+            );
           },
         );
       }).toList(),
@@ -99,9 +102,7 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
         keyboardType: TextInputType.number,
         onChanged: (quantity) {
           var quantityInt = int.tryParse(quantity) ?? 0;
-          context
-              .read<OrderPlaceBloc>()
-              .add(OrderPlaceEvent.updateQuantity(item: item.copyWith(quantity: quantityInt)));
+          _bloc.add(OrderPlaceEvent.updateQuantity(item: item.copyWith(quantity: quantityInt)));
         },
       ),
     );
