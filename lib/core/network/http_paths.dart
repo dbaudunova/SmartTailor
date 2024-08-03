@@ -24,4 +24,5 @@ class HttpPaths {
   static const postBuyEquipment = '$baseUrl/api/equipment/buy-equipment/';
 
   static const getProfile = '$baseUrl/api/account/profile';
+  static const editProfile = '$baseUrl/api/account/profile/edit';
 }

@@ -134,10 +134,10 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
         fillColor: AppColors.white,
       ),
       menuStyle: MenuStyle(
-        backgroundColor: const WidgetStatePropertyAll(
+        backgroundColor: const MaterialStatePropertyAll(
           AppColors.white,
         ),
-        shape: WidgetStatePropertyAll(
+        shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
             side: BorderSide.none,

@@ -16,29 +16,6 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   );
 
   @override
-  Future<void> login({String? email}) async {
-    print(email);
-    try {
-      print(email);
-      final response = await _client.post(HttpPaths.login,
-          queryParameters: {
-            'email': email,
-          },
-          isSecure: false);
-      if (response.statusCode != 200) {
-        throw Failure.request(
-          status: response.statusCode,
-          message: 'Пин код не верный, код статуса: ${response.statusCode}',
-        );
-      }
-    } on DioException catch (e) {
-      throw handleDioException(e);
-    } catch (e) {
-      throw handleGeneralException(e);
-    }
-  }
-
-  @override
   Future<void> signOut() async {
     try {
       final response = await _client.post(
@@ -70,6 +47,37 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       final data = response.data;
       final profile = ProfileModel.fromJson(data);
       return profile;
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<ProfileModel> editProfileInfo(ProfileModel params) async {
+    try {
+      final response = await _client.put(
+        HttpPaths.editProfile,
+        data: params.toJson(),
+        options: Options(
+          headers: {
+            'Accept': 'application/json',
+            'content-type': 'application/json',
+          },
+          contentType: Headers.jsonContentType,
+        ),
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message:
+              'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+      print('Response data: ${response.data}');
+      return ProfileModel.fromJson(params.toJson());
     } on DioException catch (e) {
       throw handleDioException(e);
     } catch (e) {

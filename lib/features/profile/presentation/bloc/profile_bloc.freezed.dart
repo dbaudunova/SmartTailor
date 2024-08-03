@@ -20,18 +20,21 @@ mixin _$ProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
+    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
+    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
+    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ProfileEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
+    required TResult Function(_EditProfileInfo value) editProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
+    TResult? Function(_EditProfileInfo value)? editProfileInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
+    TResult Function(_EditProfileInfo value)? editProfileInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$SignOutImpl implements _SignOut {
   TResult when<TResult extends Object?>({
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
+    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
   }) {
     return signOut();
   }
@@ -123,6 +130,7 @@ class _$SignOutImpl implements _SignOut {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
+    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
   }) {
     return signOut?.call();
   }
@@ -132,6 +140,7 @@ class _$SignOutImpl implements _SignOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
+    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -145,6 +154,7 @@ class _$SignOutImpl implements _SignOut {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
+    required TResult Function(_EditProfileInfo value) editProfileInfo,
   }) {
     return signOut(this);
   }
@@ -154,6 +164,7 @@ class _$SignOutImpl implements _SignOut {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
+    TResult? Function(_EditProfileInfo value)? editProfileInfo,
   }) {
     return signOut?.call(this);
   }
@@ -163,6 +174,7 @@ class _$SignOutImpl implements _SignOut {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
+    TResult Function(_EditProfileInfo value)? editProfileInfo,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -216,6 +228,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
   TResult when<TResult extends Object?>({
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
+    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
   }) {
     return getProfileInfo();
   }
@@ -225,6 +238,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
+    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
   }) {
     return getProfileInfo?.call();
   }
@@ -234,6 +248,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
+    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -247,6 +262,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
+    required TResult Function(_EditProfileInfo value) editProfileInfo,
   }) {
     return getProfileInfo(this);
   }
@@ -256,6 +272,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
+    TResult? Function(_EditProfileInfo value)? editProfileInfo,
   }) {
     return getProfileInfo?.call(this);
   }
@@ -265,6 +282,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
+    TResult Function(_EditProfileInfo value)? editProfileInfo,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -279,9 +297,152 @@ abstract class _GetProfileInfo implements ProfileEvent {
 }
 
 /// @nodoc
+abstract class _$$EditProfileInfoImplCopyWith<$Res> {
+  factory _$$EditProfileInfoImplCopyWith(_$EditProfileInfoImpl value,
+          $Res Function(_$EditProfileInfoImpl) then) =
+      __$$EditProfileInfoImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProfileEntity profileEntity});
+}
+
+/// @nodoc
+class __$$EditProfileInfoImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$EditProfileInfoImpl>
+    implements _$$EditProfileInfoImplCopyWith<$Res> {
+  __$$EditProfileInfoImplCopyWithImpl(
+      _$EditProfileInfoImpl _value, $Res Function(_$EditProfileInfoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? profileEntity = null,
+  }) {
+    return _then(_$EditProfileInfoImpl(
+      null == profileEntity
+          ? _value.profileEntity
+          : profileEntity // ignore: cast_nullable_to_non_nullable
+              as ProfileEntity,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditProfileInfoImpl implements _EditProfileInfo {
+  const _$EditProfileInfoImpl(this.profileEntity);
+
+  @override
+  final ProfileEntity profileEntity;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.editProfileInfo(profileEntity: $profileEntity)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditProfileInfoImpl &&
+            (identical(other.profileEntity, profileEntity) ||
+                other.profileEntity == profileEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, profileEntity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditProfileInfoImplCopyWith<_$EditProfileInfoImpl> get copyWith =>
+      __$$EditProfileInfoImplCopyWithImpl<_$EditProfileInfoImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signOut,
+    required TResult Function() getProfileInfo,
+    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+  }) {
+    return editProfileInfo(profileEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signOut,
+    TResult? Function()? getProfileInfo,
+    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+  }) {
+    return editProfileInfo?.call(profileEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signOut,
+    TResult Function()? getProfileInfo,
+    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    required TResult orElse(),
+  }) {
+    if (editProfileInfo != null) {
+      return editProfileInfo(profileEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_GetProfileInfo value) getProfileInfo,
+    required TResult Function(_EditProfileInfo value) editProfileInfo,
+  }) {
+    return editProfileInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_GetProfileInfo value)? getProfileInfo,
+    TResult? Function(_EditProfileInfo value)? editProfileInfo,
+  }) {
+    return editProfileInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_GetProfileInfo value)? getProfileInfo,
+    TResult Function(_EditProfileInfo value)? editProfileInfo,
+    required TResult orElse(),
+  }) {
+    if (editProfileInfo != null) {
+      return editProfileInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EditProfileInfo implements ProfileEvent {
+  const factory _EditProfileInfo(final ProfileEntity profileEntity) =
+      _$EditProfileInfoImpl;
+
+  ProfileEntity get profileEntity;
+  @JsonKey(ignore: true)
+  _$$EditProfileInfoImplCopyWith<_$EditProfileInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProfileState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   ProfileEntity? get profile => throw _privateConstructorUsedError;
+  bool get isProfileLoaded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -294,7 +455,8 @@ abstract class $ProfileStateCopyWith<$Res> {
           ProfileState value, $Res Function(ProfileState) then) =
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
-  $Res call({StateStatus stateStatus, ProfileEntity? profile});
+  $Res call(
+      {StateStatus stateStatus, ProfileEntity? profile, bool isProfileLoaded});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -314,6 +476,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   $Res call({
     Object? stateStatus = null,
     Object? profile = freezed,
+    Object? isProfileLoaded = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -324,6 +487,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as ProfileEntity?,
+      isProfileLoaded: null == isProfileLoaded
+          ? _value.isProfileLoaded
+          : isProfileLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -344,7 +511,8 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
       __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus, ProfileEntity? profile});
+  $Res call(
+      {StateStatus stateStatus, ProfileEntity? profile, bool isProfileLoaded});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -363,6 +531,7 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   $Res call({
     Object? stateStatus = null,
     Object? profile = freezed,
+    Object? isProfileLoaded = null,
   }) {
     return _then(_$ProfileStateImpl(
       stateStatus: null == stateStatus
@@ -373,6 +542,10 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as ProfileEntity?,
+      isProfileLoaded: null == isProfileLoaded
+          ? _value.isProfileLoaded
+          : isProfileLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -380,16 +553,20 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProfileStateImpl implements _ProfileState {
-  const _$ProfileStateImpl({required this.stateStatus, this.profile});
+  const _$ProfileStateImpl(
+      {required this.stateStatus, this.profile, this.isProfileLoaded = false});
 
   @override
   final StateStatus stateStatus;
   @override
   final ProfileEntity? profile;
+  @override
+  @JsonKey()
+  final bool isProfileLoaded;
 
   @override
   String toString() {
-    return 'ProfileState(stateStatus: $stateStatus, profile: $profile)';
+    return 'ProfileState(stateStatus: $stateStatus, profile: $profile, isProfileLoaded: $isProfileLoaded)';
   }
 
   @override
@@ -399,11 +576,14 @@ class _$ProfileStateImpl implements _ProfileState {
             other is _$ProfileStateImpl &&
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
-            (identical(other.profile, profile) || other.profile == profile));
+            (identical(other.profile, profile) || other.profile == profile) &&
+            (identical(other.isProfileLoaded, isProfileLoaded) ||
+                other.isProfileLoaded == isProfileLoaded));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus, profile);
+  int get hashCode =>
+      Object.hash(runtimeType, stateStatus, profile, isProfileLoaded);
 
   @JsonKey(ignore: true)
   @override
@@ -415,12 +595,15 @@ class _$ProfileStateImpl implements _ProfileState {
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
       {required final StateStatus stateStatus,
-      final ProfileEntity? profile}) = _$ProfileStateImpl;
+      final ProfileEntity? profile,
+      final bool isProfileLoaded}) = _$ProfileStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
   ProfileEntity? get profile;
+  @override
+  bool get isProfileLoaded;
   @override
   @JsonKey(ignore: true)
   _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>

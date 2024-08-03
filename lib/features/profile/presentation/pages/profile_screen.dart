@@ -27,8 +27,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    BlocProvider.of<ProfileBloc>(context)
-        .add(const ProfileEvent.getProfileInfo());
+    final profileBloc = BlocProvider.of<ProfileBloc>(context);
+    if (!profileBloc.state.isProfileLoaded) {
+      profileBloc.add(const ProfileEvent.getProfileInfo());
+    }
     super.initState();
   }
 
@@ -106,8 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         if (state.stateStatus == const StateStatus.success()) {
           return UserInfo(
             profileEntity: state.profile,
-            secondRowText: 'Подписка оформлена!',
-            thirdRowText: 'Срок до 1 августа 2024',
+            secondRowText: 'Отправьте запрос на подписку',
             onIconPressed: () {
               AutoRouter.of(context).push(const NotificationRoute());
             },
