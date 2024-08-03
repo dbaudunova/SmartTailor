@@ -11,7 +11,7 @@ import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_e
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/order_type_picker_widget.dart';
-import 'package:neobis_smart_tailor/gen/strings.g.dart';
+// import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 part 'order_place_event.dart';
 part 'order_place_state.dart';
@@ -34,10 +34,10 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
               images: [],
               type: null),
         ) {
-    on<_ShowFields>(_showFields);
+    // on<_ShowFields>(_showFields);
     on<_AddPhotos>(_addPhotos);
     on<_RemovePhoto>(_removePhoto);
-    on<_AddItem>(_addSize);
+    on<_AddItem>(_addItem);
     on<_UpdateQuantity>(_updateQuantity);
     on<_RemoveItem>(_removeSize);
     on<_AddDate>(_addDate);
@@ -55,21 +55,27 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     );
     var type = event.orderType;
     try {
-      if (type == OrderType.order.name) {
-        await createOrderUseCase.call(
-          orderPlaceModel: model,
-          images: state.images,
-        );
-      } else if (type == OrderType.services.name) {
-        await createServiceUseCase.call(
-          orderPlaceModel: model,
-          images: state.images,
-        );
-      } else {
-        await createEquipmentUseCase.call(
-          orderPlaceModel: model,
-          images: state.images,
-        );
+      switch (type) {
+        case OrderType.order:
+          await createOrderUseCase.call(
+            orderPlaceModel: model,
+            images: state.images,
+          );
+          break;
+        case OrderType.services:
+          await createServiceUseCase.call(
+            orderPlaceModel: model,
+            images: state.images,
+          );
+          break;
+        case OrderType.equipment:
+          await createEquipmentUseCase.call(
+            orderPlaceModel: model,
+            images: state.images,
+          );
+          break;
+        default:
+          throw UnimplementedError('Unknown order type: $type');
       }
       emit(state.copyWith(stateStatus: const StateStatus.success('Успешно создано')));
     } catch (e) {
@@ -77,6 +83,39 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
+
+  // Future<void> _createOrder(
+  //   _CreateOrder event,
+  //   Emitter<OrderPlaceState> emit,
+  // ) async {
+  //   emit(state.copyWith(stateStatus: const StateStatus.loading()));
+  //   var model = event.orderPlaceModel.copyWith(
+  //     items: state.orderPlaceModel.items,
+  //   );
+  //   var type = event.orderType;
+  //   try {
+  //     if (type == OrderType.order.name) {
+  //       await createOrderUseCase.call(
+  //         orderPlaceModel: model,
+  //         images: state.images,
+  //       );
+  //     } else if (type == OrderType.services.name) {
+  //       await createServiceUseCase.call(
+  //         orderPlaceModel: model,
+  //         images: state.images,
+  //       );
+  //     } else {
+  //       await createEquipmentUseCase.call(
+  //         orderPlaceModel: model,
+  //         images: state.images,
+  //       );
+  //     }
+  //     emit(state.copyWith(stateStatus: const StateStatus.success('Успешно создано')));
+  //   } catch (e) {
+  //     final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+  //     emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+  //   }
+  // }
 
   void _addDate(
     _AddDate event,
@@ -86,7 +125,6 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     final orderPlaceModel = state.orderPlaceModel.copyWith(dateOfExecution: date);
     emit(
       state.copyWith(
-        stateStatus: const StateStatus.success(),
         orderPlaceModel: orderPlaceModel,
       ),
     );
@@ -121,27 +159,26 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     final currentItems = state.orderPlaceModel.items;
-    final updatedItems = currentItems.where((item) => item != event.item).toList();
+    final updatedItems = currentItems.where((item) => item != event.item).toSet();
     final orderPlaceModel = state.orderPlaceModel.copyWith(items: updatedItems);
-
     emit(
       state.copyWith(
-        stateStatus: const StateStatus.success(),
         orderPlaceModel: orderPlaceModel,
       ),
     );
   }
 
-  void _addSize(
+  void _addItem(
     _AddItem event,
     Emitter<OrderPlaceState> emit,
   ) {
-    final updatedItems = List<Item>.from(state.orderPlaceModel.items)..add(event.item);
+    final newItem = event.item;
+    final existingItems = state.orderPlaceModel.items.toList();
+    final itemExists = existingItems.any((item) => item.size == newItem.size);
+    final updatedItems = itemExists ? state.orderPlaceModel.items : {...state.orderPlaceModel.items, newItem};
     final orderPlaceModel = state.orderPlaceModel.copyWith(items: updatedItems);
-
     emit(
       state.copyWith(
-        stateStatus: const StateStatus.success(),
         orderPlaceModel: orderPlaceModel,
       ),
     );
@@ -157,11 +194,10 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
         return item.copyWith(quantity: event.item.quantity);
       }
       return item;
-    }).toList();
+    }).toSet();
     final orderPlaceModel = state.orderPlaceModel.copyWith(items: updatedItems);
     emit(
       state.copyWith(
-        stateStatus: const StateStatus.success(),
         orderPlaceModel: orderPlaceModel,
       ),
     );
@@ -172,21 +208,20 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     var photos = event.photos;
-    var photosPath = photos.map((photo) => photo.path).toList();
     emit(
       state.copyWith(images: photos),
     );
   }
 
-  void _showFields(
-    _ShowFields event,
-    Emitter<OrderPlaceState> emit,
-  ) {
-    var type = event.fieldType;
-    if (type.name == t.order) {
-      emit(state.copyWith(showFields: true, type: type));
-    } else {
-      emit(state.copyWith(showFields: false, type: type));
-    }
-  }
+  // void _showFields(
+  //   _ShowFields event,
+  //   Emitter<OrderPlaceState> emit,
+  // ) {
+  //   var type = event.fieldType;
+  //   if (type.name == t.order) {
+  //     emit(state.copyWith(showFields: true, type: type));
+  //   } else {
+  //     emit(state.copyWith(showFields: false, type: type));
+  //   }
+  // }
 }

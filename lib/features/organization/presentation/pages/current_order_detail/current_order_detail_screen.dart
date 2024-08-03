@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/gallery_widget.dart';
+import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/status_bottom_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 
@@ -11,8 +11,7 @@ class CurrentOrderDetailScreen extends StatefulWidget {
   const CurrentOrderDetailScreen({super.key});
 
   @override
-  State<CurrentOrderDetailScreen> createState() =>
-      _CurrentOrderDetailScreenState();
+  State<CurrentOrderDetailScreen> createState() => _CurrentOrderDetailScreenState();
 }
 
 class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
@@ -43,7 +42,7 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
       ),
       body: Column(
         children: [
-           GalleryScreen(date: _orderDate),
+          // GalleryScreen(date: _orderDate),
           Expanded(
             child: SingleChildScrollView(
               child: Align(
@@ -57,8 +56,7 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
                     width: MediaQuery.of(context).size.width,
                     color: Colors.white,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16)
-                          .copyWith(top: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -325,16 +323,13 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
           padding: const EdgeInsets.all(8),
           child: Text(
             title ?? '',
-            style:
-            AppTextStyle.textField16.copyWith(fontWeight: FontWeight.w500),
+            style: AppTextStyle.textField16.copyWith(fontWeight: FontWeight.w500),
           ),
         ),
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded
-                ? Icons.keyboard_arrow_up_rounded
-                : Icons.keyboard_arrow_down_rounded,
+            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),

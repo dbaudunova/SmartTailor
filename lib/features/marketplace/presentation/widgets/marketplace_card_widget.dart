@@ -4,15 +4,17 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 class MarketplaceCard extends StatelessWidget {
   final void Function() onTap;
   final int tabIndex;
-  final DateTime? data;
+  final String? data;
   final Text? price;
   final String description;
   final String title;
+  final String image;
   const MarketplaceCard({
     required this.tabIndex,
     required this.description,
     required this.title,
     required this.onTap,
+    required this.image,
     super.key,
     this.data,
     this.price,
@@ -24,59 +26,64 @@ class MarketplaceCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
-        padding: const EdgeInsets.only(bottom: 8, left: 8, right: 16, top: 8),
+        padding: const EdgeInsets.only(bottom: 4, left: 8, right: 16, top: 4),
         height: 87,
+        width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: AppColors.white,
         ),
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildImage(),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildImage(),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 200,
-                        child: Text(
-                          maxLines: 1,
-                          title,
-                          style: AppTextStyle.textField16,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      SizedBox(
-                        width: 200,
-                        child: Text(
-                          maxLines: 1,
-                          description,
-                          style: AppTextStyle.textField16.copyWith(
-                            fontSize: 14,
-                            color: AppColors.greyText,
+                  Flexible(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            title,
+                            style: AppTextStyle.textField16,
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      tabIndex == 0
-                          ? Text(
-                              data.toString(),
-                              style: AppTextStyle.textField16.copyWith(
-                                fontSize: 12,
-                              ),
-                            )
-                          : Container(),
-                    ],
+                        if (price != null) price!,
+                      ],
+                    ),
                   ),
+                  Flexible(
+                    child: Text(
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      description,
+                      style: AppTextStyle.textField16.copyWith(
+                        fontSize: 14,
+                        color: AppColors.greyText,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 0),
+                  tabIndex == 0
+                      ? Text(
+                          data.toString(),
+                          style: AppTextStyle.textField16.copyWith(
+                            fontSize: 12,
+                          ),
+                        )
+                      : Container(),
                 ],
               ),
-              if (price != null) Flexible(child: price!),
-            ]),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -88,9 +95,9 @@ class MarketplaceCard extends StatelessWidget {
       margin: const EdgeInsets.only(
         right: 16,
       ),
-      decoration: const BoxDecoration(
-          color: AppColors.error,
-          borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+          image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
+          borderRadius: const BorderRadius.all(
             Radius.circular(10),
           )),
     );

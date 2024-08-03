@@ -5,7 +5,7 @@ import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/timer_bloc/timer_bloc.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/widgets/pin_code_widget.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/widgets/timer_widget.dart';
+import 'package:neobis_smart_tailor/features/confirmation/presentation/widgets/timer_content.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 
@@ -38,8 +38,15 @@ class _ConfirmationContentState extends State<ConfirmationContent> {
   @override
   Widget build(BuildContext context) {
     var statusBarHeight = MediaQuery.of(context).padding.top;
-    return BlocProvider.value(
-      value: getIt<TimerBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(
+          value: getIt<TimerBloc>(),
+        ),
+        BlocProvider.value(
+          value: getIt<ConfirmationBloc>(),
+        ),
+      ],
       child: BlocBuilder<ConfirmationBloc, ConfirmationState>(
         builder: (context, state) {
           return Scaffold(
@@ -86,11 +93,11 @@ class _ConfirmationContentState extends State<ConfirmationContent> {
     );
   }
 
-  BlocBuilder<ConfirmationBloc, ConfirmationState> _buildTimer() {
+  Widget _buildTimer() {
     return BlocBuilder<ConfirmationBloc, ConfirmationState>(
       builder: (context, state) {
         return pinCodeController.text.length != 4
-            ? const TimerWidget()
+            ? const TimerContent()
             : const SizedBox(
                 width: double.infinity,
               );
@@ -107,7 +114,7 @@ class _ConfirmationContentState extends State<ConfirmationContent> {
     );
   }
 
-  BlocBuilder<ConfirmationBloc, ConfirmationState> _buildText() {
+  Widget _buildText() {
     return BlocBuilder<ConfirmationBloc, ConfirmationState>(
       builder: (context, state) {
         return state.stateStatus.when(
@@ -132,7 +139,7 @@ class _ConfirmationContentState extends State<ConfirmationContent> {
     );
   }
 
-  ValueListenableBuilder<bool> _buildButton(ConfirmationState state) {
+  Widget _buildButton(ConfirmationState state) {
     return ValueListenableBuilder<bool>(
       valueListenable: _buttonEnabledNotifier,
       builder: (context, isButtonEnabled, _) {

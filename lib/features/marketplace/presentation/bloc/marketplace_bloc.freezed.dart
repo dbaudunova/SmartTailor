@@ -545,9 +545,9 @@ abstract class _GetAll implements MarketplaceEvent {
 /// @nodoc
 mixin _$MarketplaceState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
-  List<EquipmentEntity> get equipments => throw _privateConstructorUsedError;
-  List<OrderEntity> get orders => throw _privateConstructorUsedError;
-  List<ServiceEntity> get services => throw _privateConstructorUsedError;
+  List<GeneralEntity> get equipments => throw _privateConstructorUsedError;
+  List<GeneralEntity> get orders => throw _privateConstructorUsedError;
+  List<GeneralEntity> get services => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MarketplaceStateCopyWith<MarketplaceState> get copyWith =>
@@ -562,9 +562,9 @@ abstract class $MarketplaceStateCopyWith<$Res> {
   @useResult
   $Res call(
       {StateStatus stateStatus,
-      List<EquipmentEntity> equipments,
-      List<OrderEntity> orders,
-      List<ServiceEntity> services});
+      List<GeneralEntity> equipments,
+      List<GeneralEntity> orders,
+      List<GeneralEntity> services});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -595,15 +595,15 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
       equipments: null == equipments
           ? _value.equipments
           : equipments // ignore: cast_nullable_to_non_nullable
-              as List<EquipmentEntity>,
+              as List<GeneralEntity>,
       orders: null == orders
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
-              as List<OrderEntity>,
+              as List<GeneralEntity>,
       services: null == services
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
-              as List<ServiceEntity>,
+              as List<GeneralEntity>,
     ) as $Val);
   }
 
@@ -626,9 +626,9 @@ abstract class _$$MarketplaceStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {StateStatus stateStatus,
-      List<EquipmentEntity> equipments,
-      List<OrderEntity> orders,
-      List<ServiceEntity> services});
+      List<GeneralEntity> equipments,
+      List<GeneralEntity> orders,
+      List<GeneralEntity> services});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -658,15 +658,15 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
       equipments: null == equipments
           ? _value._equipments
           : equipments // ignore: cast_nullable_to_non_nullable
-              as List<EquipmentEntity>,
+              as List<GeneralEntity>,
       orders: null == orders
           ? _value._orders
           : orders // ignore: cast_nullable_to_non_nullable
-              as List<OrderEntity>,
+              as List<GeneralEntity>,
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
-              as List<ServiceEntity>,
+              as List<GeneralEntity>,
     ));
   }
 }
@@ -676,34 +676,34 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
 class _$MarketplaceStateImpl implements _MarketplaceState {
   const _$MarketplaceStateImpl(
       {required this.stateStatus,
-      required final List<EquipmentEntity> equipments,
-      required final List<OrderEntity> orders,
-      required final List<ServiceEntity> services})
+      required final List<GeneralEntity> equipments,
+      required final List<GeneralEntity> orders,
+      required final List<GeneralEntity> services})
       : _equipments = equipments,
         _orders = orders,
         _services = services;
 
   @override
   final StateStatus stateStatus;
-  final List<EquipmentEntity> _equipments;
+  final List<GeneralEntity> _equipments;
   @override
-  List<EquipmentEntity> get equipments {
+  List<GeneralEntity> get equipments {
     if (_equipments is EqualUnmodifiableListView) return _equipments;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_equipments);
   }
 
-  final List<OrderEntity> _orders;
+  final List<GeneralEntity> _orders;
   @override
-  List<OrderEntity> get orders {
+  List<GeneralEntity> get orders {
     if (_orders is EqualUnmodifiableListView) return _orders;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_orders);
   }
 
-  final List<ServiceEntity> _services;
+  final List<GeneralEntity> _services;
   @override
-  List<ServiceEntity> get services {
+  List<GeneralEntity> get services {
     if (_services is EqualUnmodifiableListView) return _services;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_services);
@@ -746,18 +746,18 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
 abstract class _MarketplaceState implements MarketplaceState {
   const factory _MarketplaceState(
       {required final StateStatus stateStatus,
-      required final List<EquipmentEntity> equipments,
-      required final List<OrderEntity> orders,
-      required final List<ServiceEntity> services}) = _$MarketplaceStateImpl;
+      required final List<GeneralEntity> equipments,
+      required final List<GeneralEntity> orders,
+      required final List<GeneralEntity> services}) = _$MarketplaceStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
-  List<EquipmentEntity> get equipments;
+  List<GeneralEntity> get equipments;
   @override
-  List<OrderEntity> get orders;
+  List<GeneralEntity> get orders;
   @override
-  List<ServiceEntity> get services;
+  List<GeneralEntity> get services;
   @override
   @JsonKey(ignore: true)
   _$$MarketplaceStateImplCopyWith<_$MarketplaceStateImpl> get copyWith =>

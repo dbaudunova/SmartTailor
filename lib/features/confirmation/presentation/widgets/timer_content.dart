@@ -31,13 +31,27 @@ class _TimerContentState extends State<TimerContent> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 24),
-      child: BlocProvider(
-        create: (context) => getIt<TimerBloc>(),
-        child: BlocBuilder<TimerBloc, TimerState>(
-          builder: (context, state) {
-            return state.when(
-                initial: (duration) => Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+      child: BlocBuilder<TimerBloc, TimerState>(
+        builder: (context, state) {
+          return state.when(
+              initial: (duration) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        t.repeatSendCodeTime,
+                        style: AppTextStyle.text14,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        getTimerText(duration),
+                        style: AppTextStyle.timer24regular,
+                      ),
+                    ],
+                  ),
+              runInProgress: (duration) => SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
                           t.repeatSendCodeTime,
@@ -50,26 +64,9 @@ class _TimerContentState extends State<TimerContent> {
                         ),
                       ],
                     ),
-                runInProgress: (duration) => SizedBox(
-                      width: double.infinity,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            t.repeatSendCodeTime,
-                            style: AppTextStyle.text14,
-                          ),
-                          const SizedBox(height: 16),
-                          Text(
-                            getTimerText(duration),
-                            style: AppTextStyle.timer24regular,
-                          ),
-                        ],
-                      ),
-                    ),
-                runComplete: () => Container());
-          },
-        ),
+                  ),
+              runComplete: () => Container());
+        },
       ),
     );
   }

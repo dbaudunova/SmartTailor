@@ -4,8 +4,8 @@ part of 'marketplace_bloc.dart';
 class MarketplaceState with _$MarketplaceState {
   const factory MarketplaceState({
     required final StateStatus stateStatus,
-    required final List<EquipmentEntity> equipments,
-    required final List<OrderEntity> orders,
-    required final List<ServiceEntity> services,
+    required final List<GeneralEntity> equipments,
+    required final List<GeneralEntity> orders,
+    required final List<GeneralEntity> services,
   }) = _MarketplaceState;
 }

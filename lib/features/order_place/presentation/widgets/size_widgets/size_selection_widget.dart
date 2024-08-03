@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
@@ -33,19 +34,21 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
       child: BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
         builder: (context, state) {
           var itemsString = _getItemsString(state);
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                t.inputSize,
-                style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black),
-              ),
-              const SizedBox(height: AppProps.kPageMargin),
-              _buildDropDownMenu(state, context, itemsString),
-              const SizedBox(height: AppProps.kPageMargin),
-              _buildChips(state, context)
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  t.inputSize,
+                  style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black),
+                ),
+                const SizedBox(height: AppProps.kPageMargin),
+                _buildDropDownMenu(state, context, itemsString),
+                const SizedBox(height: AppProps.kPageMargin),
+                _buildChips(state, context)
+              ],
+            ),
           );
         },
       ),
@@ -85,6 +88,7 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
     return SizedBox(
       width: 120,
       child: TextField(
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         controller: widget.quantityControllers[item.size],
         decoration: InputDecoration(
           label: Text(item.quantity.toString()),

@@ -72,47 +72,55 @@ class EmailInputContentState extends State<EmailInputContent> {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         return state.stateStatus != const StateStatus.loading()
-            ? Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ElevatedButtonWidget(
-                    text: t.Enter,
-                    onTap: () {
-                      if (_formKey.currentState!.validate()) {
-                        context.read<LoginBloc>().add(
-                              LoginEvent.sendPinToEmail(
-                                email: emailController.text,
-                              ),
-                            );
-                      }
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButtonWidget(
-                    text: t.register,
-                    color: AppColors.buttonUnavailableBack,
-                    onTap: () {
-                      AutoRouter.of(context).pushNamed('/registration');
-                    },
-                  ),
-                ],
-              )
-            : Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ElevatedButtonWidget(
-                    text: t.Enter,
-                    onTap: null,
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButtonWidget(
-                    text: t.register,
-                    color: AppColors.buttonUnavailableBack,
-                    onTap: null,
-                  ),
-                ],
-              );
+            ? _buildEnabledButtons(context)
+            : _buildDisablesButtons();
       },
+    );
+  }
+
+  Column _buildDisablesButtons() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ElevatedButtonWidget(
+          text: t.Enter,
+          onTap: null,
+        ),
+        const SizedBox(height: 16),
+        ElevatedButtonWidget(
+          text: t.register,
+          color: AppColors.buttonUnavailableBack,
+          onTap: null,
+        ),
+      ],
+    );
+  }
+
+  Column _buildEnabledButtons(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ElevatedButtonWidget(
+          text: t.Enter,
+          onTap: () {
+            if (_formKey.currentState!.validate()) {
+              context.read<LoginBloc>().add(
+                    LoginEvent.sendPinToEmail(
+                      email: emailController.text,
+                    ),
+                  );
+            }
+          },
+        ),
+        const SizedBox(height: 16),
+        ElevatedButtonWidget(
+          text: t.register,
+          color: AppColors.buttonUnavailableBack,
+          onTap: () {
+            AutoRouter.of(context).pushNamed('/registration');
+          },
+        ),
+      ],
     );
   }
 }

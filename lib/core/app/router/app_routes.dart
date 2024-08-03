@@ -8,9 +8,10 @@ import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_screen.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/login/presentation/email_input_screen.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/marketplace_detail_screen.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_detail_screen/presentation/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/presentation/equipment_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_detail_screen/presentation/order_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/presentation/service_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/order_place_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/current_order_detail/current_order_detail_screen.dart';
@@ -102,10 +103,18 @@ class AppRouter extends _$AppRouter {
           path: '/my_announcements',
         ),
         AutoRoute(
-          page: MarketplaceDetailRoute.page,
-          path: RoutesPaths.marketplaceDetail,
-          // initial: true,
+          page: OrderDetailRoute.page,
+          path: RoutesPaths.orderDetail,
         ),
+        AutoRoute(
+          page: ServiceDetailRoute.page,
+          path: RoutesPaths.serviceDetail,
+        ),
+        AutoRoute(
+          page: EquipmentDetailRoute.page,
+          path: RoutesPaths.equipmentDetail,
+        ),
+
         AutoRoute(
           page: AnnouncementDetailRoute.page,
           path: '/announcement_detail',

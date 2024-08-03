@@ -5,25 +5,27 @@ part 'equipment_model.g.dart';
 
 @freezed
 class EquipmentModel with _$EquipmentModel {
-  factory EquipmentModel(
-      {required int equipmentId,
-      required String equipmentPhotoUrl,
-      required String name,
-      required int price,
-      required String authorImageUrl,
-      required String authorFullName,
-      required String description}) = _EquipmentModel;
+  factory EquipmentModel({
+    required int id,
+    required String name,
+    required String description,
+    required int price,
+    required String equipmentImageUrl,
+    required String authorFullName,
+    required String authorImageUrl,
+    // required String dateOfExecution,
+  }) = _EquipmentModel;
 
   factory EquipmentModel.initial() {
     return EquipmentModel(
-      // type: '',
-      equipmentId: 0,
-      equipmentPhotoUrl: '',
+      id: 0,
       name: '',
-      price: 0,
-      authorImageUrl: '',
-      authorFullName: '',
       description: '',
+      price: 0,
+      equipmentImageUrl: '',
+      authorFullName: '',
+      authorImageUrl: '',
+      // dateOfExecution: '',
     );
   }
 

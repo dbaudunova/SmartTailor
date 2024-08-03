@@ -31,7 +31,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       await registrationUseCase.call(
         registrationModel,
       );
-      emit(state.copyWith(stateStatus: const StateStatus.success()));
+      emit(state.copyWith(stateStatus: StateStatus.success(registrationModel.email)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
