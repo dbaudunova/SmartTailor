@@ -7,5 +7,9 @@ class MarketplaceState with _$MarketplaceState {
     required final List<GeneralEntity> equipments,
     required final List<GeneralEntity> orders,
     required final List<GeneralEntity> services,
+    required final int ordersPageNumber,
+    required final int equipmentsPageNumber,
+    required final int servicesPageNumber,
+    required final bool isLoadingMore,
   }) = _MarketplaceState;
 }

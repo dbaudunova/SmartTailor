@@ -19,50 +19,68 @@ mixin _$MarketplaceEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOrders,
-    required TResult Function() getEquipmetns,
+    required TResult Function() getEquipments,
     required TResult Function() getServices,
     required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOrders,
-    TResult? Function()? getEquipmetns,
+    TResult? Function()? getEquipments,
     TResult? Function()? getServices,
     TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOrders,
-    TResult Function()? getEquipmetns,
+    TResult Function()? getEquipments,
     TResult Function()? getServices,
     TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipmetns,
+    required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipmetns,
+    TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipmetns,
+    TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,9 +143,12 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOrders,
-    required TResult Function() getEquipmetns,
+    required TResult Function() getEquipments,
     required TResult Function() getServices,
     required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
   }) {
     return getOrders();
   }
@@ -136,9 +157,12 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOrders,
-    TResult? Function()? getEquipmetns,
+    TResult? Function()? getEquipments,
     TResult? Function()? getServices,
     TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
   }) {
     return getOrders?.call();
   }
@@ -147,9 +171,12 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOrders,
-    TResult Function()? getEquipmetns,
+    TResult Function()? getEquipments,
     TResult Function()? getServices,
     TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -162,9 +189,12 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipmetns,
+    required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return getOrders(this);
   }
@@ -173,9 +203,12 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipmetns,
+    TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return getOrders?.call(this);
   }
@@ -184,9 +217,12 @@ class _$GetOrdersImpl implements _GetOrders {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipmetns,
+    TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -223,7 +259,7 @@ class _$GetEquipmentsImpl implements _GetEquipments {
 
   @override
   String toString() {
-    return 'MarketplaceEvent.getEquipmetns()';
+    return 'MarketplaceEvent.getEquipments()';
   }
 
   @override
@@ -239,35 +275,44 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOrders,
-    required TResult Function() getEquipmetns,
+    required TResult Function() getEquipments,
     required TResult Function() getServices,
     required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
   }) {
-    return getEquipmetns();
+    return getEquipments();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOrders,
-    TResult? Function()? getEquipmetns,
+    TResult? Function()? getEquipments,
     TResult? Function()? getServices,
     TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
   }) {
-    return getEquipmetns?.call();
+    return getEquipments?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOrders,
-    TResult Function()? getEquipmetns,
+    TResult Function()? getEquipments,
     TResult Function()? getServices,
     TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
-    if (getEquipmetns != null) {
-      return getEquipmetns();
+    if (getEquipments != null) {
+      return getEquipments();
     }
     return orElse();
   }
@@ -276,35 +321,44 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipmetns,
+    required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
-    return getEquipmetns(this);
+    return getEquipments(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipmetns,
+    TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
-    return getEquipmetns?.call(this);
+    return getEquipments?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipmetns,
+    TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
-    if (getEquipmetns != null) {
-      return getEquipmetns(this);
+    if (getEquipments != null) {
+      return getEquipments(this);
     }
     return orElse();
   }
@@ -353,9 +407,12 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOrders,
-    required TResult Function() getEquipmetns,
+    required TResult Function() getEquipments,
     required TResult Function() getServices,
     required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
   }) {
     return getServices();
   }
@@ -364,9 +421,12 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOrders,
-    TResult? Function()? getEquipmetns,
+    TResult? Function()? getEquipments,
     TResult? Function()? getServices,
     TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
   }) {
     return getServices?.call();
   }
@@ -375,9 +435,12 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOrders,
-    TResult Function()? getEquipmetns,
+    TResult Function()? getEquipments,
     TResult Function()? getServices,
     TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -390,9 +453,12 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipmetns,
+    required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return getServices(this);
   }
@@ -401,9 +467,12 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipmetns,
+    TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return getServices?.call(this);
   }
@@ -412,9 +481,12 @@ class _$GetServicesImpl implements _GetServices {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipmetns,
+    TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -467,9 +539,12 @@ class _$GetAllImpl implements _GetAll {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getOrders,
-    required TResult Function() getEquipmetns,
+    required TResult Function() getEquipments,
     required TResult Function() getServices,
     required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
   }) {
     return getAll();
   }
@@ -478,9 +553,12 @@ class _$GetAllImpl implements _GetAll {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getOrders,
-    TResult? Function()? getEquipmetns,
+    TResult? Function()? getEquipments,
     TResult? Function()? getServices,
     TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
   }) {
     return getAll?.call();
   }
@@ -489,9 +567,12 @@ class _$GetAllImpl implements _GetAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getOrders,
-    TResult Function()? getEquipmetns,
+    TResult Function()? getEquipments,
     TResult Function()? getServices,
     TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getAll != null) {
@@ -504,9 +585,12 @@ class _$GetAllImpl implements _GetAll {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipmetns,
+    required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
     required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return getAll(this);
   }
@@ -515,9 +599,12 @@ class _$GetAllImpl implements _GetAll {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipmetns,
+    TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
     TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return getAll?.call(this);
   }
@@ -526,9 +613,12 @@ class _$GetAllImpl implements _GetAll {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipmetns,
+    TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
     TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getAll != null) {
@@ -543,11 +633,411 @@ abstract class _GetAll implements MarketplaceEvent {
 }
 
 /// @nodoc
+abstract class _$$LoadMoreOrdersImplCopyWith<$Res> {
+  factory _$$LoadMoreOrdersImplCopyWith(_$LoadMoreOrdersImpl value,
+          $Res Function(_$LoadMoreOrdersImpl) then) =
+      __$$LoadMoreOrdersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreOrdersImplCopyWithImpl<$Res>
+    extends _$MarketplaceEventCopyWithImpl<$Res, _$LoadMoreOrdersImpl>
+    implements _$$LoadMoreOrdersImplCopyWith<$Res> {
+  __$$LoadMoreOrdersImplCopyWithImpl(
+      _$LoadMoreOrdersImpl _value, $Res Function(_$LoadMoreOrdersImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
+  const _$LoadMoreOrdersImpl();
+
+  @override
+  String toString() {
+    return 'MarketplaceEvent.loadMoreOrders()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreOrdersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+  }) {
+    return loadMoreOrders();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+  }) {
+    return loadMoreOrders?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    required TResult orElse(),
+  }) {
+    if (loadMoreOrders != null) {
+      return loadMoreOrders();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+  }) {
+    return loadMoreOrders(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+  }) {
+    return loadMoreOrders?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    required TResult orElse(),
+  }) {
+    if (loadMoreOrders != null) {
+      return loadMoreOrders(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreOrders implements MarketplaceEvent {
+  const factory _LoadMoreOrders() = _$LoadMoreOrdersImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreEquipmentsImplCopyWith<$Res> {
+  factory _$$LoadMoreEquipmentsImplCopyWith(_$LoadMoreEquipmentsImpl value,
+          $Res Function(_$LoadMoreEquipmentsImpl) then) =
+      __$$LoadMoreEquipmentsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreEquipmentsImplCopyWithImpl<$Res>
+    extends _$MarketplaceEventCopyWithImpl<$Res, _$LoadMoreEquipmentsImpl>
+    implements _$$LoadMoreEquipmentsImplCopyWith<$Res> {
+  __$$LoadMoreEquipmentsImplCopyWithImpl(_$LoadMoreEquipmentsImpl _value,
+      $Res Function(_$LoadMoreEquipmentsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
+  const _$LoadMoreEquipmentsImpl();
+
+  @override
+  String toString() {
+    return 'MarketplaceEvent.loadMoreEquipments()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreEquipmentsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+  }) {
+    return loadMoreEquipments();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+  }) {
+    return loadMoreEquipments?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    required TResult orElse(),
+  }) {
+    if (loadMoreEquipments != null) {
+      return loadMoreEquipments();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+  }) {
+    return loadMoreEquipments(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+  }) {
+    return loadMoreEquipments?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    required TResult orElse(),
+  }) {
+    if (loadMoreEquipments != null) {
+      return loadMoreEquipments(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreEquipments implements MarketplaceEvent {
+  const factory _LoadMoreEquipments() = _$LoadMoreEquipmentsImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreServicesImplCopyWith<$Res> {
+  factory _$$LoadMoreServicesImplCopyWith(_$LoadMoreServicesImpl value,
+          $Res Function(_$LoadMoreServicesImpl) then) =
+      __$$LoadMoreServicesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreServicesImplCopyWithImpl<$Res>
+    extends _$MarketplaceEventCopyWithImpl<$Res, _$LoadMoreServicesImpl>
+    implements _$$LoadMoreServicesImplCopyWith<$Res> {
+  __$$LoadMoreServicesImplCopyWithImpl(_$LoadMoreServicesImpl _value,
+      $Res Function(_$LoadMoreServicesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreServicesImpl implements _LoadMoreServices {
+  const _$LoadMoreServicesImpl();
+
+  @override
+  String toString() {
+    return 'MarketplaceEvent.loadMoreServices()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreServicesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+  }) {
+    return loadMoreServices();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+  }) {
+    return loadMoreServices?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    required TResult orElse(),
+  }) {
+    if (loadMoreServices != null) {
+      return loadMoreServices();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+  }) {
+    return loadMoreServices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+  }) {
+    return loadMoreServices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    required TResult orElse(),
+  }) {
+    if (loadMoreServices != null) {
+      return loadMoreServices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreServices implements MarketplaceEvent {
+  const factory _LoadMoreServices() = _$LoadMoreServicesImpl;
+}
+
+/// @nodoc
 mixin _$MarketplaceState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   List<GeneralEntity> get equipments => throw _privateConstructorUsedError;
   List<GeneralEntity> get orders => throw _privateConstructorUsedError;
   List<GeneralEntity> get services => throw _privateConstructorUsedError;
+  int get ordersPageNumber => throw _privateConstructorUsedError;
+  int get equipmentsPageNumber => throw _privateConstructorUsedError;
+  int get servicesPageNumber => throw _privateConstructorUsedError;
+  bool get isLoadingMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MarketplaceStateCopyWith<MarketplaceState> get copyWith =>
@@ -564,7 +1054,11 @@ abstract class $MarketplaceStateCopyWith<$Res> {
       {StateStatus stateStatus,
       List<GeneralEntity> equipments,
       List<GeneralEntity> orders,
-      List<GeneralEntity> services});
+      List<GeneralEntity> services,
+      int ordersPageNumber,
+      int equipmentsPageNumber,
+      int servicesPageNumber,
+      bool isLoadingMore});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -586,6 +1080,10 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
     Object? equipments = null,
     Object? orders = null,
     Object? services = null,
+    Object? ordersPageNumber = null,
+    Object? equipmentsPageNumber = null,
+    Object? servicesPageNumber = null,
+    Object? isLoadingMore = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -604,6 +1102,22 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
               as List<GeneralEntity>,
+      ordersPageNumber: null == ordersPageNumber
+          ? _value.ordersPageNumber
+          : ordersPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentsPageNumber: null == equipmentsPageNumber
+          ? _value.equipmentsPageNumber
+          : equipmentsPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesPageNumber: null == servicesPageNumber
+          ? _value.servicesPageNumber
+          : servicesPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLoadingMore: null == isLoadingMore
+          ? _value.isLoadingMore
+          : isLoadingMore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -628,7 +1142,11 @@ abstract class _$$MarketplaceStateImplCopyWith<$Res>
       {StateStatus stateStatus,
       List<GeneralEntity> equipments,
       List<GeneralEntity> orders,
-      List<GeneralEntity> services});
+      List<GeneralEntity> services,
+      int ordersPageNumber,
+      int equipmentsPageNumber,
+      int servicesPageNumber,
+      bool isLoadingMore});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -649,6 +1167,10 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
     Object? equipments = null,
     Object? orders = null,
     Object? services = null,
+    Object? ordersPageNumber = null,
+    Object? equipmentsPageNumber = null,
+    Object? servicesPageNumber = null,
+    Object? isLoadingMore = null,
   }) {
     return _then(_$MarketplaceStateImpl(
       stateStatus: null == stateStatus
@@ -667,6 +1189,22 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
               as List<GeneralEntity>,
+      ordersPageNumber: null == ordersPageNumber
+          ? _value.ordersPageNumber
+          : ordersPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentsPageNumber: null == equipmentsPageNumber
+          ? _value.equipmentsPageNumber
+          : equipmentsPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesPageNumber: null == servicesPageNumber
+          ? _value.servicesPageNumber
+          : servicesPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLoadingMore: null == isLoadingMore
+          ? _value.isLoadingMore
+          : isLoadingMore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -678,7 +1216,11 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
       {required this.stateStatus,
       required final List<GeneralEntity> equipments,
       required final List<GeneralEntity> orders,
-      required final List<GeneralEntity> services})
+      required final List<GeneralEntity> services,
+      required this.ordersPageNumber,
+      required this.equipmentsPageNumber,
+      required this.servicesPageNumber,
+      required this.isLoadingMore})
       : _equipments = equipments,
         _orders = orders,
         _services = services;
@@ -710,8 +1252,17 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
   }
 
   @override
+  final int ordersPageNumber;
+  @override
+  final int equipmentsPageNumber;
+  @override
+  final int servicesPageNumber;
+  @override
+  final bool isLoadingMore;
+
+  @override
   String toString() {
-    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services)';
+    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, isLoadingMore: $isLoadingMore)';
   }
 
   @override
@@ -724,7 +1275,15 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
             const DeepCollectionEquality()
                 .equals(other._equipments, _equipments) &&
             const DeepCollectionEquality().equals(other._orders, _orders) &&
-            const DeepCollectionEquality().equals(other._services, _services));
+            const DeepCollectionEquality().equals(other._services, _services) &&
+            (identical(other.ordersPageNumber, ordersPageNumber) ||
+                other.ordersPageNumber == ordersPageNumber) &&
+            (identical(other.equipmentsPageNumber, equipmentsPageNumber) ||
+                other.equipmentsPageNumber == equipmentsPageNumber) &&
+            (identical(other.servicesPageNumber, servicesPageNumber) ||
+                other.servicesPageNumber == servicesPageNumber) &&
+            (identical(other.isLoadingMore, isLoadingMore) ||
+                other.isLoadingMore == isLoadingMore));
   }
 
   @override
@@ -733,7 +1292,11 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
       stateStatus,
       const DeepCollectionEquality().hash(_equipments),
       const DeepCollectionEquality().hash(_orders),
-      const DeepCollectionEquality().hash(_services));
+      const DeepCollectionEquality().hash(_services),
+      ordersPageNumber,
+      equipmentsPageNumber,
+      servicesPageNumber,
+      isLoadingMore);
 
   @JsonKey(ignore: true)
   @override
@@ -748,7 +1311,11 @@ abstract class _MarketplaceState implements MarketplaceState {
       {required final StateStatus stateStatus,
       required final List<GeneralEntity> equipments,
       required final List<GeneralEntity> orders,
-      required final List<GeneralEntity> services}) = _$MarketplaceStateImpl;
+      required final List<GeneralEntity> services,
+      required final int ordersPageNumber,
+      required final int equipmentsPageNumber,
+      required final int servicesPageNumber,
+      required final bool isLoadingMore}) = _$MarketplaceStateImpl;
 
   @override
   StateStatus get stateStatus;
@@ -758,6 +1325,14 @@ abstract class _MarketplaceState implements MarketplaceState {
   List<GeneralEntity> get orders;
   @override
   List<GeneralEntity> get services;
+  @override
+  int get ordersPageNumber;
+  @override
+  int get equipmentsPageNumber;
+  @override
+  int get servicesPageNumber;
+  @override
+  bool get isLoadingMore;
   @override
   @JsonKey(ignore: true)
   _$$MarketplaceStateImplCopyWith<_$MarketplaceStateImpl> get copyWith =>

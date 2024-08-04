@@ -35,7 +35,6 @@ class _OrderDetailContentState extends State<OrderDetailContent> {
     return BlocBuilder<OrderDetailBloc, OrderDetailState>(
       builder: (context, state) {
         var order = state.order;
-        print(order);
         return Scaffold(
           floatingActionButton: _buildButtons(order.id, state),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -133,14 +132,6 @@ class _OrderDetailContentState extends State<OrderDetailContent> {
                 },
                 color: AppColors.white,
               ),
-              const SizedBox(height: 12),
-              ElevatedButtonWidget(
-                text: t.buy,
-                onTap: () {
-                  _showAlertDialog();
-                },
-                color: AppColors.orange,
-              )
             ]
           : [
               ElevatedButtonWidget(
@@ -148,12 +139,6 @@ class _OrderDetailContentState extends State<OrderDetailContent> {
                 onTap: null,
                 color: AppColors.white,
               ),
-              const SizedBox(height: 12),
-              ElevatedButtonWidget(
-                text: t.buy,
-                onTap: null,
-                color: AppColors.orange,
-              )
             ],
     );
   }

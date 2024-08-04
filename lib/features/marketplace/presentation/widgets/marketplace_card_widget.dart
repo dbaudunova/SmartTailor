@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
@@ -73,7 +74,7 @@ class MarketplaceCard extends StatelessWidget {
                   const SizedBox(height: 0),
                   tabIndex == 0
                       ? Text(
-                          data.toString(),
+                          'Срок до: $data',
                           style: AppTextStyle.textField16.copyWith(
                             fontSize: 12,
                           ),
@@ -96,7 +97,7 @@ class MarketplaceCard extends StatelessWidget {
         right: 16,
       ),
       decoration: BoxDecoration(
-          image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
+          image: DecorationImage(image: CachedNetworkImageProvider(image), fit: BoxFit.fill),
           borderRadius: const BorderRadius.all(
             Radius.circular(10),
           )),

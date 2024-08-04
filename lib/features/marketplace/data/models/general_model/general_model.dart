@@ -14,6 +14,7 @@ class GeneralOrderModel with _$GeneralOrderModel {
     required String authorFullName,
     required String authorImageUrl,
     // required String dateOfExecution,
+    @Default('') String dateOfExecution,
   }) = _GeneralModel;
 
   factory GeneralOrderModel.initial() {
@@ -25,7 +26,7 @@ class GeneralOrderModel with _$GeneralOrderModel {
       imageUrl: '',
       authorFullName: '',
       authorImageUrl: '',
-      // dateOfExecution: '',
+      dateOfExecution: '',
     );
   }
 

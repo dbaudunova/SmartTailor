@@ -22,6 +22,7 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
   @override
   Future<void> createOrder({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     var jsonString = json.encode(orderPlaceModel!.toJson());
+    print(jsonString);
     var imagesList = [
       for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
     ];
@@ -56,6 +57,7 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
   @override
   Future<void> createEquipment({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     var jsonString = json.encode(orderPlaceModel!.toJson());
+    print(jsonString);
     var imagesList = [
       for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
     ];
@@ -90,6 +92,7 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
   @override
   Future<void> createService({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     var jsonString = json.encode(orderPlaceModel!.toJson());
+    print(jsonString);
     var imagesList = [
       for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
     ];

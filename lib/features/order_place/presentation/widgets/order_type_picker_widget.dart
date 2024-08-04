@@ -15,8 +15,10 @@ enum OrderType {
 
 class OrderTypePicker extends StatefulWidget {
   final TextEditingController controller;
+  final Function(OrderType type) onSelect;
   const OrderTypePicker({
     required this.controller,
+    required this.onSelect,
     super.key,
   });
 
@@ -55,6 +57,7 @@ class _OrderTypePickerState extends State<OrderTypePicker> {
                 onPressed: () {
                   setState(() {
                     widget.controller.text = type.name;
+                    widget.onSelect(type);
                   });
                   Navigator.pop(context);
                 },

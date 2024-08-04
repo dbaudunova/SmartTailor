@@ -15,6 +15,7 @@ _$GeneralModelImpl _$$GeneralModelImplFromJson(Map<String, dynamic> json) =>
       imageUrl: json['imageUrl'] as String,
       authorFullName: json['authorFullName'] as String,
       authorImageUrl: json['authorImageUrl'] as String,
+      dateOfExecution: json['dateOfExecution'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$GeneralModelImplToJson(_$GeneralModelImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$GeneralModelImplToJson(_$GeneralModelImpl instance) =>
       'imageUrl': instance.imageUrl,
       'authorFullName': instance.authorFullName,
       'authorImageUrl': instance.authorImageUrl,
+      'dateOfExecution': instance.dateOfExecution,
     };

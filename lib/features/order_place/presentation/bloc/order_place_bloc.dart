@@ -34,7 +34,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
               images: [],
               type: null),
         ) {
-    // on<_ShowFields>(_showFields);
+    on<_SetType>(_setType);
     on<_AddPhotos>(_addPhotos);
     on<_RemovePhoto>(_removePhoto);
     on<_AddItem>(_addItem);
@@ -45,6 +45,17 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     on<_CreateOrder>(_createOrder);
   }
 
+  void _setType(
+    _SetType event,
+    Emitter<OrderPlaceState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        type: event.type,
+      ),
+    );
+  }
+
   Future<void> _createOrder(
     _CreateOrder event,
     Emitter<OrderPlaceState> emit,
@@ -53,7 +64,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     var model = event.orderPlaceModel.copyWith(
       items: state.orderPlaceModel.items,
     );
-    var type = event.orderType;
+    var type = state.type;
     try {
       switch (type) {
         case OrderType.order:
@@ -140,6 +151,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
         images: updateImages,
       ),
     );
+    print(state.images.length);
   }
 
   void _resetState(

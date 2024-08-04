@@ -2,12 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 enum _ImagePickType {
   selectPhoto('Выбрать фото'),
@@ -19,50 +18,39 @@ enum _ImagePickType {
 }
 
 class ImagePickerWidget extends StatefulWidget {
+  final TextEditingController controller;
   final Function(List<File> files) onSelectFiles;
+  final List<File> images;
 
-  const ImagePickerWidget({required this.onSelectFiles, super.key});
+  const ImagePickerWidget({
+    required this.onSelectFiles,
+    required this.images,
+    required this.controller,
+    super.key,
+  });
 
   @override
   State<ImagePickerWidget> createState() => _ImagePickerWidgetState();
 }
 
 class _ImagePickerWidgetState extends State<ImagePickerWidget> {
-  final _imageController = TextEditingController();
   final picker = ImagePicker();
 
   @override
-  void dispose() {
-    _imageController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocListener<OrderPlaceBloc, OrderPlaceState>(
-      listener: (context, state) {
-        final photos = state.images;
-        _imageController.text = photos.isEmpty ? '' : 'Выбрано ${photos.length} фото';
+    return TextFormFieldWidget(
+      validator: (value) {
+        if (widget.images.isEmpty) {
+          return 'Выберите фотографии';
+        }
+        return null;
       },
-      child: BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
-        builder: (context, state) {
-          final photos = state.images;
-          return TextFormFieldWidget(
-            validator: (value) {
-              if (photos.isEmpty) {
-                return 'Выберите фотографии';
-              }
-              return null;
-            },
-            controller: _imageController,
-            enabled: false,
-            ontap: _onTap,
-            hintText: t.max5photos,
-            titleName: t.addPhotos,
-            suffixIcon: Icons.keyboard_arrow_down_sharp,
-          );
-        },
-      ),
+      controller: widget.controller,
+      enabled: false,
+      ontap: _onTap,
+      hintText: t.max5photos,
+      titleName: t.addPhotos,
+      suffixIcon: Icons.keyboard_arrow_down_sharp,
     );
   }
 
@@ -86,19 +74,43 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   }
 
   Future<void> _onTypeHandler(_ImagePickType type) async {
-    final files = await switch (type) {
-      _ImagePickType.selectPhoto => _pickMultipleImages(),
-      _ImagePickType.takePhoto => _pickMultipleImagesFromCamera(),
-    };
+    bool permissionGranted;
+    switch (type) {
+      case _ImagePickType.selectPhoto:
+        if (Platform.isAndroid) {
+          permissionGranted = await _requestPermission(Permission.mediaLibrary);
+        } else {
+          permissionGranted = await _requestPermission(Permission.photos);
+        }
+        if (permissionGranted) {
+          final files = await _pickMultipleImages();
+          widget.onSelectFiles(files);
+        }
+        break;
+      case _ImagePickType.takePhoto:
+        permissionGranted = await _requestPermission(Permission.camera);
+        if (permissionGranted) {
+          final files = await _pickMultipleImagesFromCamera();
+          widget.onSelectFiles(files);
+        }
+        break;
+    }
+  }
 
-    widget.onSelectFiles(files);
+  Future<bool> _requestPermission(Permission permission) async {
+    if (await permission.isGranted) {
+      return true;
+    } else {
+      final result = await permission.request();
+      return result.isGranted;
+    }
   }
 
   Future<List<File>> _pickMultipleImages() async {
     final pickedFiles = await picker.pickMultiImage();
     final images = pickedFiles.take(5).map((file) => File(file.path)).toList();
     setState(() {
-      _imageController.text = 'Выбрано ${images.length} фото';
+      widget.controller.text = 'Выбрано ${images.length} фото';
     });
 
     return images;
@@ -116,7 +128,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
       }
     }
     setState(() {
-      _imageController.text = 'Сделано ${newImages.length} фото';
+      widget.controller.text = 'Сделано ${newImages.length} фото';
     });
 
     return newImages;

@@ -26,7 +26,9 @@ mixin _$GeneralOrderModel {
   int get price => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get authorFullName => throw _privateConstructorUsedError;
-  String get authorImageUrl => throw _privateConstructorUsedError;
+  String get authorImageUrl =>
+      throw _privateConstructorUsedError; // required String dateOfExecution,
+  String get dateOfExecution => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +49,8 @@ abstract class $GeneralOrderModelCopyWith<$Res> {
       int price,
       String imageUrl,
       String authorFullName,
-      String authorImageUrl});
+      String authorImageUrl,
+      String dateOfExecution});
 }
 
 /// @nodoc
@@ -70,6 +73,7 @@ class _$GeneralOrderModelCopyWithImpl<$Res, $Val extends GeneralOrderModel>
     Object? imageUrl = null,
     Object? authorFullName = null,
     Object? authorImageUrl = null,
+    Object? dateOfExecution = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -100,6 +104,10 @@ class _$GeneralOrderModelCopyWithImpl<$Res, $Val extends GeneralOrderModel>
           ? _value.authorImageUrl
           : authorImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      dateOfExecution: null == dateOfExecution
+          ? _value.dateOfExecution
+          : dateOfExecution // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -119,7 +127,8 @@ abstract class _$$GeneralModelImplCopyWith<$Res>
       int price,
       String imageUrl,
       String authorFullName,
-      String authorImageUrl});
+      String authorImageUrl,
+      String dateOfExecution});
 }
 
 /// @nodoc
@@ -140,6 +149,7 @@ class __$$GeneralModelImplCopyWithImpl<$Res>
     Object? imageUrl = null,
     Object? authorFullName = null,
     Object? authorImageUrl = null,
+    Object? dateOfExecution = null,
   }) {
     return _then(_$GeneralModelImpl(
       id: null == id
@@ -170,6 +180,10 @@ class __$$GeneralModelImplCopyWithImpl<$Res>
           ? _value.authorImageUrl
           : authorImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      dateOfExecution: null == dateOfExecution
+          ? _value.dateOfExecution
+          : dateOfExecution // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -184,7 +198,8 @@ class _$GeneralModelImpl implements _GeneralModel {
       required this.price,
       required this.imageUrl,
       required this.authorFullName,
-      required this.authorImageUrl});
+      required this.authorImageUrl,
+      this.dateOfExecution = ''});
 
   factory _$GeneralModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GeneralModelImplFromJson(json);
@@ -203,10 +218,14 @@ class _$GeneralModelImpl implements _GeneralModel {
   final String authorFullName;
   @override
   final String authorImageUrl;
+// required String dateOfExecution,
+  @override
+  @JsonKey()
+  final String dateOfExecution;
 
   @override
   String toString() {
-    return 'GeneralOrderModel(id: $id, name: $name, description: $description, price: $price, imageUrl: $imageUrl, authorFullName: $authorFullName, authorImageUrl: $authorImageUrl)';
+    return 'GeneralOrderModel(id: $id, name: $name, description: $description, price: $price, imageUrl: $imageUrl, authorFullName: $authorFullName, authorImageUrl: $authorImageUrl, dateOfExecution: $dateOfExecution)';
   }
 
   @override
@@ -224,13 +243,15 @@ class _$GeneralModelImpl implements _GeneralModel {
             (identical(other.authorFullName, authorFullName) ||
                 other.authorFullName == authorFullName) &&
             (identical(other.authorImageUrl, authorImageUrl) ||
-                other.authorImageUrl == authorImageUrl));
+                other.authorImageUrl == authorImageUrl) &&
+            (identical(other.dateOfExecution, dateOfExecution) ||
+                other.dateOfExecution == dateOfExecution));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, description, price,
-      imageUrl, authorFullName, authorImageUrl);
+      imageUrl, authorFullName, authorImageUrl, dateOfExecution);
 
   @JsonKey(ignore: true)
   @override
@@ -254,7 +275,8 @@ abstract class _GeneralModel implements GeneralOrderModel {
       required final int price,
       required final String imageUrl,
       required final String authorFullName,
-      required final String authorImageUrl}) = _$GeneralModelImpl;
+      required final String authorImageUrl,
+      final String dateOfExecution}) = _$GeneralModelImpl;
 
   factory _GeneralModel.fromJson(Map<String, dynamic> json) =
       _$GeneralModelImpl.fromJson;
@@ -273,6 +295,8 @@ abstract class _GeneralModel implements GeneralOrderModel {
   String get authorFullName;
   @override
   String get authorImageUrl;
+  @override // required String dateOfExecution,
+  String get dateOfExecution;
   @override
   @JsonKey(ignore: true)
   _$$GeneralModelImplCopyWith<_$GeneralModelImpl> get copyWith =>

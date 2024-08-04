@@ -28,7 +28,8 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
   final sizeController = TextEditingController();
   final orderTypeController = TextEditingController();
   final dateController = TextEditingController();
-  final quantityController = TextEditingController();
+  final quantityController = TextEditingController(text: '1');
+  final imageController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _orderTypeNotifier = ValueNotifier<bool>(false);
 
@@ -41,6 +42,7 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
     orderTypeController.dispose();
     dateController.dispose();
     quantityController.dispose();
+    imageController.dispose();
 
     super.dispose();
   }
@@ -105,7 +107,7 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
                 );
                 _bloc.add(OrderPlaceEvent.createOrder(
                   orderPlaceModel: orderPlaceModel,
-                  orderType: getOrderTypeFromString(orderTypeController.text)!,
+                  // orderType: getOrderTypeFromString(orderTypeController.text)!,
                 ));
               }
             },
@@ -117,6 +119,9 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
     return Column(
       children: [
         OrderTypePicker(
+          onSelect: (type) {
+            _bloc.add(OrderPlaceEvent.setType(type: type));
+          },
           controller: orderTypeController,
         ),
         const SizedBox(height: AppProps.kPageMargin),
@@ -139,32 +144,26 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
         ),
         const SizedBox(height: AppProps.kPageMargin),
         ImagePickerWidget(
+          controller: imageController,
           onSelectFiles: (photos) {
             context.read<OrderPlaceBloc>().add(
                   OrderPlaceEvent.addPhotos(photos: photos),
                 );
           },
+          images: state.images,
         ),
-        // orderTypeController.text == 'Оборудование'
-        // ?
-        Column(
-          children: [
-            const SizedBox(height: AppProps.kPageMargin),
-            TextFormFieldWidget(
-              formatters: [FilteringTextInputFormatter.digitsOnly],
-              controller: quantityController,
-              hintText: 'Количество оборудования',
-              titleName: 'Количество*',
-              validator: (value) => _validateField(
-                value,
-              ),
-            ),
-          ],
-        ),
-        // : Container(),
         const SizedBox(height: AppProps.kPageMargin),
-        const PhotosPreviewWidget(),
-        _buildDateAndSize(),
+        PhotosPreviewWidget(
+          controller: imageController,
+          images: state.images,
+          onDeleteImage: (file) {
+            context.read<OrderPlaceBloc>().add(OrderPlaceEvent.removePhoto(
+                  photo: file,
+                ));
+          },
+        ),
+        _buildQuantityField(state),
+        _buildDateAndSize(state),
         TextFormFieldWidget(
           controller: contactInfoController,
           hintText: t.inputPhoneNumber,
@@ -194,43 +193,58 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
     );
   }
 
-  ValueListenableBuilder<bool> _buildDateAndSize() {
-    return ValueListenableBuilder<bool>(
-        valueListenable: _orderTypeNotifier,
-        builder: (context, isTypeEnabled, _) {
-          return isTypeEnabled
-              ? Column(
-                  children: [
-                    SizePickerFieldWidget(
-                      onSizeSelected: (size) {
-                        _bloc.add(
-                          OrderPlaceEvent.addItem(
-                            item: Item(
-                              size: size,
-                              quantity: 1,
-                            ),
-                          ),
-                        );
-                      },
+  Widget _buildQuantityField(OrderPlaceState state) {
+    return state.type == OrderType.equipment
+        ? Column(
+            children: [
+              TextFormFieldWidget(
+                formatters: [FilteringTextInputFormatter.digitsOnly],
+                controller: quantityController,
+                hintText: 'Количество оборудования',
+                titleName: 'Количество*',
+                validator: (value) {
+                  if (value == '0') {
+                    return 'Не может быть 0';
+                  }
+                },
+              ),
+              const SizedBox(height: AppProps.kPageMargin),
+            ],
+          )
+        : Container();
+  }
+
+  Widget _buildDateAndSize(OrderPlaceState state) {
+    return state.type == OrderType.order
+        ? Column(
+            children: [
+              SizePickerFieldWidget(
+                onSizeSelected: (size) {
+                  _bloc.add(
+                    OrderPlaceEvent.addItem(
+                      item: Item(
+                        size: size,
+                        quantity: 1,
+                      ),
                     ),
-                    const SizedBox(height: AppProps.kPageMargin),
-                    DatePickerFieldWidget(
-                      controller: dateController,
-                      onDateSelected: (date) {
-                        _bloc.add(
-                          OrderPlaceEvent.addDate(
-                            dateOfExecution: date,
-                          ),
-                        );
-                      },
+                  );
+                },
+              ),
+              const SizedBox(height: AppProps.kPageMargin),
+              DatePickerFieldWidget(
+                controller: dateController,
+                onDateSelected: (date) {
+                  _bloc.add(
+                    OrderPlaceEvent.addDate(
+                      dateOfExecution: date,
                     ),
-                    const SizedBox(height: AppProps.kPageMargin),
-                  ],
-                )
-              : Container();
-          // );
-        });
-    // );
+                  );
+                },
+              ),
+              const SizedBox(height: AppProps.kPageMargin),
+            ],
+          )
+        : Container();
   }
 
   OrderType? getOrderTypeFromString(String orderTypeString) {

@@ -2,9 +2,8 @@ part of 'order_place_bloc.dart';
 
 @freezed
 class OrderPlaceEvent with _$OrderPlaceEvent {
-  const factory OrderPlaceEvent.showFields({required OrderType fieldType}) = _ShowFields;
-  const factory OrderPlaceEvent.createOrder({required OrderPlaceModel orderPlaceModel, required OrderType orderType}) =
-      _CreateOrder;
+  const factory OrderPlaceEvent.setType({required OrderType type}) = _SetType;
+  const factory OrderPlaceEvent.createOrder({required OrderPlaceModel orderPlaceModel}) = _CreateOrder;
   const factory OrderPlaceEvent.addPhotos({required List<File> photos}) = _AddPhotos;
   const factory OrderPlaceEvent.removePhoto({required File photo}) = _RemovePhoto;
   const factory OrderPlaceEvent.addItem({required Item item}) = _AddItem;

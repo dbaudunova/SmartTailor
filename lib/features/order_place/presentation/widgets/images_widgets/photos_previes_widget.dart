@@ -1,46 +1,45 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 
 class PhotosPreviewWidget extends StatelessWidget {
+  final Function(File file) onDeleteImage;
+  final TextEditingController controller;
+  final List<File> images;
   const PhotosPreviewWidget({
+    required this.images,
+    required this.onDeleteImage,
+    required this.controller,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OrderPlaceBloc, OrderPlaceState>(
-      builder: (context, state) {
-        final photos = state.images;
-        return photos != []
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(photos.length, (index) {
-                  return Column(
+    return images != []
+        ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(images.length, (index) {
+              return Column(
+                children: [
+                  Row(
                     children: [
-                      Row(
+                      Stack(
                         children: [
-                          Stack(
-                            children: [
-                              _buildPhoto(photos, index),
-                              _buildCross(context, photos, index),
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          )
+                          _buildPhoto(images, index),
+                          _buildCross(context, images, index),
                         ],
                       ),
-                      const SizedBox(height: AppProps.kPageMargin),
+                      const SizedBox(
+                        width: 8,
+                      )
                     ],
-                  );
-                }),
-              )
-            : Container();
-      },
-    );
+                  ),
+                  const SizedBox(height: AppProps.kPageMargin),
+                ],
+              );
+            }),
+          )
+        : Container();
   }
 
   Positioned _buildCross(BuildContext context, List<File> photos, int index) {
@@ -49,11 +48,9 @@ class PhotosPreviewWidget extends StatelessWidget {
         top: 4,
         child: GestureDetector(
           onTap: () {
-            context.read<OrderPlaceBloc>().add(
-                  OrderPlaceEvent.removePhoto(
-                    photo: photos[index],
-                  ),
-                );
+            onDeleteImage(photos[index]);
+
+            controller.text = 'Выбрано ${images.length} фото';
           },
           child: const Icon(
             Icons.highlight_remove,

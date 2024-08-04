@@ -31,7 +31,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage(widget.images![_selectedIndex]),
+                          image: CachedNetworkImageProvider(widget.images![_selectedIndex]),
                         ),
                       ),
                     ),
@@ -44,7 +44,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
               ],
             ),
           )
-        : CircularProgressIndicator();
+        : const CircularProgressIndicator();
   }
 
   Row _buildList() {

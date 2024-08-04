@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/order_place_content.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
@@ -25,8 +24,6 @@ class OrderPlaceScreen extends StatelessWidget {
   void _listenerBloc(BuildContext context, OrderPlaceState state) {
     state.stateStatus.whenOrNull(
       success: (val) {
-        // AppSnackBar.show(context: context, titleText: val, error: false);
-        // AutoRouter.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
               content: Text(

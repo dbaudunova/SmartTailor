@@ -23,22 +23,22 @@ class MarketplaceRepoImpl extends MarketplaceRepo {
   );
 
   @override
-  Future<List<GeneralEntity>> getEquipments() async {
-    final result = await _dataSource.getEquipments();
+  Future<List<GeneralEntity>> getEquipments({required int pageNumber}) async {
+    final result = await _dataSource.getEquipments(pageNumber: pageNumber);
     final entitys = result.map((model) => _generalModelConverter.convert(model)).toList();
     return entitys;
   }
 
   @override
-  Future<List<GeneralEntity>> getOrders() async {
-    final result = await _dataSource.getOrders();
+  Future<List<GeneralEntity>> getOrders({required int pageNumber}) async {
+    final result = await _dataSource.getOrders(pageNumber: pageNumber);
     final orders = result.map((model) => _generalModelConverter.convert(model)).toList();
     return orders;
   }
 
   @override
-  Future<List<GeneralEntity>> getServices() async {
-    final result = await _dataSource.getServices();
+  Future<List<GeneralEntity>> getServices({required int pageNumber}) async {
+    final result = await _dataSource.getServices(pageNumber: pageNumber);
     final services = result.map((model) => _generalModelConverter.convert(model)).toList();
     return services;
   }

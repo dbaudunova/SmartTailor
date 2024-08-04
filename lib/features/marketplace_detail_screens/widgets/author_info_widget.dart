@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
@@ -19,7 +20,7 @@ class AuthorInfoWidget extends StatelessWidget {
           children: [
             CircleAvatar(
               maxRadius: 32,
-              backgroundImage: NetworkImage(authorImage),
+              backgroundImage: CachedNetworkImageProvider(authorImage),
             ),
             const SizedBox(width: 12),
             Column(

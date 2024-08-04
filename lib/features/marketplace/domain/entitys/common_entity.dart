@@ -6,7 +6,7 @@ class GeneralEntity {
   final String? imageUrl;
   final String? authorFullName;
   final String? authorImageUrl;
-  // final String? dateOfExecution;
+  final String? dateOfExecution;
 
   GeneralEntity({
     required this.id,
@@ -16,6 +16,6 @@ class GeneralEntity {
     required this.imageUrl,
     required this.authorFullName,
     required this.authorImageUrl,
-    // required this.dateOfExecution,
+    required this.dateOfExecution,
   });
 }
