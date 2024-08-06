@@ -1,86 +1,125 @@
+import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/create_organization_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
-class UserInfo extends StatelessWidget {
+class UserInfo extends StatefulWidget {
   const UserInfo({
     this.onIconPressed,
     this.showBellIcon = true,
     super.key,
     this.secondRowText,
-    this.thirdRowText,
     this.onTap,
     this.profileEntity,
+    this.enableImageSelection = false,
+    this.onImageChanged,
   });
 
   final String? secondRowText;
-  final String? thirdRowText;
   final VoidCallback? onIconPressed, onTap;
   final bool showBellIcon;
   final ProfileEntity? profileEntity;
+  final bool enableImageSelection;
+  final ValueChanged<File?>? onImageChanged; // Callback for image change
+
+  @override
+  State<UserInfo> createState() => _UserInfoState();
+}
+
+class _UserInfoState extends State<UserInfo> {
+  File? _imageFile;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        GestureDetector(
-          onTap: onTap,
-          child: CircleAvatar(
-            radius: 24,
-            backgroundColor: AppColors.yellow,
-            backgroundImage: profileEntity?.imagePath != null
-                ? CachedNetworkImageProvider(profileEntity?.imagePath ?? '')
-                : null,
-            child: profileEntity?.imagePath == null
-                ? SvgPicture.asset(
-              Assets.icons.person,
-              width: AppProps.kBigMargin,
-              height: AppProps.kBigMargin,
-            )
-                : null,
-          ),
+        CircleAvatar(
+          radius: 24,
+          backgroundColor: AppColors.yellow,
+          backgroundImage: _imageFile != null
+              ? FileImage(_imageFile!)
+              : CachedNetworkImageProvider(
+                      widget.profileEntity?.imagePath ?? '')
+                  as ImageProvider<Object>,
         ),
         const SizedBox(width: AppProps.kSmallMargin),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '${profileEntity?.name} ${profileEntity?.surname}',
-              style: AppTextStyle.title24.copyWith(
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              secondRowText ?? '',
-              style: AppTextStyle.title24.copyWith(
-                fontSize: AppProps.kMediumMargin,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            if (thirdRowText?.isNotEmpty ?? false)
+        GestureDetector(
+          onTap: widget.enableImageSelection
+              ? () {
+                  _showPhotoOptions(context);
+                }
+              : null,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Text(
-                thirdRowText!,
+                '${widget.profileEntity?.name} ${widget.profileEntity?.surname}',
+                style: AppTextStyle.title24.copyWith(
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                widget.secondRowText ?? '',
                 style: AppTextStyle.title24.copyWith(
                   fontSize: AppProps.kMediumMargin,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-          ],
+            ],
+          ),
         ),
         const Spacer(),
-        if (showBellIcon)
+        if (widget.showBellIcon)
           IconButton(
-            onPressed: onIconPressed,
+            onPressed: widget.onIconPressed,
             icon: SvgPicture.asset(
               Assets.icons.bell,
             ),
           ),
       ],
+    );
+  }
+
+  Future<void> _pickImage(ImageSource source, {int? imageQuality}) async {
+    final pickedFile = await ImagePicker().pickImage(source: source, imageQuality: imageQuality);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+      widget.onImageChanged
+          ?.call(_imageFile);
+    }
+  }
+
+  void _showPhotoOptions(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) => ActionSheetWidget(
+        actions: ImagePickType.values
+            .map(
+              (type) => AppActionSheetWidget(
+                onPressed: () {
+                  Navigator.pop(context);
+                  if (type == ImagePickType.selectPhoto) {
+                    _pickImage(ImageSource.gallery);
+                  } else if (type == ImagePickType.takePhoto) {
+                    _pickImage(ImageSource.camera, imageQuality: 15);
+                  }
+                },
+                text: type.name,
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

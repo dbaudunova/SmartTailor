@@ -58,34 +58,45 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
             }
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
-            child: Column(
-              children: [
-                _buildUserInfo(context),
-                const SizedBox(height: 16),
-                _buildPersonalDataRow(),
-                const SizedBox(height: 40),
-                Form(key: _formKey, child: _buildTextFields()),
-                const Spacer(),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButtonWidget(
-                    text: 'Сохранить данные',
-                    onTap: () {
-                      final profile = ProfileEntity(
-                        surname: _surnameController.text,
-                        name: _nameController.text,
-                        patronymic: _fathersNameController.text,
-                        phoneNumber: _phoneNumberController.text,
-                      );
-                      if (_formKey.currentState!.validate()) {
-                        context.read<ProfileBloc>().add(ProfileEvent.editProfileInfo(profile));
-                      }
-                    },
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+            child: CustomScrollView(
+              slivers: [
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Column(
+                    children: [
+                      _buildUserInfo(context),
+                      const SizedBox(height: 16),
+                      _buildPersonalDataRow(),
+                      const SizedBox(height: 40),
+                      Form(key: _formKey, child: _buildTextFields()),
+                      const Spacer(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: ElevatedButtonWidget(
+                          text: 'Сохранить данные',
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              final profile = ProfileEntity(
+                                surname: _surnameController.text,
+                                name: _nameController.text,
+                                patronymic: _fathersNameController.text,
+                                phoneNumber: _phoneNumberController.text,
+                              );
+                              context
+                                  .read<ProfileBloc>()
+                                  .add(ProfileEvent.editProfileInfo(profile));
+                            }
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 16),
+                )
               ],
+
             ),
           ),
         ),
@@ -99,13 +110,15 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
         if (state.stateStatus == const StateStatus.loading()) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
+        if (state.stateStatus ==
+            StateStatus.failure(message: '${state.stateStatus}')) {
           return AppSnackBar.show(
               context: context,
               titleText: 'Не удалось загрузить данные',
               error: true);
         }
-        if (state.stateStatus == const StateStatus.success() && !_isInitialized) {
+        if (state.stateStatus == const StateStatus.success() &&
+            !_isInitialized) {
           _surnameController.text = state.profile?.surname ?? '';
           _nameController.text = state.profile?.name ?? '';
           _fathersNameController.text = state.profile?.patronymic ?? '';
@@ -117,6 +130,10 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
           profileEntity: state.profile,
           secondRowText: 'Изменить фото профиля',
           showBellIcon: false,
+          enableImageSelection: true,
+          onImageChanged: (file) {
+            context.read<ProfileBloc>().add(ProfileEvent.uploadImage(file!));
+          },
         );
       },
     );
@@ -127,7 +144,8 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       if (state.stateStatus == const StateStatus.loading()) {
         return const Center(child: CircularProgressIndicator());
       }
-      if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
+      if (state.stateStatus ==
+          StateStatus.failure(message: '${state.stateStatus}')) {
         return AppSnackBar.show(
             context: context,
             titleText: 'Не удалось загрузить данные',

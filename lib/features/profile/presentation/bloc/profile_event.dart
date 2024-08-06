@@ -5,4 +5,5 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.signOut() = _SignOut;
   const factory ProfileEvent.getProfileInfo() = _GetProfileInfo;
   const factory ProfileEvent.editProfileInfo(ProfileEntity profileEntity) = _EditProfileInfo;
+  const factory ProfileEvent.uploadImage(File imageFile) = _UploadImage;
 }

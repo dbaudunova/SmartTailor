@@ -21,6 +21,7 @@ mixin _$ProfileEvent {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function(File imageFile) uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$ProfileEvent {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function(File imageFile)? uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$ProfileEvent {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function(File imageFile)? uploadImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$ProfileEvent {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_UploadImage value) uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$ProfileEvent {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_UploadImage value)? uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$ProfileEvent {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function(File imageFile) uploadImage,
   }) {
     return signOut();
   }
@@ -131,6 +138,7 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function(File imageFile)? uploadImage,
   }) {
     return signOut?.call();
   }
@@ -141,6 +149,7 @@ class _$SignOutImpl implements _SignOut {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function(File imageFile)? uploadImage,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -155,6 +164,7 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
     return signOut(this);
   }
@@ -165,6 +175,7 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_UploadImage value)? uploadImage,
   }) {
     return signOut?.call(this);
   }
@@ -175,6 +186,7 @@ class _$SignOutImpl implements _SignOut {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -229,6 +241,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function(File imageFile) uploadImage,
   }) {
     return getProfileInfo();
   }
@@ -239,6 +252,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function(File imageFile)? uploadImage,
   }) {
     return getProfileInfo?.call();
   }
@@ -249,6 +263,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function(File imageFile)? uploadImage,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -263,6 +278,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
     return getProfileInfo(this);
   }
@@ -273,6 +289,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_UploadImage value)? uploadImage,
   }) {
     return getProfileInfo?.call(this);
   }
@@ -283,6 +300,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -365,6 +383,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function(File imageFile) uploadImage,
   }) {
     return editProfileInfo(profileEntity);
   }
@@ -375,6 +394,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function(File imageFile)? uploadImage,
   }) {
     return editProfileInfo?.call(profileEntity);
   }
@@ -385,6 +405,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function(File imageFile)? uploadImage,
     required TResult orElse(),
   }) {
     if (editProfileInfo != null) {
@@ -399,6 +420,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
     return editProfileInfo(this);
   }
@@ -409,6 +431,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_UploadImage value)? uploadImage,
   }) {
     return editProfileInfo?.call(this);
   }
@@ -419,6 +442,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
     if (editProfileInfo != null) {
@@ -435,6 +459,152 @@ abstract class _EditProfileInfo implements ProfileEvent {
   ProfileEntity get profileEntity;
   @JsonKey(ignore: true)
   _$$EditProfileInfoImplCopyWith<_$EditProfileInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UploadImageImplCopyWith<$Res> {
+  factory _$$UploadImageImplCopyWith(
+          _$UploadImageImpl value, $Res Function(_$UploadImageImpl) then) =
+      __$$UploadImageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({File imageFile});
+}
+
+/// @nodoc
+class __$$UploadImageImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$UploadImageImpl>
+    implements _$$UploadImageImplCopyWith<$Res> {
+  __$$UploadImageImplCopyWithImpl(
+      _$UploadImageImpl _value, $Res Function(_$UploadImageImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageFile = null,
+  }) {
+    return _then(_$UploadImageImpl(
+      null == imageFile
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadImageImpl implements _UploadImage {
+  const _$UploadImageImpl(this.imageFile);
+
+  @override
+  final File imageFile;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.uploadImage(imageFile: $imageFile)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadImageImpl &&
+            (identical(other.imageFile, imageFile) ||
+                other.imageFile == imageFile));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, imageFile);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UploadImageImplCopyWith<_$UploadImageImpl> get copyWith =>
+      __$$UploadImageImplCopyWithImpl<_$UploadImageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signOut,
+    required TResult Function() getProfileInfo,
+    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function(File imageFile) uploadImage,
+  }) {
+    return uploadImage(imageFile);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signOut,
+    TResult? Function()? getProfileInfo,
+    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function(File imageFile)? uploadImage,
+  }) {
+    return uploadImage?.call(imageFile);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signOut,
+    TResult Function()? getProfileInfo,
+    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function(File imageFile)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (uploadImage != null) {
+      return uploadImage(imageFile);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_GetProfileInfo value) getProfileInfo,
+    required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_UploadImage value) uploadImage,
+  }) {
+    return uploadImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_GetProfileInfo value)? getProfileInfo,
+    TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_UploadImage value)? uploadImage,
+  }) {
+    return uploadImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_GetProfileInfo value)? getProfileInfo,
+    TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_UploadImage value)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (uploadImage != null) {
+      return uploadImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadImage implements ProfileEvent {
+  const factory _UploadImage(final File imageFile) = _$UploadImageImpl;
+
+  File get imageFile;
+  @JsonKey(ignore: true)
+  _$$UploadImageImplCopyWith<_$UploadImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

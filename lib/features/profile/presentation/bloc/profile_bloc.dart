@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -7,6 +8,7 @@ import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/edit_profile_info_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_profile_info_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/sign_out_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/upload_image_use_case.dart';
 
 part 'profile_event.dart';
 
@@ -19,11 +21,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final SignOutUseCase signOutUseCase;
   final GetProfileInfoUseCase getProfileInfoUseCase;
   final EditProfileInfoUseCase editProfileInfoUseCase;
+  final UploadImageUseCase uploadImageUseCase;
 
   ProfileBloc({
     required this.signOutUseCase,
     required this.getProfileInfoUseCase,
     required this.editProfileInfoUseCase,
+    required this.uploadImageUseCase,
   }) : super(
           const ProfileState(
             stateStatus: StateStatus.initial(),
@@ -32,6 +36,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<_SignOut>(_signOut);
     on<_GetProfileInfo>(_getProfileInfo);
     on<_EditProfileInfo>(_editProfileInfo);
+    on<_UploadImage>(_uploadImage);
   }
 
   Future<void> _signOut(
@@ -76,11 +81,31 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       _EditProfileInfo event, Emitter<ProfileState> emit) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
-      final updatedProfile = await editProfileInfoUseCase.call(event.profileEntity);
+      await editProfileInfoUseCase.call(event.profileEntity);
+      final profileEntity = await getProfileInfoUseCase.call(null);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
         isProfileLoaded: true,
-        profile: updatedProfile,
+        profile: profileEntity,
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(
+        stateStatus: StateStatus.failure(message: errorMessage!),
+      ));
+    }
+  }
+
+  Future<void> _uploadImage(
+      _UploadImage event, Emitter<ProfileState> emit) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+    try {
+      await uploadImageUseCase.call(event.imageFile);
+      final profileEntity = await getProfileInfoUseCase.call(null);
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+        isProfileLoaded: true,
+        profile: profileEntity,
       ));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
