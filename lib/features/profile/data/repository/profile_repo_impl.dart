@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:injectable/injectable.dart';
 // import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
@@ -29,12 +31,11 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   Future<ProfileEntity> editProfileInfo(ProfileEntity params) async {
-    final profileModel =
-        await _dataSource.editProfileInfo(_convertEntityToModel(params));
+    final profileModel = await _dataSource.editProfileInfo(_toModel(params));
     return profileModel;
   }
 
-  ProfileModel _convertEntityToModel(ProfileEntity entity) {
+  ProfileModel _toModel(ProfileEntity entity) {
     return ProfileModel(
       name: entity.name,
       surname: entity.surname,
@@ -46,5 +47,10 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<void> sendSubscription() async {
     await _dataSource.sendSubscription();
+  }
+
+  @override
+  Future<void> uploadImage(File imageFile) async {
+    return await _dataSource.uploadImage(imageFile);
   }
 }

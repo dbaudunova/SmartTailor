@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
@@ -72,12 +75,38 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       if (response.statusCode != 200) {
         throw Failure.request(
           status: response.statusCode,
-          message:
-              'Не удалось редактировать профиль: ${response.statusMessage}',
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
         );
       }
-      print('Response data: ${response.data}');
       return ProfileModel.fromJson(params.toJson());
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> uploadImage(File imageFile) async {
+    try {
+      var data = FormData.fromMap({
+        'file': await MultipartFile.fromFile(imageFile.path),
+      });
+
+      final response = await _client.post(
+        HttpPaths.uploadImage,
+        data: data,
+        options: Options(
+          headers: {'Content-Type': 'multipart/form-data'},
+        ),
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить фотографию: ${response.statusMessage}',
+        );
+      }
     } on DioException catch (e) {
       throw handleDioException(e);
     } catch (e) {
@@ -95,8 +124,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       if (response.statusCode != 200) {
         throw Failure.request(
           status: response.statusCode,
-          message:
-              'Не удалось редактировать профиль: ${response.statusMessage}',
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
         );
       }
     } on DioException catch (e) {

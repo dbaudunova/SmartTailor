@@ -41,7 +41,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         children: [
           Column(
             children: [
-              const GalleryWidget(),
+              //const GalleryWidget(),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(

@@ -42,7 +42,7 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
         children: [
           Column(
             children: [
-              GalleryWidget(date: _orderDate.toString()),
+              //GalleryWidget(date: _orderDate.toString()),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(

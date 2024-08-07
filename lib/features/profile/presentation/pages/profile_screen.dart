@@ -42,8 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: 'Профиль',
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin)
-            .copyWith(
+        padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin).copyWith(
           top: AppProps.kSmallMargin,
         ),
         child: BlocBuilder<ProfileBloc, ProfileState>(
@@ -54,21 +53,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildBlocBuilder(),
                 const SizedBox(height: AppProps.kTwentyMargin),
                 _buildSubscripe(state),
-                _buildProfileButton(
-                    context, 'Личные данные', const PersonalDataRoute()),
+                _buildProfileButton(context, 'Личные данные', const PersonalDataRoute()),
                 const SizedBox(height: AppProps.kPageMargin),
-                _buildProfileButton(
-                    context, 'Мои объявления', const MyAnnouncementsRoute()),
+                _buildProfileButton(context, 'Мои объявления', const MyAnnouncementsRoute()),
                 const SizedBox(height: AppProps.kPageMargin),
-                _buildProfileButton(
-                    context, 'Мои покупки', const MyPurchasesRoute()),
+                _buildProfileButton(context, 'Мои покупки', const MyPurchasesRoute()),
                 if (_isHistoryOfOrdersButtonVisible) ...[
                   const SizedBox(height: AppProps.kPageMargin),
-                  _buildProfileButton(
-                      context, 'История заказов', const OrderHistoryRoute()),
+                  _buildProfileButton(context, 'История заказов', const OrderHistoryRoute()),
                   const SizedBox(height: AppProps.kPageMargin),
-                  _buildProfileButton(
-                      context, 'Организация', const ProfileOrganizationRoute()),
+                  _buildProfileButton(context, 'Организация', const ProfileOrganizationRoute()),
                 ],
                 const Spacer(),
                 SizedBox(
@@ -97,9 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SubscribeContainerStyle(
                 buttonTitle: 'Отправить запрос',
                 onButtonPressed: () {
-                  context
-                      .read<ProfileBloc>()
-                      .add(const ProfileEvent.sendSubscription());
+                  context.read<ProfileBloc>().add(const ProfileEvent.sendSubscription());
                   // _buildShowDialog(context);
                 },
               ),
@@ -115,12 +107,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         if (state.stateStatus == const StateStatus.loading()) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state.stateStatus ==
-            StateStatus.failure(message: '${state.stateStatus}')) {
-          return AppSnackBar.show(
-              context: context,
-              titleText: 'Не удалось загрузить данные',
-              error: true);
+        if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
+          return AppSnackBar.show(context: context, titleText: 'Не удалось загрузить данные', error: true);
         }
         if (state.stateStatus == const StateStatus.success()) {
           return UserInfo(
@@ -138,8 +126,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildProfileButton(
-      BuildContext context, String title, PageRouteInfo route) {
+  Widget _buildProfileButton(BuildContext context, String title, PageRouteInfo route) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: ProfileButtonStyle(

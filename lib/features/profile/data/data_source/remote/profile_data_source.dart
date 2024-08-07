@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
 
 abstract class ProfileDataSource {
@@ -5,4 +6,5 @@ abstract class ProfileDataSource {
   Future<ProfileModel> getProfileInfo();
   Future<ProfileModel> editProfileInfo(ProfileModel params);
   Future<void> sendSubscription();
+  Future<void> uploadImage(File imageFile);
 }

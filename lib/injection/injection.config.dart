@@ -28,9 +28,9 @@ import 'package:neobis_smart_tailor/features/confirmation/data/repository/confir
 import 'package:neobis_smart_tailor/features/confirmation/domain/repository/confirmation_repo.dart'
     as _i72;
 import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/confirmation_use_case.dart'
-    as _i87;
-import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/resend_pin_use_case%20copy.dart'
     as _i88;
+import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/resend_pin_use_case%20copy.dart'
+    as _i89;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart'
     as _i101;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/timer_bloc/timer_bloc.dart'
@@ -74,7 +74,7 @@ import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_ord
 import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_services_ude_case.dart'
     as _i78;
 import 'package:neobis_smart_tailor/features/marketplace/presentation/bloc/marketplace_bloc.dart'
-    as _i89;
+    as _i90;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/data/data_source/equipment_detail_data_source.dart'
     as _i63;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/data/data_source/equipment_detail_data_source_impl/marketplace_data_source_impl.dart'
@@ -90,11 +90,11 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipmen
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/repository/equipment_detail_repo.dart'
     as _i70;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/use_case/buy_equipment_use_case%20copy.dart'
-    as _i98;
-import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/use_case/get_equipmentby_id_use_case.dart'
     as _i99;
+import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/use_case/get_equipmentby_id_use_case.dart'
+    as _i100;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/presentation/bloc/equipment_detail_bloc.dart'
-    as _i104;
+    as _i105;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_detail_screen/data/data_source/marketplace_detail_data_source_impl/order_data_source_impl.dart'
     as _i20;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_detail_screen/data/data_source/order_detail_data_source.dart'
@@ -124,15 +124,15 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/data/models/service_detail_model/service_detail_model.dart'
     as _i9;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/data/repository/service_detail_repo_impl.dart'
-    as _i96;
+    as _i97;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/entitys/service_detail_entity.dart'
     as _i10;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/repository/service_detail_repo.dart'
-    as _i95;
+    as _i96;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/use_case/get_service_by_id_use_case.dart'
-    as _i102;
+    as _i103;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/presentation/bloc/service_detail_bloc.dart'
-    as _i105;
+    as _i106;
 import 'package:neobis_smart_tailor/features/order_place/data/data_source/impl/order_place_data_source_impl.dart'
     as _i48;
 import 'package:neobis_smart_tailor/features/order_place/data/data_source/order_place_data_source.dart'
@@ -142,13 +142,13 @@ import 'package:neobis_smart_tailor/features/order_place/data/repository/order_p
 import 'package:neobis_smart_tailor/features/order_place/domain/repository/order_place_repo.dart'
     as _i59;
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_equipment_use_case.dart'
-    as _i90;
-import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_order_use_case.dart'
     as _i91;
-import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart'
+import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_order_use_case.dart'
     as _i92;
+import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart'
+    as _i93;
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart'
-    as _i94;
+    as _i95;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/data/data_source/create_organization_data_source.dart'
     as _i49;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/data/data_source/impl/create_organization_data_source_impl.dart'
@@ -158,9 +158,9 @@ import 'package:neobis_smart_tailor/features/organization/presentation/pages/cre
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/domain/repository/create_organization_repo.dart'
     as _i57;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/domain/use_case/create_organization_use_case.dart'
-    as _i93;
+    as _i94;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/presentation/create_organization_bloc/create_organization_bloc.dart'
-    as _i103;
+    as _i104;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/data/converter/organization_info_converter.dart'
     as _i17;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/data/data_source/impl/organization_data_source_impl.dart'
@@ -170,15 +170,15 @@ import 'package:neobis_smart_tailor/features/organization/presentation/pages/org
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/data/models/organization_info_model/organization_info_model.dart'
     as _i15;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/data/repository/organization_repo_impl.dart'
-    as _i84;
+    as _i85;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/domain/entitys/organization_info_entity.dart'
     as _i16;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/domain/repository/organization_repo.dart'
-    as _i83;
+    as _i84;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/domain/use_case/get_profile_use_case.dart'
-    as _i85;
+    as _i86;
 import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/presentation/bloc/organization_bloc.dart'
-    as _i97;
+    as _i98;
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart'
     as _i37;
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source_impl/profile_data_source_impl.dart'
@@ -192,11 +192,13 @@ import 'package:neobis_smart_tailor/features/profile/domain/use_case/edit_profil
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_profile_info_use_case.dart'
     as _i80;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/send_subscription_use_case.dart'
-    as _i82;
-import 'package:neobis_smart_tailor/features/profile/domain/use_case/sign_out_use_case.dart'
     as _i81;
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/sign_out_use_case.dart'
+    as _i82;
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/upload_image_use_case.dart'
+    as _i83;
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart'
-    as _i100;
+    as _i102;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/impl/registration_data_source_impl.dart'
     as _i36;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/registration_data_source.dart'
@@ -208,8 +210,8 @@ import 'package:neobis_smart_tailor/features/registration/domain/repository/regi
 import 'package:neobis_smart_tailor/features/registration/domain/useCase/registration_use_case.dart'
     as _i69;
 import 'package:neobis_smart_tailor/features/registration/presentation/bloc/registration_bloc.dart'
-    as _i86;
-import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i106;
+    as _i87;
+import 'package:neobis_smart_tailor/injection/injection_module.dart' as _i107;
 import 'package:shared_preferences/shared_preferences.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -339,75 +341,78 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i79.EditProfileInfoUseCase(repo: gh<_i45.ProfileRepo>()));
     gh.singleton<_i80.GetProfileInfoUseCase>(
         () => _i80.GetProfileInfoUseCase(repo: gh<_i45.ProfileRepo>()));
-    gh.singleton<_i81.SignOutUseCase>(
-        () => _i81.SignOutUseCase(repo: gh<_i45.ProfileRepo>()));
-    gh.singleton<_i82.SendSubscriptionUseCase>(
-        () => _i82.SendSubscriptionUseCase(repo: gh<_i45.ProfileRepo>()));
-    gh.factory<_i83.OrganizationRepo>(() => _i84.OrganizationRepoImpl(
+    gh.singleton<_i81.SendSubscriptionUseCase>(
+        () => _i81.SendSubscriptionUseCase(repo: gh<_i45.ProfileRepo>()));
+    gh.singleton<_i82.SignOutUseCase>(
+        () => _i82.SignOutUseCase(repo: gh<_i45.ProfileRepo>()));
+    gh.singleton<_i83.UploadImageUseCase>(
+        () => _i83.UploadImageUseCase(repo: gh<_i45.ProfileRepo>()));
+    gh.factory<_i84.OrganizationRepo>(() => _i85.OrganizationRepoImpl(
           gh<_i43.OrganizationDataSource>(),
           gh<
               _i8.Converter<_i15.OrganizationInfoModel,
                   _i16.OrganizationInfoEntity>>(),
         ));
-    gh.singleton<_i85.GetProfileUseCase>(
-        () => _i85.GetProfileUseCase(repo: gh<_i83.OrganizationRepo>()));
-    gh.factory<_i86.RegistrationBloc>(() => _i86.RegistrationBloc(
+    gh.singleton<_i86.GetProfileUseCase>(
+        () => _i86.GetProfileUseCase(repo: gh<_i84.OrganizationRepo>()));
+    gh.factory<_i87.RegistrationBloc>(() => _i87.RegistrationBloc(
         registrationUseCase: gh<_i69.RegistrationUseCase>()));
-    gh.singleton<_i87.ConfirmationUseCase>(
-        () => _i87.ConfirmationUseCase(repo: gh<_i72.ConfirmationRepo>()));
-    gh.singleton<_i88.ResendPinUseCase>(
-        () => _i88.ResendPinUseCase(repo: gh<_i72.ConfirmationRepo>()));
-    gh.singleton<_i89.MarketplaceBloc>(() => _i89.MarketplaceBloc(
+    gh.singleton<_i88.ConfirmationUseCase>(
+        () => _i88.ConfirmationUseCase(repo: gh<_i72.ConfirmationRepo>()));
+    gh.singleton<_i89.ResendPinUseCase>(
+        () => _i89.ResendPinUseCase(repo: gh<_i72.ConfirmationRepo>()));
+    gh.singleton<_i90.MarketplaceBloc>(() => _i90.MarketplaceBloc(
           gh<_i76.GetEuipmentsUseCase>(),
           gh<_i77.GetOrdersUseCase>(),
           gh<_i78.GetServicesUseCase>(),
         ));
-    gh.singleton<_i90.CreateEquipmentUseCase>(
-        () => _i90.CreateEquipmentUseCase(repo: gh<_i59.OrderPlaceRepo>()));
-    gh.singleton<_i91.CreateOrderUseCase>(
-        () => _i91.CreateOrderUseCase(repo: gh<_i59.OrderPlaceRepo>()));
-    gh.singleton<_i92.CreateServiceUseCase>(
-        () => _i92.CreateServiceUseCase(repo: gh<_i59.OrderPlaceRepo>()));
-    gh.singleton<_i93.CreateOrganizationUseCase>(() =>
-        _i93.CreateOrganizationUseCase(
+    gh.singleton<_i91.CreateEquipmentUseCase>(
+        () => _i91.CreateEquipmentUseCase(repo: gh<_i59.OrderPlaceRepo>()));
+    gh.singleton<_i92.CreateOrderUseCase>(
+        () => _i92.CreateOrderUseCase(repo: gh<_i59.OrderPlaceRepo>()));
+    gh.singleton<_i93.CreateServiceUseCase>(
+        () => _i93.CreateServiceUseCase(repo: gh<_i59.OrderPlaceRepo>()));
+    gh.singleton<_i94.CreateOrganizationUseCase>(() =>
+        _i94.CreateOrganizationUseCase(
             repo: gh<_i57.CreateOrganizationRepo>()));
-    gh.singleton<_i94.OrderPlaceBloc>(() => _i94.OrderPlaceBloc(
-          gh<_i90.CreateEquipmentUseCase>(),
-          gh<_i92.CreateServiceUseCase>(),
-          gh<_i91.CreateOrderUseCase>(),
+    gh.singleton<_i95.OrderPlaceBloc>(() => _i95.OrderPlaceBloc(
+          gh<_i91.CreateEquipmentUseCase>(),
+          gh<_i93.CreateServiceUseCase>(),
+          gh<_i92.CreateOrderUseCase>(),
         ));
-    gh.factory<_i95.ServiceDetailRepo>(() => _i96.ServiceDetailRepoImpl(
+    gh.factory<_i96.ServiceDetailRepo>(() => _i97.ServiceDetailRepoImpl(
           gh<_i61.ServiceDetailDataSource>(),
           gh<_i8.Converter<_i9.ServiceDetailModel, _i10.ServiceDetailEntity>>(),
         ));
-    gh.singleton<_i97.OrganizationBloc>(
-        () => _i97.OrganizationBloc(gh<_i85.GetProfileUseCase>()));
-    gh.singleton<_i98.BuyEquipmentIdUseCase>(
-        () => _i98.BuyEquipmentIdUseCase(repo: gh<_i70.EquipmentDetailRepo>()));
-    gh.singleton<_i99.GetEuipmentByIdUseCase>(() =>
-        _i99.GetEuipmentByIdUseCase(repo: gh<_i70.EquipmentDetailRepo>()));
-    gh.factory<_i100.ProfileBloc>(() => _i100.ProfileBloc(
-          sendSubscriptionUseCase: gh<_i82.SendSubscriptionUseCase>(),
-          signOutUseCase: gh<_i81.SignOutUseCase>(),
+    gh.singleton<_i98.OrganizationBloc>(
+        () => _i98.OrganizationBloc(gh<_i86.GetProfileUseCase>()));
+    gh.singleton<_i99.BuyEquipmentIdUseCase>(
+        () => _i99.BuyEquipmentIdUseCase(repo: gh<_i70.EquipmentDetailRepo>()));
+    gh.singleton<_i100.GetEuipmentByIdUseCase>(() =>
+        _i100.GetEuipmentByIdUseCase(repo: gh<_i70.EquipmentDetailRepo>()));
+    gh.singleton<_i101.ConfirmationBloc>(() => _i101.ConfirmationBloc(
+          gh<_i88.ConfirmationUseCase>(),
+          gh<_i89.ResendPinUseCase>(),
+        ));
+    gh.factory<_i102.ProfileBloc>(() => _i102.ProfileBloc(
+          sendSubscriptionUseCase: gh<_i81.SendSubscriptionUseCase>(),
+          signOutUseCase: gh<_i82.SignOutUseCase>(),
           getProfileInfoUseCase: gh<_i80.GetProfileInfoUseCase>(),
           editProfileInfoUseCase: gh<_i79.EditProfileInfoUseCase>(),
+          uploadImageUseCase: gh<_i83.UploadImageUseCase>(),
         ));
-    gh.singleton<_i101.ConfirmationBloc>(() => _i101.ConfirmationBloc(
-          gh<_i87.ConfirmationUseCase>(),
-          gh<_i88.ResendPinUseCase>(),
+    gh.singleton<_i103.GetServiceByIdUseCase>(
+        () => _i103.GetServiceByIdUseCase(repo: gh<_i96.ServiceDetailRepo>()));
+    gh.singleton<_i104.CreateOrganizationBloc>(() =>
+        _i104.CreateOrganizationBloc(gh<_i94.CreateOrganizationUseCase>()));
+    gh.singleton<_i105.EquipmentDetailBloc>(() => _i105.EquipmentDetailBloc(
+          gh<_i100.GetEuipmentByIdUseCase>(),
+          gh<_i99.BuyEquipmentIdUseCase>(),
         ));
-    gh.singleton<_i102.GetServiceByIdUseCase>(
-        () => _i102.GetServiceByIdUseCase(repo: gh<_i95.ServiceDetailRepo>()));
-    gh.singleton<_i103.CreateOrganizationBloc>(() =>
-        _i103.CreateOrganizationBloc(gh<_i93.CreateOrganizationUseCase>()));
-    gh.singleton<_i104.EquipmentDetailBloc>(() => _i104.EquipmentDetailBloc(
-          gh<_i99.GetEuipmentByIdUseCase>(),
-          gh<_i98.BuyEquipmentIdUseCase>(),
-        ));
-    gh.singleton<_i105.ServiceDetailBloc>(
-        () => _i105.ServiceDetailBloc(gh<_i102.GetServiceByIdUseCase>()));
+    gh.singleton<_i106.ServiceDetailBloc>(
+        () => _i106.ServiceDetailBloc(gh<_i103.GetServiceByIdUseCase>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i106.RegisterModule {}
+class _$RegisterModule extends _i107.RegisterModule {}
