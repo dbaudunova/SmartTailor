@@ -254,8 +254,7 @@ class ConfirmationRoute extends PageRouteInfo<ConfirmationRouteArgs> {
 
   static const String name = 'ConfirmationRoute';
 
-  static const PageInfo<ConfirmationRouteArgs> page =
-      PageInfo<ConfirmationRouteArgs>(name);
+  static const PageInfo<ConfirmationRouteArgs> page = PageInfo<ConfirmationRouteArgs>(name);
 }
 
 class ConfirmationRouteArgs {
@@ -376,8 +375,7 @@ class EquipmentDetailRoute extends PageRouteInfo<EquipmentDetailRouteArgs> {
 
   static const String name = 'EquipmentDetailRoute';
 
-  static const PageInfo<EquipmentDetailRouteArgs> page =
-      PageInfo<EquipmentDetailRouteArgs>(name);
+  static const PageInfo<EquipmentDetailRouteArgs> page = PageInfo<EquipmentDetailRouteArgs>(name);
 }
 
 class EquipmentDetailRouteArgs {
@@ -512,8 +510,7 @@ class OrderDetailRoute extends PageRouteInfo<OrderDetailRouteArgs> {
 
   static const String name = 'OrderDetailRoute';
 
-  static const PageInfo<OrderDetailRouteArgs> page =
-      PageInfo<OrderDetailRouteArgs>(name);
+  static const PageInfo<OrderDetailRouteArgs> page = PageInfo<OrderDetailRouteArgs>(name);
 }
 
 class OrderDetailRouteArgs {
@@ -690,8 +687,7 @@ class ServiceDetailRoute extends PageRouteInfo<ServiceDetailRouteArgs> {
 
   static const String name = 'ServiceDetailRoute';
 
-  static const PageInfo<ServiceDetailRouteArgs> page =
-      PageInfo<ServiceDetailRouteArgs>(name);
+  static const PageInfo<ServiceDetailRouteArgs> page = PageInfo<ServiceDetailRouteArgs>(name);
 }
 
 class ServiceDetailRouteArgs {

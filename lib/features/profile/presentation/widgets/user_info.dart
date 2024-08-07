@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
-import 'package:neobis_smart_tailor/features/organization/presentation/pages/create_organization/presentation/create_organization_content.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/create_organization/presentation/create_organization_content.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 

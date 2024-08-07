@@ -4,8 +4,7 @@ import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/tab_bar_widget.dart';
-import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/employee_item.dart';
-import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info_row.dart';
+import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/employee_item.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
 
 @RoutePage()
