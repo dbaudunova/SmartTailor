@@ -12,7 +12,8 @@ class CreateServiceUseCase {
     required this.repo,
   });
 
-  Future<void> call({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+  Future<void> call(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     return repo.createService(orderPlaceModel: orderPlaceModel, images: images);
   }
 }

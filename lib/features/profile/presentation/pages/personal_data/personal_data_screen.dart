@@ -58,7 +58,8 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
             }
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
             child: Column(
               children: [
                 _buildUserInfo(context),
@@ -79,7 +80,9 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                         phoneNumber: _phoneNumberController.text,
                       );
                       if (_formKey.currentState!.validate()) {
-                        context.read<ProfileBloc>().add(ProfileEvent.editProfileInfo(profile));
+                        context
+                            .read<ProfileBloc>()
+                            .add(ProfileEvent.editProfileInfo(profile));
                       }
                     },
                   ),
@@ -99,13 +102,15 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
         if (state.stateStatus == const StateStatus.loading()) {
           return const Center(child: CircularProgressIndicator());
         }
-        if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
+        if (state.stateStatus ==
+            StateStatus.failure(message: '${state.stateStatus}')) {
           return AppSnackBar.show(
               context: context,
               titleText: 'Не удалось загрузить данные',
               error: true);
         }
-        if (state.stateStatus == const StateStatus.success() && !_isInitialized) {
+        if (state.stateStatus == const StateStatus.success() &&
+            !_isInitialized) {
           _surnameController.text = state.profile?.surname ?? '';
           _nameController.text = state.profile?.name ?? '';
           _fathersNameController.text = state.profile?.patronymic ?? '';
@@ -127,7 +132,8 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
       if (state.stateStatus == const StateStatus.loading()) {
         return const Center(child: CircularProgressIndicator());
       }
-      if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
+      if (state.stateStatus ==
+          StateStatus.failure(message: '${state.stateStatus}')) {
         return AppSnackBar.show(
             context: context,
             titleText: 'Не удалось загрузить данные',

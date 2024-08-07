@@ -1,7 +1,7 @@
-import 'package:neobis_smart_tailor/features/marketplace/data/models/general_model/general_model.dart';
+import 'package:neobis_smart_tailor/features/marketplace/data/models/general_responce/general_responce.dart';
 
 abstract class MarketplaceDataSource {
-  Future<List<GeneralOrderModel>> getEquipments({required int pageNumber});
-  Future<List<GeneralOrderModel>> getOrders({required int pageNumber});
-  Future<List<GeneralOrderModel>> getServices({required int pageNumber});
+  Future<GeneralResponceModel> getEquipments({required int pageNumber});
+  Future<GeneralResponceModel> getOrders({required int pageNumber});
+  Future<GeneralResponceModel> getServices({required int pageNumber});
 }

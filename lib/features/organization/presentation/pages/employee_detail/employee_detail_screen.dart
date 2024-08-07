@@ -120,8 +120,7 @@ class _EmployeeDetailScreenState extends State<EmployeeDetailScreen> {
                 builder: (context) {
                   return ExitAlert(
                     confirmButton: () {
-                      AutoRouter.of(context)
-                          .push(const OrganizationInfoRoute());
+                      AutoRouter.of(context).push(const OrganizationRoute());
                     },
                     cancelButton: () {
                       AutoRouter.of(context).maybePop();

@@ -7,7 +7,8 @@ class DatePickerWidget extends StatefulWidget {
   final Function(DateTime) onDateSelected;
   final TextEditingController dateController;
 
-  const DatePickerWidget({required this.onDateSelected, required this.dateController, super.key});
+  const DatePickerWidget(
+      {required this.onDateSelected, required this.dateController, super.key});
 
   @override
   _DatePickerWidgetState createState() => _DatePickerWidgetState();

@@ -6,6 +6,7 @@ import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/edit_profile_info_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_profile_info_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/send_subscription_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/sign_out_use_case.dart';
 
 part 'profile_event.dart';
@@ -19,8 +20,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final SignOutUseCase signOutUseCase;
   final GetProfileInfoUseCase getProfileInfoUseCase;
   final EditProfileInfoUseCase editProfileInfoUseCase;
+  final SendSubscriptionUseCase sendSubscriptionUseCase;
 
   ProfileBloc({
+    required this.sendSubscriptionUseCase,
     required this.signOutUseCase,
     required this.getProfileInfoUseCase,
     required this.editProfileInfoUseCase,
@@ -32,6 +35,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<_SignOut>(_signOut);
     on<_GetProfileInfo>(_getProfileInfo);
     on<_EditProfileInfo>(_editProfileInfo);
+    on<_SendSubscription>(_sendSubscription);
+  }
+
+  Future<void> _sendSubscription(
+    _SendSubscription event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+    try {
+      await sendSubscriptionUseCase.call(null);
+
+      emit(state.copyWith(stateStatus: const StateStatus.success()));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(
+          stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
   }
 
   Future<void> _signOut(
@@ -59,6 +79,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final profileEntity = await getProfileInfoUseCase.call(null);
+      print("ПОДПИСКА :  ${profileEntity.hasSubscription}");
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
         profile: profileEntity,
@@ -76,7 +97,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       _EditProfileInfo event, Emitter<ProfileState> emit) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
-      final updatedProfile = await editProfileInfoUseCase.call(event.profileEntity);
+      final updatedProfile =
+          await editProfileInfoUseCase.call(event.profileEntity);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
         isProfileLoaded: true,

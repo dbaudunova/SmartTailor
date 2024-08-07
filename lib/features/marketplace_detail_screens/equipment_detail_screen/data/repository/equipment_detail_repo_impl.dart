@@ -9,7 +9,8 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipmen
 @Injectable(as: EquipmentDetailRepo)
 class EquipmentDetailRepoImpl extends EquipmentDetailRepo {
   final EquipmentDetailDataSource _dataSource;
-  final Converter<EquipmentDetailModel, EquipmentDetailEntity> _equipmentDetailConverter;
+  final Converter<EquipmentDetailModel, EquipmentDetailEntity>
+      _equipmentDetailConverter;
 
   EquipmentDetailRepoImpl(
     this._dataSource,

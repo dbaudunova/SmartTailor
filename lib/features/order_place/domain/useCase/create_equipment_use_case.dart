@@ -12,7 +12,9 @@ class CreateEquipmentUseCase {
     required this.repo,
   });
 
-  Future<void> call({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
-    return repo.createEquipment(orderPlaceModel: orderPlaceModel, images: images);
+  Future<void> call(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+    return repo.createEquipment(
+        orderPlaceModel: orderPlaceModel, images: images);
   }
 }

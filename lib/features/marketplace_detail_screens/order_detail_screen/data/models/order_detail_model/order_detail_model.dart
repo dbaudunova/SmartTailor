@@ -34,5 +34,6 @@ class OrderDetailModel with _$OrderDetailModel {
     );
   }
 
-  factory OrderDetailModel.fromJson(Map<String, dynamic> json) => _$OrderDetailModelFromJson(json);
+  factory OrderDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$OrderDetailModelFromJson(json);
 }

@@ -25,7 +25,8 @@ class RegistrationDataSourceImpl implements RegistrationDataSource {
       if (response.statusCode != 201) {
         throw Failure.request(
           status: response.statusCode,
-          message: 'Регистрация не удалась, код статуса: ${response.statusCode}',
+          message:
+              'Регистрация не удалась, код статуса: ${response.statusCode}',
         );
       }
     } on DioException catch (e) {

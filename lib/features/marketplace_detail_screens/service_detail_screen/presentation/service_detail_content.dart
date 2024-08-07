@@ -35,7 +35,8 @@ class _ServiceDateilContentState extends State<ServiceDateilContent> {
         var service = state.service;
         return Scaffold(
           // floatingActionButton: _buildButtons(),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
           appBar: AppBarStyle(title: t.service, centerTitle: true),
           body: SingleChildScrollView(
             child: Column(
@@ -73,7 +74,8 @@ class _ServiceDateilContentState extends State<ServiceDateilContent> {
                               const SizedBox(height: 24),
                               Divider(
                                 height: 0.33,
-                                color: AppColors.buttonUnavailableBack.withOpacity(0.6),
+                                color: AppColors.buttonUnavailableBack
+                                    .withOpacity(0.6),
                               ),
                               const SizedBox(height: 20),
                               // Container(child: widget.sizeWidget),
@@ -146,7 +148,8 @@ class _ServiceDateilContentState extends State<ServiceDateilContent> {
           children: [
             Text(
               'Профессиональные\nспицы для вязания',
-              style: AppTextStyle.textField16.copyWith(fontWeight: FontWeight.w500),
+              style: AppTextStyle.textField16
+                  .copyWith(fontWeight: FontWeight.w500),
             ),
             const Text(
               '1000 сом',

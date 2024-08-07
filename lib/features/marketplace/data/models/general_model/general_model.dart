@@ -30,5 +30,6 @@ class GeneralOrderModel with _$GeneralOrderModel {
     );
   }
 
-  factory GeneralOrderModel.fromJson(Map<String, dynamic> json) => _$GeneralOrderModelFromJson(json);
+  factory GeneralOrderModel.fromJson(Map<String, dynamic> json) =>
+      _$GeneralOrderModelFromJson(json);
 }

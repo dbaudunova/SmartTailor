@@ -14,7 +14,8 @@ class AnnouncementDetailScreen extends StatefulWidget {
   const AnnouncementDetailScreen({super.key});
 
   @override
-  State<AnnouncementDetailScreen> createState() => _AnnouncementDetailScreenState();
+  State<AnnouncementDetailScreen> createState() =>
+      _AnnouncementDetailScreenState();
 }
 
 class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
@@ -44,7 +45,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 80, left: 16, right: 16, top: 24),
+                    padding: const EdgeInsets.only(
+                        bottom: 80, left: 16, right: 16, top: 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -121,7 +123,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                       backgroundColor: Colors.white,
                       strokeColor: AppColors.greyText,
                       onPressed: () {
-                        AutoRouter.of(context).push(const MyAnnouncementsRoute());
+                        AutoRouter.of(context)
+                            .push(const MyAnnouncementsRoute());
                       },
                       text: 'Скрыть объявление',
                     ),
@@ -134,7 +137,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                             builder: (context) {
                               return ExitAlert(
                                 confirmButton: () {
-                                  AutoRouter.of(context).push(const MyAnnouncementsRoute());
+                                  AutoRouter.of(context)
+                                      .push(const MyAnnouncementsRoute());
                                 },
                                 cancelButton: () {
                                   AutoRouter.of(context).maybePop();
@@ -194,7 +198,9 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+            isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),

@@ -6,7 +6,11 @@ class GalleryWidget extends StatefulWidget {
   final String? date;
 
   final List<String>? images;
-  const GalleryWidget({this.images, super.key, this.date});
+  const GalleryWidget({
+    super.key,
+    this.images = const ['asdasd', 'sadas'],
+    this.date,
+  });
 
   @override
   _GalleryWidgetState createState() => _GalleryWidgetState();
@@ -31,7 +35,9 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: CachedNetworkImageProvider(widget.images![_selectedIndex]),
+                          image: CachedNetworkImageProvider(
+                            widget.images![_selectedIndex],
+                          ),
                         ),
                       ),
                     ),
@@ -64,15 +70,11 @@ class _GalleryWidgetState extends State<GalleryWidget> {
             decoration: BoxDecoration(
               border: _selectedIndex == index ? Border.all(width: 2, color: AppColors.yellow) : null,
               borderRadius: BorderRadius.circular(10),
-              // image: DecorationImage(
-              //     fit: BoxFit.cover,
-              //     image: NetworkImage(
-              //       widget.images![index],
-              //     )),
-            ),
-            child: CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl: widget.images![index],
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: CachedNetworkImageProvider(
+                    widget.images![index],
+                  )),
             ),
           ),
         );

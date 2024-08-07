@@ -22,7 +22,8 @@ class DetailInfoWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 name,
-                style: AppTextStyle.textField16.copyWith(fontWeight: FontWeight.w500),
+                style: AppTextStyle.textField16
+                    .copyWith(fontWeight: FontWeight.w500),
               ),
             ),
             Text(

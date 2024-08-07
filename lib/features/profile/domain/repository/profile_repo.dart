@@ -4,4 +4,5 @@ abstract class ProfileRepo {
   Future<void> signOut();
   Future<ProfileEntity> getProfileInfo();
   Future<ProfileEntity> editProfileInfo(ProfileEntity params);
+  Future<void> sendSubscription();
 }

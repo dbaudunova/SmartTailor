@@ -20,11 +20,14 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
   OrderPlaceDataSourceImpl(this._client, this.service);
 
   @override
-  Future<void> createOrder({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+  Future<void> createOrder(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     var jsonString = json.encode(orderPlaceModel!.toJson());
     print(jsonString);
     var imagesList = [
-      for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
+      for (var file in images!)
+        await MultipartFile.fromFile(file.path,
+            filename: file.path.split('/').last)
     ];
     final formData = FormData.fromMap({
       'order': jsonString,
@@ -55,11 +58,14 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
   }
 
   @override
-  Future<void> createEquipment({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+  Future<void> createEquipment(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     var jsonString = json.encode(orderPlaceModel!.toJson());
     print(jsonString);
     var imagesList = [
-      for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
+      for (var file in images!)
+        await MultipartFile.fromFile(file.path,
+            filename: file.path.split('/').last)
     ];
     final formData = FormData.fromMap({
       'images': imagesList,
@@ -77,7 +83,8 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
         // ignore: only_throw_errors
         throw Failure.request(
           status: response.statusCode,
-          message: 'Equipment creation failed, status code: ${response.statusCode}',
+          message:
+              'Equipment creation failed, status code: ${response.statusCode}',
         );
       }
     } on DioException catch (e) {
@@ -90,11 +97,14 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
   }
 
   @override
-  Future<void> createService({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+  Future<void> createService(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     var jsonString = json.encode(orderPlaceModel!.toJson());
     print(jsonString);
     var imagesList = [
-      for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
+      for (var file in images!)
+        await MultipartFile.fromFile(file.path,
+            filename: file.path.split('/').last)
     ];
     final formData = FormData.fromMap({
       'service': jsonString,
@@ -112,7 +122,8 @@ class OrderPlaceDataSourceImpl implements OrderPlaceDataSource {
         // ignore: only_throw_errors
         throw Failure.request(
           status: response.statusCode,
-          message: 'Equipment creation failed, status code: ${response.statusCode}',
+          message:
+              'Equipment creation failed, status code: ${response.statusCode}',
         );
       }
     } on DioException catch (e) {

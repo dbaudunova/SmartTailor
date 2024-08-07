@@ -1034,9 +1034,15 @@ mixin _$MarketplaceState {
   List<GeneralEntity> get equipments => throw _privateConstructorUsedError;
   List<GeneralEntity> get orders => throw _privateConstructorUsedError;
   List<GeneralEntity> get services => throw _privateConstructorUsedError;
+  bool? get lastForOrders => throw _privateConstructorUsedError;
+  bool? get lastForServices => throw _privateConstructorUsedError;
+  bool? get lastForEquipment => throw _privateConstructorUsedError;
   int get ordersPageNumber => throw _privateConstructorUsedError;
   int get equipmentsPageNumber => throw _privateConstructorUsedError;
   int get servicesPageNumber => throw _privateConstructorUsedError;
+  int get ordersTotalCount => throw _privateConstructorUsedError;
+  int get equipmentTotalCount => throw _privateConstructorUsedError;
+  int get servicesTotalCount => throw _privateConstructorUsedError;
   bool get isLoadingMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1055,9 +1061,15 @@ abstract class $MarketplaceStateCopyWith<$Res> {
       List<GeneralEntity> equipments,
       List<GeneralEntity> orders,
       List<GeneralEntity> services,
+      bool? lastForOrders,
+      bool? lastForServices,
+      bool? lastForEquipment,
       int ordersPageNumber,
       int equipmentsPageNumber,
       int servicesPageNumber,
+      int ordersTotalCount,
+      int equipmentTotalCount,
+      int servicesTotalCount,
       bool isLoadingMore});
 
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -1080,9 +1092,15 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
     Object? equipments = null,
     Object? orders = null,
     Object? services = null,
+    Object? lastForOrders = freezed,
+    Object? lastForServices = freezed,
+    Object? lastForEquipment = freezed,
     Object? ordersPageNumber = null,
     Object? equipmentsPageNumber = null,
     Object? servicesPageNumber = null,
+    Object? ordersTotalCount = null,
+    Object? equipmentTotalCount = null,
+    Object? servicesTotalCount = null,
     Object? isLoadingMore = null,
   }) {
     return _then(_value.copyWith(
@@ -1102,6 +1120,18 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
           ? _value.services
           : services // ignore: cast_nullable_to_non_nullable
               as List<GeneralEntity>,
+      lastForOrders: freezed == lastForOrders
+          ? _value.lastForOrders
+          : lastForOrders // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForServices: freezed == lastForServices
+          ? _value.lastForServices
+          : lastForServices // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForEquipment: freezed == lastForEquipment
+          ? _value.lastForEquipment
+          : lastForEquipment // ignore: cast_nullable_to_non_nullable
+              as bool?,
       ordersPageNumber: null == ordersPageNumber
           ? _value.ordersPageNumber
           : ordersPageNumber // ignore: cast_nullable_to_non_nullable
@@ -1113,6 +1143,18 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
       servicesPageNumber: null == servicesPageNumber
           ? _value.servicesPageNumber
           : servicesPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      ordersTotalCount: null == ordersTotalCount
+          ? _value.ordersTotalCount
+          : ordersTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentTotalCount: null == equipmentTotalCount
+          ? _value.equipmentTotalCount
+          : equipmentTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesTotalCount: null == servicesTotalCount
+          ? _value.servicesTotalCount
+          : servicesTotalCount // ignore: cast_nullable_to_non_nullable
               as int,
       isLoadingMore: null == isLoadingMore
           ? _value.isLoadingMore
@@ -1143,9 +1185,15 @@ abstract class _$$MarketplaceStateImplCopyWith<$Res>
       List<GeneralEntity> equipments,
       List<GeneralEntity> orders,
       List<GeneralEntity> services,
+      bool? lastForOrders,
+      bool? lastForServices,
+      bool? lastForEquipment,
       int ordersPageNumber,
       int equipmentsPageNumber,
       int servicesPageNumber,
+      int ordersTotalCount,
+      int equipmentTotalCount,
+      int servicesTotalCount,
       bool isLoadingMore});
 
   @override
@@ -1167,9 +1215,15 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
     Object? equipments = null,
     Object? orders = null,
     Object? services = null,
+    Object? lastForOrders = freezed,
+    Object? lastForServices = freezed,
+    Object? lastForEquipment = freezed,
     Object? ordersPageNumber = null,
     Object? equipmentsPageNumber = null,
     Object? servicesPageNumber = null,
+    Object? ordersTotalCount = null,
+    Object? equipmentTotalCount = null,
+    Object? servicesTotalCount = null,
     Object? isLoadingMore = null,
   }) {
     return _then(_$MarketplaceStateImpl(
@@ -1189,6 +1243,18 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
               as List<GeneralEntity>,
+      lastForOrders: freezed == lastForOrders
+          ? _value.lastForOrders
+          : lastForOrders // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForServices: freezed == lastForServices
+          ? _value.lastForServices
+          : lastForServices // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForEquipment: freezed == lastForEquipment
+          ? _value.lastForEquipment
+          : lastForEquipment // ignore: cast_nullable_to_non_nullable
+              as bool?,
       ordersPageNumber: null == ordersPageNumber
           ? _value.ordersPageNumber
           : ordersPageNumber // ignore: cast_nullable_to_non_nullable
@@ -1200,6 +1266,18 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
       servicesPageNumber: null == servicesPageNumber
           ? _value.servicesPageNumber
           : servicesPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      ordersTotalCount: null == ordersTotalCount
+          ? _value.ordersTotalCount
+          : ordersTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentTotalCount: null == equipmentTotalCount
+          ? _value.equipmentTotalCount
+          : equipmentTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesTotalCount: null == servicesTotalCount
+          ? _value.servicesTotalCount
+          : servicesTotalCount // ignore: cast_nullable_to_non_nullable
               as int,
       isLoadingMore: null == isLoadingMore
           ? _value.isLoadingMore
@@ -1217,9 +1295,15 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
       required final List<GeneralEntity> equipments,
       required final List<GeneralEntity> orders,
       required final List<GeneralEntity> services,
+      required this.lastForOrders,
+      required this.lastForServices,
+      required this.lastForEquipment,
       required this.ordersPageNumber,
       required this.equipmentsPageNumber,
       required this.servicesPageNumber,
+      required this.ordersTotalCount,
+      required this.equipmentTotalCount,
+      required this.servicesTotalCount,
       required this.isLoadingMore})
       : _equipments = equipments,
         _orders = orders,
@@ -1252,17 +1336,29 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
   }
 
   @override
+  final bool? lastForOrders;
+  @override
+  final bool? lastForServices;
+  @override
+  final bool? lastForEquipment;
+  @override
   final int ordersPageNumber;
   @override
   final int equipmentsPageNumber;
   @override
   final int servicesPageNumber;
   @override
+  final int ordersTotalCount;
+  @override
+  final int equipmentTotalCount;
+  @override
+  final int servicesTotalCount;
+  @override
   final bool isLoadingMore;
 
   @override
   String toString() {
-    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, isLoadingMore: $isLoadingMore)';
+    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore)';
   }
 
   @override
@@ -1276,12 +1372,24 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
                 .equals(other._equipments, _equipments) &&
             const DeepCollectionEquality().equals(other._orders, _orders) &&
             const DeepCollectionEquality().equals(other._services, _services) &&
+            (identical(other.lastForOrders, lastForOrders) ||
+                other.lastForOrders == lastForOrders) &&
+            (identical(other.lastForServices, lastForServices) ||
+                other.lastForServices == lastForServices) &&
+            (identical(other.lastForEquipment, lastForEquipment) ||
+                other.lastForEquipment == lastForEquipment) &&
             (identical(other.ordersPageNumber, ordersPageNumber) ||
                 other.ordersPageNumber == ordersPageNumber) &&
             (identical(other.equipmentsPageNumber, equipmentsPageNumber) ||
                 other.equipmentsPageNumber == equipmentsPageNumber) &&
             (identical(other.servicesPageNumber, servicesPageNumber) ||
                 other.servicesPageNumber == servicesPageNumber) &&
+            (identical(other.ordersTotalCount, ordersTotalCount) ||
+                other.ordersTotalCount == ordersTotalCount) &&
+            (identical(other.equipmentTotalCount, equipmentTotalCount) ||
+                other.equipmentTotalCount == equipmentTotalCount) &&
+            (identical(other.servicesTotalCount, servicesTotalCount) ||
+                other.servicesTotalCount == servicesTotalCount) &&
             (identical(other.isLoadingMore, isLoadingMore) ||
                 other.isLoadingMore == isLoadingMore));
   }
@@ -1293,9 +1401,15 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
       const DeepCollectionEquality().hash(_equipments),
       const DeepCollectionEquality().hash(_orders),
       const DeepCollectionEquality().hash(_services),
+      lastForOrders,
+      lastForServices,
+      lastForEquipment,
       ordersPageNumber,
       equipmentsPageNumber,
       servicesPageNumber,
+      ordersTotalCount,
+      equipmentTotalCount,
+      servicesTotalCount,
       isLoadingMore);
 
   @JsonKey(ignore: true)
@@ -1312,9 +1426,15 @@ abstract class _MarketplaceState implements MarketplaceState {
       required final List<GeneralEntity> equipments,
       required final List<GeneralEntity> orders,
       required final List<GeneralEntity> services,
+      required final bool? lastForOrders,
+      required final bool? lastForServices,
+      required final bool? lastForEquipment,
       required final int ordersPageNumber,
       required final int equipmentsPageNumber,
       required final int servicesPageNumber,
+      required final int ordersTotalCount,
+      required final int equipmentTotalCount,
+      required final int servicesTotalCount,
       required final bool isLoadingMore}) = _$MarketplaceStateImpl;
 
   @override
@@ -1326,11 +1446,23 @@ abstract class _MarketplaceState implements MarketplaceState {
   @override
   List<GeneralEntity> get services;
   @override
+  bool? get lastForOrders;
+  @override
+  bool? get lastForServices;
+  @override
+  bool? get lastForEquipment;
+  @override
   int get ordersPageNumber;
   @override
   int get equipmentsPageNumber;
   @override
   int get servicesPageNumber;
+  @override
+  int get ordersTotalCount;
+  @override
+  int get equipmentTotalCount;
+  @override
+  int get servicesTotalCount;
   @override
   bool get isLoadingMore;
   @override

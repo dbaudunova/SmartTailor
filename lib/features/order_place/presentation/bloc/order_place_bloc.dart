@@ -88,52 +88,22 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
         default:
           throw UnimplementedError('Unknown order type: $type');
       }
-      emit(state.copyWith(stateStatus: const StateStatus.success('Успешно создано')));
+      emit(state.copyWith(
+          stateStatus: const StateStatus.success('Успешно создано')));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(
+          stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
-
-  // Future<void> _createOrder(
-  //   _CreateOrder event,
-  //   Emitter<OrderPlaceState> emit,
-  // ) async {
-  //   emit(state.copyWith(stateStatus: const StateStatus.loading()));
-  //   var model = event.orderPlaceModel.copyWith(
-  //     items: state.orderPlaceModel.items,
-  //   );
-  //   var type = event.orderType;
-  //   try {
-  //     if (type == OrderType.order.name) {
-  //       await createOrderUseCase.call(
-  //         orderPlaceModel: model,
-  //         images: state.images,
-  //       );
-  //     } else if (type == OrderType.services.name) {
-  //       await createServiceUseCase.call(
-  //         orderPlaceModel: model,
-  //         images: state.images,
-  //       );
-  //     } else {
-  //       await createEquipmentUseCase.call(
-  //         orderPlaceModel: model,
-  //         images: state.images,
-  //       );
-  //     }
-  //     emit(state.copyWith(stateStatus: const StateStatus.success('Успешно создано')));
-  //   } catch (e) {
-  //     final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-  //     emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
-  //   }
-  // }
 
   void _addDate(
     _AddDate event,
     Emitter<OrderPlaceState> emit,
   ) {
     var date = DateFormat('yyyy-MM-dd').format(event.dateOfExecution);
-    final orderPlaceModel = state.orderPlaceModel.copyWith(dateOfExecution: date);
+    final orderPlaceModel =
+        state.orderPlaceModel.copyWith(dateOfExecution: date);
     emit(
       state.copyWith(
         orderPlaceModel: orderPlaceModel,
@@ -171,7 +141,8 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     final currentItems = state.orderPlaceModel.items;
-    final updatedItems = currentItems.where((item) => item != event.item).toSet();
+    final updatedItems =
+        currentItems.where((item) => item != event.item).toSet();
     final orderPlaceModel = state.orderPlaceModel.copyWith(items: updatedItems);
     emit(
       state.copyWith(
@@ -187,7 +158,9 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     final newItem = event.item;
     final existingItems = state.orderPlaceModel.items.toList();
     final itemExists = existingItems.any((item) => item.size == newItem.size);
-    final updatedItems = itemExists ? state.orderPlaceModel.items : {...state.orderPlaceModel.items, newItem};
+    final updatedItems = itemExists
+        ? state.orderPlaceModel.items
+        : {...state.orderPlaceModel.items, newItem};
     final orderPlaceModel = state.orderPlaceModel.copyWith(items: updatedItems);
     emit(
       state.copyWith(

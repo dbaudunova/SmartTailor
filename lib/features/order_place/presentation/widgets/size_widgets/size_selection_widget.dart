@@ -21,7 +21,8 @@ class SizeSelectionBottomSheet extends StatefulWidget {
   });
 
   @override
-  State<SizeSelectionBottomSheet> createState() => _SizeSelectionBottomSheetState();
+  State<SizeSelectionBottomSheet> createState() =>
+      _SizeSelectionBottomSheetState();
 }
 
 final List<String> _sizes = ['S', 'M', 'L', 'XL'];
@@ -59,7 +60,9 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
   }
 
   String _getItemsString(OrderPlaceState state) {
-    return state.orderPlaceModel.items.map((item) => '${item.size} - ${item.quantity}').join(', ');
+    return state.orderPlaceModel.items
+        .map((item) => '${item.size} - ${item.quantity}')
+        .join(', ');
   }
 
   Wrap _buildChips(OrderPlaceState state, BuildContext context) {
@@ -102,15 +105,18 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
         keyboardType: TextInputType.number,
         onChanged: (quantity) {
           var quantityInt = int.tryParse(quantity) ?? 0;
-          _bloc.add(OrderPlaceEvent.updateQuantity(item: item.copyWith(quantity: quantityInt)));
+          _bloc.add(OrderPlaceEvent.updateQuantity(
+              item: item.copyWith(quantity: quantityInt)));
         },
       ),
     );
   }
 
-  DropdownMenu<String> _buildDropDownMenu(OrderPlaceState state, BuildContext context, String itemsString) {
+  DropdownMenu<String> _buildDropDownMenu(
+      OrderPlaceState state, BuildContext context, String itemsString) {
     return DropdownMenu(
-      dropdownMenuEntries: _sizes.map<DropdownMenuEntry<String>>((String chosenText) {
+      dropdownMenuEntries:
+          _sizes.map<DropdownMenuEntry<String>>((String chosenText) {
         return DropdownMenuEntry<String>(
           value: chosenText,
           label: chosenText,
@@ -118,7 +124,9 @@ class _SizeSelectionBottomSheetState extends State<SizeSelectionBottomSheet> {
       }).toList(),
       textStyle: AppTextStyle.textField16,
       requestFocusOnTap: false,
-      label: Text(state.orderPlaceModel.items.isNotEmpty ? itemsString : 'Выберите размеры'),
+      label: Text(state.orderPlaceModel.items.isNotEmpty
+          ? itemsString
+          : 'Выберите размеры'),
       width: MediaQuery.of(context).size.width - 40,
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 20),

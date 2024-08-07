@@ -8,7 +8,7 @@ import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/mark
 import 'package:neobis_smart_tailor/injection/injection.dart';
 
 @RoutePage()
-class MarketplaceScreen extends StatelessWidget {
+class MarketplaceScreen extends StatelessWidget implements AutoRouteWrapper {
   const MarketplaceScreen({super.key});
 
   @override
@@ -40,5 +40,10 @@ class MarketplaceScreen extends StatelessWidget {
         //   AppSnackBar.show(context: context, titleText: msg, error: true);
         // },
         );
+  }
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return this;
   }
 }

@@ -35,7 +35,8 @@ class EmailInputContentState extends State<EmailInputContent> {
           resizeToAvoidBottomInset: true,
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppProps.kPageMargin).copyWith(bottom: 96),
+              padding: const EdgeInsets.all(AppProps.kPageMargin)
+                  .copyWith(bottom: 96),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -62,7 +63,8 @@ class EmailInputContentState extends State<EmailInputContent> {
             ),
           ),
           floatingActionButton: _buildButtons(),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
         );
       },
     );

@@ -16,7 +16,8 @@ class ConfirmationRepoImpl implements ConfirmationRepo {
 
   @override
   Future<void> confirmationEmail(ConfirmationModel? confirmationModel) async {
-    final result = await _dataSource.confirmation(confirmationModel: confirmationModel);
+    final result =
+        await _dataSource.confirmation(confirmationModel: confirmationModel);
 
     _authService.cachedUser = result;
   }

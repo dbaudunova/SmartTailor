@@ -29,7 +29,8 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   Future<ProfileEntity> editProfileInfo(ProfileEntity params) async {
-    final profileModel = await _dataSource.editProfileInfo(_convertEntityToModel(params));
+    final profileModel =
+        await _dataSource.editProfileInfo(_convertEntityToModel(params));
     return profileModel;
   }
 
@@ -40,5 +41,10 @@ class ProfileRepoImpl implements ProfileRepo {
       patronymic: entity.patronymic,
       phoneNumber: entity.phoneNumber,
     );
+  }
+
+  @override
+  Future<void> sendSubscription() async {
+    await _dataSource.sendSubscription();
   }
 }

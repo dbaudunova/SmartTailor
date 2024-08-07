@@ -86,7 +86,8 @@ class _ConfirmationContentState extends State<ConfirmationContent> {
                 _buildRepeatCodeButton(),
               ],
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
           );
         },
       ),
@@ -188,7 +189,9 @@ class _ConfirmationContentState extends State<ConfirmationContent> {
                   color: AppColors.white,
                   text: t.repeatSendCodeButton,
                   onTap: () {
-                    context.read<ConfirmationBloc>().add(ConfirmationEvent.resendPin(email: widget.email!));
+                    context
+                        .read<ConfirmationBloc>()
+                        .add(ConfirmationEvent.resendPin(email: widget.email!));
                     context.read<TimerBloc>().add(const TimerEvent.started());
                   },
                 ),

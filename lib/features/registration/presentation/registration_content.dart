@@ -56,7 +56,9 @@ class RegistrationContentState extends State<RegistrationContent> {
           appBar: AppBarStyle(title: t.registration),
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin).copyWith(bottom: 96),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: AppProps.kPageMargin)
+                      .copyWith(bottom: 96),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,26 +116,30 @@ class RegistrationContentState extends State<RegistrationContent> {
         TextFormFieldWidget(
           titleName: t.surname,
           controller: surnameController,
-          validator: (value) => _validateField(value, RegistrationFieldType.text),
+          validator: (value) =>
+              _validateField(value, RegistrationFieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.name,
           controller: nameController,
-          validator: (value) => _validateField(value, RegistrationFieldType.text),
+          validator: (value) =>
+              _validateField(value, RegistrationFieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.FatherName,
           controller: fatherNameController,
-          validator: (value) => _validateField(value, RegistrationFieldType.text),
+          validator: (value) =>
+              _validateField(value, RegistrationFieldType.text),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: t.email,
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
-          validator: (value) => _validateField(value, RegistrationFieldType.email),
+          validator: (value) =>
+              _validateField(value, RegistrationFieldType.email),
           // onChanged: (val) {
           //   context.read<ConfirmationBloc>().add(
           //         ConfirmationEvent.addEmail(email: val),
@@ -147,7 +153,8 @@ class RegistrationContentState extends State<RegistrationContent> {
           hintText: '+996',
           controller: phoneController,
           keyboardType: TextInputType.number,
-          validator: (value) => _validateField(value, RegistrationFieldType.phone),
+          validator: (value) =>
+              _validateField(value, RegistrationFieldType.phone),
         ),
       ],
     );

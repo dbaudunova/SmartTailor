@@ -46,50 +46,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
             .copyWith(
           top: AppProps.kSmallMargin,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildBlocBuilder(),
-            const SizedBox(height: AppProps.kTwentyMargin),
-            if (_isSubscribeContainerVisible)
-              SubscribeContainerStyle(
-                buttonTitle: 'Отправить запрос',
-                onButtonPressed: () {
-                  _buildShowDialog(context);
-                },
-              ),
-            const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(
-                context, 'Личные данные', const PersonalDataRoute()),
-            const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(
-                context, 'Мои объявления', const MyAnnouncementsRoute()),
-            const SizedBox(height: AppProps.kPageMargin),
-            _buildProfileButton(
-                context, 'Мои покупки', const MyPurchasesRoute()),
-            if (_isHistoryOfOrdersButtonVisible) ...[
-              const SizedBox(height: AppProps.kPageMargin),
-              _buildProfileButton(
-                  context, 'История заказов', const OrderHistoryRoute()),
-              const SizedBox(height: AppProps.kPageMargin),
-              _buildProfileButton(
-                  context, 'Организация', const ProfileOrganizationRoute()),
-            ],
-            const Spacer(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: ElevatedButtonWidget(
-                text: 'Выйти из профиля',
-                onTap: () {
-                  _buildExitDialog(context);
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
-          ],
+        child: BlocBuilder<ProfileBloc, ProfileState>(
+          builder: (context, state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildBlocBuilder(),
+                const SizedBox(height: AppProps.kTwentyMargin),
+                _buildSubscripe(state),
+                _buildProfileButton(
+                    context, 'Личные данные', const PersonalDataRoute()),
+                const SizedBox(height: AppProps.kPageMargin),
+                _buildProfileButton(
+                    context, 'Мои объявления', const MyAnnouncementsRoute()),
+                const SizedBox(height: AppProps.kPageMargin),
+                _buildProfileButton(
+                    context, 'Мои покупки', const MyPurchasesRoute()),
+                if (_isHistoryOfOrdersButtonVisible) ...[
+                  const SizedBox(height: AppProps.kPageMargin),
+                  _buildProfileButton(
+                      context, 'История заказов', const OrderHistoryRoute()),
+                  const SizedBox(height: AppProps.kPageMargin),
+                  _buildProfileButton(
+                      context, 'Организация', const ProfileOrganizationRoute()),
+                ],
+                const Spacer(),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButtonWidget(
+                    text: 'Выйти из профиля',
+                    onTap: () {
+                      _buildExitDialog(context);
+                    },
+                  ),
+                ),
+                const SizedBox(height: 16),
+              ],
+            );
+          },
         ),
       ),
     );
+  }
+
+  Widget _buildSubscripe(ProfileState state) {
+    print(state.profile?.hasSubscription);
+    return state.profile?.hasSubscription == null || false
+        ? Column(
+            children: [
+              SubscribeContainerStyle(
+                buttonTitle: 'Отправить запрос',
+                onButtonPressed: () {
+                  context
+                      .read<ProfileBloc>()
+                      .add(const ProfileEvent.sendSubscription());
+                  // _buildShowDialog(context);
+                },
+              ),
+              const SizedBox(height: AppProps.kPageMargin)
+            ],
+          )
+        : const SizedBox.shrink();
   }
 
   BlocBuilder<ProfileBloc, ProfileState> _buildBlocBuilder() {

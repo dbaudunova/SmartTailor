@@ -31,7 +31,8 @@ class MicrophoneHandler {
     return await speech.hasPermission;
   }
 
-  Future<void> handlePermissionResponse({required bool isPermissionGranted}) async {
+  Future<void> handlePermissionResponse(
+      {required bool isPermissionGranted}) async {
     if (isPermissionGranted) {
       Permission.microphone.request();
     } else {

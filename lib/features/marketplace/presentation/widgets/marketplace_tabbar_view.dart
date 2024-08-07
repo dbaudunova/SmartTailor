@@ -8,12 +8,13 @@ import 'package:neobis_smart_tailor/features/marketplace/presentation/bloc/marke
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/marketplace_card_widget.dart';
 
 class MarketplaceTabBarView extends StatelessWidget {
+  final int tabIndex;
+  final List<GeneralEntity> list;
   const MarketplaceTabBarView({
     required this.tabIndex,
+    required this.list,
     super.key,
   });
-
-  final int tabIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +23,32 @@ class MarketplaceTabBarView extends StatelessWidget {
         var bloc = context.read<MarketplaceBloc>();
         if (tabIndex == 0) {
           var orders = state.orders;
-          return orders.isNotEmpty ? _buildOrderList(bloc, state, orders) : _buildEmptyText();
+          return orders.isNotEmpty
+              ? _buildOrderList(bloc, state, orders)
+              : _buildEmptyText();
         } else if (tabIndex == 1) {
           var equipments = state.equipments;
-          return equipments.isNotEmpty ? _buildEquipmentList(bloc, state, equipments) : _buildEmptyText();
+          return equipments.isNotEmpty
+              ? _buildEquipmentList(bloc, state, equipments)
+              : _buildEmptyText();
         } else {
           var services = state.services;
-          return services.isNotEmpty ? _buildServicesList(bloc, state, services) : _buildEmptyText();
+          return services.isNotEmpty
+              ? _buildServicesList(bloc, state, services)
+              : _buildEmptyText();
         }
       },
     );
   }
 
   NotificationListener<ScrollNotification> _buildServicesList(
-      MarketplaceBloc bloc, MarketplaceState state, List<GeneralEntity> services) {
+      MarketplaceBloc bloc,
+      MarketplaceState state,
+      List<GeneralEntity> services) {
     return NotificationListener<ScrollNotification>(
       onNotification: (scrollNotification) {
-        if (scrollNotification is ScrollEndNotification && scrollNotification.metrics.extentAfter == 0) {
+        if (scrollNotification is ScrollEndNotification &&
+            scrollNotification.metrics.extentAfter == 0) {
           bloc.add(
             const MarketplaceEvent.loadMoreServices(),
           );
@@ -56,14 +66,14 @@ class MarketplaceTabBarView extends StatelessWidget {
           if (index < services.length) {
             return MarketplaceCard(
               onTap: () {
-                AutoRouter.of(context).push(ServiceDetailRoute(
+                context.router.push(ServiceDetailRoute(
                   id: services[index].id!,
                 ));
               },
               image: services[index].imageUrl!,
               description: services[index].description!,
               title: services[index].name!,
-              tabIndex: tabIndex,
+              // tabIndex: tabIndex,
             );
           }
           return const SizedBox.shrink();
@@ -73,10 +83,13 @@ class MarketplaceTabBarView extends StatelessWidget {
   }
 
   NotificationListener<ScrollNotification> _buildEquipmentList(
-      MarketplaceBloc bloc, MarketplaceState state, List<GeneralEntity> equipments) {
+      MarketplaceBloc bloc,
+      MarketplaceState state,
+      List<GeneralEntity> equipments) {
     return NotificationListener<ScrollNotification>(
       onNotification: (scrollNotification) {
-        if (scrollNotification is ScrollEndNotification && scrollNotification.metrics.extentAfter == 0) {
+        if (scrollNotification is ScrollEndNotification &&
+            scrollNotification.metrics.extentAfter == 0) {
           bloc.add(
             const MarketplaceEvent.loadMoreEquipments(),
           );
@@ -84,7 +97,8 @@ class MarketplaceTabBarView extends StatelessWidget {
         return false;
       },
       child: ListView.builder(
-        itemCount: state.isLoadingMore ? equipments.length + 1 : equipments.length,
+        itemCount:
+            state.isLoadingMore ? equipments.length + 1 : equipments.length,
         itemBuilder: (context, index) {
           if (index == equipments.length && state.isLoadingMore) {
             return const Center(
@@ -94,7 +108,7 @@ class MarketplaceTabBarView extends StatelessWidget {
           if (index < equipments.length) {
             return MarketplaceCard(
               onTap: () {
-                AutoRouter.of(context).push(
+                context.router.push(
                   EquipmentDetailRoute(
                     id: equipments[index].id!,
                   ),
@@ -109,7 +123,7 @@ class MarketplaceTabBarView extends StatelessWidget {
                 ),
               ),
               description: equipments[index].description!,
-              tabIndex: tabIndex,
+              // tabIndex: tabIndex,
             );
           }
           return const SizedBox.shrink();
@@ -118,11 +132,12 @@ class MarketplaceTabBarView extends StatelessWidget {
     );
   }
 
-  NotificationListener<ScrollNotification> _buildOrderList(
-      MarketplaceBloc bloc, MarketplaceState state, List<GeneralEntity> orders) {
+  NotificationListener<ScrollNotification> _buildOrderList(MarketplaceBloc bloc,
+      MarketplaceState state, List<GeneralEntity> orders) {
     return NotificationListener<ScrollNotification>(
       onNotification: (scrollNotification) {
-        if (scrollNotification is ScrollEndNotification && scrollNotification.metrics.extentAfter == 0) {
+        if (scrollNotification is ScrollEndNotification &&
+            scrollNotification.metrics.extentAfter == 0) {
           bloc.add(
             const MarketplaceEvent.loadMoreOrders(),
           );
@@ -148,7 +163,7 @@ class MarketplaceTabBarView extends StatelessWidget {
                 );
               },
               image: orders[index].imageUrl!,
-              tabIndex: tabIndex,
+              // tabIndex: tabIndex,
               description: orders[index].description!,
               title: orders[index].name!,
               data: orders[index].dateOfExecution!,

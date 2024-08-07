@@ -30,5 +30,6 @@ class EquipmentDetailModel with _$EquipmentDetailModel {
         quantity: 0);
   }
 
-  factory EquipmentDetailModel.fromJson(Map<String, dynamic> json) => _$EquipmentDetailModelFromJson(json);
+  factory EquipmentDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$EquipmentDetailModelFromJson(json);
 }

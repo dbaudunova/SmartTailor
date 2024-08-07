@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/bloc/marketplace_bloc.dart';
-import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/marketplace_tabbar_view.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/list_view_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 class MarketplaceContent extends StatefulWidget {
@@ -17,7 +18,8 @@ class MarketplaceContent extends StatefulWidget {
 
 int selectedSegment = 0;
 
-class _MarketplaceContentState extends State<MarketplaceContent> with RestorationMixin {
+class _MarketplaceContentState extends State<MarketplaceContent>
+    with RestorationMixin {
   RestorableInt currentSegment = RestorableInt(0);
   final PageController _pageController = PageController(initialPage: 0);
 
@@ -60,18 +62,66 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
               _buildNavBar(segmentedControlMaxWidth, children),
               const SizedBox(height: 16),
               Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  onPageChanged: (index) {
-                    setState(() {
-                      currentSegment.value = index;
-                    });
+                child: BlocBuilder<MarketplaceBloc, MarketplaceState>(
+                  builder: (context, state) {
+                    print(state.orders.length);
+                    return PageView(
+                      controller: _pageController,
+                      onPageChanged: (index) {
+                        setState(() {
+                          currentSegment.value = index;
+                        });
+                      },
+                      children: [
+                        ListViewWidget<MarketplaceEvent, MarketplaceState>(
+                          getList: (context) =>
+                              context.read<MarketplaceBloc>().state.orders,
+                          // list: state.orders,
+                          route: ({required int id}) =>
+                              OrderDetailRoute(id: id),
+                          isLast: state.lastForOrders,
+                          loadMoreEvent: (context) =>
+                              const MarketplaceEvent.loadMoreOrders(),
+                          loadfirstPage: (context) =>
+                              const MarketplaceEvent.getOrders(),
+                          getBloc: (context) => context.read<MarketplaceBloc>(),
+                        ),
+                        ListViewWidget<MarketplaceEvent, MarketplaceState>(
+                          getList: (context) =>
+                              context.read<MarketplaceBloc>().state.equipments,
+                          route: ({required int id}) =>
+                              EquipmentDetailRoute(id: id),
+                          isLast: state.lastForEquipment,
+                          loadMoreEvent: (context) =>
+                              const MarketplaceEvent.loadMoreEquipments(),
+                          loadfirstPage: (context) =>
+                              const MarketplaceEvent.getEquipments(),
+                          getBloc: (context) => context.read<MarketplaceBloc>(),
+                        ),
+                        ListViewWidget<MarketplaceEvent, MarketplaceState>(
+                          getList: (context) =>
+                              context.read<MarketplaceBloc>().state.services,
+                          route: ({required int id}) =>
+                              ServiceDetailRoute(id: id),
+                          isLast: state.lastForServices,
+                          loadMoreEvent: (context) =>
+                              const MarketplaceEvent.loadMoreServices(),
+                          loadfirstPage: (context) =>
+                              const MarketplaceEvent.getServices(),
+                          getBloc: (context) => context.read<MarketplaceBloc>(),
+                        ),
+                        // MarketplaceTabBarView(tabIndex: 0, list: state.orders),
+                        // MarketplaceTabBarView(
+                        //   tabIndex: 1,
+                        //   list: state.equipments,
+                        // ),
+                        // MarketplaceTabBarView(
+                        //   tabIndex: 2,
+                        //   list: state.services,
+                        // ),
+                      ],
+                    );
                   },
-                  children: const [
-                    MarketplaceTabBarView(tabIndex: 0),
-                    MarketplaceTabBarView(tabIndex: 1),
-                    MarketplaceTabBarView(tabIndex: 2),
-                  ],
                 ),
               ),
             ],

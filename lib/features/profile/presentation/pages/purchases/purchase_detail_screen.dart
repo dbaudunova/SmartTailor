@@ -46,7 +46,8 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16)
+                        .copyWith(top: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -213,7 +214,9 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+            isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),

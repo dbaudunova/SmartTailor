@@ -1,27 +1,36 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/marketplace/presentation/bloc/marketplace_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/presentation/pages/organization/presentation/bloc/organization_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/employee_item.dart';
 import 'package:neobis_smart_tailor/features/organization/presentation/widgets/organization_info/organization_info_row.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/order_container.dart';
 
-@RoutePage()
-class OrganizationInfoScreen extends StatefulWidget {
-  const OrganizationInfoScreen({super.key});
+class OrganizationContent extends StatefulWidget {
+  const OrganizationContent({super.key});
 
   @override
-  State<OrganizationInfoScreen> createState() => _OrganizationInfoScreenState();
+  State<OrganizationContent> createState() => _OrganizationContentState();
 }
 
-class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
-    with TickerProviderStateMixin, RestorationMixin {
+class _OrganizationContentState extends State<OrganizationContent> with TickerProviderStateMixin, RestorationMixin {
   RestorableInt currentSegment = RestorableInt(0);
   final PageController _pageController = PageController(initialPage: 0);
   final ScrollController _scrollController = ScrollController();
+
+  OrganizationBloc get _bloc => context.read<OrganizationBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc.add(const OrganizationEvent.getOrganization());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,33 +55,43 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
           ),
         ),
       ),
-      body: Column(
-        children: [
-          const OrganizationInfoRow(),
-          const SizedBox(height: 16),
-          _buildNavBar(segmentedControlMaxWidth, children),
-          const SizedBox(height: 16),
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  currentSegment.value = index;
-                });
-                _scrollToCurrentSegment(index);
-              },
-              children: [
-                _buildEmployeeListView(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: _buildEmployeePositionTab(),
+      body: BlocBuilder<OrganizationBloc, OrganizationState>(
+        builder: (context, state) {
+          var organizationInfo = state.organizationInfo;
+          return Column(
+            children: [
+              OrganizationInfoRow(
+                name: organizationInfo.name!,
+                description: organizationInfo.description!,
+                imageUrl: organizationInfo.imagePath!,
+                date: organizationInfo.createdAt!,
+              ),
+              const SizedBox(height: 16),
+              _buildNavBar(segmentedControlMaxWidth, children),
+              const SizedBox(height: 16),
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentSegment.value = index;
+                    });
+                    _scrollToCurrentSegment(index);
+                  },
+                  children: [
+                    _buildEmployeeListView(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _buildEmployeePositionTab(),
+                    ),
+                    _buildOrderListView(),
+                    _buildCompletedOrdersListView(),
+                  ],
                 ),
-                _buildOrderListView(),
-                _buildCompletedOrdersListView(),
-              ],
-            ),
-          ),
-        ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -207,32 +226,35 @@ class _OrganizationInfoScreenState extends State<OrganizationInfoScreen>
     );
   }
 
-  Stack _buildEmployeeListView() {
-    return Stack(
-      children: [
-        ListView.builder(
-          itemCount: 10,
-          shrinkWrap: true,
-          itemBuilder: _buildEmployeeItemBuilder,
-        ),
-        Positioned(
-          bottom: 32,
-          left: 0,
-          right: 0,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ElevatedButtonWidget(
-                text: 'Пригласить сотрудника',
-                onTap: () {
-                  AutoRouter.of(context).push(const InviteEmployeeRoute());
-                },
+  Widget _buildEmployeeListView() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Stack(
+        children: [
+          ListView.builder(
+            itemCount: 10,
+            shrinkWrap: true,
+            itemBuilder: _buildEmployeeItemBuilder,
+          ),
+          Positioned(
+            bottom: 32,
+            left: 0,
+            right: 0,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ElevatedButtonWidget(
+                  text: 'Пригласить сотрудника',
+                  onTap: () {
+                    AutoRouter.of(context).push(const InviteEmployeeRoute());
+                  },
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

@@ -62,7 +62,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   GestureDetector _buildReadAllRow() {
     return GestureDetector(
-      onTap: (){},
+      onTap: () {},
       child: Row(
         children: [
           const SizedBox(width: 28),

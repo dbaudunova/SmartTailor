@@ -114,7 +114,6 @@ Widget _buildNavItem({
       onSelectedItem(item.index);
     },
     child: Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
@@ -131,8 +130,6 @@ Widget _buildNavItem({
         Text(
           textAlign: TextAlign.center,
           item.title,
-          // maxLines: 1,
-          // overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: isActive ? selectedColor : unselectedColor,
             fontSize: AppProps.kMediumMargin,

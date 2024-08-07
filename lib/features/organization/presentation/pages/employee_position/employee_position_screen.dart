@@ -93,7 +93,8 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
                             contentText: 'Выдача прав доступа сохранена!',
                             buttonText: 'Понятно',
                             onButtonPressed: () {
-                              AutoRouter.of(context).push(const OrganizationInfoRoute());
+                              AutoRouter.of(context)
+                                  .push(const OrganizationRoute());
                             },
                           );
                         },
@@ -155,7 +156,8 @@ class _EmployeePositionScreenState extends State<EmployeePositionScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
             child: Text(
               'Выдача прав доступа',
               style: AppTextStyle.textField16.copyWith(

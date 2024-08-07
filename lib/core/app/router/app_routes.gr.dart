@@ -98,7 +98,13 @@ abstract class _$AppRouter extends RootStackRouter {
     MarketplaceRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MarketplaceScreen(),
+        child: WrappedRoute(child: const MarketplaceScreen()),
+      );
+    },
+    MarketplaceWrapperRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const MarketplaceWrapperScreen()),
       );
     },
     MyAnnouncementsRoute.name: (routeData) {
@@ -141,16 +147,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrderPlaceScreen(),
       );
     },
-    OrganizationInfoRoute.name: (routeData) {
+    OrganizationEmptyRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OrganizationInfoScreen(),
+        child: const OrganizationEmptyScreen(),
       );
     },
     OrganizationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const OrganizationScreen(),
+      );
+    },
+    OrganizationWrapperRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const OrganizationWrapperScreen()),
       );
     },
     PersonalDataRoute.name: (routeData) {
@@ -427,6 +439,20 @@ class MarketplaceRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MarketplaceWrapperScreen]
+class MarketplaceWrapperRoute extends PageRouteInfo<void> {
+  const MarketplaceWrapperRoute({List<PageRouteInfo>? children})
+      : super(
+          MarketplaceWrapperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MarketplaceWrapperRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [MyAnnouncementsScreen]
 class MyAnnouncementsRoute extends PageRouteInfo<void> {
   const MyAnnouncementsRoute({List<PageRouteInfo>? children})
@@ -535,15 +561,15 @@ class OrderPlaceRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [OrganizationInfoScreen]
-class OrganizationInfoRoute extends PageRouteInfo<void> {
-  const OrganizationInfoRoute({List<PageRouteInfo>? children})
+/// [OrganizationEmptyScreen]
+class OrganizationEmptyRoute extends PageRouteInfo<void> {
+  const OrganizationEmptyRoute({List<PageRouteInfo>? children})
       : super(
-          OrganizationInfoRoute.name,
+          OrganizationEmptyRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'OrganizationInfoRoute';
+  static const String name = 'OrganizationEmptyRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -558,6 +584,20 @@ class OrganizationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OrganizationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrganizationWrapperScreen]
+class OrganizationWrapperRoute extends PageRouteInfo<void> {
+  const OrganizationWrapperRoute({List<PageRouteInfo>? children})
+      : super(
+          OrganizationWrapperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrganizationWrapperRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

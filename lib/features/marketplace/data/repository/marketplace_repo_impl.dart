@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/marketplace/data/data_source/marketplace_data_source.dart';
 import 'package:neobis_smart_tailor/features/marketplace/data/models/general_model/general_model.dart';
+import 'package:neobis_smart_tailor/features/marketplace/data/models/general_responce/general_responce.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/general_responce_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/repository/marketplace_repo.dart';
 
 @Injectable(as: MarketplaceRepo)
@@ -12,7 +14,8 @@ class MarketplaceRepoImpl extends MarketplaceRepo {
   // final Converter<EquipmentModel, EquipmentEntity> _equipmentConverter;
   // final Converter<OrderModel, OrderEntity> _orderConverter;
   // final Converter<ServiceModel, ServiceEntity> _serviceConverter;
-  final Converter<GeneralOrderModel, GeneralEntity> _generalModelConverter;
+  final Converter<GeneralResponceModel, GeneralResponceEntity>
+      _generalModelConverter;
 
   MarketplaceRepoImpl(
     this._dataSource,
@@ -23,23 +26,23 @@ class MarketplaceRepoImpl extends MarketplaceRepo {
   );
 
   @override
-  Future<List<GeneralEntity>> getEquipments({required int pageNumber}) async {
+  Future<GeneralResponceEntity> getEquipments({required int pageNumber}) async {
     final result = await _dataSource.getEquipments(pageNumber: pageNumber);
-    final entitys = result.map((model) => _generalModelConverter.convert(model)).toList();
+    final entitys = _generalModelConverter.convert(result);
     return entitys;
   }
 
   @override
-  Future<List<GeneralEntity>> getOrders({required int pageNumber}) async {
+  Future<GeneralResponceEntity> getOrders({required int pageNumber}) async {
     final result = await _dataSource.getOrders(pageNumber: pageNumber);
-    final orders = result.map((model) => _generalModelConverter.convert(model)).toList();
+    final orders = _generalModelConverter.convert(result);
     return orders;
   }
 
   @override
-  Future<List<GeneralEntity>> getServices({required int pageNumber}) async {
+  Future<GeneralResponceEntity> getServices({required int pageNumber}) async {
     final result = await _dataSource.getServices(pageNumber: pageNumber);
-    final services = result.map((model) => _generalModelConverter.convert(model)).toList();
+    final services = _generalModelConverter.convert(result);
     return services;
   }
 }

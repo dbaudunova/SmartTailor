@@ -5,14 +5,14 @@ import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 
 @RoutePage()
-class OrganizationScreen extends StatefulWidget {
-  const OrganizationScreen({super.key});
+class OrganizationEmptyScreen extends StatefulWidget {
+  const OrganizationEmptyScreen({super.key});
 
   @override
-  State<OrganizationScreen> createState() => _OrganizationScreenState();
+  State<OrganizationEmptyScreen> createState() => _OrganizationEmptyScreenState();
 }
 
-class _OrganizationScreenState extends State<OrganizationScreen> {
+class _OrganizationEmptyScreenState extends State<OrganizationEmptyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

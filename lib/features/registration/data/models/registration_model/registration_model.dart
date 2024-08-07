@@ -25,5 +25,6 @@ class RegistrationModel with _$RegistrationModel {
     );
   }
 
-  factory RegistrationModel.fromJson(Map<String, dynamic> json) => _$RegistrationModelFromJson(json);
+  factory RegistrationModel.fromJson(Map<String, dynamic> json) =>
+      _$RegistrationModelFromJson(json);
 }

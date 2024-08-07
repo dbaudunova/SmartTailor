@@ -34,7 +34,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(state.copyWith(stateStatus: StateStatus.success(event.email)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(
+          stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

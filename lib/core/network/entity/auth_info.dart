@@ -14,5 +14,6 @@ class AuthData with _$AuthData {
     // required AuthInfo? authInfo,
   }) = _AuthData;
 
-  factory AuthData.fromJson(Map<String, dynamic> json) => _$AuthDataFromJson(json);
+  factory AuthData.fromJson(Map<String, dynamic> json) =>
+      _$AuthDataFromJson(json);
 }

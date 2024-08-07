@@ -5,7 +5,8 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/entitys/service_detail_entity.dart';
 
 @Injectable(as: Converter<ServiceDetailModel, ServiceDetailEntity>)
-class ServiceDetailMapper extends Converter<ServiceDetailModel, ServiceDetailEntity> {
+class ServiceDetailMapper
+    extends Converter<ServiceDetailModel, ServiceDetailEntity> {
   @override
   ServiceDetailEntity convert(ServiceDetailModel input) {
     return ServiceDetailEntity(

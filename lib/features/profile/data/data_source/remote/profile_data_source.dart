@@ -4,4 +4,5 @@ abstract class ProfileDataSource {
   Future<void> signOut();
   Future<ProfileModel> getProfileInfo();
   Future<ProfileModel> editProfileInfo(ProfileModel params);
+  Future<void> sendSubscription();
 }

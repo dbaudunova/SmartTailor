@@ -4,9 +4,9 @@ import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
 class SubscribeContainerStyle extends StatelessWidget {
   const SubscribeContainerStyle({
-    super.key,
     required this.buttonTitle,
     required this.onButtonPressed,
+    super.key,
   });
 
   final String buttonTitle;

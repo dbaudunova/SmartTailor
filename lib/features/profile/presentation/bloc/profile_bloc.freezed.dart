@@ -21,6 +21,7 @@ mixin _$ProfileEvent {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function() sendSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$ProfileEvent {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function()? sendSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$ProfileEvent {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function()? sendSubscription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$ProfileEvent {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_SendSubscription value) sendSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$ProfileEvent {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_SendSubscription value)? sendSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$ProfileEvent {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_SendSubscription value)? sendSubscription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function() sendSubscription,
   }) {
     return signOut();
   }
@@ -131,6 +138,7 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function()? sendSubscription,
   }) {
     return signOut?.call();
   }
@@ -141,6 +149,7 @@ class _$SignOutImpl implements _SignOut {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function()? sendSubscription,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -155,6 +164,7 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_SendSubscription value) sendSubscription,
   }) {
     return signOut(this);
   }
@@ -165,6 +175,7 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_SendSubscription value)? sendSubscription,
   }) {
     return signOut?.call(this);
   }
@@ -175,6 +186,7 @@ class _$SignOutImpl implements _SignOut {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_SendSubscription value)? sendSubscription,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -229,6 +241,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function() sendSubscription,
   }) {
     return getProfileInfo();
   }
@@ -239,6 +252,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function()? sendSubscription,
   }) {
     return getProfileInfo?.call();
   }
@@ -249,6 +263,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function()? sendSubscription,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -263,6 +278,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_SendSubscription value) sendSubscription,
   }) {
     return getProfileInfo(this);
   }
@@ -273,6 +289,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_SendSubscription value)? sendSubscription,
   }) {
     return getProfileInfo?.call(this);
   }
@@ -283,6 +300,7 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_SendSubscription value)? sendSubscription,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -365,6 +383,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     required TResult Function() signOut,
     required TResult Function() getProfileInfo,
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function() sendSubscription,
   }) {
     return editProfileInfo(profileEntity);
   }
@@ -375,6 +394,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult? Function()? signOut,
     TResult? Function()? getProfileInfo,
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function()? sendSubscription,
   }) {
     return editProfileInfo?.call(profileEntity);
   }
@@ -385,6 +405,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult Function()? signOut,
     TResult Function()? getProfileInfo,
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function()? sendSubscription,
     required TResult orElse(),
   }) {
     if (editProfileInfo != null) {
@@ -399,6 +420,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     required TResult Function(_SignOut value) signOut,
     required TResult Function(_GetProfileInfo value) getProfileInfo,
     required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_SendSubscription value) sendSubscription,
   }) {
     return editProfileInfo(this);
   }
@@ -409,6 +431,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult? Function(_SignOut value)? signOut,
     TResult? Function(_GetProfileInfo value)? getProfileInfo,
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_SendSubscription value)? sendSubscription,
   }) {
     return editProfileInfo?.call(this);
   }
@@ -419,6 +442,7 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult Function(_SignOut value)? signOut,
     TResult Function(_GetProfileInfo value)? getProfileInfo,
     TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_SendSubscription value)? sendSubscription,
     required TResult orElse(),
   }) {
     if (editProfileInfo != null) {
@@ -436,6 +460,120 @@ abstract class _EditProfileInfo implements ProfileEvent {
   @JsonKey(ignore: true)
   _$$EditProfileInfoImplCopyWith<_$EditProfileInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendSubscriptionImplCopyWith<$Res> {
+  factory _$$SendSubscriptionImplCopyWith(_$SendSubscriptionImpl value,
+          $Res Function(_$SendSubscriptionImpl) then) =
+      __$$SendSubscriptionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SendSubscriptionImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$SendSubscriptionImpl>
+    implements _$$SendSubscriptionImplCopyWith<$Res> {
+  __$$SendSubscriptionImplCopyWithImpl(_$SendSubscriptionImpl _value,
+      $Res Function(_$SendSubscriptionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SendSubscriptionImpl implements _SendSubscription {
+  const _$SendSubscriptionImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.sendSubscription()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SendSubscriptionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signOut,
+    required TResult Function() getProfileInfo,
+    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
+    required TResult Function() sendSubscription,
+  }) {
+    return sendSubscription();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signOut,
+    TResult? Function()? getProfileInfo,
+    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult? Function()? sendSubscription,
+  }) {
+    return sendSubscription?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signOut,
+    TResult Function()? getProfileInfo,
+    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
+    TResult Function()? sendSubscription,
+    required TResult orElse(),
+  }) {
+    if (sendSubscription != null) {
+      return sendSubscription();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_GetProfileInfo value) getProfileInfo,
+    required TResult Function(_EditProfileInfo value) editProfileInfo,
+    required TResult Function(_SendSubscription value) sendSubscription,
+  }) {
+    return sendSubscription(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_GetProfileInfo value)? getProfileInfo,
+    TResult? Function(_EditProfileInfo value)? editProfileInfo,
+    TResult? Function(_SendSubscription value)? sendSubscription,
+  }) {
+    return sendSubscription?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_GetProfileInfo value)? getProfileInfo,
+    TResult Function(_EditProfileInfo value)? editProfileInfo,
+    TResult Function(_SendSubscription value)? sendSubscription,
+    required TResult orElse(),
+  }) {
+    if (sendSubscription != null) {
+      return sendSubscription(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendSubscription implements ProfileEvent {
+  const factory _SendSubscription() = _$SendSubscriptionImpl;
 }
 
 /// @nodoc

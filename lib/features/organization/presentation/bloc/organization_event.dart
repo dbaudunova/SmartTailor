@@ -1,4 +1,8 @@
-part of 'organization_bloc.dart';
+// part of 'organization_bloc.dart';
 
-@immutable
-sealed class OrganizationEvent {}
+// @freezed
+// class OrganizationEvent with _$OrganizationEvent {
+//   const factory OrganizationEvent.getOrganization() = _GetOrganization;
+//   // const factory OrganizationEvent.createOrganization({required CreateOrganizationModel createModel}) =
+//   //     _CreateOrganization;
+// }

@@ -43,7 +43,9 @@ class _SizePickerFieldWidgetState extends State<SizePickerFieldWidget> {
     return BlocListener<OrderPlaceBloc, OrderPlaceState>(
       listener: (context, state) {
         final items = state.orderPlaceModel.items;
-        _sizeController.text = items.isEmpty ? '' : items.map((item) => '${item.size} - ${item.quantity}').join(', ');
+        _sizeController.text = items.isEmpty
+            ? ''
+            : items.map((item) => '${item.size} - ${item.quantity}').join(', ');
       },
       child: _buildTextFormField(),
     );

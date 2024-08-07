@@ -5,7 +5,8 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipmen
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/entitys/equipment_detail_entity.dart';
 
 @Injectable(as: Converter<EquipmentDetailModel, EquipmentDetailEntity>)
-class EquipmentDetailMapper extends Converter<EquipmentDetailModel, EquipmentDetailEntity> {
+class EquipmentDetailMapper
+    extends Converter<EquipmentDetailModel, EquipmentDetailEntity> {
   @override
   EquipmentDetailEntity convert(EquipmentDetailModel input) {
     return EquipmentDetailEntity(

@@ -31,10 +31,12 @@ class ServiceDetailBloc extends Bloc<ServiceDetailEvent, ServiceDetailState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getServiceUseCase.call(event.id!);
-      emit(state.copyWith(stateStatus: const StateStatus.success(), service: result));
+      emit(state.copyWith(
+          stateStatus: const StateStatus.success(), service: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(
+          stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

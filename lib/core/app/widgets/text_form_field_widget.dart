@@ -66,7 +66,9 @@ class TextFormFieldWidget extends StatelessWidget {
             enabled: enabled,
             maxLength: maxLenght,
             validator: validator,
-            style: titleName == t.email ? AppTextStyle.textField16.copyWith(fontSize: 14) : AppTextStyle.textField16,
+            style: titleName == t.email
+                ? AppTextStyle.textField16.copyWith(fontSize: 14)
+                : AppTextStyle.textField16,
             inputFormatters: formatters,
             keyboardType: keyboardType,
             onChanged: onChanged,

@@ -29,5 +29,6 @@ class ServiceDetailModel with _$ServiceDetailModel {
     );
   }
 
-  factory ServiceDetailModel.fromJson(Map<String, dynamic> json) => _$ServiceDetailModelFromJson(json);
+  factory ServiceDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$ServiceDetailModelFromJson(json);
 }

@@ -1,14 +1,18 @@
 part of io_ui;
 
 class AppProps {
-  static const EdgeInsets pH16v8 = EdgeInsets.symmetric(horizontal: 16, vertical: 8);
-  static const EdgeInsets pH12v6 = EdgeInsets.symmetric(horizontal: 12.0, vertical: 6);
+  static const EdgeInsets pH16v8 =
+      EdgeInsets.symmetric(horizontal: 16, vertical: 8);
+  static const EdgeInsets pH12v6 =
+      EdgeInsets.symmetric(horizontal: 12.0, vertical: 6);
   static const EdgeInsets pH12 = EdgeInsets.symmetric(horizontal: 12.0);
   static const EdgeInsets pH8 = EdgeInsets.symmetric(horizontal: 8.0);
   static const EdgeInsets pV8 = EdgeInsets.symmetric(vertical: 8.0);
   static const EdgeInsets pAll8 = EdgeInsets.all(8.0);
-  static const EdgeInsets pH12V8 = EdgeInsets.symmetric(horizontal: 12.0, vertical: 8);
-  static const EdgeInsets pH12V16 = EdgeInsets.symmetric(horizontal: 12.0, vertical: 16);
+  static const EdgeInsets pH12V8 =
+      EdgeInsets.symmetric(horizontal: 12.0, vertical: 8);
+  static const EdgeInsets pH12V16 =
+      EdgeInsets.symmetric(horizontal: 12.0, vertical: 16);
   static const BorderRadiusGeometry radiusCirc12 = BorderRadius.all(
     Radius.circular(12),
   );

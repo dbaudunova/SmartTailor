@@ -37,10 +37,10 @@ class UserInfo extends StatelessWidget {
                 : null,
             child: profileEntity?.imagePath == null
                 ? SvgPicture.asset(
-              Assets.icons.person,
-              width: AppProps.kBigMargin,
-              height: AppProps.kBigMargin,
-            )
+                    Assets.icons.person,
+                    width: AppProps.kBigMargin,
+                    height: AppProps.kBigMargin,
+                  )
                 : null,
           ),
         ),

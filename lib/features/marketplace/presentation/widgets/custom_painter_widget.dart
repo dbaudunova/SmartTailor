@@ -25,8 +25,10 @@ class _CustomIndicatorPainter extends BoxPainter {
       ..color = color
       ..style = PaintingStyle.fill;
 
-    final customOffset = offset + Offset(0, configuration.size!.height - height);
+    final customOffset =
+        offset + Offset(0, configuration.size!.height - height);
     final rect = customOffset & Size(configuration.size!.width, height);
-    canvas.drawRRect(RRect.fromRectAndRadius(rect, const Radius.circular(7)), paint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(rect, const Radius.circular(7)), paint);
   }
 }

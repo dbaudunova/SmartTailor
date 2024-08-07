@@ -35,10 +35,12 @@ class ConfirmationBloc extends Bloc<ConfirmationEvent, ConfirmationState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       await resendPinUseCase.call(event.email);
-      emit(state.copyWith(stateStatus: const StateStatus.success(SuccessType.repeatCode)));
+      emit(state.copyWith(
+          stateStatus: const StateStatus.success(SuccessType.repeatCode)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(
+          stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -47,15 +49,18 @@ class ConfirmationBloc extends Bloc<ConfirmationEvent, ConfirmationState> {
     Emitter<ConfirmationState> emit,
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
-    final confirmationModel = ConfirmationModel(email: event.email, code: event.pinCode);
+    final confirmationModel =
+        ConfirmationModel(email: event.email, code: event.pinCode);
     try {
       await confirmationUseCse.call(
         confirmationModel,
       );
-      emit(state.copyWith(stateStatus: const StateStatus.success(SuccessType.login)));
+      emit(state.copyWith(
+          stateStatus: const StateStatus.success(SuccessType.login)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(
+          stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

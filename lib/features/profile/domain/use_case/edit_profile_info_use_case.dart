@@ -11,6 +11,6 @@ class EditProfileInfoUseCase extends UseCase<ProfileEntity, ProfileEntity> {
 
   @override
   Future<ProfileEntity> call(ProfileEntity params) {
-   return repo.editProfileInfo(params);
+    return repo.editProfileInfo(params);
   }
 }

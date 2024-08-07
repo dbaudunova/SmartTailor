@@ -44,7 +44,8 @@ class ElevatedButtonWidget extends StatelessWidget {
       child: Text(
         text,
         style: AppTextStyle.textField16.copyWith(
-          color: (color == AppColors.white || color == AppColors.buttonUnavailableBack)
+          color: (color == AppColors.white ||
+                  color == AppColors.buttonUnavailableBack)
               ? AppColors.darkBlue
               : AppColors.white,
           fontSize: 20,

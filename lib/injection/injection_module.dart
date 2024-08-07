@@ -12,7 +12,8 @@ abstract class RegisterModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   @injectable
-  Dio get dio => Dio(BaseOptions(baseUrl: HttpPaths.baseUrl))..interceptors.add(PrettyDioLogger());
+  Dio get dio => Dio(BaseOptions(baseUrl: HttpPaths.baseUrl))
+    ..interceptors.add(PrettyDioLogger());
 
   @singleton
   FlutterSecureStorage get storage => const FlutterSecureStorage();

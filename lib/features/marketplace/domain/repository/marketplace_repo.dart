@@ -1,7 +1,7 @@
-import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/general_responce_entity.dart';
 
 abstract class MarketplaceRepo {
-  Future<List<GeneralEntity>> getEquipments({required int pageNumber});
-  Future<List<GeneralEntity>> getOrders({required int pageNumber});
-  Future<List<GeneralEntity>> getServices({required int pageNumber});
+  Future<GeneralResponceEntity> getEquipments({required int pageNumber});
+  Future<GeneralResponceEntity> getOrders({required int pageNumber});
+  Future<GeneralResponceEntity> getServices({required int pageNumber});
 }

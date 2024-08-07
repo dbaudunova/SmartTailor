@@ -37,7 +37,9 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _onTicked(_Ticked event, Emitter<TimerState> emit) {
-    emit(event.duration > 0 ? TimerState.runInProgress(event.duration) : const TimerState.runComplete());
+    emit(event.duration > 0
+        ? TimerState.runInProgress(event.duration)
+        : const TimerState.runComplete());
   }
 
   @override

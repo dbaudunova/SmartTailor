@@ -11,7 +11,8 @@ class CreateOrderUseCase {
     required this.repo,
   });
 
-  Future<void> call({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+  Future<void> call(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
     return repo.createOrder(orderPlaceModel: orderPlaceModel, images: images);
   }
 }

@@ -38,21 +38,21 @@ class LoginDataSourceImpl implements LoginDataSource {
   }
 }
 
-    // try {
-    //   var json = registrationModel!.toJson();
-    //   final response = await _client.post(
-    //     HttpPaths.registration,
-    //     data: json,
-    //     isSecure: false,
-    //   );
-    //   if (response.statusCode != 201) {
-    //     throw Failure.request(
-    //       status: response.statusCode,
-    //       message: 'Регистрация не удалась, код статуса: ${response.statusCode}',
-    //     );
-    //   }
-    // } on DioException catch (e) {
-    //   throw handleDioException(e);
-    // } catch (e) {
-    //   throw handleGeneralException(e);
-    // }
+// try {
+//   var json = registrationModel!.toJson();
+//   final response = await _client.post(
+//     HttpPaths.registration,
+//     data: json,
+//     isSecure: false,
+//   );
+//   if (response.statusCode != 201) {
+//     throw Failure.request(
+//       status: response.statusCode,
+//       message: 'Регистрация не удалась, код статуса: ${response.statusCode}',
+//     );
+//   }
+// } on DioException catch (e) {
+//   throw handleDioException(e);
+// } catch (e) {
+//   throw handleGeneralException(e);
+// }

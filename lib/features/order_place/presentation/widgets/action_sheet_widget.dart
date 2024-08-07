@@ -16,7 +16,8 @@ class ActionSheetWidget extends StatelessWidget {
       cancelButton: CupertinoActionSheetAction(
         child: Text(
           t.cancel,
-          style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
+          style: AppTextStyle.s20w400Orange
+              .copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
         ),
         onPressed: () {
           Navigator.pop(context, 'Cancel');
@@ -41,7 +42,8 @@ class AppActionSheetWidget extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
+        style: AppTextStyle.s20w400Orange
+            .copyWith(color: AppColors.black, fontWeight: FontWeight.w500),
       ),
     );
   }

@@ -29,7 +29,8 @@ class OrderPlaceModel with _$OrderPlaceModel {
         quantity: 0);
   }
 
-  factory OrderPlaceModel.fromJson(Map<String, dynamic> json) => _$OrderPlaceModelFromJson(json);
+  factory OrderPlaceModel.fromJson(Map<String, dynamic> json) =>
+      _$OrderPlaceModelFromJson(json);
 }
 
 @freezed

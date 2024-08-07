@@ -14,5 +14,6 @@ class ConfirmationModel with _$ConfirmationModel {
     return const ConfirmationModel(email: '', code: '');
   }
 
-  factory ConfirmationModel.fromJson(Map<String, dynamic> json) => _$ConfirmationModelFromJson(json);
+  factory ConfirmationModel.fromJson(Map<String, dynamic> json) =>
+      _$ConfirmationModelFromJson(json);
 }

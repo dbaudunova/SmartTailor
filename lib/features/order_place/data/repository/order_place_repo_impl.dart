@@ -14,17 +14,23 @@ class CreateOrderRepoImpl implements OrderPlaceRepo {
   );
 
   @override
-  Future<void> createOrder({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
-    await _dataSource.createOrder(orderPlaceModel: orderPlaceModel, images: images);
+  Future<void> createOrder(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+    await _dataSource.createOrder(
+        orderPlaceModel: orderPlaceModel, images: images);
   }
 
   @override
-  Future<void> createEquipment({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
-    await _dataSource.createEquipment(orderPlaceModel: orderPlaceModel, images: images);
+  Future<void> createEquipment(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+    await _dataSource.createEquipment(
+        orderPlaceModel: orderPlaceModel, images: images);
   }
 
   @override
-  Future<void> createService({OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
-    await _dataSource.createService(orderPlaceModel: orderPlaceModel, images: images);
+  Future<void> createService(
+      {OrderPlaceModel? orderPlaceModel, List<File>? images}) async {
+    await _dataSource.createService(
+        orderPlaceModel: orderPlaceModel, images: images);
   }
 }

@@ -1,6 +1,9 @@
-part of 'organization_bloc.dart';
+// part of 'organization_bloc.dart';
 
-@immutable
-sealed class OrganizationState {}
-
-final class OrganizationInitial extends OrganizationState {}
+// @freezed
+// class OrganizationState with _$OrganizationState {
+//   const factory OrganizationState(
+//     final File? image, {
+//     required final StateStatus stateStatus,
+//   }) = _OrganizationState;
+// }

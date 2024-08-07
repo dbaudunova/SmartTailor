@@ -48,9 +48,9 @@ class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen> w
         children: [
           Column(
             children: [
-              const OrganizationInfoRow(
-                isDateContainerVisible: false,
-              ),
+              // const OrganizationInfoRow(
+              //   isDateContainerVisible: false,
+              // ),
               const SizedBox(height: 24),
               TabBarWidget(
                 tabController: _tabController,

@@ -11,7 +11,8 @@ class CurrentOrderDetailScreen extends StatefulWidget {
   const CurrentOrderDetailScreen({super.key});
 
   @override
-  State<CurrentOrderDetailScreen> createState() => _CurrentOrderDetailScreenState();
+  State<CurrentOrderDetailScreen> createState() =>
+      _CurrentOrderDetailScreenState();
 }
 
 class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
@@ -56,7 +57,8 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
                     width: MediaQuery.of(context).size.width,
                     color: Colors.white,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 16)
+                          .copyWith(top: 24),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -323,13 +325,16 @@ class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
           padding: const EdgeInsets.all(8),
           child: Text(
             title ?? '',
-            style: AppTextStyle.textField16.copyWith(fontWeight: FontWeight.w500),
+            style:
+                AppTextStyle.textField16.copyWith(fontWeight: FontWeight.w500),
           ),
         ),
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+            isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),
