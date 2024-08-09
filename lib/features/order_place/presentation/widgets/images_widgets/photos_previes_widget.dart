@@ -50,7 +50,7 @@ class PhotosPreviewWidget extends StatelessWidget {
           onTap: () {
             onDeleteImage(photos[index]);
 
-            controller.text = 'Выбрано ${images.length} фото';
+            controller.text = 'Выбрано ${images.length - 1} фото';
           },
           child: const Icon(
             Icons.highlight_remove,

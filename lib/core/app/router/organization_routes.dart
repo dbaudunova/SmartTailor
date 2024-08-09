@@ -15,8 +15,8 @@ abstract class OrganizationRoutes {
         path: 'invite_employee',
       ),
       AutoRoute(
-        page: EmployeePositionRoute.page,
-        path: 'employee_position',
+        page: PositionsRoute.page,
+        path: 'positions',
       ),
       AutoRoute(
         page: EmployeeDetailRoute.page,

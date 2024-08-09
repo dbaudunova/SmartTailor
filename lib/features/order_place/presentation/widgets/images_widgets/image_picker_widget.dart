@@ -88,7 +88,9 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         }
         break;
       case _ImagePickType.takePhoto:
-        permissionGranted = await _requestPermission(Permission.camera);
+        permissionGranted = await _requestPermission(
+          Permission.camera,
+        );
         if (permissionGranted) {
           final files = await _pickMultipleImagesFromCamera();
           widget.onSelectFiles(files);
@@ -107,7 +109,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   }
 
   Future<List<File>> _pickMultipleImages() async {
-    final pickedFiles = await picker.pickMultiImage();
+    final pickedFiles = await picker.pickMultiImage(imageQuality: 40);
     final images = pickedFiles.take(5).map((file) => File(file.path)).toList();
     setState(() {
       widget.controller.text = 'Выбрано ${images.length} фото';

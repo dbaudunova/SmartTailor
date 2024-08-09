@@ -1,9 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
-import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/data/models/send_invite_model/send_invite_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/bloc/invite_employee_bloc.dart';
+import 'package:neobis_smart_tailor/features/registration/presentation/registration_content.dart';
+import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 class InviteEmployeeContent extends StatefulWidget {
   const InviteEmployeeContent({super.key});
@@ -36,6 +41,7 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _buildButton(),
       appBar: AppBarStyle(
         title: 'Пригласить сотрудника',
         centerTitle: true,
@@ -48,45 +54,47 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Stack(
-          children: [
-            Form(
-              key: _formKey,
-              child: _buildTextFields(),
-            ),
-            Positioned(
-              bottom: 16,
-              left: 0,
-              right: 0,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: ElevatedButtonWidget(
-                  text: 'Отправить приглашение',
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialogStyle(
-                            title: 'Ура!',
-                            content: 'Ваше приглашение отправлено!',
-                            buttonText: 'Понятно',
-                            onButtonPressed: () {
-                              AutoRouter.of(context).push(const OrganizationRoute());
-                            },
-                          );
-                        },
-                      );
-                    }
-                  },
-                ),
-              ),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
+            child: _buildTextFields(),
+          ),
         ),
       ),
+    );
+  }
+
+  Widget _buildButton() {
+    return BlocBuilder<InviteEmployeeBloc, InviteEmployeeState>(
+      builder: (context, state) {
+        return state.stateStatus != const StateStatus.loading()
+            ? ElevatedButtonWidget(
+                text: 'Отправить приглашение',
+                onTap: () {
+                  if (_formKey.currentState!.validate()) {
+                    var model = SendInviteModel(
+                      surname: _surnameController.text,
+                      name: _nameController.text,
+                      patronymic: _patronymicController.text,
+                      email: _emailController.text,
+                      phoneNumber: _phoneController.text,
+                      position: _employeePositionController.text,
+                    );
+                    context.read<InviteEmployeeBloc>().add(
+                          InviteEmployeeEvent.sendInvite(
+                            model: model,
+                          ),
+                        );
+                  }
+                },
+              )
+            : const ElevatedButtonWidget(
+                onTap: null,
+                text: 'Отправить приглашение',
+              );
+      },
     );
   }
 
@@ -112,7 +120,7 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
         TextFormFieldWidget(
           titleName: 'Фамилия*',
           validator: (value) {
-            return _emailFieldValidation(value);
+            return _nullValidation(value);
           },
           controller: _surnameController,
           hintText: 'Введите фамилию',
@@ -121,7 +129,7 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
         TextFormFieldWidget(
           titleName: 'Имя*',
           validator: (value) {
-            return _emailFieldValidation(value);
+            return _nullValidation(value);
           },
           controller: _nameController,
           hintText: 'Введите имя',
@@ -130,29 +138,27 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
         TextFormFieldWidget(
           titleName: 'Отчество*',
           validator: (value) {
-            return _emailFieldValidation(value);
+            return _nullValidation(value);
           },
           controller: _patronymicController,
-          hintText: 'Введите jnxtcndj',
+          hintText: 'Введите отчество',
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
           titleName: 'Почта*',
-          validator: (value) {
-            return _emailFieldValidation(value);
-          },
+          keyboardType: TextInputType.emailAddress,
+          validator: (value) => _emailFieldValidation(value),
           controller: _emailController,
           hintText: 'Введите электронную почту',
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
-          titleName: 'Номер телефона*',
-          validator: (value) {
-            return _nullValidation(value);
-          },
-          onChanged: (s) {},
+          formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
+          titleName: t.phoneNum,
+          hintText: '+996',
           controller: _phoneController,
-          hintText: 'Введите номер телефона',
+          keyboardType: TextInputType.number,
+          validator: (value) => _validateField(value, RegistrationFieldType.phone),
         ),
         const SizedBox(height: 16),
         TextFormFieldWidget(
@@ -164,7 +170,23 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
           controller: _employeePositionController,
           hintText: 'Должность сотрудника',
         ),
+        const SizedBox(
+          height: 68,
+        )
       ],
     );
+  }
+
+  String? _validateField(String? value, RegistrationFieldType fieldType) {
+    if (fieldType == RegistrationFieldType.text && value!.isEmpty) {
+      return 'Поле не может быть пустым';
+    }
+    if (fieldType == RegistrationFieldType.email && !value!.contains('@')) {
+      return 'Почта указана неверно';
+    }
+    if (fieldType == RegistrationFieldType.phone && value!.length < 16) {
+      return 'Введинет номер телефона';
+    }
+    return null;
   }
 }

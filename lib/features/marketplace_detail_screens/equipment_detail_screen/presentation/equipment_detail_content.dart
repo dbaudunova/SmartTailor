@@ -35,9 +35,8 @@ class _EquipmentDetailContentState extends State<EquipmentDetailContent> {
         var equipment = state.equipment;
         return Scaffold(
           floatingActionButton: _buildButtons(equipment.id),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
-          appBar: AppBarStyle(title: t.orderDetail, centerTitle: true),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          appBar: AppBarStyle(title: t.equipmentDetail, centerTitle: true),
           body: SingleChildScrollView(
               child: Column(
             children: [
@@ -74,8 +73,7 @@ class _EquipmentDetailContentState extends State<EquipmentDetailContent> {
                             const SizedBox(height: 24),
                             Divider(
                               height: 0.33,
-                              color: AppColors.buttonUnavailableBack
-                                  .withOpacity(0.6),
+                              color: AppColors.buttonUnavailableBack.withOpacity(0.6),
                             ),
                             const SizedBox(height: 20),
                             AuthorInfoWidget(
@@ -92,22 +90,6 @@ class _EquipmentDetailContentState extends State<EquipmentDetailContent> {
               ),
             ],
           )),
-        );
-      },
-    );
-  }
-
-  void _showAlertDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialogStyle(
-          title: 'Ваш заказ в обработке',
-          content: 'Заказ отображается в вашем личном кабинете',
-          buttonText: 'Понятно',
-          onButtonPressed: () {
-            AutoRouter.of(context).maybePop();
-          },
         );
       },
     );

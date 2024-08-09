@@ -91,7 +91,11 @@ class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen> w
   Widget? _buildEmployeeItemBuilder(context, index) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
-      child: const EmployeeItemContainer(),
+      child: const EmployeeItemContainer(
+        email: 'почта',
+        fullName: 'фио',
+        position: 'ljk;yjcnm',
+      ),
     );
   }
 

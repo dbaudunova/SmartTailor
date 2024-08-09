@@ -17,11 +17,20 @@ Failure handleDioException(DioException exception) {
         case 401:
           return Failure.request(message: 'Доступ запрещен', status: 403);
         case 404:
-          return Failure.request(message: 'Ресурс не найден', status: 404);
+          var conflictMessage = 'Ресурс не найден';
+          if (exception.response?.data != null && exception.response?.data['message'] != null) {
+            conflictMessage = exception.response?.data['message'];
+          }
+          return Failure.request(message: conflictMessage, status: 409);
         case 409:
-          String conflictMessage = 'Произошел конфликт';
-          if (exception.response?.data != null &&
-              exception.response?.data['message'] != null) {
+          var conflictMessage = 'Произошел конфликт';
+          if (exception.response?.data != null && exception.response?.data['message'] != null) {
+            conflictMessage = exception.response?.data['message'];
+          }
+          return Failure.request(message: conflictMessage, status: 409);
+        case 413:
+          var conflictMessage = 'Ощибка';
+          if (exception.response?.data != null && exception.response?.data['message'] != null) {
             conflictMessage = exception.response?.data['message'];
           }
           return Failure.request(message: conflictMessage, status: 409);
@@ -29,8 +38,7 @@ Failure handleDioException(DioException exception) {
         //   return Failure.server(message: 'Внутренняя ошибка сервера', status: 500);
         default:
           if (exception.response?.data['msg'] != null) {
-            return Failure.other(
-                message: exception.response?.data['msg'].toString());
+            return Failure.other(message: exception.response?.data['msg'].toString());
           } else {
             return Failure.other(message: 'Неизвестная ошибка');
           }
@@ -38,8 +46,7 @@ Failure handleDioException(DioException exception) {
 
     default:
       if (exception.response?.data['msg'] != null) {
-        return Failure.other(
-            message: exception.response?.data['msg'].toString());
+        return Failure.other(message: exception.response?.data['msg'].toString());
       } else {
         return Failure.other(message: exception.message);
       }

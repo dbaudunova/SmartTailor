@@ -10,8 +10,7 @@ class ListViewWidget<Event, State> extends StatelessWidget {
   final Event Function(BuildContext context) loadfirstPage;
   final Function(BuildContext context) getList;
   final Bloc<Event, State> Function(BuildContext context) getBloc;
-
-  final bool? isLast;
+  final bool isLast;
 
   const ListViewWidget({
     required this.route,
@@ -32,8 +31,7 @@ class ListViewWidget<Event, State> extends StatelessWidget {
       onNotification: (scrollNotification) {
         if (isLast == true) {
           return false;
-        } else if (scrollNotification is ScrollEndNotification &&
-            scrollNotification.metrics.extentAfter == 0) {
+        } else if (scrollNotification is ScrollEndNotification && scrollNotification.metrics.extentAfter == 0) {
           bloc.add(loadMoreEvent(context));
         }
 

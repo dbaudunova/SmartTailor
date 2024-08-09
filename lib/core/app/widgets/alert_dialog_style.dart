@@ -4,11 +4,11 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class AlertDialogStyle extends StatelessWidget {
   const AlertDialogStyle({
-    super.key,
     required this.title,
     required this.content,
     required this.buttonText,
     required this.onButtonPressed,
+    super.key,
   });
 
   final String title;

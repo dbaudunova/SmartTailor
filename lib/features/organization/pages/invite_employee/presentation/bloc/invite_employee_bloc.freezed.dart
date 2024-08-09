@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$InviteEmployeeEvent {
+  SendInviteModel get model => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() sendInvite,
+    required TResult Function(SendInviteModel model) sendInvite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? sendInvite,
+    TResult? Function(SendInviteModel model)? sendInvite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? sendInvite,
+    TResult Function(SendInviteModel model)? sendInvite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$InviteEmployeeEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $InviteEmployeeEventCopyWith<InviteEmployeeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,10 @@ abstract class $InviteEmployeeEventCopyWith<$Res> {
   factory $InviteEmployeeEventCopyWith(
           InviteEmployeeEvent value, $Res Function(InviteEmployeeEvent) then) =
       _$InviteEmployeeEventCopyWithImpl<$Res, InviteEmployeeEvent>;
+  @useResult
+  $Res call({SendInviteModel model});
+
+  $SendInviteModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -66,13 +75,41 @@ class _$InviteEmployeeEventCopyWithImpl<$Res, $Val extends InviteEmployeeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_value.copyWith(
+      model: null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as SendInviteModel,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SendInviteModelCopyWith<$Res> get model {
+    return $SendInviteModelCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$SendInviteImplCopyWith<$Res> {
+abstract class _$$SendInviteImplCopyWith<$Res>
+    implements $InviteEmployeeEventCopyWith<$Res> {
   factory _$$SendInviteImplCopyWith(
           _$SendInviteImpl value, $Res Function(_$SendInviteImpl) then) =
       __$$SendInviteImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({SendInviteModel model});
+
+  @override
+  $SendInviteModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -82,51 +119,75 @@ class __$$SendInviteImplCopyWithImpl<$Res>
   __$$SendInviteImplCopyWithImpl(
       _$SendInviteImpl _value, $Res Function(_$SendInviteImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$SendInviteImpl(
+      model: null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as SendInviteModel,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SendInviteImpl implements _SendInvite {
-  const _$SendInviteImpl();
+  const _$SendInviteImpl({required this.model});
+
+  @override
+  final SendInviteModel model;
 
   @override
   String toString() {
-    return 'InviteEmployeeEvent.sendInvite()';
+    return 'InviteEmployeeEvent.sendInvite(model: $model)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SendInviteImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SendInviteImpl &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, model);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendInviteImplCopyWith<_$SendInviteImpl> get copyWith =>
+      __$$SendInviteImplCopyWithImpl<_$SendInviteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() sendInvite,
+    required TResult Function(SendInviteModel model) sendInvite,
   }) {
-    return sendInvite();
+    return sendInvite(model);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? sendInvite,
+    TResult? Function(SendInviteModel model)? sendInvite,
   }) {
-    return sendInvite?.call();
+    return sendInvite?.call(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? sendInvite,
+    TResult Function(SendInviteModel model)? sendInvite,
     required TResult orElse(),
   }) {
     if (sendInvite != null) {
-      return sendInvite();
+      return sendInvite(model);
     }
     return orElse();
   }
@@ -161,7 +222,15 @@ class _$SendInviteImpl implements _SendInvite {
 }
 
 abstract class _SendInvite implements InviteEmployeeEvent {
-  const factory _SendInvite() = _$SendInviteImpl;
+  const factory _SendInvite({required final SendInviteModel model}) =
+      _$SendInviteImpl;
+
+  @override
+  SendInviteModel get model;
+  @override
+  @JsonKey(ignore: true)
+  _$$SendInviteImplCopyWith<_$SendInviteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

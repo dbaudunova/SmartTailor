@@ -69,8 +69,7 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
             title: t.orderPlace,
             centerTitle: true,
           ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           floatingActionButton: _buildButton(state),
           body: Padding(
             padding: const EdgeInsets.only(

@@ -65,8 +65,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
           lastForEquipment: result.isLast));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -85,8 +84,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
           lastForOrders: result.isLast));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -105,8 +103,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
           lastForServices: result.isLast));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -119,12 +116,10 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
     }
     emit(state.copyWith(isLoadingMore: true));
     try {
-      final result =
-          await getOrdersUseCase.call(pageNumber: state.ordersPageNumber);
+      final result = await getOrdersUseCase.call(pageNumber: state.ordersPageNumber);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
-        orders: List<GeneralEntity>.from(state.orders)
-          ..addAll(result.listEntitys),
+        orders: List<GeneralEntity>.from(state.orders)..addAll(result.listEntitys),
         ordersPageNumber: state.ordersPageNumber + 1,
         lastForOrders: result.isLast!,
         isLoadingMore: false,
@@ -147,12 +142,10 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
     }
     emit(state.copyWith(isLoadingMore: true));
     try {
-      final result = await getEuipmentsUseCase.call(
-          pageNumber: state.equipmentsPageNumber);
+      final result = await getEuipmentsUseCase.call(pageNumber: state.equipmentsPageNumber);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
-        equipments: List<GeneralEntity>.from(state.equipments)
-          ..addAll(result.listEntitys),
+        equipments: List<GeneralEntity>.from(state.equipments)..addAll(result.listEntitys),
         equipmentsPageNumber: state.equipmentsPageNumber + 1,
         isLoadingMore: result.isLast!,
         lastForEquipment: result.isLast!,
@@ -175,12 +168,10 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
     }
     emit(state.copyWith(isLoadingMore: true));
     try {
-      final result =
-          await getServicesUseCase.call(pageNumber: state.servicesPageNumber);
+      final result = await getServicesUseCase.call(pageNumber: state.servicesPageNumber);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
-        services: List<GeneralEntity>.from(state.services)
-          ..addAll(result.listEntitys),
+        services: List<GeneralEntity>.from(state.services)..addAll(result.listEntitys),
         servicesPageNumber: state.servicesPageNumber + 1,
         isLoadingMore: result.isLast!,
         lastForServices: result.isLast!,
@@ -227,8 +218,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
       ));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

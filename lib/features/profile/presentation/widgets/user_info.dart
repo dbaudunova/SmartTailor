@@ -27,7 +27,7 @@ class UserInfo extends StatefulWidget {
   final bool showBellIcon;
   final ProfileEntity? profileEntity;
   final bool enableImageSelection;
-  final ValueChanged<File?>? onImageChanged; // Callback for image change
+  final ValueChanged<File?>? onImageChanged;
 
   @override
   State<UserInfo> createState() => _UserInfoState();

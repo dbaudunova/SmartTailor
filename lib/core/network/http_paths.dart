@@ -28,7 +28,12 @@ class HttpPaths {
   static const uploadImage = '$baseUrl/api/account/profile/uploadImage';
   static const sendSubscription = '$baseUrl/api/app-user/send-subscription-request';
 
-  static const getOrganization = '$baseUrl/api/organization';
+  static const getOrganization = '$baseUrl/api/organization/get-organization-detailed';
   static const createOrganization = '$baseUrl/api/organization/create-organization';
   static const sendInvitationToEmployee = '$baseUrl/api/organization/send-invitation';
+
+  static const getAllEmployees = '$baseUrl/api/employee/get-all-employees';
+
+  static const addPosition = '$baseUrl/api/position/add-position';
+  static const gatAllPositions = '$baseUrl/api/position/get-all-positions';
 }

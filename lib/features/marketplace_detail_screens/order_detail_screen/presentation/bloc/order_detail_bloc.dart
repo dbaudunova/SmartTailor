@@ -35,12 +35,10 @@ class OrderDetailBloc extends Bloc<OrderDetailEvent, OrderDetailState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getOrderUseCase.call(event.id!);
-      emit(state.copyWith(
-          stateStatus: const StateStatus.success(), order: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(false), order: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -51,11 +49,10 @@ class OrderDetailBloc extends Bloc<OrderDetailEvent, OrderDetailState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       await requestToExecuteUseCase.call(event.id!);
-      emit(state.copyWith(stateStatus: const StateStatus.success()));
+      emit(state.copyWith(stateStatus: const StateStatus.success(true)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

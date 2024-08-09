@@ -18,8 +18,7 @@ class MarketplaceContent extends StatefulWidget {
 
 int selectedSegment = 0;
 
-class _MarketplaceContentState extends State<MarketplaceContent>
-    with RestorationMixin {
+class _MarketplaceContentState extends State<MarketplaceContent> with RestorationMixin {
   RestorableInt currentSegment = RestorableInt(0);
   final PageController _pageController = PageController(initialPage: 0);
 
@@ -74,40 +73,28 @@ class _MarketplaceContentState extends State<MarketplaceContent>
                       },
                       children: [
                         ListViewWidget<MarketplaceEvent, MarketplaceState>(
-                          getList: (context) =>
-                              context.read<MarketplaceBloc>().state.orders,
+                          getList: (context) => context.read<MarketplaceBloc>().state.orders,
                           // list: state.orders,
-                          route: ({required int id}) =>
-                              OrderDetailRoute(id: id),
-                          isLast: state.lastForOrders,
-                          loadMoreEvent: (context) =>
-                              const MarketplaceEvent.loadMoreOrders(),
-                          loadfirstPage: (context) =>
-                              const MarketplaceEvent.getOrders(),
+                          route: ({required int id}) => OrderDetailRoute(id: id),
+                          isLast: state.lastForOrders!,
+                          loadMoreEvent: (context) => const MarketplaceEvent.loadMoreOrders(),
+                          loadfirstPage: (context) => const MarketplaceEvent.getOrders(),
                           getBloc: (context) => context.read<MarketplaceBloc>(),
                         ),
                         ListViewWidget<MarketplaceEvent, MarketplaceState>(
-                          getList: (context) =>
-                              context.read<MarketplaceBloc>().state.equipments,
-                          route: ({required int id}) =>
-                              EquipmentDetailRoute(id: id),
-                          isLast: state.lastForEquipment,
-                          loadMoreEvent: (context) =>
-                              const MarketplaceEvent.loadMoreEquipments(),
-                          loadfirstPage: (context) =>
-                              const MarketplaceEvent.getEquipments(),
+                          getList: (context) => context.read<MarketplaceBloc>().state.equipments,
+                          route: ({required int id}) => EquipmentDetailRoute(id: id),
+                          isLast: state.lastForEquipment!,
+                          loadMoreEvent: (context) => const MarketplaceEvent.loadMoreEquipments(),
+                          loadfirstPage: (context) => const MarketplaceEvent.getEquipments(),
                           getBloc: (context) => context.read<MarketplaceBloc>(),
                         ),
                         ListViewWidget<MarketplaceEvent, MarketplaceState>(
-                          getList: (context) =>
-                              context.read<MarketplaceBloc>().state.services,
-                          route: ({required int id}) =>
-                              ServiceDetailRoute(id: id),
-                          isLast: state.lastForServices,
-                          loadMoreEvent: (context) =>
-                              const MarketplaceEvent.loadMoreServices(),
-                          loadfirstPage: (context) =>
-                              const MarketplaceEvent.getServices(),
+                          getList: (context) => context.read<MarketplaceBloc>().state.services,
+                          route: ({required int id}) => ServiceDetailRoute(id: id),
+                          isLast: state.lastForServices!,
+                          loadMoreEvent: (context) => const MarketplaceEvent.loadMoreServices(),
+                          loadfirstPage: (context) => const MarketplaceEvent.getServices(),
                           getBloc: (context) => context.read<MarketplaceBloc>(),
                         ),
                         // MarketplaceTabBarView(tabIndex: 0, list: state.orders),

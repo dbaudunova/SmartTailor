@@ -12,8 +12,7 @@ part 'equipment_detail_bloc_state.dart';
 part 'equipment_detail_bloc.freezed.dart';
 
 @singleton
-class EquipmentDetailBloc
-    extends Bloc<EquipmentDetailEvent, EquipmentDetailState> {
+class EquipmentDetailBloc extends Bloc<EquipmentDetailEvent, EquipmentDetailState> {
   final GetEuipmentByIdUseCase getEuipmentUseCase;
   final BuyEquipmentIdUseCase buyEquipmentIdUseCase;
   EquipmentDetailBloc(
@@ -36,12 +35,10 @@ class EquipmentDetailBloc
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getEuipmentUseCase.call(event.id!);
-      emit(state.copyWith(
-          stateStatus: const StateStatus.success(), equipment: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(), equipment: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -52,12 +49,10 @@ class EquipmentDetailBloc
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       await buyEquipmentIdUseCase.call(event.id!);
-      emit(state.copyWith(stateStatus: const StateStatus.success()));
+      emit(state.copyWith(stateStatus: const StateStatus.success(true)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(
-              message: errorMessage ?? 'Произошла ошибка')));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage ?? 'Произошла ошибка')));
     }
   }
 }

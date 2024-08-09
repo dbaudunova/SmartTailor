@@ -85,20 +85,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildSubscripe(ProfileState state) {
     print(state.profile?.hasSubscription);
-    return state.profile?.hasSubscription == null || false
-        ? Column(
-            children: [
-              SubscribeContainerStyle(
-                buttonTitle: 'Отправить запрос',
-                onButtonPressed: () {
-                  context.read<ProfileBloc>().add(const ProfileEvent.sendSubscription());
-                  // _buildShowDialog(context);
-                },
-              ),
-              const SizedBox(height: AppProps.kPageMargin)
-            ],
-          )
-        : const SizedBox.shrink();
+    return state.stateStatus == StateStatus.loading()
+        ? SizedBox.shrink()
+        : state.profile?.hasSubscription == false
+            ? Column(
+                children: [
+                  SubscribeContainerStyle(
+                    buttonTitle: 'Отправить запрос',
+                    onButtonPressed: () {
+                      context.read<ProfileBloc>().add(const ProfileEvent.sendSubscription());
+                      // _buildShowDialog(context);
+                    },
+                  ),
+                  const SizedBox(height: AppProps.kPageMargin)
+                ],
+              )
+            : const SizedBox.shrink();
   }
 
   BlocBuilder<ProfileBloc, ProfileState> _buildBlocBuilder() {

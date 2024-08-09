@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/data/models/send_invite_model/send_invite_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/domain/use_case/invite_employee_use_case.dart';
 
 part 'invite_employee_event.dart';
@@ -31,7 +32,7 @@ class InviteEmployeeBloc extends Bloc<InviteEmployeeEvent, InviteEmployeeState> 
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
-      // final results = await inviteEmployeeUseCase.call();
+      await inviteEmployeeUseCase.call(event.model);
       emit(
         state.copyWith(
           stateStatus: const StateStatus.success(),

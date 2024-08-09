@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
@@ -104,42 +103,23 @@ class _OrderDetailContentState extends State<OrderDetailContent> {
     );
   }
 
-  void _showAlertDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialogStyle(
-          title: 'Ваш заказ в обработке',
-          content: 'Заказ отображается в вашем личном кабинете',
-          buttonText: 'Понятно',
-          onButtonPressed: () {
-            AutoRouter.of(context).maybePop();
-          },
-        );
-      },
-    );
-  }
-
-  Column _buildButtons(int? id, OrderDetailState state) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: state.stateStatus != const StateStatus.loading()
-          ? [
-              ElevatedButtonWidget(
-                text: t.acceptOrder,
-                onTap: () {
-                  context.read<OrderDetailBloc>().add(OrderDetailEvent.requestToExecute(id: id));
-                },
-                color: AppColors.white,
-              ),
-            ]
-          : [
-              ElevatedButtonWidget(
-                text: t.acceptOrder,
-                onTap: null,
-                color: AppColors.white,
-              ),
-            ],
-    );
+  Widget _buildButtons(int? id, OrderDetailState state) {
+    return state.stateStatus != const StateStatus.loading()
+        ? ElevatedButtonWidget(
+            text: t.acceptOrder,
+            onTap: () {
+              context.read<OrderDetailBloc>().add(
+                    OrderDetailEvent.requestToExecute(
+                      id: id,
+                    ),
+                  );
+            },
+            color: AppColors.white,
+          )
+        : ElevatedButtonWidget(
+            text: t.acceptOrder,
+            onTap: null,
+            color: AppColors.white,
+          );
   }
 }

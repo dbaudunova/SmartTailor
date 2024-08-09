@@ -88,12 +88,10 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
         default:
           throw UnimplementedError('Unknown order type: $type');
       }
-      emit(state.copyWith(
-          stateStatus: const StateStatus.success('Успешно создано')));
+      emit(state.copyWith(stateStatus: const StateStatus.success(true)));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -102,8 +100,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     var date = DateFormat('yyyy-MM-dd').format(event.dateOfExecution);
-    final orderPlaceModel =
-        state.orderPlaceModel.copyWith(dateOfExecution: date);
+    final orderPlaceModel = state.orderPlaceModel.copyWith(dateOfExecution: date);
     emit(
       state.copyWith(
         orderPlaceModel: orderPlaceModel,
@@ -141,8 +138,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     final currentItems = state.orderPlaceModel.items;
-    final updatedItems =
-        currentItems.where((item) => item != event.item).toSet();
+    final updatedItems = currentItems.where((item) => item != event.item).toSet();
     final orderPlaceModel = state.orderPlaceModel.copyWith(items: updatedItems);
     emit(
       state.copyWith(
@@ -158,9 +154,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     final newItem = event.item;
     final existingItems = state.orderPlaceModel.items.toList();
     final itemExists = existingItems.any((item) => item.size == newItem.size);
-    final updatedItems = itemExists
-        ? state.orderPlaceModel.items
-        : {...state.orderPlaceModel.items, newItem};
+    final updatedItems = itemExists ? state.orderPlaceModel.items : {...state.orderPlaceModel.items, newItem};
     final orderPlaceModel = state.orderPlaceModel.copyWith(items: updatedItems);
     emit(
       state.copyWith(

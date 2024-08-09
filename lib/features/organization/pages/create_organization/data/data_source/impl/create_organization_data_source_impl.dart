@@ -25,7 +25,6 @@ class CreateOrganizationDataSourceImpl implements CreateOrganizationDataSource {
     // print(jsonString);
     var multipartImage = await MultipartFile.fromFile(image.path, filename: image.path.split('/').last);
     // for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
-    print('45645645');
     final formData = FormData.fromMap({
       'organization': jsonString,
       'image': multipartImage,
@@ -40,18 +39,15 @@ class CreateOrganizationDataSourceImpl implements CreateOrganizationDataSource {
       );
       if (response.statusCode != HttpSuccess.created) {
         // ignore: only_throw_errors
-        print(response.data.toString());
         throw Failure.request(
           status: response.statusCode,
           message: response.data.toString(),
         );
       }
     } on DioException catch (e) {
-      print('DioError:  ${e.message}');
       // ignore: only_throw_errors
       throw handleDioException(e);
     } catch (e) {
-      print(e.toString());
       // ignore: only_throw_errors
       throw handleGeneralException(e);
     }
