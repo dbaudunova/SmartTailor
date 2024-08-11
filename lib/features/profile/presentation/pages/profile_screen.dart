@@ -58,7 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildProfileButton(context, 'Мои объявления', const MyAnnouncementsRoute()),
                 const SizedBox(height: AppProps.kPageMargin),
                 _buildProfileButton(context, 'Мои покупки', const MyPurchasesRoute()),
-                if (_isHistoryOfOrdersButtonVisible) ...[
+                if (_isSubscribeContainerVisible) ...[
                   const SizedBox(height: AppProps.kPageMargin),
                   _buildProfileButton(context, 'История заказов', const OrderHistoryRoute()),
                   const SizedBox(height: AppProps.kPageMargin),
@@ -113,10 +113,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return AppSnackBar.show(context: context, titleText: 'Не удалось загрузить данные', error: true);
         }
         if (state.stateStatus == const StateStatus.success()) {
+          final isSubscribed = state.profile?.hasSubscription;
           return UserInfo(
             profileEntity: state.profile,
-            secondRowText: 'Отправьте запрос на подписку',
-            onIconPressed: () {
+              secondRowText: isSubscribed == true ? 'Подписка оформлена' : 'Отправьте запрос на подписку',
+              onIconPressed: () {
               AutoRouter.of(context).push(const NotificationRoute());
             },
           );

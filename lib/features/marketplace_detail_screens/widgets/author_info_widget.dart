@@ -16,33 +16,39 @@ class AuthorInfoWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            CircleAvatar(
-              maxRadius: 32,
-              backgroundImage: CachedNetworkImageProvider(authorImage),
-            ),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  authorName,
-                  style: AppTextStyle.textField16.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+        Expanded(
+          child: Row(
+            children: [
+              CircleAvatar(
+                maxRadius: 32,
+                backgroundImage: CachedNetworkImageProvider(authorImage),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      authorName,
+                      style: AppTextStyle.textField16.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Автор объявления',
+                      style: AppTextStyle.text14,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-                const Text(
-                  'Автор объявления',
-                  style: AppTextStyle.text14,
-                )
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
         const Padding(
           padding: EdgeInsets.only(right: AppProps.kPageMargin),
@@ -51,7 +57,7 @@ class AuthorInfoWidget extends StatelessWidget {
             Icons.phone,
             color: AppColors.listGreen,
           ),
-        )
+        ),
       ],
     );
   }

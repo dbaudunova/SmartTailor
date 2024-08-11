@@ -8,6 +8,7 @@ import 'package:neobis_smart_tailor/core/network/http_client.dart';
 import 'package:neobis_smart_tailor/core/network/http_paths.dart';
 import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/announcement_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
 
 @Injectable(as: ProfileDataSource)
@@ -65,17 +66,17 @@ class ProfileDataSourceImpl implements ProfileDataSource {
         data: params.toJson(),
         options: Options(
           headers: {
-            'Accept': 'application/json',
-            'content-type': 'application/json',
+            'content-type': 'text/plain',
           },
-          contentType: Headers.jsonContentType,
+          contentType: Headers.textPlainContentType,
         ),
       );
 
       if (response.statusCode != 200) {
         throw Failure.request(
           status: response.statusCode,
-          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+          message:
+              'Не удалось редактировать профиль: ${response.statusMessage}',
         );
       }
       return ProfileModel.fromJson(params.toJson());
@@ -124,8 +125,37 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       if (response.statusCode != 200) {
         throw Failure.request(
           status: response.statusCode,
-          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+          message:
+              'Не удалось редактировать профиль: ${response.statusMessage}',
         );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<List<AnnouncementModel>> getAnnouncements({required int pageNumber}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.myAdvertisements,
+        queryParameters: {
+          'pageNumber': pageNumber.toString(),
+          'pageSize': '10',
+        },
+      );
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        var list = (response.data as List)
+            .map((item) => AnnouncementModel.fromJson(item))
+            .toList();
+        return list;
       }
     } on DioException catch (e) {
       throw handleDioException(e);
