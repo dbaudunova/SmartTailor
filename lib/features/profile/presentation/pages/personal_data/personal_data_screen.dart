@@ -32,7 +32,8 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.getProfileInfo());
+    BlocProvider.of<ProfileBloc>(context)
+        .add(const ProfileEvent.getProfileInfo());
   }
 
   @override
@@ -50,135 +51,128 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: BlocListener<ProfileBloc, ProfileState>(
-          listener: (context, state) {
-            if (state.stateStatus == const StateStatus.success()) {
-              _buildShowDialog(context);
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
-            child: CustomScrollView(
-              slivers: [
-                SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: Column(
-                    children: [
-                      _buildUserInfo(context),
-                      const SizedBox(height: 16),
-                      _buildPersonalDataRow(),
-                      const SizedBox(height: 40),
-                      Form(key: _formKey, child: _buildTextFields()),
-                      const Spacer(),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: ElevatedButtonWidget(
-                          text: 'Сохранить данные',
-                          onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              final profile = ProfileEntity(
-                                surname: _surnameController.text,
-                                name: _nameController.text,
-                                patronymic: _fathersNameController.text,
-                                phoneNumber: _phoneNumberController.text,
-                              );
-                              context.read<ProfileBloc>().add(ProfileEvent.editProfileInfo(profile));
-                            }
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+          child: BlocConsumer<ProfileBloc, ProfileState>(
+            listener: (context, state) {
+              if (state.stateStatus == const StateStatus.success()) {
+                _buildShowDialog(context);
+              } else if (state.stateStatus ==
+                  StateStatus.failure(message: '${state.stateStatus}')) {
+                AppSnackBar.show(
+                  context: context,
+                  titleText: 'Не удалось загрузить данные',
+                  error: true,
+                );
+              }
+            },
+            builder: (context, state) {
+              if (state.stateStatus == const StateStatus.loading()) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              if (state.stateStatus == const StateStatus.success() &&
+                  !_isInitialized) {
+                _surnameController.text = state.profile?.surname ?? '';
+                _nameController.text = state.profile?.name ?? '';
+                _fathersNameController.text = state.profile?.patronymic ?? '';
+                _emailController.text = state.profile?.email ?? '';
+                _phoneNumberController.text = state.profile?.phoneNumber ?? '';
+                _isInitialized = true;
+              }
+
+              return CustomScrollView(
+                slivers: [
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Column(
+                      children: [
+                        UserInfo(
+                          profileEntity: state.profile,
+                          secondRowText: 'Изменить фото профиля',
+                          showBellIcon: false,
+                          enableImageSelection: true,
+                          onImageChanged: (file) {
+                            context
+                                .read<ProfileBloc>()
+                                .add(ProfileEvent.uploadImage(file!));
                           },
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                    ],
+                        const SizedBox(height: 16),
+                        _buildPersonalDataRow(),
+                        const SizedBox(height: 40),
+                        Form(key: _formKey, child: _buildTextFields(state)),
+                        const Spacer(),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: ElevatedButtonWidget(
+                            text: 'Сохранить данные',
+                            onTap: () {
+                              if (_formKey.currentState!.validate()) {
+                                final profile = ProfileEntity(
+                                  surname: _surnameController.text,
+                                  name: _nameController.text,
+                                  patronymic: _fathersNameController.text,
+                                  phoneNumber: _phoneNumberController.text,
+                                );
+                                context
+                                    .read<ProfileBloc>()
+                                    .add(ProfileEvent.editProfileInfo(profile));
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                      ],
+                    ),
                   ),
-                )
-              ],
-            ),
+                ],
+              );
+            },
           ),
         ),
       ),
     );
   }
 
-  BlocBuilder<ProfileBloc, ProfileState> _buildUserInfo(BuildContext context) {
-    return BlocBuilder<ProfileBloc, ProfileState>(
-      builder: (context, state) {
-        if (state.stateStatus == const StateStatus.loading()) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
-          return AppSnackBar.show(context: context, titleText: 'Не удалось загрузить данные', error: true);
-        }
-        if (state.stateStatus == const StateStatus.success() && !_isInitialized) {
-          _surnameController.text = state.profile?.surname ?? '';
-          _nameController.text = state.profile?.name ?? '';
-          _fathersNameController.text = state.profile?.patronymic ?? '';
-          _emailController.text = state.profile?.email ?? '';
-          _phoneNumberController.text = state.profile?.phoneNumber ?? '';
-          _isInitialized = true;
-        }
-        return UserInfo(
-          profileEntity: state.profile,
-          secondRowText: 'Изменить фото профиля',
-          showBellIcon: false,
-          enableImageSelection: true,
-          onImageChanged: (file) {
-            context.read<ProfileBloc>().add(ProfileEvent.uploadImage(file!));
-          },
-        );
-      },
+  Widget _buildTextFields(ProfileState state) {
+    return Column(
+      children: [
+        TextFormFieldWidget(
+          titleName: 'Фамилия*',
+          validator: _nullValidation,
+          controller: _surnameController,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          titleName: 'Имя*',
+          validator: _nullValidation,
+          controller: _nameController,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          titleName: 'Отчество*',
+          validator: _nullValidation,
+          controller: _fathersNameController,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          titleName: 'Почта*',
+          enabled: false,
+          controller: _emailController,
+          keyboardType: TextInputType.emailAddress,
+          validator: _emailValidation,
+        ),
+        const SizedBox(height: 16),
+        TextFormFieldWidget(
+          validator: _nullValidation,
+          titleName: 'Номер телефона*',
+          keyboardType: TextInputType.phone,
+          formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
+          controller: _phoneNumberController,
+        ),
+      ],
     );
-  }
-
-  BlocBuilder<ProfileBloc, ProfileState> _buildTextFields() {
-    return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
-      if (state.stateStatus == const StateStatus.loading()) {
-        return const Center(child: CircularProgressIndicator());
-      }
-      if (state.stateStatus == StateStatus.failure(message: '${state.stateStatus}')) {
-        return AppSnackBar.show(context: context, titleText: 'Не удалось загрузить данные', error: true);
-      }
-      if (state.stateStatus == const StateStatus.success()) {
-        return Column(
-          children: [
-            TextFormFieldWidget(
-              titleName: 'Фамилия*',
-              validator: _nullValidation,
-              controller: _surnameController,
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              titleName: 'Имя*',
-              validator: _nullValidation,
-              controller: _nameController,
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              titleName: 'Отчество*',
-              validator: _nullValidation,
-              controller: _fathersNameController,
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              titleName: 'Почта*',
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              validator: _emailValidation,
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              validator: _nullValidation,
-              titleName: 'Номер телефона*',
-              keyboardType: TextInputType.phone,
-              formatters: [MaskTextInputFormatter(mask: '+996 ### ### ###')],
-              controller: _phoneNumberController,
-            ),
-          ],
-        );
-      }
-      return const Center(
-        child: Text('Что-то пошло не так'),
-      );
-    });
   }
 
   String? _nullValidation(String? value) {

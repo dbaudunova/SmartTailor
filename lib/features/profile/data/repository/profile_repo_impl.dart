@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart';
 
@@ -52,5 +53,10 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<void> uploadImage(File imageFile) async {
     return await _dataSource.uploadImage(imageFile);
+  }
+
+  @override
+  Future<List<AnnouncementEntity>> getAnnouncements({required int pageNumber}) {
+   return _dataSource.getAnnouncements(pageNumber: pageNumber);
   }
 }
