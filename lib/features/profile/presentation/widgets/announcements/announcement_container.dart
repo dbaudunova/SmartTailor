@@ -4,13 +4,21 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class AnnouncementsContainer extends StatelessWidget {
   const AnnouncementsContainer({
+    required this.price,
+    required this.orderNumber,
+    required this.orderStatus,
+    required this.name,
+    required this.description,
     this.onTap,
     super.key,
-    this.price,
   });
 
   final VoidCallback? onTap;
   final String? price;
+  final String? orderNumber;
+  final String? orderStatus;
+  final String? name;
+  final String? description;
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +33,23 @@ class AnnouncementsContainer extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Row(
             children: [
-              SizedBox(
-                width: 72,
-                height: 68,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   width: 72,
+              //   height: 68,
+              //   child: ClipRRect(
+              //     borderRadius: BorderRadius.circular(8),
+              //     child: Container(
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(8),
+              //       ),
+              //       child: CachedNetworkImage(
+              //         imageUrl:
+              //             'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
+              //         fit: BoxFit.cover,
+              //       ),
+              //     ),
+              //   ),
+              // ),
               const SizedBox(width: 8),
               Expanded(
                 child: Column(
@@ -51,7 +59,7 @@ class AnnouncementsContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Оборудование',
+                          'Заказ № ${orderNumber!}',
                           style: AppTextStyle.textField16.copyWith(
                             color: AppColors.listGreen,
                           ),
@@ -66,14 +74,14 @@ class AnnouncementsContainer extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Швейная машинка',
+                      name!,
                       style: AppTextStyle.textField16.copyWith(
                         color: AppColors.darkGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Lorem ipsum dolor sit amet, conscectc...',
+                      description!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyle.s12w400.copyWith(

@@ -36,4 +36,6 @@ class HttpPaths {
 
   static const addPosition = '$baseUrl/api/position/add-position';
   static const gatAllPositions = '$baseUrl/api/position/get-all-positions';
+
+  static const gatAllCurrentOrders = '$baseUrl/api/order/organization-orders';
 }

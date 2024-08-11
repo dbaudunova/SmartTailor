@@ -15,8 +15,7 @@ class MyAnnouncementsScreen extends StatefulWidget {
   State<MyAnnouncementsScreen> createState() => _MyAnnouncementsScreenState();
 }
 
-class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
-    with TickerProviderStateMixin {
+class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with TickerProviderStateMixin {
   late TabController _tabController;
   final List<String> _labels = ['Заказы', 'Обрудование'];
 
@@ -87,13 +86,13 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
             horizontal: 16,
             vertical: 4,
           ),
-          child: AnnouncementsContainer(
-            onTap: () {
-              AutoRouter.of(context).push(
-                const AnnouncementDetailRoute(),
-              );
-            },
-          ),
+          // child: AnnouncementsContainer(
+          //   onTap: () {
+          //     AutoRouter.of(context).push(
+          //       const AnnouncementDetailRoute(),
+          //     );
+          //   },
+          // ),
         );
       },
     );
@@ -108,13 +107,13 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen>
             horizontal: 16,
             vertical: 4,
           ),
-          child: AnnouncementsContainer(
-            onTap: () {
-              AutoRouter.of(context).push(
-                const AnnouncementDetailRoute(),
-              );
-            },
-          ),
+          // child: AnnouncementsContainer(
+          //   onTap: () {
+          //     AutoRouter.of(context).push(
+          //       const AnnouncementDetailRoute(),
+          //     );
+          //   },
+          // ),
         );
       },
     );

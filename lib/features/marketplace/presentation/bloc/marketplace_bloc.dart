@@ -147,7 +147,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
         stateStatus: const StateStatus.success(),
         equipments: List<GeneralEntity>.from(state.equipments)..addAll(result.listEntitys),
         equipmentsPageNumber: state.equipmentsPageNumber + 1,
-        isLoadingMore: result.isLast!,
+        isLoadingMore: false,
         lastForEquipment: result.isLast!,
       ));
     } catch (e) {
@@ -173,7 +173,7 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
         stateStatus: const StateStatus.success(),
         services: List<GeneralEntity>.from(state.services)..addAll(result.listEntitys),
         servicesPageNumber: state.servicesPageNumber + 1,
-        isLoadingMore: result.isLast!,
+        isLoadingMore: false,
         lastForServices: result.isLast!,
       ));
     } catch (e) {

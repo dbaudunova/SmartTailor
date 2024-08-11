@@ -6,6 +6,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_orders_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employees_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employees_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/bloc/organization_bloc.dart';
@@ -84,7 +85,8 @@ class _OrganizationContentState extends State<OrganizationContent> with TickerPr
                                 padding: EdgeInsets.symmetric(horizontal: 16),
                                 child: PositionsWidgetScreen(),
                               ),
-                              _buildOrderListView(),
+                              const CurrentOrdersScreen(),
+                              // _buildOrderListView(),
                               _buildCompletedOrdersListView(),
                             ],
                           ),
@@ -179,23 +181,23 @@ class _OrganizationContentState extends State<OrganizationContent> with TickerPr
     );
   }
 
-  ListView _buildOrderListView() {
-    return ListView.builder(
-      itemCount: 10,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
-          child: AnnouncementsContainer(
-            onTap: () {
-              AutoRouter.of(context).push(const CurrentOrderDetailRoute());
-            },
-            price: '1000 сом',
-          ),
-        );
-      },
-    );
-  }
+  // ListView _buildOrderListView() {
+  //   return ListView.builder(
+  //     itemCount: 10,
+  //     shrinkWrap: true,
+  //     itemBuilder: (context, index) {
+  //       return Padding(
+  //         padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
+  //         child: AnnouncementsContainer(
+  //           onTap: () {
+  //             AutoRouter.of(context).push(const CurrentOrderDetailRoute());
+  //           },
+  //           price: '1000 сом',
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   // Stack _buildEmployeePositionTab() {
   //   return Stack(

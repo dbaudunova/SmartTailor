@@ -1,19 +1,28 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/status_bottom_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 
 @RoutePage()
 class CurrentOrderDetailScreen extends StatefulWidget {
-  const CurrentOrderDetailScreen({super.key});
+  final int id;
+  const CurrentOrderDetailScreen({required this.id, super.key});
 
   @override
   State<CurrentOrderDetailScreen> createState() => _CurrentOrderDetailScreenState();
 }
 
 class _CurrentOrderDetailScreenState extends State<CurrentOrderDetailScreen> {
+  @override
+  void initState() {
+    context.read<CurrentOrderBloc>().add(CurrentOrderEvent.getDetailedOrder(id: widget.id));
+    super.initState();
+  }
+
   bool _isEmployeeExpanded = false;
   final List<Map> _statusList = [
     {'name': 'Прибыл', 'isChecked': false},

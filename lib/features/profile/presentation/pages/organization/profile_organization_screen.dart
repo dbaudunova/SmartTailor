@@ -104,12 +104,12 @@ class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen> w
       itemCount: 10,
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
-          child: const AnnouncementsContainer(
-            price: '1000 сом',
-          ),
-        );
+        // return Padding(
+        //   padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 12),
+        //   child: const AnnouncementsContainer(
+        //     price: '1000 сом',
+        //   ),
+        // );
       },
     );
   }

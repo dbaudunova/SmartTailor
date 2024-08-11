@@ -44,9 +44,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CurrentOrderDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<CurrentOrderDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CurrentOrderDetailScreen(),
+        child: CurrentOrderDetailScreen(
+          id: args.id,
+          key: args.key,
+        ),
       );
     },
     EmailInputRoute.name: (routeData) {
@@ -290,16 +294,41 @@ class CreateOrganizationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CurrentOrderDetailScreen]
-class CurrentOrderDetailRoute extends PageRouteInfo<void> {
-  const CurrentOrderDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class CurrentOrderDetailRoute
+    extends PageRouteInfo<CurrentOrderDetailRouteArgs> {
+  CurrentOrderDetailRoute({
+    required int id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           CurrentOrderDetailRoute.name,
+          args: CurrentOrderDetailRouteArgs(
+            id: id,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CurrentOrderDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CurrentOrderDetailRouteArgs> page =
+      PageInfo<CurrentOrderDetailRouteArgs>(name);
+}
+
+class CurrentOrderDetailRouteArgs {
+  const CurrentOrderDetailRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final int id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CurrentOrderDetailRouteArgs{id: $id, key: $key}';
+  }
 }
 
 /// generated route for
