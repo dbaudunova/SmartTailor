@@ -6,6 +6,7 @@ import 'package:neobis_smart_tailor/core/services/auth_service.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart';
 
@@ -56,7 +57,17 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<List<AnnouncementEntity>> getAnnouncements({required int pageNumber}) {
-   return _dataSource.getAnnouncements(pageNumber: pageNumber);
+  Future<AnnouncementResponseEntity> getMyEquipments({required int pageNumber}) async {
+    return await _dataSource.getMyEquipments(pageNumber: pageNumber);
+  }
+
+  @override
+  Future<AnnouncementResponseEntity> getMyOrders({required int pageNumber}) async {
+    return await _dataSource.getMyOrders(pageNumber: pageNumber);
+  }
+
+  @override
+  Future<AnnouncementResponseEntity> getMyServices({required int pageNumber}) async {
+    return await _dataSource.getMyServices(pageNumber: pageNumber);
   }
 }

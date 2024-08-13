@@ -1,16 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 
 class AnnouncementsContainer extends StatelessWidget {
   const AnnouncementsContainer({
     this.onTap,
     super.key,
     this.price,
+    this.announcement,
   });
 
   final VoidCallback? onTap;
   final String? price;
+  final AnnouncementEntity? announcement;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +39,7 @@ class AnnouncementsContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: CachedNetworkImage(
-                      imageUrl:
-                          'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
+                      imageUrl: announcement?.imagePath ?? '',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -51,9 +54,13 @@ class AnnouncementsContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Оборудование',
+                    typeFromString(announcement?.type).translated,
                           style: AppTextStyle.textField16.copyWith(
-                            color: AppColors.listGreen,
+                            color: typeColor(
+                              typeFromString(
+                                announcement?.type,
+                              ),
+                            ),
                           ),
                         ),
                         Text(
@@ -66,14 +73,14 @@ class AnnouncementsContainer extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Швейная машинка',
+                      announcement?.name ?? '',
                       style: AppTextStyle.textField16.copyWith(
                         color: AppColors.darkGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Lorem ipsum dolor sit amet, conscectc...',
+                      announcement?.description ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyle.s12w400.copyWith(

@@ -26,8 +26,11 @@ class HttpPaths {
   static const getProfile = '$baseUrl/api/account/profile';
   static const editProfile = '$baseUrl/api/account/profile/edit';
   static const uploadImage = '$baseUrl/api/account/profile/uploadImage';
-  static const myAdvertisements = '$baseUrl/api/account/my-advertisements';
   static const sendSubscription = '$baseUrl/api/app-user/send-subscription-request';
+
+  static const myOrders = '$baseUrl/api/order/my-orders';
+  static const myEquipments = '$baseUrl/api/equipment/my-equipments';
+  static const myServices = '$baseUrl/api/service/my-services';
 
   static const getOrganization = '$baseUrl/api/organization/get-organization-detailed';
   static const createOrganization = '$baseUrl/api/organization/create-organization';

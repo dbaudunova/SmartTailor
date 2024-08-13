@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'announcement_model.dart';
+part of 'announcement_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AnnouncementModel _$AnnouncementModelFromJson(Map<String, dynamic> json) =>
-    AnnouncementModel(
+AnnouncementEntity _$AnnouncementEntityFromJson(Map<String, dynamic> json) =>
+    AnnouncementEntity(
       id: (json['id'] as num?)?.toInt(),
       imagePath: json['imagePath'] as String?,
       type: json['type'] as String?,
@@ -16,7 +16,7 @@ AnnouncementModel _$AnnouncementModelFromJson(Map<String, dynamic> json) =>
       createdAt: json['createdAt'] as String?,
     );
 
-Map<String, dynamic> _$AnnouncementModelToJson(AnnouncementModel instance) =>
+Map<String, dynamic> _$AnnouncementEntityToJson(AnnouncementEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
       'imagePath': instance.imagePath,
