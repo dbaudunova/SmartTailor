@@ -1043,7 +1043,9 @@ mixin _$MarketplaceState {
   int get ordersTotalCount => throw _privateConstructorUsedError;
   int get equipmentTotalCount => throw _privateConstructorUsedError;
   int get servicesTotalCount => throw _privateConstructorUsedError;
-  bool get isLoadingMore => throw _privateConstructorUsedError;
+  bool get isLoadingMoreOrders => throw _privateConstructorUsedError;
+  bool get isLoadingMoreEquipments => throw _privateConstructorUsedError;
+  bool get isLoadingMoreServices => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MarketplaceStateCopyWith<MarketplaceState> get copyWith =>
@@ -1070,7 +1072,9 @@ abstract class $MarketplaceStateCopyWith<$Res> {
       int ordersTotalCount,
       int equipmentTotalCount,
       int servicesTotalCount,
-      bool isLoadingMore});
+      bool isLoadingMoreOrders,
+      bool isLoadingMoreEquipments,
+      bool isLoadingMoreServices});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -1101,7 +1105,9 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
     Object? ordersTotalCount = null,
     Object? equipmentTotalCount = null,
     Object? servicesTotalCount = null,
-    Object? isLoadingMore = null,
+    Object? isLoadingMoreOrders = null,
+    Object? isLoadingMoreEquipments = null,
+    Object? isLoadingMoreServices = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -1156,9 +1162,17 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
           ? _value.servicesTotalCount
           : servicesTotalCount // ignore: cast_nullable_to_non_nullable
               as int,
-      isLoadingMore: null == isLoadingMore
-          ? _value.isLoadingMore
-          : isLoadingMore // ignore: cast_nullable_to_non_nullable
+      isLoadingMoreOrders: null == isLoadingMoreOrders
+          ? _value.isLoadingMoreOrders
+          : isLoadingMoreOrders // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMoreEquipments: null == isLoadingMoreEquipments
+          ? _value.isLoadingMoreEquipments
+          : isLoadingMoreEquipments // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMoreServices: null == isLoadingMoreServices
+          ? _value.isLoadingMoreServices
+          : isLoadingMoreServices // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -1194,7 +1208,9 @@ abstract class _$$MarketplaceStateImplCopyWith<$Res>
       int ordersTotalCount,
       int equipmentTotalCount,
       int servicesTotalCount,
-      bool isLoadingMore});
+      bool isLoadingMoreOrders,
+      bool isLoadingMoreEquipments,
+      bool isLoadingMoreServices});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -1224,7 +1240,9 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
     Object? ordersTotalCount = null,
     Object? equipmentTotalCount = null,
     Object? servicesTotalCount = null,
-    Object? isLoadingMore = null,
+    Object? isLoadingMoreOrders = null,
+    Object? isLoadingMoreEquipments = null,
+    Object? isLoadingMoreServices = null,
   }) {
     return _then(_$MarketplaceStateImpl(
       stateStatus: null == stateStatus
@@ -1279,9 +1297,17 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
           ? _value.servicesTotalCount
           : servicesTotalCount // ignore: cast_nullable_to_non_nullable
               as int,
-      isLoadingMore: null == isLoadingMore
-          ? _value.isLoadingMore
-          : isLoadingMore // ignore: cast_nullable_to_non_nullable
+      isLoadingMoreOrders: null == isLoadingMoreOrders
+          ? _value.isLoadingMoreOrders
+          : isLoadingMoreOrders // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMoreEquipments: null == isLoadingMoreEquipments
+          ? _value.isLoadingMoreEquipments
+          : isLoadingMoreEquipments // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingMoreServices: null == isLoadingMoreServices
+          ? _value.isLoadingMoreServices
+          : isLoadingMoreServices // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -1304,7 +1330,9 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
       required this.ordersTotalCount,
       required this.equipmentTotalCount,
       required this.servicesTotalCount,
-      required this.isLoadingMore})
+      required this.isLoadingMoreOrders,
+      required this.isLoadingMoreEquipments,
+      required this.isLoadingMoreServices})
       : _equipments = equipments,
         _orders = orders,
         _services = services;
@@ -1354,11 +1382,15 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
   @override
   final int servicesTotalCount;
   @override
-  final bool isLoadingMore;
+  final bool isLoadingMoreOrders;
+  @override
+  final bool isLoadingMoreEquipments;
+  @override
+  final bool isLoadingMoreServices;
 
   @override
   String toString() {
-    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore)';
+    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMoreOrders: $isLoadingMoreOrders, isLoadingMoreEquipments: $isLoadingMoreEquipments, isLoadingMoreServices: $isLoadingMoreServices)';
   }
 
   @override
@@ -1390,8 +1422,13 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
                 other.equipmentTotalCount == equipmentTotalCount) &&
             (identical(other.servicesTotalCount, servicesTotalCount) ||
                 other.servicesTotalCount == servicesTotalCount) &&
-            (identical(other.isLoadingMore, isLoadingMore) ||
-                other.isLoadingMore == isLoadingMore));
+            (identical(other.isLoadingMoreOrders, isLoadingMoreOrders) ||
+                other.isLoadingMoreOrders == isLoadingMoreOrders) &&
+            (identical(
+                    other.isLoadingMoreEquipments, isLoadingMoreEquipments) ||
+                other.isLoadingMoreEquipments == isLoadingMoreEquipments) &&
+            (identical(other.isLoadingMoreServices, isLoadingMoreServices) ||
+                other.isLoadingMoreServices == isLoadingMoreServices));
   }
 
   @override
@@ -1410,7 +1447,9 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
       ordersTotalCount,
       equipmentTotalCount,
       servicesTotalCount,
-      isLoadingMore);
+      isLoadingMoreOrders,
+      isLoadingMoreEquipments,
+      isLoadingMoreServices);
 
   @JsonKey(ignore: true)
   @override
@@ -1435,7 +1474,9 @@ abstract class _MarketplaceState implements MarketplaceState {
       required final int ordersTotalCount,
       required final int equipmentTotalCount,
       required final int servicesTotalCount,
-      required final bool isLoadingMore}) = _$MarketplaceStateImpl;
+      required final bool isLoadingMoreOrders,
+      required final bool isLoadingMoreEquipments,
+      required final bool isLoadingMoreServices}) = _$MarketplaceStateImpl;
 
   @override
   StateStatus get stateStatus;
@@ -1464,7 +1505,11 @@ abstract class _MarketplaceState implements MarketplaceState {
   @override
   int get servicesTotalCount;
   @override
-  bool get isLoadingMore;
+  bool get isLoadingMoreOrders;
+  @override
+  bool get isLoadingMoreEquipments;
+  @override
+  bool get isLoadingMoreServices;
   @override
   @JsonKey(ignore: true)
   _$$MarketplaceStateImplCopyWith<_$MarketplaceStateImpl> get copyWith =>

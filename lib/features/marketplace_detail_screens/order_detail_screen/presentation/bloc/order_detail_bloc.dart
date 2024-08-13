@@ -11,7 +11,7 @@ part 'order_detail_bloc_event.dart';
 part 'order_detail_bloc_state.dart';
 part 'order_detail_bloc.freezed.dart';
 
-@singleton
+@injectable
 class OrderDetailBloc extends Bloc<OrderDetailEvent, OrderDetailState> {
   final GetOrderByIdUseCase getOrderUseCase;
   final RequestToExecuteUseCase requestToExecuteUseCase;

@@ -2,13 +2,15 @@ part of '../io_ui.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
   final VoidCallback? onTap;
-  final String text;
+  final String? text;
   final Color color;
+  final bool? loading;
   const ElevatedButtonWidget({
-    required this.text,
+    this.text,
     super.key,
     this.onTap,
     this.color = AppColors.darkBlue,
+    this.loading,
   });
 
   @override
@@ -41,16 +43,17 @@ class ElevatedButtonWidget extends StatelessWidget {
         }),
       ),
       onPressed: onTap,
-      child: Text(
-        text,
-        style: AppTextStyle.textField16.copyWith(
-          color: (color == AppColors.white ||
-                  color == AppColors.buttonUnavailableBack)
-              ? AppColors.darkBlue
-              : AppColors.white,
-          fontSize: 20,
-        ),
-      ),
+      child: loading != true
+          ? Text(
+              text!,
+              style: AppTextStyle.textField16.copyWith(
+                color: (color == AppColors.white || color == AppColors.buttonUnavailableBack)
+                    ? AppColors.darkBlue
+                    : AppColors.white,
+                fontSize: 20,
+              ),
+            )
+          : const SizedBox(height: 32, width: 32, child: CircularProgressIndicator()),
     );
   }
 }

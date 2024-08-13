@@ -1,9 +1,10 @@
 class CurrentOrderEntity {
   final int? id;
   final String? name;
-  final int? price;
+  final double? price;
   final String? description;
   final String? imageUrl;
+  final String? status;
 
   CurrentOrderEntity({
     required this.id,
@@ -11,6 +12,7 @@ class CurrentOrderEntity {
     required this.description,
     required this.imageUrl,
     required this.price,
+    required this.status,
   });
 
   factory CurrentOrderEntity.initial() {
@@ -19,7 +21,8 @@ class CurrentOrderEntity {
       name: '',
       description: '',
       imageUrl: '',
-      price: 0,
+      price: 0.0,
+      status: '',
     );
   }
 }

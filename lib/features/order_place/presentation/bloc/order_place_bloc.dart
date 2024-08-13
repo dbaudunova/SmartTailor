@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
@@ -28,6 +30,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     this.createOrderUseCase,
   ) : super(
           OrderPlaceState(
+              controller: TextEditingController(),
               stateStatus: const StateStatus.initial(),
               orderPlaceModel: OrderPlaceModel.initial(),
               showFields: null,
@@ -43,6 +46,51 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     on<_AddDate>(_addDate);
     on<_ResetState>(_resetState);
     on<_CreateOrder>(_createOrder);
+    on<_SelectPhotos>(_handleSelectPhotos);
+    on<_CapturePhotos>(_handleCapturePhotos);
+  }
+
+  Future<void> _handleSelectPhotos(
+    _SelectPhotos event,
+    Emitter<OrderPlaceState> emit,
+  ) async {
+    final picker = ImagePicker();
+    final pickedFiles = await picker.pickMultiImage(imageQuality: 40);
+    if (pickedFiles != null) {
+      final images = pickedFiles.take(5).map((file) => File(file.path)).toList();
+      emit(
+        state.copyWith(
+          images: images,
+          controller: TextEditingController(
+            text: 'Выбрано ${images.length} фото',
+          ),
+        ),
+      );
+    }
+  }
+
+  Future<void> _handleCapturePhotos(
+    _CapturePhotos event,
+    Emitter<OrderPlaceState> emit,
+  ) async {
+    final picker = ImagePicker();
+    var newImages = <File>[];
+    for (var i = 0; i < 5; i++) {
+      final pickedFile = await picker.pickImage(source: ImageSource.camera);
+      if (pickedFile != null) {
+        newImages.add(File(pickedFile.path));
+      } else {
+        break;
+      }
+    }
+    emit(
+      state.copyWith(
+        images: newImages,
+        controller: TextEditingController(
+          text: 'Выбрано ${newImages.length} фото',
+        ),
+      ),
+    );
   }
 
   void _setType(
@@ -116,6 +164,9 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     emit(
       state.copyWith(
         images: updateImages,
+        controller: TextEditingController(
+          text: 'Выбрано ${updateImages.length} фото',
+        ),
       ),
     );
     print(state.images.length);
@@ -126,6 +177,7 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) {
     emit(OrderPlaceState(
+        controller: TextEditingController(),
         stateStatus: const StateStatus.initial(),
         orderPlaceModel: OrderPlaceModel.initial(),
         showFields: null,

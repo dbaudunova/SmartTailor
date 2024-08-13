@@ -111,7 +111,9 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
               }
             },
           )
-        : ElevatedButtonWidget(text: t.orderPlace);
+        : const ElevatedButtonWidget(
+            loading: true,
+          );
   }
 
   Widget _buildFields(OrderPlaceState state) {
@@ -143,17 +145,21 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
         ),
         const SizedBox(height: AppProps.kPageMargin),
         ImagePickerWidget(
-          controller: imageController,
-          onSelectFiles: (photos) {
+          controller: state.controller,
+          onSelect: () {
             context.read<OrderPlaceBloc>().add(
-                  OrderPlaceEvent.addPhotos(photos: photos),
+                  const OrderPlaceEvent.selectPhotos(),
+                );
+          },
+          onCapture: () {
+            context.read<OrderPlaceBloc>().add(
+                  const OrderPlaceEvent.capturePhotos(),
                 );
           },
           images: state.images,
         ),
         const SizedBox(height: AppProps.kPageMargin),
         PhotosPreviewWidget(
-          controller: imageController,
           images: state.images,
           onDeleteImage: (file) {
             context.read<OrderPlaceBloc>().add(OrderPlaceEvent.removePhoto(
@@ -205,6 +211,7 @@ class _OrderPlaceContentState extends State<OrderPlaceContent> {
                   if (value == '0') {
                     return 'Не может быть 0';
                   }
+                  return null;
                 },
               ),
               const SizedBox(height: AppProps.kPageMargin),

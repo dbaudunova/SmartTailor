@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/current_order_entity.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/organization_list_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/use_case/get_all_orders_use_case.dart';
 
 part 'current_order_event.dart';
@@ -19,7 +20,7 @@ class CurrentOrderBloc extends Bloc<CurrentOrderEvent, CurrentOrderState> {
   ) : super(
           CurrentOrderState(
             stateStatus: const StateStatus.initial(),
-            orders: [],
+            orders: OrganizationListEntity.initial(),
             detailedOrder: CurrentOrderEntity.initial(),
           ),
         ) {
@@ -33,9 +34,9 @@ class CurrentOrderBloc extends Bloc<CurrentOrderEvent, CurrentOrderState> {
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
-      final results = await getAllOrdersUseCase.call();
+      final result = await getAllOrdersUseCase.call();
       emit(
-        state.copyWith(stateStatus: const StateStatus.success(), orders: results),
+        state.copyWith(stateStatus: const StateStatus.success(), orders: result),
       );
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';

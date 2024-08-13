@@ -24,8 +24,8 @@ class _CurrentOrdersWidgetState extends State<CurrentOrdersWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<CurrentOrderBloc, CurrentOrderState>(
       builder: (context, state) {
-        var orders = state.orders;
-        return orders.isNotEmpty
+        var orders = state.orders.orders;
+        return orders!.isNotEmpty
             ? ListView.builder(
                 itemCount: orders.length,
                 shrinkWrap: true,
@@ -37,7 +37,7 @@ class _CurrentOrdersWidgetState extends State<CurrentOrdersWidget> {
                       description: order.description,
                       name: order.name,
                       orderNumber: order.id.toString(),
-                      orderStatus: 'asdasd',
+                      orderStatus: order.status,
                       onTap: () {
                         AutoRouter.of(context).push(CurrentOrderDetailRoute(id: order.id!));
                       },

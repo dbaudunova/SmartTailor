@@ -9,11 +9,11 @@ class GeneralResponceMapper extends Converter<CurrentOrderModel, CurrentOrderEnt
   @override
   CurrentOrderEntity convert(CurrentOrderModel input) {
     return CurrentOrderEntity(
-      imageUrl: input.imageUrl,
-      id: input.id,
-      description: input.description,
-      name: input.name,
-      price: input.price,
-    );
+        imageUrl: input.imageUrl,
+        id: input.id,
+        description: input.description,
+        name: input.name,
+        price: input.price,
+        status: input.status);
   }
 }

@@ -19,32 +19,38 @@ mixin _$EmployeeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllEmployees,
+    required TResult Function(int id) getEmployeeDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllEmployees,
+    TResult? Function(int id)? getEmployeeDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllEmployees,
+    TResult Function(int id)? getEmployeeDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EmployeeEvent value) getAllEmployees,
+    required TResult Function(_GetEmployeeDetail value) getEmployeeDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EmployeeEvent value)? getAllEmployees,
+    TResult? Function(_GetEmployeeDetail value)? getEmployeeDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EmployeeEvent value)? getAllEmployees,
+    TResult Function(_GetEmployeeDetail value)? getEmployeeDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$EmployeeEventImpl implements _EmployeeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllEmployees,
+    required TResult Function(int id) getEmployeeDetails,
   }) {
     return getAllEmployees();
   }
@@ -115,6 +122,7 @@ class _$EmployeeEventImpl implements _EmployeeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllEmployees,
+    TResult? Function(int id)? getEmployeeDetails,
   }) {
     return getAllEmployees?.call();
   }
@@ -123,6 +131,7 @@ class _$EmployeeEventImpl implements _EmployeeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllEmployees,
+    TResult Function(int id)? getEmployeeDetails,
     required TResult orElse(),
   }) {
     if (getAllEmployees != null) {
@@ -135,6 +144,7 @@ class _$EmployeeEventImpl implements _EmployeeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_EmployeeEvent value) getAllEmployees,
+    required TResult Function(_GetEmployeeDetail value) getEmployeeDetails,
   }) {
     return getAllEmployees(this);
   }
@@ -143,6 +153,7 @@ class _$EmployeeEventImpl implements _EmployeeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_EmployeeEvent value)? getAllEmployees,
+    TResult? Function(_GetEmployeeDetail value)? getEmployeeDetails,
   }) {
     return getAllEmployees?.call(this);
   }
@@ -151,6 +162,7 @@ class _$EmployeeEventImpl implements _EmployeeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EmployeeEvent value)? getAllEmployees,
+    TResult Function(_GetEmployeeDetail value)? getEmployeeDetails,
     required TResult orElse(),
   }) {
     if (getAllEmployees != null) {
@@ -165,9 +177,145 @@ abstract class _EmployeeEvent implements EmployeeEvent {
 }
 
 /// @nodoc
+abstract class _$$GetEmployeeDetailImplCopyWith<$Res> {
+  factory _$$GetEmployeeDetailImplCopyWith(_$GetEmployeeDetailImpl value,
+          $Res Function(_$GetEmployeeDetailImpl) then) =
+      __$$GetEmployeeDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$GetEmployeeDetailImplCopyWithImpl<$Res>
+    extends _$EmployeeEventCopyWithImpl<$Res, _$GetEmployeeDetailImpl>
+    implements _$$GetEmployeeDetailImplCopyWith<$Res> {
+  __$$GetEmployeeDetailImplCopyWithImpl(_$GetEmployeeDetailImpl _value,
+      $Res Function(_$GetEmployeeDetailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$GetEmployeeDetailImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetEmployeeDetailImpl implements _GetEmployeeDetail {
+  const _$GetEmployeeDetailImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'EmployeeEvent.getEmployeeDetails(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetEmployeeDetailImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetEmployeeDetailImplCopyWith<_$GetEmployeeDetailImpl> get copyWith =>
+      __$$GetEmployeeDetailImplCopyWithImpl<_$GetEmployeeDetailImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllEmployees,
+    required TResult Function(int id) getEmployeeDetails,
+  }) {
+    return getEmployeeDetails(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllEmployees,
+    TResult? Function(int id)? getEmployeeDetails,
+  }) {
+    return getEmployeeDetails?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllEmployees,
+    TResult Function(int id)? getEmployeeDetails,
+    required TResult orElse(),
+  }) {
+    if (getEmployeeDetails != null) {
+      return getEmployeeDetails(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmployeeEvent value) getAllEmployees,
+    required TResult Function(_GetEmployeeDetail value) getEmployeeDetails,
+  }) {
+    return getEmployeeDetails(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmployeeEvent value)? getAllEmployees,
+    TResult? Function(_GetEmployeeDetail value)? getEmployeeDetails,
+  }) {
+    return getEmployeeDetails?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmployeeEvent value)? getAllEmployees,
+    TResult Function(_GetEmployeeDetail value)? getEmployeeDetails,
+    required TResult orElse(),
+  }) {
+    if (getEmployeeDetails != null) {
+      return getEmployeeDetails(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetEmployeeDetail implements EmployeeEvent {
+  const factory _GetEmployeeDetail({required final int id}) =
+      _$GetEmployeeDetailImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$GetEmployeeDetailImplCopyWith<_$GetEmployeeDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$EmployeeState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   List<EmployeeEntity> get employees => throw _privateConstructorUsedError;
+  EmployeeDetailEntity get employee => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EmployeeStateCopyWith<EmployeeState> get copyWith =>
@@ -180,7 +328,10 @@ abstract class $EmployeeStateCopyWith<$Res> {
           EmployeeState value, $Res Function(EmployeeState) then) =
       _$EmployeeStateCopyWithImpl<$Res, EmployeeState>;
   @useResult
-  $Res call({StateStatus stateStatus, List<EmployeeEntity> employees});
+  $Res call(
+      {StateStatus stateStatus,
+      List<EmployeeEntity> employees,
+      EmployeeDetailEntity employee});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -200,6 +351,7 @@ class _$EmployeeStateCopyWithImpl<$Res, $Val extends EmployeeState>
   $Res call({
     Object? stateStatus = null,
     Object? employees = null,
+    Object? employee = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -210,6 +362,10 @@ class _$EmployeeStateCopyWithImpl<$Res, $Val extends EmployeeState>
           ? _value.employees
           : employees // ignore: cast_nullable_to_non_nullable
               as List<EmployeeEntity>,
+      employee: null == employee
+          ? _value.employee
+          : employee // ignore: cast_nullable_to_non_nullable
+              as EmployeeDetailEntity,
     ) as $Val);
   }
 
@@ -230,7 +386,10 @@ abstract class _$$EmployeeStateImplCopyWith<$Res>
       __$$EmployeeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus, List<EmployeeEntity> employees});
+  $Res call(
+      {StateStatus stateStatus,
+      List<EmployeeEntity> employees,
+      EmployeeDetailEntity employee});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -249,6 +408,7 @@ class __$$EmployeeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? stateStatus = null,
     Object? employees = null,
+    Object? employee = null,
   }) {
     return _then(_$EmployeeStateImpl(
       stateStatus: null == stateStatus
@@ -259,6 +419,10 @@ class __$$EmployeeStateImplCopyWithImpl<$Res>
           ? _value._employees
           : employees // ignore: cast_nullable_to_non_nullable
               as List<EmployeeEntity>,
+      employee: null == employee
+          ? _value.employee
+          : employee // ignore: cast_nullable_to_non_nullable
+              as EmployeeDetailEntity,
     ));
   }
 }
@@ -268,7 +432,8 @@ class __$$EmployeeStateImplCopyWithImpl<$Res>
 class _$EmployeeStateImpl implements _EmployeeState {
   const _$EmployeeStateImpl(
       {required this.stateStatus,
-      required final List<EmployeeEntity> employees})
+      required final List<EmployeeEntity> employees,
+      required this.employee})
       : _employees = employees;
 
   @override
@@ -282,8 +447,11 @@ class _$EmployeeStateImpl implements _EmployeeState {
   }
 
   @override
+  final EmployeeDetailEntity employee;
+
+  @override
   String toString() {
-    return 'EmployeeState(stateStatus: $stateStatus, employees: $employees)';
+    return 'EmployeeState(stateStatus: $stateStatus, employees: $employees, employee: $employee)';
   }
 
   @override
@@ -294,12 +462,14 @@ class _$EmployeeStateImpl implements _EmployeeState {
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
             const DeepCollectionEquality()
-                .equals(other._employees, _employees));
+                .equals(other._employees, _employees) &&
+            (identical(other.employee, employee) ||
+                other.employee == employee));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, stateStatus,
-      const DeepCollectionEquality().hash(_employees));
+      const DeepCollectionEquality().hash(_employees), employee);
 
   @JsonKey(ignore: true)
   @override
@@ -311,12 +481,15 @@ class _$EmployeeStateImpl implements _EmployeeState {
 abstract class _EmployeeState implements EmployeeState {
   const factory _EmployeeState(
       {required final StateStatus stateStatus,
-      required final List<EmployeeEntity> employees}) = _$EmployeeStateImpl;
+      required final List<EmployeeEntity> employees,
+      required final EmployeeDetailEntity employee}) = _$EmployeeStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
   List<EmployeeEntity> get employees;
+  @override
+  EmployeeDetailEntity get employee;
   @override
   @JsonKey(ignore: true)
   _$$EmployeeStateImplCopyWith<_$EmployeeStateImpl> get copyWith =>

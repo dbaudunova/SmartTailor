@@ -28,15 +28,18 @@ class HttpPaths {
   static const uploadImage = '$baseUrl/api/account/profile/uploadImage';
   static const myAdvertisements = '$baseUrl/api/account/my-advertisements';
   static const sendSubscription = '$baseUrl/api/app-user/send-subscription-request';
+  static const getAllPurchases = '$baseUrl/api/order/orders-assigned-to-user';
 
   static const getOrganization = '$baseUrl/api/organization/get-organization-detailed';
   static const createOrganization = '$baseUrl/api/organization/create-organization';
   static const sendInvitationToEmployee = '$baseUrl/api/organization/send-invitation';
 
   static const getAllEmployees = '$baseUrl/api/employee/get-all-employees';
+  static const getEmployeeDetail = '$baseUrl/api/employee/profile/';
 
   static const addPosition = '$baseUrl/api/position/add-position';
   static const gatAllPositions = '$baseUrl/api/position/get-all-positions';
 
-  static const gatAllCurrentOrders = '$baseUrl/api/order/organization-orders';
+  static const getAllCurrentOrders = '$baseUrl/api/order/get-organization-orders-by-stage';
+  static const changeOrderStatus = '$baseUrl/api/order/change-status/';
 }

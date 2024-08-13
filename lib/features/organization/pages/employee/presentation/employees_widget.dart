@@ -5,6 +5,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/bloc/employee_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/employee_item.dart';
+import 'package:neobis_smart_tailor/injection/injection.dart';
 
 class EmployeesWidget extends StatefulWidget {
   const EmployeesWidget({super.key});
@@ -25,8 +26,7 @@ class _EmployeesWidgetState extends State<EmployeesWidget> {
     return BlocBuilder<EmployeeBloc, EmployeeState>(
       builder: (context, state) {
         var employees = state.employees;
-
-        print(employees.length);
+        print(employees);
         return employees.isNotEmpty
             ? Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -36,12 +36,14 @@ class _EmployeesWidgetState extends State<EmployeesWidget> {
                       itemCount: employees.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
+                        var employee = employees[index];
                         return EmployeeItemContainer(
-                          email: employees[index].email!,
-                          fullName: employees[index].fullName!,
-                          position: employees[index].position!,
+                          email: employee.email!,
+                          fullName: employee.fullName!,
+                          position: employee.position!,
                           onTap: () {
-                            AutoRouter.of(context).push(const EmployeeDetailRoute());
+                            AutoRouter.of(context).push(EmployeeDetailRoute(id: employee.id!));
+                            print(employee.id);
                           },
                         );
                       },

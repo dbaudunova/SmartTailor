@@ -27,6 +27,8 @@ mixin _$OrderPlaceEvent {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +42,8 @@ mixin _$OrderPlaceEvent {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +57,8 @@ mixin _$OrderPlaceEvent {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +73,8 @@ mixin _$OrderPlaceEvent {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +88,8 @@ mixin _$OrderPlaceEvent {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +103,8 @@ mixin _$OrderPlaceEvent {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,6 +201,8 @@ class _$SetTypeImpl implements _SetType {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return setType(type);
   }
@@ -205,6 +219,8 @@ class _$SetTypeImpl implements _SetType {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return setType?.call(type);
   }
@@ -221,6 +237,8 @@ class _$SetTypeImpl implements _SetType {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (setType != null) {
@@ -241,6 +259,8 @@ class _$SetTypeImpl implements _SetType {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return setType(this);
   }
@@ -257,6 +277,8 @@ class _$SetTypeImpl implements _SetType {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return setType?.call(this);
   }
@@ -273,6 +295,8 @@ class _$SetTypeImpl implements _SetType {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (setType != null) {
@@ -375,6 +399,8 @@ class _$CreateOrderImpl implements _CreateOrder {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return createOrder(orderPlaceModel);
   }
@@ -391,6 +417,8 @@ class _$CreateOrderImpl implements _CreateOrder {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return createOrder?.call(orderPlaceModel);
   }
@@ -407,6 +435,8 @@ class _$CreateOrderImpl implements _CreateOrder {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -427,6 +457,8 @@ class _$CreateOrderImpl implements _CreateOrder {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return createOrder(this);
   }
@@ -443,6 +475,8 @@ class _$CreateOrderImpl implements _CreateOrder {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return createOrder?.call(this);
   }
@@ -459,6 +493,8 @@ class _$CreateOrderImpl implements _CreateOrder {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -557,6 +593,8 @@ class _$AddPhotosImpl implements _AddPhotos {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return addPhotos(photos);
   }
@@ -573,6 +611,8 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return addPhotos?.call(photos);
   }
@@ -589,6 +629,8 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (addPhotos != null) {
@@ -609,6 +651,8 @@ class _$AddPhotosImpl implements _AddPhotos {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return addPhotos(this);
   }
@@ -625,6 +669,8 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return addPhotos?.call(this);
   }
@@ -641,6 +687,8 @@ class _$AddPhotosImpl implements _AddPhotos {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (addPhotos != null) {
@@ -733,6 +781,8 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return removePhoto(photo);
   }
@@ -749,6 +799,8 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return removePhoto?.call(photo);
   }
@@ -765,6 +817,8 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (removePhoto != null) {
@@ -785,6 +839,8 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return removePhoto(this);
   }
@@ -801,6 +857,8 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return removePhoto?.call(this);
   }
@@ -817,6 +875,8 @@ class _$RemovePhotoImpl implements _RemovePhoto {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (removePhoto != null) {
@@ -918,6 +978,8 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return addItem(item);
   }
@@ -934,6 +996,8 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return addItem?.call(item);
   }
@@ -950,6 +1014,8 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -970,6 +1036,8 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return addItem(this);
   }
@@ -986,6 +1054,8 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return addItem?.call(this);
   }
@@ -1002,6 +1072,8 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -1104,6 +1176,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return updateQuantity(item);
   }
@@ -1120,6 +1194,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return updateQuantity?.call(item);
   }
@@ -1136,6 +1212,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -1156,6 +1234,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return updateQuantity(this);
   }
@@ -1172,6 +1252,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return updateQuantity?.call(this);
   }
@@ -1188,6 +1270,8 @@ class _$UpdateQuantityImpl implements _UpdateQuantity {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -1290,6 +1374,8 @@ class _$RemoveItemImpl implements _RemoveItem {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return removeItem(item);
   }
@@ -1306,6 +1392,8 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return removeItem?.call(item);
   }
@@ -1322,6 +1410,8 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -1342,6 +1432,8 @@ class _$RemoveItemImpl implements _RemoveItem {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return removeItem(this);
   }
@@ -1358,6 +1450,8 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return removeItem?.call(this);
   }
@@ -1374,6 +1468,8 @@ class _$RemoveItemImpl implements _RemoveItem {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -1466,6 +1562,8 @@ class _$AddDateImpl implements _AddDate {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return addDate(dateOfExecution);
   }
@@ -1482,6 +1580,8 @@ class _$AddDateImpl implements _AddDate {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return addDate?.call(dateOfExecution);
   }
@@ -1498,6 +1598,8 @@ class _$AddDateImpl implements _AddDate {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (addDate != null) {
@@ -1518,6 +1620,8 @@ class _$AddDateImpl implements _AddDate {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return addDate(this);
   }
@@ -1534,6 +1638,8 @@ class _$AddDateImpl implements _AddDate {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return addDate?.call(this);
   }
@@ -1550,6 +1656,8 @@ class _$AddDateImpl implements _AddDate {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (addDate != null) {
@@ -1616,6 +1724,8 @@ class _$ResetStateImpl implements _ResetState {
     required TResult Function(Item item) removeItem,
     required TResult Function(DateTime dateOfExecution) addDate,
     required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
   }) {
     return resetState();
   }
@@ -1632,6 +1742,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult? Function(Item item)? removeItem,
     TResult? Function(DateTime dateOfExecution)? addDate,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
   }) {
     return resetState?.call();
   }
@@ -1648,6 +1760,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult Function(Item item)? removeItem,
     TResult Function(DateTime dateOfExecution)? addDate,
     TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
     required TResult orElse(),
   }) {
     if (resetState != null) {
@@ -1668,6 +1782,8 @@ class _$ResetStateImpl implements _ResetState {
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddDate value) addDate,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
   }) {
     return resetState(this);
   }
@@ -1684,6 +1800,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddDate value)? addDate,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
   }) {
     return resetState?.call(this);
   }
@@ -1700,6 +1818,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddDate value)? addDate,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
     required TResult orElse(),
   }) {
     if (resetState != null) {
@@ -1714,10 +1834,323 @@ abstract class _ResetState implements OrderPlaceEvent {
 }
 
 /// @nodoc
+abstract class _$$SelectPhotosImplCopyWith<$Res> {
+  factory _$$SelectPhotosImplCopyWith(
+          _$SelectPhotosImpl value, $Res Function(_$SelectPhotosImpl) then) =
+      __$$SelectPhotosImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SelectPhotosImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$SelectPhotosImpl>
+    implements _$$SelectPhotosImplCopyWith<$Res> {
+  __$$SelectPhotosImplCopyWithImpl(
+      _$SelectPhotosImpl _value, $Res Function(_$SelectPhotosImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SelectPhotosImpl implements _SelectPhotos {
+  const _$SelectPhotosImpl();
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.selectPhotos()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SelectPhotosImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OrderType type) setType,
+    required TResult Function(OrderPlaceModel orderPlaceModel) createOrder,
+    required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(File photo) removePhoto,
+    required TResult Function(Item item) addItem,
+    required TResult Function(Item item) updateQuantity,
+    required TResult Function(Item item) removeItem,
+    required TResult Function(DateTime dateOfExecution) addDate,
+    required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
+  }) {
+    return selectPhotos();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(OrderType type)? setType,
+    TResult? Function(OrderPlaceModel orderPlaceModel)? createOrder,
+    TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(File photo)? removePhoto,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(Item item)? updateQuantity,
+    TResult? Function(Item item)? removeItem,
+    TResult? Function(DateTime dateOfExecution)? addDate,
+    TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
+  }) {
+    return selectPhotos?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OrderType type)? setType,
+    TResult Function(OrderPlaceModel orderPlaceModel)? createOrder,
+    TResult Function(List<File> photos)? addPhotos,
+    TResult Function(File photo)? removePhoto,
+    TResult Function(Item item)? addItem,
+    TResult Function(Item item)? updateQuantity,
+    TResult Function(Item item)? removeItem,
+    TResult Function(DateTime dateOfExecution)? addDate,
+    TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
+    required TResult orElse(),
+  }) {
+    if (selectPhotos != null) {
+      return selectPhotos();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetType value) setType,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
+  }) {
+    return selectPhotos(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetType value)? setType,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
+  }) {
+    return selectPhotos?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetType value)? setType,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
+    required TResult orElse(),
+  }) {
+    if (selectPhotos != null) {
+      return selectPhotos(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectPhotos implements OrderPlaceEvent {
+  const factory _SelectPhotos() = _$SelectPhotosImpl;
+}
+
+/// @nodoc
+abstract class _$$CapturePhotosImplCopyWith<$Res> {
+  factory _$$CapturePhotosImplCopyWith(
+          _$CapturePhotosImpl value, $Res Function(_$CapturePhotosImpl) then) =
+      __$$CapturePhotosImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CapturePhotosImplCopyWithImpl<$Res>
+    extends _$OrderPlaceEventCopyWithImpl<$Res, _$CapturePhotosImpl>
+    implements _$$CapturePhotosImplCopyWith<$Res> {
+  __$$CapturePhotosImplCopyWithImpl(
+      _$CapturePhotosImpl _value, $Res Function(_$CapturePhotosImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CapturePhotosImpl implements _CapturePhotos {
+  const _$CapturePhotosImpl();
+
+  @override
+  String toString() {
+    return 'OrderPlaceEvent.capturePhotos()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CapturePhotosImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OrderType type) setType,
+    required TResult Function(OrderPlaceModel orderPlaceModel) createOrder,
+    required TResult Function(List<File> photos) addPhotos,
+    required TResult Function(File photo) removePhoto,
+    required TResult Function(Item item) addItem,
+    required TResult Function(Item item) updateQuantity,
+    required TResult Function(Item item) removeItem,
+    required TResult Function(DateTime dateOfExecution) addDate,
+    required TResult Function() resetState,
+    required TResult Function() selectPhotos,
+    required TResult Function() capturePhotos,
+  }) {
+    return capturePhotos();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(OrderType type)? setType,
+    TResult? Function(OrderPlaceModel orderPlaceModel)? createOrder,
+    TResult? Function(List<File> photos)? addPhotos,
+    TResult? Function(File photo)? removePhoto,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(Item item)? updateQuantity,
+    TResult? Function(Item item)? removeItem,
+    TResult? Function(DateTime dateOfExecution)? addDate,
+    TResult? Function()? resetState,
+    TResult? Function()? selectPhotos,
+    TResult? Function()? capturePhotos,
+  }) {
+    return capturePhotos?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OrderType type)? setType,
+    TResult Function(OrderPlaceModel orderPlaceModel)? createOrder,
+    TResult Function(List<File> photos)? addPhotos,
+    TResult Function(File photo)? removePhoto,
+    TResult Function(Item item)? addItem,
+    TResult Function(Item item)? updateQuantity,
+    TResult Function(Item item)? removeItem,
+    TResult Function(DateTime dateOfExecution)? addDate,
+    TResult Function()? resetState,
+    TResult Function()? selectPhotos,
+    TResult Function()? capturePhotos,
+    required TResult orElse(),
+  }) {
+    if (capturePhotos != null) {
+      return capturePhotos();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetType value) setType,
+    required TResult Function(_CreateOrder value) createOrder,
+    required TResult Function(_AddPhotos value) addPhotos,
+    required TResult Function(_RemovePhoto value) removePhoto,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_UpdateQuantity value) updateQuantity,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDate value) addDate,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhotos value) selectPhotos,
+    required TResult Function(_CapturePhotos value) capturePhotos,
+  }) {
+    return capturePhotos(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetType value)? setType,
+    TResult? Function(_CreateOrder value)? createOrder,
+    TResult? Function(_AddPhotos value)? addPhotos,
+    TResult? Function(_RemovePhoto value)? removePhoto,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_UpdateQuantity value)? updateQuantity,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDate value)? addDate,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhotos value)? selectPhotos,
+    TResult? Function(_CapturePhotos value)? capturePhotos,
+  }) {
+    return capturePhotos?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetType value)? setType,
+    TResult Function(_CreateOrder value)? createOrder,
+    TResult Function(_AddPhotos value)? addPhotos,
+    TResult Function(_RemovePhoto value)? removePhoto,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_UpdateQuantity value)? updateQuantity,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDate value)? addDate,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhotos value)? selectPhotos,
+    TResult Function(_CapturePhotos value)? capturePhotos,
+    required TResult orElse(),
+  }) {
+    if (capturePhotos != null) {
+      return capturePhotos(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CapturePhotos implements OrderPlaceEvent {
+  const factory _CapturePhotos() = _$CapturePhotosImpl;
+}
+
+/// @nodoc
 mixin _$OrderPlaceState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   OrderPlaceModel get orderPlaceModel => throw _privateConstructorUsedError;
   List<File> get images => throw _privateConstructorUsedError;
+  TextEditingController get controller => throw _privateConstructorUsedError;
   OrderType? get type => throw _privateConstructorUsedError;
   bool? get showFields => throw _privateConstructorUsedError;
 
@@ -1736,6 +2169,7 @@ abstract class $OrderPlaceStateCopyWith<$Res> {
       {StateStatus stateStatus,
       OrderPlaceModel orderPlaceModel,
       List<File> images,
+      TextEditingController controller,
       OrderType? type,
       bool? showFields});
 
@@ -1759,6 +2193,7 @@ class _$OrderPlaceStateCopyWithImpl<$Res, $Val extends OrderPlaceState>
     Object? stateStatus = null,
     Object? orderPlaceModel = null,
     Object? images = null,
+    Object? controller = null,
     Object? type = freezed,
     Object? showFields = freezed,
   }) {
@@ -1775,6 +2210,10 @@ class _$OrderPlaceStateCopyWithImpl<$Res, $Val extends OrderPlaceState>
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<File>,
+      controller: null == controller
+          ? _value.controller
+          : controller // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1815,6 +2254,7 @@ abstract class _$$OrderPlaceStateImplCopyWith<$Res>
       {StateStatus stateStatus,
       OrderPlaceModel orderPlaceModel,
       List<File> images,
+      TextEditingController controller,
       OrderType? type,
       bool? showFields});
 
@@ -1838,6 +2278,7 @@ class __$$OrderPlaceStateImplCopyWithImpl<$Res>
     Object? stateStatus = null,
     Object? orderPlaceModel = null,
     Object? images = null,
+    Object? controller = null,
     Object? type = freezed,
     Object? showFields = freezed,
   }) {
@@ -1854,6 +2295,10 @@ class __$$OrderPlaceStateImplCopyWithImpl<$Res>
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<File>,
+      controller: null == controller
+          ? _value.controller
+          : controller // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1873,6 +2318,7 @@ class _$OrderPlaceStateImpl implements _OrderPlaceState {
       {required this.stateStatus,
       required this.orderPlaceModel,
       required final List<File> images,
+      required this.controller,
       required this.type,
       required this.showFields})
       : _images = images;
@@ -1890,13 +2336,15 @@ class _$OrderPlaceStateImpl implements _OrderPlaceState {
   }
 
   @override
+  final TextEditingController controller;
+  @override
   final OrderType? type;
   @override
   final bool? showFields;
 
   @override
   String toString() {
-    return 'OrderPlaceState(stateStatus: $stateStatus, orderPlaceModel: $orderPlaceModel, images: $images, type: $type, showFields: $showFields)';
+    return 'OrderPlaceState(stateStatus: $stateStatus, orderPlaceModel: $orderPlaceModel, images: $images, controller: $controller, type: $type, showFields: $showFields)';
   }
 
   @override
@@ -1909,14 +2357,22 @@ class _$OrderPlaceStateImpl implements _OrderPlaceState {
             (identical(other.orderPlaceModel, orderPlaceModel) ||
                 other.orderPlaceModel == orderPlaceModel) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.showFields, showFields) ||
                 other.showFields == showFields));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus, orderPlaceModel,
-      const DeepCollectionEquality().hash(_images), type, showFields);
+  int get hashCode => Object.hash(
+      runtimeType,
+      stateStatus,
+      orderPlaceModel,
+      const DeepCollectionEquality().hash(_images),
+      controller,
+      type,
+      showFields);
 
   @JsonKey(ignore: true)
   @override
@@ -1931,6 +2387,7 @@ abstract class _OrderPlaceState implements OrderPlaceState {
       {required final StateStatus stateStatus,
       required final OrderPlaceModel orderPlaceModel,
       required final List<File> images,
+      required final TextEditingController controller,
       required final OrderType? type,
       required final bool? showFields}) = _$OrderPlaceStateImpl;
 
@@ -1940,6 +2397,8 @@ abstract class _OrderPlaceState implements OrderPlaceState {
   OrderPlaceModel get orderPlaceModel;
   @override
   List<File> get images;
+  @override
+  TextEditingController get controller;
   @override
   OrderType? get type;
   @override

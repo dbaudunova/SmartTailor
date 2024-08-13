@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/employee/data/models/_model/employee_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/employee/data/models/employee_model/employee_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/employee/domain/entitys/employee_entity.dart';
 
 @Injectable(as: Converter<EmployeeModel, EmployeeEntity>)

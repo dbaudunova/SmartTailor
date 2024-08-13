@@ -31,10 +31,8 @@ class AuthorInfoWidget extends StatelessWidget {
                   children: [
                     Text(
                       authorName,
-                      style: AppTextStyle.textField16.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                      maxLines: 1,
+                      style: AppTextStyle.textField16.copyWith(fontWeight: FontWeight.w600, height: 1.2),
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4),

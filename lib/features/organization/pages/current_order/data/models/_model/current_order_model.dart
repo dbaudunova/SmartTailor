@@ -10,7 +10,8 @@ class CurrentOrderModel with _$CurrentOrderModel {
     required String? imageUrl,
     required String? name,
     required String? description,
-    required int? price,
+    required double? price,
+    required String? status,
   }) = _CurrentOrderModel;
 
   factory CurrentOrderModel.initial() {
@@ -19,7 +20,8 @@ class CurrentOrderModel with _$CurrentOrderModel {
       imageUrl: '',
       name: '',
       description: '',
-      price: 0,
+      price: 0.0,
+      status: '',
     );
   }
 

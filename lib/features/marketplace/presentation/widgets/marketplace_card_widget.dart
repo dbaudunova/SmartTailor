@@ -97,8 +97,7 @@ class MarketplaceCard extends StatelessWidget {
         right: 16,
       ),
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: CachedNetworkImageProvider(image), fit: BoxFit.fill),
+          image: DecorationImage(image: CachedNetworkImageProvider(image), fit: BoxFit.fill),
           borderRadius: const BorderRadius.all(
             Radius.circular(10),
           )),

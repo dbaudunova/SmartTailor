@@ -60,9 +60,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     EmployeeDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<EmployeeDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const EmployeeDetailScreen(),
+        child: EmployeeDetailScreen(
+          id: args.id,
+          key: args.key,
+        ),
       );
     },
     EnterRoute.name: (routeData) {
@@ -188,9 +192,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     PurchaseDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<PurchaseDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const PurchaseDetailScreen(),
+        child: PurchaseDetailScreen(
+          id: args.id,
+          key: args.key,
+        ),
       );
     },
     RegistrationRoute.name: (routeData) {
@@ -347,16 +355,40 @@ class EmailInputRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [EmployeeDetailScreen]
-class EmployeeDetailRoute extends PageRouteInfo<void> {
-  const EmployeeDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class EmployeeDetailRoute extends PageRouteInfo<EmployeeDetailRouteArgs> {
+  EmployeeDetailRoute({
+    required int id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           EmployeeDetailRoute.name,
+          args: EmployeeDetailRouteArgs(
+            id: id,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'EmployeeDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<EmployeeDetailRouteArgs> page =
+      PageInfo<EmployeeDetailRouteArgs>(name);
+}
+
+class EmployeeDetailRouteArgs {
+  const EmployeeDetailRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final int id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EmployeeDetailRouteArgs{id: $id, key: $key}';
+  }
 }
 
 /// generated route for
@@ -675,16 +707,40 @@ class ProfileRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [PurchaseDetailScreen]
-class PurchaseDetailRoute extends PageRouteInfo<void> {
-  const PurchaseDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class PurchaseDetailRoute extends PageRouteInfo<PurchaseDetailRouteArgs> {
+  PurchaseDetailRoute({
+    required int id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           PurchaseDetailRoute.name,
+          args: PurchaseDetailRouteArgs(
+            id: id,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'PurchaseDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<PurchaseDetailRouteArgs> page =
+      PageInfo<PurchaseDetailRouteArgs>(name);
+}
+
+class PurchaseDetailRouteArgs {
+  const PurchaseDetailRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final int id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'PurchaseDetailRouteArgs{id: $id, key: $key}';
+  }
 }
 
 /// generated route for

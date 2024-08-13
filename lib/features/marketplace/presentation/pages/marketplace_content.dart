@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/bloc/marketplace_bloc.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/list_view_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
@@ -63,7 +65,6 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
               Expanded(
                 child: BlocBuilder<MarketplaceBloc, MarketplaceState>(
                   builder: (context, state) {
-                    print(state.orders.length);
                     return PageView(
                       controller: _pageController,
                       onPageChanged: (index) {
@@ -72,40 +73,75 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
                         });
                       },
                       children: [
-                        ListViewWidget<MarketplaceEvent, MarketplaceState>(
-                          getList: (context) => context.read<MarketplaceBloc>().state.orders,
-                          // list: state.orders,
-                          route: ({required int id}) => OrderDetailRoute(id: id),
-                          isLast: state.lastForOrders!,
-                          loadMoreEvent: (context) => const MarketplaceEvent.loadMoreOrders(),
-                          loadfirstPage: (context) => const MarketplaceEvent.getOrders(),
-                          getBloc: (context) => context.read<MarketplaceBloc>(),
+                        ListViewWidget<GeneralEntity>(
+                          priceBuilder: (item) => _buildPrice(item),
+                          dateBuilder: (item) => item.dateOfExecution,
+                          descriptionBuilder: (item) => item.description!,
+                          imageBuilder: (item) => item.imageUrl!,
+                          titleBuilder: (item) => item.name!,
+                          items: state.orders,
+                          onNotification: (scrollNotification) {
+                            if (state.lastForOrders!) {
+                              return false;
+                            } else if (scrollNotification is ScrollEndNotification &&
+                                scrollNotification.metrics.extentAfter == 0) {
+                              _bloc.add(const MarketplaceEvent.loadMoreOrders());
+                            }
+
+                            return false;
+                          },
+                          onRefresh: () async {
+                            _bloc.add(const MarketplaceEvent.getOrders());
+                          },
+                          onTap: (item) => context.router.push(
+                            OrderDetailRoute(id: item.id!),
+                          ),
                         ),
-                        ListViewWidget<MarketplaceEvent, MarketplaceState>(
-                          getList: (context) => context.read<MarketplaceBloc>().state.equipments,
-                          route: ({required int id}) => EquipmentDetailRoute(id: id),
-                          isLast: state.lastForEquipment!,
-                          loadMoreEvent: (context) => const MarketplaceEvent.loadMoreEquipments(),
-                          loadfirstPage: (context) => const MarketplaceEvent.getEquipments(),
-                          getBloc: (context) => context.read<MarketplaceBloc>(),
+                        ListViewWidget<GeneralEntity>(
+                          priceBuilder: (item) => _buildPrice(item),
+                          descriptionBuilder: (item) => item.description!,
+                          imageBuilder: (item) => item.imageUrl!,
+                          titleBuilder: (item) => item.name!,
+                          items: state.equipments,
+                          onNotification: (scrollNotification) {
+                            if (state.lastForEquipment!) {
+                              return false;
+                            } else if (scrollNotification is ScrollEndNotification &&
+                                scrollNotification.metrics.extentAfter == 0) {
+                              _bloc.add(const MarketplaceEvent.loadMoreEquipments());
+                            }
+
+                            return false;
+                          },
+                          onRefresh: () async {
+                            _bloc.add(const MarketplaceEvent.getEquipments());
+                          },
+                          onTap: (item) => context.router.push(
+                            EquipmentDetailRoute(id: item.id!),
+                          ),
                         ),
-                        ListViewWidget<MarketplaceEvent, MarketplaceState>(
-                          getList: (context) => context.read<MarketplaceBloc>().state.services,
-                          route: ({required int id}) => ServiceDetailRoute(id: id),
-                          isLast: state.lastForServices!,
-                          loadMoreEvent: (context) => const MarketplaceEvent.loadMoreServices(),
-                          loadfirstPage: (context) => const MarketplaceEvent.getServices(),
-                          getBloc: (context) => context.read<MarketplaceBloc>(),
-                        ),
-                        // MarketplaceTabBarView(tabIndex: 0, list: state.orders),
-                        // MarketplaceTabBarView(
-                        //   tabIndex: 1,
-                        //   list: state.equipments,
-                        // ),
-                        // MarketplaceTabBarView(
-                        //   tabIndex: 2,
-                        //   list: state.services,
-                        // ),
+                        ListViewWidget<GeneralEntity>(
+                          descriptionBuilder: (item) => item.description!,
+                          imageBuilder: (item) => item.imageUrl!,
+                          titleBuilder: (item) => item.name!,
+                          items: state.services,
+                          onNotification: (scrollNotification) {
+                            if (state.lastForOrders!) {
+                              return false;
+                            } else if (scrollNotification is ScrollEndNotification &&
+                                scrollNotification.metrics.extentAfter == 0) {
+                              _bloc.add(const MarketplaceEvent.loadMoreServices());
+                            }
+
+                            return false;
+                          },
+                          onRefresh: () async {
+                            _bloc.add(const MarketplaceEvent.getServices());
+                          },
+                          onTap: (item) => context.router.push(
+                            ServiceDetailRoute(id: item.id!),
+                          ),
+                        )
                       ],
                     );
                   },
@@ -124,6 +160,13 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
           }),
         ],
       ),
+    );
+  }
+
+  Text _buildPrice(GeneralEntity item) {
+    return Text(
+      '${item.price} сом',
+      style: AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.60)),
     );
   }
 

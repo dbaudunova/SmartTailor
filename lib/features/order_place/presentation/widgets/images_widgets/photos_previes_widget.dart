@@ -4,12 +4,10 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class PhotosPreviewWidget extends StatelessWidget {
   final Function(File file) onDeleteImage;
-  final TextEditingController controller;
   final List<File> images;
   const PhotosPreviewWidget({
     required this.images,
     required this.onDeleteImage,
-    required this.controller,
     super.key,
   });
 
@@ -49,8 +47,6 @@ class PhotosPreviewWidget extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             onDeleteImage(photos[index]);
-
-            controller.text = 'Выбрано ${images.length - 1} фото';
           },
           child: const Icon(
             Icons.highlight_remove,

@@ -52,7 +52,7 @@ class _UserInfoState extends State<UserInfo> {
         GestureDetector(
           onTap: widget.enableImageSelection
               ? () {
-                  _showPhotoOptions(context);
+                  _showPhotoOptions();
                 }
               : null,
           child: Column(
@@ -97,7 +97,7 @@ class _UserInfoState extends State<UserInfo> {
     }
   }
 
-  void _showPhotoOptions(BuildContext context) {
+  void _showPhotoOptions() {
     showCupertinoModalPopup(
       context: context,
       builder: (context) => ActionSheetWidget(

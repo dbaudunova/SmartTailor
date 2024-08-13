@@ -13,7 +13,8 @@ _$CurrentOrderModelImpl _$$CurrentOrderModelImplFromJson(
       imageUrl: json['imageUrl'] as String?,
       name: json['name'] as String?,
       description: json['description'] as String?,
-      price: (json['price'] as num?)?.toInt(),
+      price: (json['price'] as num?)?.toDouble(),
+      status: json['status'] as String?,
     );
 
 Map<String, dynamic> _$$CurrentOrderModelImplToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$CurrentOrderModelImplToJson(
       'name': instance.name,
       'description': instance.description,
       'price': instance.price,
+      'status': instance.status,
     };

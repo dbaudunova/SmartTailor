@@ -61,23 +61,41 @@ class AnnouncementsContainer extends StatelessWidget {
                         Text(
                           'Заказ № ${orderNumber!}',
                           style: AppTextStyle.textField16.copyWith(
-                            color: AppColors.listGreen,
+                            color: AppColors.listBlue,
                           ),
                         ),
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: orderStatus == 'WAITING' ? AppColors.error : AppColors.background),
+                          child: Text(orderStatus!),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            name!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: false,
+                            style: AppTextStyle.textField16.copyWith(
+                              color: AppColors.darkGrey,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8.0),
                         Text(
-                          price ?? '',
+                          '$price сом',
                           style: AppTextStyle.textField16.copyWith(
                             color: AppColors.orange,
                           ),
                         ),
                       ],
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      name!,
-                      style: AppTextStyle.textField16.copyWith(
-                        color: AppColors.darkGrey,
-                      ),
                     ),
                     const SizedBox(height: 4),
                     Text(

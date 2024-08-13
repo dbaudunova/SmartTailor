@@ -20,18 +20,21 @@ mixin _$CurrentOrderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getAllOrders,
     required TResult Function(int id) getDetailedOrder,
+    required TResult Function(int id, String value) changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllOrders,
     TResult? Function(int id)? getDetailedOrder,
+    TResult? Function(int id, String value)? changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllOrders,
     TResult Function(int id)? getDetailedOrder,
+    TResult Function(int id, String value)? changeOrderStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$CurrentOrderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllCurrentOrders value) getAllOrders,
     required TResult Function(_GetDetailsOrder value) getDetailedOrder,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +121,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
   TResult when<TResult extends Object?>({
     required TResult Function() getAllOrders,
     required TResult Function(int id) getDetailedOrder,
+    required TResult Function(int id, String value) changeOrderStatus,
   }) {
     return getAllOrders();
   }
@@ -124,6 +131,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllOrders,
     TResult? Function(int id)? getDetailedOrder,
+    TResult? Function(int id, String value)? changeOrderStatus,
   }) {
     return getAllOrders?.call();
   }
@@ -133,6 +141,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllOrders,
     TResult Function(int id)? getDetailedOrder,
+    TResult Function(int id, String value)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (getAllOrders != null) {
@@ -146,6 +155,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllCurrentOrders value) getAllOrders,
     required TResult Function(_GetDetailsOrder value) getDetailedOrder,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
   }) {
     return getAllOrders(this);
   }
@@ -155,6 +165,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
   }) {
     return getAllOrders?.call(this);
   }
@@ -164,6 +175,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (getAllOrders != null) {
@@ -244,6 +256,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   TResult when<TResult extends Object?>({
     required TResult Function() getAllOrders,
     required TResult Function(int id) getDetailedOrder,
+    required TResult Function(int id, String value) changeOrderStatus,
   }) {
     return getDetailedOrder(id);
   }
@@ -253,6 +266,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllOrders,
     TResult? Function(int id)? getDetailedOrder,
+    TResult? Function(int id, String value)? changeOrderStatus,
   }) {
     return getDetailedOrder?.call(id);
   }
@@ -262,6 +276,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllOrders,
     TResult Function(int id)? getDetailedOrder,
+    TResult Function(int id, String value)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (getDetailedOrder != null) {
@@ -275,6 +290,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllCurrentOrders value) getAllOrders,
     required TResult Function(_GetDetailsOrder value) getDetailedOrder,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
   }) {
     return getDetailedOrder(this);
   }
@@ -284,6 +300,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
   }) {
     return getDetailedOrder?.call(this);
   }
@@ -293,6 +310,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
     required TResult orElse(),
   }) {
     if (getDetailedOrder != null) {
@@ -313,9 +331,160 @@ abstract class _GetDetailsOrder implements CurrentOrderEvent {
 }
 
 /// @nodoc
+abstract class _$$ChangeOrderStatusImplCopyWith<$Res> {
+  factory _$$ChangeOrderStatusImplCopyWith(_$ChangeOrderStatusImpl value,
+          $Res Function(_$ChangeOrderStatusImpl) then) =
+      __$$ChangeOrderStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id, String value});
+}
+
+/// @nodoc
+class __$$ChangeOrderStatusImplCopyWithImpl<$Res>
+    extends _$CurrentOrderEventCopyWithImpl<$Res, _$ChangeOrderStatusImpl>
+    implements _$$ChangeOrderStatusImplCopyWith<$Res> {
+  __$$ChangeOrderStatusImplCopyWithImpl(_$ChangeOrderStatusImpl _value,
+      $Res Function(_$ChangeOrderStatusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? value = null,
+  }) {
+    return _then(_$ChangeOrderStatusImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
+  const _$ChangeOrderStatusImpl({required this.id, required this.value});
+
+  @override
+  final int id;
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'CurrentOrderEvent.changeOrderStatus(id: $id, value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeOrderStatusImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeOrderStatusImplCopyWith<_$ChangeOrderStatusImpl> get copyWith =>
+      __$$ChangeOrderStatusImplCopyWithImpl<_$ChangeOrderStatusImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllOrders,
+    required TResult Function(int id) getDetailedOrder,
+    required TResult Function(int id, String value) changeOrderStatus,
+  }) {
+    return changeOrderStatus(id, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllOrders,
+    TResult? Function(int id)? getDetailedOrder,
+    TResult? Function(int id, String value)? changeOrderStatus,
+  }) {
+    return changeOrderStatus?.call(id, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllOrders,
+    TResult Function(int id)? getDetailedOrder,
+    TResult Function(int id, String value)? changeOrderStatus,
+    required TResult orElse(),
+  }) {
+    if (changeOrderStatus != null) {
+      return changeOrderStatus(id, value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAllCurrentOrders value) getAllOrders,
+    required TResult Function(_GetDetailsOrder value) getDetailedOrder,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+  }) {
+    return changeOrderStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
+    TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+  }) {
+    return changeOrderStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAllCurrentOrders value)? getAllOrders,
+    TResult Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    required TResult orElse(),
+  }) {
+    if (changeOrderStatus != null) {
+      return changeOrderStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeOrderStatus implements CurrentOrderEvent {
+  const factory _ChangeOrderStatus(
+      {required final int id,
+      required final String value}) = _$ChangeOrderStatusImpl;
+
+  int get id;
+  String get value;
+  @JsonKey(ignore: true)
+  _$$ChangeOrderStatusImplCopyWith<_$ChangeOrderStatusImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CurrentOrderState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
-  List<CurrentOrderEntity> get orders => throw _privateConstructorUsedError;
+  OrganizationListEntity get orders => throw _privateConstructorUsedError;
   CurrentOrderEntity get detailedOrder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -331,7 +500,7 @@ abstract class $CurrentOrderStateCopyWith<$Res> {
   @useResult
   $Res call(
       {StateStatus stateStatus,
-      List<CurrentOrderEntity> orders,
+      OrganizationListEntity orders,
       CurrentOrderEntity detailedOrder});
 
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -362,7 +531,7 @@ class _$CurrentOrderStateCopyWithImpl<$Res, $Val extends CurrentOrderState>
       orders: null == orders
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
-              as List<CurrentOrderEntity>,
+              as OrganizationListEntity,
       detailedOrder: null == detailedOrder
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
@@ -389,7 +558,7 @@ abstract class _$$CurrentOrderStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {StateStatus stateStatus,
-      List<CurrentOrderEntity> orders,
+      OrganizationListEntity orders,
       CurrentOrderEntity detailedOrder});
 
   @override
@@ -417,9 +586,9 @@ class __$$CurrentOrderStateImplCopyWithImpl<$Res>
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
       orders: null == orders
-          ? _value._orders
+          ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
-              as List<CurrentOrderEntity>,
+              as OrganizationListEntity,
       detailedOrder: null == detailedOrder
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
@@ -433,20 +602,13 @@ class __$$CurrentOrderStateImplCopyWithImpl<$Res>
 class _$CurrentOrderStateImpl implements _CurrentOrderState {
   const _$CurrentOrderStateImpl(
       {required this.stateStatus,
-      required final List<CurrentOrderEntity> orders,
-      required this.detailedOrder})
-      : _orders = orders;
+      required this.orders,
+      required this.detailedOrder});
 
   @override
   final StateStatus stateStatus;
-  final List<CurrentOrderEntity> _orders;
   @override
-  List<CurrentOrderEntity> get orders {
-    if (_orders is EqualUnmodifiableListView) return _orders;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orders);
-  }
-
+  final OrganizationListEntity orders;
   @override
   final CurrentOrderEntity detailedOrder;
 
@@ -462,14 +624,14 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
             other is _$CurrentOrderStateImpl &&
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
-            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            (identical(other.orders, orders) || other.orders == orders) &&
             (identical(other.detailedOrder, detailedOrder) ||
                 other.detailedOrder == detailedOrder));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus,
-      const DeepCollectionEquality().hash(_orders), detailedOrder);
+  int get hashCode =>
+      Object.hash(runtimeType, stateStatus, orders, detailedOrder);
 
   @JsonKey(ignore: true)
   @override
@@ -482,14 +644,14 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
 abstract class _CurrentOrderState implements CurrentOrderState {
   const factory _CurrentOrderState(
           {required final StateStatus stateStatus,
-          required final List<CurrentOrderEntity> orders,
+          required final OrganizationListEntity orders,
           required final CurrentOrderEntity detailedOrder}) =
       _$CurrentOrderStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
-  List<CurrentOrderEntity> get orders;
+  OrganizationListEntity get orders;
   @override
   CurrentOrderEntity get detailedOrder;
   @override

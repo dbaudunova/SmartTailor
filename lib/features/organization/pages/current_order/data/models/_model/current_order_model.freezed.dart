@@ -24,7 +24,8 @@ mixin _$CurrentOrderModel {
   String? get imageUrl => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $CurrentOrderModelCopyWith<$Res> {
       String? imageUrl,
       String? name,
       String? description,
-      int? price});
+      double? price,
+      String? status});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$CurrentOrderModelCopyWithImpl<$Res, $Val extends CurrentOrderModel>
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -85,7 +88,11 @@ class _$CurrentOrderModelCopyWithImpl<$Res, $Val extends CurrentOrderModel>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$CurrentOrderModelImplCopyWith<$Res>
       String? imageUrl,
       String? name,
       String? description,
-      int? price});
+      double? price,
+      String? status});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$CurrentOrderModelImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
+    Object? status = freezed,
   }) {
     return _then(_$CurrentOrderModelImpl(
       id: freezed == id
@@ -143,7 +152,11 @@ class __$$CurrentOrderModelImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -156,7 +169,8 @@ class _$CurrentOrderModelImpl implements _CurrentOrderModel {
       required this.imageUrl,
       required this.name,
       required this.description,
-      required this.price});
+      required this.price,
+      required this.status});
 
   factory _$CurrentOrderModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentOrderModelImplFromJson(json);
@@ -170,11 +184,13 @@ class _$CurrentOrderModelImpl implements _CurrentOrderModel {
   @override
   final String? description;
   @override
-  final int? price;
+  final double? price;
+  @override
+  final String? status;
 
   @override
   String toString() {
-    return 'CurrentOrderModel(id: $id, imageUrl: $imageUrl, name: $name, description: $description, price: $price)';
+    return 'CurrentOrderModel(id: $id, imageUrl: $imageUrl, name: $name, description: $description, price: $price, status: $status)';
   }
 
   @override
@@ -188,13 +204,14 @@ class _$CurrentOrderModelImpl implements _CurrentOrderModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, imageUrl, name, description, price);
+      Object.hash(runtimeType, id, imageUrl, name, description, price, status);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +234,8 @@ abstract class _CurrentOrderModel implements CurrentOrderModel {
       required final String? imageUrl,
       required final String? name,
       required final String? description,
-      required final int? price}) = _$CurrentOrderModelImpl;
+      required final double? price,
+      required final String? status}) = _$CurrentOrderModelImpl;
 
   factory _CurrentOrderModel.fromJson(Map<String, dynamic> json) =
       _$CurrentOrderModelImpl.fromJson;
@@ -231,7 +249,9 @@ abstract class _CurrentOrderModel implements CurrentOrderModel {
   @override
   String? get description;
   @override
-  int? get price;
+  double? get price;
+  @override
+  String? get status;
   @override
   @JsonKey(ignore: true)
   _$$CurrentOrderModelImplCopyWith<_$CurrentOrderModelImpl> get copyWith =>

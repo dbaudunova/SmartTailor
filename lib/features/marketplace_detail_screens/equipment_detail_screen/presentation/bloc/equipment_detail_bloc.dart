@@ -11,7 +11,7 @@ part 'equipment_detail_bloc_event.dart';
 part 'equipment_detail_bloc_state.dart';
 part 'equipment_detail_bloc.freezed.dart';
 
-@singleton
+@injectable
 class EquipmentDetailBloc extends Bloc<EquipmentDetailEvent, EquipmentDetailState> {
   final GetEuipmentByIdUseCase getEuipmentUseCase;
   final BuyEquipmentIdUseCase buyEquipmentIdUseCase;

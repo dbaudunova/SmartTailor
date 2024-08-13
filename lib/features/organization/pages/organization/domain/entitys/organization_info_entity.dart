@@ -3,7 +3,6 @@ class OrganizationInfoEntity {
   final String? imagePath;
   final String? name;
   final String? description;
-
   final String? createdAt;
 
   OrganizationInfoEntity({

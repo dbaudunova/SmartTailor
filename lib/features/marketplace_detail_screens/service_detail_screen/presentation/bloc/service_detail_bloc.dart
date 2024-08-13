@@ -10,7 +10,7 @@ part 'service_detail_bloc_event.dart';
 part 'service_detail_bloc_state.dart';
 part 'service_detail_bloc.freezed.dart';
 
-@singleton
+@injectable
 class ServiceDetailBloc extends Bloc<ServiceDetailEvent, ServiceDetailState> {
   final GetServiceByIdUseCase getServiceUseCase;
   ServiceDetailBloc(
@@ -31,12 +31,10 @@ class ServiceDetailBloc extends Bloc<ServiceDetailEvent, ServiceDetailState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getServiceUseCase.call(event.id!);
-      emit(state.copyWith(
-          stateStatus: const StateStatus.success(), service: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(), service: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

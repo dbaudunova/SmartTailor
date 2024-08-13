@@ -16,6 +16,8 @@ class MarketplaceState with _$MarketplaceState {
     required final int ordersTotalCount,
     required final int equipmentTotalCount,
     required final int servicesTotalCount,
-    required final bool isLoadingMore,
+    required bool isLoadingMoreOrders,
+    required bool isLoadingMoreEquipments,
+    required bool isLoadingMoreServices,
   }) = _MarketplaceState;
 }
