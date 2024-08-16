@@ -1,18 +1,25 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class AuthorInfo extends StatelessWidget {
   const AuthorInfo({
     super.key,
+    this.authorImage,
+    this.name,
   });
+
+  final String? authorImage;
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const CircleAvatar(
+         CircleAvatar(
           radius: 32,
           backgroundColor: AppColors.greyText,
+          backgroundImage: CachedNetworkImageProvider(authorImage ?? ''),
         ),
         const SizedBox(width: 12),
         Column(
@@ -20,7 +27,7 @@ class AuthorInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              'Sandy Wilder Cheng',
+              name ?? '',
               style: AppTextStyle.text14.copyWith(
                 fontWeight: FontWeight.w500,
               ),

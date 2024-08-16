@@ -2162,8 +2162,6 @@ mixin _$ProfileState {
   bool get isLoadingMore => throw _privateConstructorUsedError;
   ProfileEntity? get profile => throw _privateConstructorUsedError;
   bool get isProfileLoaded => throw _privateConstructorUsedError;
-  List<AnnouncementEntity>? get announcements =>
-      throw _privateConstructorUsedError;
   bool get isAnnouncementsLoaded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -2194,7 +2192,6 @@ abstract class $ProfileStateCopyWith<$Res> {
       bool isLoadingMore,
       ProfileEntity? profile,
       bool isProfileLoaded,
-      List<AnnouncementEntity>? announcements,
       bool isAnnouncementsLoaded});
 
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -2229,7 +2226,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? isLoadingMore = null,
     Object? profile = freezed,
     Object? isProfileLoaded = null,
-    Object? announcements = freezed,
     Object? isAnnouncementsLoaded = null,
   }) {
     return _then(_value.copyWith(
@@ -2297,10 +2293,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.isProfileLoaded
           : isProfileLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      announcements: freezed == announcements
-          ? _value.announcements
-          : announcements // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>?,
       isAnnouncementsLoaded: null == isAnnouncementsLoaded
           ? _value.isAnnouncementsLoaded
           : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
@@ -2342,7 +2334,6 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
       bool isLoadingMore,
       ProfileEntity? profile,
       bool isProfileLoaded,
-      List<AnnouncementEntity>? announcements,
       bool isAnnouncementsLoaded});
 
   @override
@@ -2376,7 +2367,6 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
     Object? isLoadingMore = null,
     Object? profile = freezed,
     Object? isProfileLoaded = null,
-    Object? announcements = freezed,
     Object? isAnnouncementsLoaded = null,
   }) {
     return _then(_$ProfileStateImpl(
@@ -2444,10 +2434,6 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value.isProfileLoaded
           : isProfileLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      announcements: freezed == announcements
-          ? _value._announcements
-          : announcements // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>?,
       isAnnouncementsLoaded: null == isAnnouncementsLoaded
           ? _value.isAnnouncementsLoaded
           : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
@@ -2476,12 +2462,10 @@ class _$ProfileStateImpl implements _ProfileState {
       required this.isLoadingMore,
       this.profile,
       this.isProfileLoaded = false,
-      final List<AnnouncementEntity>? announcements,
       this.isAnnouncementsLoaded = false})
       : _equipments = equipments,
         _orders = orders,
-        _services = services,
-        _announcements = announcements;
+        _services = services;
 
   @override
   final StateStatus stateStatus;
@@ -2534,23 +2518,13 @@ class _$ProfileStateImpl implements _ProfileState {
   @override
   @JsonKey()
   final bool isProfileLoaded;
-  final List<AnnouncementEntity>? _announcements;
-  @override
-  List<AnnouncementEntity>? get announcements {
-    final value = _announcements;
-    if (value == null) return null;
-    if (_announcements is EqualUnmodifiableListView) return _announcements;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
   @override
   @JsonKey()
   final bool isAnnouncementsLoaded;
 
   @override
   String toString() {
-    return 'ProfileState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore, profile: $profile, isProfileLoaded: $isProfileLoaded, announcements: $announcements, isAnnouncementsLoaded: $isAnnouncementsLoaded)';
+    return 'ProfileState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore, profile: $profile, isProfileLoaded: $isProfileLoaded, isAnnouncementsLoaded: $isAnnouncementsLoaded)';
   }
 
   @override
@@ -2587,8 +2561,6 @@ class _$ProfileStateImpl implements _ProfileState {
             (identical(other.profile, profile) || other.profile == profile) &&
             (identical(other.isProfileLoaded, isProfileLoaded) ||
                 other.isProfileLoaded == isProfileLoaded) &&
-            const DeepCollectionEquality()
-                .equals(other._announcements, _announcements) &&
             (identical(other.isAnnouncementsLoaded, isAnnouncementsLoaded) ||
                 other.isAnnouncementsLoaded == isAnnouncementsLoaded));
   }
@@ -2612,7 +2584,6 @@ class _$ProfileStateImpl implements _ProfileState {
       isLoadingMore,
       profile,
       isProfileLoaded,
-      const DeepCollectionEquality().hash(_announcements),
       isAnnouncementsLoaded);
 
   @JsonKey(ignore: true)
@@ -2640,7 +2611,6 @@ abstract class _ProfileState implements ProfileState {
       required final bool isLoadingMore,
       final ProfileEntity? profile,
       final bool isProfileLoaded,
-      final List<AnnouncementEntity>? announcements,
       final bool isAnnouncementsLoaded}) = _$ProfileStateImpl;
 
   @override
@@ -2675,8 +2645,6 @@ abstract class _ProfileState implements ProfileState {
   ProfileEntity? get profile;
   @override
   bool get isProfileLoaded;
-  @override
-  List<AnnouncementEntity>? get announcements;
   @override
   bool get isAnnouncementsLoaded;
   @override

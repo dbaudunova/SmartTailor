@@ -16,9 +16,14 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     AnnouncementDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<AnnouncementDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AnnouncementDetailScreen(),
+        child: AnnouncementDetailScreen(
+          id: args.id,
+          type: args.type,
+          key: args.key,
+        ),
       );
     },
     BottomNavRoute.name: (routeData) {
@@ -210,16 +215,46 @@ abstract class _$AppRouter extends RootStackRouter {
 
 /// generated route for
 /// [AnnouncementDetailScreen]
-class AnnouncementDetailRoute extends PageRouteInfo<void> {
-  const AnnouncementDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class AnnouncementDetailRoute
+    extends PageRouteInfo<AnnouncementDetailRouteArgs> {
+  AnnouncementDetailRoute({
+    required int id,
+    required AnnouncementType type,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           AnnouncementDetailRoute.name,
+          args: AnnouncementDetailRouteArgs(
+            id: id,
+            type: type,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AnnouncementDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AnnouncementDetailRouteArgs> page =
+      PageInfo<AnnouncementDetailRouteArgs>(name);
+}
+
+class AnnouncementDetailRouteArgs {
+  const AnnouncementDetailRouteArgs({
+    required this.id,
+    required this.type,
+    this.key,
+  });
+
+  final int id;
+
+  final AnnouncementType type;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AnnouncementDetailRouteArgs{id: $id, type: $type, key: $key}';
+  }
 }
 
 /// generated route for
