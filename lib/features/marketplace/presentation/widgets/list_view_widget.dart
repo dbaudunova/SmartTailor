@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/marketplace_card_widget.dart';
 
 class ListViewWidget<T> extends StatelessWidget {
@@ -10,8 +9,8 @@ class ListViewWidget<T> extends StatelessWidget {
   final String Function(T item) imageBuilder;
   final String Function(T item) titleBuilder;
   final String Function(T item) descriptionBuilder;
-  final Text? Function(T item)? priceBuilder; // Optional parameter
-  final String? Function(T item)? dateBuilder; // Optional parameter
+  final Text? Function(T item)? priceBuilder;
+  final String? Function(T item)? dateBuilder;
 
   const ListViewWidget({
     required this.onNotification,
@@ -21,7 +20,7 @@ class ListViewWidget<T> extends StatelessWidget {
     required this.imageBuilder,
     required this.titleBuilder,
     required this.descriptionBuilder,
-    this.priceBuilder, // Optional named parameter
+    this.priceBuilder,
     this.dateBuilder,
     super.key,
   });

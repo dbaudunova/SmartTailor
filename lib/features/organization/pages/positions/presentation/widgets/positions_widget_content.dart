@@ -5,6 +5,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/shared/app_constants.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/positions/domain/entitys/position_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/bloc/positions_bloc.dart';
 
 class PositionsWidgetContent extends StatefulWidget {
@@ -32,96 +33,121 @@ class _PositionsWidgetContentState extends State<PositionsWidgetContent> {
         var positions = state.positions;
         return state.stateStatus != const StateStatus.loading()
             ? positions.isNotEmpty
-                ? Stack(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Должности',
-                            style: AppTextStyle.textField16.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Expanded(
-                            child: ListView.builder(
-                              shrinkWrap: false,
-                              itemBuilder: (context, index) {
-                                var isExpanded = _expandedPositions[index] ?? false;
-                                return Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.symmetric(vertical: AppProps.kSmallMargin),
-                                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                                      decoration: const BoxDecoration(
-                                          color: AppColors.white, borderRadius: BorderRadius.all(Radius.circular(8))),
-                                      height: 48,
-                                      width: double.infinity,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _expandedPositions[index] = !isExpanded;
-                                          });
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              actionsMap[positions[index].positionName!] ??
-                                                  positions[index].positionName!,
-                                              style: AppTextStyle.textField16.copyWith(
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                            ),
-                                            Icon(
-                                              isExpanded
-                                                  ? Icons.keyboard_arrow_up_rounded
-                                                  : Icons.keyboard_arrow_down_rounded,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    if (isExpanded)
-                                      Container(
-                                        margin: const EdgeInsets.symmetric(vertical: AppProps.kSmallMargin),
-                                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                                        decoration: const BoxDecoration(
-                                          color: AppColors.white,
-                                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                                        ),
-                                        child: ListView.builder(
-                                          shrinkWrap: true,
-                                          physics: const NeverScrollableScrollPhysics(),
-                                          itemBuilder: (context, ind) {
-                                            var accessRight = positions[index].accessRights![ind];
-                                            return Container(
-                                              padding: const EdgeInsets.symmetric(vertical: 2),
-                                              child: Text(
-                                                actionsMap[accessRight] ?? accessRight,
-                                                style: AppTextStyle.textField16.copyWith(
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          itemCount: positions[index].accessRights!.length,
-                                        ),
-                                      ),
-                                  ],
-                                );
-                              },
-                              itemCount: positions.length,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const AddPositionButton(),
-                    ],
-                  )
+                ? _buildListPositions(positions)
                 : _buildEmptyPositionsList()
             : const Center(child: CircularProgressIndicator());
       },
+    );
+  }
+
+  Stack _buildListPositions(List<PositionEntity> positions) {
+    return Stack(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Должности',
+              style: AppTextStyle.textField16.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: false,
+                itemBuilder: (context, index) {
+                  var isExpanded = _expandedPositions[index] ?? false;
+                  return Column(
+                    children: [
+                      _buildCard(index, isExpanded, positions),
+                      if (isExpanded) _builRightsList(positions, index),
+                    ],
+                  );
+                },
+                itemCount: positions.length,
+              ),
+            ),
+          ],
+        ),
+        const AddPositionButton(),
+      ],
+    );
+  }
+
+  Container _builRightsList(List<PositionEntity> positions, int index) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: AppProps.kSmallMargin),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: const BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, ind) {
+          var accessRight = positions[index].accessRights![ind];
+          return Container(
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: Text(
+              actionsMap[accessRight] ?? accessRight,
+              style: AppTextStyle.textField16.copyWith(
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          );
+        },
+        itemCount: positions[index].accessRights!.length,
+      ),
+    );
+  }
+
+  Container _buildCard(int index, bool isExpanded, List<PositionEntity> positions) {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: AppProps.kSmallMargin,
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: const BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
+      height: 48,
+      width: double.infinity,
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            _expandedPositions[index] = !isExpanded;
+          });
+        },
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              actionsMap[positions[index].weight!] ?? positions[index].weight!,
+              style: AppTextStyle.textField16.copyWith(
+                fontWeight: FontWeight.w900,
+                color: AppColors.darkBlue,
+              ),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              actionsMap[positions[index].positionName!] ?? positions[index].positionName!,
+              style: AppTextStyle.textField16.copyWith(
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            const Spacer(),
+            Icon(
+              isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+            ),
+          ],
+        ),
+      ),
     );
   }
 

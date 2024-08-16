@@ -102,7 +102,7 @@ class RegistrationContentState extends State<RegistrationContent> {
                       }
                     : null,
               )
-            : ElevatedButtonWidget(text: t.register, onTap: null);
+            : const ElevatedButtonWidget(loading: true, onTap: null);
       },
     );
   }

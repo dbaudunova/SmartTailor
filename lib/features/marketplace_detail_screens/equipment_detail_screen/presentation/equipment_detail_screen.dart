@@ -53,7 +53,7 @@ class EquipmentDetailScreen extends StatelessWidget {
       },
       failure: (msg) {
         print(msg);
-        AppSnackBar.show(context: context, titleText: msg, error: true);
+        AppSnackBar.show(context: context, titleText: msg!, error: true);
       },
     );
   }

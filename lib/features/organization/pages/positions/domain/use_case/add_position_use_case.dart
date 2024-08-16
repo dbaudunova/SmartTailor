@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/use_case/use_case.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/positions/data/models/_model/position_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/positions/domain/entitys/position_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/domain/repository/positions_repo.dart';
 
 @singleton
-class AddPositionUseCase extends UseCase<void, PositionModel> {
+class AddPositionUseCase extends UseCase<void, PositionEntity> {
   final PositionsRepo repo;
 
   AddPositionUseCase({
@@ -12,8 +12,7 @@ class AddPositionUseCase extends UseCase<void, PositionModel> {
   });
 
   @override
-  Future<void> call(PositionModel params) async {
-    var entity = await repo.createPosition(model: params);
-    return entity;
+  Future<void> call(PositionEntity params) async {
+    await repo.createPosition(entity: params);
   }
 }

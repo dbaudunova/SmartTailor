@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PurchasesEvent {
-  int get pageNumber => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageNumber) getPurchasesList,
+    required TResult Function() getPurchasesList,
+    required TResult Function() loadMoreElements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageNumber)? getPurchasesList,
+    TResult? Function()? getPurchasesList,
+    TResult? Function()? loadMoreElements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageNumber)? getPurchasesList,
+    TResult Function()? getPurchasesList,
+    TResult Function()? loadMoreElements,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPurchasesList value) getPurchasesList,
+    required TResult Function(_LoadMoreElements value) loadMoreElements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPurchasesList value)? getPurchasesList,
+    TResult? Function(_LoadMoreElements value)? loadMoreElements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPurchasesList value)? getPurchasesList,
+    TResult Function(_LoadMoreElements value)? loadMoreElements,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PurchasesEventCopyWith<PurchasesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $PurchasesEventCopyWith<$Res> {
   factory $PurchasesEventCopyWith(
           PurchasesEvent value, $Res Function(PurchasesEvent) then) =
       _$PurchasesEventCopyWithImpl<$Res, PurchasesEvent>;
-  @useResult
-  $Res call({int pageNumber});
 }
 
 /// @nodoc
@@ -73,30 +72,13 @@ class _$PurchasesEventCopyWithImpl<$Res, $Val extends PurchasesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageNumber = null,
-  }) {
-    return _then(_value.copyWith(
-      pageNumber: null == pageNumber
-          ? _value.pageNumber
-          : pageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetPurchasesListImplCopyWith<$Res>
-    implements $PurchasesEventCopyWith<$Res> {
+abstract class _$$GetPurchasesListImplCopyWith<$Res> {
   factory _$$GetPurchasesListImplCopyWith(_$GetPurchasesListImpl value,
           $Res Function(_$GetPurchasesListImpl) then) =
       __$$GetPurchasesListImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int pageNumber});
 }
 
 /// @nodoc
@@ -106,77 +88,54 @@ class __$$GetPurchasesListImplCopyWithImpl<$Res>
   __$$GetPurchasesListImplCopyWithImpl(_$GetPurchasesListImpl _value,
       $Res Function(_$GetPurchasesListImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageNumber = null,
-  }) {
-    return _then(_$GetPurchasesListImpl(
-      pageNumber: null == pageNumber
-          ? _value.pageNumber
-          : pageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$GetPurchasesListImpl implements _GetPurchasesList {
-  const _$GetPurchasesListImpl({required this.pageNumber});
-
-  @override
-  final int pageNumber;
+  const _$GetPurchasesListImpl();
 
   @override
   String toString() {
-    return 'PurchasesEvent.getPurchasesList(pageNumber: $pageNumber)';
+    return 'PurchasesEvent.getPurchasesList()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetPurchasesListImpl &&
-            (identical(other.pageNumber, pageNumber) ||
-                other.pageNumber == pageNumber));
+        (other.runtimeType == runtimeType && other is _$GetPurchasesListImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageNumber);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetPurchasesListImplCopyWith<_$GetPurchasesListImpl> get copyWith =>
-      __$$GetPurchasesListImplCopyWithImpl<_$GetPurchasesListImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int pageNumber) getPurchasesList,
+    required TResult Function() getPurchasesList,
+    required TResult Function() loadMoreElements,
   }) {
-    return getPurchasesList(pageNumber);
+    return getPurchasesList();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int pageNumber)? getPurchasesList,
+    TResult? Function()? getPurchasesList,
+    TResult? Function()? loadMoreElements,
   }) {
-    return getPurchasesList?.call(pageNumber);
+    return getPurchasesList?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int pageNumber)? getPurchasesList,
+    TResult Function()? getPurchasesList,
+    TResult Function()? loadMoreElements,
     required TResult orElse(),
   }) {
     if (getPurchasesList != null) {
-      return getPurchasesList(pageNumber);
+      return getPurchasesList();
     }
     return orElse();
   }
@@ -185,6 +144,7 @@ class _$GetPurchasesListImpl implements _GetPurchasesList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPurchasesList value) getPurchasesList,
+    required TResult Function(_LoadMoreElements value) loadMoreElements,
   }) {
     return getPurchasesList(this);
   }
@@ -193,6 +153,7 @@ class _$GetPurchasesListImpl implements _GetPurchasesList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPurchasesList value)? getPurchasesList,
+    TResult? Function(_LoadMoreElements value)? loadMoreElements,
   }) {
     return getPurchasesList?.call(this);
   }
@@ -201,6 +162,7 @@ class _$GetPurchasesListImpl implements _GetPurchasesList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPurchasesList value)? getPurchasesList,
+    TResult Function(_LoadMoreElements value)? loadMoreElements,
     required TResult orElse(),
   }) {
     if (getPurchasesList != null) {
@@ -211,15 +173,109 @@ class _$GetPurchasesListImpl implements _GetPurchasesList {
 }
 
 abstract class _GetPurchasesList implements PurchasesEvent {
-  const factory _GetPurchasesList({required final int pageNumber}) =
-      _$GetPurchasesListImpl;
+  const factory _GetPurchasesList() = _$GetPurchasesListImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreElementsImplCopyWith<$Res> {
+  factory _$$LoadMoreElementsImplCopyWith(_$LoadMoreElementsImpl value,
+          $Res Function(_$LoadMoreElementsImpl) then) =
+      __$$LoadMoreElementsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreElementsImplCopyWithImpl<$Res>
+    extends _$PurchasesEventCopyWithImpl<$Res, _$LoadMoreElementsImpl>
+    implements _$$LoadMoreElementsImplCopyWith<$Res> {
+  __$$LoadMoreElementsImplCopyWithImpl(_$LoadMoreElementsImpl _value,
+      $Res Function(_$LoadMoreElementsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreElementsImpl implements _LoadMoreElements {
+  const _$LoadMoreElementsImpl();
 
   @override
-  int get pageNumber;
+  String toString() {
+    return 'PurchasesEvent.loadMoreElements()';
+  }
+
   @override
-  @JsonKey(ignore: true)
-  _$$GetPurchasesListImplCopyWith<_$GetPurchasesListImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreElementsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPurchasesList,
+    required TResult Function() loadMoreElements,
+  }) {
+    return loadMoreElements();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getPurchasesList,
+    TResult? Function()? loadMoreElements,
+  }) {
+    return loadMoreElements?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPurchasesList,
+    TResult Function()? loadMoreElements,
+    required TResult orElse(),
+  }) {
+    if (loadMoreElements != null) {
+      return loadMoreElements();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPurchasesList value) getPurchasesList,
+    required TResult Function(_LoadMoreElements value) loadMoreElements,
+  }) {
+    return loadMoreElements(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPurchasesList value)? getPurchasesList,
+    TResult? Function(_LoadMoreElements value)? loadMoreElements,
+  }) {
+    return loadMoreElements?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPurchasesList value)? getPurchasesList,
+    TResult Function(_LoadMoreElements value)? loadMoreElements,
+    required TResult orElse(),
+  }) {
+    if (loadMoreElements != null) {
+      return loadMoreElements(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreElements implements PurchasesEvent {
+  const factory _LoadMoreElements() = _$LoadMoreElementsImpl;
 }
 
 /// @nodoc
@@ -228,6 +284,7 @@ mixin _$PurchasesState {
   List<PurchasesEntity>? get purchases => throw _privateConstructorUsedError;
   int get totalCount => throw _privateConstructorUsedError;
   bool get isLast => throw _privateConstructorUsedError;
+  int get page => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PurchasesStateCopyWith<PurchasesState> get copyWith =>
@@ -244,7 +301,8 @@ abstract class $PurchasesStateCopyWith<$Res> {
       {StateStatus stateStatus,
       List<PurchasesEntity>? purchases,
       int totalCount,
-      bool isLast});
+      bool isLast,
+      int page});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -266,6 +324,7 @@ class _$PurchasesStateCopyWithImpl<$Res, $Val extends PurchasesState>
     Object? purchases = freezed,
     Object? totalCount = null,
     Object? isLast = null,
+    Object? page = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -284,6 +343,10 @@ class _$PurchasesStateCopyWithImpl<$Res, $Val extends PurchasesState>
           ? _value.isLast
           : isLast // ignore: cast_nullable_to_non_nullable
               as bool,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -308,7 +371,8 @@ abstract class _$$PurchasesStateImplCopyWith<$Res>
       {StateStatus stateStatus,
       List<PurchasesEntity>? purchases,
       int totalCount,
-      bool isLast});
+      bool isLast,
+      int page});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -329,6 +393,7 @@ class __$$PurchasesStateImplCopyWithImpl<$Res>
     Object? purchases = freezed,
     Object? totalCount = null,
     Object? isLast = null,
+    Object? page = null,
   }) {
     return _then(_$PurchasesStateImpl(
       stateStatus: null == stateStatus
@@ -347,6 +412,10 @@ class __$$PurchasesStateImplCopyWithImpl<$Res>
           ? _value.isLast
           : isLast // ignore: cast_nullable_to_non_nullable
               as bool,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -358,7 +427,8 @@ class _$PurchasesStateImpl implements _PurchasesState {
       {required this.stateStatus,
       required final List<PurchasesEntity>? purchases,
       required this.totalCount,
-      required this.isLast})
+      required this.isLast,
+      required this.page})
       : _purchases = purchases;
 
   @override
@@ -377,10 +447,12 @@ class _$PurchasesStateImpl implements _PurchasesState {
   final int totalCount;
   @override
   final bool isLast;
+  @override
+  final int page;
 
   @override
   String toString() {
-    return 'PurchasesState(stateStatus: $stateStatus, purchases: $purchases, totalCount: $totalCount, isLast: $isLast)';
+    return 'PurchasesState(stateStatus: $stateStatus, purchases: $purchases, totalCount: $totalCount, isLast: $isLast, page: $page)';
   }
 
   @override
@@ -394,12 +466,18 @@ class _$PurchasesStateImpl implements _PurchasesState {
                 .equals(other._purchases, _purchases) &&
             (identical(other.totalCount, totalCount) ||
                 other.totalCount == totalCount) &&
-            (identical(other.isLast, isLast) || other.isLast == isLast));
+            (identical(other.isLast, isLast) || other.isLast == isLast) &&
+            (identical(other.page, page) || other.page == page));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus,
-      const DeepCollectionEquality().hash(_purchases), totalCount, isLast);
+  int get hashCode => Object.hash(
+      runtimeType,
+      stateStatus,
+      const DeepCollectionEquality().hash(_purchases),
+      totalCount,
+      isLast,
+      page);
 
   @JsonKey(ignore: true)
   @override
@@ -414,7 +492,8 @@ abstract class _PurchasesState implements PurchasesState {
       {required final StateStatus stateStatus,
       required final List<PurchasesEntity>? purchases,
       required final int totalCount,
-      required final bool isLast}) = _$PurchasesStateImpl;
+      required final bool isLast,
+      required final int page}) = _$PurchasesStateImpl;
 
   @override
   StateStatus get stateStatus;
@@ -424,6 +503,8 @@ abstract class _PurchasesState implements PurchasesState {
   int get totalCount;
   @override
   bool get isLast;
+  @override
+  int get page;
   @override
   @JsonKey(ignore: true)
   _$$PurchasesStateImplCopyWith<_$PurchasesStateImpl> get copyWith =>

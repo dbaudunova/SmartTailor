@@ -80,12 +80,10 @@ class _CreateOrganizationContentState extends State<CreateOrganizationContent> {
               children: [
                 Form(
                   key: _formKey,
-                  child: _buildTextFields(),
+                  child: _buildTextFields(state),
                 ),
                 const SizedBox(height: 16),
                 _buildImagePreview(state),
-                // const Spacer(),
-                // _buildCreateButton(context),
                 const SizedBox(height: 16),
               ],
             ),
@@ -116,27 +114,10 @@ class _CreateOrganizationContentState extends State<CreateOrganizationContent> {
             },
           )
         : const ElevatedButtonWidget(
-            text: 'Создать организацию',
+            // text: 'Создать организацию',
             onTap: null,
+            loading: true,
           );
-  }
-
-  void _alertValidate() {
-    if (_formKey.currentState!.validate()) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialogStyle(
-            title: 'Ура!',
-            content: 'Вы создали организацию!',
-            buttonText: 'Понятно',
-            onButtonPressed: () {
-              AutoRouter.of(context).replaceNamed('/organization_info');
-            },
-          );
-        },
-      );
-    }
   }
 
   Widget _buildImagePreview(CreateOrganizationState state) {
@@ -191,9 +172,9 @@ class _CreateOrganizationContentState extends State<CreateOrganizationContent> {
                 onPressed: () {
                   Navigator.pop(context);
                   if (type == ImagePickType.selectPhoto) {
-                    _pickImage(ImageSource.gallery);
+                    _bloc.add(const CreateOrganizationEvent.selectPhoto());
                   } else if (type == ImagePickType.takePhoto) {
-                    _pickImage(ImageSource.camera);
+                    _bloc.add(const CreateOrganizationEvent.capturePhots());
                   }
                 },
                 text: type.name,
@@ -204,7 +185,7 @@ class _CreateOrganizationContentState extends State<CreateOrganizationContent> {
     );
   }
 
-  Column _buildTextFields() {
+  Column _buildTextFields(CreateOrganizationState state) {
     return Column(
       children: [
         TextFormFieldWidget(
@@ -227,8 +208,8 @@ class _CreateOrganizationContentState extends State<CreateOrganizationContent> {
             _showPhotoOptions(context);
           },
           titleName: 'Ваш логотип*',
-          hintText: 'Загрузить фото',
-          controller: _logoController,
+          hintText: state.controller.text,
+          controller: state.controller,
           validator: _fieldValidation,
         ),
       ],

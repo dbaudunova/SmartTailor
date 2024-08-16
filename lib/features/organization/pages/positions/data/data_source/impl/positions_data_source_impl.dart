@@ -21,7 +21,7 @@ class PositionsSourceImpl implements PositionsDataSource {
   @override
   Future<void> createPosition({required PositionModel model}) async {
     var jsonString = json.encode(model.toJson());
-    // print(jsonString);
+    print(jsonString);
     // var multipartImage = await MultipartFile.fromFile(image.path, filename: image.path.split('/').last);
     // for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
     final formData = FormData.fromMap({

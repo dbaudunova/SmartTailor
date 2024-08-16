@@ -20,8 +20,11 @@ Failure handleDioException(DioException exception) {
           var conflictMessage = 'Ресурс не найден';
           if (exception.response?.data != null && exception.response?.data['message'] != null) {
             conflictMessage = exception.response?.data['message'];
+            // if (conflictMessage == 'Organization not found') {
+            //   return;
+            // }
           }
-          return Failure.request(message: conflictMessage, status: 409);
+          return Failure.request(message: conflictMessage, status: 404);
         case 409:
           var conflictMessage = 'Произошел конфликт';
           if (exception.response?.data != null && exception.response?.data['message'] != null) {
@@ -33,7 +36,7 @@ Failure handleDioException(DioException exception) {
           if (exception.response?.data != null && exception.response?.data['message'] != null) {
             conflictMessage = exception.response?.data['message'];
           }
-          return Failure.request(message: conflictMessage, status: 409);
+          return Failure.request(message: conflictMessage, status: 413);
         // case 500:
         //   return Failure.server(message: 'Внутренняя ошибка сервера', status: 500);
         default:

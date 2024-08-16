@@ -17,10 +17,10 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_de
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/presentation/service_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/order_place_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/create_organization/presentation/create_organization_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_order_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_order_detail/current_order_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employee_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/positions_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/history_detail/history_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/history_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/invite_employee_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_empty_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_screen.dart';
@@ -28,7 +28,7 @@ import 'package:neobis_smart_tailor/features/organization/pages/organization/pre
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/announcement_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/my_announcements_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/notification_screen.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/order_history_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/presentation/order_history_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/organization/profile_organization_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/personal_data/personal_data_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/profile_screen.dart';

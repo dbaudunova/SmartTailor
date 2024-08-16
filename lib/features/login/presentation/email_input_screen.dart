@@ -34,7 +34,7 @@ class EmailInputScreen extends StatelessWidget {
       failure: (msg) {
         AppSnackBar.show(
           context: context,
-          titleText: msg,
+          titleText: msg!,
           error: true,
         );
       },

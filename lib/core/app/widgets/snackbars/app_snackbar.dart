@@ -3,7 +3,7 @@ part of '../../io_ui.dart';
 class AppSnackBar {
   static show({
     required BuildContext context,
-    required String titleText,
+    required String? titleText,
     Duration duration = const Duration(seconds: 2),
     bool error = false,
   }) {
@@ -15,7 +15,7 @@ class AppSnackBar {
             margin: const EdgeInsets.only(bottom: 32, left: 16, right: 16),
             elevation: 5,
             content: Text(
-              titleText,
+              titleText!,
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,

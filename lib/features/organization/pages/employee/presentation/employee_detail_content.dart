@@ -71,7 +71,6 @@ class _EmployeeDetailContentState extends State<EmployeeDetailContent> {
             child: BlocBuilder<EmployeeBloc, EmployeeState>(
               builder: (context, state) {
                 var emploeey = state.employee;
-                print(emploeey);
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -79,34 +78,34 @@ class _EmployeeDetailContentState extends State<EmployeeDetailContent> {
                       key: _formKey,
                       child: _buildTextFieldsColumn(emploeey),
                     ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Должность*',
-                      style: AppTextStyle.textField16,
-                    ),
-                    const SizedBox(height: 8),
-                    PurchaseDetailButton(
-                      child: _buildRow(
-                        title: _selectedPositionText,
-                        isExpanded: _isPositionExpanded,
-                        onPressed: () {
-                          setState(() {
-                            _isPositionExpanded = !_isPositionExpanded;
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    if (_isPositionExpanded)
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Column(
-                          children: _statusList.map(_buildCheckboxList).toList(),
-                        ),
-                      ),
+                    // const SizedBox(height: 16),
+                    // const Text(
+                    //   'Должность*',
+                    //   style: AppTextStyle.textField16,
+                    // ),
+                    // const SizedBox(height: 8),
+                    // PurchaseDetailButton(
+                    //   child: _buildRow(
+                    //     title: _selectedPositionText,
+                    //     isExpanded: _isPositionExpanded,
+                    //     onPressed: () {
+                    //       setState(() {
+                    //         _isPositionExpanded = !_isPositionExpanded;
+                    //       });
+                    //     },
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 4),
+                    // if (_isPositionExpanded)
+                    //   Container(
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.white,
+                    //       borderRadius: BorderRadius.circular(8),
+                    //     ),
+                    //     child: Column(
+                    //       children: _statusList.map(_buildCheckboxList).toList(),
+                    //     ),
+                    //   ),
                   ],
                 );
               },

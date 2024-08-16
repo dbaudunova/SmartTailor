@@ -20,7 +20,7 @@ mixin _$StateStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(dynamic value) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String? message) failure,
     required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$StateStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(dynamic value)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String? message)? failure,
     TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$StateStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(dynamic value)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String? message)? failure,
     TResult Function()? loading,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$InitialStatusImpl implements InitialStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(dynamic value) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String? message) failure,
     required TResult Function() loading,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$InitialStatusImpl implements InitialStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(dynamic value)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String? message)? failure,
     TResult? Function()? loading,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$InitialStatusImpl implements InitialStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(dynamic value)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String? message)? failure,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -267,7 +267,7 @@ class _$SuccessStatusImpl implements SuccessStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(dynamic value) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String? message) failure,
     required TResult Function() loading,
   }) {
     return success(value);
@@ -278,7 +278,7 @@ class _$SuccessStatusImpl implements SuccessStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(dynamic value)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String? message)? failure,
     TResult? Function()? loading,
   }) {
     return success?.call(value);
@@ -289,7 +289,7 @@ class _$SuccessStatusImpl implements SuccessStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(dynamic value)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String? message)? failure,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -352,7 +352,7 @@ abstract class _$$FailureStatusImplCopyWith<$Res> {
           _$FailureStatusImpl value, $Res Function(_$FailureStatusImpl) then) =
       __$$FailureStatusImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -366,13 +366,13 @@ class __$$FailureStatusImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$FailureStatusImpl(
-      message: null == message
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -383,7 +383,7 @@ class _$FailureStatusImpl implements FailureStatus {
   const _$FailureStatusImpl({required this.message});
 
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -412,7 +412,7 @@ class _$FailureStatusImpl implements FailureStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(dynamic value) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String? message) failure,
     required TResult Function() loading,
   }) {
     return failure(message);
@@ -423,7 +423,7 @@ class _$FailureStatusImpl implements FailureStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(dynamic value)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String? message)? failure,
     TResult? Function()? loading,
   }) {
     return failure?.call(message);
@@ -434,7 +434,7 @@ class _$FailureStatusImpl implements FailureStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(dynamic value)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String? message)? failure,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -483,10 +483,10 @@ class _$FailureStatusImpl implements FailureStatus {
 }
 
 abstract class FailureStatus implements StateStatus {
-  const factory FailureStatus({required final String message}) =
+  const factory FailureStatus({required final String? message}) =
       _$FailureStatusImpl;
 
-  String get message;
+  String? get message;
   @JsonKey(ignore: true)
   _$$FailureStatusImplCopyWith<_$FailureStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -532,7 +532,7 @@ class _$LoadingStatusImpl implements LoadingStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(dynamic value) success,
-    required TResult Function(String message) failure,
+    required TResult Function(String? message) failure,
     required TResult Function() loading,
   }) {
     return loading();
@@ -543,7 +543,7 @@ class _$LoadingStatusImpl implements LoadingStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(dynamic value)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(String? message)? failure,
     TResult? Function()? loading,
   }) {
     return loading?.call();
@@ -554,7 +554,7 @@ class _$LoadingStatusImpl implements LoadingStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(dynamic value)? success,
-    TResult Function(String message)? failure,
+    TResult Function(String? message)? failure,
     TResult Function()? loading,
     required TResult orElse(),
   }) {

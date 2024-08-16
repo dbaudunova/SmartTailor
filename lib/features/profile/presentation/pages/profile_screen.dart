@@ -22,7 +22,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   @override
   void initState() {
     final profileBloc = BlocProvider.of<ProfileBloc>(context);
@@ -82,17 +81,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildSubscripe(ProfileState state) {
-    print(state.profile?.hasSubscription);
+    // print(state.profile.hasSubscription);
+    print(state.subscriptionSend);
     return state.stateStatus == const StateStatus.loading()
         ? const SizedBox.shrink()
-        : state.profile?.hasSubscription == false
+        : state.subscriptionSend == false
             ? Column(
                 children: [
                   SubscribeContainerStyle(
                     buttonTitle: 'Отправить запрос',
                     onButtonPressed: () {
                       context.read<ProfileBloc>().add(const ProfileEvent.sendSubscription());
-                      // _buildShowDialog(context);
+                      _buildShowDialog(context);
                     },
                   ),
                   const SizedBox(height: AppProps.kPageMargin)
@@ -111,11 +111,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return AppSnackBar.show(context: context, titleText: 'Не удалось загрузить данные', error: true);
         }
         if (state.stateStatus == const StateStatus.success()) {
-          final isSubscribed = state.profile?.hasSubscription;
+          // final isSubscribed = state.profile?.hasSubscription;
           return UserInfo(
             profileEntity: state.profile,
-              secondRowText: isSubscribed == true ? 'Подписка оформлена' : 'Отправьте запрос на подписку',
-              onIconPressed: () {
+            secondRowText: state.subscriptionSend == true ? 'Подписка оформлена' : 'Отправьте запрос на подписку',
+            onIconPressed: () {
               AutoRouter.of(context).push(const NotificationRoute());
             },
           );

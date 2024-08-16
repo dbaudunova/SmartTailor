@@ -55,9 +55,18 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) async {
     final picker = ImagePicker();
-    final pickedFiles = await picker.pickMultiImage(imageQuality: 40);
+    final pickedFiles = await picker.pickMultiImage(imageQuality: 10);
     if (pickedFiles != null) {
       final images = pickedFiles.take(5).map((file) => File(file.path)).toList();
+      int totalSizeInBytes = 0;
+      for (var photo in images) {
+        final bytes = await photo.readAsBytes();
+        totalSizeInBytes += bytes.length;
+      }
+
+      double totalSizeInMB = totalSizeInBytes / (1024 * 1024);
+
+      print("Total size of all photos: ${totalSizeInMB.toStringAsFixed(2)} MB");
       emit(
         state.copyWith(
           images: images,
@@ -237,8 +246,18 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
   void _addPhotos(
     _AddPhotos event,
     Emitter<OrderPlaceState> emit,
-  ) {
+  ) async {
     var photos = event.photos;
+    print('sdfsdf');
+    // Read the bytes for each photo and calculate the total size
+    int totalSize = 0;
+    for (var photo in photos) {
+      final bytes = await photo.readAsBytes();
+      totalSize += bytes.length;
+    }
+
+    print("Total size of all photos: $totalSize bytes");
+
     emit(
       state.copyWith(images: photos),
     );

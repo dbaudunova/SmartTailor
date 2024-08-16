@@ -17,7 +17,7 @@ class OrganizationDataSourceImpl implements OrganizationDataSource {
   );
 
   @override
-  Future<OrganizationInfoModel> getOrganization() async {
+  Future<OrganizationInfoModel?> getOrganization() async {
     try {
       final response = await _client.get(
         HttpPaths.getOrganization,
@@ -34,6 +34,9 @@ class OrganizationDataSourceImpl implements OrganizationDataSource {
         return list;
       }
     } on DioException catch (e) {
+      if (e.response!.statusCode == 404) {
+        return null;
+      }
       // ignore: only_throw_errors
       throw handleDioException(e);
     } catch (e) {

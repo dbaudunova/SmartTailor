@@ -17,9 +17,9 @@ class OrganizationRepoImpl implements OrganizationRepo {
   );
 
   @override
-  Future<OrganizationInfoEntity> getOrganization() async {
+  Future<OrganizationInfoEntity?> getOrganization() async {
     var model = await _dataSource.getOrganization();
-    final entity = _organizationInfoConverter.convert(model);
+    final entity = _organizationInfoConverter.convert(model!);
     return entity;
   }
 }

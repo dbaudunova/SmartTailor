@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/shared/app_constants.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/data/models/_model/position_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/positions/domain/entitys/position_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/bloc/positions_bloc.dart';
 
 class PositionsContent extends StatefulWidget {
@@ -17,6 +19,7 @@ class PositionsContent extends StatefulWidget {
 
 class _PositionsContentState extends State<PositionsContent> {
   final _employeePositionController = TextEditingController();
+  final _weightController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   Map<String, bool> selectedActions = {};
@@ -24,12 +27,13 @@ class _PositionsContentState extends State<PositionsContent> {
   @override
   void dispose() {
     _employeePositionController.dispose();
+    _weightController.dispose();
     super.dispose();
   }
 
+  @override
   void initState() {
     super.initState();
-    // Инициализация selectedActions, чтобы все значения были false
     Constants.actionsMap.forEach((key, value) {
       selectedActions[key] = false;
     });
@@ -55,23 +59,37 @@ class _PositionsContentState extends State<PositionsContent> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Form(
-                key: _formKey,
-                child: TextFormFieldWidget(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormFieldWidget(
                   controller: _employeePositionController,
                   titleName: 'Должности',
+                  hintText: 'Введите название должности',
                   validator: _nullValidation,
                 ),
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: _buildCheckBoxContainer(),
-              ),
-              const SizedBox(height: AppProps.kPageMarginX5),
-            ],
+                const SizedBox(height: 16),
+                TextFormFieldWidget(
+                  controller: _weightController,
+                  formatters: [FilteringTextInputFormatter.digitsOnly],
+                  titleName: 'Вес',
+                  hintText: 'Введите цифпу от 1 до 5',
+                  validator: (value) {
+                    if (int.tryParse(value!) == null || int.parse(value) > 5 || int.parse(value) < 1) {
+                      return 'Введите цифру от 1 до 5';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: _buildCheckBoxContainer(),
+                ),
+                const SizedBox(height: AppProps.kPageMarginX5),
+              ],
+            ),
           ),
         ),
       ),
@@ -84,66 +102,15 @@ class _PositionsContentState extends State<PositionsContent> {
       onTap: () {
         if (_formKey.currentState!.validate()) {
           var selectedKeys = selectedActions.entries.where((entry) => entry.value).map((entry) => entry.key).toList();
-          var model = PositionModel(
+          var entity = PositionEntity(
+            weight: _weightController.text,
             positionName: _employeePositionController.text,
             accessRights: selectedKeys,
           );
           context.read<PositionsBloc>().add(
-                PositionsEvent.createPosition(model: model),
+                PositionsEvent.createPosition(entity: entity),
               );
-          _showCustomDialog(
-            context: context,
-            contentText:
-                'Созданные должности будут находиться ниже по Иерархии, и им нельзя выдать права доступа, которые недоступны человеку создающему новую роль',
-            buttonText: 'Понятно',
-            onButtonPressed: () {
-              _showCustomDialog(
-                context: context,
-                contentText: 'Выдача прав доступа сохранена!',
-                buttonText: 'Понятно',
-                onButtonPressed: () {
-                  AutoRouter.of(context).pop();
-                },
-              );
-            },
-          );
         }
-      },
-    );
-  }
-
-  void _showCustomDialog({
-    required BuildContext context,
-    required String contentText,
-    required String buttonText,
-    required VoidCallback onButtonPressed,
-  }) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          content: Text(
-            contentText,
-            style: AppTextStyle.text14.copyWith(fontWeight: FontWeight.w600),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-                onButtonPressed();
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Text(
-                  buttonText,
-                  style: AppTextStyle.textField16.copyWith(
-                    color: AppColors.modalBlue,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        );
       },
     );
   }

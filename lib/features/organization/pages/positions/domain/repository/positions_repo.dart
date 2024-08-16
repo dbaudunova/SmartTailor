@@ -3,5 +3,5 @@ import 'package:neobis_smart_tailor/features/organization/pages/positions/domain
 
 abstract class PositionsRepo {
   Future<List<PositionEntity>> getAllPositions();
-  Future<void> createPosition({required PositionModel model});
+  Future<void> createPosition({required PositionEntity entity});
 }

@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PositionsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PositionModel model) createPosition,
+    required TResult Function(PositionEntity entity) createPosition,
     required TResult Function() getAllPositions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PositionModel model)? createPosition,
+    TResult? Function(PositionEntity entity)? createPosition,
     TResult? Function()? getAllPositions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PositionModel model)? createPosition,
+    TResult Function(PositionEntity entity)? createPosition,
     TResult Function()? getAllPositions,
     required TResult orElse(),
   }) =>
@@ -80,9 +80,7 @@ abstract class _$$CreatePositionImplCopyWith<$Res> {
           $Res Function(_$CreatePositionImpl) then) =
       __$$CreatePositionImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PositionModel model});
-
-  $PositionModelCopyWith<$Res> get model;
+  $Res call({PositionEntity entity});
 }
 
 /// @nodoc
@@ -96,36 +94,28 @@ class __$$CreatePositionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? model = null,
+    Object? entity = null,
   }) {
     return _then(_$CreatePositionImpl(
-      model: null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as PositionModel,
+      entity: null == entity
+          ? _value.entity
+          : entity // ignore: cast_nullable_to_non_nullable
+              as PositionEntity,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PositionModelCopyWith<$Res> get model {
-    return $PositionModelCopyWith<$Res>(_value.model, (value) {
-      return _then(_value.copyWith(model: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$CreatePositionImpl implements _CreatePosition {
-  const _$CreatePositionImpl({required this.model});
+  const _$CreatePositionImpl({required this.entity});
 
   @override
-  final PositionModel model;
+  final PositionEntity entity;
 
   @override
   String toString() {
-    return 'PositionsEvent.createPosition(model: $model)';
+    return 'PositionsEvent.createPosition(entity: $entity)';
   }
 
   @override
@@ -133,11 +123,11 @@ class _$CreatePositionImpl implements _CreatePosition {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreatePositionImpl &&
-            (identical(other.model, model) || other.model == model));
+            (identical(other.entity, entity) || other.entity == entity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, model);
+  int get hashCode => Object.hash(runtimeType, entity);
 
   @JsonKey(ignore: true)
   @override
@@ -149,30 +139,30 @@ class _$CreatePositionImpl implements _CreatePosition {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PositionModel model) createPosition,
+    required TResult Function(PositionEntity entity) createPosition,
     required TResult Function() getAllPositions,
   }) {
-    return createPosition(model);
+    return createPosition(entity);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PositionModel model)? createPosition,
+    TResult? Function(PositionEntity entity)? createPosition,
     TResult? Function()? getAllPositions,
   }) {
-    return createPosition?.call(model);
+    return createPosition?.call(entity);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PositionModel model)? createPosition,
+    TResult Function(PositionEntity entity)? createPosition,
     TResult Function()? getAllPositions,
     required TResult orElse(),
   }) {
     if (createPosition != null) {
-      return createPosition(model);
+      return createPosition(entity);
     }
     return orElse();
   }
@@ -210,10 +200,10 @@ class _$CreatePositionImpl implements _CreatePosition {
 }
 
 abstract class _CreatePosition implements PositionsEvent {
-  const factory _CreatePosition({required final PositionModel model}) =
+  const factory _CreatePosition({required final PositionEntity entity}) =
       _$CreatePositionImpl;
 
-  PositionModel get model;
+  PositionEntity get entity;
   @JsonKey(ignore: true)
   _$$CreatePositionImplCopyWith<_$CreatePositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -257,7 +247,7 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PositionModel model) createPosition,
+    required TResult Function(PositionEntity entity) createPosition,
     required TResult Function() getAllPositions,
   }) {
     return getAllPositions();
@@ -266,7 +256,7 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PositionModel model)? createPosition,
+    TResult? Function(PositionEntity entity)? createPosition,
     TResult? Function()? getAllPositions,
   }) {
     return getAllPositions?.call();
@@ -275,7 +265,7 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PositionModel model)? createPosition,
+    TResult Function(PositionEntity entity)? createPosition,
     TResult Function()? getAllPositions,
     required TResult orElse(),
   }) {

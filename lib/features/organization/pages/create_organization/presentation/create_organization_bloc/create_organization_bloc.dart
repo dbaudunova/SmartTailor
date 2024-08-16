@@ -1,7 +1,12 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
@@ -12,21 +17,74 @@ part 'create_organization_event.dart';
 part 'create_organization_state.dart';
 part 'create_organization_bloc.freezed.dart';
 
-@singleton
+@injectable
 class CreateOrganizationBloc extends Bloc<CreateOrganizationEvent, CreateOrganizationState> {
   final CreateOrganizationUseCase createOrganizationUseCase;
 
   CreateOrganizationBloc(
     this.createOrganizationUseCase,
   ) : super(
-          const CreateOrganizationState(
+          CreateOrganizationState(
             image: null,
-            stateStatus: StateStatus.initial(),
+            stateStatus: const StateStatus.initial(),
+            controller: TextEditingController(text: 'Загрузите фото'),
           ),
         ) {
     on<_CreateOrganization>(_createOrganization);
     on<_AddImage>(_addImage);
     on<_ResetState>(_resetState);
+    on<_SelectPhoto>(_selectPhoto);
+    on<_CapturePhoto>(_capturePhoto);
+  }
+
+  Future<void> _selectPhoto(
+    _SelectPhoto event,
+    Emitter<CreateOrganizationState> emit,
+  ) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(
+      // imageQuality: 10,
+      source: ImageSource.gallery,
+    );
+
+    if (pickedFile != null) {
+      final image = File(pickedFile.path);
+      final sizeInBytes = await image.length();
+      final sizeInKB = sizeInBytes / 1024;
+      final sizeInMB = sizeInKB / 1024;
+      print('Size in KB: ${sizeInKB.toStringAsFixed(2)}');
+      print('Size in MB: ${sizeInMB.toStringAsFixed(2)}');
+
+      emit(
+        state.copyWith(
+          image: image,
+          controller: TextEditingController(
+            text: 'Изображение выбрано',
+          ),
+        ),
+      );
+    }
+  }
+
+  Future<void> _capturePhoto(
+    _CapturePhoto event,
+    Emitter<CreateOrganizationState> emit,
+  ) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+
+    if (pickedFile != null) {
+      final image = File(pickedFile.path);
+
+      emit(
+        state.copyWith(
+          image: image,
+          controller: TextEditingController(
+            text: 'Сделанное фото',
+          ),
+        ),
+      );
+    }
   }
 
   void _resetState(

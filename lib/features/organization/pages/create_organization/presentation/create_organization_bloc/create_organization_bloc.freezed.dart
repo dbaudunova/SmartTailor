@@ -22,6 +22,8 @@ mixin _$CreateOrganizationEvent {
         createOrganization,
     required TResult Function(File image) addImage,
     required TResult Function() resetState,
+    required TResult Function() selectPhoto,
+    required TResult Function() capturePhots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +31,8 @@ mixin _$CreateOrganizationEvent {
     TResult? Function(CreateOrganizationModel createModel)? createOrganization,
     TResult? Function(File image)? addImage,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhoto,
+    TResult? Function()? capturePhots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +40,8 @@ mixin _$CreateOrganizationEvent {
     TResult Function(CreateOrganizationModel createModel)? createOrganization,
     TResult Function(File image)? addImage,
     TResult Function()? resetState,
+    TResult Function()? selectPhoto,
+    TResult Function()? capturePhots,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +50,8 @@ mixin _$CreateOrganizationEvent {
     required TResult Function(_CreateOrganization value) createOrganization,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhoto value) selectPhoto,
+    required TResult Function(_CapturePhoto value) capturePhots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +59,8 @@ mixin _$CreateOrganizationEvent {
     TResult? Function(_CreateOrganization value)? createOrganization,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhoto value)? selectPhoto,
+    TResult? Function(_CapturePhoto value)? capturePhots,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +68,8 @@ mixin _$CreateOrganizationEvent {
     TResult Function(_CreateOrganization value)? createOrganization,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhoto value)? selectPhoto,
+    TResult Function(_CapturePhoto value)? capturePhots,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,6 +175,8 @@ class _$CreateOrganizationImpl implements _CreateOrganization {
         createOrganization,
     required TResult Function(File image) addImage,
     required TResult Function() resetState,
+    required TResult Function() selectPhoto,
+    required TResult Function() capturePhots,
   }) {
     return createOrganization(createModel);
   }
@@ -173,6 +187,8 @@ class _$CreateOrganizationImpl implements _CreateOrganization {
     TResult? Function(CreateOrganizationModel createModel)? createOrganization,
     TResult? Function(File image)? addImage,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhoto,
+    TResult? Function()? capturePhots,
   }) {
     return createOrganization?.call(createModel);
   }
@@ -183,6 +199,8 @@ class _$CreateOrganizationImpl implements _CreateOrganization {
     TResult Function(CreateOrganizationModel createModel)? createOrganization,
     TResult Function(File image)? addImage,
     TResult Function()? resetState,
+    TResult Function()? selectPhoto,
+    TResult Function()? capturePhots,
     required TResult orElse(),
   }) {
     if (createOrganization != null) {
@@ -197,6 +215,8 @@ class _$CreateOrganizationImpl implements _CreateOrganization {
     required TResult Function(_CreateOrganization value) createOrganization,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhoto value) selectPhoto,
+    required TResult Function(_CapturePhoto value) capturePhots,
   }) {
     return createOrganization(this);
   }
@@ -207,6 +227,8 @@ class _$CreateOrganizationImpl implements _CreateOrganization {
     TResult? Function(_CreateOrganization value)? createOrganization,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhoto value)? selectPhoto,
+    TResult? Function(_CapturePhoto value)? capturePhots,
   }) {
     return createOrganization?.call(this);
   }
@@ -217,6 +239,8 @@ class _$CreateOrganizationImpl implements _CreateOrganization {
     TResult Function(_CreateOrganization value)? createOrganization,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhoto value)? selectPhoto,
+    TResult Function(_CapturePhoto value)? capturePhots,
     required TResult orElse(),
   }) {
     if (createOrganization != null) {
@@ -305,6 +329,8 @@ class _$AddImageImpl implements _AddImage {
         createOrganization,
     required TResult Function(File image) addImage,
     required TResult Function() resetState,
+    required TResult Function() selectPhoto,
+    required TResult Function() capturePhots,
   }) {
     return addImage(image);
   }
@@ -315,6 +341,8 @@ class _$AddImageImpl implements _AddImage {
     TResult? Function(CreateOrganizationModel createModel)? createOrganization,
     TResult? Function(File image)? addImage,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhoto,
+    TResult? Function()? capturePhots,
   }) {
     return addImage?.call(image);
   }
@@ -325,6 +353,8 @@ class _$AddImageImpl implements _AddImage {
     TResult Function(CreateOrganizationModel createModel)? createOrganization,
     TResult Function(File image)? addImage,
     TResult Function()? resetState,
+    TResult Function()? selectPhoto,
+    TResult Function()? capturePhots,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -339,6 +369,8 @@ class _$AddImageImpl implements _AddImage {
     required TResult Function(_CreateOrganization value) createOrganization,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhoto value) selectPhoto,
+    required TResult Function(_CapturePhoto value) capturePhots,
   }) {
     return addImage(this);
   }
@@ -349,6 +381,8 @@ class _$AddImageImpl implements _AddImage {
     TResult? Function(_CreateOrganization value)? createOrganization,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhoto value)? selectPhoto,
+    TResult? Function(_CapturePhoto value)? capturePhots,
   }) {
     return addImage?.call(this);
   }
@@ -359,6 +393,8 @@ class _$AddImageImpl implements _AddImage {
     TResult Function(_CreateOrganization value)? createOrganization,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhoto value)? selectPhoto,
+    TResult Function(_CapturePhoto value)? capturePhots,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -419,6 +455,8 @@ class _$ResetStateImpl implements _ResetState {
         createOrganization,
     required TResult Function(File image) addImage,
     required TResult Function() resetState,
+    required TResult Function() selectPhoto,
+    required TResult Function() capturePhots,
   }) {
     return resetState();
   }
@@ -429,6 +467,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult? Function(CreateOrganizationModel createModel)? createOrganization,
     TResult? Function(File image)? addImage,
     TResult? Function()? resetState,
+    TResult? Function()? selectPhoto,
+    TResult? Function()? capturePhots,
   }) {
     return resetState?.call();
   }
@@ -439,6 +479,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult Function(CreateOrganizationModel createModel)? createOrganization,
     TResult Function(File image)? addImage,
     TResult Function()? resetState,
+    TResult Function()? selectPhoto,
+    TResult Function()? capturePhots,
     required TResult orElse(),
   }) {
     if (resetState != null) {
@@ -453,6 +495,8 @@ class _$ResetStateImpl implements _ResetState {
     required TResult Function(_CreateOrganization value) createOrganization,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhoto value) selectPhoto,
+    required TResult Function(_CapturePhoto value) capturePhots,
   }) {
     return resetState(this);
   }
@@ -463,6 +507,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult? Function(_CreateOrganization value)? createOrganization,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhoto value)? selectPhoto,
+    TResult? Function(_CapturePhoto value)? capturePhots,
   }) {
     return resetState?.call(this);
   }
@@ -473,6 +519,8 @@ class _$ResetStateImpl implements _ResetState {
     TResult Function(_CreateOrganization value)? createOrganization,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhoto value)? selectPhoto,
+    TResult Function(_CapturePhoto value)? capturePhots,
     required TResult orElse(),
   }) {
     if (resetState != null) {
@@ -487,9 +535,252 @@ abstract class _ResetState implements CreateOrganizationEvent {
 }
 
 /// @nodoc
+abstract class _$$SelectPhotoImplCopyWith<$Res> {
+  factory _$$SelectPhotoImplCopyWith(
+          _$SelectPhotoImpl value, $Res Function(_$SelectPhotoImpl) then) =
+      __$$SelectPhotoImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SelectPhotoImplCopyWithImpl<$Res>
+    extends _$CreateOrganizationEventCopyWithImpl<$Res, _$SelectPhotoImpl>
+    implements _$$SelectPhotoImplCopyWith<$Res> {
+  __$$SelectPhotoImplCopyWithImpl(
+      _$SelectPhotoImpl _value, $Res Function(_$SelectPhotoImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SelectPhotoImpl implements _SelectPhoto {
+  const _$SelectPhotoImpl();
+
+  @override
+  String toString() {
+    return 'CreateOrganizationEvent.selectPhoto()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SelectPhotoImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CreateOrganizationModel createModel)
+        createOrganization,
+    required TResult Function(File image) addImage,
+    required TResult Function() resetState,
+    required TResult Function() selectPhoto,
+    required TResult Function() capturePhots,
+  }) {
+    return selectPhoto();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CreateOrganizationModel createModel)? createOrganization,
+    TResult? Function(File image)? addImage,
+    TResult? Function()? resetState,
+    TResult? Function()? selectPhoto,
+    TResult? Function()? capturePhots,
+  }) {
+    return selectPhoto?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CreateOrganizationModel createModel)? createOrganization,
+    TResult Function(File image)? addImage,
+    TResult Function()? resetState,
+    TResult Function()? selectPhoto,
+    TResult Function()? capturePhots,
+    required TResult orElse(),
+  }) {
+    if (selectPhoto != null) {
+      return selectPhoto();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CreateOrganization value) createOrganization,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhoto value) selectPhoto,
+    required TResult Function(_CapturePhoto value) capturePhots,
+  }) {
+    return selectPhoto(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CreateOrganization value)? createOrganization,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhoto value)? selectPhoto,
+    TResult? Function(_CapturePhoto value)? capturePhots,
+  }) {
+    return selectPhoto?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CreateOrganization value)? createOrganization,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhoto value)? selectPhoto,
+    TResult Function(_CapturePhoto value)? capturePhots,
+    required TResult orElse(),
+  }) {
+    if (selectPhoto != null) {
+      return selectPhoto(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectPhoto implements CreateOrganizationEvent {
+  const factory _SelectPhoto() = _$SelectPhotoImpl;
+}
+
+/// @nodoc
+abstract class _$$CapturePhotoImplCopyWith<$Res> {
+  factory _$$CapturePhotoImplCopyWith(
+          _$CapturePhotoImpl value, $Res Function(_$CapturePhotoImpl) then) =
+      __$$CapturePhotoImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CapturePhotoImplCopyWithImpl<$Res>
+    extends _$CreateOrganizationEventCopyWithImpl<$Res, _$CapturePhotoImpl>
+    implements _$$CapturePhotoImplCopyWith<$Res> {
+  __$$CapturePhotoImplCopyWithImpl(
+      _$CapturePhotoImpl _value, $Res Function(_$CapturePhotoImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CapturePhotoImpl implements _CapturePhoto {
+  const _$CapturePhotoImpl();
+
+  @override
+  String toString() {
+    return 'CreateOrganizationEvent.capturePhots()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CapturePhotoImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CreateOrganizationModel createModel)
+        createOrganization,
+    required TResult Function(File image) addImage,
+    required TResult Function() resetState,
+    required TResult Function() selectPhoto,
+    required TResult Function() capturePhots,
+  }) {
+    return capturePhots();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CreateOrganizationModel createModel)? createOrganization,
+    TResult? Function(File image)? addImage,
+    TResult? Function()? resetState,
+    TResult? Function()? selectPhoto,
+    TResult? Function()? capturePhots,
+  }) {
+    return capturePhots?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CreateOrganizationModel createModel)? createOrganization,
+    TResult Function(File image)? addImage,
+    TResult Function()? resetState,
+    TResult Function()? selectPhoto,
+    TResult Function()? capturePhots,
+    required TResult orElse(),
+  }) {
+    if (capturePhots != null) {
+      return capturePhots();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CreateOrganization value) createOrganization,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_ResetState value) resetState,
+    required TResult Function(_SelectPhoto value) selectPhoto,
+    required TResult Function(_CapturePhoto value) capturePhots,
+  }) {
+    return capturePhots(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CreateOrganization value)? createOrganization,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_ResetState value)? resetState,
+    TResult? Function(_SelectPhoto value)? selectPhoto,
+    TResult? Function(_CapturePhoto value)? capturePhots,
+  }) {
+    return capturePhots?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CreateOrganization value)? createOrganization,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_ResetState value)? resetState,
+    TResult Function(_SelectPhoto value)? selectPhoto,
+    TResult Function(_CapturePhoto value)? capturePhots,
+    required TResult orElse(),
+  }) {
+    if (capturePhots != null) {
+      return capturePhots(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CapturePhoto implements CreateOrganizationEvent {
+  const factory _CapturePhoto() = _$CapturePhotoImpl;
+}
+
+/// @nodoc
 mixin _$CreateOrganizationState {
   File? get image => throw _privateConstructorUsedError;
   StateStatus get stateStatus => throw _privateConstructorUsedError;
+  TextEditingController get controller => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateOrganizationStateCopyWith<CreateOrganizationState> get copyWith =>
@@ -502,7 +793,8 @@ abstract class $CreateOrganizationStateCopyWith<$Res> {
           $Res Function(CreateOrganizationState) then) =
       _$CreateOrganizationStateCopyWithImpl<$Res, CreateOrganizationState>;
   @useResult
-  $Res call({File? image, StateStatus stateStatus});
+  $Res call(
+      {File? image, StateStatus stateStatus, TextEditingController controller});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -523,6 +815,7 @@ class _$CreateOrganizationStateCopyWithImpl<$Res,
   $Res call({
     Object? image = freezed,
     Object? stateStatus = null,
+    Object? controller = null,
   }) {
     return _then(_value.copyWith(
       image: freezed == image
@@ -533,6 +826,10 @@ class _$CreateOrganizationStateCopyWithImpl<$Res,
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      controller: null == controller
+          ? _value.controller
+          : controller // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
     ) as $Val);
   }
 
@@ -554,7 +851,8 @@ abstract class _$$CreateOrganizationStateImplCopyWith<$Res>
       __$$CreateOrganizationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({File? image, StateStatus stateStatus});
+  $Res call(
+      {File? image, StateStatus stateStatus, TextEditingController controller});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -575,6 +873,7 @@ class __$$CreateOrganizationStateImplCopyWithImpl<$Res>
   $Res call({
     Object? image = freezed,
     Object? stateStatus = null,
+    Object? controller = null,
   }) {
     return _then(_$CreateOrganizationStateImpl(
       image: freezed == image
@@ -585,6 +884,10 @@ class __$$CreateOrganizationStateImplCopyWithImpl<$Res>
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      controller: null == controller
+          ? _value.controller
+          : controller // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
     ));
   }
 }
@@ -593,16 +896,20 @@ class __$$CreateOrganizationStateImplCopyWithImpl<$Res>
 
 class _$CreateOrganizationStateImpl implements _CreateOrganizationState {
   const _$CreateOrganizationStateImpl(
-      {required this.image, required this.stateStatus});
+      {required this.image,
+      required this.stateStatus,
+      required this.controller});
 
   @override
   final File? image;
   @override
   final StateStatus stateStatus;
+  @override
+  final TextEditingController controller;
 
   @override
   String toString() {
-    return 'CreateOrganizationState(image: $image, stateStatus: $stateStatus)';
+    return 'CreateOrganizationState(image: $image, stateStatus: $stateStatus, controller: $controller)';
   }
 
   @override
@@ -612,11 +919,13 @@ class _$CreateOrganizationStateImpl implements _CreateOrganizationState {
             other is _$CreateOrganizationStateImpl &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.stateStatus, stateStatus) ||
-                other.stateStatus == stateStatus));
+                other.stateStatus == stateStatus) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, image, stateStatus);
+  int get hashCode => Object.hash(runtimeType, image, stateStatus, controller);
 
   @JsonKey(ignore: true)
   @override
@@ -628,13 +937,17 @@ class _$CreateOrganizationStateImpl implements _CreateOrganizationState {
 
 abstract class _CreateOrganizationState implements CreateOrganizationState {
   const factory _CreateOrganizationState(
-      {required final File? image,
-      required final StateStatus stateStatus}) = _$CreateOrganizationStateImpl;
+          {required final File? image,
+          required final StateStatus stateStatus,
+          required final TextEditingController controller}) =
+      _$CreateOrganizationStateImpl;
 
   @override
   File? get image;
   @override
   StateStatus get stateStatus;
+  @override
+  TextEditingController get controller;
   @override
   @JsonKey(ignore: true)
   _$$CreateOrganizationStateImplCopyWith<_$CreateOrganizationStateImpl>

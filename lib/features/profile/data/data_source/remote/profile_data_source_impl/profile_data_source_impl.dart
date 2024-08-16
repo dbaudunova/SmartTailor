@@ -10,6 +10,7 @@ import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/announcement_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/announcement_response_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
 
@@ -226,6 +227,35 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       } else {
         var responce = response.data;
         var model = PurchasesListModel.fromJson(responce);
+
+        return model;
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<MyHistoryModel> getHistory({required String stage, required int page}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.getAllPurchases,
+        queryParameters: {
+          'pageNumber': page.toString(),
+          'pageSize': '10',
+          'stage': stage,
+        },
+      );
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        var responce = response.data;
+        var model = MyHistoryModel.fromJson(responce);
 
         return model;
       }

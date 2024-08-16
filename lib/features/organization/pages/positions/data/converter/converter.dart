@@ -9,9 +9,7 @@ class PositionModelListToEntityListConverter extends Converter<List<PositionMode
   List<PositionEntity> convert(List<PositionModel> input) {
     return input
         .map((model) => PositionEntity(
-              positionName: model.positionName,
-              accessRights: model.accessRights ?? [],
-            ))
+            positionName: model.positionName, accessRights: model.accessRights ?? [], weight: model.weight.toString()))
         .toList();
   }
 }

@@ -43,21 +43,21 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     required this.getMyServicesUseCase,
   }) : super(
           const ProfileState(
-            stateStatus: StateStatus.initial(),
-            services: [],
-            equipments: [],
-            orders: [],
-            lastForEquipment: false,
-            lastForOrders: false,
-            lastForServices: false,
-            ordersPageNumber: 0,
-            equipmentsPageNumber: 0,
-            servicesPageNumber: 0,
-            equipmentTotalCount: 0,
-            ordersTotalCount: 0,
-            servicesTotalCount: 0,
-            isLoadingMore: false,
-          ),
+              stateStatus: StateStatus.initial(),
+              services: [],
+              equipments: [],
+              orders: [],
+              lastForEquipment: false,
+              lastForOrders: false,
+              lastForServices: false,
+              ordersPageNumber: 0,
+              equipmentsPageNumber: 0,
+              servicesPageNumber: 0,
+              equipmentTotalCount: 0,
+              ordersTotalCount: 0,
+              servicesTotalCount: 0,
+              isLoadingMore: false,
+              subscriptionSend: false),
         ) {
     on<_SignOut>(_signOut);
     on<_GetProfileInfo>(_getProfileInfo);
@@ -81,11 +81,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     try {
       await sendSubscriptionUseCase.call(null);
 
-      emit(state.copyWith(stateStatus: const StateStatus.success()));
+      // Отметить подписку как отправленную
+      emit(state.copyWith(stateStatus: const StateStatus.success(), subscriptionSend: true));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!), subscriptionSend: false));
     }
   }
 
@@ -100,24 +100,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(state.copyWith(stateStatus: const StateStatus.success()));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
-    print(state.stateStatus);
   }
 
-  Future<void> _getProfileInfo(
-      _GetProfileInfo event, Emitter<ProfileState> emit) async {
+  Future<void> _getProfileInfo(_GetProfileInfo event, Emitter<ProfileState> emit) async {
     if (state.isProfileLoaded) {
       return;
     }
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final profileEntity = await getProfileInfoUseCase.call(null);
+      var isSubscriptionConfirmed = profileEntity.hasSubscription!;
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
         profile: profileEntity,
         isProfileLoaded: true,
+        subscriptionSend: isSubscriptionConfirmed! ? true : state.subscriptionSend,
       ));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
@@ -127,8 +126,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
   }
 
-  Future<void> _editProfileInfo(
-      _EditProfileInfo event, Emitter<ProfileState> emit) async {
+  Future<void> _editProfileInfo(_EditProfileInfo event, Emitter<ProfileState> emit) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       await editProfileInfoUseCase.call(event.profileEntity);
@@ -146,8 +144,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
   }
 
-  Future<void> _uploadImage(
-      _UploadImage event, Emitter<ProfileState> emit) async {
+  Future<void> _uploadImage(_UploadImage event, Emitter<ProfileState> emit) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       await uploadImageUseCase.call(event.imageFile);
@@ -182,8 +179,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           lastForEquipment: result.isLast));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -203,8 +199,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           lastForOrders: result.isLast));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -224,8 +219,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           lastForServices: result.isLast));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -238,12 +232,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
     emit(state.copyWith(isLoadingMore: true));
     try {
-      final result =
-          await getMyOrdersUseCase.call(pageNumber: state.ordersPageNumber);
+      final result = await getMyOrdersUseCase.call(pageNumber: state.ordersPageNumber);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
-        orders: List<AnnouncementEntity>.from(state.orders)
-          ..addAll(result.advertisement ?? []),
+        orders: List<AnnouncementEntity>.from(state.orders)..addAll(result.advertisement ?? []),
         ordersPageNumber: state.ordersPageNumber + 1,
         lastForOrders: result.isLast!,
         isLoadingMore: false,
@@ -266,12 +258,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
     emit(state.copyWith(isLoadingMore: true));
     try {
-      final result = await getMyEquipmentsUseCase.call(
-          pageNumber: state.equipmentsPageNumber);
+      final result = await getMyEquipmentsUseCase.call(pageNumber: state.equipmentsPageNumber);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
-        equipments: List<AnnouncementEntity>.from(state.equipments)
-          ..addAll(result.advertisement ?? []),
+        equipments: List<AnnouncementEntity>.from(state.equipments)..addAll(result.advertisement ?? []),
         equipmentsPageNumber: state.equipmentsPageNumber + 1,
         isLoadingMore: result.isLast!,
         lastForEquipment: result.isLast!,
@@ -294,12 +284,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
     emit(state.copyWith(isLoadingMore: true));
     try {
-      final result =
-          await getMyServicesUseCase.call(pageNumber: state.servicesPageNumber);
+      final result = await getMyServicesUseCase.call(pageNumber: state.servicesPageNumber);
       emit(state.copyWith(
         stateStatus: const StateStatus.success(),
-        services: List<AnnouncementEntity>.from(state.services)
-          ..addAll(result.advertisement ?? []),
+        services: List<AnnouncementEntity>.from(state.services)..addAll(result.advertisement ?? []),
         servicesPageNumber: state.servicesPageNumber + 1,
         isLoadingMore: result.isLast!,
         lastForServices: result.isLast!,
@@ -347,8 +335,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       ));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

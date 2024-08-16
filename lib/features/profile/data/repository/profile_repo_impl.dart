@@ -5,9 +5,10 @@ import 'package:injectable/injectable.dart';
 // import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
@@ -17,12 +18,14 @@ import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_r
 class ProfileRepoImpl implements ProfileRepo {
   final ProfileDataSource _dataSource;
   final AuthService _authService;
-  final Converter<PurchasesListModel, PurchasesListEntity> _converter;
+  final Converter<PurchasesListModel, PurchasesListEntity> _converterPurchases;
+  final Converter<MyHistoryModel, MyHistoryEntity> _converterHistory;
 
   ProfileRepoImpl(
     this._dataSource,
     this._authService,
-    this._converter,
+    this._converterPurchases,
+    this._converterHistory,
   );
 
   @override
@@ -63,7 +66,7 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<PurchasesListEntity> getAllPurchases({required int pageNumber}) async {
     var model = await _dataSource.getAllPurchases(pageNumber: pageNumber);
-    var entity = _converter.convert(model);
+    var entity = _converterPurchases.convert(model);
     return entity;
   }
 
@@ -80,5 +83,12 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<AnnouncementResponseEntity> getMyServices({required int pageNumber}) async {
     return await _dataSource.getMyServices(pageNumber: pageNumber);
+  }
+
+  @override
+  Future<MyHistoryEntity> getHistory({required String stage, required int page}) async {
+    var model = await _dataSource.getHistory(page: page, stage: stage);
+    var entity = _converterHistory.convert(model);
+    return entity;
   }
 }

@@ -21,6 +21,7 @@ PositionModel _$PositionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PositionModel {
   String? get positionName => throw _privateConstructorUsedError;
+  int? get weight => throw _privateConstructorUsedError;
   List<String>? get accessRights => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $PositionModelCopyWith<$Res> {
           PositionModel value, $Res Function(PositionModel) then) =
       _$PositionModelCopyWithImpl<$Res, PositionModel>;
   @useResult
-  $Res call({String? positionName, List<String>? accessRights});
+  $Res call({String? positionName, int? weight, List<String>? accessRights});
 }
 
 /// @nodoc
@@ -52,6 +53,7 @@ class _$PositionModelCopyWithImpl<$Res, $Val extends PositionModel>
   @override
   $Res call({
     Object? positionName = freezed,
+    Object? weight = freezed,
     Object? accessRights = freezed,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +61,10 @@ class _$PositionModelCopyWithImpl<$Res, $Val extends PositionModel>
           ? _value.positionName
           : positionName // ignore: cast_nullable_to_non_nullable
               as String?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as int?,
       accessRights: freezed == accessRights
           ? _value.accessRights
           : accessRights // ignore: cast_nullable_to_non_nullable
@@ -75,7 +81,7 @@ abstract class _$$PositionModelImplCopyWith<$Res>
       __$$PositionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? positionName, List<String>? accessRights});
+  $Res call({String? positionName, int? weight, List<String>? accessRights});
 }
 
 /// @nodoc
@@ -90,6 +96,7 @@ class __$$PositionModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? positionName = freezed,
+    Object? weight = freezed,
     Object? accessRights = freezed,
   }) {
     return _then(_$PositionModelImpl(
@@ -97,6 +104,10 @@ class __$$PositionModelImplCopyWithImpl<$Res>
           ? _value.positionName
           : positionName // ignore: cast_nullable_to_non_nullable
               as String?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as int?,
       accessRights: freezed == accessRights
           ? _value._accessRights
           : accessRights // ignore: cast_nullable_to_non_nullable
@@ -109,7 +120,9 @@ class __$$PositionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PositionModelImpl implements _PositionModel {
   _$PositionModelImpl(
-      {required this.positionName, required final List<String>? accessRights})
+      {required this.positionName,
+      required this.weight,
+      required final List<String>? accessRights})
       : _accessRights = accessRights;
 
   factory _$PositionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -117,6 +130,8 @@ class _$PositionModelImpl implements _PositionModel {
 
   @override
   final String? positionName;
+  @override
+  final int? weight;
   final List<String>? _accessRights;
   @override
   List<String>? get accessRights {
@@ -129,7 +144,7 @@ class _$PositionModelImpl implements _PositionModel {
 
   @override
   String toString() {
-    return 'PositionModel(positionName: $positionName, accessRights: $accessRights)';
+    return 'PositionModel(positionName: $positionName, weight: $weight, accessRights: $accessRights)';
   }
 
   @override
@@ -139,13 +154,14 @@ class _$PositionModelImpl implements _PositionModel {
             other is _$PositionModelImpl &&
             (identical(other.positionName, positionName) ||
                 other.positionName == positionName) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
             const DeepCollectionEquality()
                 .equals(other._accessRights, _accessRights));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, positionName,
+  int get hashCode => Object.hash(runtimeType, positionName, weight,
       const DeepCollectionEquality().hash(_accessRights));
 
   @JsonKey(ignore: true)
@@ -165,6 +181,7 @@ class _$PositionModelImpl implements _PositionModel {
 abstract class _PositionModel implements PositionModel {
   factory _PositionModel(
       {required final String? positionName,
+      required final int? weight,
       required final List<String>? accessRights}) = _$PositionModelImpl;
 
   factory _PositionModel.fromJson(Map<String, dynamic> json) =
@@ -172,6 +189,8 @@ abstract class _PositionModel implements PositionModel {
 
   @override
   String? get positionName;
+  @override
+  int? get weight;
   @override
   List<String>? get accessRights;
   @override

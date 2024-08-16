@@ -7,5 +7,6 @@ class PurchasesState with _$PurchasesState {
     required final List<PurchasesEntity>? purchases,
     required final int totalCount,
     required final bool isLast,
+    required final int page,
   }) = _PurchasesState;
 }

@@ -7,6 +7,7 @@ part 'position_model.g.dart';
 class PositionModel with _$PositionModel {
   factory PositionModel({
     required String? positionName,
+    required int? weight,
     required List<String>? accessRights,
   }) = _PositionModel;
 
@@ -14,6 +15,7 @@ class PositionModel with _$PositionModel {
     return PositionModel(
       positionName: '',
       accessRights: [],
+      weight: 0,
     );
   }
 

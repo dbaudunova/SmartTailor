@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/data/data_source/positions_data_source.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/data/models/_model/position_model.dart';
@@ -17,7 +18,12 @@ class PositionRepoImpl implements PositionsRepo {
   );
 
   @override
-  Future<void> createPosition({required PositionModel model}) async {
+  Future<void> createPosition({required PositionEntity entity}) async {
+    var model = PositionModel(
+      positionName: entity.positionName,
+      weight: int.parse(entity.weight!),
+      accessRights: entity.accessRights,
+    );
     await _dataSource.createPosition(model: model);
   }
 

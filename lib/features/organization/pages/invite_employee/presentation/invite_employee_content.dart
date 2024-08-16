@@ -92,7 +92,9 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
               )
             : const ElevatedButtonWidget(
                 onTap: null,
-                text: 'Отправить приглашение',
+
+                loading: true,
+                // text: 'Отправить приглашение',
               );
       },
     );

@@ -9,7 +9,4 @@ class MarketplaceEvent with _$MarketplaceEvent {
   const factory MarketplaceEvent.loadMoreOrders() = _LoadMoreOrders;
   const factory MarketplaceEvent.loadMoreEquipments() = _LoadMoreEquipments;
   const factory MarketplaceEvent.loadMoreServices() = _LoadMoreServices;
-  // const factory MarketplaceEvent.ordersPageRequested(int pageKey) = _OrdersPageRequested;
-  // const factory MarketplaceEvent.equipmentsPageRequested(int pageKey) = _EquipmentsPageRequested;
-  // const factory MarketplaceEvent.servicesPageRequested(int pageKey) = _ServicesPageRequested;
 }

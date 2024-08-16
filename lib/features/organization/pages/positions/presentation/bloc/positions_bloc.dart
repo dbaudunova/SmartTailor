@@ -35,7 +35,7 @@ class PositionsBloc extends Bloc<PositionsEvent, PositionsState> {
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
-      final position = event.model;
+      final position = event.entity;
       await addPositionUseCase.call(position);
       emit(
         state.copyWith(
@@ -55,6 +55,7 @@ class PositionsBloc extends Bloc<PositionsEvent, PositionsState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final positions = await getAllPositionsUseCase.call();
+      print(positions);
       emit(
         state.copyWith(stateStatus: const StateStatus.success(), positions: positions),
       );

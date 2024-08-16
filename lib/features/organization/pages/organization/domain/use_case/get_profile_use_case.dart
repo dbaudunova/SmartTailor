@@ -10,7 +10,7 @@ class GetProfileUseCase {
     required this.repo,
   });
 
-  Future<OrganizationInfoEntity> call() async {
+  Future<OrganizationInfoEntity?> call() async {
     var entity = await repo.getOrganization();
     return entity;
   }

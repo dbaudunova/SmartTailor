@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
@@ -14,4 +15,5 @@ abstract class ProfileRepo {
   Future<AnnouncementResponseEntity> getMyEquipments({required int pageNumber});
   Future<AnnouncementResponseEntity> getMyOrders({required int pageNumber});
   Future<AnnouncementResponseEntity> getMyServices({required int pageNumber});
+  Future<MyHistoryEntity> getHistory({required String stage, required int page});
 }

@@ -23,10 +23,10 @@ class OrganizationBloc extends Bloc<OrganizationEvent, OrganizationState> {
             organizationHasLoaded: false,
           ),
         ) {
-    on<_GetOrganization>(_getProfile);
+    on<_GetOrganization>(_getOrganization);
   }
 
-  Future<void> _getProfile(
+  Future<void> _getOrganization(
     _GetOrganization event,
     Emitter<OrganizationState> emit,
   ) async {
@@ -38,8 +38,9 @@ class OrganizationBloc extends Bloc<OrganizationEvent, OrganizationState> {
             stateStatus: const StateStatus.success(), organizationInfo: results, organizationHasLoaded: true),
       );
     } catch (e) {
+      // print(e.);
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!), organizationHasLoaded: false));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: null), organizationHasLoaded: false));
     }
   }
 }

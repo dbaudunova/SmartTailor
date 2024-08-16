@@ -35,7 +35,7 @@ class OrganizationScreen extends StatelessWidget {
         // );
       },
       failure: (msg) {
-        AppSnackBar.show(context: context, titleText: msg, error: true);
+        AppSnackBar.show(context: context, titleText: msg!, error: true);
       },
     );
   }

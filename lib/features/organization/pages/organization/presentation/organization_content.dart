@@ -8,13 +8,10 @@ import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_orders_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employees_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employees_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/bloc/organization_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_empty_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/widgets/positions_widget_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/employee_item.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/organization_info_row.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/order_history/order_container.dart';
 
 class OrganizationContent extends StatefulWidget {
@@ -54,7 +51,7 @@ class _OrganizationContentState extends State<OrganizationContent> with TickerPr
             ? const Center(child: CircularProgressIndicator())
             : state.organizationHasLoaded
                 ? Scaffold(
-                    appBar: AppBarStyle(
+                    appBar: const AppBarStyle(
                       title: 'Организация',
                       centerTitle: true,
                     ),
@@ -79,14 +76,12 @@ class _OrganizationContentState extends State<OrganizationContent> with TickerPr
                               _scrollToCurrentSegment(index);
                             },
                             children: [
-                              // _buildEmployeeListView(),
                               const EmployeesScreen(),
                               const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 16),
                                 child: PositionsWidgetScreen(),
                               ),
                               const CurrentOrdersScreen(),
-                              // _buildOrderListView(),
                               _buildCompletedOrdersListView(),
                             ],
                           ),
@@ -107,12 +102,12 @@ class _OrganizationContentState extends State<OrganizationContent> with TickerPr
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: OrderContainer(
-              isActive: false,
-              onTap: () {
-                AutoRouter.of(context).push(const HistoryDetailRoute());
-              },
-            ),
+            // child: OrderContainer(
+            //   isActive: false,
+            //   onTap: () {
+            //     AutoRouter.of(context).push(const HistoryDetailRoute());
+            //   },
+            // ),
           );
         },
       ),
