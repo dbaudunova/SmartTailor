@@ -11,7 +11,10 @@ import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.da
 import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/service_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart';
 
 @Injectable(as: ProfileRepo)
@@ -90,5 +93,19 @@ class ProfileRepoImpl implements ProfileRepo {
     var model = await _dataSource.getHistory(page: page, stage: stage);
     var entity = _converterHistory.convert(model);
     return entity;
+  }
+
+  Future<EquipmentDetailedEntity> getEquipmentDetailedById({required int id}) async {
+    return await _dataSource.getEquipmentDetailedById(id: id);
+  }
+
+  @override
+  Future<OrderDetailedEntity> getOrderDetailedById({required int id}) async {
+    return await _dataSource.getOrderDetailedById(id: id);
+  }
+
+  @override
+  Future<ServiceDetailedEntity> getServiceDetailedById({required int id}) async {
+    return await _dataSource.getServiceDetailedById(id: id);
   }
 }

@@ -3,10 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile/profile_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announecement_list_view.dart';
 
 @RoutePage()
@@ -61,7 +63,6 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
               Expanded(
                 child: BlocBuilder<ProfileBloc, ProfileState>(
                   builder: (context, state) {
-                    print(state.orders.length);
                     return PageView(
                       controller: _pageController,
                       onPageChanged: (index) {
@@ -72,7 +73,7 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
                       children: [
                         AnnouncementListView<ProfileEvent, ProfileState>(
                           getList: (context) => context.read<ProfileBloc>().state.orders,
-                          //route: ({required int id}) => OrderDetailRoute(id: id),
+                          route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.order),
                           isLast: state.lastForOrders!,
                           loadMoreEvent: (context) => const ProfileEvent.loadMoreOrders(),
                           loadfirstPage: (context) => const ProfileEvent.getOrders(),
@@ -80,7 +81,7 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
                         ),
                         AnnouncementListView<ProfileEvent, ProfileState>(
                           getList: (context) => context.read<ProfileBloc>().state.equipments,
-                          //route: ({required int id}) => EquipmentDetailRoute(id: id),
+                          route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.equipment),
                           isLast: state.lastForEquipment!,
                           loadMoreEvent: (context) => const ProfileEvent.loadMoreEquipments(),
                           loadfirstPage: (context) => const ProfileEvent.getEquipments(),
@@ -88,7 +89,7 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
                         ),
                         AnnouncementListView<ProfileEvent, ProfileState>(
                           getList: (context) => context.read<ProfileBloc>().state.services,
-                          //route: ({required int id}) => ServiceDetailRoute(id: id),
+                          route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.service),
                           isLast: state.lastForServices!,
                           loadMoreEvent: (context) => const ProfileEvent.loadMoreServices(),
                           loadfirstPage: (context) => const ProfileEvent.getServices(),

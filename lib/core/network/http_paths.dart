@@ -29,9 +29,13 @@ class HttpPaths {
   static const sendSubscription = '$baseUrl/api/app-user/send-subscription-request';
   static const getAllPurchases = '$baseUrl/api/order/orders-assigned-to-user';
 
-  static const myOrders = '$baseUrl/api/order/my-orders';
-  static const myEquipments = '$baseUrl/api/equipment/my-equipments';
-  static const myServices = '$baseUrl/api/service/my-services';
+  static const getMyOrders = '$baseUrl/api/order/my-orders';
+  static const getMyEquipments = '$baseUrl/api/equipment/my-equipments';
+  static const getMyServices = '$baseUrl/api/service/my-services';
+
+  static const getMyOrdersById = '$baseUrl/api/order/get-order-detailed-for-author/';
+  static const getMyEquipmentsById = '$baseUrl/api/equipment/get-equipment-detailed-for-author/';
+  static const getMyServicesById = '$baseUrl/api/service/get-service-detailed-for-author/';
 
   static const getOrganization = '$baseUrl/api/organization/get-organization-detailed';
   static const createOrganization = '$baseUrl/api/organization/create-organization';

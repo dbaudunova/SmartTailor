@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
@@ -12,7 +10,10 @@ import 'package:neobis_smart_tailor/features/profile/data/model/announcement_mod
 import 'package:neobis_smart_tailor/features/profile/data/model/announcement_response_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/equipment_detailed_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/order_detailed_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/service_detailed_model.dart';
 
 @Injectable(as: ProfileDataSource)
 class ProfileDataSourceImpl implements ProfileDataSource {
@@ -141,7 +142,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   Future<AnnouncementResponseModel> getMyEquipments({required int pageNumber}) async {
     try {
       final response = await _client.get(
-        HttpPaths.myEquipments,
+        HttpPaths.getMyEquipments,
         queryParameters: {'pageNumber': pageNumber.toString(), 'pageSize': '10'},
       );
 
@@ -165,7 +166,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   Future<AnnouncementResponseModel> getMyOrders({required int pageNumber}) async {
     try {
       final response = await _client.get(
-        HttpPaths.myOrders,
+        HttpPaths.getMyOrders,
         queryParameters: {'pageNumber': pageNumber.toString(), 'pageSize': '10'},
       );
 
@@ -189,7 +190,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   Future<AnnouncementResponseModel> getMyServices({required int pageNumber}) async {
     try {
       final response = await _client.get(
-        HttpPaths.myServices,
+        HttpPaths.getMyServices,
         queryParameters: {'pageNumber': pageNumber.toString(), 'pageSize': '10'},
       );
 
@@ -258,6 +259,72 @@ class ProfileDataSourceImpl implements ProfileDataSource {
         var model = MyHistoryModel.fromJson(responce);
 
         return model;
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<EquipmentDetailedModel> getEquipmentDetailedById({required int id}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.getMyEquipmentsById + id.toString(),
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        return EquipmentDetailedModel.fromJson(response.data);
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<OrderDetailedModel> getOrderDetailedById({required int id}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.getMyOrdersById + id.toString(),
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        return OrderDetailedModel.fromJson(response.data);
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<ServiceDetailedModel> getServiceDetailedById({required int id}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.getMyServicesById + id.toString(),
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        return ServiceDetailedModel.fromJson(response.data);
       }
     } on DioException catch (e) {
       throw handleDioException(e);

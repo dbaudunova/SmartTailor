@@ -3,8 +3,13 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class CustomerContainer extends StatelessWidget {
   const CustomerContainer({
+    required this.name,
+    required this.description,
     super.key,
   });
+
+  final String name;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -20,32 +25,21 @@ class CustomerContainer extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const CircleAvatar(
-              backgroundColor: AppColors.greyText,
-              radius: 24,
-            ),
-            const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Имя Фамилия',
+                    name,
                     style: AppTextStyle.textField16
                         .copyWith(fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(height: 4),
-                  const Text(
-                    '+996 700 010 101',
+                  Text(
+                    description,
                     style: AppTextStyle.s12w400,
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    'Оборудование',
-                    style: AppTextStyle.s12w400.copyWith(
-                      color: AppColors.listGreen,
-                    ),
-                  ),
                 ],
               ),
             ),

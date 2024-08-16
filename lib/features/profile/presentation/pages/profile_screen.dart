@@ -7,7 +7,7 @@ import 'package:neobis_smart_tailor/core/app/router/routes_path_const.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile/profile_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/profile_button_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/subscribe_container_style.dart';
