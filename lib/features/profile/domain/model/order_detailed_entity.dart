@@ -43,26 +43,28 @@ class OrderItems {
     this.quantity,
   });
 
-  factory OrderItems.fromJson(Map<String, dynamic> json) =>
-      _$OrderItemsFromJson(json);
+  factory OrderItems.fromJson(Map<String, dynamic> json) => _$OrderItemsFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderItemsToJson(this);
 }
 
 @JsonSerializable()
 class OrderCandidates {
-  final int? id;
-  final String? name;
-  final String? description;
+  final int? employeeId;
+  final String? employeeFullName;
+  final String? employeeEmail;
+  final String? employeePhoneNumber;
+  final String? organizationName;
 
   OrderCandidates({
-    this.id,
-    this.name,
-    this.description,
+    this.employeeId,
+    this.employeeFullName,
+    this.employeeEmail,
+    this.employeePhoneNumber,
+    this.organizationName,
   });
 
-  factory OrderCandidates.fromJson(Map<String, dynamic> json) =>
-      _$OrderCandidatesFromJson(json);
+  factory OrderCandidates.fromJson(Map<String, dynamic> json) => _$OrderCandidatesFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderCandidatesToJson(this);
 }

@@ -43,13 +43,11 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getOrderDetailedByIdUseCase.call(event.id!);
-      emit(state.copyWith(
-          stateStatus: const StateStatus.success(false),
-          detailedOrder: result));
+      print(result.orderCandidates!.length);
+      emit(state.copyWith(stateStatus: const StateStatus.success(false), detailedOrder: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -60,13 +58,10 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getEquipmentDetailedByIdUseCase.call(event.id!);
-      emit(state.copyWith(
-          stateStatus: const StateStatus.success(false),
-          detailedEquipment: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(false), detailedEquipment: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 
@@ -77,13 +72,10 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getServiceDetailedByIdUseCase.call(event.id!);
-      emit(state.copyWith(
-          stateStatus: const StateStatus.success(false),
-          detailedService: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(false), detailedService: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
-      emit(state.copyWith(
-          stateStatus: StateStatus.failure(message: errorMessage!)));
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
     }
   }
 }

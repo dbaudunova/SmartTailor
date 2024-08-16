@@ -22,7 +22,7 @@ OrderDetailedModel _$OrderDetailedModelFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String)
           .toList(),
       orderItems: (json['orderItems'] as List<dynamic>?)
-          !.map((e) => OrderItems.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => OrderItems.fromJson(e as Map<String, dynamic>))
           .toList(),
       ordersStatus: json['ordersStatus'] as String?,
       price: (json['price'] as num?)?.toDouble(),

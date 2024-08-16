@@ -19,14 +19,18 @@ Map<String, dynamic> _$OrderItemsToJson(OrderItems instance) =>
 
 OrderCandidates _$OrderCandidatesFromJson(Map<String, dynamic> json) =>
     OrderCandidates(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
-      description: json['description'] as String?,
+      employeeId: (json['employeeId'] as num?)?.toInt(),
+      employeeFullName: json['employeeFullName'] as String?,
+      employeeEmail: json['employeeEmail'] as String?,
+      employeePhoneNumber: json['employeePhoneNumber'] as String?,
+      organizationName: json['organizationName'] as String?,
     );
 
 Map<String, dynamic> _$OrderCandidatesToJson(OrderCandidates instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'description': instance.description,
+      'employeeId': instance.employeeId,
+      'employeeFullName': instance.employeeFullName,
+      'employeeEmail': instance.employeeEmail,
+      'employeePhoneNumber': instance.employeePhoneNumber,
+      'organizationName': instance.organizationName,
     };
