@@ -1,24 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 
 class AnnouncementsContainer extends StatelessWidget {
   const AnnouncementsContainer({
-    required this.price,
-    required this.orderNumber,
-    required this.orderStatus,
-    required this.name,
-    required this.description,
     this.onTap,
     super.key,
+    this.price,
+    this.announcement,
   });
 
   final VoidCallback? onTap;
   final String? price;
-  final String? orderNumber;
-  final String? orderStatus;
-  final String? name;
-  final String? description;
+  final AnnouncementEntity? announcement;
 
   @override
   Widget build(BuildContext context) {
@@ -33,23 +29,22 @@ class AnnouncementsContainer extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Row(
             children: [
-              // SizedBox(
-              //   width: 72,
-              //   height: 68,
-              //   child: ClipRRect(
-              //     borderRadius: BorderRadius.circular(8),
-              //     child: Container(
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(8),
-              //       ),
-              //       child: CachedNetworkImage(
-              //         imageUrl:
-              //             'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              SizedBox(
+                width: 72,
+                height: 68,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: announcement?.imagePath ?? '',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Column(
@@ -59,38 +54,17 @@ class AnnouncementsContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Заказ № ${orderNumber!}',
+                          typeFromString(announcement?.type).translated,
                           style: AppTextStyle.textField16.copyWith(
-                            color: AppColors.listBlue,
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: orderStatus == 'WAITING' ? AppColors.error : AppColors.background),
-                          child: Text(orderStatus!),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            name!,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            softWrap: false,
-                            style: AppTextStyle.textField16.copyWith(
-                              color: AppColors.darkGrey,
+                            color: typeColor(
+                              typeFromString(
+                                announcement?.type,
+                              ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: 8.0),
                         Text(
-                          '$price сом',
+                          price ?? '',
                           style: AppTextStyle.textField16.copyWith(
                             color: AppColors.orange,
                           ),
@@ -99,7 +73,14 @@ class AnnouncementsContainer extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      description!,
+                      announcement?.name ?? '',
+                      style: AppTextStyle.textField16.copyWith(
+                        color: AppColors.darkGrey,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      announcement?.description ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyle.s12w400.copyWith(

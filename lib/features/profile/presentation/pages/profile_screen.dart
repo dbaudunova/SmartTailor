@@ -22,8 +22,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  bool _isHistoryOfOrdersButtonVisible = false;
-  bool _isSubscribeContainerVisible = true;
 
   @override
   void initState() {
@@ -58,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildProfileButton(context, 'Мои объявления', const MyAnnouncementsRoute()),
                 const SizedBox(height: AppProps.kPageMargin),
                 _buildProfileButton(context, 'Мои покупки', const MyPurchasesRoute()),
-                if (_isSubscribeContainerVisible) ...[
+                if (state.profile?.hasSubscription == true) ...[
                   const SizedBox(height: AppProps.kPageMargin),
                   _buildProfileButton(context, 'История заказов', const OrderHistoryRoute()),
                   const SizedBox(height: AppProps.kPageMargin),
@@ -85,8 +83,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildSubscripe(ProfileState state) {
     print(state.profile?.hasSubscription);
-    return state.stateStatus == StateStatus.loading()
-        ? SizedBox.shrink()
+    return state.stateStatus == const StateStatus.loading()
+        ? const SizedBox.shrink()
         : state.profile?.hasSubscription == false
             ? Column(
                 children: [
@@ -172,10 +170,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       content: 'Подписка уже в пути!',
       buttonText: 'Понятно',
       onButtonPressed: () {
-        setState(() {
-          _isHistoryOfOrdersButtonVisible = true;
-          _isSubscribeContainerVisible = false;
-        });
         AutoRouter.of(context).maybePop();
       },
     );

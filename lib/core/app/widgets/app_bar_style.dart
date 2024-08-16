@@ -3,8 +3,8 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
   const AppBarStyle({
-    super.key,
     required this.title,
+    super.key,
     this.leading,
     this.centerTitle = false,
   });
@@ -19,7 +19,6 @@ class AppBarStyle extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // surfaceTintColor: Colors.transparent,
       leading: leading,
       surfaceTintColor: AppColors.background,
       backgroundColor: AppColors.background,

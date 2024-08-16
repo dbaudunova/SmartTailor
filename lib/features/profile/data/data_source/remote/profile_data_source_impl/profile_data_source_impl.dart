@@ -9,6 +9,7 @@ import 'package:neobis_smart_tailor/core/network/http_paths.dart';
 import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/announcement_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/announcement_response_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
 
@@ -136,22 +137,68 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   }
 
   @override
-  Future<List<AnnouncementModel>> getAnnouncements({required int pageNumber}) async {
+  Future<AnnouncementResponseModel> getMyEquipments({required int pageNumber}) async {
     try {
       final response = await _client.get(
-        HttpPaths.myAdvertisements,
-        queryParameters: {
-          'pageNumber': pageNumber.toString(),
-          'pageSize': '10',
-        },
+        HttpPaths.myEquipments,
+        queryParameters: {'pageNumber': pageNumber.toString(), 'pageSize': '10'},
       );
+
       if (response.statusCode != 200) {
         throw Failure.request(
           status: response.statusCode,
           message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
         );
       } else {
-        var list = (response.data as List).map((item) => AnnouncementModel.fromJson(item)).toList();
+        var list = AnnouncementResponseModel.fromJson(response.data);
+        return list;
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<AnnouncementResponseModel> getMyOrders({required int pageNumber}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.myOrders,
+        queryParameters: {'pageNumber': pageNumber.toString(), 'pageSize': '10'},
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        var list = AnnouncementResponseModel.fromJson(response.data);
+        return list;
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<AnnouncementResponseModel> getMyServices({required int pageNumber}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.myServices,
+        queryParameters: {'pageNumber': pageNumber.toString(), 'pageSize': '10'},
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        var list = AnnouncementResponseModel.fromJson(response.data);
         return list;
       }
     } on DioException catch (e) {
@@ -178,9 +225,8 @@ class ProfileDataSourceImpl implements ProfileDataSource {
         );
       } else {
         var responce = response.data;
-        print(responce);
         var model = PurchasesListModel.fromJson(responce);
-        print(model);
+
         return model;
       }
     } on DioException catch (e) {

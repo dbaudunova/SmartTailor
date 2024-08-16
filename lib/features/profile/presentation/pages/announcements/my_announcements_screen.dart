@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile_bloc.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announecement_list_view.dart';
 
 @RoutePage()
 class MyAnnouncementsScreen extends StatefulWidget {
@@ -19,7 +20,15 @@ class MyAnnouncementsScreen extends StatefulWidget {
 class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with TickerProviderStateMixin, RestorationMixin {
   RestorableInt currentSegment = RestorableInt(0);
   final PageController _pageController = PageController(initialPage: 0);
-  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    final profileBloc = BlocProvider.of<ProfileBloc>(context);
+    if (!profileBloc.state.isAnnouncementsLoaded) {
+      profileBloc.add(const ProfileEvent.getAll());
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,19 +59,44 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
               _buildNavBar(segmentedControlMaxWidth, children),
               const SizedBox(height: 16),
               Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  onPageChanged: (index) {
-                    setState(() {
-                      currentSegment.value = index;
-                    });
-                    _scrollToCurrentSegment(index);
+                child: BlocBuilder<ProfileBloc, ProfileState>(
+                  builder: (context, state) {
+                    print(state.orders.length);
+                    return PageView(
+                      controller: _pageController,
+                      onPageChanged: (index) {
+                        setState(() {
+                          currentSegment.value = index;
+                        });
+                      },
+                      children: [
+                        AnnouncementListView<ProfileEvent, ProfileState>(
+                          getList: (context) => context.read<ProfileBloc>().state.orders,
+                          //route: ({required int id}) => OrderDetailRoute(id: id),
+                          isLast: state.lastForOrders!,
+                          loadMoreEvent: (context) => const ProfileEvent.loadMoreOrders(),
+                          loadfirstPage: (context) => const ProfileEvent.getOrders(),
+                          getBloc: (context) => context.read<ProfileBloc>(),
+                        ),
+                        AnnouncementListView<ProfileEvent, ProfileState>(
+                          getList: (context) => context.read<ProfileBloc>().state.equipments,
+                          //route: ({required int id}) => EquipmentDetailRoute(id: id),
+                          isLast: state.lastForEquipment!,
+                          loadMoreEvent: (context) => const ProfileEvent.loadMoreEquipments(),
+                          loadfirstPage: (context) => const ProfileEvent.getEquipments(),
+                          getBloc: (context) => context.read<ProfileBloc>(),
+                        ),
+                        AnnouncementListView<ProfileEvent, ProfileState>(
+                          getList: (context) => context.read<ProfileBloc>().state.services,
+                          //route: ({required int id}) => ServiceDetailRoute(id: id),
+                          isLast: state.lastForServices!,
+                          loadMoreEvent: (context) => const ProfileEvent.loadMoreServices(),
+                          loadfirstPage: (context) => const ProfileEvent.getServices(),
+                          getBloc: (context) => context.read<ProfileBloc>(),
+                        ),
+                      ],
+                    );
                   },
-                  children: [
-                    _buildAnnouncementListView(),
-                    _buildAnnouncementListView(),
-                    _buildAnnouncementListView(),
-                  ],
                 ),
               ),
             ],
@@ -110,16 +144,6 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
     );
   }
 
-  void _scrollToCurrentSegment(int index) {
-    const segmentWidth = 60.0;
-    final position = index * segmentWidth;
-    _scrollController.animateTo(
-      position,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
   Text _buildSegmentText(String label, int index) {
     return Text(
       label,
@@ -128,27 +152,6 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
               fontWeight: FontWeight.w600,
             )
           : AppTextStyle.text14,
-    );
-  }
-
-  ListView _buildAnnouncementListView() {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 4,
-          ),
-          // child: AnnouncementsContainer(
-          //   onTap: () {
-          //     AutoRouter.of(context).push(
-          //       const AnnouncementDetailRoute(),
-          //     );
-          //   },
-          // ),
-        );
-      },
     );
   }
 

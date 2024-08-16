@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart';
 import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_content.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
@@ -29,7 +30,7 @@ class ConfirmationScreen extends StatelessWidget {
       success: (val) {
         switch (val) {
           case SuccessType.login:
-            AutoRouter.of(context).replaceNamed('/main');
+            AutoRouter.of(context).replaceAll([const BottomNavRoute()]);
             break;
           case SuccessType.repeatCode:
             break;

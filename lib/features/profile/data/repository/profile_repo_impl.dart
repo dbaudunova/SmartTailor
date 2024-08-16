@@ -9,6 +9,7 @@ import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart';
 
@@ -60,15 +61,24 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<List<AnnouncementEntity>> getAnnouncements({required int pageNumber}) {
-    return _dataSource.getAnnouncements(pageNumber: pageNumber);
-  }
-
-  @override
   Future<PurchasesListEntity> getAllPurchases({required int pageNumber}) async {
     var model = await _dataSource.getAllPurchases(pageNumber: pageNumber);
     var entity = _converter.convert(model);
-    print(entity);
     return entity;
+  }
+
+  @override
+  Future<AnnouncementResponseEntity> getMyEquipments({required int pageNumber}) async {
+    return await _dataSource.getMyEquipments(pageNumber: pageNumber);
+  }
+
+  @override
+  Future<AnnouncementResponseEntity> getMyOrders({required int pageNumber}) async {
+    return await _dataSource.getMyOrders(pageNumber: pageNumber);
+  }
+
+  @override
+  Future<AnnouncementResponseEntity> getMyServices({required int pageNumber}) async {
+    return await _dataSource.getMyServices(pageNumber: pageNumber);
   }
 }
