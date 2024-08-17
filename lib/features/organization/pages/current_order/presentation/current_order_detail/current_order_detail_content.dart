@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_detail_screen/domain/entitys/order_detail_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/gallery_widget.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/current_detail_order_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/status_bottom_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
@@ -49,121 +52,131 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          GalleryWidget(
-            date: _orderDate.toString(),
-            images: const [],
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                  ),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildStatusRow(),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Сшить костюм',
-                            style: AppTextStyle.textField16.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-                            style: AppTextStyle.s12w400.copyWith(
-                              color: AppColors.greyText,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: AppColors.greyText,
+      body: BlocBuilder<CurrentOrderBloc, CurrentOrderState>(
+        builder: (context, state) {
+          var detailedOrder = state.detailedOrder;
+          var dateStr = DateFormat('yyyy-MM-dd').format(detailedOrder.dateOfExecution!);
+          return Column(
+            children: [
+              GalleryWidget(
+                date: dateStr,
+                images: detailedOrder.images,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildStatusRow(detailedOrder),
+                              const SizedBox(height: 8),
+                              Text(
+                                detailedOrder.name!,
+                                style: AppTextStyle.textField16.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                            child: _buildRow(
-                              isExpanded: _isEmployeeExpanded,
-                              onPressed: () {
-                                setState(() {
-                                  _isEmployeeExpanded = !_isEmployeeExpanded;
-                                });
-                              },
-                              title: 'Сотрудники',
-                            ),
-                          ),
-                          if (_isEmployeeExpanded) _buildEmployeeListView(),
-                          const SizedBox(height: 16),
-                          _buildPriceRow(),
-                          const Padding(
-                            padding: EdgeInsets.only(
-                              top: 16,
-                              bottom: 24,
-                            ),
-                            child: Divider(
-                              color: AppColors.greyText,
-                            ),
-                          ),
-                          _buildAuthorInfo(),
-                          const SizedBox(height: 16),
-                          _buildTransparentButton(
-                            backgroundColor: Colors.white,
-                            strokeColor: AppColors.greyText,
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return ExitAlert(
-                                    confirmButton: () {
-                                      Navigator.pop(context);
-                                      _buildShowModalBottomSheet(context);
+                              const SizedBox(height: 8),
+                              Text(
+                                detailedOrder.description!,
+                                style: AppTextStyle.s12w400.copyWith(
+                                  color: AppColors.greyText,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                    color: AppColors.greyText,
+                                  ),
+                                ),
+                                child: _buildRow(
+                                  isExpanded: _isEmployeeExpanded,
+                                  onPressed: () {
+                                    setState(() {
+                                      _isEmployeeExpanded = !_isEmployeeExpanded;
+                                    });
+                                  },
+                                  title: 'Сотрудники',
+                                ),
+                              ),
+                              if (_isEmployeeExpanded)
+                                _buildEmployeeListView(
+                                  detailedOrder,
+                                ),
+                              const SizedBox(height: 16),
+                              _buildPriceRow(detailedOrder),
+                              const Padding(
+                                padding: EdgeInsets.only(
+                                  top: 16,
+                                  bottom: 24,
+                                ),
+                                child: Divider(
+                                  color: AppColors.greyText,
+                                ),
+                              ),
+                              _buildAuthorInfo(detailedOrder),
+                              const SizedBox(height: 16),
+                              _buildTransparentButton(
+                                backgroundColor: Colors.white,
+                                strokeColor: AppColors.greyText,
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return ExitAlert(
+                                        confirmButton: () {
+                                          Navigator.pop(context);
+                                          _buildShowModalBottomSheet(context);
+                                        },
+                                        cancelButton: () {
+                                          AutoRouter.of(context).maybePop();
+                                        },
+                                        title: 'Хотите изменить статус?',
+                                      );
                                     },
-                                    cancelButton: () {
-                                      AutoRouter.of(context).maybePop();
-                                    },
-                                    title: 'Хотите изменить статус?',
                                   );
                                 },
-                              );
-                            },
-                            text: 'Изменить статус',
+                                text: 'Изменить статус',
+                              ),
+                              const SizedBox(height: 8),
+                              _buildTransparentButton(
+                                backgroundColor: AppColors.error,
+                                onPressed: () {},
+                                textColor: Colors.white,
+                                text: 'Отменить заказ',
+                              ),
+                              const SizedBox(height: 16),
+                            ],
                           ),
-                          const SizedBox(height: 8),
-                          _buildTransparentButton(
-                            backgroundColor: AppColors.error,
-                            onPressed: () {},
-                            textColor: Colors.white,
-                            text: 'Отменить заказ',
-                          ),
-                          const SizedBox(height: 16),
-                        ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
     );
   }
 
-  Row _buildPriceRow() {
+  Row _buildPriceRow(CurrentDetailOrderEntity detailedOrder) {
+    var price = detailedOrder.price!.toInt();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -174,7 +187,7 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
           ),
         ),
         Text(
-          '1000 сом',
+          '$price сом',
           style: AppTextStyle.textField16.copyWith(
             color: AppColors.orange,
           ),
@@ -198,36 +211,56 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
     );
   }
 
-  ListView _buildEmployeeListView() {
+  ListView _buildEmployeeListView(CurrentDetailOrderEntity detailedOrder) {
+    var employees = detailedOrder.employees;
     return ListView.builder(
-      itemCount: 10,
+      itemCount: employees!.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: _buildEmployeeItemBuilder,
+      itemBuilder: (context, index) {
+        var employee = employees[index];
+        return Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 8,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                  employee.fullName!,
+                  style: AppTextStyle.textField16.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                child: Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(color: AppColors.lightOrange, borderRadius: BorderRadius.circular(8)),
+                  child: const Text(
+                    'Назначить',
+                    style: AppTextStyle.textField16,
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 
-  Widget? _buildEmployeeItemBuilder(context, index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
-      child: Text(
-        'Имя Фамилия Отчество',
-        style: AppTextStyle.textField16.copyWith(
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-    );
-  }
-
-  Row _buildStatusRow() {
+  Row _buildStatusRow(CurrentDetailOrderEntity detailedOrder) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Заказ №234',
+          'Заказ № ${detailedOrder.id}',
           style: AppTextStyle.textField16.copyWith(
             color: AppColors.listBlue,
           ),
@@ -242,7 +275,7 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
-            'В работе',
+            detailedOrder.status!,
             style: AppTextStyle.s12w400.copyWith(
               fontWeight: FontWeight.w600,
             ),
@@ -284,7 +317,7 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
     );
   }
 
-  Row _buildAuthorInfo() {
+  Row _buildAuthorInfo(CurrentDetailOrderEntity detailedOrder) {
     return Row(
       children: [
         const CircleAvatar(
@@ -297,7 +330,7 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              'Sandy Wilder Cheng',
+              detailedOrder.authorFullName!,
               style: AppTextStyle.text14.copyWith(
                 fontWeight: FontWeight.w500,
               ),

@@ -14,7 +14,7 @@ class CurrentOrdersContainer extends StatelessWidget {
   });
 
   final VoidCallback? onTap;
-  final String? price;
+  final int? price;
   final String? orderNumber;
   final String? orderStatus;
   final String? name;
@@ -64,20 +64,33 @@ class CurrentOrdersContainer extends StatelessWidget {
                             color: AppColors.listGreen,
                           ),
                         ),
+                        orderStatus != null
+                            ? Text(
+                                orderStatus!,
+                                style: AppTextStyle.textField16.copyWith(
+                                  color: AppColors.listGreen,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
                         Text(
-                          price ?? '',
+                          name!,
+                          style: AppTextStyle.textField16.copyWith(
+                            color: AppColors.darkGrey,
+                          ),
+                        ),
+                        Text(
+                          price.toString(),
                           style: AppTextStyle.textField16.copyWith(
                             color: AppColors.orange,
                           ),
                         ),
                       ],
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      name!,
-                      style: AppTextStyle.textField16.copyWith(
-                        color: AppColors.darkGrey,
-                      ),
                     ),
                     const SizedBox(height: 4),
                     Text(

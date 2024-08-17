@@ -48,5 +48,9 @@ class HttpPaths {
   static const gatAllPositions = '$baseUrl/api/position/get-all-positions';
 
   static const getAllCurrentOrders = '$baseUrl/api/order/get-organization-orders-by-stage';
+  static const getCurrentOrderDetail = '$baseUrl/api/order/current-order-detailed';
+
   static const changeOrderStatus = '$baseUrl/api/order/change-status/';
+
+  static const getHistoryOrders = '$baseUrl/api/order/order-history-for-user';
 }

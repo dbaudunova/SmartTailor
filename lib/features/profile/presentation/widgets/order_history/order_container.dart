@@ -49,10 +49,12 @@ class OrderContainer extends StatelessWidget {
                   ),
                   if (isActive) ...[
                     const SizedBox(height: 8),
-                    const Text(
-                      'Статус:',
-                      style: AppTextStyle.textField16,
-                    ),
+                    status != null
+                        ? const Text(
+                            'Статус:',
+                            style: AppTextStyle.textField16,
+                          )
+                        : const SizedBox.shrink(),
                   ],
                   const SizedBox(height: 8),
                   const Text(
@@ -64,27 +66,29 @@ class OrderContainer extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    '№234',
+                  Text(
+                    '№ $id',
                     style: AppTextStyle.textField16,
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    '100 сом',
+                  Text(
+                    '$price сом',
                     style: AppTextStyle.textField16,
                   ),
                   if (isActive) ...[
                     const SizedBox(
                       height: 8,
                     ),
-                    Text(
-                      'Прибыл',
-                      style: AppTextStyle.textField16.copyWith(color: Colors.green),
-                    ),
+                    status != null
+                        ? Text(
+                            status!,
+                            style: AppTextStyle.textField16.copyWith(color: Colors.green),
+                          )
+                        : const SizedBox.shrink(),
                   ],
                   const SizedBox(height: 8),
-                  const Text(
-                    '10.04.2024',
+                  Text(
+                    date,
                     style: AppTextStyle.textField16,
                   ),
                 ],

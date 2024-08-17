@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/_model/current_order_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/current_order_model/current_order_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/organization_list_model/organization_list_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/current_order_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/organization_list_entity.dart';
@@ -16,7 +16,8 @@ class GeneralResponseMapper extends Converter<OrganizationListModel, Organizatio
   OrganizationListEntity convert(OrganizationListModel input) {
     return OrganizationListEntity(
         isLast: input.isLast,
-        orders: input.orders?.map((order) => _organizationInfoConverter.convert(order)).toList() ?? [],
+        orders:
+            input.orders?.map((order) => _organizationInfoConverter.convert(order as CurrentOrderModel)).toList() ?? [],
         totalCount: input.totalCount,
         organizationDescription: input.organizationDescription,
         organizationId: input.organizationId,

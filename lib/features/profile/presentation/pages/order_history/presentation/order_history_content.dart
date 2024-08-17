@@ -65,8 +65,6 @@ class _OrderHistoryContentState extends State<OrderHistoryContent> with TickerPr
               builder: (context, state) {
                 var currentOrder = state.currentPurchases;
                 var completedOrders = state.completedPurchases;
-                print(currentOrder?.first.date);
-                print(completedOrders);
                 return state.stateStatus != const StateStatus.loading()
                     ? TabBarView(
                         controller: _tabController,
@@ -100,43 +98,53 @@ class _OrderHistoryContentState extends State<OrderHistoryContent> with TickerPr
     );
   }
 
-  ListView _buildCompletedOrderListView(List<HistoryEntity>? completedOrders) {
-    return ListView.builder(
-      itemCount: completedOrders!.length,
-      itemBuilder: (context, index) {
-        var order = completedOrders[index];
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: OrderContainer(
-            date: order.date!,
-            id: order.id!,
-            name: order.name!,
-            price: order.price!,
-            isActive: false,
-            onTap: () {},
-          ),
-        );
+  Widget _buildCompletedOrderListView(List<HistoryEntity>? completedOrders) {
+    return RefreshIndicator(
+      onRefresh: () async {
+        _bloc.add(const OrderHistoryEvent.loadMoreCompleted());
       },
+      child: ListView.builder(
+        itemCount: completedOrders!.length,
+        itemBuilder: (context, index) {
+          var order = completedOrders[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: OrderContainer(
+              date: order.date!,
+              id: order.id!,
+              name: order.name!,
+              price: order.price!,
+              isActive: false,
+              onTap: () {},
+            ),
+          );
+        },
+      ),
     );
   }
 
-  ListView _buildActiveOrderListView(List<HistoryEntity>? currentOrders) {
-    return ListView.builder(
-      itemCount: currentOrders!.length,
-      itemBuilder: (context, index) {
-        var order = currentOrders[index];
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: OrderContainer(
-            date: order.date!,
-            id: order.id!,
-            name: order.name!,
-            price: order.price!,
-            // status: order.status,
-            onTap: () {},
-          ),
-        );
+  Widget _buildActiveOrderListView(List<HistoryEntity>? currentOrders) {
+    return RefreshIndicator(
+      onRefresh: () async {
+        _bloc.add(const OrderHistoryEvent.loadMoreCurrent());
       },
+      child: ListView.builder(
+        itemCount: currentOrders!.length,
+        itemBuilder: (context, index) {
+          var order = currentOrders[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: OrderContainer(
+              date: order.date!,
+              id: order.id!,
+              name: order.name!,
+              price: order.price!,
+              status: order.status,
+              onTap: () {},
+            ),
+          );
+        },
+      ),
     );
   }
 }

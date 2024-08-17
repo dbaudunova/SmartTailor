@@ -242,7 +242,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   Future<MyHistoryModel> getHistory({required String stage, required int page}) async {
     try {
       final response = await _client.get(
-        HttpPaths.getAllPurchases,
+        HttpPaths.getHistoryOrders,
         queryParameters: {
           'pageNumber': page.toString(),
           'pageSize': '10',
@@ -257,6 +257,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       } else {
         var responce = response.data;
         var model = MyHistoryModel.fromJson(responce);
+        print(responce);
 
         return model;
       }

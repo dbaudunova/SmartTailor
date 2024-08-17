@@ -43,7 +43,7 @@ class _CurrentOrdersWidgetState extends State<CurrentOrdersWidget> {
                           onTap: () {
                             AutoRouter.of(context).push(CurrentOrderDetailRoute(id: order.id!));
                           },
-                          price: order.price.toString(),
+                          price: order.price!.toInt(),
                         ),
                       );
                     },

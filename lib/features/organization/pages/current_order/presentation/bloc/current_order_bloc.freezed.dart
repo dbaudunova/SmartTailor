@@ -485,7 +485,8 @@ abstract class _ChangeOrderStatus implements CurrentOrderEvent {
 mixin _$CurrentOrderState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   OrganizationListEntity get orders => throw _privateConstructorUsedError;
-  CurrentOrderEntity get detailedOrder => throw _privateConstructorUsedError;
+  CurrentDetailOrderEntity get detailedOrder =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CurrentOrderStateCopyWith<CurrentOrderState> get copyWith =>
@@ -501,7 +502,7 @@ abstract class $CurrentOrderStateCopyWith<$Res> {
   $Res call(
       {StateStatus stateStatus,
       OrganizationListEntity orders,
-      CurrentOrderEntity detailedOrder});
+      CurrentDetailOrderEntity detailedOrder});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -535,7 +536,7 @@ class _$CurrentOrderStateCopyWithImpl<$Res, $Val extends CurrentOrderState>
       detailedOrder: null == detailedOrder
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
-              as CurrentOrderEntity,
+              as CurrentDetailOrderEntity,
     ) as $Val);
   }
 
@@ -559,7 +560,7 @@ abstract class _$$CurrentOrderStateImplCopyWith<$Res>
   $Res call(
       {StateStatus stateStatus,
       OrganizationListEntity orders,
-      CurrentOrderEntity detailedOrder});
+      CurrentDetailOrderEntity detailedOrder});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -592,7 +593,7 @@ class __$$CurrentOrderStateImplCopyWithImpl<$Res>
       detailedOrder: null == detailedOrder
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
-              as CurrentOrderEntity,
+              as CurrentDetailOrderEntity,
     ));
   }
 }
@@ -610,7 +611,7 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
   @override
   final OrganizationListEntity orders;
   @override
-  final CurrentOrderEntity detailedOrder;
+  final CurrentDetailOrderEntity detailedOrder;
 
   @override
   String toString() {
@@ -645,7 +646,7 @@ abstract class _CurrentOrderState implements CurrentOrderState {
   const factory _CurrentOrderState(
           {required final StateStatus stateStatus,
           required final OrganizationListEntity orders,
-          required final CurrentOrderEntity detailedOrder}) =
+          required final CurrentDetailOrderEntity detailedOrder}) =
       _$CurrentOrderStateImpl;
 
   @override
@@ -653,7 +654,7 @@ abstract class _CurrentOrderState implements CurrentOrderState {
   @override
   OrganizationListEntity get orders;
   @override
-  CurrentOrderEntity get detailedOrder;
+  CurrentDetailOrderEntity get detailedOrder;
   @override
   @JsonKey(ignore: true)
   _$$CurrentOrderStateImplCopyWith<_$CurrentOrderStateImpl> get copyWith =>

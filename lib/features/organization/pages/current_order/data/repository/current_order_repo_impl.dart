@@ -2,33 +2,36 @@ import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/data_source/current_order_data_source.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/current_detail_order_model/current_detail_order_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/organization_list_model/organization_list_model.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/current_order_entity.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/current_detail_order_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/organization_list_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/repository/current_orders_repo.dart';
 
 @Injectable(as: CurrentOrdersRepo)
 class CurrentOrderRepoImpl implements CurrentOrdersRepo {
   final CurrentOrderDataSource _dataSource;
-  final Converter<OrganizationListModel, OrganizationListEntity> _converter;
+  final Converter<OrganizationListModel, OrganizationListEntity> organizationOrderListConverter;
+  final Converter<CurrentDetailOrderModel, CurrentDetailOrderEntity> currentDetailOrderconverter;
 
   CurrentOrderRepoImpl(
     this._dataSource,
-    this._converter,
+    this.organizationOrderListConverter,
+    this.currentDetailOrderconverter,
   );
 
   @override
   Future<OrganizationListEntity> getAllOrders() async {
     var model = await _dataSource.gatAllOrders();
-    final entitys = _converter.convert(model);
+    final entitys = organizationOrderListConverter.convert(model);
     return entitys;
   }
 
   @override
-  Future<CurrentOrderEntity> getDetailedOrder({required String id}) async {
-    var models = await _dataSource.gatAllOrders();
-    // final entitys =  _converter.convert(modeld);
-    return CurrentOrderEntity.initial();
+  Future<CurrentDetailOrderEntity> getDetailedOrder({required int id}) async {
+    var model = await _dataSource.getDetailOrder(id: id);
+    final entity = currentDetailOrderconverter.convert(model);
+    return entity;
   }
 
   @override

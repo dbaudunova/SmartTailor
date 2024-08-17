@@ -4,6 +4,8 @@ import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/tab_bar_widget.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_orders_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employees_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/employee_item.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announcement_container.dart';
 
@@ -59,9 +61,9 @@ class _ProfileOrganizationScreenState extends State<ProfileOrganizationScreen> w
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
-                  children: [
-                    _buildOrderListView(),
-                    _buildEmployeeListView(),
+                  children: const [
+                    CurrentOrdersScreen(),
+                    EmployeesScreen(),
                   ],
                 ),
               )

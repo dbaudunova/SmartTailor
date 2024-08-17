@@ -6,7 +6,8 @@ import 'package:neobis_smart_tailor/core/network/http_codes.dart';
 import 'package:neobis_smart_tailor/core/network/http_paths.dart';
 import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/data_source/current_order_data_source.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/_model/current_order_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/current_detail_order_model/current_detail_order_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/current_order_model/current_order_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/organization_list_model/organization_list_model.dart';
 
 @Injectable(as: CurrentOrderDataSource)
@@ -44,10 +45,10 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
   }
 
   @override
-  Future<CurrentOrderModel> getDetailOrder() async {
+  Future<CurrentDetailOrderModel> getDetailOrder({required int id}) async {
     try {
       final response = await _client.get(
-        HttpPaths.getAllCurrentOrders,
+        '${HttpPaths.getCurrentOrderDetail}/$id',
       );
       if (response.statusCode != HttpSuccess.success) {
         // ignore: only_throw_errors
@@ -56,10 +57,9 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
           message: 'Order creation failed, status code: ${response.statusCode}',
         );
       } else {
-        List<dynamic> list = response.data;
-        var models = list.map((json) => CurrentOrderModel.fromJson(json)).toList();
-        print(models);
-        return CurrentOrderModel.initial();
+        var model = CurrentDetailOrderModel.fromJson(response.data);
+        print(model);
+        return model;
       }
     } on DioException catch (e) {
       // ignore: only_throw_errors
