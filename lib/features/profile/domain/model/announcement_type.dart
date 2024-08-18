@@ -18,6 +18,17 @@ AnnouncementType typeFromString(String? typeString) {
   }
 }
 
+String getAnnouncementTypeLabel(AnnouncementType type) {
+  switch (type) {
+    case AnnouncementType.order:
+      return 'Заказы';
+    case AnnouncementType.equipment:
+      return 'Оборудование';
+    case AnnouncementType.service:
+      return 'Услуги';
+  }
+}
+
 Color typeColor(AnnouncementType type) {
   switch (type) {
     case AnnouncementType.order:

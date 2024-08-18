@@ -6,6 +6,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/empty_refresh_list_text.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/loading_list_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
@@ -258,18 +259,5 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
     setState(() {
       currentSegment.value = newValue!;
     });
-  }
-}
-
-class LoadingListWidget extends StatelessWidget {
-  const LoadingListWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: CircularProgressIndicator(),
-    );
   }
 }

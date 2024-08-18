@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:neobis_smart_tailor/features/order_place/data/models/order_place_model.dart';
 
 part 'order_detailed_entity.g.dart';
 
@@ -16,6 +15,7 @@ class OrderDetailedEntity {
   final String? ordersStatus;
   final List<OrderItems>? orderItems;
   final List<OrderCandidates>? orderCandidates;
+  final OrganizationExecutor? organizationExecutor;
 
   OrderDetailedEntity({
     this.id,
@@ -30,7 +30,26 @@ class OrderDetailedEntity {
     this.ordersStatus,
     this.orderItems,
     this.orderCandidates,
+    this.organizationExecutor,
   });
+}
+
+@JsonSerializable()
+class OrganizationExecutor {
+  final int? id;
+  final String? name;
+  final String? description;
+
+  OrganizationExecutor({
+    required this.id,
+    required this.name,
+    required this.description,
+  });
+
+  factory OrganizationExecutor.fromJson(Map<String, dynamic> json) =>
+      _$OrganizationExecutorFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrganizationExecutorToJson(this);
 }
 
 @JsonSerializable()
@@ -43,7 +62,8 @@ class OrderItems {
     this.quantity,
   });
 
-  factory OrderItems.fromJson(Map<String, dynamic> json) => _$OrderItemsFromJson(json);
+  factory OrderItems.fromJson(Map<String, dynamic> json) =>
+      _$OrderItemsFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderItemsToJson(this);
 }
@@ -64,7 +84,8 @@ class OrderCandidates {
     this.organizationName,
   });
 
-  factory OrderCandidates.fromJson(Map<String, dynamic> json) => _$OrderCandidatesFromJson(json);
+  factory OrderCandidates.fromJson(Map<String, dynamic> json) =>
+      _$OrderCandidatesFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderCandidatesToJson(this);
 }

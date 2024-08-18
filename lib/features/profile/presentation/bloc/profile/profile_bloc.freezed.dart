@@ -23,13 +23,6 @@ mixin _$ProfileEvent {
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
     required TResult Function() sendSubscription,
     required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,13 +32,6 @@ mixin _$ProfileEvent {
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult? Function()? sendSubscription,
     TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,13 +41,6 @@ mixin _$ProfileEvent {
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult Function()? sendSubscription,
     TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,13 +51,6 @@ mixin _$ProfileEvent {
     required TResult Function(_EditProfileInfo value) editProfileInfo,
     required TResult Function(_SendSubscription value) sendSubscription,
     required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,13 +60,6 @@ mixin _$ProfileEvent {
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
     TResult? Function(_SendSubscription value)? sendSubscription,
     TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,13 +69,6 @@ mixin _$ProfileEvent {
     TResult Function(_EditProfileInfo value)? editProfileInfo,
     TResult Function(_SendSubscription value)? sendSubscription,
     TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,13 +135,6 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
     required TResult Function() sendSubscription,
     required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
   }) {
     return signOut();
   }
@@ -196,13 +147,6 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult? Function()? sendSubscription,
     TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
   }) {
     return signOut?.call();
   }
@@ -215,13 +159,6 @@ class _$SignOutImpl implements _SignOut {
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult Function()? sendSubscription,
     TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -238,13 +175,6 @@ class _$SignOutImpl implements _SignOut {
     required TResult Function(_EditProfileInfo value) editProfileInfo,
     required TResult Function(_SendSubscription value) sendSubscription,
     required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return signOut(this);
   }
@@ -257,13 +187,6 @@ class _$SignOutImpl implements _SignOut {
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
     TResult? Function(_SendSubscription value)? sendSubscription,
     TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return signOut?.call(this);
   }
@@ -276,13 +199,6 @@ class _$SignOutImpl implements _SignOut {
     TResult Function(_EditProfileInfo value)? editProfileInfo,
     TResult Function(_SendSubscription value)? sendSubscription,
     TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -339,13 +255,6 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
     required TResult Function() sendSubscription,
     required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
   }) {
     return getProfileInfo();
   }
@@ -358,13 +267,6 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult? Function()? sendSubscription,
     TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
   }) {
     return getProfileInfo?.call();
   }
@@ -377,13 +279,6 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult Function()? sendSubscription,
     TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -400,13 +295,6 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     required TResult Function(_EditProfileInfo value) editProfileInfo,
     required TResult Function(_SendSubscription value) sendSubscription,
     required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return getProfileInfo(this);
   }
@@ -419,13 +307,6 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
     TResult? Function(_SendSubscription value)? sendSubscription,
     TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return getProfileInfo?.call(this);
   }
@@ -438,13 +319,6 @@ class _$GetProfileInfoImpl implements _GetProfileInfo {
     TResult Function(_EditProfileInfo value)? editProfileInfo,
     TResult Function(_SendSubscription value)? sendSubscription,
     TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (getProfileInfo != null) {
@@ -529,13 +403,6 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
     required TResult Function() sendSubscription,
     required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
   }) {
     return editProfileInfo(profileEntity);
   }
@@ -548,13 +415,6 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult? Function()? sendSubscription,
     TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
   }) {
     return editProfileInfo?.call(profileEntity);
   }
@@ -567,13 +427,6 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult Function()? sendSubscription,
     TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (editProfileInfo != null) {
@@ -590,13 +443,6 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     required TResult Function(_EditProfileInfo value) editProfileInfo,
     required TResult Function(_SendSubscription value) sendSubscription,
     required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return editProfileInfo(this);
   }
@@ -609,13 +455,6 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
     TResult? Function(_SendSubscription value)? sendSubscription,
     TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return editProfileInfo?.call(this);
   }
@@ -628,13 +467,6 @@ class _$EditProfileInfoImpl implements _EditProfileInfo {
     TResult Function(_EditProfileInfo value)? editProfileInfo,
     TResult Function(_SendSubscription value)? sendSubscription,
     TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (editProfileInfo != null) {
@@ -697,13 +529,6 @@ class _$SendSubscriptionImpl implements _SendSubscription {
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
     required TResult Function() sendSubscription,
     required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
   }) {
     return sendSubscription();
   }
@@ -716,13 +541,6 @@ class _$SendSubscriptionImpl implements _SendSubscription {
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult? Function()? sendSubscription,
     TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
   }) {
     return sendSubscription?.call();
   }
@@ -735,13 +553,6 @@ class _$SendSubscriptionImpl implements _SendSubscription {
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult Function()? sendSubscription,
     TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (sendSubscription != null) {
@@ -758,13 +569,6 @@ class _$SendSubscriptionImpl implements _SendSubscription {
     required TResult Function(_EditProfileInfo value) editProfileInfo,
     required TResult Function(_SendSubscription value) sendSubscription,
     required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return sendSubscription(this);
   }
@@ -777,13 +581,6 @@ class _$SendSubscriptionImpl implements _SendSubscription {
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
     TResult? Function(_SendSubscription value)? sendSubscription,
     TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return sendSubscription?.call(this);
   }
@@ -796,13 +593,6 @@ class _$SendSubscriptionImpl implements _SendSubscription {
     TResult Function(_EditProfileInfo value)? editProfileInfo,
     TResult Function(_SendSubscription value)? sendSubscription,
     TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (sendSubscription != null) {
@@ -886,13 +676,6 @@ class _$UploadImageImpl implements _UploadImage {
     required TResult Function(ProfileEntity profileEntity) editProfileInfo,
     required TResult Function() sendSubscription,
     required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
   }) {
     return uploadImage(imageFile);
   }
@@ -905,13 +688,6 @@ class _$UploadImageImpl implements _UploadImage {
     TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult? Function()? sendSubscription,
     TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
   }) {
     return uploadImage?.call(imageFile);
   }
@@ -924,13 +700,6 @@ class _$UploadImageImpl implements _UploadImage {
     TResult Function(ProfileEntity profileEntity)? editProfileInfo,
     TResult Function()? sendSubscription,
     TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
     required TResult orElse(),
   }) {
     if (uploadImage != null) {
@@ -947,13 +716,6 @@ class _$UploadImageImpl implements _UploadImage {
     required TResult Function(_EditProfileInfo value) editProfileInfo,
     required TResult Function(_SendSubscription value) sendSubscription,
     required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
   }) {
     return uploadImage(this);
   }
@@ -966,13 +728,6 @@ class _$UploadImageImpl implements _UploadImage {
     TResult? Function(_EditProfileInfo value)? editProfileInfo,
     TResult? Function(_SendSubscription value)? sendSubscription,
     TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
   }) {
     return uploadImage?.call(this);
   }
@@ -985,13 +740,6 @@ class _$UploadImageImpl implements _UploadImage {
     TResult Function(_EditProfileInfo value)? editProfileInfo,
     TResult Function(_SendSubscription value)? sendSubscription,
     TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
     required TResult orElse(),
   }) {
     if (uploadImage != null) {
@@ -1011,1158 +759,10 @@ abstract class _UploadImage implements ProfileEvent {
 }
 
 /// @nodoc
-abstract class _$$GetOrdersImplCopyWith<$Res> {
-  factory _$$GetOrdersImplCopyWith(
-          _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
-      __$$GetOrdersImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetOrdersImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$GetOrdersImpl>
-    implements _$$GetOrdersImplCopyWith<$Res> {
-  __$$GetOrdersImplCopyWithImpl(
-      _$GetOrdersImpl _value, $Res Function(_$GetOrdersImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetOrdersImpl implements _GetOrders {
-  const _$GetOrdersImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.getOrders()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signOut,
-    required TResult Function() getProfileInfo,
-    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
-    required TResult Function() sendSubscription,
-    required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
-  }) {
-    return getOrders();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signOut,
-    TResult? Function()? getProfileInfo,
-    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult? Function()? sendSubscription,
-    TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
-  }) {
-    return getOrders?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signOut,
-    TResult Function()? getProfileInfo,
-    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult Function()? sendSubscription,
-    TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getOrders != null) {
-      return getOrders();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignOut value) signOut,
-    required TResult Function(_GetProfileInfo value) getProfileInfo,
-    required TResult Function(_EditProfileInfo value) editProfileInfo,
-    required TResult Function(_SendSubscription value) sendSubscription,
-    required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
-  }) {
-    return getOrders(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignOut value)? signOut,
-    TResult? Function(_GetProfileInfo value)? getProfileInfo,
-    TResult? Function(_EditProfileInfo value)? editProfileInfo,
-    TResult? Function(_SendSubscription value)? sendSubscription,
-    TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
-  }) {
-    return getOrders?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignOut value)? signOut,
-    TResult Function(_GetProfileInfo value)? getProfileInfo,
-    TResult Function(_EditProfileInfo value)? editProfileInfo,
-    TResult Function(_SendSubscription value)? sendSubscription,
-    TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getOrders != null) {
-      return getOrders(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetOrders implements ProfileEvent {
-  const factory _GetOrders() = _$GetOrdersImpl;
-}
-
-/// @nodoc
-abstract class _$$GetEquipmentsImplCopyWith<$Res> {
-  factory _$$GetEquipmentsImplCopyWith(
-          _$GetEquipmentsImpl value, $Res Function(_$GetEquipmentsImpl) then) =
-      __$$GetEquipmentsImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetEquipmentsImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$GetEquipmentsImpl>
-    implements _$$GetEquipmentsImplCopyWith<$Res> {
-  __$$GetEquipmentsImplCopyWithImpl(
-      _$GetEquipmentsImpl _value, $Res Function(_$GetEquipmentsImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetEquipmentsImpl implements _GetEquipments {
-  const _$GetEquipmentsImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.getEquipments()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetEquipmentsImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signOut,
-    required TResult Function() getProfileInfo,
-    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
-    required TResult Function() sendSubscription,
-    required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
-  }) {
-    return getEquipments();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signOut,
-    TResult? Function()? getProfileInfo,
-    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult? Function()? sendSubscription,
-    TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
-  }) {
-    return getEquipments?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signOut,
-    TResult Function()? getProfileInfo,
-    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult Function()? sendSubscription,
-    TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getEquipments != null) {
-      return getEquipments();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignOut value) signOut,
-    required TResult Function(_GetProfileInfo value) getProfileInfo,
-    required TResult Function(_EditProfileInfo value) editProfileInfo,
-    required TResult Function(_SendSubscription value) sendSubscription,
-    required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
-  }) {
-    return getEquipments(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignOut value)? signOut,
-    TResult? Function(_GetProfileInfo value)? getProfileInfo,
-    TResult? Function(_EditProfileInfo value)? editProfileInfo,
-    TResult? Function(_SendSubscription value)? sendSubscription,
-    TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
-  }) {
-    return getEquipments?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignOut value)? signOut,
-    TResult Function(_GetProfileInfo value)? getProfileInfo,
-    TResult Function(_EditProfileInfo value)? editProfileInfo,
-    TResult Function(_SendSubscription value)? sendSubscription,
-    TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getEquipments != null) {
-      return getEquipments(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetEquipments implements ProfileEvent {
-  const factory _GetEquipments() = _$GetEquipmentsImpl;
-}
-
-/// @nodoc
-abstract class _$$GetServicesImplCopyWith<$Res> {
-  factory _$$GetServicesImplCopyWith(
-          _$GetServicesImpl value, $Res Function(_$GetServicesImpl) then) =
-      __$$GetServicesImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetServicesImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$GetServicesImpl>
-    implements _$$GetServicesImplCopyWith<$Res> {
-  __$$GetServicesImplCopyWithImpl(
-      _$GetServicesImpl _value, $Res Function(_$GetServicesImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetServicesImpl implements _GetServices {
-  const _$GetServicesImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.getServices()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetServicesImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signOut,
-    required TResult Function() getProfileInfo,
-    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
-    required TResult Function() sendSubscription,
-    required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
-  }) {
-    return getServices();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signOut,
-    TResult? Function()? getProfileInfo,
-    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult? Function()? sendSubscription,
-    TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
-  }) {
-    return getServices?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signOut,
-    TResult Function()? getProfileInfo,
-    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult Function()? sendSubscription,
-    TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getServices != null) {
-      return getServices();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignOut value) signOut,
-    required TResult Function(_GetProfileInfo value) getProfileInfo,
-    required TResult Function(_EditProfileInfo value) editProfileInfo,
-    required TResult Function(_SendSubscription value) sendSubscription,
-    required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
-  }) {
-    return getServices(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignOut value)? signOut,
-    TResult? Function(_GetProfileInfo value)? getProfileInfo,
-    TResult? Function(_EditProfileInfo value)? editProfileInfo,
-    TResult? Function(_SendSubscription value)? sendSubscription,
-    TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
-  }) {
-    return getServices?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignOut value)? signOut,
-    TResult Function(_GetProfileInfo value)? getProfileInfo,
-    TResult Function(_EditProfileInfo value)? editProfileInfo,
-    TResult Function(_SendSubscription value)? sendSubscription,
-    TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getServices != null) {
-      return getServices(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetServices implements ProfileEvent {
-  const factory _GetServices() = _$GetServicesImpl;
-}
-
-/// @nodoc
-abstract class _$$GetAllImplCopyWith<$Res> {
-  factory _$$GetAllImplCopyWith(
-          _$GetAllImpl value, $Res Function(_$GetAllImpl) then) =
-      __$$GetAllImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetAllImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$GetAllImpl>
-    implements _$$GetAllImplCopyWith<$Res> {
-  __$$GetAllImplCopyWithImpl(
-      _$GetAllImpl _value, $Res Function(_$GetAllImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetAllImpl implements _GetAll {
-  const _$GetAllImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.getAll()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetAllImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signOut,
-    required TResult Function() getProfileInfo,
-    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
-    required TResult Function() sendSubscription,
-    required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
-  }) {
-    return getAll();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signOut,
-    TResult? Function()? getProfileInfo,
-    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult? Function()? sendSubscription,
-    TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
-  }) {
-    return getAll?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signOut,
-    TResult Function()? getProfileInfo,
-    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult Function()? sendSubscription,
-    TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getAll != null) {
-      return getAll();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignOut value) signOut,
-    required TResult Function(_GetProfileInfo value) getProfileInfo,
-    required TResult Function(_EditProfileInfo value) editProfileInfo,
-    required TResult Function(_SendSubscription value) sendSubscription,
-    required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
-  }) {
-    return getAll(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignOut value)? signOut,
-    TResult? Function(_GetProfileInfo value)? getProfileInfo,
-    TResult? Function(_EditProfileInfo value)? editProfileInfo,
-    TResult? Function(_SendSubscription value)? sendSubscription,
-    TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
-  }) {
-    return getAll?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignOut value)? signOut,
-    TResult Function(_GetProfileInfo value)? getProfileInfo,
-    TResult Function(_EditProfileInfo value)? editProfileInfo,
-    TResult Function(_SendSubscription value)? sendSubscription,
-    TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (getAll != null) {
-      return getAll(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetAll implements ProfileEvent {
-  const factory _GetAll() = _$GetAllImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadMoreOrdersImplCopyWith<$Res> {
-  factory _$$LoadMoreOrdersImplCopyWith(_$LoadMoreOrdersImpl value,
-          $Res Function(_$LoadMoreOrdersImpl) then) =
-      __$$LoadMoreOrdersImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadMoreOrdersImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$LoadMoreOrdersImpl>
-    implements _$$LoadMoreOrdersImplCopyWith<$Res> {
-  __$$LoadMoreOrdersImplCopyWithImpl(
-      _$LoadMoreOrdersImpl _value, $Res Function(_$LoadMoreOrdersImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
-  const _$LoadMoreOrdersImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.loadMoreOrders()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadMoreOrdersImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signOut,
-    required TResult Function() getProfileInfo,
-    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
-    required TResult Function() sendSubscription,
-    required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
-  }) {
-    return loadMoreOrders();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signOut,
-    TResult? Function()? getProfileInfo,
-    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult? Function()? sendSubscription,
-    TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
-  }) {
-    return loadMoreOrders?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signOut,
-    TResult Function()? getProfileInfo,
-    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult Function()? sendSubscription,
-    TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (loadMoreOrders != null) {
-      return loadMoreOrders();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignOut value) signOut,
-    required TResult Function(_GetProfileInfo value) getProfileInfo,
-    required TResult Function(_EditProfileInfo value) editProfileInfo,
-    required TResult Function(_SendSubscription value) sendSubscription,
-    required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
-  }) {
-    return loadMoreOrders(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignOut value)? signOut,
-    TResult? Function(_GetProfileInfo value)? getProfileInfo,
-    TResult? Function(_EditProfileInfo value)? editProfileInfo,
-    TResult? Function(_SendSubscription value)? sendSubscription,
-    TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
-  }) {
-    return loadMoreOrders?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignOut value)? signOut,
-    TResult Function(_GetProfileInfo value)? getProfileInfo,
-    TResult Function(_EditProfileInfo value)? editProfileInfo,
-    TResult Function(_SendSubscription value)? sendSubscription,
-    TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (loadMoreOrders != null) {
-      return loadMoreOrders(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadMoreOrders implements ProfileEvent {
-  const factory _LoadMoreOrders() = _$LoadMoreOrdersImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadMoreEquipmentsImplCopyWith<$Res> {
-  factory _$$LoadMoreEquipmentsImplCopyWith(_$LoadMoreEquipmentsImpl value,
-          $Res Function(_$LoadMoreEquipmentsImpl) then) =
-      __$$LoadMoreEquipmentsImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadMoreEquipmentsImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$LoadMoreEquipmentsImpl>
-    implements _$$LoadMoreEquipmentsImplCopyWith<$Res> {
-  __$$LoadMoreEquipmentsImplCopyWithImpl(_$LoadMoreEquipmentsImpl _value,
-      $Res Function(_$LoadMoreEquipmentsImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
-  const _$LoadMoreEquipmentsImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.loadMoreEquipments()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadMoreEquipmentsImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signOut,
-    required TResult Function() getProfileInfo,
-    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
-    required TResult Function() sendSubscription,
-    required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
-  }) {
-    return loadMoreEquipments();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signOut,
-    TResult? Function()? getProfileInfo,
-    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult? Function()? sendSubscription,
-    TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
-  }) {
-    return loadMoreEquipments?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signOut,
-    TResult Function()? getProfileInfo,
-    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult Function()? sendSubscription,
-    TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (loadMoreEquipments != null) {
-      return loadMoreEquipments();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignOut value) signOut,
-    required TResult Function(_GetProfileInfo value) getProfileInfo,
-    required TResult Function(_EditProfileInfo value) editProfileInfo,
-    required TResult Function(_SendSubscription value) sendSubscription,
-    required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
-  }) {
-    return loadMoreEquipments(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignOut value)? signOut,
-    TResult? Function(_GetProfileInfo value)? getProfileInfo,
-    TResult? Function(_EditProfileInfo value)? editProfileInfo,
-    TResult? Function(_SendSubscription value)? sendSubscription,
-    TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
-  }) {
-    return loadMoreEquipments?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignOut value)? signOut,
-    TResult Function(_GetProfileInfo value)? getProfileInfo,
-    TResult Function(_EditProfileInfo value)? editProfileInfo,
-    TResult Function(_SendSubscription value)? sendSubscription,
-    TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (loadMoreEquipments != null) {
-      return loadMoreEquipments(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadMoreEquipments implements ProfileEvent {
-  const factory _LoadMoreEquipments() = _$LoadMoreEquipmentsImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadMoreServicesImplCopyWith<$Res> {
-  factory _$$LoadMoreServicesImplCopyWith(_$LoadMoreServicesImpl value,
-          $Res Function(_$LoadMoreServicesImpl) then) =
-      __$$LoadMoreServicesImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadMoreServicesImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$LoadMoreServicesImpl>
-    implements _$$LoadMoreServicesImplCopyWith<$Res> {
-  __$$LoadMoreServicesImplCopyWithImpl(_$LoadMoreServicesImpl _value,
-      $Res Function(_$LoadMoreServicesImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadMoreServicesImpl implements _LoadMoreServices {
-  const _$LoadMoreServicesImpl();
-
-  @override
-  String toString() {
-    return 'ProfileEvent.loadMoreServices()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadMoreServicesImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signOut,
-    required TResult Function() getProfileInfo,
-    required TResult Function(ProfileEntity profileEntity) editProfileInfo,
-    required TResult Function() sendSubscription,
-    required TResult Function(File imageFile) uploadImage,
-    required TResult Function() getOrders,
-    required TResult Function() getEquipments,
-    required TResult Function() getServices,
-    required TResult Function() getAll,
-    required TResult Function() loadMoreOrders,
-    required TResult Function() loadMoreEquipments,
-    required TResult Function() loadMoreServices,
-  }) {
-    return loadMoreServices();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signOut,
-    TResult? Function()? getProfileInfo,
-    TResult? Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult? Function()? sendSubscription,
-    TResult? Function(File imageFile)? uploadImage,
-    TResult? Function()? getOrders,
-    TResult? Function()? getEquipments,
-    TResult? Function()? getServices,
-    TResult? Function()? getAll,
-    TResult? Function()? loadMoreOrders,
-    TResult? Function()? loadMoreEquipments,
-    TResult? Function()? loadMoreServices,
-  }) {
-    return loadMoreServices?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signOut,
-    TResult Function()? getProfileInfo,
-    TResult Function(ProfileEntity profileEntity)? editProfileInfo,
-    TResult Function()? sendSubscription,
-    TResult Function(File imageFile)? uploadImage,
-    TResult Function()? getOrders,
-    TResult Function()? getEquipments,
-    TResult Function()? getServices,
-    TResult Function()? getAll,
-    TResult Function()? loadMoreOrders,
-    TResult Function()? loadMoreEquipments,
-    TResult Function()? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (loadMoreServices != null) {
-      return loadMoreServices();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignOut value) signOut,
-    required TResult Function(_GetProfileInfo value) getProfileInfo,
-    required TResult Function(_EditProfileInfo value) editProfileInfo,
-    required TResult Function(_SendSubscription value) sendSubscription,
-    required TResult Function(_UploadImage value) uploadImage,
-    required TResult Function(_GetOrders value) getOrders,
-    required TResult Function(_GetEquipments value) getEquipments,
-    required TResult Function(_GetServices value) getServices,
-    required TResult Function(_GetAll value) getAll,
-    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
-    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
-    required TResult Function(_LoadMoreServices value) loadMoreServices,
-  }) {
-    return loadMoreServices(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignOut value)? signOut,
-    TResult? Function(_GetProfileInfo value)? getProfileInfo,
-    TResult? Function(_EditProfileInfo value)? editProfileInfo,
-    TResult? Function(_SendSubscription value)? sendSubscription,
-    TResult? Function(_UploadImage value)? uploadImage,
-    TResult? Function(_GetOrders value)? getOrders,
-    TResult? Function(_GetEquipments value)? getEquipments,
-    TResult? Function(_GetServices value)? getServices,
-    TResult? Function(_GetAll value)? getAll,
-    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult? Function(_LoadMoreServices value)? loadMoreServices,
-  }) {
-    return loadMoreServices?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignOut value)? signOut,
-    TResult Function(_GetProfileInfo value)? getProfileInfo,
-    TResult Function(_EditProfileInfo value)? editProfileInfo,
-    TResult Function(_SendSubscription value)? sendSubscription,
-    TResult Function(_UploadImage value)? uploadImage,
-    TResult Function(_GetOrders value)? getOrders,
-    TResult Function(_GetEquipments value)? getEquipments,
-    TResult Function(_GetServices value)? getServices,
-    TResult Function(_GetAll value)? getAll,
-    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
-    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
-    TResult Function(_LoadMoreServices value)? loadMoreServices,
-    required TResult orElse(),
-  }) {
-    if (loadMoreServices != null) {
-      return loadMoreServices(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadMoreServices implements ProfileEvent {
-  const factory _LoadMoreServices() = _$LoadMoreServicesImpl;
-}
-
-/// @nodoc
 mixin _$ProfileState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
-  List<AnnouncementEntity> get equipments => throw _privateConstructorUsedError;
-  List<AnnouncementEntity> get orders => throw _privateConstructorUsedError;
-  List<AnnouncementEntity> get services => throw _privateConstructorUsedError;
-  bool? get lastForOrders => throw _privateConstructorUsedError;
-  bool? get lastForServices => throw _privateConstructorUsedError;
-  bool? get lastForEquipment => throw _privateConstructorUsedError;
-  int get ordersPageNumber => throw _privateConstructorUsedError;
-  int get equipmentsPageNumber => throw _privateConstructorUsedError;
-  int get servicesPageNumber => throw _privateConstructorUsedError;
-  int get ordersTotalCount => throw _privateConstructorUsedError;
-  int get equipmentTotalCount => throw _privateConstructorUsedError;
-  int get servicesTotalCount => throw _privateConstructorUsedError;
-  bool get isLoadingMore => throw _privateConstructorUsedError;
   ProfileEntity? get profile => throw _privateConstructorUsedError;
   bool get isProfileLoaded => throw _privateConstructorUsedError;
-  bool get isAnnouncementsLoaded => throw _privateConstructorUsedError;
   bool get subscriptionSend => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -2178,22 +778,8 @@ abstract class $ProfileStateCopyWith<$Res> {
   @useResult
   $Res call(
       {StateStatus stateStatus,
-      List<AnnouncementEntity> equipments,
-      List<AnnouncementEntity> orders,
-      List<AnnouncementEntity> services,
-      bool? lastForOrders,
-      bool? lastForServices,
-      bool? lastForEquipment,
-      int ordersPageNumber,
-      int equipmentsPageNumber,
-      int servicesPageNumber,
-      int ordersTotalCount,
-      int equipmentTotalCount,
-      int servicesTotalCount,
-      bool isLoadingMore,
       ProfileEntity? profile,
       bool isProfileLoaded,
-      bool isAnnouncementsLoaded,
       bool subscriptionSend});
 
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -2213,22 +799,8 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? equipments = null,
-    Object? orders = null,
-    Object? services = null,
-    Object? lastForOrders = freezed,
-    Object? lastForServices = freezed,
-    Object? lastForEquipment = freezed,
-    Object? ordersPageNumber = null,
-    Object? equipmentsPageNumber = null,
-    Object? servicesPageNumber = null,
-    Object? ordersTotalCount = null,
-    Object? equipmentTotalCount = null,
-    Object? servicesTotalCount = null,
-    Object? isLoadingMore = null,
     Object? profile = freezed,
     Object? isProfileLoaded = null,
-    Object? isAnnouncementsLoaded = null,
     Object? subscriptionSend = null,
   }) {
     return _then(_value.copyWith(
@@ -2236,58 +808,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      equipments: null == equipments
-          ? _value.equipments
-          : equipments // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>,
-      orders: null == orders
-          ? _value.orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>,
-      services: null == services
-          ? _value.services
-          : services // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>,
-      lastForOrders: freezed == lastForOrders
-          ? _value.lastForOrders
-          : lastForOrders // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lastForServices: freezed == lastForServices
-          ? _value.lastForServices
-          : lastForServices // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lastForEquipment: freezed == lastForEquipment
-          ? _value.lastForEquipment
-          : lastForEquipment // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      ordersPageNumber: null == ordersPageNumber
-          ? _value.ordersPageNumber
-          : ordersPageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      equipmentsPageNumber: null == equipmentsPageNumber
-          ? _value.equipmentsPageNumber
-          : equipmentsPageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      servicesPageNumber: null == servicesPageNumber
-          ? _value.servicesPageNumber
-          : servicesPageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      ordersTotalCount: null == ordersTotalCount
-          ? _value.ordersTotalCount
-          : ordersTotalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      equipmentTotalCount: null == equipmentTotalCount
-          ? _value.equipmentTotalCount
-          : equipmentTotalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      servicesTotalCount: null == servicesTotalCount
-          ? _value.servicesTotalCount
-          : servicesTotalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      isLoadingMore: null == isLoadingMore
-          ? _value.isLoadingMore
-          : isLoadingMore // ignore: cast_nullable_to_non_nullable
-              as bool,
       profile: freezed == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -2295,10 +815,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
       isProfileLoaded: null == isProfileLoaded
           ? _value.isProfileLoaded
           : isProfileLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isAnnouncementsLoaded: null == isAnnouncementsLoaded
-          ? _value.isAnnouncementsLoaded
-          : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
       subscriptionSend: null == subscriptionSend
           ? _value.subscriptionSend
@@ -2326,22 +842,8 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {StateStatus stateStatus,
-      List<AnnouncementEntity> equipments,
-      List<AnnouncementEntity> orders,
-      List<AnnouncementEntity> services,
-      bool? lastForOrders,
-      bool? lastForServices,
-      bool? lastForEquipment,
-      int ordersPageNumber,
-      int equipmentsPageNumber,
-      int servicesPageNumber,
-      int ordersTotalCount,
-      int equipmentTotalCount,
-      int servicesTotalCount,
-      bool isLoadingMore,
       ProfileEntity? profile,
       bool isProfileLoaded,
-      bool isAnnouncementsLoaded,
       bool subscriptionSend});
 
   @override
@@ -2360,22 +862,8 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? equipments = null,
-    Object? orders = null,
-    Object? services = null,
-    Object? lastForOrders = freezed,
-    Object? lastForServices = freezed,
-    Object? lastForEquipment = freezed,
-    Object? ordersPageNumber = null,
-    Object? equipmentsPageNumber = null,
-    Object? servicesPageNumber = null,
-    Object? ordersTotalCount = null,
-    Object? equipmentTotalCount = null,
-    Object? servicesTotalCount = null,
-    Object? isLoadingMore = null,
     Object? profile = freezed,
     Object? isProfileLoaded = null,
-    Object? isAnnouncementsLoaded = null,
     Object? subscriptionSend = null,
   }) {
     return _then(_$ProfileStateImpl(
@@ -2383,58 +871,6 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      equipments: null == equipments
-          ? _value._equipments
-          : equipments // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>,
-      orders: null == orders
-          ? _value._orders
-          : orders // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>,
-      services: null == services
-          ? _value._services
-          : services // ignore: cast_nullable_to_non_nullable
-              as List<AnnouncementEntity>,
-      lastForOrders: freezed == lastForOrders
-          ? _value.lastForOrders
-          : lastForOrders // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lastForServices: freezed == lastForServices
-          ? _value.lastForServices
-          : lastForServices // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lastForEquipment: freezed == lastForEquipment
-          ? _value.lastForEquipment
-          : lastForEquipment // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      ordersPageNumber: null == ordersPageNumber
-          ? _value.ordersPageNumber
-          : ordersPageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      equipmentsPageNumber: null == equipmentsPageNumber
-          ? _value.equipmentsPageNumber
-          : equipmentsPageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      servicesPageNumber: null == servicesPageNumber
-          ? _value.servicesPageNumber
-          : servicesPageNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      ordersTotalCount: null == ordersTotalCount
-          ? _value.ordersTotalCount
-          : ordersTotalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      equipmentTotalCount: null == equipmentTotalCount
-          ? _value.equipmentTotalCount
-          : equipmentTotalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      servicesTotalCount: null == servicesTotalCount
-          ? _value.servicesTotalCount
-          : servicesTotalCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      isLoadingMore: null == isLoadingMore
-          ? _value.isLoadingMore
-          : isLoadingMore // ignore: cast_nullable_to_non_nullable
-              as bool,
       profile: freezed == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -2442,10 +878,6 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
       isProfileLoaded: null == isProfileLoaded
           ? _value.isProfileLoaded
           : isProfileLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isAnnouncementsLoaded: null == isAnnouncementsLoaded
-          ? _value.isAnnouncementsLoaded
-          : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
       subscriptionSend: null == subscriptionSend
           ? _value.subscriptionSend
@@ -2460,87 +892,23 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
 class _$ProfileStateImpl implements _ProfileState {
   const _$ProfileStateImpl(
       {required this.stateStatus,
-      required final List<AnnouncementEntity> equipments,
-      required final List<AnnouncementEntity> orders,
-      required final List<AnnouncementEntity> services,
-      required this.lastForOrders,
-      required this.lastForServices,
-      required this.lastForEquipment,
-      required this.ordersPageNumber,
-      required this.equipmentsPageNumber,
-      required this.servicesPageNumber,
-      required this.ordersTotalCount,
-      required this.equipmentTotalCount,
-      required this.servicesTotalCount,
-      required this.isLoadingMore,
       this.profile,
       this.isProfileLoaded = false,
-      this.isAnnouncementsLoaded = false,
-      required this.subscriptionSend})
-      : _equipments = equipments,
-        _orders = orders,
-        _services = services;
+      required this.subscriptionSend});
 
   @override
   final StateStatus stateStatus;
-  final List<AnnouncementEntity> _equipments;
-  @override
-  List<AnnouncementEntity> get equipments {
-    if (_equipments is EqualUnmodifiableListView) return _equipments;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_equipments);
-  }
-
-  final List<AnnouncementEntity> _orders;
-  @override
-  List<AnnouncementEntity> get orders {
-    if (_orders is EqualUnmodifiableListView) return _orders;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orders);
-  }
-
-  final List<AnnouncementEntity> _services;
-  @override
-  List<AnnouncementEntity> get services {
-    if (_services is EqualUnmodifiableListView) return _services;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_services);
-  }
-
-  @override
-  final bool? lastForOrders;
-  @override
-  final bool? lastForServices;
-  @override
-  final bool? lastForEquipment;
-  @override
-  final int ordersPageNumber;
-  @override
-  final int equipmentsPageNumber;
-  @override
-  final int servicesPageNumber;
-  @override
-  final int ordersTotalCount;
-  @override
-  final int equipmentTotalCount;
-  @override
-  final int servicesTotalCount;
-  @override
-  final bool isLoadingMore;
   @override
   final ProfileEntity? profile;
   @override
   @JsonKey()
   final bool isProfileLoaded;
   @override
-  @JsonKey()
-  final bool isAnnouncementsLoaded;
-  @override
   final bool subscriptionSend;
 
   @override
   String toString() {
-    return 'ProfileState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore, profile: $profile, isProfileLoaded: $isProfileLoaded, isAnnouncementsLoaded: $isAnnouncementsLoaded, subscriptionSend: $subscriptionSend)';
+    return 'ProfileState(stateStatus: $stateStatus, profile: $profile, isProfileLoaded: $isProfileLoaded, subscriptionSend: $subscriptionSend)';
   }
 
   @override
@@ -2550,60 +918,16 @@ class _$ProfileStateImpl implements _ProfileState {
             other is _$ProfileStateImpl &&
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
-            const DeepCollectionEquality()
-                .equals(other._equipments, _equipments) &&
-            const DeepCollectionEquality().equals(other._orders, _orders) &&
-            const DeepCollectionEquality().equals(other._services, _services) &&
-            (identical(other.lastForOrders, lastForOrders) ||
-                other.lastForOrders == lastForOrders) &&
-            (identical(other.lastForServices, lastForServices) ||
-                other.lastForServices == lastForServices) &&
-            (identical(other.lastForEquipment, lastForEquipment) ||
-                other.lastForEquipment == lastForEquipment) &&
-            (identical(other.ordersPageNumber, ordersPageNumber) ||
-                other.ordersPageNumber == ordersPageNumber) &&
-            (identical(other.equipmentsPageNumber, equipmentsPageNumber) ||
-                other.equipmentsPageNumber == equipmentsPageNumber) &&
-            (identical(other.servicesPageNumber, servicesPageNumber) ||
-                other.servicesPageNumber == servicesPageNumber) &&
-            (identical(other.ordersTotalCount, ordersTotalCount) ||
-                other.ordersTotalCount == ordersTotalCount) &&
-            (identical(other.equipmentTotalCount, equipmentTotalCount) ||
-                other.equipmentTotalCount == equipmentTotalCount) &&
-            (identical(other.servicesTotalCount, servicesTotalCount) ||
-                other.servicesTotalCount == servicesTotalCount) &&
-            (identical(other.isLoadingMore, isLoadingMore) ||
-                other.isLoadingMore == isLoadingMore) &&
             (identical(other.profile, profile) || other.profile == profile) &&
             (identical(other.isProfileLoaded, isProfileLoaded) ||
                 other.isProfileLoaded == isProfileLoaded) &&
-            (identical(other.isAnnouncementsLoaded, isAnnouncementsLoaded) ||
-                other.isAnnouncementsLoaded == isAnnouncementsLoaded) &&
             (identical(other.subscriptionSend, subscriptionSend) ||
                 other.subscriptionSend == subscriptionSend));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      stateStatus,
-      const DeepCollectionEquality().hash(_equipments),
-      const DeepCollectionEquality().hash(_orders),
-      const DeepCollectionEquality().hash(_services),
-      lastForOrders,
-      lastForServices,
-      lastForEquipment,
-      ordersPageNumber,
-      equipmentsPageNumber,
-      servicesPageNumber,
-      ordersTotalCount,
-      equipmentTotalCount,
-      servicesTotalCount,
-      isLoadingMore,
-      profile,
-      isProfileLoaded,
-      isAnnouncementsLoaded,
-      subscriptionSend);
+      runtimeType, stateStatus, profile, isProfileLoaded, subscriptionSend);
 
   @JsonKey(ignore: true)
   @override
@@ -2615,58 +939,16 @@ class _$ProfileStateImpl implements _ProfileState {
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
       {required final StateStatus stateStatus,
-      required final List<AnnouncementEntity> equipments,
-      required final List<AnnouncementEntity> orders,
-      required final List<AnnouncementEntity> services,
-      required final bool? lastForOrders,
-      required final bool? lastForServices,
-      required final bool? lastForEquipment,
-      required final int ordersPageNumber,
-      required final int equipmentsPageNumber,
-      required final int servicesPageNumber,
-      required final int ordersTotalCount,
-      required final int equipmentTotalCount,
-      required final int servicesTotalCount,
-      required final bool isLoadingMore,
       final ProfileEntity? profile,
       final bool isProfileLoaded,
-      final bool isAnnouncementsLoaded,
       required final bool subscriptionSend}) = _$ProfileStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
-  List<AnnouncementEntity> get equipments;
-  @override
-  List<AnnouncementEntity> get orders;
-  @override
-  List<AnnouncementEntity> get services;
-  @override
-  bool? get lastForOrders;
-  @override
-  bool? get lastForServices;
-  @override
-  bool? get lastForEquipment;
-  @override
-  int get ordersPageNumber;
-  @override
-  int get equipmentsPageNumber;
-  @override
-  int get servicesPageNumber;
-  @override
-  int get ordersTotalCount;
-  @override
-  int get equipmentTotalCount;
-  @override
-  int get servicesTotalCount;
-  @override
-  bool get isLoadingMore;
-  @override
   ProfileEntity? get profile;
   @override
   bool get isProfileLoaded;
-  @override
-  bool get isAnnouncementsLoaded;
   @override
   bool get subscriptionSend;
   @override
