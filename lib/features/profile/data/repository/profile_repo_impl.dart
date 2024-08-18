@@ -95,6 +95,7 @@ class ProfileRepoImpl implements ProfileRepo {
     return entity;
   }
 
+  @override
   Future<EquipmentDetailedEntity> getEquipmentDetailedById({required int id}) async {
     return await _dataSource.getEquipmentDetailedById(id: id);
   }
@@ -107,5 +108,10 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<ServiceDetailedEntity> getServiceDetailedById({required int id}) async {
     return await _dataSource.getServiceDetailedById(id: id);
+  }
+
+  @override
+  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId}) async {
+    await _dataSource.assignExecutorToOrderUseCase(executorId: executorId, orderId: orderId);
   }
 }

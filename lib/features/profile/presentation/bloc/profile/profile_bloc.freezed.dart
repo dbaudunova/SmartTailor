@@ -761,9 +761,9 @@ abstract class _UploadImage implements ProfileEvent {
 /// @nodoc
 mixin _$ProfileState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
+  bool get subscriptionSend => throw _privateConstructorUsedError;
   ProfileEntity? get profile => throw _privateConstructorUsedError;
   bool get isProfileLoaded => throw _privateConstructorUsedError;
-  bool get subscriptionSend => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -778,9 +778,9 @@ abstract class $ProfileStateCopyWith<$Res> {
   @useResult
   $Res call(
       {StateStatus stateStatus,
+      bool subscriptionSend,
       ProfileEntity? profile,
-      bool isProfileLoaded,
-      bool subscriptionSend});
+      bool isProfileLoaded});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -799,15 +799,19 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @override
   $Res call({
     Object? stateStatus = null,
+    Object? subscriptionSend = null,
     Object? profile = freezed,
     Object? isProfileLoaded = null,
-    Object? subscriptionSend = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      subscriptionSend: null == subscriptionSend
+          ? _value.subscriptionSend
+          : subscriptionSend // ignore: cast_nullable_to_non_nullable
+              as bool,
       profile: freezed == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -815,10 +819,6 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
       isProfileLoaded: null == isProfileLoaded
           ? _value.isProfileLoaded
           : isProfileLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      subscriptionSend: null == subscriptionSend
-          ? _value.subscriptionSend
-          : subscriptionSend // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -842,9 +842,9 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {StateStatus stateStatus,
+      bool subscriptionSend,
       ProfileEntity? profile,
-      bool isProfileLoaded,
-      bool subscriptionSend});
+      bool isProfileLoaded});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -862,15 +862,19 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
+    Object? subscriptionSend = null,
     Object? profile = freezed,
     Object? isProfileLoaded = null,
-    Object? subscriptionSend = null,
   }) {
     return _then(_$ProfileStateImpl(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      subscriptionSend: null == subscriptionSend
+          ? _value.subscriptionSend
+          : subscriptionSend // ignore: cast_nullable_to_non_nullable
+              as bool,
       profile: freezed == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -878,10 +882,6 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
       isProfileLoaded: null == isProfileLoaded
           ? _value.isProfileLoaded
           : isProfileLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-      subscriptionSend: null == subscriptionSend
-          ? _value.subscriptionSend
-          : subscriptionSend // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -892,23 +892,23 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
 class _$ProfileStateImpl implements _ProfileState {
   const _$ProfileStateImpl(
       {required this.stateStatus,
+      required this.subscriptionSend,
       this.profile,
-      this.isProfileLoaded = false,
-      required this.subscriptionSend});
+      this.isProfileLoaded = false});
 
   @override
   final StateStatus stateStatus;
+  @override
+  final bool subscriptionSend;
   @override
   final ProfileEntity? profile;
   @override
   @JsonKey()
   final bool isProfileLoaded;
-  @override
-  final bool subscriptionSend;
 
   @override
   String toString() {
-    return 'ProfileState(stateStatus: $stateStatus, profile: $profile, isProfileLoaded: $isProfileLoaded, subscriptionSend: $subscriptionSend)';
+    return 'ProfileState(stateStatus: $stateStatus, subscriptionSend: $subscriptionSend, profile: $profile, isProfileLoaded: $isProfileLoaded)';
   }
 
   @override
@@ -918,16 +918,16 @@ class _$ProfileStateImpl implements _ProfileState {
             other is _$ProfileStateImpl &&
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
+            (identical(other.subscriptionSend, subscriptionSend) ||
+                other.subscriptionSend == subscriptionSend) &&
             (identical(other.profile, profile) || other.profile == profile) &&
             (identical(other.isProfileLoaded, isProfileLoaded) ||
-                other.isProfileLoaded == isProfileLoaded) &&
-            (identical(other.subscriptionSend, subscriptionSend) ||
-                other.subscriptionSend == subscriptionSend));
+                other.isProfileLoaded == isProfileLoaded));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, stateStatus, profile, isProfileLoaded, subscriptionSend);
+      runtimeType, stateStatus, subscriptionSend, profile, isProfileLoaded);
 
   @JsonKey(ignore: true)
   @override
@@ -939,18 +939,18 @@ class _$ProfileStateImpl implements _ProfileState {
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
       {required final StateStatus stateStatus,
+      required final bool subscriptionSend,
       final ProfileEntity? profile,
-      final bool isProfileLoaded,
-      required final bool subscriptionSend}) = _$ProfileStateImpl;
+      final bool isProfileLoaded}) = _$ProfileStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
+  bool get subscriptionSend;
+  @override
   ProfileEntity? get profile;
   @override
   bool get isProfileLoaded;
-  @override
-  bool get subscriptionSend;
   @override
   @JsonKey(ignore: true)
   _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>

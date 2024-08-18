@@ -225,6 +225,12 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CustomerContainer(
+                onTap: () {
+                  context.read<AnnouncementBloc>().add(
+                        AnnouncementEvent.assignExecutorToOrder(
+                            executorId: orderCandidate.employeeId, orderId: widget.id),
+                      );
+                },
                 name: orderCandidate.employeeFullName ?? '',
                 email: orderCandidate.employeeEmail ?? '',
               ),

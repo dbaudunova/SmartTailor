@@ -28,6 +28,7 @@ class HttpPaths {
   static const uploadImage = '$baseUrl/api/account/profile/uploadImage';
   static const sendSubscription = '$baseUrl/api/app-user/send-subscription-request';
   static const getAllPurchases = '$baseUrl/api/order/orders-assigned-to-user';
+  static const assignExecutorToOrder = '$baseUrl/api/order/assign-executor-to-order';
 
   static const getMyOrders = '$baseUrl/api/order/my-orders';
   static const getMyEquipments = '$baseUrl/api/equipment/my-equipments';

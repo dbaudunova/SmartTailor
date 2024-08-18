@@ -5,11 +5,13 @@ class CustomerContainer extends StatelessWidget {
   const CustomerContainer({
     required this.name,
     required this.email,
+    this.onTap,
     super.key,
   });
 
   final String name;
   final String email;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +45,16 @@ class CustomerContainer extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(6),
-              decoration:
-                  BoxDecoration(color: AppColors.lightOrange, borderRadius: BorderRadiusDirectional.circular(6)),
-              child: const Text(
-                'Принять',
-                style: AppTextStyle.text14,
+            GestureDetector(
+              onTap: onTap,
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration:
+                    BoxDecoration(color: AppColors.lightOrange, borderRadius: BorderRadiusDirectional.circular(6)),
+                child: const Text(
+                  'Принять',
+                  style: AppTextStyle.text14,
+                ),
               ),
             )
           ],

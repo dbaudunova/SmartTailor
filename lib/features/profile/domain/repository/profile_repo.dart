@@ -22,4 +22,5 @@ abstract class ProfileRepo {
   Future<OrderDetailedEntity> getOrderDetailedById({required int id});
   Future<EquipmentDetailedEntity> getEquipmentDetailedById({required int id});
   Future<ServiceDetailedEntity> getServiceDetailedById({required int id});
+  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId});
 }

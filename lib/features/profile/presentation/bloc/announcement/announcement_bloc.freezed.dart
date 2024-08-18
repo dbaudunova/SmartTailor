@@ -28,6 +28,8 @@ mixin _$AnnouncementEvent {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,7 @@ mixin _$AnnouncementEvent {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +59,7 @@ mixin _$AnnouncementEvent {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +75,8 @@ mixin _$AnnouncementEvent {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +91,7 @@ mixin _$AnnouncementEvent {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +106,7 @@ mixin _$AnnouncementEvent {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -170,6 +178,8 @@ class _$GetOrdersImpl implements _GetOrders {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return getOrders();
   }
@@ -187,6 +197,7 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return getOrders?.call();
   }
@@ -204,6 +215,7 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -225,6 +237,8 @@ class _$GetOrdersImpl implements _GetOrders {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return getOrders(this);
   }
@@ -242,6 +256,7 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return getOrders?.call(this);
   }
@@ -259,6 +274,7 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -320,6 +336,8 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return getEquipments();
   }
@@ -337,6 +355,7 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return getEquipments?.call();
   }
@@ -354,6 +373,7 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getEquipments != null) {
@@ -375,6 +395,8 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return getEquipments(this);
   }
@@ -392,6 +414,7 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return getEquipments?.call(this);
   }
@@ -409,6 +432,7 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getEquipments != null) {
@@ -470,6 +494,8 @@ class _$GetServicesImpl implements _GetServices {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return getServices();
   }
@@ -487,6 +513,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return getServices?.call();
   }
@@ -504,6 +531,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -525,6 +553,8 @@ class _$GetServicesImpl implements _GetServices {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return getServices(this);
   }
@@ -542,6 +572,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return getServices?.call(this);
   }
@@ -559,6 +590,7 @@ class _$GetServicesImpl implements _GetServices {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -620,6 +652,8 @@ class _$GetAllImpl implements _GetAll {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return getAll();
   }
@@ -637,6 +671,7 @@ class _$GetAllImpl implements _GetAll {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return getAll?.call();
   }
@@ -654,6 +689,7 @@ class _$GetAllImpl implements _GetAll {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getAll != null) {
@@ -675,6 +711,8 @@ class _$GetAllImpl implements _GetAll {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return getAll(this);
   }
@@ -692,6 +730,7 @@ class _$GetAllImpl implements _GetAll {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return getAll?.call(this);
   }
@@ -709,6 +748,7 @@ class _$GetAllImpl implements _GetAll {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getAll != null) {
@@ -770,6 +810,8 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return loadMoreOrders();
   }
@@ -787,6 +829,7 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return loadMoreOrders?.call();
   }
@@ -804,6 +847,7 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (loadMoreOrders != null) {
@@ -825,6 +869,8 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return loadMoreOrders(this);
   }
@@ -842,6 +888,7 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return loadMoreOrders?.call(this);
   }
@@ -859,6 +906,7 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (loadMoreOrders != null) {
@@ -920,6 +968,8 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return loadMoreEquipments();
   }
@@ -937,6 +987,7 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return loadMoreEquipments?.call();
   }
@@ -954,6 +1005,7 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (loadMoreEquipments != null) {
@@ -975,6 +1027,8 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return loadMoreEquipments(this);
   }
@@ -992,6 +1046,7 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return loadMoreEquipments?.call(this);
   }
@@ -1009,6 +1064,7 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (loadMoreEquipments != null) {
@@ -1070,6 +1126,8 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return loadMoreServices();
   }
@@ -1087,6 +1145,7 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return loadMoreServices?.call();
   }
@@ -1104,6 +1163,7 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (loadMoreServices != null) {
@@ -1125,6 +1185,8 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return loadMoreServices(this);
   }
@@ -1142,6 +1204,7 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return loadMoreServices?.call(this);
   }
@@ -1159,6 +1222,7 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (loadMoreServices != null) {
@@ -1247,6 +1311,8 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return getOrderDetailed(id);
   }
@@ -1264,6 +1330,7 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return getOrderDetailed?.call(id);
   }
@@ -1281,6 +1348,7 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getOrderDetailed != null) {
@@ -1302,6 +1370,8 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return getOrderDetailed(this);
   }
@@ -1319,6 +1389,7 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return getOrderDetailed?.call(this);
   }
@@ -1336,6 +1407,7 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getOrderDetailed != null) {
@@ -1430,6 +1502,8 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return getEquipmentDetailed(id);
   }
@@ -1447,6 +1521,7 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return getEquipmentDetailed?.call(id);
   }
@@ -1464,6 +1539,7 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getEquipmentDetailed != null) {
@@ -1485,6 +1561,8 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return getEquipmentDetailed(this);
   }
@@ -1502,6 +1580,7 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return getEquipmentDetailed?.call(this);
   }
@@ -1519,6 +1598,7 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getEquipmentDetailed != null) {
@@ -1613,6 +1693,8 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
   }) {
     return getServiceDetailed(id);
   }
@@ -1630,6 +1712,7 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
   }) {
     return getServiceDetailed?.call(id);
   }
@@ -1647,6 +1730,7 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getServiceDetailed != null) {
@@ -1668,6 +1752,8 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
   }) {
     return getServiceDetailed(this);
   }
@@ -1685,6 +1771,7 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
   }) {
     return getServiceDetailed?.call(this);
   }
@@ -1702,6 +1789,7 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
     required TResult orElse(),
   }) {
     if (getServiceDetailed != null) {
@@ -1718,6 +1806,210 @@ abstract class _GetServiceDetailed implements AnnouncementEvent {
   @JsonKey(ignore: true)
   _$$GetServiceDetailedImplCopyWith<_$GetServiceDetailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AssignExecutorToOrderImplCopyWith<$Res> {
+  factory _$$AssignExecutorToOrderImplCopyWith(
+          _$AssignExecutorToOrderImpl value,
+          $Res Function(_$AssignExecutorToOrderImpl) then) =
+      __$$AssignExecutorToOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? executorId, int? orderId});
+}
+
+/// @nodoc
+class __$$AssignExecutorToOrderImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$AssignExecutorToOrderImpl>
+    implements _$$AssignExecutorToOrderImplCopyWith<$Res> {
+  __$$AssignExecutorToOrderImplCopyWithImpl(_$AssignExecutorToOrderImpl _value,
+      $Res Function(_$AssignExecutorToOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? executorId = freezed,
+    Object? orderId = freezed,
+  }) {
+    return _then(_$AssignExecutorToOrderImpl(
+      executorId: freezed == executorId
+          ? _value.executorId
+          : executorId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AssignExecutorToOrderImpl implements _AssignExecutorToOrder {
+  const _$AssignExecutorToOrderImpl(
+      {required this.executorId, required this.orderId});
+
+  @override
+  final int? executorId;
+  @override
+  final int? orderId;
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.assignExecutorToOrder(executorId: $executorId, orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AssignExecutorToOrderImpl &&
+            (identical(other.executorId, executorId) ||
+                other.executorId == executorId) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, executorId, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AssignExecutorToOrderImplCopyWith<_$AssignExecutorToOrderImpl>
+      get copyWith => __$$AssignExecutorToOrderImplCopyWithImpl<
+          _$AssignExecutorToOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
+  }) {
+    return assignExecutorToOrder(executorId, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
+  }) {
+    return assignExecutorToOrder?.call(executorId, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
+    required TResult orElse(),
+  }) {
+    if (assignExecutorToOrder != null) {
+      return assignExecutorToOrder(executorId, orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
+  }) {
+    return assignExecutorToOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+  }) {
+    return assignExecutorToOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+    required TResult orElse(),
+  }) {
+    if (assignExecutorToOrder != null) {
+      return assignExecutorToOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AssignExecutorToOrder implements AnnouncementEvent {
+  const factory _AssignExecutorToOrder(
+      {required final int? executorId,
+      required final int? orderId}) = _$AssignExecutorToOrderImpl;
+
+  int? get executorId;
+  int? get orderId;
+  @JsonKey(ignore: true)
+  _$$AssignExecutorToOrderImplCopyWith<_$AssignExecutorToOrderImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

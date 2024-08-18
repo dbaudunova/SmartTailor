@@ -22,4 +22,5 @@ abstract class ProfileDataSource {
   Future<OrderDetailedModel> getOrderDetailedById({required int id});
   Future<EquipmentDetailedModel> getEquipmentDetailedById({required int id});
   Future<ServiceDetailedModel> getServiceDetailedById({required int id});
+  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId});
 }

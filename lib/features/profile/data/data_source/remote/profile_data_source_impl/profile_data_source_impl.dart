@@ -332,4 +332,27 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       throw handleGeneralException(e);
     }
   }
+
+  @override
+  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId}) async {
+    try {
+      final response = await _client.post(
+        '${HttpPaths.assignExecutorToOrder}/$orderId',
+        queryParameters: {
+          'executorId': executorId.toString(),
+        },
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
 }

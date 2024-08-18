@@ -7,6 +7,7 @@ import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_e
 import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/service_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/assign_executor_to_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_equipment_detailed_by_id_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_equipments_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_orders_use_case.dart';
@@ -28,6 +29,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
   final GetMyOrdersUseCase getMyOrdersUseCase;
   final GetMyEquipmentsUseCase getMyEquipmentsUseCase;
   final GetMyServicesUseCase getMyServicesUseCase;
+  final AssignExecutorToOrderUseCase assignExecutorToOrderUseCase;
 
   AnnouncementBloc(
     this.getOrderDetailedByIdUseCase,
@@ -36,6 +38,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     this.getMyOrdersUseCase,
     this.getMyEquipmentsUseCase,
     this.getMyServicesUseCase,
+    this.assignExecutorToOrderUseCase,
   ) : super(
           const AnnouncementState(
             stateStatus: StateStatus.initial(),
@@ -64,6 +67,27 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     on<_GetOrderDetailed>(_getOrderDetailed);
     on<_GetEquipmentDetailed>(_getEquipmentDetailed);
     on<_GetServiceDetailed>(_getServiceDetailed);
+    on<_AssignExecutorToOrder>(_assignExecutorToOrder);
+  }
+
+  Future<void> _assignExecutorToOrder(
+    _AssignExecutorToOrder event,
+    Emitter<AnnouncementState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+
+    try {
+      await assignExecutorToOrderUseCase.call(
+        executorId: event.executorId,
+        orderId: event.orderId,
+      );
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
   }
 
   Future<void> _getMyEquipments(
@@ -74,7 +98,6 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
 
     try {
       final result = await getMyEquipmentsUseCase.call(pageNumber: 0);
-      print(result.totalCount);
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
           equipments: result.advertisement ?? [],
@@ -94,7 +117,6 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getMyOrdersUseCase.call(pageNumber: 0);
-      print(result.totalCount);
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
           orders: result.advertisement ?? [],
@@ -114,7 +136,6 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getMyServicesUseCase.call(pageNumber: 0);
-      print(result.totalCount);
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
           services: result.advertisement ?? [],
