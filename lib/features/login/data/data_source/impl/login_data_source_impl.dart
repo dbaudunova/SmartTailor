@@ -16,9 +16,7 @@ class LoginDataSourceImpl implements LoginDataSource {
 
   @override
   Future<void> login({String? email}) async {
-    print(email);
     try {
-      print(email);
       final response = await _client.post(HttpPaths.login,
           queryParameters: {
             'email': email,

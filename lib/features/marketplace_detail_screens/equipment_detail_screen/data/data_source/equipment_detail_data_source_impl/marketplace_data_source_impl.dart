@@ -30,7 +30,6 @@ class EquipmentDetailDataSourceImpl implements EquipmentDetailDataSource {
         );
       } else {
         var model = EquipmentDetailModel.fromJson(response.data);
-        print(model);
         return model;
       }
     } on DioException catch (e) {

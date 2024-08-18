@@ -2,9 +2,7 @@ import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/marketplace/data/data_source/marketplace_data_source.dart';
-import 'package:neobis_smart_tailor/features/marketplace/data/models/general_model/general_model.dart';
 import 'package:neobis_smart_tailor/features/marketplace/data/models/general_responce/general_responce.dart';
-import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/general_responce_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/repository/marketplace_repo.dart';
 
@@ -14,8 +12,7 @@ class MarketplaceRepoImpl extends MarketplaceRepo {
   // final Converter<EquipmentModel, EquipmentEntity> _equipmentConverter;
   // final Converter<OrderModel, OrderEntity> _orderConverter;
   // final Converter<ServiceModel, ServiceEntity> _serviceConverter;
-  final Converter<GeneralResponceModel, GeneralResponceEntity>
-      _generalModelConverter;
+  final Converter<GeneralResponceModel, GeneralResponceEntity> _generalModelConverter;
 
   MarketplaceRepoImpl(
     this._dataSource,
@@ -28,8 +25,8 @@ class MarketplaceRepoImpl extends MarketplaceRepo {
   @override
   Future<GeneralResponceEntity> getEquipments({required int pageNumber}) async {
     final result = await _dataSource.getEquipments(pageNumber: pageNumber);
-    final entitys = _generalModelConverter.convert(result);
-    return entitys;
+    final equipment = _generalModelConverter.convert(result);
+    return equipment;
   }
 
   @override

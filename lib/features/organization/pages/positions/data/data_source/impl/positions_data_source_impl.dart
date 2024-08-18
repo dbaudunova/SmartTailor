@@ -21,7 +21,6 @@ class PositionsSourceImpl implements PositionsDataSource {
   @override
   Future<void> createPosition({required PositionModel model}) async {
     var jsonString = json.encode(model.toJson());
-    print(jsonString);
     // var multipartImage = await MultipartFile.fromFile(image.path, filename: image.path.split('/').last);
     // for (var file in images!) await MultipartFile.fromFile(file.path, filename: file.path.split('/').last)
     final formData = FormData.fromMap({
@@ -65,10 +64,8 @@ class PositionsSourceImpl implements PositionsDataSource {
           message: 'Order creation failed, status code: ${response.statusCode}',
         );
       } else {
-        print(response.data);
         List<dynamic> jsonList = response.data;
         List<PositionModel> positions = jsonList.map((json) => PositionModel.fromJson(json)).toList();
-        print(positions);
 
         return positions;
       }

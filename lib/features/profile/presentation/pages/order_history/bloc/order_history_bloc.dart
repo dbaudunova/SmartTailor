@@ -95,7 +95,6 @@ class OrderHistoryBloc extends Bloc<OrderHistoryEvent, OrderHistoryState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       var entity = await getOrderHistoryForUserUseCase.call(page: 0, stage: 'current');
-      print(entity.advertisement);
 
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
@@ -116,7 +115,6 @@ class OrderHistoryBloc extends Bloc<OrderHistoryEvent, OrderHistoryState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       var entity = await getOrderHistoryForUserUseCase.call(page: 0, stage: 'completed');
-      print(entity.advertisement);
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
           completedPurchases: entity.advertisement,

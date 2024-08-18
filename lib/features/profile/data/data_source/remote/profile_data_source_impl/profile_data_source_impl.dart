@@ -257,7 +257,6 @@ class ProfileDataSourceImpl implements ProfileDataSource {
       } else {
         var responce = response.data;
         var model = MyHistoryModel.fromJson(responce);
-        print(responce);
 
         return model;
       }

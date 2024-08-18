@@ -43,7 +43,6 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getOrderDetailedByIdUseCase.call(event.id!);
-      print(result.orderCandidates!.length);
       emit(state.copyWith(stateStatus: const StateStatus.success(false), detailedOrder: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';

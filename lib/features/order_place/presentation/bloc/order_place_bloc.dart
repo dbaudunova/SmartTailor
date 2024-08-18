@@ -178,7 +178,6 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
         ),
       ),
     );
-    print(state.images.length);
   }
 
   void _resetState(
@@ -248,7 +247,6 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     Emitter<OrderPlaceState> emit,
   ) async {
     var photos = event.photos;
-    print('sdfsdf');
     // Read the bytes for each photo and calculate the total size
     int totalSize = 0;
     for (var photo in photos) {

@@ -81,8 +81,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildSubscripe(ProfileState state) {
-    // print(state.profile.hasSubscription);
-    print(state.subscriptionSend);
     return state.stateStatus == const StateStatus.loading()
         ? const SizedBox.shrink()
         : state.subscriptionSend == false

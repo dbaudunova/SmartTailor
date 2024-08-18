@@ -76,91 +76,101 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
                               });
                             },
                             children: [
-                              state.orders.isNotEmpty
-                                  ? ListViewWidget<GeneralEntity>(
-                                      priceBuilder: (item) => _buildPrice(item),
-                                      dateBuilder: (item) => item.dateOfExecution,
-                                      descriptionBuilder: (item) => item.description!,
-                                      imageBuilder: (item) => item.imageUrl!,
-                                      titleBuilder: (item) => item.name!,
-                                      items: state.orders,
-                                      onNotification: (scrollNotification) {
-                                        if (state.lastForOrders!) {
-                                          return false;
-                                        } else if (scrollNotification is ScrollEndNotification &&
-                                            scrollNotification.metrics.extentAfter == 0) {
-                                          _bloc.add(const MarketplaceEvent.loadMoreOrders());
-                                        }
+                              state.stateStatus != const StateStatus.loading()
+                                  ? state.orders.isNotEmpty
+                                      ? ListViewWidget<GeneralEntity>(
+                                          priceBuilder: (item) => _buildPrice(item),
+                                          dateBuilder: (item) => item.dateOfExecution,
+                                          descriptionBuilder: (item) => item.description!,
+                                          imageBuilder: (item) => item.imageUrl!,
+                                          titleBuilder: (item) => item.name!,
+                                          items: state.orders,
+                                          onNotification: (scrollNotification) {
+                                            if (state.lastForOrders!) {
+                                              return false;
+                                            } else if (scrollNotification is ScrollEndNotification &&
+                                                scrollNotification.metrics.extentAfter == 0) {
+                                              _bloc.add(const MarketplaceEvent.loadMoreOrders());
+                                            }
 
-                                        return false;
-                                      },
-                                      onRefresh: () async {
-                                        _bloc.add(const MarketplaceEvent.getOrders());
-                                      },
-                                      onTap: (item) => context.router.push(
-                                        OrderDetailRoute(id: item.id!),
-                                      ),
-                                    )
-                                  : EmptyRefreshListText(
-                                      onRefresh: () async {
-                                        _bloc.add(const MarketplaceEvent.getOrders());
-                                      },
-                                    ),
-                              state.equipments.isNotEmpty
-                                  ? ListViewWidget<GeneralEntity>(
-                                      priceBuilder: (item) => _buildPrice(item),
-                                      descriptionBuilder: (item) => item.description!,
-                                      imageBuilder: (item) => item.imageUrl!,
-                                      titleBuilder: (item) => item.name!,
-                                      items: state.equipments,
-                                      onNotification: (scrollNotification) {
-                                        if (state.lastForEquipment!) {
-                                          return false;
-                                        } else if (scrollNotification is ScrollEndNotification &&
-                                            scrollNotification.metrics.extentAfter == 0) {
-                                          _bloc.add(const MarketplaceEvent.loadMoreEquipments());
-                                        }
+                                            return false;
+                                          },
+                                          onRefresh: () async {
+                                            _bloc.add(const MarketplaceEvent.getOrders());
+                                          },
+                                          onTap: (item) => context.router.push(
+                                            OrderDetailRoute(id: item.id!),
+                                          ),
+                                        )
+                                      : EmptyRefreshListText(
+                                          onRefresh: () async {
+                                            _bloc.add(
+                                              const MarketplaceEvent.getOrders(),
+                                            );
+                                          },
+                                        )
+                                  : const LoadingListWidget(),
+                              state.stateStatus != const StateStatus.loading()
+                                  ? state.equipments.isNotEmpty
+                                      ? ListViewWidget<GeneralEntity>(
+                                          priceBuilder: (item) => _buildPrice(item),
+                                          descriptionBuilder: (item) => item.description!,
+                                          imageBuilder: (item) => item.imageUrl!,
+                                          titleBuilder: (item) => item.name!,
+                                          items: state.equipments,
+                                          onNotification: (scrollNotification) {
+                                            if (state.lastForEquipment!) {
+                                              return false;
+                                            } else if (scrollNotification is ScrollEndNotification &&
+                                                scrollNotification.metrics.extentAfter == 0) {
+                                              _bloc.add(const MarketplaceEvent.loadMoreEquipments());
+                                            }
 
-                                        return false;
-                                      },
-                                      onRefresh: () async {
-                                        _bloc.add(const MarketplaceEvent.getEquipments());
-                                      },
-                                      onTap: (item) => context.router.push(
-                                        EquipmentDetailRoute(id: item.id!),
-                                      ),
-                                    )
-                                  : EmptyRefreshListText(
-                                      onRefresh: () async {
-                                        _bloc.add(const MarketplaceEvent.getEquipments());
-                                      },
-                                    ),
-                              state.services.isNotEmpty
-                                  ? ListViewWidget<GeneralEntity>(
-                                      descriptionBuilder: (item) => item.description!,
-                                      imageBuilder: (item) => item.imageUrl!,
-                                      titleBuilder: (item) => item.name!,
-                                      items: state.services,
-                                      onNotification: (scrollNotification) {
-                                        if (state.lastForOrders!) {
-                                          return false;
-                                        } else if (scrollNotification is ScrollEndNotification &&
-                                            scrollNotification.metrics.extentAfter == 0) {
-                                          _bloc.add(const MarketplaceEvent.loadMoreServices());
-                                        }
+                                            return false;
+                                          },
+                                          onRefresh: () async {
+                                            _bloc.add(const MarketplaceEvent.getEquipments());
+                                          },
+                                          onTap: (item) => context.router.push(
+                                            EquipmentDetailRoute(id: item.id!),
+                                          ),
+                                        )
+                                      : EmptyRefreshListText(
+                                          onRefresh: () async {
+                                            _bloc.add(const MarketplaceEvent.getEquipments());
+                                          },
+                                        )
+                                  : const LoadingListWidget(),
+                              state.stateStatus != const StateStatus.loading()
+                                  ? state.services.isNotEmpty
+                                      ? ListViewWidget<GeneralEntity>(
+                                          descriptionBuilder: (item) => item.description!,
+                                          imageBuilder: (item) => item.imageUrl!,
+                                          titleBuilder: (item) => item.name!,
+                                          items: state.services,
+                                          onNotification: (scrollNotification) {
+                                            if (state.lastForOrders!) {
+                                              return false;
+                                            } else if (scrollNotification is ScrollEndNotification &&
+                                                scrollNotification.metrics.extentAfter == 0) {
+                                              _bloc.add(const MarketplaceEvent.loadMoreServices());
+                                            }
 
-                                        return false;
-                                      },
-                                      onRefresh: () async {
-                                        _bloc.add(const MarketplaceEvent.getServices());
-                                      },
-                                      onTap: (item) => context.router.push(
-                                        ServiceDetailRoute(id: item.id!),
-                                      ),
-                                    )
-                                  : EmptyRefreshListText(onRefresh: () async {
-                                      _bloc.add(const MarketplaceEvent.getServices());
-                                    })
+                                            return false;
+                                          },
+                                          onRefresh: () async {
+                                            _bloc.add(const MarketplaceEvent.getServices());
+                                          },
+                                          onTap: (item) => context.router.push(
+                                            ServiceDetailRoute(id: item.id!),
+                                          ),
+                                        )
+                                      : EmptyRefreshListText(onRefresh: () async {
+                                          _bloc.add(
+                                            const MarketplaceEvent.getServices(),
+                                          );
+                                        })
+                                  : const LoadingListWidget()
                             ],
                           )
                         : const Center(
@@ -248,5 +258,18 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
     setState(() {
       currentSegment.value = newValue!;
     });
+  }
+}
+
+class LoadingListWidget extends StatelessWidget {
+  const LoadingListWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
   }
 }

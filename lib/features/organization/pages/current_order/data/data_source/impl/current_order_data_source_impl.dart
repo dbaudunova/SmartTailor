@@ -29,10 +29,8 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
         );
       } else {
         var responseJson = response.data;
-        print(responseJson);
         // var models = list.map((json) => CurrentOrderModel.fromJson(json)).toList();
         var model = OrganizationListModel.fromJson(responseJson);
-        print(model);
         return model;
       }
     } on DioException catch (e) {
@@ -58,7 +56,6 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
         );
       } else {
         var model = CurrentDetailOrderModel.fromJson(response.data);
-        print(model);
         return model;
       }
     } on DioException catch (e) {

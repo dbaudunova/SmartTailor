@@ -26,7 +26,6 @@ class _EmployeesWidgetState extends State<EmployeesWidget> {
     return BlocBuilder<EmployeeBloc, EmployeeState>(
       builder: (context, state) {
         var employees = state.employees;
-        print(employees);
         return employees.isNotEmpty
             ? Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -43,7 +42,6 @@ class _EmployeesWidgetState extends State<EmployeesWidget> {
                           position: employee.position!,
                           onTap: () {
                             AutoRouter.of(context).push(EmployeeDetailRoute(id: employee.id!));
-                            print(employee.id);
                           },
                         );
                       },

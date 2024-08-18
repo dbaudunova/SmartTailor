@@ -22,7 +22,6 @@ class InviteEmployeeDataSourceImpl implements InviteEmployeeDataSource {
   Future<void> sendInvitation(SendInviteModel model) async {
     try {
       var jsonString = json.encode(model.toJson());
-      print(jsonString);
       final formData = FormData.fromMap({
         'employee': jsonString,
       });

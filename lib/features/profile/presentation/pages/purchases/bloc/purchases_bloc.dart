@@ -66,7 +66,6 @@ class PurchasesBloc extends Bloc<PurchasesEvent, PurchasesState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       var entity = await getAllPurchasesUseCase.call(0);
-      print('dfdfdf');
 
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),

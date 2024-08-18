@@ -34,7 +34,6 @@ class ServiceDetailDataSourceImpl implements ServiceDetailDataSource {
         );
       } else {
         var model = ServiceDetailModel.fromJson(response.data);
-        print(model);
         return model;
       }
     } on DioException catch (e) {

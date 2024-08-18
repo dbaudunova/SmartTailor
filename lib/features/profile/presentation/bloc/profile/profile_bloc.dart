@@ -173,7 +173,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     try {
       final result = await getMyEquipmentsUseCase.call(pageNumber: 0);
-      print(result.totalCount);
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
           equipments: result.advertisement ?? [],
@@ -193,7 +192,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getMyOrdersUseCase.call(pageNumber: 0);
-      print(result.totalCount);
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
           orders: result.advertisement ?? [],
@@ -213,7 +211,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getMyServicesUseCase.call(pageNumber: 0);
-      print(result.totalCount);
       emit(state.copyWith(
           stateStatus: const StateStatus.success(),
           services: result.advertisement ?? [],

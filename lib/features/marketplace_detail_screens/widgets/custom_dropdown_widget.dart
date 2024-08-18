@@ -15,7 +15,6 @@ class CustomDropdown extends StatelessWidget {
       children: [
         DropdownMenu(
           dropdownMenuEntries: items.map<DropdownMenuEntry<Item>>((Item item) {
-            print(items);
             return DropdownMenuEntry<Item>(
               value: item,
               label: '${item.size} (Qty: ${item.quantity})',
