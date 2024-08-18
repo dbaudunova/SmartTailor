@@ -8,7 +8,7 @@ import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile/profile_bloc.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/bloc/announcement/announcement_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announecement_list_view.dart';
 
 @RoutePage()
@@ -25,9 +25,9 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
 
   @override
   void initState() {
-    final profileBloc = BlocProvider.of<ProfileBloc>(context);
+    final profileBloc = BlocProvider.of<AnnouncementBloc>(context);
     if (!profileBloc.state.isAnnouncementsLoaded) {
-      profileBloc.add(const ProfileEvent.getAll());
+      profileBloc.add(const AnnouncementEvent.getAll());
     }
     super.initState();
   }
@@ -61,7 +61,7 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
               _buildNavBar(segmentedControlMaxWidth, children),
               const SizedBox(height: 16),
               Expanded(
-                child: BlocBuilder<ProfileBloc, ProfileState>(
+                child: BlocBuilder<AnnouncementBloc, AnnouncementState>(
                   builder: (context, state) {
                     return PageView(
                       controller: _pageController,
@@ -71,29 +71,29 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
                         });
                       },
                       children: [
-                        AnnouncementListView<ProfileEvent, ProfileState>(
-                          getList: (context) => context.read<ProfileBloc>().state.orders,
+                        AnnouncementListView<AnnouncementEvent, AnnouncementState>(
+                          getList: (context) => context.read<AnnouncementBloc>().state.orders,
                           route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.order),
                           isLast: state.lastForOrders!,
-                          loadMoreEvent: (context) => const ProfileEvent.loadMoreOrders(),
-                          loadfirstPage: (context) => const ProfileEvent.getOrders(),
-                          getBloc: (context) => context.read<ProfileBloc>(),
+                          loadMoreEvent: (context) => const AnnouncementEvent.loadMoreOrders(),
+                          loadfirstPage: (context) => const AnnouncementEvent.getOrders(),
+                          getBloc: (context) => context.read<AnnouncementBloc>(),
                         ),
-                        AnnouncementListView<ProfileEvent, ProfileState>(
-                          getList: (context) => context.read<ProfileBloc>().state.equipments,
+                        AnnouncementListView<AnnouncementEvent, AnnouncementState>(
+                          getList: (context) => context.read<AnnouncementBloc>().state.equipments,
                           route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.equipment),
                           isLast: state.lastForEquipment!,
-                          loadMoreEvent: (context) => const ProfileEvent.loadMoreEquipments(),
-                          loadfirstPage: (context) => const ProfileEvent.getEquipments(),
-                          getBloc: (context) => context.read<ProfileBloc>(),
+                          loadMoreEvent: (context) => const AnnouncementEvent.loadMoreEquipments(),
+                          loadfirstPage: (context) => const AnnouncementEvent.getEquipments(),
+                          getBloc: (context) => context.read<AnnouncementBloc>(),
                         ),
-                        AnnouncementListView<ProfileEvent, ProfileState>(
-                          getList: (context) => context.read<ProfileBloc>().state.services,
+                        AnnouncementListView<AnnouncementEvent, AnnouncementState>(
+                          getList: (context) => context.read<AnnouncementBloc>().state.services,
                           route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.service),
                           isLast: state.lastForServices!,
-                          loadMoreEvent: (context) => const ProfileEvent.loadMoreServices(),
-                          loadfirstPage: (context) => const ProfileEvent.getServices(),
-                          getBloc: (context) => context.read<ProfileBloc>(),
+                          loadMoreEvent: (context) => const AnnouncementEvent.loadMoreServices(),
+                          loadfirstPage: (context) => const AnnouncementEvent.getServices(),
+                          getBloc: (context) => context.read<AnnouncementBloc>(),
                         ),
                       ],
                     );

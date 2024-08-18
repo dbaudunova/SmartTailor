@@ -6,6 +6,22 @@ part of 'order_detailed_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+OrganizationExecutor _$OrganizationExecutorFromJson(
+        Map<String, dynamic> json) =>
+    OrganizationExecutor(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+    );
+
+Map<String, dynamic> _$OrganizationExecutorToJson(
+        OrganizationExecutor instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+    };
+
 OrderItems _$OrderItemsFromJson(Map<String, dynamic> json) => OrderItems(
       size: json['size'] as String?,
       quantity: (json['quantity'] as num?)?.toInt(),

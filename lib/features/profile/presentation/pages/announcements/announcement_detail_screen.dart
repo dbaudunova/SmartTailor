@@ -28,7 +28,8 @@ class AnnouncementDetailScreen extends StatefulWidget {
   });
 
   @override
-  State<AnnouncementDetailScreen> createState() => _AnnouncementDetailScreenState();
+  State<AnnouncementDetailScreen> createState() =>
+      _AnnouncementDetailScreenState();
 }
 
 class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
@@ -41,11 +42,17 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
     super.initState();
     switch (widget.type) {
       case AnnouncementType.order:
-        context.read<AnnouncementBloc>().add(AnnouncementEvent.getOrderDetailed(id: widget.id));
+        context
+            .read<AnnouncementBloc>()
+            .add(AnnouncementEvent.getOrderDetailed(id: widget.id));
       case AnnouncementType.equipment:
-        context.read<AnnouncementBloc>().add(AnnouncementEvent.getEquipmentDetailed(id: widget.id));
+        context
+            .read<AnnouncementBloc>()
+            .add(AnnouncementEvent.getEquipmentDetailed(id: widget.id));
       case AnnouncementType.service:
-        context.read<AnnouncementBloc>().add(AnnouncementEvent.getServiceDetailed(id: widget.id));
+        context
+            .read<AnnouncementBloc>()
+            .add(AnnouncementEvent.getServiceDetailed(id: widget.id));
     }
   }
 
@@ -85,18 +92,28 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
+                                    getAnnouncementTypeLabel(widget.type),
+                                    style: AppTextStyle.textField16.copyWith(
+                                        color: typeColor(widget.type)),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
                                     detailedData['title'] ?? 'Нет данных',
                                     style: AppTextStyle.textField16,
                                   ),
                                   const SizedBox(height: 12),
                                   Text(
-                                    detailedData['description'] ?? 'Нет описания',
-                                    style: AppTextStyle.text14.copyWith(color: AppColors.greyText),
+                                    detailedData['description'] ??
+                                        'Нет описания',
+                                    style: AppTextStyle.text14
+                                        .copyWith(color: AppColors.greyText),
                                   ),
                                   const SizedBox(height: 40),
                                   AuthorInfoWidget(
-                                    authorImage: detailedData['authorImage'] ?? '',
-                                    authorName: detailedData['authorFullName'] ?? '',
+                                    authorImage:
+                                        detailedData['authorImage'] ?? '',
+                                    authorName:
+                                        detailedData['authorFullName'] ?? '',
                                   ),
                                   const SizedBox(height: 24),
                                   if (widget.type == AnnouncementType.order)
@@ -112,14 +129,16 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                                           isExpanded: _isCustomerExpanded,
                                           onPressed: () {
                                             setState(() {
-                                              _isCustomerExpanded = !_isCustomerExpanded;
+                                              _isCustomerExpanded =
+                                                  !_isCustomerExpanded;
                                             });
                                           },
                                         ),
                                       ),
                                     ),
                                   const SizedBox(height: 4),
-                                  if (_isCustomerExpanded && widget.type == AnnouncementType.order)
+                                  if (_isCustomerExpanded &&
+                                      widget.type == AnnouncementType.order)
                                     _buildSizeContainer(),
                                   const SizedBox(height: 8),
                                   SizedBox(
@@ -130,18 +149,23 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                                         vertical: 4,
                                       ),
                                       child: _buildExpandableButton(
-                                        title: widget.type == AnnouncementType.equipment ? 'Покупатели' : 'Отклики',
+                                        title: widget.type ==
+                                                AnnouncementType.equipment
+                                            ? 'Покупатели'
+                                            : 'Отклики',
                                         isExpanded: _isResponseExpanded,
                                         onPressed: () {
                                           setState(() {
-                                            _isResponseExpanded = !_isResponseExpanded;
+                                            _isResponseExpanded =
+                                                !_isResponseExpanded;
                                           });
                                         },
                                       ),
                                     ),
                                   ),
                                   const SizedBox(height: 4),
-                                  if (_isResponseExpanded) _buildCustomerContainer(),
+                                  if (_isResponseExpanded)
+                                    _buildCustomerContainer(),
                                   const SizedBox(height: 130),
                                 ],
                               ),
@@ -215,10 +239,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: orderCandidates.length,
         itemBuilder: (context, index) {
-          final OrderCandidates item = orderCandidates[index];
-
           if (widget.type == AnnouncementType.order) {
-            final orderCandidate = item as OrderCandidates;
+            final orderCandidate = orderCandidates[index] as OrderCandidates;
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CustomerContainer(
@@ -227,7 +249,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
               ),
             );
           } else {
-            final equipmentBuyer = item as EquipmentBuyers;
+            final equipmentBuyer = orderCandidates[index] as EquipmentBuyers;
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CustomerContainer(
@@ -259,7 +281,9 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+            isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),
@@ -315,7 +339,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                     builder: (context) {
                       return ExitAlert(
                         confirmButton: () {
-                          AutoRouter.of(context).push(const MyAnnouncementsRoute());
+                          AutoRouter.of(context)
+                              .push(const MyAnnouncementsRoute());
                         },
                         cancelButton: () {
                           AutoRouter.of(context).maybePop();

@@ -16,9 +16,15 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AnnouncementEvent {
-  int? get id => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
@@ -26,6 +32,13 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
@@ -33,6 +46,13 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
@@ -41,6 +61,13 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
@@ -48,6 +75,13 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
@@ -55,15 +89,18 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AnnouncementEventCopyWith<AnnouncementEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -72,8 +109,6 @@ abstract class $AnnouncementEventCopyWith<$Res> {
   factory $AnnouncementEventCopyWith(
           AnnouncementEvent value, $Res Function(AnnouncementEvent) then) =
       _$AnnouncementEventCopyWithImpl<$Res, AnnouncementEvent>;
-  @useResult
-  $Res call({int? id});
 }
 
 /// @nodoc
@@ -85,28 +120,1063 @@ class _$AnnouncementEventCopyWithImpl<$Res, $Val extends AnnouncementEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetOrderDetailedImplCopyWith<$Res>
-    implements $AnnouncementEventCopyWith<$Res> {
+abstract class _$$GetOrdersImplCopyWith<$Res> {
+  factory _$$GetOrdersImplCopyWith(
+          _$GetOrdersImpl value, $Res Function(_$GetOrdersImpl) then) =
+      __$$GetOrdersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetOrdersImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$GetOrdersImpl>
+    implements _$$GetOrdersImplCopyWith<$Res> {
+  __$$GetOrdersImplCopyWithImpl(
+      _$GetOrdersImpl _value, $Res Function(_$GetOrdersImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetOrdersImpl implements _GetOrders {
+  const _$GetOrdersImpl();
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.getOrders()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetOrdersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+  }) {
+    return getOrders();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+  }) {
+    return getOrders?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getOrders != null) {
+      return getOrders();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+  }) {
+    return getOrders(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+  }) {
+    return getOrders?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getOrders != null) {
+      return getOrders(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetOrders implements AnnouncementEvent {
+  const factory _GetOrders() = _$GetOrdersImpl;
+}
+
+/// @nodoc
+abstract class _$$GetEquipmentsImplCopyWith<$Res> {
+  factory _$$GetEquipmentsImplCopyWith(
+          _$GetEquipmentsImpl value, $Res Function(_$GetEquipmentsImpl) then) =
+      __$$GetEquipmentsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetEquipmentsImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$GetEquipmentsImpl>
+    implements _$$GetEquipmentsImplCopyWith<$Res> {
+  __$$GetEquipmentsImplCopyWithImpl(
+      _$GetEquipmentsImpl _value, $Res Function(_$GetEquipmentsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetEquipmentsImpl implements _GetEquipments {
+  const _$GetEquipmentsImpl();
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.getEquipments()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetEquipmentsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+  }) {
+    return getEquipments();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+  }) {
+    return getEquipments?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getEquipments != null) {
+      return getEquipments();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+  }) {
+    return getEquipments(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+  }) {
+    return getEquipments?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getEquipments != null) {
+      return getEquipments(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetEquipments implements AnnouncementEvent {
+  const factory _GetEquipments() = _$GetEquipmentsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetServicesImplCopyWith<$Res> {
+  factory _$$GetServicesImplCopyWith(
+          _$GetServicesImpl value, $Res Function(_$GetServicesImpl) then) =
+      __$$GetServicesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetServicesImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$GetServicesImpl>
+    implements _$$GetServicesImplCopyWith<$Res> {
+  __$$GetServicesImplCopyWithImpl(
+      _$GetServicesImpl _value, $Res Function(_$GetServicesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetServicesImpl implements _GetServices {
+  const _$GetServicesImpl();
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.getServices()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetServicesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+  }) {
+    return getServices();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+  }) {
+    return getServices?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getServices != null) {
+      return getServices();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+  }) {
+    return getServices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+  }) {
+    return getServices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getServices != null) {
+      return getServices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetServices implements AnnouncementEvent {
+  const factory _GetServices() = _$GetServicesImpl;
+}
+
+/// @nodoc
+abstract class _$$GetAllImplCopyWith<$Res> {
+  factory _$$GetAllImplCopyWith(
+          _$GetAllImpl value, $Res Function(_$GetAllImpl) then) =
+      __$$GetAllImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAllImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$GetAllImpl>
+    implements _$$GetAllImplCopyWith<$Res> {
+  __$$GetAllImplCopyWithImpl(
+      _$GetAllImpl _value, $Res Function(_$GetAllImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetAllImpl implements _GetAll {
+  const _$GetAllImpl();
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.getAll()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetAllImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+  }) {
+    return getAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+  }) {
+    return getAll?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getAll != null) {
+      return getAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+  }) {
+    return getAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+  }) {
+    return getAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (getAll != null) {
+      return getAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAll implements AnnouncementEvent {
+  const factory _GetAll() = _$GetAllImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreOrdersImplCopyWith<$Res> {
+  factory _$$LoadMoreOrdersImplCopyWith(_$LoadMoreOrdersImpl value,
+          $Res Function(_$LoadMoreOrdersImpl) then) =
+      __$$LoadMoreOrdersImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreOrdersImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$LoadMoreOrdersImpl>
+    implements _$$LoadMoreOrdersImplCopyWith<$Res> {
+  __$$LoadMoreOrdersImplCopyWithImpl(
+      _$LoadMoreOrdersImpl _value, $Res Function(_$LoadMoreOrdersImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
+  const _$LoadMoreOrdersImpl();
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.loadMoreOrders()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreOrdersImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+  }) {
+    return loadMoreOrders();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+  }) {
+    return loadMoreOrders?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (loadMoreOrders != null) {
+      return loadMoreOrders();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+  }) {
+    return loadMoreOrders(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+  }) {
+    return loadMoreOrders?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (loadMoreOrders != null) {
+      return loadMoreOrders(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreOrders implements AnnouncementEvent {
+  const factory _LoadMoreOrders() = _$LoadMoreOrdersImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreEquipmentsImplCopyWith<$Res> {
+  factory _$$LoadMoreEquipmentsImplCopyWith(_$LoadMoreEquipmentsImpl value,
+          $Res Function(_$LoadMoreEquipmentsImpl) then) =
+      __$$LoadMoreEquipmentsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreEquipmentsImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$LoadMoreEquipmentsImpl>
+    implements _$$LoadMoreEquipmentsImplCopyWith<$Res> {
+  __$$LoadMoreEquipmentsImplCopyWithImpl(_$LoadMoreEquipmentsImpl _value,
+      $Res Function(_$LoadMoreEquipmentsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
+  const _$LoadMoreEquipmentsImpl();
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.loadMoreEquipments()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreEquipmentsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+  }) {
+    return loadMoreEquipments();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+  }) {
+    return loadMoreEquipments?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (loadMoreEquipments != null) {
+      return loadMoreEquipments();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+  }) {
+    return loadMoreEquipments(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+  }) {
+    return loadMoreEquipments?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (loadMoreEquipments != null) {
+      return loadMoreEquipments(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreEquipments implements AnnouncementEvent {
+  const factory _LoadMoreEquipments() = _$LoadMoreEquipmentsImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreServicesImplCopyWith<$Res> {
+  factory _$$LoadMoreServicesImplCopyWith(_$LoadMoreServicesImpl value,
+          $Res Function(_$LoadMoreServicesImpl) then) =
+      __$$LoadMoreServicesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreServicesImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$LoadMoreServicesImpl>
+    implements _$$LoadMoreServicesImplCopyWith<$Res> {
+  __$$LoadMoreServicesImplCopyWithImpl(_$LoadMoreServicesImpl _value,
+      $Res Function(_$LoadMoreServicesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreServicesImpl implements _LoadMoreServices {
+  const _$LoadMoreServicesImpl();
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.loadMoreServices()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreServicesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+  }) {
+    return loadMoreServices();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+  }) {
+    return loadMoreServices?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (loadMoreServices != null) {
+      return loadMoreServices();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+  }) {
+    return loadMoreServices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+  }) {
+    return loadMoreServices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    required TResult orElse(),
+  }) {
+    if (loadMoreServices != null) {
+      return loadMoreServices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreServices implements AnnouncementEvent {
+  const factory _LoadMoreServices() = _$LoadMoreServicesImpl;
+}
+
+/// @nodoc
+abstract class _$$GetOrderDetailedImplCopyWith<$Res> {
   factory _$$GetOrderDetailedImplCopyWith(_$GetOrderDetailedImpl value,
           $Res Function(_$GetOrderDetailedImpl) then) =
       __$$GetOrderDetailedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int? id});
 }
@@ -167,6 +1237,13 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
@@ -177,6 +1254,13 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
@@ -187,6 +1271,13 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
@@ -201,6 +1292,13 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
@@ -211,6 +1309,13 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
@@ -221,6 +1326,13 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
@@ -236,21 +1348,17 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
 abstract class _GetOrderDetailed implements AnnouncementEvent {
   const factory _GetOrderDetailed({final int? id}) = _$GetOrderDetailedImpl;
 
-  @override
   int? get id;
-  @override
   @JsonKey(ignore: true)
   _$$GetOrderDetailedImplCopyWith<_$GetOrderDetailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetEquipmentDetailedImplCopyWith<$Res>
-    implements $AnnouncementEventCopyWith<$Res> {
+abstract class _$$GetEquipmentDetailedImplCopyWith<$Res> {
   factory _$$GetEquipmentDetailedImplCopyWith(_$GetEquipmentDetailedImpl value,
           $Res Function(_$GetEquipmentDetailedImpl) then) =
       __$$GetEquipmentDetailedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int? id});
 }
@@ -312,6 +1420,13 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
@@ -322,6 +1437,13 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
@@ -332,6 +1454,13 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
@@ -346,6 +1475,13 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
@@ -356,6 +1492,13 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
@@ -366,6 +1509,13 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
@@ -382,21 +1532,17 @@ abstract class _GetEquipmentDetailed implements AnnouncementEvent {
   const factory _GetEquipmentDetailed({final int? id}) =
       _$GetEquipmentDetailedImpl;
 
-  @override
   int? get id;
-  @override
   @JsonKey(ignore: true)
   _$$GetEquipmentDetailedImplCopyWith<_$GetEquipmentDetailedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GetServiceDetailedImplCopyWith<$Res>
-    implements $AnnouncementEventCopyWith<$Res> {
+abstract class _$$GetServiceDetailedImplCopyWith<$Res> {
   factory _$$GetServiceDetailedImplCopyWith(_$GetServiceDetailedImpl value,
           $Res Function(_$GetServiceDetailedImpl) then) =
       __$$GetServiceDetailedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int? id});
 }
@@ -457,6 +1603,13 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
     required TResult Function(int? id) getOrderDetailed,
     required TResult Function(int? id) getEquipmentDetailed,
     required TResult Function(int? id) getServiceDetailed,
@@ -467,6 +1620,13 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
     TResult? Function(int? id)? getOrderDetailed,
     TResult? Function(int? id)? getEquipmentDetailed,
     TResult? Function(int? id)? getServiceDetailed,
@@ -477,6 +1637,13 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
     TResult Function(int? id)? getOrderDetailed,
     TResult Function(int? id)? getEquipmentDetailed,
     TResult Function(int? id)? getServiceDetailed,
@@ -491,6 +1658,13 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
     required TResult Function(_GetOrderDetailed value) getOrderDetailed,
     required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
     required TResult Function(_GetServiceDetailed value) getServiceDetailed,
@@ -501,6 +1675,13 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
     TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
@@ -511,6 +1692,13 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
     TResult Function(_GetOrderDetailed value)? getOrderDetailed,
     TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
     TResult Function(_GetServiceDetailed value)? getServiceDetailed,
@@ -526,9 +1714,7 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
 abstract class _GetServiceDetailed implements AnnouncementEvent {
   const factory _GetServiceDetailed({final int? id}) = _$GetServiceDetailedImpl;
 
-  @override
   int? get id;
-  @override
   @JsonKey(ignore: true)
   _$$GetServiceDetailedImplCopyWith<_$GetServiceDetailedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -542,6 +1728,20 @@ mixin _$AnnouncementState {
       throw _privateConstructorUsedError;
   EquipmentDetailedEntity? get detailedEquipment =>
       throw _privateConstructorUsedError;
+  List<AnnouncementEntity> get equipments => throw _privateConstructorUsedError;
+  List<AnnouncementEntity> get orders => throw _privateConstructorUsedError;
+  List<AnnouncementEntity> get services => throw _privateConstructorUsedError;
+  bool? get lastForOrders => throw _privateConstructorUsedError;
+  bool? get lastForServices => throw _privateConstructorUsedError;
+  bool? get lastForEquipment => throw _privateConstructorUsedError;
+  int get ordersPageNumber => throw _privateConstructorUsedError;
+  int get equipmentsPageNumber => throw _privateConstructorUsedError;
+  int get servicesPageNumber => throw _privateConstructorUsedError;
+  int get ordersTotalCount => throw _privateConstructorUsedError;
+  int get equipmentTotalCount => throw _privateConstructorUsedError;
+  int get servicesTotalCount => throw _privateConstructorUsedError;
+  bool get isLoadingMore => throw _privateConstructorUsedError;
+  bool get isAnnouncementsLoaded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AnnouncementStateCopyWith<AnnouncementState> get copyWith =>
@@ -558,7 +1758,21 @@ abstract class $AnnouncementStateCopyWith<$Res> {
       {StateStatus stateStatus,
       OrderDetailedEntity? detailedOrder,
       ServiceDetailedEntity? detailedService,
-      EquipmentDetailedEntity? detailedEquipment});
+      EquipmentDetailedEntity? detailedEquipment,
+      List<AnnouncementEntity> equipments,
+      List<AnnouncementEntity> orders,
+      List<AnnouncementEntity> services,
+      bool? lastForOrders,
+      bool? lastForServices,
+      bool? lastForEquipment,
+      int ordersPageNumber,
+      int equipmentsPageNumber,
+      int servicesPageNumber,
+      int ordersTotalCount,
+      int equipmentTotalCount,
+      int servicesTotalCount,
+      bool isLoadingMore,
+      bool isAnnouncementsLoaded});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -580,6 +1794,20 @@ class _$AnnouncementStateCopyWithImpl<$Res, $Val extends AnnouncementState>
     Object? detailedOrder = freezed,
     Object? detailedService = freezed,
     Object? detailedEquipment = freezed,
+    Object? equipments = null,
+    Object? orders = null,
+    Object? services = null,
+    Object? lastForOrders = freezed,
+    Object? lastForServices = freezed,
+    Object? lastForEquipment = freezed,
+    Object? ordersPageNumber = null,
+    Object? equipmentsPageNumber = null,
+    Object? servicesPageNumber = null,
+    Object? ordersTotalCount = null,
+    Object? equipmentTotalCount = null,
+    Object? servicesTotalCount = null,
+    Object? isLoadingMore = null,
+    Object? isAnnouncementsLoaded = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -598,6 +1826,62 @@ class _$AnnouncementStateCopyWithImpl<$Res, $Val extends AnnouncementState>
           ? _value.detailedEquipment
           : detailedEquipment // ignore: cast_nullable_to_non_nullable
               as EquipmentDetailedEntity?,
+      equipments: null == equipments
+          ? _value.equipments
+          : equipments // ignore: cast_nullable_to_non_nullable
+              as List<AnnouncementEntity>,
+      orders: null == orders
+          ? _value.orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as List<AnnouncementEntity>,
+      services: null == services
+          ? _value.services
+          : services // ignore: cast_nullable_to_non_nullable
+              as List<AnnouncementEntity>,
+      lastForOrders: freezed == lastForOrders
+          ? _value.lastForOrders
+          : lastForOrders // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForServices: freezed == lastForServices
+          ? _value.lastForServices
+          : lastForServices // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForEquipment: freezed == lastForEquipment
+          ? _value.lastForEquipment
+          : lastForEquipment // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      ordersPageNumber: null == ordersPageNumber
+          ? _value.ordersPageNumber
+          : ordersPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentsPageNumber: null == equipmentsPageNumber
+          ? _value.equipmentsPageNumber
+          : equipmentsPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesPageNumber: null == servicesPageNumber
+          ? _value.servicesPageNumber
+          : servicesPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      ordersTotalCount: null == ordersTotalCount
+          ? _value.ordersTotalCount
+          : ordersTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentTotalCount: null == equipmentTotalCount
+          ? _value.equipmentTotalCount
+          : equipmentTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesTotalCount: null == servicesTotalCount
+          ? _value.servicesTotalCount
+          : servicesTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLoadingMore: null == isLoadingMore
+          ? _value.isLoadingMore
+          : isLoadingMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAnnouncementsLoaded: null == isAnnouncementsLoaded
+          ? _value.isAnnouncementsLoaded
+          : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -622,7 +1906,21 @@ abstract class _$$AnnouncementStateImplCopyWith<$Res>
       {StateStatus stateStatus,
       OrderDetailedEntity? detailedOrder,
       ServiceDetailedEntity? detailedService,
-      EquipmentDetailedEntity? detailedEquipment});
+      EquipmentDetailedEntity? detailedEquipment,
+      List<AnnouncementEntity> equipments,
+      List<AnnouncementEntity> orders,
+      List<AnnouncementEntity> services,
+      bool? lastForOrders,
+      bool? lastForServices,
+      bool? lastForEquipment,
+      int ordersPageNumber,
+      int equipmentsPageNumber,
+      int servicesPageNumber,
+      int ordersTotalCount,
+      int equipmentTotalCount,
+      int servicesTotalCount,
+      bool isLoadingMore,
+      bool isAnnouncementsLoaded});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -643,6 +1941,20 @@ class __$$AnnouncementStateImplCopyWithImpl<$Res>
     Object? detailedOrder = freezed,
     Object? detailedService = freezed,
     Object? detailedEquipment = freezed,
+    Object? equipments = null,
+    Object? orders = null,
+    Object? services = null,
+    Object? lastForOrders = freezed,
+    Object? lastForServices = freezed,
+    Object? lastForEquipment = freezed,
+    Object? ordersPageNumber = null,
+    Object? equipmentsPageNumber = null,
+    Object? servicesPageNumber = null,
+    Object? ordersTotalCount = null,
+    Object? equipmentTotalCount = null,
+    Object? servicesTotalCount = null,
+    Object? isLoadingMore = null,
+    Object? isAnnouncementsLoaded = null,
   }) {
     return _then(_$AnnouncementStateImpl(
       stateStatus: null == stateStatus
@@ -661,6 +1973,62 @@ class __$$AnnouncementStateImplCopyWithImpl<$Res>
           ? _value.detailedEquipment
           : detailedEquipment // ignore: cast_nullable_to_non_nullable
               as EquipmentDetailedEntity?,
+      equipments: null == equipments
+          ? _value._equipments
+          : equipments // ignore: cast_nullable_to_non_nullable
+              as List<AnnouncementEntity>,
+      orders: null == orders
+          ? _value._orders
+          : orders // ignore: cast_nullable_to_non_nullable
+              as List<AnnouncementEntity>,
+      services: null == services
+          ? _value._services
+          : services // ignore: cast_nullable_to_non_nullable
+              as List<AnnouncementEntity>,
+      lastForOrders: freezed == lastForOrders
+          ? _value.lastForOrders
+          : lastForOrders // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForServices: freezed == lastForServices
+          ? _value.lastForServices
+          : lastForServices // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      lastForEquipment: freezed == lastForEquipment
+          ? _value.lastForEquipment
+          : lastForEquipment // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      ordersPageNumber: null == ordersPageNumber
+          ? _value.ordersPageNumber
+          : ordersPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentsPageNumber: null == equipmentsPageNumber
+          ? _value.equipmentsPageNumber
+          : equipmentsPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesPageNumber: null == servicesPageNumber
+          ? _value.servicesPageNumber
+          : servicesPageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      ordersTotalCount: null == ordersTotalCount
+          ? _value.ordersTotalCount
+          : ordersTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      equipmentTotalCount: null == equipmentTotalCount
+          ? _value.equipmentTotalCount
+          : equipmentTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      servicesTotalCount: null == servicesTotalCount
+          ? _value.servicesTotalCount
+          : servicesTotalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLoadingMore: null == isLoadingMore
+          ? _value.isLoadingMore
+          : isLoadingMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAnnouncementsLoaded: null == isAnnouncementsLoaded
+          ? _value.isAnnouncementsLoaded
+          : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -672,7 +2040,24 @@ class _$AnnouncementStateImpl implements _AnnouncementState {
       {required this.stateStatus,
       this.detailedOrder,
       this.detailedService,
-      this.detailedEquipment});
+      this.detailedEquipment,
+      required final List<AnnouncementEntity> equipments,
+      required final List<AnnouncementEntity> orders,
+      required final List<AnnouncementEntity> services,
+      required this.lastForOrders,
+      required this.lastForServices,
+      required this.lastForEquipment,
+      required this.ordersPageNumber,
+      required this.equipmentsPageNumber,
+      required this.servicesPageNumber,
+      required this.ordersTotalCount,
+      required this.equipmentTotalCount,
+      required this.servicesTotalCount,
+      required this.isLoadingMore,
+      this.isAnnouncementsLoaded = false})
+      : _equipments = equipments,
+        _orders = orders,
+        _services = services;
 
   @override
   final StateStatus stateStatus;
@@ -682,10 +2067,57 @@ class _$AnnouncementStateImpl implements _AnnouncementState {
   final ServiceDetailedEntity? detailedService;
   @override
   final EquipmentDetailedEntity? detailedEquipment;
+  final List<AnnouncementEntity> _equipments;
+  @override
+  List<AnnouncementEntity> get equipments {
+    if (_equipments is EqualUnmodifiableListView) return _equipments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_equipments);
+  }
+
+  final List<AnnouncementEntity> _orders;
+  @override
+  List<AnnouncementEntity> get orders {
+    if (_orders is EqualUnmodifiableListView) return _orders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_orders);
+  }
+
+  final List<AnnouncementEntity> _services;
+  @override
+  List<AnnouncementEntity> get services {
+    if (_services is EqualUnmodifiableListView) return _services;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_services);
+  }
+
+  @override
+  final bool? lastForOrders;
+  @override
+  final bool? lastForServices;
+  @override
+  final bool? lastForEquipment;
+  @override
+  final int ordersPageNumber;
+  @override
+  final int equipmentsPageNumber;
+  @override
+  final int servicesPageNumber;
+  @override
+  final int ordersTotalCount;
+  @override
+  final int equipmentTotalCount;
+  @override
+  final int servicesTotalCount;
+  @override
+  final bool isLoadingMore;
+  @override
+  @JsonKey()
+  final bool isAnnouncementsLoaded;
 
   @override
   String toString() {
-    return 'AnnouncementState(stateStatus: $stateStatus, detailedOrder: $detailedOrder, detailedService: $detailedService, detailedEquipment: $detailedEquipment)';
+    return 'AnnouncementState(stateStatus: $stateStatus, detailedOrder: $detailedOrder, detailedService: $detailedService, detailedEquipment: $detailedEquipment, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore, isAnnouncementsLoaded: $isAnnouncementsLoaded)';
   }
 
   @override
@@ -700,12 +2132,56 @@ class _$AnnouncementStateImpl implements _AnnouncementState {
             (identical(other.detailedService, detailedService) ||
                 other.detailedService == detailedService) &&
             (identical(other.detailedEquipment, detailedEquipment) ||
-                other.detailedEquipment == detailedEquipment));
+                other.detailedEquipment == detailedEquipment) &&
+            const DeepCollectionEquality()
+                .equals(other._equipments, _equipments) &&
+            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            const DeepCollectionEquality().equals(other._services, _services) &&
+            (identical(other.lastForOrders, lastForOrders) ||
+                other.lastForOrders == lastForOrders) &&
+            (identical(other.lastForServices, lastForServices) ||
+                other.lastForServices == lastForServices) &&
+            (identical(other.lastForEquipment, lastForEquipment) ||
+                other.lastForEquipment == lastForEquipment) &&
+            (identical(other.ordersPageNumber, ordersPageNumber) ||
+                other.ordersPageNumber == ordersPageNumber) &&
+            (identical(other.equipmentsPageNumber, equipmentsPageNumber) ||
+                other.equipmentsPageNumber == equipmentsPageNumber) &&
+            (identical(other.servicesPageNumber, servicesPageNumber) ||
+                other.servicesPageNumber == servicesPageNumber) &&
+            (identical(other.ordersTotalCount, ordersTotalCount) ||
+                other.ordersTotalCount == ordersTotalCount) &&
+            (identical(other.equipmentTotalCount, equipmentTotalCount) ||
+                other.equipmentTotalCount == equipmentTotalCount) &&
+            (identical(other.servicesTotalCount, servicesTotalCount) ||
+                other.servicesTotalCount == servicesTotalCount) &&
+            (identical(other.isLoadingMore, isLoadingMore) ||
+                other.isLoadingMore == isLoadingMore) &&
+            (identical(other.isAnnouncementsLoaded, isAnnouncementsLoaded) ||
+                other.isAnnouncementsLoaded == isAnnouncementsLoaded));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus, detailedOrder,
-      detailedService, detailedEquipment);
+  int get hashCode => Object.hash(
+      runtimeType,
+      stateStatus,
+      detailedOrder,
+      detailedService,
+      detailedEquipment,
+      const DeepCollectionEquality().hash(_equipments),
+      const DeepCollectionEquality().hash(_orders),
+      const DeepCollectionEquality().hash(_services),
+      lastForOrders,
+      lastForServices,
+      lastForEquipment,
+      ordersPageNumber,
+      equipmentsPageNumber,
+      servicesPageNumber,
+      ordersTotalCount,
+      equipmentTotalCount,
+      servicesTotalCount,
+      isLoadingMore,
+      isAnnouncementsLoaded);
 
   @JsonKey(ignore: true)
   @override
@@ -717,11 +2193,24 @@ class _$AnnouncementStateImpl implements _AnnouncementState {
 
 abstract class _AnnouncementState implements AnnouncementState {
   const factory _AnnouncementState(
-          {required final StateStatus stateStatus,
-          final OrderDetailedEntity? detailedOrder,
-          final ServiceDetailedEntity? detailedService,
-          final EquipmentDetailedEntity? detailedEquipment}) =
-      _$AnnouncementStateImpl;
+      {required final StateStatus stateStatus,
+      final OrderDetailedEntity? detailedOrder,
+      final ServiceDetailedEntity? detailedService,
+      final EquipmentDetailedEntity? detailedEquipment,
+      required final List<AnnouncementEntity> equipments,
+      required final List<AnnouncementEntity> orders,
+      required final List<AnnouncementEntity> services,
+      required final bool? lastForOrders,
+      required final bool? lastForServices,
+      required final bool? lastForEquipment,
+      required final int ordersPageNumber,
+      required final int equipmentsPageNumber,
+      required final int servicesPageNumber,
+      required final int ordersTotalCount,
+      required final int equipmentTotalCount,
+      required final int servicesTotalCount,
+      required final bool isLoadingMore,
+      final bool isAnnouncementsLoaded}) = _$AnnouncementStateImpl;
 
   @override
   StateStatus get stateStatus;
@@ -731,6 +2220,34 @@ abstract class _AnnouncementState implements AnnouncementState {
   ServiceDetailedEntity? get detailedService;
   @override
   EquipmentDetailedEntity? get detailedEquipment;
+  @override
+  List<AnnouncementEntity> get equipments;
+  @override
+  List<AnnouncementEntity> get orders;
+  @override
+  List<AnnouncementEntity> get services;
+  @override
+  bool? get lastForOrders;
+  @override
+  bool? get lastForServices;
+  @override
+  bool? get lastForEquipment;
+  @override
+  int get ordersPageNumber;
+  @override
+  int get equipmentsPageNumber;
+  @override
+  int get servicesPageNumber;
+  @override
+  int get ordersTotalCount;
+  @override
+  int get equipmentTotalCount;
+  @override
+  int get servicesTotalCount;
+  @override
+  bool get isLoadingMore;
+  @override
+  bool get isAnnouncementsLoaded;
   @override
   @JsonKey(ignore: true)
   _$$AnnouncementStateImplCopyWith<_$AnnouncementStateImpl> get copyWith =>

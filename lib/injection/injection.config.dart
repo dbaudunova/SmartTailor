@@ -32,7 +32,7 @@ import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/confirm
 import 'package:neobis_smart_tailor/features/confirmation/domain/useCase/resend_pin_use_case%20copy.dart'
     as _i150;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/confirmation_bloc/confirmation_bloc.dart'
-    as _i166;
+    as _i165;
 import 'package:neobis_smart_tailor/features/confirmation/presentation/bloc/timer_bloc/timer_bloc.dart'
     as _i5;
 import 'package:neobis_smart_tailor/features/login/data/data_source/impl/login_data_source_impl.dart'
@@ -90,9 +90,9 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipmen
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/repository/equipment_detail_repo.dart'
     as _i109;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/use_case/buy_equipment_use_case%20copy.dart'
-    as _i161;
+    as _i160;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/use_case/get_equipmentby_id_use_case.dart'
-    as _i162;
+    as _i161;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/presentation/bloc/equipment_detail_bloc.dart'
     as _i172;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_detail_screen/data/data_source/marketplace_detail_data_source_impl/order_data_source_impl.dart'
@@ -124,11 +124,11 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/data/models/service_detail_model/service_detail_model.dart'
     as _i13;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/data/repository/service_detail_repo_impl.dart'
-    as _i160;
+    as _i159;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/entitys/service_detail_entity.dart'
     as _i14;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/repository/service_detail_repo.dart'
-    as _i159;
+    as _i158;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/use_case/get_service_by_id_use_case.dart'
     as _i171;
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/presentation/bloc/service_detail_bloc.dart'
@@ -142,13 +142,13 @@ import 'package:neobis_smart_tailor/features/order_place/data/repository/order_p
 import 'package:neobis_smart_tailor/features/order_place/domain/repository/order_place_repo.dart'
     as _i94;
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_equipment_use_case.dart'
-    as _i154;
+    as _i153;
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_order_use_case.dart'
-    as _i155;
+    as _i154;
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart'
-    as _i156;
+    as _i155;
 import 'package:neobis_smart_tailor/features/order_place/presentation/bloc/order_place_bloc.dart'
-    as _i158;
+    as _i157;
 import 'package:neobis_smart_tailor/features/organization/pages/create_organization/data/data_source/create_organization_data_source.dart'
     as _i78;
 import 'package:neobis_smart_tailor/features/organization/pages/create_organization/data/data_source/impl/create_organization_data_source_impl.dart'
@@ -194,7 +194,7 @@ import 'package:neobis_smart_tailor/features/organization/pages/current_order/do
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/use_case/get_detailed_order_use_case.dart'
     as _i113;
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart'
-    as _i167;
+    as _i166;
 import 'package:neobis_smart_tailor/features/organization/pages/employee/data/converter/employee_detail_converter.dart'
     as _i58;
 import 'package:neobis_smart_tailor/features/organization/pages/employee/data/converter/employees_converter.dart'
@@ -232,7 +232,7 @@ import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/domain/repository/invite_employee_repo.dart'
     as _i146;
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/domain/use_case/invite_employee_use_case.dart'
-    as _i164;
+    as _i163;
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/bloc/invite_employee_bloc.dart'
     as _i170;
 import 'package:neobis_smart_tailor/features/organization/pages/organization/data/converter/organization_info_converter.dart'
@@ -326,13 +326,13 @@ import 'package:neobis_smart_tailor/features/profile/domain/use_case/sign_out_us
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/upload_image_use_case.dart'
     as _i144;
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/announcement/announcement_bloc.dart'
-    as _i165;
+    as _i164;
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile/profile_bloc.dart'
-    as _i153;
+    as _i167;
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/bloc/order_history_bloc.dart'
-    as _i157;
+    as _i156;
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/bloc/purchases_bloc.dart'
-    as _i163;
+    as _i162;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/impl/registration_data_source_impl.dart'
     as _i62;
 import 'package:neobis_smart_tailor/features/registration/data/data_source/registration_data_source.dart'
@@ -605,57 +605,57 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i129.GetOrdersUseCase>(),
           gh<_i130.GetServicesUseCase>(),
         ));
-    gh.factory<_i153.ProfileBloc>(() => _i153.ProfileBloc(
-          sendSubscriptionUseCase: gh<_i142.SendSubscriptionUseCase>(),
-          signOutUseCase: gh<_i143.SignOutUseCase>(),
-          getProfileInfoUseCase: gh<_i139.GetProfileInfoUseCase>(),
-          editProfileInfoUseCase: gh<_i131.EditProfileInfoUseCase>(),
-          uploadImageUseCase: gh<_i144.UploadImageUseCase>(),
-          getMyOrdersUseCase: gh<_i135.GetMyOrdersUseCase>(),
-          getMyEquipmentsUseCase: gh<_i134.GetMyEquipmentsUseCase>(),
-          getMyServicesUseCase: gh<_i136.GetMyServicesUseCase>(),
+    gh.singleton<_i153.CreateEquipmentUseCase>(
+        () => _i153.CreateEquipmentUseCase(repo: gh<_i94.OrderPlaceRepo>()));
+    gh.singleton<_i154.CreateOrderUseCase>(
+        () => _i154.CreateOrderUseCase(repo: gh<_i94.OrderPlaceRepo>()));
+    gh.singleton<_i155.CreateServiceUseCase>(
+        () => _i155.CreateServiceUseCase(repo: gh<_i94.OrderPlaceRepo>()));
+    gh.factory<_i156.OrderHistoryBloc>(() =>
+        _i156.OrderHistoryBloc(gh<_i138.GetOrderHistoryForUserUseCase>()));
+    gh.singleton<_i157.OrderPlaceBloc>(() => _i157.OrderPlaceBloc(
+          gh<_i153.CreateEquipmentUseCase>(),
+          gh<_i155.CreateServiceUseCase>(),
+          gh<_i154.CreateOrderUseCase>(),
         ));
-    gh.singleton<_i154.CreateEquipmentUseCase>(
-        () => _i154.CreateEquipmentUseCase(repo: gh<_i94.OrderPlaceRepo>()));
-    gh.singleton<_i155.CreateOrderUseCase>(
-        () => _i155.CreateOrderUseCase(repo: gh<_i94.OrderPlaceRepo>()));
-    gh.singleton<_i156.CreateServiceUseCase>(
-        () => _i156.CreateServiceUseCase(repo: gh<_i94.OrderPlaceRepo>()));
-    gh.factory<_i157.OrderHistoryBloc>(() =>
-        _i157.OrderHistoryBloc(gh<_i138.GetOrderHistoryForUserUseCase>()));
-    gh.singleton<_i158.OrderPlaceBloc>(() => _i158.OrderPlaceBloc(
-          gh<_i154.CreateEquipmentUseCase>(),
-          gh<_i156.CreateServiceUseCase>(),
-          gh<_i155.CreateOrderUseCase>(),
-        ));
-    gh.factory<_i159.ServiceDetailRepo>(() => _i160.ServiceDetailRepoImpl(
+    gh.factory<_i158.ServiceDetailRepo>(() => _i159.ServiceDetailRepoImpl(
           gh<_i96.ServiceDetailDataSource>(),
           gh<
               _i9
               .Converter<_i13.ServiceDetailModel, _i14.ServiceDetailEntity>>(),
         ));
-    gh.singleton<_i161.BuyEquipmentIdUseCase>(() =>
-        _i161.BuyEquipmentIdUseCase(repo: gh<_i109.EquipmentDetailRepo>()));
-    gh.singleton<_i162.GetEuipmentByIdUseCase>(() =>
-        _i162.GetEuipmentByIdUseCase(repo: gh<_i109.EquipmentDetailRepo>()));
-    gh.factory<_i163.PurchasesBloc>(() => _i163.PurchasesBloc(
+    gh.singleton<_i160.BuyEquipmentIdUseCase>(() =>
+        _i160.BuyEquipmentIdUseCase(repo: gh<_i109.EquipmentDetailRepo>()));
+    gh.singleton<_i161.GetEuipmentByIdUseCase>(() =>
+        _i161.GetEuipmentByIdUseCase(repo: gh<_i109.EquipmentDetailRepo>()));
+    gh.factory<_i162.PurchasesBloc>(() => _i162.PurchasesBloc(
           gh<_i132.GetAllPurchasesUseCase>(),
           gh<_i141.LoadMorePurchasesUseCase>(),
         ));
-    gh.singleton<_i164.InviteEmployeeUseCase>(() =>
-        _i164.InviteEmployeeUseCase(repo: gh<_i146.InviteEmployeeRepo>()));
-    gh.factory<_i165.AnnouncementBloc>(() => _i165.AnnouncementBloc(
+    gh.singleton<_i163.InviteEmployeeUseCase>(() =>
+        _i163.InviteEmployeeUseCase(repo: gh<_i146.InviteEmployeeRepo>()));
+    gh.factory<_i164.AnnouncementBloc>(() => _i164.AnnouncementBloc(
           gh<_i137.GetOrderDetailedByIdUseCase>(),
           gh<_i140.GetServiceDetailedByIdUseCase>(),
           gh<_i133.GetEquipmentDetailedByIdUseCase>(),
+          gh<_i135.GetMyOrdersUseCase>(),
+          gh<_i134.GetMyEquipmentsUseCase>(),
+          gh<_i136.GetMyServicesUseCase>(),
         ));
-    gh.singleton<_i166.ConfirmationBloc>(() => _i166.ConfirmationBloc(
+    gh.singleton<_i165.ConfirmationBloc>(() => _i165.ConfirmationBloc(
           gh<_i149.ConfirmationUseCase>(),
           gh<_i150.ResendPinUseCase>(),
         ));
-    gh.singleton<_i167.CurrentOrderBloc>(() => _i167.CurrentOrderBloc(
+    gh.singleton<_i166.CurrentOrderBloc>(() => _i166.CurrentOrderBloc(
           gh<_i112.GetAllOrdersUseCase>(),
           gh<_i113.GetCurrentDetailOrderUseCase>(),
+        ));
+    gh.factory<_i167.ProfileBloc>(() => _i167.ProfileBloc(
+          sendSubscriptionUseCase: gh<_i142.SendSubscriptionUseCase>(),
+          signOutUseCase: gh<_i143.SignOutUseCase>(),
+          getProfileInfoUseCase: gh<_i139.GetProfileInfoUseCase>(),
+          editProfileInfoUseCase: gh<_i131.EditProfileInfoUseCase>(),
+          uploadImageUseCase: gh<_i144.UploadImageUseCase>(),
         ));
     gh.singleton<_i168.EmployeeBloc>(() => _i168.EmployeeBloc(
           gh<_i126.GetAllEmployeesUseCase>(),
@@ -664,12 +664,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i169.CreateOrganizationBloc>(() =>
         _i169.CreateOrganizationBloc(gh<_i151.CreateOrganizationUseCase>()));
     gh.singleton<_i170.InviteEmployeeBloc>(
-        () => _i170.InviteEmployeeBloc(gh<_i164.InviteEmployeeUseCase>()));
+        () => _i170.InviteEmployeeBloc(gh<_i163.InviteEmployeeUseCase>()));
     gh.singleton<_i171.GetServiceByIdUseCase>(
-        () => _i171.GetServiceByIdUseCase(repo: gh<_i159.ServiceDetailRepo>()));
+        () => _i171.GetServiceByIdUseCase(repo: gh<_i158.ServiceDetailRepo>()));
     gh.factory<_i172.EquipmentDetailBloc>(() => _i172.EquipmentDetailBloc(
-          gh<_i162.GetEuipmentByIdUseCase>(),
-          gh<_i161.BuyEquipmentIdUseCase>(),
+          gh<_i161.GetEuipmentByIdUseCase>(),
+          gh<_i160.BuyEquipmentIdUseCase>(),
         ));
     gh.factory<_i173.ServiceDetailBloc>(
         () => _i173.ServiceDetailBloc(gh<_i171.GetServiceByIdUseCase>()));
