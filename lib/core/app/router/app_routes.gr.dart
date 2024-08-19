@@ -202,6 +202,7 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: PurchaseDetailScreen(
           id: args.id,
+          type: args.type,
           key: args.key,
         ),
       );
@@ -745,12 +746,14 @@ class ProfileRoute extends PageRouteInfo<void> {
 class PurchaseDetailRoute extends PageRouteInfo<PurchaseDetailRouteArgs> {
   PurchaseDetailRoute({
     required int id,
+    required AnnouncementType type,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           PurchaseDetailRoute.name,
           args: PurchaseDetailRouteArgs(
             id: id,
+            type: type,
             key: key,
           ),
           initialChildren: children,
@@ -765,16 +768,19 @@ class PurchaseDetailRoute extends PageRouteInfo<PurchaseDetailRouteArgs> {
 class PurchaseDetailRouteArgs {
   const PurchaseDetailRouteArgs({
     required this.id,
+    required this.type,
     this.key,
   });
 
   final int id;
 
+  final AnnouncementType type;
+
   final Key? key;
 
   @override
   String toString() {
-    return 'PurchaseDetailRouteArgs{id: $id, key: $key}';
+    return 'PurchaseDetailRouteArgs{id: $id, type: $type, key: $key}';
   }
 }
 

@@ -1,17 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/author_info.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/custom_dropdown_widget.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/bloc/purchases_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/response_item.dart';
 
 class PurchaseDetailContent extends StatefulWidget {
   final int id;
-  const PurchaseDetailContent({required this.id, super.key});
+  final AnnouncementType type;
+  const PurchaseDetailContent({required this.id, required this.type, super.key});
 
   @override
   State<PurchaseDetailContent> createState() => _PurchaseDetailScreenState();
@@ -21,6 +25,16 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailContent> {
   bool _isDescriptionExpanded = false;
   bool _isResponseExpanded = false;
   final DateTime _orderDate = DateTime.now();
+
+  PurchasesBloc get _bloc => context.read<PurchasesBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    print('id: ${widget.id}');
+    print('type: ${widget.type}');
+    _bloc.add(PurchasesEvent.getDetail(id: widget.id, type: widget.type));
+  }
 
   @override
   Widget build(BuildContext context) {

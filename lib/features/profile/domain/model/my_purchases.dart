@@ -7,8 +7,10 @@ class PurchasesEntity {
   final String? imageUrl;
   final String? authorFullName;
   final String? authorImageUrl;
+  final String? type;
 
   PurchasesEntity({
+    this.type,
     this.id,
     this.authorFullName,
     this.authorImageUrl,

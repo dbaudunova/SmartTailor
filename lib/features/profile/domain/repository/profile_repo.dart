@@ -14,7 +14,7 @@ abstract class ProfileRepo {
   Future<void> sendSubscription();
   Future<void> uploadImage(File imageFile);
 
-  Future<PurchasesListEntity> getAllPurchases({required int pageNumber});
+  Future<PurchasesListEntity> getMyPurchases({required int pageNumber});
   Future<AnnouncementResponseEntity> getMyEquipments({required int pageNumber});
   Future<AnnouncementResponseEntity> getMyOrders({required int pageNumber});
   Future<AnnouncementResponseEntity> getMyServices({required int pageNumber});
@@ -22,5 +22,11 @@ abstract class ProfileRepo {
   Future<OrderDetailedEntity> getOrderDetailedById({required int id});
   Future<EquipmentDetailedEntity> getEquipmentDetailedById({required int id});
   Future<ServiceDetailedEntity> getServiceDetailedById({required int id});
-  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId});
+  Future<void> assignExecutorToOrder({required int? executorId, required int? orderId});
+  Future<void> hideOrder({required int? orderId});
+  Future<void> hideEquipment({required int? equipmentId});
+  Future<void> hideService({required int? serviceId});
+  Future<void> deleteOrder({required int? orderId});
+  Future<void> deleteEquipment({required int? equipmentId});
+  Future<void> deleteService({required int? serviceId});
 }

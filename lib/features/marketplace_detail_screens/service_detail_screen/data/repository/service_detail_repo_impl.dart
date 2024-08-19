@@ -10,8 +10,7 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_
 class ServiceDetailRepoImpl extends ServiceDetailRepo {
   final ServiceDetailDataSource _dataSource;
 
-  final Converter<ServiceDetailModel, ServiceDetailEntity>
-      _serviceDetailConverter;
+  final Converter<ServiceDetailModel, ServiceDetailEntity> _serviceDetailConverter;
 
   ServiceDetailRepoImpl(
     this._dataSource,
@@ -23,5 +22,10 @@ class ServiceDetailRepoImpl extends ServiceDetailRepo {
     final result = await _dataSource.getDetailService(id: id!);
     final entity = _serviceDetailConverter.convert(result);
     return entity;
+  }
+
+  @override
+  Future<void> sendRequestToService({required int id}) async {
+    await _dataSource.sendRequestToService(id: id!);
   }
 }

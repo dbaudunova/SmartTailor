@@ -2,4 +2,5 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_
 
 abstract class ServiceDetailDataSource {
   Future<ServiceDetailModel> getDetailService({int id});
+  Future<void> sendRequestToService({required int id});
 }

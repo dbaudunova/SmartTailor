@@ -33,6 +33,7 @@ class PurchasesModel with _$PurchasesModel {
     String? imageUrl,
     String? authorFullName,
     String? authorImageUrl,
+    String? type,
   }) = _PurchasesModel;
 
   factory PurchasesModel.fromJson(Map<String, dynamic> json) => _$PurchasesModelFromJson(json);

@@ -20,15 +20,24 @@ class HttpPaths {
   static const getOrderById = '$baseUrl/api/order/get-order-detailed/';
   static const getServiceById = '$baseUrl/api/service/get-service-detailed/';
 
-  static const postRequestToExecute = '$baseUrl/api/order/send-request-to-execute-order/';
+  static const postRequestToExecuteOrder = '$baseUrl/api/order/send-request-to-execute-order/';
+  static const postRequestToExecuteService = '$baseUrl/api/service/send-request-to-service/';
   static const postBuyEquipment = '$baseUrl/api/equipment/buy-equipment/';
 
   static const getProfile = '$baseUrl/api/account/profile';
   static const editProfile = '$baseUrl/api/account/profile/edit';
   static const uploadImage = '$baseUrl/api/account/profile/uploadImage';
   static const sendSubscription = '$baseUrl/api/app-user/send-subscription-request';
-  static const getAllPurchases = '$baseUrl/api/order/orders-assigned-to-user';
+
+  static const getMyPurchases = '$baseUrl/api/account/my-purchases';
+
   static const assignExecutorToOrder = '$baseUrl/api/order/assign-executor-to-order';
+  static const hideOrder = '$baseUrl/api/order/hide/';
+  static const hideEquipment = '$baseUrl/api/equipment/hide/';
+  static const hideService = '$baseUrl/api/service/hide/';
+  static const deleteOrder = '$baseUrl/api/order/delete-order/';
+  static const deleteEquipment = '$baseUrl/api/equipment/delete-equipment/';
+  static const deleteService = '$baseUrl/api/service/delete-service/';
 
   static const getMyOrders = '$baseUrl/api/order/my-orders';
   static const getMyEquipments = '$baseUrl/api/equipment/my-equipments';

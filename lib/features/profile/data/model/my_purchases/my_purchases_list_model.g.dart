@@ -34,6 +34,7 @@ _$PurchasesModelImpl _$$PurchasesModelImplFromJson(Map<String, dynamic> json) =>
       imageUrl: json['imageUrl'] as String?,
       authorFullName: json['authorFullName'] as String?,
       authorImageUrl: json['authorImageUrl'] as String?,
+      type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$PurchasesModelImplToJson(
@@ -47,4 +48,5 @@ Map<String, dynamic> _$$PurchasesModelImplToJson(
       'imageUrl': instance.imageUrl,
       'authorFullName': instance.authorFullName,
       'authorImageUrl': instance.authorImageUrl,
+      'type': instance.type,
     };

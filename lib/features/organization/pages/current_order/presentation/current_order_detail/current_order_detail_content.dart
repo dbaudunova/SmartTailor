@@ -54,12 +54,13 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
       ),
       body: BlocBuilder<CurrentOrderBloc, CurrentOrderState>(
         builder: (context, state) {
+          print(state.detailedOrder);
           var detailedOrder = state.detailedOrder;
-          var dateStr = DateFormat('yyyy-MM-dd').format(detailedOrder.dateOfExecution!);
+
           return Column(
             children: [
               GalleryWidget(
-                date: dateStr,
+                date: 'df',
                 images: detailedOrder.images,
               ),
               Expanded(

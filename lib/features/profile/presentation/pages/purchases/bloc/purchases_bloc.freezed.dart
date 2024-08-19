@@ -18,39 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PurchasesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getPurchasesList,
+    required TResult Function() getMyPurchases,
     required TResult Function() loadMoreElements,
+    required TResult Function(int id, AnnouncementType type) getDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPurchasesList,
+    TResult? Function()? getMyPurchases,
     TResult? Function()? loadMoreElements,
+    TResult? Function(int id, AnnouncementType type)? getDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPurchasesList,
+    TResult Function()? getMyPurchases,
     TResult Function()? loadMoreElements,
+    TResult Function(int id, AnnouncementType type)? getDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetPurchasesList value) getPurchasesList,
+    required TResult Function(_GetMyPurchases value) getMyPurchases,
     required TResult Function(_LoadMoreElements value) loadMoreElements,
+    required TResult Function(_GetDetail value) getDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPurchasesList value)? getPurchasesList,
+    TResult? Function(_GetMyPurchases value)? getMyPurchases,
     TResult? Function(_LoadMoreElements value)? loadMoreElements,
+    TResult? Function(_GetDetail value)? getDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPurchasesList value)? getPurchasesList,
+    TResult Function(_GetMyPurchases value)? getMyPurchases,
     TResult Function(_LoadMoreElements value)? loadMoreElements,
+    TResult Function(_GetDetail value)? getDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,35 +81,35 @@ class _$PurchasesEventCopyWithImpl<$Res, $Val extends PurchasesEvent>
 }
 
 /// @nodoc
-abstract class _$$GetPurchasesListImplCopyWith<$Res> {
-  factory _$$GetPurchasesListImplCopyWith(_$GetPurchasesListImpl value,
-          $Res Function(_$GetPurchasesListImpl) then) =
-      __$$GetPurchasesListImplCopyWithImpl<$Res>;
+abstract class _$$GetMyPurchasesImplCopyWith<$Res> {
+  factory _$$GetMyPurchasesImplCopyWith(_$GetMyPurchasesImpl value,
+          $Res Function(_$GetMyPurchasesImpl) then) =
+      __$$GetMyPurchasesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetPurchasesListImplCopyWithImpl<$Res>
-    extends _$PurchasesEventCopyWithImpl<$Res, _$GetPurchasesListImpl>
-    implements _$$GetPurchasesListImplCopyWith<$Res> {
-  __$$GetPurchasesListImplCopyWithImpl(_$GetPurchasesListImpl _value,
-      $Res Function(_$GetPurchasesListImpl) _then)
+class __$$GetMyPurchasesImplCopyWithImpl<$Res>
+    extends _$PurchasesEventCopyWithImpl<$Res, _$GetMyPurchasesImpl>
+    implements _$$GetMyPurchasesImplCopyWith<$Res> {
+  __$$GetMyPurchasesImplCopyWithImpl(
+      _$GetMyPurchasesImpl _value, $Res Function(_$GetMyPurchasesImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetPurchasesListImpl implements _GetPurchasesList {
-  const _$GetPurchasesListImpl();
+class _$GetMyPurchasesImpl implements _GetMyPurchases {
+  const _$GetMyPurchasesImpl();
 
   @override
   String toString() {
-    return 'PurchasesEvent.getPurchasesList()';
+    return 'PurchasesEvent.getMyPurchases()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetPurchasesListImpl);
+        (other.runtimeType == runtimeType && other is _$GetMyPurchasesImpl);
   }
 
   @override
@@ -112,30 +118,33 @@ class _$GetPurchasesListImpl implements _GetPurchasesList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getPurchasesList,
+    required TResult Function() getMyPurchases,
     required TResult Function() loadMoreElements,
+    required TResult Function(int id, AnnouncementType type) getDetail,
   }) {
-    return getPurchasesList();
+    return getMyPurchases();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPurchasesList,
+    TResult? Function()? getMyPurchases,
     TResult? Function()? loadMoreElements,
+    TResult? Function(int id, AnnouncementType type)? getDetail,
   }) {
-    return getPurchasesList?.call();
+    return getMyPurchases?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPurchasesList,
+    TResult Function()? getMyPurchases,
     TResult Function()? loadMoreElements,
+    TResult Function(int id, AnnouncementType type)? getDetail,
     required TResult orElse(),
   }) {
-    if (getPurchasesList != null) {
-      return getPurchasesList();
+    if (getMyPurchases != null) {
+      return getMyPurchases();
     }
     return orElse();
   }
@@ -143,37 +152,40 @@ class _$GetPurchasesListImpl implements _GetPurchasesList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetPurchasesList value) getPurchasesList,
+    required TResult Function(_GetMyPurchases value) getMyPurchases,
     required TResult Function(_LoadMoreElements value) loadMoreElements,
+    required TResult Function(_GetDetail value) getDetail,
   }) {
-    return getPurchasesList(this);
+    return getMyPurchases(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPurchasesList value)? getPurchasesList,
+    TResult? Function(_GetMyPurchases value)? getMyPurchases,
     TResult? Function(_LoadMoreElements value)? loadMoreElements,
+    TResult? Function(_GetDetail value)? getDetail,
   }) {
-    return getPurchasesList?.call(this);
+    return getMyPurchases?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPurchasesList value)? getPurchasesList,
+    TResult Function(_GetMyPurchases value)? getMyPurchases,
     TResult Function(_LoadMoreElements value)? loadMoreElements,
+    TResult Function(_GetDetail value)? getDetail,
     required TResult orElse(),
   }) {
-    if (getPurchasesList != null) {
-      return getPurchasesList(this);
+    if (getMyPurchases != null) {
+      return getMyPurchases(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetPurchasesList implements PurchasesEvent {
-  const factory _GetPurchasesList() = _$GetPurchasesListImpl;
+abstract class _GetMyPurchases implements PurchasesEvent {
+  const factory _GetMyPurchases() = _$GetMyPurchasesImpl;
 }
 
 /// @nodoc
@@ -214,8 +226,9 @@ class _$LoadMoreElementsImpl implements _LoadMoreElements {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getPurchasesList,
+    required TResult Function() getMyPurchases,
     required TResult Function() loadMoreElements,
+    required TResult Function(int id, AnnouncementType type) getDetail,
   }) {
     return loadMoreElements();
   }
@@ -223,8 +236,9 @@ class _$LoadMoreElementsImpl implements _LoadMoreElements {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPurchasesList,
+    TResult? Function()? getMyPurchases,
     TResult? Function()? loadMoreElements,
+    TResult? Function(int id, AnnouncementType type)? getDetail,
   }) {
     return loadMoreElements?.call();
   }
@@ -232,8 +246,9 @@ class _$LoadMoreElementsImpl implements _LoadMoreElements {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPurchasesList,
+    TResult Function()? getMyPurchases,
     TResult Function()? loadMoreElements,
+    TResult Function(int id, AnnouncementType type)? getDetail,
     required TResult orElse(),
   }) {
     if (loadMoreElements != null) {
@@ -245,8 +260,9 @@ class _$LoadMoreElementsImpl implements _LoadMoreElements {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetPurchasesList value) getPurchasesList,
+    required TResult Function(_GetMyPurchases value) getMyPurchases,
     required TResult Function(_LoadMoreElements value) loadMoreElements,
+    required TResult Function(_GetDetail value) getDetail,
   }) {
     return loadMoreElements(this);
   }
@@ -254,8 +270,9 @@ class _$LoadMoreElementsImpl implements _LoadMoreElements {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPurchasesList value)? getPurchasesList,
+    TResult? Function(_GetMyPurchases value)? getMyPurchases,
     TResult? Function(_LoadMoreElements value)? loadMoreElements,
+    TResult? Function(_GetDetail value)? getDetail,
   }) {
     return loadMoreElements?.call(this);
   }
@@ -263,8 +280,9 @@ class _$LoadMoreElementsImpl implements _LoadMoreElements {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPurchasesList value)? getPurchasesList,
+    TResult Function(_GetMyPurchases value)? getMyPurchases,
     TResult Function(_LoadMoreElements value)? loadMoreElements,
+    TResult Function(_GetDetail value)? getDetail,
     required TResult orElse(),
   }) {
     if (loadMoreElements != null) {
@@ -276,6 +294,156 @@ class _$LoadMoreElementsImpl implements _LoadMoreElements {
 
 abstract class _LoadMoreElements implements PurchasesEvent {
   const factory _LoadMoreElements() = _$LoadMoreElementsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetDetailImplCopyWith<$Res> {
+  factory _$$GetDetailImplCopyWith(
+          _$GetDetailImpl value, $Res Function(_$GetDetailImpl) then) =
+      __$$GetDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id, AnnouncementType type});
+}
+
+/// @nodoc
+class __$$GetDetailImplCopyWithImpl<$Res>
+    extends _$PurchasesEventCopyWithImpl<$Res, _$GetDetailImpl>
+    implements _$$GetDetailImplCopyWith<$Res> {
+  __$$GetDetailImplCopyWithImpl(
+      _$GetDetailImpl _value, $Res Function(_$GetDetailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? type = null,
+  }) {
+    return _then(_$GetDetailImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as AnnouncementType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDetailImpl implements _GetDetail {
+  const _$GetDetailImpl({required this.id, required this.type});
+
+  @override
+  final int id;
+  @override
+  final AnnouncementType type;
+
+  @override
+  String toString() {
+    return 'PurchasesEvent.getDetail(id: $id, type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDetailImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, type);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDetailImplCopyWith<_$GetDetailImpl> get copyWith =>
+      __$$GetDetailImplCopyWithImpl<_$GetDetailImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getMyPurchases,
+    required TResult Function() loadMoreElements,
+    required TResult Function(int id, AnnouncementType type) getDetail,
+  }) {
+    return getDetail(id, type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getMyPurchases,
+    TResult? Function()? loadMoreElements,
+    TResult? Function(int id, AnnouncementType type)? getDetail,
+  }) {
+    return getDetail?.call(id, type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getMyPurchases,
+    TResult Function()? loadMoreElements,
+    TResult Function(int id, AnnouncementType type)? getDetail,
+    required TResult orElse(),
+  }) {
+    if (getDetail != null) {
+      return getDetail(id, type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetMyPurchases value) getMyPurchases,
+    required TResult Function(_LoadMoreElements value) loadMoreElements,
+    required TResult Function(_GetDetail value) getDetail,
+  }) {
+    return getDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetMyPurchases value)? getMyPurchases,
+    TResult? Function(_LoadMoreElements value)? loadMoreElements,
+    TResult? Function(_GetDetail value)? getDetail,
+  }) {
+    return getDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetMyPurchases value)? getMyPurchases,
+    TResult Function(_LoadMoreElements value)? loadMoreElements,
+    TResult Function(_GetDetail value)? getDetail,
+    required TResult orElse(),
+  }) {
+    if (getDetail != null) {
+      return getDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDetail implements PurchasesEvent {
+  const factory _GetDetail(
+      {required final int id,
+      required final AnnouncementType type}) = _$GetDetailImpl;
+
+  int get id;
+  AnnouncementType get type;
+  @JsonKey(ignore: true)
+  _$$GetDetailImplCopyWith<_$GetDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

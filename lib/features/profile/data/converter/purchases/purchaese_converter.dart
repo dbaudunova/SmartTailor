@@ -16,6 +16,7 @@ class GeneralResponseMapper extends Converter<PurchasesModel, PurchasesEntity> {
         id: input.id,
         imageUrl: input.imageUrl,
         name: input.name,
-        price: input.price);
+        price: input.price,
+        type: input.type);
   }
 }

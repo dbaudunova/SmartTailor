@@ -8,6 +8,6 @@ class AssignExecutorToOrderUseCase {
   AssignExecutorToOrderUseCase({required this.repo});
 
   Future<void> call({required int? executorId, required int? orderId}) async {
-    return repo.assignExecutorToOrderUseCase(executorId: executorId, orderId: orderId);
+    return repo.assignExecutorToOrder(executorId: executorId, orderId: orderId);
   }
 }

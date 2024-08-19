@@ -20,32 +20,38 @@ mixin _$ServiceDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? id) getService,
+    required TResult Function(int? id) sendRequestToService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? id)? getService,
+    TResult? Function(int? id)? sendRequestToService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? id)? getService,
+    TResult Function(int? id)? sendRequestToService,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetService value) getService,
+    required TResult Function(_SendRequestToService value) sendRequestToService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetService value)? getService,
+    TResult? Function(_SendRequestToService value)? sendRequestToService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetService value)? getService,
+    TResult Function(_SendRequestToService value)? sendRequestToService,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$GetServiceImpl implements _GetService {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? id) getService,
+    required TResult Function(int? id) sendRequestToService,
   }) {
     return getService(id);
   }
@@ -163,6 +170,7 @@ class _$GetServiceImpl implements _GetService {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? id)? getService,
+    TResult? Function(int? id)? sendRequestToService,
   }) {
     return getService?.call(id);
   }
@@ -171,6 +179,7 @@ class _$GetServiceImpl implements _GetService {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? id)? getService,
+    TResult Function(int? id)? sendRequestToService,
     required TResult orElse(),
   }) {
     if (getService != null) {
@@ -183,6 +192,7 @@ class _$GetServiceImpl implements _GetService {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetService value) getService,
+    required TResult Function(_SendRequestToService value) sendRequestToService,
   }) {
     return getService(this);
   }
@@ -191,6 +201,7 @@ class _$GetServiceImpl implements _GetService {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetService value)? getService,
+    TResult? Function(_SendRequestToService value)? sendRequestToService,
   }) {
     return getService?.call(this);
   }
@@ -199,6 +210,7 @@ class _$GetServiceImpl implements _GetService {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetService value)? getService,
+    TResult Function(_SendRequestToService value)? sendRequestToService,
     required TResult orElse(),
   }) {
     if (getService != null) {
@@ -217,6 +229,146 @@ abstract class _GetService implements ServiceDetailEvent {
   @JsonKey(ignore: true)
   _$$GetServiceImplCopyWith<_$GetServiceImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendRequestToServiceImplCopyWith<$Res>
+    implements $ServiceDetailEventCopyWith<$Res> {
+  factory _$$SendRequestToServiceImplCopyWith(_$SendRequestToServiceImpl value,
+          $Res Function(_$SendRequestToServiceImpl) then) =
+      __$$SendRequestToServiceImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id});
+}
+
+/// @nodoc
+class __$$SendRequestToServiceImplCopyWithImpl<$Res>
+    extends _$ServiceDetailEventCopyWithImpl<$Res, _$SendRequestToServiceImpl>
+    implements _$$SendRequestToServiceImplCopyWith<$Res> {
+  __$$SendRequestToServiceImplCopyWithImpl(_$SendRequestToServiceImpl _value,
+      $Res Function(_$SendRequestToServiceImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_$SendRequestToServiceImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendRequestToServiceImpl implements _SendRequestToService {
+  const _$SendRequestToServiceImpl({this.id});
+
+  @override
+  final int? id;
+
+  @override
+  String toString() {
+    return 'ServiceDetailEvent.sendRequestToService(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendRequestToServiceImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendRequestToServiceImplCopyWith<_$SendRequestToServiceImpl>
+      get copyWith =>
+          __$$SendRequestToServiceImplCopyWithImpl<_$SendRequestToServiceImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? id) getService,
+    required TResult Function(int? id) sendRequestToService,
+  }) {
+    return sendRequestToService(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? id)? getService,
+    TResult? Function(int? id)? sendRequestToService,
+  }) {
+    return sendRequestToService?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? id)? getService,
+    TResult Function(int? id)? sendRequestToService,
+    required TResult orElse(),
+  }) {
+    if (sendRequestToService != null) {
+      return sendRequestToService(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetService value) getService,
+    required TResult Function(_SendRequestToService value) sendRequestToService,
+  }) {
+    return sendRequestToService(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetService value)? getService,
+    TResult? Function(_SendRequestToService value)? sendRequestToService,
+  }) {
+    return sendRequestToService?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetService value)? getService,
+    TResult Function(_SendRequestToService value)? sendRequestToService,
+    required TResult orElse(),
+  }) {
+    if (sendRequestToService != null) {
+      return sendRequestToService(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendRequestToService implements ServiceDetailEvent {
+  const factory _SendRequestToService({final int? id}) =
+      _$SendRequestToServiceImpl;
+
+  @override
+  int? get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$SendRequestToServiceImplCopyWith<_$SendRequestToServiceImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

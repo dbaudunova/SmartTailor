@@ -75,7 +75,6 @@ class AppRouter extends _$AppRouter {
             MarketPlaceRoutes.routes,
             AutoRoute(page: OrderPlaceRoute.page, maintainState: false),
             OrganizationRoutes.routes,
-            // AutoRoute(page: OrganizationRoute.page),
             AutoRoute(page: ProfileRoute.page, maintainState: false),
           ],
         ),
@@ -106,6 +105,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: CreateOrganizationRoute.page,
           path: '/create_organization',
+        ),
+        AutoRoute(
+          page: OrderDetailRoute.page,
+          // path: RoutesPaths.orderDetail,
         ),
         // AutoRoute(
         //   page: OrganizationRoute.page,

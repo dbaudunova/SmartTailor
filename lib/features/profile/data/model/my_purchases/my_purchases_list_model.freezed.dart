@@ -217,6 +217,7 @@ mixin _$PurchasesModel {
   String? get imageUrl => throw _privateConstructorUsedError;
   String? get authorFullName => throw _privateConstructorUsedError;
   String? get authorImageUrl => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -238,7 +239,8 @@ abstract class $PurchasesModelCopyWith<$Res> {
       String? dateOfExecution,
       String? imageUrl,
       String? authorFullName,
-      String? authorImageUrl});
+      String? authorImageUrl,
+      String? type});
 }
 
 /// @nodoc
@@ -262,6 +264,7 @@ class _$PurchasesModelCopyWithImpl<$Res, $Val extends PurchasesModel>
     Object? imageUrl = freezed,
     Object? authorFullName = freezed,
     Object? authorImageUrl = freezed,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -296,6 +299,10 @@ class _$PurchasesModelCopyWithImpl<$Res, $Val extends PurchasesModel>
           ? _value.authorImageUrl
           : authorImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -316,7 +323,8 @@ abstract class _$$PurchasesModelImplCopyWith<$Res>
       String? dateOfExecution,
       String? imageUrl,
       String? authorFullName,
-      String? authorImageUrl});
+      String? authorImageUrl,
+      String? type});
 }
 
 /// @nodoc
@@ -338,6 +346,7 @@ class __$$PurchasesModelImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? authorFullName = freezed,
     Object? authorImageUrl = freezed,
+    Object? type = freezed,
   }) {
     return _then(_$PurchasesModelImpl(
       id: freezed == id
@@ -372,6 +381,10 @@ class __$$PurchasesModelImplCopyWithImpl<$Res>
           ? _value.authorImageUrl
           : authorImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -387,7 +400,8 @@ class _$PurchasesModelImpl implements _PurchasesModel {
       this.dateOfExecution,
       this.imageUrl,
       this.authorFullName,
-      this.authorImageUrl});
+      this.authorImageUrl,
+      this.type});
 
   factory _$PurchasesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PurchasesModelImplFromJson(json);
@@ -408,10 +422,12 @@ class _$PurchasesModelImpl implements _PurchasesModel {
   final String? authorFullName;
   @override
   final String? authorImageUrl;
+  @override
+  final String? type;
 
   @override
   String toString() {
-    return 'PurchasesModel(id: $id, name: $name, description: $description, price: $price, dateOfExecution: $dateOfExecution, imageUrl: $imageUrl, authorFullName: $authorFullName, authorImageUrl: $authorImageUrl)';
+    return 'PurchasesModel(id: $id, name: $name, description: $description, price: $price, dateOfExecution: $dateOfExecution, imageUrl: $imageUrl, authorFullName: $authorFullName, authorImageUrl: $authorImageUrl, type: $type)';
   }
 
   @override
@@ -431,13 +447,14 @@ class _$PurchasesModelImpl implements _PurchasesModel {
             (identical(other.authorFullName, authorFullName) ||
                 other.authorFullName == authorFullName) &&
             (identical(other.authorImageUrl, authorImageUrl) ||
-                other.authorImageUrl == authorImageUrl));
+                other.authorImageUrl == authorImageUrl) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, description, price,
-      dateOfExecution, imageUrl, authorFullName, authorImageUrl);
+      dateOfExecution, imageUrl, authorFullName, authorImageUrl, type);
 
   @JsonKey(ignore: true)
   @override
@@ -463,7 +480,8 @@ abstract class _PurchasesModel implements PurchasesModel {
       final String? dateOfExecution,
       final String? imageUrl,
       final String? authorFullName,
-      final String? authorImageUrl}) = _$PurchasesModelImpl;
+      final String? authorImageUrl,
+      final String? type}) = _$PurchasesModelImpl;
 
   factory _PurchasesModel.fromJson(Map<String, dynamic> json) =
       _$PurchasesModelImpl.fromJson;
@@ -484,6 +502,8 @@ abstract class _PurchasesModel implements PurchasesModel {
   String? get authorFullName;
   @override
   String? get authorImageUrl;
+  @override
+  String? get type;
   @override
   @JsonKey(ignore: true)
   _$$PurchasesModelImplCopyWith<_$PurchasesModelImpl> get copyWith =>

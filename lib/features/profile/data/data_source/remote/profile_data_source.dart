@@ -14,7 +14,7 @@ abstract class ProfileDataSource {
   Future<void> sendSubscription();
   Future<void> uploadImage(File imageFile);
   // Future<List<AnnouncementModel>> getAnnouncements({required int pageNumber});
-  Future<PurchasesListModel> getAllPurchases({required int pageNumber});
+  Future<PurchasesListModel> getMyPurchases({required int pageNumber});
   Future<AnnouncementResponseModel> getMyEquipments({required int pageNumber});
   Future<AnnouncementResponseModel> getMyOrders({required int pageNumber});
   Future<AnnouncementResponseModel> getMyServices({required int pageNumber});
@@ -22,5 +22,12 @@ abstract class ProfileDataSource {
   Future<OrderDetailedModel> getOrderDetailedById({required int id});
   Future<EquipmentDetailedModel> getEquipmentDetailedById({required int id});
   Future<ServiceDetailedModel> getServiceDetailedById({required int id});
-  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId});
+  Future<void> assignExecutorToOrder({required int? executorId, required int? orderId});
+  Future<void> hideOrder({required int? orderId});
+  Future<void> hideEquipment({required int? equipmentId});
+  Future<void> hideService({required int? serviceId});
+
+  Future<void> deleteOrder({required int? orderId});
+  Future<void> deleteEquipment({required int? equipmentId});
+  Future<void> deleteService({required int? serviceId});
 }

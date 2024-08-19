@@ -4,14 +4,14 @@ import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.d
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart';
 
 @singleton
-class GetAllPurchasesUseCase extends UseCase<PurchasesListEntity, int> {
+class GetMyPurchasesUseCase extends UseCase<PurchasesListEntity, int> {
   final ProfileRepo repo;
 
-  GetAllPurchasesUseCase({required this.repo});
+  GetMyPurchasesUseCase({required this.repo});
 
   @override
   Future<PurchasesListEntity> call(int params) async {
-    var entity = await repo.getAllPurchases(pageNumber: params);
+    var entity = await repo.getMyPurchases(pageNumber: params);
     return entity;
   }
 }

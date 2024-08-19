@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 54
+/// Strings: 55
 ///
-/// Built on 2024-08-18 at 13:22 UTC
+/// Built on 2024-08-18 at 16:31 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -174,7 +174,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get equipmentDetail => 'Детали оборудования';
 	String get orderDetail => 'Детали заказа';
 	String get author => 'Автор объявления';
-	String get acceptOrder => 'Принять заказ';
+	String get acceptOrder => 'Откликнуться на заказ';
+	String get acceptService => 'Откликнуться на услугу';
 	String get buy => 'Купить';
 	String get order => 'Заказ';
 	String get orderDesc => 'Описание заказа';
@@ -236,7 +237,8 @@ extension on Translations {
 			case 'equipmentDetail': return 'Детали оборудования';
 			case 'orderDetail': return 'Детали заказа';
 			case 'author': return 'Автор объявления';
-			case 'acceptOrder': return 'Принять заказ';
+			case 'acceptOrder': return 'Откликнуться на заказ';
+			case 'acceptService': return 'Откликнуться на услугу';
 			case 'buy': return 'Купить';
 			case 'order': return 'Заказ';
 			case 'orderDesc': return 'Описание заказа';

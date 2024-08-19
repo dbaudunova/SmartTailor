@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/presentation/bloc/service_detail_bloc.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/author_info_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/detail_info_widget.dart';
@@ -30,6 +31,7 @@ class _ServiceDateilContentState extends State<ServiceDateilContent> {
       builder: (context, state) {
         var service = state.service;
         return Scaffold(
+          floatingActionButton: _buildButtons(widget.id, state),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           appBar: AppBarStyle(title: t.service, centerTitle: true),
           body: SingleChildScrollView(
@@ -89,5 +91,25 @@ class _ServiceDateilContentState extends State<ServiceDateilContent> {
         );
       },
     );
+  }
+
+  Widget _buildButtons(int? id, ServiceDetailState state) {
+    return state.stateStatus != const StateStatus.loading()
+        ? ElevatedButtonWidget(
+            text: t.acceptService,
+            onTap: () {
+              context.read<ServiceDetailBloc>().add(
+                    ServiceDetailEvent.sendRequestToService(
+                      id: id,
+                    ),
+                  );
+            },
+            color: AppColors.white,
+          )
+        : const ElevatedButtonWidget(
+            loading: true,
+            onTap: null,
+            color: AppColors.white,
+          );
   }
 }

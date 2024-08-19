@@ -6,10 +6,9 @@ abstract class MarketPlaceRoutes {
   static final routes = AutoRoute(
     page: MarketplaceWrapperRoute.page,
     children: [
-      AutoRoute(page: MarketplaceRoute.page, initial: true),
       AutoRoute(
-        page: OrderDetailRoute.page,
-        path: RoutesPaths.orderDetail,
+        page: MarketplaceRoute.page,
+        initial: true,
       ),
       AutoRoute(
         page: ServiceDetailRoute.page,

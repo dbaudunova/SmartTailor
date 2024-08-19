@@ -4,16 +4,23 @@ import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/service_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/assign_executor_to_order_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_equipment_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_order_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_service_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_equipment_detailed_by_id_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_equipments_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_orders_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_services_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_order_detailed_by_id_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_service_detailed_by_id_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_equipment_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_order_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_service_use_case.dart';
 
 part 'announcement_event.dart';
 
@@ -30,6 +37,12 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
   final GetMyEquipmentsUseCase getMyEquipmentsUseCase;
   final GetMyServicesUseCase getMyServicesUseCase;
   final AssignExecutorToOrderUseCase assignExecutorToOrderUseCase;
+  final HideOrderUseCase hideOrderUseCase;
+  final HideEquipmentUseCase hideEquipmentUseCase;
+  final HideServiceUseCase hideServiceUseCase;
+  final DeleteOrderUseCase deleteOrderUseCase;
+  final DeleteEquipmentUseCase deleteEquipmentUseCase;
+  final DeleteServiceUseCase deleteServiceUseCase;
 
   AnnouncementBloc(
     this.getOrderDetailedByIdUseCase,
@@ -39,6 +52,12 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     this.getMyEquipmentsUseCase,
     this.getMyServicesUseCase,
     this.assignExecutorToOrderUseCase,
+    this.hideOrderUseCase,
+    this.deleteOrderUseCase,
+    this.hideEquipmentUseCase,
+    this.hideServiceUseCase,
+    this.deleteEquipmentUseCase,
+    this.deleteServiceUseCase,
   ) : super(
           const AnnouncementState(
             stateStatus: StateStatus.initial(),
@@ -68,6 +87,73 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     on<_GetEquipmentDetailed>(_getEquipmentDetailed);
     on<_GetServiceDetailed>(_getServiceDetailed);
     on<_AssignExecutorToOrder>(_assignExecutorToOrder);
+    on<_Hide>(_hideOrder);
+    on<_Delete>(_deleteOrder);
+  }
+  Future<void> _hideOrder(
+    _Hide event,
+    Emitter<AnnouncementState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+
+    try {
+      switch (event.type) {
+        case AnnouncementType.order:
+          await hideOrderUseCase.call(orderId: event.id);
+          break;
+        case AnnouncementType.equipment:
+          await hideEquipmentUseCase.call(equipmentId: event.id);
+          break;
+        case AnnouncementType.service:
+          await hideServiceUseCase.call(serviceId: event.id);
+          break;
+        default:
+          throw Exception('Invalid Announcement Type');
+      }
+
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage)));
+    }
+  }
+
+  Future<void> _deleteOrder(
+    _Delete event,
+    Emitter<AnnouncementState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+
+    try {
+      // Check if the event type is null
+      if (event.type == null) {
+        throw Exception('Invalid Announcement Type');
+      }
+
+      // Use the switch statement to call the appropriate use case based on the type
+      switch (event.type) {
+        case AnnouncementType.order:
+          await deleteOrderUseCase.call(orderId: event.id);
+          break;
+        case AnnouncementType.equipment:
+          await deleteEquipmentUseCase.call(equipmentId: event.id);
+          break;
+        case AnnouncementType.service:
+          await deleteServiceUseCase.call(serviceId: event.id);
+          break;
+        default:
+          throw Exception('Invalid Announcement Type');
+      }
+
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage)));
+    }
   }
 
   Future<void> _assignExecutorToOrder(
@@ -75,7 +161,6 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     Emitter<AnnouncementState> emit,
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
-
     try {
       await assignExecutorToOrderUseCase.call(
         executorId: event.executorId,

@@ -211,10 +211,10 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   }
 
   @override
-  Future<PurchasesListModel> getAllPurchases({required int pageNumber}) async {
+  Future<PurchasesListModel> getMyPurchases({required int pageNumber}) async {
     try {
       final response = await _client.get(
-        HttpPaths.getAllPurchases,
+        HttpPaths.getMyPurchases,
         queryParameters: {
           'pageNumber': pageNumber.toString(),
           'pageSize': '10',
@@ -334,13 +334,133 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   }
 
   @override
-  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId}) async {
+  Future<void> assignExecutorToOrder({required int? executorId, required int? orderId}) async {
     try {
       final response = await _client.post(
         '${HttpPaths.assignExecutorToOrder}/$orderId',
         queryParameters: {
           'executorId': executorId.toString(),
         },
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> deleteOrder({required int? orderId}) async {
+    try {
+      final response = await _client.delete(
+        '${HttpPaths.deleteOrder}$orderId',
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> hideOrder({required int? orderId}) async {
+    try {
+      final response = await _client.get(
+        '${HttpPaths.hideOrder}$orderId',
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> deleteEquipment({required int? equipmentId}) async {
+    try {
+      final response = await _client.delete(
+        '${HttpPaths.deleteEquipment}$equipmentId',
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> deleteService({required int? serviceId}) async {
+    try {
+      final response = await _client.delete(
+        '${HttpPaths.deleteService}$serviceId',
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> hideEquipment({required int? equipmentId}) async {
+    try {
+      final response = await _client.get(
+        '${HttpPaths.hideEquipment}$equipmentId',
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось редактировать профиль: ${response.statusMessage}',
+        );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> hideService({required int? serviceId}) async {
+    try {
+      final response = await _client.get(
+        '${HttpPaths.hideService}$serviceId',
       );
 
       if (response.statusCode != 200) {

@@ -48,6 +48,9 @@ class AuthorInfoWidget extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(
+          width: 10,
+        ),
         const Padding(
           padding: EdgeInsets.only(right: AppProps.kPageMargin),
           child: Icon(

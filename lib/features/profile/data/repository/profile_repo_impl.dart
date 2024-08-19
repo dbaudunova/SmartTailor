@@ -67,8 +67,8 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<PurchasesListEntity> getAllPurchases({required int pageNumber}) async {
-    var model = await _dataSource.getAllPurchases(pageNumber: pageNumber);
+  Future<PurchasesListEntity> getMyPurchases({required int pageNumber}) async {
+    var model = await _dataSource.getMyPurchases(pageNumber: pageNumber);
     var entity = _converterPurchases.convert(model);
     return entity;
   }
@@ -111,7 +111,37 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<void> assignExecutorToOrderUseCase({required int? executorId, required int? orderId}) async {
-    await _dataSource.assignExecutorToOrderUseCase(executorId: executorId, orderId: orderId);
+  Future<void> assignExecutorToOrder({required int? executorId, required int? orderId}) async {
+    await _dataSource.assignExecutorToOrder(executorId: executorId, orderId: orderId);
+  }
+
+  @override
+  Future<void> deleteOrder({required int? orderId}) async {
+    await _dataSource.deleteOrder(orderId: orderId);
+  }
+
+  @override
+  Future<void> hideOrder({required int? orderId}) async {
+    await _dataSource.hideOrder(orderId: orderId);
+  }
+
+  @override
+  Future<void> deleteEquipment({required int? equipmentId}) async {
+    await _dataSource.hideEquipment(equipmentId: equipmentId);
+  }
+
+  @override
+  Future<void> deleteService({required int? serviceId}) async {
+    await _dataSource.deleteService(serviceId: serviceId);
+  }
+
+  @override
+  Future<void> hideEquipment({required int? equipmentId}) async {
+    await _dataSource.hideEquipment(equipmentId: equipmentId);
+  }
+
+  @override
+  Future<void> hideService({required int? serviceId}) async {
+    await _dataSource.hideService(serviceId: serviceId);
   }
 }

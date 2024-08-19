@@ -9,6 +9,6 @@ class LoadMorePurchasesUseCase {
   LoadMorePurchasesUseCase({required this.repo});
 
   Future<PurchasesListEntity> call({required int pageNumber}) async {
-    return await repo.getAllPurchases(pageNumber: pageNumber);
+    return await repo.getMyPurchases(pageNumber: pageNumber);
   }
 }

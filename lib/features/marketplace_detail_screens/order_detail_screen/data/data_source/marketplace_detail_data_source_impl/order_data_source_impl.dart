@@ -45,7 +45,7 @@ class OrderDetailDataSourceImpl implements OrderDetailDataSource {
   Future<void> requestToExecute({int? id}) async {
     try {
       final response = await _client.post(
-        HttpPaths.postRequestToExecute + id.toString(),
+        HttpPaths.postRequestToExecuteOrder + id.toString(),
       );
 
       if (response.statusCode != 200) {

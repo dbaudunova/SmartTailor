@@ -14,4 +14,6 @@ class AnnouncementEvent with _$AnnouncementEvent {
   const factory AnnouncementEvent.getServiceDetailed({int? id}) = _GetServiceDetailed;
   const factory AnnouncementEvent.assignExecutorToOrder({required int? executorId, required int? orderId}) =
       _AssignExecutorToOrder;
+  const factory AnnouncementEvent.hide({required int? id, required AnnouncementType? type}) = _Hide;
+  const factory AnnouncementEvent.delete({required int? id, required AnnouncementType? type}) = _Delete;
 }

@@ -20,10 +20,6 @@ class ServiceDetailDataSourceImpl implements ServiceDetailDataSource {
     try {
       final response = await _client.get(
         HttpPaths.getServiceById + id.toString(),
-        // queryParameters: {
-        //   'pageNumber': '0',
-        //   'pageSize': '2000',
-        // },
       );
 
       if (response.statusCode != 200) {
@@ -45,96 +41,26 @@ class ServiceDetailDataSourceImpl implements ServiceDetailDataSource {
     }
   }
 
-  // @override
-  // Future<List<GeneralOrderModel>> getEquipments() async {
-  //   try {
-  //     final response = await _client.get(
-  //       HttpPaths.getEquipments,
-  //       queryParameters: {
-  //         'pageNumber': '0',
-  //         'pageSize': '2000',
-  //       },
-  //     );
+  @override
+  Future<void> sendRequestToService({required int id}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.postRequestToExecuteService + id.toString(),
+      );
 
-  //     if (response.statusCode != 200) {
-  //       // ignore: only_throw_errors
-  //       throw Failure.request(
-  //         status: response.statusCode,
-  //         message: 'Неудалось загрузить, код ошибки: ${response.statusCode}',
-  //       );
-  //     } else {
-  //       var list = (response.data as List).map((model) => GeneralOrderModel.fromJson(model)).toList();
-  //       print(list);
-  //       return list;
-  //     }
-  //   } on DioException catch (e) {
-  //     // ignore: only_throw_errors
-  //     throw handleDioException(e);
-  //   } catch (e) {
-  //     // ignore: only_throw_errors
-  //     throw handleGeneralException(e);
-  //   }
-  // }
-
-  // @override
-  // Future<List<GeneralOrderModel>> getOrders() async {
-  //   try {
-  //     final response = await _client.get(
-  //       HttpPaths.getOrders,
-  //       queryParameters: {
-  //         'pageNumber': '0',
-  //         'pageSize': '2000',
-  //       },
-  //     );
-
-  //     if (response.statusCode != 200) {
-  //       // ignore: only_throw_errors
-  //       throw Failure.request(
-  //         status: response.statusCode,
-  //         message: 'Неудалось загрузить, код ошибки: ${response.statusCode}',
-  //       );
-  //     } else {
-  //       var list = (response.data as List).map((model) => GeneralOrderModel.fromJson(model)).toList();
-  //       print(list);
-  //       return list;
-  //     }
-  //   } on DioException catch (e) {
-  //     // ignore: only_throw_errors
-  //     throw handleDioException(e);
-  //   } catch (e) {
-  //     // ignore: only_throw_errors
-  //     throw handleGeneralException(e);
-  //   }
-  // }
-
-  // @override
-  // Future<List<GeneralOrderModel>> getServices() async {
-  //   try {
-  //     final response = await _client.get(
-  //       HttpPaths.getService,
-  //       queryParameters: {
-  //         'pageNumber': '0',
-  //         'pageSize': '2000',
-  //       },
-  //     );
-
-  //     if (response.statusCode != 200) {
-  //       // ignore: only_throw_errors
-  //       throw Failure.request(
-  //         status: response.statusCode,
-  //         message: 'Неудалось загрузить, код ошибки: ${response.statusCode}',
-  //       );
-  //     } else {
-  //       var list = (response.data as List).map((model) => GeneralOrderModel.fromJson(model)).toList();
-  //       print(list);
-  //       return list;
-  //     }
-  //   } on DioException catch (e) {
-  //     // ignore: only_throw_errors
-  //     throw handleDioException(e);
-  //   } catch (e) {
-  //     // ignore: only_throw_errors
-  //     throw handleGeneralException(e);
-  //   }
-  // }
+      if (response.statusCode != 200) {
+        // ignore: only_throw_errors
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Неудалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      }
+    } on DioException catch (e) {
+      // ignore: only_throw_errors
+      throw handleDioException(e);
+    } catch (e) {
+      // ignore: only_throw_errors
+      throw handleGeneralException(e);
+    }
+  }
 }

@@ -36,6 +36,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
   bool _isResponseExpanded = false;
   late Map<String, dynamic> detailedData;
 
+  AnnouncementBloc get _bloc => context.read<AnnouncementBloc>();
+
   @override
   void initState() {
     super.initState();
@@ -158,7 +160,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                   : const Center(child: CircularProgressIndicator());
             },
           ),
-          _buildBottomButtons(context),
+          _buildBottomButtons(context, widget.type),
         ],
       ),
     );
@@ -226,10 +228,12 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CustomerContainer(
                 onTap: () {
-                  context.read<AnnouncementBloc>().add(
-                        AnnouncementEvent.assignExecutorToOrder(
-                            executorId: orderCandidate.employeeId, orderId: widget.id),
-                      );
+                  _bloc.add(
+                    AnnouncementEvent.assignExecutorToOrder(
+                      executorId: orderCandidate.employeeId,
+                      orderId: widget.id,
+                    ),
+                  );
                 },
                 name: orderCandidate.employeeFullName ?? '',
                 email: orderCandidate.employeeEmail ?? '',
@@ -295,7 +299,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
     );
   }
 
-  Widget _buildBottomButtons(BuildContext context) {
+  Widget _buildBottomButtons(BuildContext context, AnnouncementType type) {
     return Positioned(
       bottom: 0,
       left: 0,
@@ -311,6 +315,9 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                 backgroundColor: Colors.white,
                 strokeColor: AppColors.greyText,
                 onPressed: () {
+                  _bloc.add(
+                    AnnouncementEvent.hide(id: widget.id, type: widget.type),
+                  );
                   AutoRouter.of(context).push(const MyAnnouncementsRoute());
                 },
                 text: 'Скрыть объявление',
@@ -324,7 +331,10 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                     builder: (context) {
                       return ExitAlert(
                         confirmButton: () {
-                          AutoRouter.of(context).push(const MyAnnouncementsRoute());
+                          // AutoRouter.of(context).push(const MyAnnouncementsRoute());
+                          _bloc.add(
+                            AnnouncementEvent.delete(id: widget.id, type: widget.type),
+                          );
                         },
                         cancelButton: () {
                           AutoRouter.of(context).maybePop();

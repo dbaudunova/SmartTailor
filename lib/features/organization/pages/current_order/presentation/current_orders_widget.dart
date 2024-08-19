@@ -41,7 +41,18 @@ class _CurrentOrdersWidgetState extends State<CurrentOrdersWidget> {
                           orderNumber: order.id.toString(),
                           orderStatus: order.status,
                           onTap: () {
-                            AutoRouter.of(context).push(CurrentOrderDetailRoute(id: order.id!));
+                            print("Order ID: ${order.id}, Status: ${order.status}");
+                            if (order.status == 'NOT_CONFIRMED') {
+                              print("Navigating to OrderDetailRoute with ID: ${order.id}");
+                              try {
+                                AutoRouter.of(context).push(OrderDetailRoute(id: order.id!));
+                                print("Navigation successful");
+                              } catch (e) {
+                                print("Navigation failed: $e");
+                              }
+                            } else {
+                              AutoRouter.of(context).push(CurrentOrderDetailRoute(id: order.id!));
+                            }
                           },
                           price: order.price!.toInt(),
                         ),

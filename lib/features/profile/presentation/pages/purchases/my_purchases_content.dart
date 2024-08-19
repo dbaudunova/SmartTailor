@@ -5,6 +5,7 @@ import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/empty_refresh_list_text.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/bloc/purchases_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_card_item.dart';
 
@@ -20,7 +21,7 @@ class _MyPurchasesContentState extends State<MyPurchasesContent> {
 
   @override
   void initState() {
-    _bloc.add(const PurchasesEvent.getPurchasesList());
+    _bloc.add(const PurchasesEvent.getMyPurchases());
     super.initState();
   }
 
@@ -49,7 +50,7 @@ class _MyPurchasesContentState extends State<MyPurchasesContent> {
                     : Center(
                         child: EmptyRefreshListText(
                           onRefresh: () async {
-                            _bloc.add(const PurchasesEvent.getPurchasesList());
+                            _bloc.add(const PurchasesEvent.getMyPurchases());
                           },
                         ),
                       )
@@ -75,7 +76,7 @@ class _MyPurchasesContentState extends State<MyPurchasesContent> {
       },
       child: RefreshIndicator(
         onRefresh: () async {
-          _bloc.add(const PurchasesEvent.getPurchasesList());
+          _bloc.add(const PurchasesEvent.getMyPurchases());
         },
         child: ListView.builder(
           itemCount: state.purchases!.length,
@@ -90,7 +91,27 @@ class _MyPurchasesContentState extends State<MyPurchasesContent> {
                 authorName: '${purchaese.authorFullName}',
                 description: '${purchaese.description}',
                 onTap: () {
-                  AutoRouter.of(context).push(PurchaseDetailRoute(id: purchaese.id!));
+                  var type = typeFromString(purchaese.type);
+                  switch (type) {
+                    case AnnouncementType.order:
+                      AutoRouter.of(context).push(OrderDetailRoute(id: purchaese.id!));
+                      break;
+                    case AnnouncementType.equipment:
+                      AutoRouter.of(context).push(EquipmentDetailRoute(id: purchaese.id!));
+                      break;
+                    case AnnouncementType.service:
+                      AutoRouter.of(context).push(ServiceDetailRoute(id: purchaese.id!));
+                      break;
+                    default:
+                      throw Exception('Invalid Announcement Type');
+                  }
+                  // if (Switch)
+                  // AutoRouter.of(context).push(
+                  //   PurchaseDetailRoute(
+                  //     id: purchaese.id!,
+                  //     type: typeFromString(purchaese.type),
+                  //   ),
+                  // );
                 },
               ),
             );
