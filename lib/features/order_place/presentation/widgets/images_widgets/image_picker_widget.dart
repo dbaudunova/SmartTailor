@@ -7,15 +7,6 @@ import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/ac
 import 'package:neobis_smart_tailor/features/organization/pages/create_organization/presentation/create_organization_content.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
-// enum _ImagePickType {
-//   selectPhoto('Выбрать фото'),
-//   takePhoto('Сделать фото');
-
-//   final String name;
-
-//   const _ImagePickType(this.name);
-// }
-
 class ImagePickerWidget extends StatelessWidget {
   final TextEditingController controller;
   final Function() onSelect;

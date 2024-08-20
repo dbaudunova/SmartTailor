@@ -21,6 +21,7 @@ mixin _$CurrentOrderEvent {
     required TResult Function() getAllOrders,
     required TResult Function(int id) getDetailedOrder,
     required TResult Function(int id, String value) changeOrderStatus,
+    required TResult Function(int id) completeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$CurrentOrderEvent {
     TResult? Function()? getAllOrders,
     TResult? Function(int id)? getDetailedOrder,
     TResult? Function(int id, String value)? changeOrderStatus,
+    TResult? Function(int id)? completeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$CurrentOrderEvent {
     TResult Function()? getAllOrders,
     TResult Function(int id)? getDetailedOrder,
     TResult Function(int id, String value)? changeOrderStatus,
+    TResult Function(int id)? completeOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$CurrentOrderEvent {
     required TResult Function(_GetAllCurrentOrders value) getAllOrders,
     required TResult Function(_GetDetailsOrder value) getDetailedOrder,
     required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_CompleteOrder value) completeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$CurrentOrderEvent {
     TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_CompleteOrder value)? completeOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$CurrentOrderEvent {
     TResult Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_CompleteOrder value)? completeOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +128,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
     required TResult Function() getAllOrders,
     required TResult Function(int id) getDetailedOrder,
     required TResult Function(int id, String value) changeOrderStatus,
+    required TResult Function(int id) completeOrder,
   }) {
     return getAllOrders();
   }
@@ -132,6 +139,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
     TResult? Function()? getAllOrders,
     TResult? Function(int id)? getDetailedOrder,
     TResult? Function(int id, String value)? changeOrderStatus,
+    TResult? Function(int id)? completeOrder,
   }) {
     return getAllOrders?.call();
   }
@@ -142,6 +150,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
     TResult Function()? getAllOrders,
     TResult Function(int id)? getDetailedOrder,
     TResult Function(int id, String value)? changeOrderStatus,
+    TResult Function(int id)? completeOrder,
     required TResult orElse(),
   }) {
     if (getAllOrders != null) {
@@ -156,6 +165,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
     required TResult Function(_GetAllCurrentOrders value) getAllOrders,
     required TResult Function(_GetDetailsOrder value) getDetailedOrder,
     required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_CompleteOrder value) completeOrder,
   }) {
     return getAllOrders(this);
   }
@@ -166,6 +176,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
     TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_CompleteOrder value)? completeOrder,
   }) {
     return getAllOrders?.call(this);
   }
@@ -176,6 +187,7 @@ class _$GetAllCurrentOrdersImpl implements _GetAllCurrentOrders {
     TResult Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_CompleteOrder value)? completeOrder,
     required TResult orElse(),
   }) {
     if (getAllOrders != null) {
@@ -257,6 +269,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
     required TResult Function() getAllOrders,
     required TResult Function(int id) getDetailedOrder,
     required TResult Function(int id, String value) changeOrderStatus,
+    required TResult Function(int id) completeOrder,
   }) {
     return getDetailedOrder(id);
   }
@@ -267,6 +280,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
     TResult? Function()? getAllOrders,
     TResult? Function(int id)? getDetailedOrder,
     TResult? Function(int id, String value)? changeOrderStatus,
+    TResult? Function(int id)? completeOrder,
   }) {
     return getDetailedOrder?.call(id);
   }
@@ -277,6 +291,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
     TResult Function()? getAllOrders,
     TResult Function(int id)? getDetailedOrder,
     TResult Function(int id, String value)? changeOrderStatus,
+    TResult Function(int id)? completeOrder,
     required TResult orElse(),
   }) {
     if (getDetailedOrder != null) {
@@ -291,6 +306,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
     required TResult Function(_GetAllCurrentOrders value) getAllOrders,
     required TResult Function(_GetDetailsOrder value) getDetailedOrder,
     required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_CompleteOrder value) completeOrder,
   }) {
     return getDetailedOrder(this);
   }
@@ -301,6 +317,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
     TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_CompleteOrder value)? completeOrder,
   }) {
     return getDetailedOrder?.call(this);
   }
@@ -311,6 +328,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
     TResult Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_CompleteOrder value)? completeOrder,
     required TResult orElse(),
   }) {
     if (getDetailedOrder != null) {
@@ -406,6 +424,7 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     required TResult Function() getAllOrders,
     required TResult Function(int id) getDetailedOrder,
     required TResult Function(int id, String value) changeOrderStatus,
+    required TResult Function(int id) completeOrder,
   }) {
     return changeOrderStatus(id, value);
   }
@@ -416,6 +435,7 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult? Function()? getAllOrders,
     TResult? Function(int id)? getDetailedOrder,
     TResult? Function(int id, String value)? changeOrderStatus,
+    TResult? Function(int id)? completeOrder,
   }) {
     return changeOrderStatus?.call(id, value);
   }
@@ -426,6 +446,7 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult Function()? getAllOrders,
     TResult Function(int id)? getDetailedOrder,
     TResult Function(int id, String value)? changeOrderStatus,
+    TResult Function(int id)? completeOrder,
     required TResult orElse(),
   }) {
     if (changeOrderStatus != null) {
@@ -440,6 +461,7 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     required TResult Function(_GetAllCurrentOrders value) getAllOrders,
     required TResult Function(_GetDetailsOrder value) getDetailedOrder,
     required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_CompleteOrder value) completeOrder,
   }) {
     return changeOrderStatus(this);
   }
@@ -450,6 +472,7 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_CompleteOrder value)? completeOrder,
   }) {
     return changeOrderStatus?.call(this);
   }
@@ -460,6 +483,7 @@ class _$ChangeOrderStatusImpl implements _ChangeOrderStatus {
     TResult Function(_GetAllCurrentOrders value)? getAllOrders,
     TResult Function(_GetDetailsOrder value)? getDetailedOrder,
     TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_CompleteOrder value)? completeOrder,
     required TResult orElse(),
   }) {
     if (changeOrderStatus != null) {
@@ -482,11 +506,157 @@ abstract class _ChangeOrderStatus implements CurrentOrderEvent {
 }
 
 /// @nodoc
+abstract class _$$CompleteOrderImplCopyWith<$Res> {
+  factory _$$CompleteOrderImplCopyWith(
+          _$CompleteOrderImpl value, $Res Function(_$CompleteOrderImpl) then) =
+      __$$CompleteOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$CompleteOrderImplCopyWithImpl<$Res>
+    extends _$CurrentOrderEventCopyWithImpl<$Res, _$CompleteOrderImpl>
+    implements _$$CompleteOrderImplCopyWith<$Res> {
+  __$$CompleteOrderImplCopyWithImpl(
+      _$CompleteOrderImpl _value, $Res Function(_$CompleteOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$CompleteOrderImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CompleteOrderImpl implements _CompleteOrder {
+  const _$CompleteOrderImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'CurrentOrderEvent.completeOrder(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CompleteOrderImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CompleteOrderImplCopyWith<_$CompleteOrderImpl> get copyWith =>
+      __$$CompleteOrderImplCopyWithImpl<_$CompleteOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllOrders,
+    required TResult Function(int id) getDetailedOrder,
+    required TResult Function(int id, String value) changeOrderStatus,
+    required TResult Function(int id) completeOrder,
+  }) {
+    return completeOrder(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllOrders,
+    TResult? Function(int id)? getDetailedOrder,
+    TResult? Function(int id, String value)? changeOrderStatus,
+    TResult? Function(int id)? completeOrder,
+  }) {
+    return completeOrder?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllOrders,
+    TResult Function(int id)? getDetailedOrder,
+    TResult Function(int id, String value)? changeOrderStatus,
+    TResult Function(int id)? completeOrder,
+    required TResult orElse(),
+  }) {
+    if (completeOrder != null) {
+      return completeOrder(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAllCurrentOrders value) getAllOrders,
+    required TResult Function(_GetDetailsOrder value) getDetailedOrder,
+    required TResult Function(_ChangeOrderStatus value) changeOrderStatus,
+    required TResult Function(_CompleteOrder value) completeOrder,
+  }) {
+    return completeOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetAllCurrentOrders value)? getAllOrders,
+    TResult? Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult? Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult? Function(_CompleteOrder value)? completeOrder,
+  }) {
+    return completeOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAllCurrentOrders value)? getAllOrders,
+    TResult Function(_GetDetailsOrder value)? getDetailedOrder,
+    TResult Function(_ChangeOrderStatus value)? changeOrderStatus,
+    TResult Function(_CompleteOrder value)? completeOrder,
+    required TResult orElse(),
+  }) {
+    if (completeOrder != null) {
+      return completeOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CompleteOrder implements CurrentOrderEvent {
+  const factory _CompleteOrder({required final int id}) = _$CompleteOrderImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$CompleteOrderImplCopyWith<_$CompleteOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CurrentOrderState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   OrganizationListEntity get orders => throw _privateConstructorUsedError;
   CurrentDetailOrderEntity get detailedOrder =>
       throw _privateConstructorUsedError;
+  OrderStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CurrentOrderStateCopyWith<CurrentOrderState> get copyWith =>
@@ -502,7 +672,8 @@ abstract class $CurrentOrderStateCopyWith<$Res> {
   $Res call(
       {StateStatus stateStatus,
       OrganizationListEntity orders,
-      CurrentDetailOrderEntity detailedOrder});
+      CurrentDetailOrderEntity detailedOrder,
+      OrderStatus status});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -523,6 +694,7 @@ class _$CurrentOrderStateCopyWithImpl<$Res, $Val extends CurrentOrderState>
     Object? stateStatus = null,
     Object? orders = null,
     Object? detailedOrder = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -537,6 +709,10 @@ class _$CurrentOrderStateCopyWithImpl<$Res, $Val extends CurrentOrderState>
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
               as CurrentDetailOrderEntity,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OrderStatus,
     ) as $Val);
   }
 
@@ -560,7 +736,8 @@ abstract class _$$CurrentOrderStateImplCopyWith<$Res>
   $Res call(
       {StateStatus stateStatus,
       OrganizationListEntity orders,
-      CurrentDetailOrderEntity detailedOrder});
+      CurrentDetailOrderEntity detailedOrder,
+      OrderStatus status});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -580,6 +757,7 @@ class __$$CurrentOrderStateImplCopyWithImpl<$Res>
     Object? stateStatus = null,
     Object? orders = null,
     Object? detailedOrder = null,
+    Object? status = null,
   }) {
     return _then(_$CurrentOrderStateImpl(
       stateStatus: null == stateStatus
@@ -594,6 +772,10 @@ class __$$CurrentOrderStateImplCopyWithImpl<$Res>
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
               as CurrentDetailOrderEntity,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OrderStatus,
     ));
   }
 }
@@ -604,7 +786,8 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
   const _$CurrentOrderStateImpl(
       {required this.stateStatus,
       required this.orders,
-      required this.detailedOrder});
+      required this.detailedOrder,
+      required this.status});
 
   @override
   final StateStatus stateStatus;
@@ -612,10 +795,12 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
   final OrganizationListEntity orders;
   @override
   final CurrentDetailOrderEntity detailedOrder;
+  @override
+  final OrderStatus status;
 
   @override
   String toString() {
-    return 'CurrentOrderState(stateStatus: $stateStatus, orders: $orders, detailedOrder: $detailedOrder)';
+    return 'CurrentOrderState(stateStatus: $stateStatus, orders: $orders, detailedOrder: $detailedOrder, status: $status)';
   }
 
   @override
@@ -627,12 +812,13 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
                 other.stateStatus == stateStatus) &&
             (identical(other.orders, orders) || other.orders == orders) &&
             (identical(other.detailedOrder, detailedOrder) ||
-                other.detailedOrder == detailedOrder));
+                other.detailedOrder == detailedOrder) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, stateStatus, orders, detailedOrder);
+      Object.hash(runtimeType, stateStatus, orders, detailedOrder, status);
 
   @JsonKey(ignore: true)
   @override
@@ -644,10 +830,10 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
 
 abstract class _CurrentOrderState implements CurrentOrderState {
   const factory _CurrentOrderState(
-          {required final StateStatus stateStatus,
-          required final OrganizationListEntity orders,
-          required final CurrentDetailOrderEntity detailedOrder}) =
-      _$CurrentOrderStateImpl;
+      {required final StateStatus stateStatus,
+      required final OrganizationListEntity orders,
+      required final CurrentDetailOrderEntity detailedOrder,
+      required final OrderStatus status}) = _$CurrentOrderStateImpl;
 
   @override
   StateStatus get stateStatus;
@@ -655,6 +841,8 @@ abstract class _CurrentOrderState implements CurrentOrderState {
   OrganizationListEntity get orders;
   @override
   CurrentDetailOrderEntity get detailedOrder;
+  @override
+  OrderStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$CurrentOrderStateImplCopyWith<_$CurrentOrderStateImpl> get copyWith =>

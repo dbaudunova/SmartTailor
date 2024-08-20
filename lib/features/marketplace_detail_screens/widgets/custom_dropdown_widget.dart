@@ -55,14 +55,3 @@ class CustomDropdown extends StatelessWidget {
     );
   }
 }
-
-// enum Sizes {
-//   m('M'),
-//   s('S'),
-//   l('L'),
-//   xl('XL');
-
-//   const Sizes(this.label);
-//   final String label;
-//   final Color color = AppColors.black;
-// }

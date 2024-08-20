@@ -4,12 +4,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_detail_screen/domain/entitys/order_detail_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/gallery_widget.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/entitys/current_detail_order_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/status_bottom_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
+
+// extension AnnouncementTypeExtension on OrderStatus {
+//   String get translated {
+//     switch (this) {
+//       case OrderStatus.order:
+//         return 'Заказы';
+//       case OrderStatus.equipment:
+//         return 'Оборудование';
+//       case OrderStatus.service:
+//         return 'Услуги';
+//     }
+//   }
+// }
 
 class CurrentOrderDetailContent extends StatefulWidget {
   final int id;
@@ -21,21 +34,21 @@ class CurrentOrderDetailContent extends StatefulWidget {
 }
 
 class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
+  CurrentOrderBloc get _bloc => context.read<CurrentOrderBloc>();
   @override
   void initState() {
-    context.read<CurrentOrderBloc>().add(CurrentOrderEvent.getDetailedOrder(id: widget.id));
+    _bloc.add(CurrentOrderEvent.getDetailedOrder(id: widget.id));
     super.initState();
   }
 
   bool _isEmployeeExpanded = false;
   final List<Map> _statusList = [
-    {'name': 'Прибыл', 'isChecked': false},
-    {'name': 'В работе', 'isChecked': false},
     {'name': 'В ожидании', 'isChecked': false},
-    {'name': 'Отправка', 'isChecked': false},
+    {'name': 'В работе', 'isChecked': false},
     {'name': 'Проверка', 'isChecked': false},
+    {'name': 'Отправка', 'isChecked': false},
+    {'name': 'Прибыл', 'isChecked': false},
   ];
-  final DateTime _orderDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -54,13 +67,14 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
       ),
       body: BlocBuilder<CurrentOrderBloc, CurrentOrderState>(
         builder: (context, state) {
-          print(state.detailedOrder);
+          print(state.detailedOrder.status);
           var detailedOrder = state.detailedOrder;
-
+          var dateStr = DateFormat('yyyy-MM-dd')
+              .format(detailedOrder.dateOfExecution == null ? DateTime.now() : detailedOrder.dateOfExecution!);
           return Column(
             children: [
               GalleryWidget(
-                date: 'df',
+                date: dateStr,
                 images: detailedOrder.images,
               ),
               Expanded(
@@ -141,7 +155,7 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
                                       return ExitAlert(
                                         confirmButton: () {
                                           Navigator.pop(context);
-                                          _buildShowModalBottomSheet(context);
+                                          _buildShowModalBottomSheet(context, detailedOrder.status!, detailedOrder.id!);
                                         },
                                         cancelButton: () {
                                           AutoRouter.of(context).maybePop();
@@ -156,9 +170,11 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
                               const SizedBox(height: 8),
                               _buildTransparentButton(
                                 backgroundColor: AppColors.error,
-                                onPressed: () {},
+                                onPressed: () {
+                                  _bloc.add(CurrentOrderEvent.completeOrder(id: detailedOrder.id!));
+                                },
                                 textColor: Colors.white,
-                                text: 'Отменить заказ',
+                                text: 'Завершить заказ',
                               ),
                               const SizedBox(height: 16),
                             ],
@@ -197,7 +213,7 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
     );
   }
 
-  void _buildShowModalBottomSheet(BuildContext context) {
+  void _buildShowModalBottomSheet(BuildContext context, OrderStatus status, int id) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -207,7 +223,12 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
       ),
       context: context,
       builder: (context) {
-        return StatusBottomSheet(statusList: _statusList);
+        return StatusBottomSheet(
+          selectedStatus: status,
+          onTap: (value) {
+            _bloc.add(CurrentOrderEvent.changeOrderStatus(id: id, value: value));
+          },
+        );
       },
     );
   }
@@ -225,31 +246,16 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
             horizontal: 8,
             vertical: 8,
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Text(
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: true,
-                  employee.fullName!,
-                  style: AppTextStyle.textField16.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+          child: Expanded(
+            child: Text(
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+              employee.fullName!,
+              style: AppTextStyle.textField16.copyWith(
+                fontWeight: FontWeight.w500,
               ),
-              GestureDetector(
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(color: AppColors.lightOrange, borderRadius: BorderRadius.circular(8)),
-                  child: const Text(
-                    'Назначить',
-                    style: AppTextStyle.textField16,
-                  ),
-                ),
-              )
-            ],
+            ),
           ),
         );
       },
@@ -276,7 +282,7 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
-            detailedOrder.status!,
+            getOrderStatusTypeLabel(detailedOrder.status!),
             style: AppTextStyle.s12w400.copyWith(
               fontWeight: FontWeight.w600,
             ),
@@ -326,26 +332,30 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
           backgroundColor: AppColors.greyText,
         ),
         const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              detailedOrder.authorFullName!,
-              style: AppTextStyle.text14.copyWith(
-                fontWeight: FontWeight.w500,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                detailedOrder.authorFullName!,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyle.text14.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              'Автор объявления',
-              style: AppTextStyle.text14.copyWith(
-                color: AppColors.greyText,
-              ),
-            )
-          ],
+              const SizedBox(height: 4),
+              Text(
+                'Автор объявления',
+                style: AppTextStyle.text14.copyWith(
+                  color: AppColors.greyText,
+                ),
+              )
+            ],
+          ),
         ),
-        const Spacer(),
+        // const Spacer(),
         IconButton(
           onPressed: () {},
           icon: const Icon(

@@ -20,18 +20,24 @@ mixin _$PositionsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(PositionEntity entity) createPosition,
     required TResult Function() getAllPositions,
+    required TResult Function() getAvailableAccessRights,
+    required TResult Function() getAvailableWeights,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PositionEntity entity)? createPosition,
     TResult? Function()? getAllPositions,
+    TResult? Function()? getAvailableAccessRights,
+    TResult? Function()? getAvailableWeights,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PositionEntity entity)? createPosition,
     TResult Function()? getAllPositions,
+    TResult Function()? getAvailableAccessRights,
+    TResult Function()? getAvailableWeights,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,26 @@ mixin _$PositionsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_CreatePosition value) createPosition,
     required TResult Function(_GetAllPositions value) getAllPositions,
+    required TResult Function(_GetAvailableAccessRights value)
+        getAvailableAccessRights,
+    required TResult Function(_GetAvailableWeights value) getAvailableWeights,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CreatePosition value)? createPosition,
     TResult? Function(_GetAllPositions value)? getAllPositions,
+    TResult? Function(_GetAvailableAccessRights value)?
+        getAvailableAccessRights,
+    TResult? Function(_GetAvailableWeights value)? getAvailableWeights,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreatePosition value)? createPosition,
     TResult Function(_GetAllPositions value)? getAllPositions,
+    TResult Function(_GetAvailableAccessRights value)? getAvailableAccessRights,
+    TResult Function(_GetAvailableWeights value)? getAvailableWeights,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +155,8 @@ class _$CreatePositionImpl implements _CreatePosition {
   TResult when<TResult extends Object?>({
     required TResult Function(PositionEntity entity) createPosition,
     required TResult Function() getAllPositions,
+    required TResult Function() getAvailableAccessRights,
+    required TResult Function() getAvailableWeights,
   }) {
     return createPosition(entity);
   }
@@ -150,6 +166,8 @@ class _$CreatePositionImpl implements _CreatePosition {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PositionEntity entity)? createPosition,
     TResult? Function()? getAllPositions,
+    TResult? Function()? getAvailableAccessRights,
+    TResult? Function()? getAvailableWeights,
   }) {
     return createPosition?.call(entity);
   }
@@ -159,6 +177,8 @@ class _$CreatePositionImpl implements _CreatePosition {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PositionEntity entity)? createPosition,
     TResult Function()? getAllPositions,
+    TResult Function()? getAvailableAccessRights,
+    TResult Function()? getAvailableWeights,
     required TResult orElse(),
   }) {
     if (createPosition != null) {
@@ -172,6 +192,9 @@ class _$CreatePositionImpl implements _CreatePosition {
   TResult map<TResult extends Object?>({
     required TResult Function(_CreatePosition value) createPosition,
     required TResult Function(_GetAllPositions value) getAllPositions,
+    required TResult Function(_GetAvailableAccessRights value)
+        getAvailableAccessRights,
+    required TResult Function(_GetAvailableWeights value) getAvailableWeights,
   }) {
     return createPosition(this);
   }
@@ -181,6 +204,9 @@ class _$CreatePositionImpl implements _CreatePosition {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CreatePosition value)? createPosition,
     TResult? Function(_GetAllPositions value)? getAllPositions,
+    TResult? Function(_GetAvailableAccessRights value)?
+        getAvailableAccessRights,
+    TResult? Function(_GetAvailableWeights value)? getAvailableWeights,
   }) {
     return createPosition?.call(this);
   }
@@ -190,6 +216,8 @@ class _$CreatePositionImpl implements _CreatePosition {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreatePosition value)? createPosition,
     TResult Function(_GetAllPositions value)? getAllPositions,
+    TResult Function(_GetAvailableAccessRights value)? getAvailableAccessRights,
+    TResult Function(_GetAvailableWeights value)? getAvailableWeights,
     required TResult orElse(),
   }) {
     if (createPosition != null) {
@@ -249,6 +277,8 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   TResult when<TResult extends Object?>({
     required TResult Function(PositionEntity entity) createPosition,
     required TResult Function() getAllPositions,
+    required TResult Function() getAvailableAccessRights,
+    required TResult Function() getAvailableWeights,
   }) {
     return getAllPositions();
   }
@@ -258,6 +288,8 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(PositionEntity entity)? createPosition,
     TResult? Function()? getAllPositions,
+    TResult? Function()? getAvailableAccessRights,
+    TResult? Function()? getAvailableWeights,
   }) {
     return getAllPositions?.call();
   }
@@ -267,6 +299,8 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(PositionEntity entity)? createPosition,
     TResult Function()? getAllPositions,
+    TResult Function()? getAvailableAccessRights,
+    TResult Function()? getAvailableWeights,
     required TResult orElse(),
   }) {
     if (getAllPositions != null) {
@@ -280,6 +314,9 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   TResult map<TResult extends Object?>({
     required TResult Function(_CreatePosition value) createPosition,
     required TResult Function(_GetAllPositions value) getAllPositions,
+    required TResult Function(_GetAvailableAccessRights value)
+        getAvailableAccessRights,
+    required TResult Function(_GetAvailableWeights value) getAvailableWeights,
   }) {
     return getAllPositions(this);
   }
@@ -289,6 +326,9 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CreatePosition value)? createPosition,
     TResult? Function(_GetAllPositions value)? getAllPositions,
+    TResult? Function(_GetAvailableAccessRights value)?
+        getAvailableAccessRights,
+    TResult? Function(_GetAvailableWeights value)? getAvailableWeights,
   }) {
     return getAllPositions?.call(this);
   }
@@ -298,6 +338,8 @@ class _$GetAllPositionsImpl implements _GetAllPositions {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreatePosition value)? createPosition,
     TResult Function(_GetAllPositions value)? getAllPositions,
+    TResult Function(_GetAvailableAccessRights value)? getAvailableAccessRights,
+    TResult Function(_GetAvailableWeights value)? getAvailableWeights,
     required TResult orElse(),
   }) {
     if (getAllPositions != null) {
@@ -312,9 +354,247 @@ abstract class _GetAllPositions implements PositionsEvent {
 }
 
 /// @nodoc
+abstract class _$$GetAvailableAccessRightsImplCopyWith<$Res> {
+  factory _$$GetAvailableAccessRightsImplCopyWith(
+          _$GetAvailableAccessRightsImpl value,
+          $Res Function(_$GetAvailableAccessRightsImpl) then) =
+      __$$GetAvailableAccessRightsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAvailableAccessRightsImplCopyWithImpl<$Res>
+    extends _$PositionsEventCopyWithImpl<$Res, _$GetAvailableAccessRightsImpl>
+    implements _$$GetAvailableAccessRightsImplCopyWith<$Res> {
+  __$$GetAvailableAccessRightsImplCopyWithImpl(
+      _$GetAvailableAccessRightsImpl _value,
+      $Res Function(_$GetAvailableAccessRightsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetAvailableAccessRightsImpl implements _GetAvailableAccessRights {
+  const _$GetAvailableAccessRightsImpl();
+
+  @override
+  String toString() {
+    return 'PositionsEvent.getAvailableAccessRights()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAvailableAccessRightsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PositionEntity entity) createPosition,
+    required TResult Function() getAllPositions,
+    required TResult Function() getAvailableAccessRights,
+    required TResult Function() getAvailableWeights,
+  }) {
+    return getAvailableAccessRights();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PositionEntity entity)? createPosition,
+    TResult? Function()? getAllPositions,
+    TResult? Function()? getAvailableAccessRights,
+    TResult? Function()? getAvailableWeights,
+  }) {
+    return getAvailableAccessRights?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PositionEntity entity)? createPosition,
+    TResult Function()? getAllPositions,
+    TResult Function()? getAvailableAccessRights,
+    TResult Function()? getAvailableWeights,
+    required TResult orElse(),
+  }) {
+    if (getAvailableAccessRights != null) {
+      return getAvailableAccessRights();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CreatePosition value) createPosition,
+    required TResult Function(_GetAllPositions value) getAllPositions,
+    required TResult Function(_GetAvailableAccessRights value)
+        getAvailableAccessRights,
+    required TResult Function(_GetAvailableWeights value) getAvailableWeights,
+  }) {
+    return getAvailableAccessRights(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CreatePosition value)? createPosition,
+    TResult? Function(_GetAllPositions value)? getAllPositions,
+    TResult? Function(_GetAvailableAccessRights value)?
+        getAvailableAccessRights,
+    TResult? Function(_GetAvailableWeights value)? getAvailableWeights,
+  }) {
+    return getAvailableAccessRights?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CreatePosition value)? createPosition,
+    TResult Function(_GetAllPositions value)? getAllPositions,
+    TResult Function(_GetAvailableAccessRights value)? getAvailableAccessRights,
+    TResult Function(_GetAvailableWeights value)? getAvailableWeights,
+    required TResult orElse(),
+  }) {
+    if (getAvailableAccessRights != null) {
+      return getAvailableAccessRights(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAvailableAccessRights implements PositionsEvent {
+  const factory _GetAvailableAccessRights() = _$GetAvailableAccessRightsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetAvailableWeightsImplCopyWith<$Res> {
+  factory _$$GetAvailableWeightsImplCopyWith(_$GetAvailableWeightsImpl value,
+          $Res Function(_$GetAvailableWeightsImpl) then) =
+      __$$GetAvailableWeightsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAvailableWeightsImplCopyWithImpl<$Res>
+    extends _$PositionsEventCopyWithImpl<$Res, _$GetAvailableWeightsImpl>
+    implements _$$GetAvailableWeightsImplCopyWith<$Res> {
+  __$$GetAvailableWeightsImplCopyWithImpl(_$GetAvailableWeightsImpl _value,
+      $Res Function(_$GetAvailableWeightsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetAvailableWeightsImpl implements _GetAvailableWeights {
+  const _$GetAvailableWeightsImpl();
+
+  @override
+  String toString() {
+    return 'PositionsEvent.getAvailableWeights()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAvailableWeightsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PositionEntity entity) createPosition,
+    required TResult Function() getAllPositions,
+    required TResult Function() getAvailableAccessRights,
+    required TResult Function() getAvailableWeights,
+  }) {
+    return getAvailableWeights();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PositionEntity entity)? createPosition,
+    TResult? Function()? getAllPositions,
+    TResult? Function()? getAvailableAccessRights,
+    TResult? Function()? getAvailableWeights,
+  }) {
+    return getAvailableWeights?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PositionEntity entity)? createPosition,
+    TResult Function()? getAllPositions,
+    TResult Function()? getAvailableAccessRights,
+    TResult Function()? getAvailableWeights,
+    required TResult orElse(),
+  }) {
+    if (getAvailableWeights != null) {
+      return getAvailableWeights();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CreatePosition value) createPosition,
+    required TResult Function(_GetAllPositions value) getAllPositions,
+    required TResult Function(_GetAvailableAccessRights value)
+        getAvailableAccessRights,
+    required TResult Function(_GetAvailableWeights value) getAvailableWeights,
+  }) {
+    return getAvailableWeights(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CreatePosition value)? createPosition,
+    TResult? Function(_GetAllPositions value)? getAllPositions,
+    TResult? Function(_GetAvailableAccessRights value)?
+        getAvailableAccessRights,
+    TResult? Function(_GetAvailableWeights value)? getAvailableWeights,
+  }) {
+    return getAvailableWeights?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CreatePosition value)? createPosition,
+    TResult Function(_GetAllPositions value)? getAllPositions,
+    TResult Function(_GetAvailableAccessRights value)? getAvailableAccessRights,
+    TResult Function(_GetAvailableWeights value)? getAvailableWeights,
+    required TResult orElse(),
+  }) {
+    if (getAvailableWeights != null) {
+      return getAvailableWeights(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAvailableWeights implements PositionsEvent {
+  const factory _GetAvailableWeights() = _$GetAvailableWeightsImpl;
+}
+
+/// @nodoc
 mixin _$PositionsState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   List<PositionEntity> get positions => throw _privateConstructorUsedError;
+  List<int> get weights => throw _privateConstructorUsedError;
+  List<String> get rights => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PositionsStateCopyWith<PositionsState> get copyWith =>
@@ -327,7 +607,11 @@ abstract class $PositionsStateCopyWith<$Res> {
           PositionsState value, $Res Function(PositionsState) then) =
       _$PositionsStateCopyWithImpl<$Res, PositionsState>;
   @useResult
-  $Res call({StateStatus stateStatus, List<PositionEntity> positions});
+  $Res call(
+      {StateStatus stateStatus,
+      List<PositionEntity> positions,
+      List<int> weights,
+      List<String> rights});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -347,6 +631,8 @@ class _$PositionsStateCopyWithImpl<$Res, $Val extends PositionsState>
   $Res call({
     Object? stateStatus = null,
     Object? positions = null,
+    Object? weights = null,
+    Object? rights = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -357,6 +643,14 @@ class _$PositionsStateCopyWithImpl<$Res, $Val extends PositionsState>
           ? _value.positions
           : positions // ignore: cast_nullable_to_non_nullable
               as List<PositionEntity>,
+      weights: null == weights
+          ? _value.weights
+          : weights // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      rights: null == rights
+          ? _value.rights
+          : rights // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 
@@ -377,7 +671,11 @@ abstract class _$$PositionsStateImplCopyWith<$Res>
       __$$PositionsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus, List<PositionEntity> positions});
+  $Res call(
+      {StateStatus stateStatus,
+      List<PositionEntity> positions,
+      List<int> weights,
+      List<String> rights});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -396,6 +694,8 @@ class __$$PositionsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? stateStatus = null,
     Object? positions = null,
+    Object? weights = null,
+    Object? rights = null,
   }) {
     return _then(_$PositionsStateImpl(
       stateStatus: null == stateStatus
@@ -406,6 +706,14 @@ class __$$PositionsStateImplCopyWithImpl<$Res>
           ? _value._positions
           : positions // ignore: cast_nullable_to_non_nullable
               as List<PositionEntity>,
+      weights: null == weights
+          ? _value._weights
+          : weights // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      rights: null == rights
+          ? _value._rights
+          : rights // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -415,8 +723,12 @@ class __$$PositionsStateImplCopyWithImpl<$Res>
 class _$PositionsStateImpl implements _PositionsState {
   const _$PositionsStateImpl(
       {required this.stateStatus,
-      required final List<PositionEntity> positions})
-      : _positions = positions;
+      required final List<PositionEntity> positions,
+      required final List<int> weights,
+      required final List<String> rights})
+      : _positions = positions,
+        _weights = weights,
+        _rights = rights;
 
   @override
   final StateStatus stateStatus;
@@ -428,9 +740,25 @@ class _$PositionsStateImpl implements _PositionsState {
     return EqualUnmodifiableListView(_positions);
   }
 
+  final List<int> _weights;
+  @override
+  List<int> get weights {
+    if (_weights is EqualUnmodifiableListView) return _weights;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_weights);
+  }
+
+  final List<String> _rights;
+  @override
+  List<String> get rights {
+    if (_rights is EqualUnmodifiableListView) return _rights;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rights);
+  }
+
   @override
   String toString() {
-    return 'PositionsState(stateStatus: $stateStatus, positions: $positions)';
+    return 'PositionsState(stateStatus: $stateStatus, positions: $positions, weights: $weights, rights: $rights)';
   }
 
   @override
@@ -441,12 +769,18 @@ class _$PositionsStateImpl implements _PositionsState {
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
             const DeepCollectionEquality()
-                .equals(other._positions, _positions));
+                .equals(other._positions, _positions) &&
+            const DeepCollectionEquality().equals(other._weights, _weights) &&
+            const DeepCollectionEquality().equals(other._rights, _rights));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus,
-      const DeepCollectionEquality().hash(_positions));
+  int get hashCode => Object.hash(
+      runtimeType,
+      stateStatus,
+      const DeepCollectionEquality().hash(_positions),
+      const DeepCollectionEquality().hash(_weights),
+      const DeepCollectionEquality().hash(_rights));
 
   @JsonKey(ignore: true)
   @override
@@ -459,12 +793,18 @@ class _$PositionsStateImpl implements _PositionsState {
 abstract class _PositionsState implements PositionsState {
   const factory _PositionsState(
       {required final StateStatus stateStatus,
-      required final List<PositionEntity> positions}) = _$PositionsStateImpl;
+      required final List<PositionEntity> positions,
+      required final List<int> weights,
+      required final List<String> rights}) = _$PositionsStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
   List<PositionEntity> get positions;
+  @override
+  List<int> get weights;
+  @override
+  List<String> get rights;
   @override
   @JsonKey(ignore: true)
   _$$PositionsStateImplCopyWith<_$PositionsStateImpl> get copyWith =>

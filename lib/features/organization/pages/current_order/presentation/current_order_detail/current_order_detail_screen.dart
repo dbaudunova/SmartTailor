@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_order_detail/current_order_detail_content.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
@@ -26,12 +27,16 @@ class CurrentOrderDetailScreen extends StatelessWidget {
   void _listenerBloc(BuildContext context, CurrentOrderState state) {
     state.stateStatus.whenOrNull(
       success: (value) {
-        // AutoRouter.of(context).replace(
-        //   ConfirmationRoute(email: value),
-        // );
+        if (value == true) {
+          context.read<CurrentOrderBloc>().add(CurrentOrderEvent.getDetailedOrder(id: id));
+        }
       },
       failure: (msg) {
-        // AppSnackBar.show(context: context, titleText: msg, error: true);
+        AppSnackBar.show(
+          context: context,
+          titleText: msg,
+          error: true,
+        );
       },
     );
   }

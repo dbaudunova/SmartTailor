@@ -1,9 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class CurrentOrdersContainer extends StatelessWidget {
-  const CurrentOrdersContainer({
+  const CurrentOrdersContainer(
+      // String? description,
+      {
     required this.price,
     required this.orderNumber,
     required this.orderStatus,

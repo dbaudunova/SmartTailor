@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/employee_position/checkbox_style.dart';
 
 class StatusBottomSheet extends StatelessWidget {
   const StatusBottomSheet({
-    required List<Map> statusList,
+    required this.selectedStatus,
+    required this.onTap,
     super.key,
-  }) : _statusList = statusList;
+  });
 
-  final List<Map> _statusList;
+  final OrderStatus selectedStatus;
+  final Function(String file) onTap;
 
   @override
   Widget build(BuildContext context) {
+    final statusList = OrderStatus.values.where((status) => status != OrderStatus.notConfirmed).toList();
+    int? currentCheckedIndex = statusList.indexOf(selectedStatus);
+
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return SizedBox(
@@ -28,24 +36,53 @@ class StatusBottomSheet extends StatelessWidget {
                 ),
               ),
               Column(
-                children: _statusList.map((list) {
+                children: statusList.map((orderStatus) {
+                  var index = statusList.indexOf(orderStatus);
                   return CheckboxStyle(
-                    title: list['name'],
-                    value: list['isChecked'],
+                    title: getOrderStatusTypeLabel(orderStatus),
+                    value: selectedStatus == orderStatus,
                     onChanged: (bool? value) {
-                      setState(() {
-                        for (var status in _statusList) {
-                          status['isChecked'] = false;
+                      if (value == true) {
+                        if (currentCheckedIndex == null ||
+                            (index == currentCheckedIndex! - 1 || index == currentCheckedIndex! + 1)) {
+                          // Определяем значение для события
+                          final changeValue = index < currentCheckedIndex! ? 'MINUS' : 'PLUS';
+                          // Отправляем событие в BLoC
+                          onTap(changeValue);
+                          setState(() {
+                            currentCheckedIndex = index;
+                            Navigator.pop(context, orderStatus);
+                          });
+                        } else {
+                          _buildWarning(context);
                         }
-                        list['isChecked'] = value;
-                      });
-                      Navigator.pop(context);
+                      }
                     },
                   );
                 }).toList(),
               ),
             ],
           ),
+        );
+      },
+    );
+  }
+
+  Future<dynamic> _buildWarning(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Предупреждение'),
+          content: const Text('Можно выбрать только соседний статус.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
         );
       },
     );

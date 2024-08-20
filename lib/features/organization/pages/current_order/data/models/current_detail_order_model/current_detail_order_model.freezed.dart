@@ -25,7 +25,8 @@ mixin _$CurrentDetailOrderModel {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  @OrderStatusConverter()
+  OrderStatus get status => throw _privateConstructorUsedError;
   DateTime get dateOfExecution => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   List<Employee> get employees => throw _privateConstructorUsedError;
@@ -50,7 +51,7 @@ abstract class $CurrentDetailOrderModelCopyWith<$Res> {
       String name,
       String description,
       double price,
-      String status,
+      @OrderStatusConverter() OrderStatus status,
       DateTime dateOfExecution,
       List<String> images,
       List<Employee> employees,
@@ -105,7 +106,7 @@ class _$CurrentDetailOrderModelCopyWithImpl<$Res,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderStatus,
       dateOfExecution: null == dateOfExecution
           ? _value.dateOfExecution
           : dateOfExecution // ignore: cast_nullable_to_non_nullable
@@ -148,7 +149,7 @@ abstract class _$$CurrentDetailOrderModelImplCopyWith<$Res>
       String name,
       String description,
       double price,
-      String status,
+      @OrderStatusConverter() OrderStatus status,
       DateTime dateOfExecution,
       List<String> images,
       List<Employee> employees,
@@ -202,7 +203,7 @@ class __$$CurrentDetailOrderModelImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrderStatus,
       dateOfExecution: null == dateOfExecution
           ? _value.dateOfExecution
           : dateOfExecution // ignore: cast_nullable_to_non_nullable
@@ -239,7 +240,7 @@ class _$CurrentDetailOrderModelImpl implements _CurrentDetailOrderModel {
       required this.name,
       required this.description,
       required this.price,
-      required this.status,
+      @OrderStatusConverter() required this.status,
       required this.dateOfExecution,
       required final List<String> images,
       required final List<Employee> employees,
@@ -261,7 +262,8 @@ class _$CurrentDetailOrderModelImpl implements _CurrentDetailOrderModel {
   @override
   final double price;
   @override
-  final String status;
+  @OrderStatusConverter()
+  final OrderStatus status;
   @override
   final DateTime dateOfExecution;
   final List<String> _images;
@@ -353,7 +355,7 @@ abstract class _CurrentDetailOrderModel implements CurrentDetailOrderModel {
       required final String name,
       required final String description,
       required final double price,
-      required final String status,
+      @OrderStatusConverter() required final OrderStatus status,
       required final DateTime dateOfExecution,
       required final List<String> images,
       required final List<Employee> employees,
@@ -373,7 +375,8 @@ abstract class _CurrentDetailOrderModel implements CurrentDetailOrderModel {
   @override
   double get price;
   @override
-  String get status;
+  @OrderStatusConverter()
+  OrderStatus get status;
   @override
   DateTime get dateOfExecution;
   @override

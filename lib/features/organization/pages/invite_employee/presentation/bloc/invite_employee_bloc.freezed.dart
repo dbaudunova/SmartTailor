@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$InviteEmployeeEvent {
-  SendInviteModel get model => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(SendInviteModel model) sendInvite,
+    required TResult Function() getAvailablePostion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SendInviteModel model)? sendInvite,
+    TResult? Function()? getAvailablePostion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SendInviteModel model)? sendInvite,
+    TResult Function()? getAvailablePostion,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SendInvite value) sendInvite,
+    required TResult Function(_GetAvailablePostion value) getAvailablePostion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendInvite value)? sendInvite,
+    TResult? Function(_GetAvailablePostion value)? getAvailablePostion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendInvite value)? sendInvite,
+    TResult Function(_GetAvailablePostion value)? getAvailablePostion,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $InviteEmployeeEventCopyWith<InviteEmployeeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +61,6 @@ abstract class $InviteEmployeeEventCopyWith<$Res> {
   factory $InviteEmployeeEventCopyWith(
           InviteEmployeeEvent value, $Res Function(InviteEmployeeEvent) then) =
       _$InviteEmployeeEventCopyWithImpl<$Res, InviteEmployeeEvent>;
-  @useResult
-  $Res call({SendInviteModel model});
-
-  $SendInviteModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -75,40 +72,16 @@ class _$InviteEmployeeEventCopyWithImpl<$Res, $Val extends InviteEmployeeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? model = null,
-  }) {
-    return _then(_value.copyWith(
-      model: null == model
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as SendInviteModel,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SendInviteModelCopyWith<$Res> get model {
-    return $SendInviteModelCopyWith<$Res>(_value.model, (value) {
-      return _then(_value.copyWith(model: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$SendInviteImplCopyWith<$Res>
-    implements $InviteEmployeeEventCopyWith<$Res> {
+abstract class _$$SendInviteImplCopyWith<$Res> {
   factory _$$SendInviteImplCopyWith(
           _$SendInviteImpl value, $Res Function(_$SendInviteImpl) then) =
       __$$SendInviteImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({SendInviteModel model});
 
-  @override
   $SendInviteModelCopyWith<$Res> get model;
 }
 
@@ -131,6 +104,14 @@ class __$$SendInviteImplCopyWithImpl<$Res>
           : model // ignore: cast_nullable_to_non_nullable
               as SendInviteModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SendInviteModelCopyWith<$Res> get model {
+    return $SendInviteModelCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
+    });
   }
 }
 
@@ -168,6 +149,7 @@ class _$SendInviteImpl implements _SendInvite {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(SendInviteModel model) sendInvite,
+    required TResult Function() getAvailablePostion,
   }) {
     return sendInvite(model);
   }
@@ -176,6 +158,7 @@ class _$SendInviteImpl implements _SendInvite {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SendInviteModel model)? sendInvite,
+    TResult? Function()? getAvailablePostion,
   }) {
     return sendInvite?.call(model);
   }
@@ -184,6 +167,7 @@ class _$SendInviteImpl implements _SendInvite {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SendInviteModel model)? sendInvite,
+    TResult Function()? getAvailablePostion,
     required TResult orElse(),
   }) {
     if (sendInvite != null) {
@@ -196,6 +180,7 @@ class _$SendInviteImpl implements _SendInvite {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SendInvite value) sendInvite,
+    required TResult Function(_GetAvailablePostion value) getAvailablePostion,
   }) {
     return sendInvite(this);
   }
@@ -204,6 +189,7 @@ class _$SendInviteImpl implements _SendInvite {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SendInvite value)? sendInvite,
+    TResult? Function(_GetAvailablePostion value)? getAvailablePostion,
   }) {
     return sendInvite?.call(this);
   }
@@ -212,6 +198,7 @@ class _$SendInviteImpl implements _SendInvite {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SendInvite value)? sendInvite,
+    TResult Function(_GetAvailablePostion value)? getAvailablePostion,
     required TResult orElse(),
   }) {
     if (sendInvite != null) {
@@ -225,17 +212,120 @@ abstract class _SendInvite implements InviteEmployeeEvent {
   const factory _SendInvite({required final SendInviteModel model}) =
       _$SendInviteImpl;
 
-  @override
   SendInviteModel get model;
-  @override
   @JsonKey(ignore: true)
   _$$SendInviteImplCopyWith<_$SendInviteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$GetAvailablePostionImplCopyWith<$Res> {
+  factory _$$GetAvailablePostionImplCopyWith(_$GetAvailablePostionImpl value,
+          $Res Function(_$GetAvailablePostionImpl) then) =
+      __$$GetAvailablePostionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAvailablePostionImplCopyWithImpl<$Res>
+    extends _$InviteEmployeeEventCopyWithImpl<$Res, _$GetAvailablePostionImpl>
+    implements _$$GetAvailablePostionImplCopyWith<$Res> {
+  __$$GetAvailablePostionImplCopyWithImpl(_$GetAvailablePostionImpl _value,
+      $Res Function(_$GetAvailablePostionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetAvailablePostionImpl implements _GetAvailablePostion {
+  const _$GetAvailablePostionImpl();
+
+  @override
+  String toString() {
+    return 'InviteEmployeeEvent.getAvailablePostion()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAvailablePostionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SendInviteModel model) sendInvite,
+    required TResult Function() getAvailablePostion,
+  }) {
+    return getAvailablePostion();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(SendInviteModel model)? sendInvite,
+    TResult? Function()? getAvailablePostion,
+  }) {
+    return getAvailablePostion?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SendInviteModel model)? sendInvite,
+    TResult Function()? getAvailablePostion,
+    required TResult orElse(),
+  }) {
+    if (getAvailablePostion != null) {
+      return getAvailablePostion();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendInvite value) sendInvite,
+    required TResult Function(_GetAvailablePostion value) getAvailablePostion,
+  }) {
+    return getAvailablePostion(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendInvite value)? sendInvite,
+    TResult? Function(_GetAvailablePostion value)? getAvailablePostion,
+  }) {
+    return getAvailablePostion?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendInvite value)? sendInvite,
+    TResult Function(_GetAvailablePostion value)? getAvailablePostion,
+    required TResult orElse(),
+  }) {
+    if (getAvailablePostion != null) {
+      return getAvailablePostion(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAvailablePostion implements InviteEmployeeEvent {
+  const factory _GetAvailablePostion() = _$GetAvailablePostionImpl;
+}
+
+/// @nodoc
 mixin _$InviteEmployeeState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
+  List<PositionEntity> get availablePositions =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $InviteEmployeeStateCopyWith<InviteEmployeeState> get copyWith =>
@@ -248,7 +338,7 @@ abstract class $InviteEmployeeStateCopyWith<$Res> {
           InviteEmployeeState value, $Res Function(InviteEmployeeState) then) =
       _$InviteEmployeeStateCopyWithImpl<$Res, InviteEmployeeState>;
   @useResult
-  $Res call({StateStatus stateStatus});
+  $Res call({StateStatus stateStatus, List<PositionEntity> availablePositions});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -267,12 +357,17 @@ class _$InviteEmployeeStateCopyWithImpl<$Res, $Val extends InviteEmployeeState>
   @override
   $Res call({
     Object? stateStatus = null,
+    Object? availablePositions = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      availablePositions: null == availablePositions
+          ? _value.availablePositions
+          : availablePositions // ignore: cast_nullable_to_non_nullable
+              as List<PositionEntity>,
     ) as $Val);
   }
 
@@ -293,7 +388,7 @@ abstract class _$$InviteEmployeeStateImplCopyWith<$Res>
       __$$InviteEmployeeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus});
+  $Res call({StateStatus stateStatus, List<PositionEntity> availablePositions});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -311,12 +406,17 @@ class __$$InviteEmployeeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
+    Object? availablePositions = null,
   }) {
     return _then(_$InviteEmployeeStateImpl(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
+      availablePositions: null == availablePositions
+          ? _value._availablePositions
+          : availablePositions // ignore: cast_nullable_to_non_nullable
+              as List<PositionEntity>,
     ));
   }
 }
@@ -324,14 +424,25 @@ class __$$InviteEmployeeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InviteEmployeeStateImpl implements _InviteEmployeeState {
-  const _$InviteEmployeeStateImpl({required this.stateStatus});
+  const _$InviteEmployeeStateImpl(
+      {required this.stateStatus,
+      required final List<PositionEntity> availablePositions})
+      : _availablePositions = availablePositions;
 
   @override
   final StateStatus stateStatus;
+  final List<PositionEntity> _availablePositions;
+  @override
+  List<PositionEntity> get availablePositions {
+    if (_availablePositions is EqualUnmodifiableListView)
+      return _availablePositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_availablePositions);
+  }
 
   @override
   String toString() {
-    return 'InviteEmployeeState(stateStatus: $stateStatus)';
+    return 'InviteEmployeeState(stateStatus: $stateStatus, availablePositions: $availablePositions)';
   }
 
   @override
@@ -340,11 +451,14 @@ class _$InviteEmployeeStateImpl implements _InviteEmployeeState {
         (other.runtimeType == runtimeType &&
             other is _$InviteEmployeeStateImpl &&
             (identical(other.stateStatus, stateStatus) ||
-                other.stateStatus == stateStatus));
+                other.stateStatus == stateStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._availablePositions, _availablePositions));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus);
+  int get hashCode => Object.hash(runtimeType, stateStatus,
+      const DeepCollectionEquality().hash(_availablePositions));
 
   @JsonKey(ignore: true)
   @override
@@ -355,11 +469,15 @@ class _$InviteEmployeeStateImpl implements _InviteEmployeeState {
 }
 
 abstract class _InviteEmployeeState implements InviteEmployeeState {
-  const factory _InviteEmployeeState({required final StateStatus stateStatus}) =
+  const factory _InviteEmployeeState(
+          {required final StateStatus stateStatus,
+          required final List<PositionEntity> availablePositions}) =
       _$InviteEmployeeStateImpl;
 
   @override
   StateStatus get stateStatus;
+  @override
+  List<PositionEntity> get availablePositions;
   @override
   @JsonKey(ignore: true)
   _$$InviteEmployeeStateImplCopyWith<_$InviteEmployeeStateImpl> get copyWith =>

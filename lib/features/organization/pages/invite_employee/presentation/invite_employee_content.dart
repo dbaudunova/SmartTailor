@@ -5,7 +5,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/data/models/send_invite_model/send_invite_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/data/models/send_invite_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/bloc/invite_employee_bloc.dart';
 import 'package:neobis_smart_tailor/features/registration/presentation/registration_content.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
@@ -27,6 +27,8 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
 
   final _formKey = GlobalKey<FormState>();
 
+  InviteEmployeeBloc get _bloc => context.read<InviteEmployeeBloc>();
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -39,65 +41,69 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
   }
 
   @override
+  void initState() {
+    _bloc.add(const InviteEmployeeEvent.getAvailablePostion());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: _buildButton(),
-      appBar: AppBarStyle(
-        title: 'Пригласить сотрудника',
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            AutoRouter.of(context).maybePop();
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
+    return BlocBuilder<InviteEmployeeBloc, InviteEmployeeState>(
+      builder: (context, state) {
+        return Scaffold(
+          floatingActionButton: _buildButton(state),
+          appBar: AppBarStyle(
+            title: 'Пригласить сотрудника',
+            centerTitle: true,
+            leading: IconButton(
+              onPressed: () {
+                AutoRouter.of(context).maybePop();
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+              ),
+            ),
           ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            child: _buildTextFields(),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Form(
+                key: _formKey,
+                child: _buildTextFields(state),
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildButton() {
-    return BlocBuilder<InviteEmployeeBloc, InviteEmployeeState>(
-      builder: (context, state) {
-        return state.stateStatus != const StateStatus.loading()
-            ? ElevatedButtonWidget(
-                text: 'Отправить приглашение',
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    var model = SendInviteModel(
-                      surname: _surnameController.text,
-                      name: _nameController.text,
-                      patronymic: _patronymicController.text,
-                      email: _emailController.text,
-                      phoneNumber: _phoneController.text,
-                      position: _employeePositionController.text,
+  Widget _buildButton(InviteEmployeeState state) {
+    return state.stateStatus != const StateStatus.loading()
+        ? ElevatedButtonWidget(
+            text: 'Отправить приглашение',
+            onTap: () {
+              if (_formKey.currentState!.validate()) {
+                var model = SendInviteModel(
+                  surname: _surnameController.text,
+                  name: _nameController.text,
+                  patronymic: _patronymicController.text,
+                  email: _emailController.text,
+                  phoneNumber: _phoneController.text,
+                  position: _employeePositionController.text,
+                );
+                context.read<InviteEmployeeBloc>().add(
+                      InviteEmployeeEvent.sendInvite(
+                        model: model,
+                      ),
                     );
-                    context.read<InviteEmployeeBloc>().add(
-                          InviteEmployeeEvent.sendInvite(
-                            model: model,
-                          ),
-                        );
-                  }
-                },
-              )
-            : const ElevatedButtonWidget(
-                onTap: null,
-
-                loading: true,
-                // text: 'Отправить приглашение',
-              );
-      },
-    );
+              }
+            },
+          )
+        : const ElevatedButtonWidget(
+            onTap: null,
+            loading: true,
+          );
   }
 
   String? _emailFieldValidation(String? value) {
@@ -116,8 +122,9 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
     return null;
   }
 
-  Column _buildTextFields() {
+  Column _buildTextFields(InviteEmployeeState state) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormFieldWidget(
           titleName: 'Фамилия*',
@@ -170,8 +177,31 @@ class _InviteEmployeeContentState extends State<InviteEmployeeContent> {
           },
           onChanged: (s) {},
           controller: _employeePositionController,
-          hintText: 'Должность сотрудника',
+          hintText: _employeePositionController.text,
         ),
+        const SizedBox(height: 16),
+        const Text(
+          'Нажмите чтобы выбрать доступную долджность:',
+          style: AppTextStyle.textField16,
+        ),
+        const SizedBox(height: 6),
+        ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: state.availablePositions.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _employeePositionController.text = state.availablePositions[index].positionName!;
+                  });
+                },
+                child: Text(
+                  state.availablePositions[index].positionName!,
+                  style: AppTextStyle.textField16.copyWith(fontSize: 18),
+                ),
+              );
+            }),
         const SizedBox(
           height: 68,
         )

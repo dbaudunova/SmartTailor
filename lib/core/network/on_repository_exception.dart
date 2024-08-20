@@ -11,7 +11,12 @@ Failure handleDioException(DioException exception) {
     case DioExceptionType.badResponse:
       switch (exception.response?.statusCode) {
         case 400:
-          return Failure.request(message: 'Неправильный запрос', status: 400);
+          var conflictMessage = 'Неправильный запрос';
+          if (exception.response?.data != null && exception.response?.data['message'] != null) {
+            conflictMessage = exception.response?.data['message'];
+          }
+          return Failure.request(message: conflictMessage, status: 400);
+
         case 403:
           return Failure.request(message: 'Неавторизован', status: 401);
         case 401:
@@ -20,11 +25,9 @@ Failure handleDioException(DioException exception) {
           var conflictMessage = 'Ресурс не найден';
           if (exception.response?.data != null && exception.response?.data['message'] != null) {
             conflictMessage = exception.response?.data['message'];
-            // if (conflictMessage == 'Organization not found') {
-            //   return;
-            // }
           }
           return Failure.request(message: conflictMessage, status: 404);
+
         case 409:
           var conflictMessage = 'Произошел конфликт';
           if (exception.response?.data != null && exception.response?.data['message'] != null) {

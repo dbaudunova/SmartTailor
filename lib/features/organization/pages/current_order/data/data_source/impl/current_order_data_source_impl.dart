@@ -30,6 +30,7 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
       } else {
         var responseJson = response.data;
         // var models = list.map((json) => CurrentOrderModel.fromJson(json)).toList();
+
         var model = OrganizationListModel.fromJson(responseJson);
         return model;
       }
@@ -55,8 +56,15 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
           message: 'Order creation failed, status code: ${response.statusCode}',
         );
       } else {
-        var model = CurrentDetailOrderModel.fromJson(response.data);
-        return model;
+        try {
+          print(response.data); // Логируем JSON-ответ
+          var model = CurrentDetailOrderModel.fromJson(response.data);
+          print(model);
+          return model;
+        } catch (e) {
+          print('Error deserializing JSON: $e'); // Логируем ошибку
+          throw handleGeneralException(e);
+        }
       }
     } on DioException catch (e) {
       // ignore: only_throw_errors
@@ -71,7 +79,29 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
   Future<void> changeOrderStatus({required int id, required String value}) async {
     try {
       final response = await _client.put(
-        '${HttpPaths.changeOrderStatus}/$id/$value',
+        '${HttpPaths.changeOrderStatus}$id/$value',
+      );
+      if (response.statusCode != HttpSuccess.success) {
+        // ignore: only_throw_errors
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Failed, status code: ${response.statusCode}',
+        );
+      }
+    } on DioException catch (e) {
+      // ignore: only_throw_errors
+      throw handleDioException(e);
+    } catch (e) {
+      // ignore: only_throw_errors
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<void> completeOrder({required int id}) async {
+    try {
+      final response = await _client.get(
+        '${HttpPaths.completeOrder}$id',
       );
       if (response.statusCode != HttpSuccess.success) {
         // ignore: only_throw_errors

@@ -1,9 +1,11 @@
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
+
 class CurrentDetailOrderEntity {
   final int? id;
   final String? name;
   final String? description;
   final double? price;
-  final String? status;
+  final OrderStatus? status;
   final DateTime? dateOfExecution;
   final List<String>? images;
   final List<EmployeeEntity>? employees;
@@ -31,7 +33,7 @@ class CurrentDetailOrderEntity {
       name: '',
       description: '',
       price: 0.0,
-      status: '',
+      status: OrderStatus.waiting,
       dateOfExecution: null,
       images: [],
       employees: [],

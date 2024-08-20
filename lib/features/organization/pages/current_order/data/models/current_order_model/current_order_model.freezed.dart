@@ -25,7 +25,8 @@ mixin _$CurrentOrderModel {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
-  String? get status => throw _privateConstructorUsedError;
+  @OrderStatusConverter()
+  OrderStatus get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,7 @@ abstract class $CurrentOrderModelCopyWith<$Res> {
       String? name,
       String? description,
       double? price,
-      String? status});
+      @OrderStatusConverter() OrderStatus status});
 }
 
 /// @nodoc
@@ -66,7 +67,7 @@ class _$CurrentOrderModelCopyWithImpl<$Res, $Val extends CurrentOrderModel>
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
-    Object? status = freezed,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -89,10 +90,10 @@ class _$CurrentOrderModelCopyWithImpl<$Res, $Val extends CurrentOrderModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as OrderStatus,
     ) as $Val);
   }
 }
@@ -111,7 +112,7 @@ abstract class _$$CurrentOrderModelImplCopyWith<$Res>
       String? name,
       String? description,
       double? price,
-      String? status});
+      @OrderStatusConverter() OrderStatus status});
 }
 
 /// @nodoc
@@ -130,7 +131,7 @@ class __$$CurrentOrderModelImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
-    Object? status = freezed,
+    Object? status = null,
   }) {
     return _then(_$CurrentOrderModelImpl(
       id: freezed == id
@@ -153,10 +154,10 @@ class __$$CurrentOrderModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as OrderStatus,
     ));
   }
 }
@@ -170,7 +171,7 @@ class _$CurrentOrderModelImpl implements _CurrentOrderModel {
       required this.name,
       required this.description,
       required this.price,
-      required this.status});
+      @OrderStatusConverter() required this.status});
 
   factory _$CurrentOrderModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentOrderModelImplFromJson(json);
@@ -186,7 +187,8 @@ class _$CurrentOrderModelImpl implements _CurrentOrderModel {
   @override
   final double? price;
   @override
-  final String? status;
+  @OrderStatusConverter()
+  final OrderStatus status;
 
   @override
   String toString() {
@@ -230,12 +232,13 @@ class _$CurrentOrderModelImpl implements _CurrentOrderModel {
 
 abstract class _CurrentOrderModel implements CurrentOrderModel {
   factory _CurrentOrderModel(
-      {required final int? id,
-      required final String? imageUrl,
-      required final String? name,
-      required final String? description,
-      required final double? price,
-      required final String? status}) = _$CurrentOrderModelImpl;
+          {required final int? id,
+          required final String? imageUrl,
+          required final String? name,
+          required final String? description,
+          required final double? price,
+          @OrderStatusConverter() required final OrderStatus status}) =
+      _$CurrentOrderModelImpl;
 
   factory _CurrentOrderModel.fromJson(Map<String, dynamic> json) =
       _$CurrentOrderModelImpl.fromJson;
@@ -251,7 +254,8 @@ abstract class _CurrentOrderModel implements CurrentOrderModel {
   @override
   double? get price;
   @override
-  String? get status;
+  @OrderStatusConverter()
+  OrderStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$CurrentOrderModelImplCopyWith<_$CurrentOrderModelImpl> get copyWith =>

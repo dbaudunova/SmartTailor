@@ -36,6 +36,11 @@ class CurrentOrderRepoImpl implements CurrentOrdersRepo {
 
   @override
   Future<void> changeOrderStatus({required int id, required String value}) async {
-    await _dataSource.gatAllOrders();
+    await _dataSource.changeOrderStatus(id: id, value: value);
+  }
+
+  @override
+  Future<void> completeOrder({required int id}) async {
+    await _dataSource.completeOrder(id: id);
   }
 }

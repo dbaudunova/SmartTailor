@@ -77,4 +77,56 @@ class PositionsSourceImpl implements PositionsDataSource {
       throw handleGeneralException(e);
     }
   }
+
+  @override
+  Future<List<String>> getAvailableAccessRights() async {
+    try {
+      final response = await _client.get(HttpPaths.getAvailableAccessRights);
+      if (response.statusCode != HttpSuccess.success) {
+        // ignore: only_throw_errors
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Order creation failed, status code: ${response.statusCode}',
+        );
+      } else {
+        List<dynamic> jsonList = response.data;
+        var accessRights = List<String>.from(jsonList);
+
+        return accessRights;
+      }
+    } on DioException catch (e) {
+      // ignore: only_throw_errors
+      throw handleDioException(e);
+    } catch (e) {
+      // ignore: only_throw_errors
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<List<int>> getAvailableWeights() async {
+    try {
+      final response = await _client.get(
+        HttpPaths.getAvailableWeights,
+      );
+      if (response.statusCode != HttpSuccess.success) {
+        // ignore: only_throw_errors
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Order creation failed, status code: ${response.statusCode}',
+        );
+      } else {
+        List<dynamic> jsonList = response.data;
+        var accessWeight = List<int>.from(jsonList);
+
+        return accessWeight;
+      }
+    } on DioException catch (e) {
+      // ignore: only_throw_errors
+      throw handleDioException(e);
+    } catch (e) {
+      // ignore: only_throw_errors
+      throw handleGeneralException(e);
+    }
+  }
 }

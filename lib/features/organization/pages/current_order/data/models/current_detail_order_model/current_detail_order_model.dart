@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
 
 part 'current_detail_order_model.freezed.dart';
 part 'current_detail_order_model.g.dart';
@@ -10,7 +11,7 @@ class CurrentDetailOrderModel with _$CurrentDetailOrderModel {
     required String name,
     required String description,
     required double price,
-    required String status,
+    @OrderStatusConverter() required OrderStatus status,
     required DateTime dateOfExecution,
     required List<String> images,
     required List<Employee> employees,
@@ -25,7 +26,7 @@ class CurrentDetailOrderModel with _$CurrentDetailOrderModel {
       name: '',
       description: '',
       price: 0.0,
-      status: '',
+      status: OrderStatus.waiting,
       dateOfExecution: DateTime.now(),
       images: [],
       employees: [],

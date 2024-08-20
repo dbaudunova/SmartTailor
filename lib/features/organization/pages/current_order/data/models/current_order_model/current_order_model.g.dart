@@ -14,7 +14,7 @@ _$CurrentOrderModelImpl _$$CurrentOrderModelImplFromJson(
       name: json['name'] as String?,
       description: json['description'] as String?,
       price: (json['price'] as num?)?.toDouble(),
-      status: json['status'] as String?,
+      status: const OrderStatusConverter().fromJson(json['status'] as String),
     );
 
 Map<String, dynamic> _$$CurrentOrderModelImplToJson(
@@ -25,5 +25,5 @@ Map<String, dynamic> _$$CurrentOrderModelImplToJson(
       'name': instance.name,
       'description': instance.description,
       'price': instance.price,
-      'status': instance.status,
+      'status': const OrderStatusConverter().toJson(instance.status),
     };

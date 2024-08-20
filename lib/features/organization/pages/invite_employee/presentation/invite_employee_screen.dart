@@ -27,25 +27,27 @@ class InviteEmployeeScreen extends StatelessWidget {
   void _listenerBloc(BuildContext context, InviteEmployeeState state) {
     state.stateStatus.whenOrNull(
       success: (val) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialogStyle(
-              title: 'Ура!',
-              content: 'Ваше приглашение отправлено!',
-              buttonText: 'Понятно',
-              onButtonPressed: () {
-                Navigator.of(context).pop();
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  AutoRouter.of(context).pushAndPopUntil(
-                    const OrganizationRoute(),
-                    predicate: (route) => false,
-                  );
-                });
-              },
-            );
-          },
-        );
+        if (val == true) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialogStyle(
+                title: 'Ура!',
+                content: 'Ваше приглашение отправлено!',
+                buttonText: 'Понятно',
+                onButtonPressed: () {
+                  Navigator.of(context).pop();
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    AutoRouter.of(context).pushAndPopUntil(
+                      const OrganizationRoute(),
+                      predicate: (route) => false,
+                    );
+                  });
+                },
+              );
+            },
+          );
+        }
       },
       failure: (msg) {
         AppSnackBar.show(context: context, titleText: msg!, error: true);

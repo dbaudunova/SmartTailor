@@ -4,11 +4,11 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class GalleryWidget extends StatefulWidget {
   final String? date;
-
   final List<String>? images;
+
   const GalleryWidget({
     super.key,
-    this.images = const ['asdasd', 'sadas'],
+    this.images,
     this.date,
   });
 
@@ -93,7 +93,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
           borderRadius: BorderRadius.circular(6),
         ),
         child: Text(
-          'Срок: ${widget.date!}',
+          'Срок: ${widget.date ?? 'loading'}',
           style: AppTextStyle.text14,
         ),
       ),

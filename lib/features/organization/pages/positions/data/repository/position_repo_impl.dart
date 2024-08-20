@@ -33,4 +33,16 @@ class PositionRepoImpl implements PositionsRepo {
     final entitys = _positionListConverter.convert(models);
     return entitys;
   }
+
+  @override
+  Future<List<String>> getAvailableAccessRights() async {
+    var list = await _dataSource.getAvailableAccessRights();
+    return list;
+  }
+
+  @override
+  Future<List<int>> getAvailableWeights() async {
+    var list = await _dataSource.getAvailableWeights();
+    return list;
+  }
 }

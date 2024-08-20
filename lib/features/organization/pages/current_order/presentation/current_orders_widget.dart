@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/current_orders/announcement_container.dart';
 
@@ -39,17 +40,12 @@ class _CurrentOrdersWidgetState extends State<CurrentOrdersWidget> {
                           description: order.description,
                           name: order.name,
                           orderNumber: order.id.toString(),
-                          orderStatus: order.status,
+                          orderStatus: getOrderStatusTypeLabel(order.status!),
                           onTap: () {
-                            print("Order ID: ${order.id}, Status: ${order.status}");
-                            if (order.status == 'NOT_CONFIRMED') {
-                              print("Navigating to OrderDetailRoute with ID: ${order.id}");
+                            if (order.status == OrderStatus.notConfirmed) {
                               try {
                                 AutoRouter.of(context).push(OrderDetailRoute(id: order.id!));
-                                print("Navigation successful");
-                              } catch (e) {
-                                print("Navigation failed: $e");
-                              }
+                              } catch (e) {}
                             } else {
                               AutoRouter.of(context).push(CurrentOrderDetailRoute(id: order.id!));
                             }

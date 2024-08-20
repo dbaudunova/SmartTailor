@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/shared/app_constants.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/positions/data/models/_model/position_model.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/domain/entitys/position_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/bloc/positions_bloc.dart';
 
@@ -21,8 +20,9 @@ class _PositionsContentState extends State<PositionsContent> {
   final _employeePositionController = TextEditingController();
   final _weightController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
   Map<String, bool> selectedActions = {};
+
+  PositionsBloc get _bloc => context.read<PositionsBloc>();
 
   @override
   void dispose() {
@@ -34,6 +34,9 @@ class _PositionsContentState extends State<PositionsContent> {
   @override
   void initState() {
     super.initState();
+    _bloc
+      ..add(const PositionsEvent.getAvailableWeights())
+      ..add(const PositionsEvent.getAvailableAccessRights());
     Constants.actionsMap.forEach((key, value) {
       selectedActions[key] = false;
     });
@@ -61,34 +64,45 @@ class _PositionsContentState extends State<PositionsContent> {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
-            child: Column(
-              children: [
-                TextFormFieldWidget(
-                  controller: _employeePositionController,
-                  titleName: 'Должности',
-                  hintText: 'Введите название должности',
-                  validator: _nullValidation,
-                ),
-                const SizedBox(height: 16),
-                TextFormFieldWidget(
-                  controller: _weightController,
-                  formatters: [FilteringTextInputFormatter.digitsOnly],
-                  titleName: 'Вес',
-                  hintText: 'Введите цифпу от 1 до 5',
-                  validator: (value) {
-                    if (int.tryParse(value!) == null || int.parse(value) > 5 || int.parse(value) < 1) {
-                      return 'Введите цифру от 1 до 5';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 24),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: _buildCheckBoxContainer(),
-                ),
-                const SizedBox(height: AppProps.kPageMarginX5),
-              ],
+            child: BlocBuilder<PositionsBloc, PositionsState>(
+              builder: (context, state) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextFormFieldWidget(
+                      controller: _employeePositionController,
+                      titleName: 'Должности',
+                      hintText: 'Введите название должности',
+                      validator: _nullValidation,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Выберите доступный вес',
+                      style: AppTextStyle.textField16.copyWith(color: AppColors.black.withOpacity(0.60)),
+                    ),
+                    const SizedBox(height: 8),
+                    _buildWeightSelection(state.weights),
+                    // TextFormFieldWidget(
+                    //   controller: _weightController,
+                    //   formatters: [FilteringTextInputFormatter.digitsOnly],
+                    //   titleName: 'Вес',
+                    //   hintText: 'Введите цифпу от 1 до 5',
+                    //   validator: (value) {
+                    //     if (int.tryParse(value!) == null || int.parse(value) > 5 || int.parse(value) < 1) {
+                    //       return 'Введите цифру от 1 до 5';
+                    //     }
+                    //     return null;
+                    //   },
+                    // ),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: _buildCheckBoxContainer(state.rights),
+                    ),
+                    const SizedBox(height: AppProps.kPageMarginX5),
+                  ],
+                );
+              },
             ),
           ),
         ),
@@ -115,7 +129,43 @@ class _PositionsContentState extends State<PositionsContent> {
     );
   }
 
-  Container _buildCheckBoxContainer() {
+  SizedBox _buildWeightSelection(List<int> weights) {
+    return SizedBox(
+      height: 40,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: weights.length,
+        itemBuilder: (context, index) {
+          final weight = weights[index];
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Checkbox(
+                shape: const CircleBorder(),
+                value: _weightController.text == weight.toString(),
+                onChanged: (bool? value) {
+                  setState(() {
+                    if (value == true) {
+                      _weightController.text = weight.toString();
+                    } else {
+                      _weightController.clear();
+                    }
+                  });
+                },
+              ),
+              Text(weight.toString()),
+              const SizedBox(width: 8),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Container _buildCheckBoxContainer(List<String> rights) {
+    final filteredActionsMap = Map.fromEntries(
+      Constants.actionsMap.entries.where((entry) => rights.contains(entry.key)),
+    );
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -134,7 +184,7 @@ class _PositionsContentState extends State<PositionsContent> {
             ),
           ),
           const SizedBox(height: 24),
-          ...Constants.actionsMap.entries.map((entry) {
+          ...filteredActionsMap.entries.map((entry) {
             return CheckboxListTile(
               checkboxShape: const CircleBorder(),
               title: Text(entry.value),
@@ -146,31 +196,10 @@ class _PositionsContentState extends State<PositionsContent> {
               },
             );
           }),
-          // Column(
-          //   children: actionsMap.map((list) {
-          //     return _buildCheckboxList(list);
-          //   }).toList(),
-          // ),
         ],
       ),
     );
   }
-
-  // CheckboxStyle _buildCheckboxList(Map list) {
-  //   return CheckboxStyle(
-  //     title: list['name'],
-  //     value: list['isChecked'],
-  //     onChanged: (bool? value) {
-  //       _selectCheckbox(list, value);
-  //     },
-  //   );
-  // }
-
-  // void _selectCheckbox(Map list, bool? val) {
-  //   setState(() {
-  //     list['isChecked'] = val;
-  //   });
-  // }
 
   String? _nullValidation(String? value) {
     if (value!.isEmpty) {

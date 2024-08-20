@@ -1,15 +1,5 @@
 part of '../io_ui.dart';
 
-// enum OrderType {
-//   order('Заказ'),
-//   equipment('Оборудование'),
-//   services('Услуги');
-
-//   final String name;
-
-//   const OrderType(this.name);
-// }
-
 class TextFormFieldWidget extends StatelessWidget {
   final List<TextInputFormatter>? formatters;
   final String? Function(String?)? validator;
@@ -66,9 +56,7 @@ class TextFormFieldWidget extends StatelessWidget {
             enabled: enabled,
             maxLength: maxLenght,
             validator: validator,
-            style: titleName == t.email
-                ? AppTextStyle.textField16.copyWith(fontSize: 14)
-                : AppTextStyle.textField16,
+            style: titleName == t.email ? AppTextStyle.textField16.copyWith(fontSize: 14) : AppTextStyle.textField16,
             inputFormatters: formatters,
             keyboardType: keyboardType,
             onChanged: onChanged,

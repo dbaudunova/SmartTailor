@@ -55,12 +55,16 @@ class HttpPaths {
   static const getEmployeeDetail = '$baseUrl/api/employee/profile/';
 
   static const addPosition = '$baseUrl/api/position/add-position';
+  static const getAvailablePosition = '$baseUrl/api/position/available-positions';
   static const gatAllPositions = '$baseUrl/api/position/get-all-positions';
+  static const getAvailableAccessRights = '$baseUrl/api/position/available-access-rights';
+  static const getAvailableWeights = '$baseUrl/api/position/positions-weights';
 
   static const getAllCurrentOrders = '$baseUrl/api/order/get-organization-orders-by-stage';
   static const getCurrentOrderDetail = '$baseUrl/api/order/current-order-detailed';
 
   static const changeOrderStatus = '$baseUrl/api/order/change-status/';
+  static const completeOrder = '$baseUrl/api/order/complete/';
 
   static const getHistoryOrders = '$baseUrl/api/order/order-history-for-user';
 }

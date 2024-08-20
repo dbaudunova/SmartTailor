@@ -5,4 +5,5 @@ abstract class CurrentOrdersRepo {
   Future<OrganizationListEntity> getAllOrders();
   Future<CurrentDetailOrderEntity> getDetailedOrder({required int id});
   Future<void> changeOrderStatus({required int id, required String value});
+  Future<void> completeOrder({required int id});
 }

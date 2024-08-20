@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
 
 part 'current_order_model.freezed.dart';
 part 'current_order_model.g.dart';
@@ -11,7 +12,7 @@ class CurrentOrderModel with _$CurrentOrderModel {
     required String? name,
     required String? description,
     required double? price,
-    required String? status,
+    @OrderStatusConverter() required OrderStatus status,
   }) = _CurrentOrderModel;
 
   factory CurrentOrderModel.initial() {
@@ -21,7 +22,7 @@ class CurrentOrderModel with _$CurrentOrderModel {
       name: '',
       description: '',
       price: 0.0,
-      status: '',
+      status: OrderStatus.waiting,
     );
   }
 
