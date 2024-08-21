@@ -15,7 +15,7 @@ class OrderDetailedEntity {
   final String? ordersStatus;
   final List<OrderItems>? orderItems;
   final List<OrderCandidates>? orderCandidates;
-  final OrganizationExecutor? organizationExecutor;
+  final OrganizationExecutor? executor;
 
   OrderDetailedEntity({
     this.id,
@@ -30,20 +30,24 @@ class OrderDetailedEntity {
     this.ordersStatus,
     this.orderItems,
     this.orderCandidates,
-    this.organizationExecutor,
+    this.executor,
   });
 }
 
 @JsonSerializable()
 class OrganizationExecutor {
-  final int? id;
-  final String? name;
-  final String? description;
+  final int? employeeId;
+  final String? employeeFullName;
+  final String? employeeEmail;
+  final String? employeePhoneNumber;
+  final String? organizationName;
 
   OrganizationExecutor({
-    required this.id,
-    required this.name,
-    required this.description,
+    this.employeeId,
+    this.employeeFullName,
+    this.employeeEmail,
+    this.employeePhoneNumber,
+    this.organizationName,
   });
 
   factory OrganizationExecutor.fromJson(Map<String, dynamic> json) =>

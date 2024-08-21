@@ -310,11 +310,11 @@ import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_r
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/assign_executor_to_order_use_case.dart'
     as _i148;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_equipment_use_case.dart'
-    as _i151;
-import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_order_use_case.dart'
     as _i149;
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_order_use_case.dart'
+    as _i150;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_service_use_case.dart'
-    as _i152;
+    as _i151;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/edit_profile_info_use_case.dart'
     as _i135;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_equipment_detailed_by_id_use_case.dart'
@@ -324,7 +324,7 @@ import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_equi
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_orders_use_case.dart'
     as _i138;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_purchases_use_case.dart'
-    as _i155;
+    as _i152;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_services_use_case.dart'
     as _i139;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_order_detailed_by_id_use_case.dart'
@@ -338,9 +338,9 @@ import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_service
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_equipment_use_case.dart'
     as _i153;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_order_use_case.dart'
-    as _i150;
-import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_service_use_case.dart'
     as _i154;
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_service_use_case.dart'
+    as _i155;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/load_more_purchases_use_case.dart'
     as _i144;
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/send_subscription_use_case.dart'
@@ -621,20 +621,20 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i147.UploadImageUseCase(repo: gh<_i117.ProfileRepo>()));
     gh.singleton<_i148.AssignExecutorToOrderUseCase>(() =>
         _i148.AssignExecutorToOrderUseCase(repo: gh<_i117.ProfileRepo>()));
-    gh.singleton<_i149.DeleteOrderUseCase>(
-        () => _i149.DeleteOrderUseCase(repo: gh<_i117.ProfileRepo>()));
-    gh.singleton<_i150.HideOrderUseCase>(
-        () => _i150.HideOrderUseCase(repo: gh<_i117.ProfileRepo>()));
-    gh.singleton<_i151.DeleteEquipmentUseCase>(
-        () => _i151.DeleteEquipmentUseCase(repo: gh<_i117.ProfileRepo>()));
-    gh.singleton<_i152.DeleteServiceUseCase>(
-        () => _i152.DeleteServiceUseCase(repo: gh<_i117.ProfileRepo>()));
+    gh.singleton<_i149.DeleteEquipmentUseCase>(
+        () => _i149.DeleteEquipmentUseCase(repo: gh<_i117.ProfileRepo>()));
+    gh.singleton<_i150.DeleteOrderUseCase>(
+        () => _i150.DeleteOrderUseCase(repo: gh<_i117.ProfileRepo>()));
+    gh.singleton<_i151.DeleteServiceUseCase>(
+        () => _i151.DeleteServiceUseCase(repo: gh<_i117.ProfileRepo>()));
+    gh.singleton<_i152.GetMyPurchasesUseCase>(
+        () => _i152.GetMyPurchasesUseCase(repo: gh<_i117.ProfileRepo>()));
     gh.singleton<_i153.HideEquipmentUseCase>(
         () => _i153.HideEquipmentUseCase(repo: gh<_i117.ProfileRepo>()));
-    gh.singleton<_i154.HideServiceUseCase>(
-        () => _i154.HideServiceUseCase(repo: gh<_i117.ProfileRepo>()));
-    gh.singleton<_i155.GetMyPurchasesUseCase>(
-        () => _i155.GetMyPurchasesUseCase(repo: gh<_i117.ProfileRepo>()));
+    gh.singleton<_i154.HideOrderUseCase>(
+        () => _i154.HideOrderUseCase(repo: gh<_i117.ProfileRepo>()));
+    gh.singleton<_i155.HideServiceUseCase>(
+        () => _i155.HideServiceUseCase(repo: gh<_i117.ProfileRepo>()));
     gh.factory<_i156.RegistrationBloc>(() => _i156.RegistrationBloc(
         registrationUseCase: gh<_i107.RegistrationUseCase>()));
     gh.singleton<_i157.ConfirmationUseCase>(
@@ -680,12 +680,12 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i137.GetMyEquipmentsUseCase>(),
           gh<_i139.GetMyServicesUseCase>(),
           gh<_i148.AssignExecutorToOrderUseCase>(),
-          gh<_i150.HideOrderUseCase>(),
-          gh<_i149.DeleteOrderUseCase>(),
+          gh<_i154.HideOrderUseCase>(),
+          gh<_i150.DeleteOrderUseCase>(),
           gh<_i153.HideEquipmentUseCase>(),
-          gh<_i154.HideServiceUseCase>(),
-          gh<_i151.DeleteEquipmentUseCase>(),
-          gh<_i152.DeleteServiceUseCase>(),
+          gh<_i155.HideServiceUseCase>(),
+          gh<_i149.DeleteEquipmentUseCase>(),
+          gh<_i151.DeleteServiceUseCase>(),
         ));
     gh.factory<_i171.CurrentOrderBloc>(() => _i171.CurrentOrderBloc(
           gh<_i112.GetAllOrdersUseCase>(),
@@ -721,7 +721,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.singleton<_i179.SendRequestToServiceUseCase>(() =>
         _i179.SendRequestToServiceUseCase(repo: gh<_i166.ServiceDetailRepo>()));
     gh.factory<_i180.PurchasesBloc>(() => _i180.PurchasesBloc(
-          gh<_i155.GetMyPurchasesUseCase>(),
+          gh<_i152.GetMyPurchasesUseCase>(),
           gh<_i144.LoadMorePurchasesUseCase>(),
           gh<_i169.GetEuipmentByIdUseCase>(),
           gh<_i88.GetOrderByIdUseCase>(),
