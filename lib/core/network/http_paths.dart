@@ -42,6 +42,7 @@ class HttpPaths {
   static const getMyOrders = '$baseUrl/api/order/my-orders';
   static const getMyEquipments = '$baseUrl/api/equipment/my-equipments';
   static const getMyServices = '$baseUrl/api/service/my-services';
+  static const getSearchAdvertisemnt = '$baseUrl/api/search/my-advertisements';
 
   static const getMyOrdersById = '$baseUrl/api/order/get-order-detailed-for-author/';
   static const getMyEquipmentsById = '$baseUrl/api/equipment/get-equipment-detailed-for-author/';
@@ -58,7 +59,7 @@ class HttpPaths {
   static const getAvailablePosition = '$baseUrl/api/position/available-positions';
   static const gatAllPositions = '$baseUrl/api/position/get-all-positions';
   static const getAvailableAccessRights = '$baseUrl/api/position/available-access-rights';
-  static const getAvailableWeights = '$baseUrl/api/position/positions-weights';
+  static const getAvailableWeights = '$baseUrl/api/position/available-weights';
 
   static const getAllCurrentOrders = '$baseUrl/api/order/get-organization-orders-by-stage';
   static const getCurrentOrderDetail = '$baseUrl/api/order/current-order-detailed';
@@ -66,5 +67,13 @@ class HttpPaths {
   static const changeOrderStatus = '$baseUrl/api/order/change-status/';
   static const completeOrder = '$baseUrl/api/order/complete/';
 
-  static const getHistoryOrders = '$baseUrl/api/order/order-history-for-user';
+  static const getHistoryOrdersForUser = '$baseUrl/api/order/order-history-for-user';
+  static const getHistoryOrdersForOrganization = '$baseUrl/api/order/organization-order-history';
+
+  static const getSearchOrders = '$baseUrl/api/search/order';
+  static const getSearchEquipment = '$baseUrl/api/search/equipment';
+  static const getSerachServices = '$baseUrl/api/search/service';
+  static const getSerchMyAdvertisement = '$baseUrl/api/search/my-advertisements';
+
+  static const sendToken = '$baseUrl/api/notification/register-device-token';
 }

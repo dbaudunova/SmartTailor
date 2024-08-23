@@ -7,9 +7,11 @@ import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/announcement/announcement_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/announecement_list_view.dart';
+import 'package:neobis_smart_tailor/injection/injection.dart';
 
 @RoutePage()
 class MyAnnouncementsScreen extends StatefulWidget {
@@ -81,7 +83,8 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
                         ),
                         AnnouncementListView<AnnouncementEvent, AnnouncementState>(
                           getList: (context) => context.read<AnnouncementBloc>().state.equipments,
-                          route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.equipment),
+                          route: ({required int id}) =>
+                              AnnouncementDetailRoute(id: id, type: AnnouncementType.equipment),
                           isLast: state.lastForEquipment!,
                           loadMoreEvent: (context) => const AnnouncementEvent.loadMoreEquipments(),
                           loadfirstPage: (context) => const AnnouncementEvent.getEquipments(),
@@ -102,14 +105,61 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
               ),
             ],
           ),
-          FabButtonWidget(onTap: () {
-            showModalBottomSheet<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return const SearchOrderSheet();
-              },
-            );
-          }),
+          FabButtonWidget(
+            onTap: () {
+              showModalBottomSheet<void>(
+                context: context,
+                backgroundColor: AppColors.white,
+                builder: (BuildContext context) {
+                  return BlocProvider(
+                    create: (context) => getIt<AnnouncementBloc>(),
+                    child: BlocBuilder<AnnouncementBloc, AnnouncementState>(
+                      builder: (context, state) {
+                        final _bloc = context.read<AnnouncementBloc>();
+
+                        // if (currentSegment.value == 0) {
+                        return SearchOrderSheet<AdvertisementEntity>(
+                          items: state.searchedAdvertisement,
+                          titleBuilder: (item) => (item).name,
+                          // priceBuilder: (item) => (item).price.toInt().toString(),
+                          onchange: (value) {
+                            _bloc.add(AnnouncementEvent.searchAdvertisement(query: value));
+                          },
+                          onTap: (item) => context.router.push(
+                            OrderDetailRoute(id: item.id),
+                          ),
+                        );
+                        // } else if (currentSegment.value == 1) {
+                        //   return SearchOrderSheet<AdvertisementEntity>(
+                        //     items: state.searchedEquipment,
+                        //     titleBuilder: (item) => (item).name,
+                        //     priceBuilder: (item) => (item).price.toInt().toString(),
+                        //     onchange: (value) {
+                        //       _bloc.add(MarketplaceEvent.searchEquipmnet(query: value));
+                        //     },
+                        //     onTap: (item) => context.router.push(
+                        //       EquipmentDetailRoute(id: item.id),
+                        //     ),
+                        //   );
+                        // } else {
+                        //   return SearchOrderSheet<AdvertisementEntity>(
+                        //     items: state.searchedServices,
+                        //     titleBuilder: (item) => (item).name,
+                        //     priceBuilder: (item) => (item).price.toInt().toString(),
+                        //     onchange: (value) {
+                        //       _bloc.add(MarketplaceEvent.searchService(query: value));
+                        //     },
+                        //     onTap: (item) => context.router.push(
+                        //       ServiceDetailRoute(id: item.id),
+                        //     ),
+                        //   );
+                      },
+                    ),
+                  );
+                },
+              );
+            },
+          ),
         ],
       ),
     );

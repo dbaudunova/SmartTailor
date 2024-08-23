@@ -80,19 +80,22 @@ class PurchaseCardItem extends StatelessWidget {
                           backgroundColor: AppColors.greyText,
                         ),
                         const SizedBox(width: 8),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              authorName,
-                              style: AppTextStyle.s12w400,
-                            ),
-                            Text(
-                              'Автор объявления',
-                              style: AppTextStyle.s12w400
-                                  .copyWith(color: AppColors.greyText),
-                            ),
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                authorName,
+                                maxLines: 2,
+                                overflow: TextOverflow.fade,
+                                style: AppTextStyle.s12w400,
+                              ),
+                              Text(
+                                'Автор объявления',
+                                style: AppTextStyle.s12w400.copyWith(color: AppColors.greyText),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -101,8 +104,7 @@ class PurchaseCardItem extends StatelessWidget {
                       description,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: AppTextStyle.s12w400
-                          .copyWith(color: AppColors.greyText),
+                      style: AppTextStyle.s12w400.copyWith(color: AppColors.greyText),
                     ),
                   ],
                 ),

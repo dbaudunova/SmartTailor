@@ -5,6 +5,7 @@ class HistoryState with _$HistoryState {
   const factory HistoryState({
     required final StateStatus stateStatus,
     required final List<HistoryEntity> history,
+    required final CurrentDetailOrderEntity detailedModel,
     required final int totalCount,
     required final bool isLast,
   }) = _HistoryState;

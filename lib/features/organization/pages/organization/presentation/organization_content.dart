@@ -8,6 +8,7 @@ import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_orders_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employees_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/presentation/history_list_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/bloc/organization_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_empty_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/widgets/positions_widget_screen.dart';
@@ -82,7 +83,8 @@ class _OrganizationContentState extends State<OrganizationContent> with TickerPr
                                 child: PositionsWidgetScreen(),
                               ),
                               const CurrentOrdersScreen(),
-                              _buildCompletedOrdersListView(),
+                              const HistoryListScreen()
+                              // _buildCompletedOrdersListView(),
                             ],
                           ),
                         ),

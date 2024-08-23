@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
@@ -21,6 +22,7 @@ import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_service
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_equipment_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/hide_service_use_case.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/use_case/search_advertisement_use_case.dart';
 
 part 'announcement_event.dart';
 
@@ -43,6 +45,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
   final DeleteOrderUseCase deleteOrderUseCase;
   final DeleteEquipmentUseCase deleteEquipmentUseCase;
   final DeleteServiceUseCase deleteServiceUseCase;
+  final SearchAdvertisementUseCase searchAdvertisementUseCase;
 
   AnnouncementBloc(
     this.getOrderDetailedByIdUseCase,
@@ -58,23 +61,24 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     this.hideServiceUseCase,
     this.deleteEquipmentUseCase,
     this.deleteServiceUseCase,
+    this.searchAdvertisementUseCase,
   ) : super(
           const AnnouncementState(
-            stateStatus: StateStatus.initial(),
-            services: [],
-            equipments: [],
-            orders: [],
-            lastForEquipment: false,
-            lastForOrders: false,
-            lastForServices: false,
-            ordersPageNumber: 0,
-            equipmentsPageNumber: 0,
-            servicesPageNumber: 0,
-            equipmentTotalCount: 0,
-            ordersTotalCount: 0,
-            servicesTotalCount: 0,
-            isLoadingMore: false,
-          ),
+              stateStatus: StateStatus.initial(),
+              services: [],
+              equipments: [],
+              orders: [],
+              lastForEquipment: false,
+              lastForOrders: false,
+              lastForServices: false,
+              ordersPageNumber: 0,
+              equipmentsPageNumber: 0,
+              servicesPageNumber: 0,
+              equipmentTotalCount: 0,
+              ordersTotalCount: 0,
+              servicesTotalCount: 0,
+              isLoadingMore: false,
+              searchedAdvertisement: []),
         ) {
     on<_GetOrders>(_getMyOrders);
     on<_GetEquipments>(_getMyEquipments);
@@ -89,7 +93,24 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     on<_AssignExecutorToOrder>(_assignExecutorToOrder);
     on<_Hide>(_hideOrder);
     on<_Delete>(_deleteOrder);
+    on<_SearchAdvertisement>(_searchAdvertisement);
   }
+
+  Future<void> _searchAdvertisement(
+    _SearchAdvertisement event,
+    Emitter<AnnouncementState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+    try {
+      final result = await searchAdvertisementUseCase.call(pageNumber: 0, query: event.query);
+      print(result.advertisement.length);
+      emit(state.copyWith(stateStatus: const StateStatus.success(), searchedAdvertisement: result.advertisement));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
+  }
+
   Future<void> _hideOrder(
     _Hide event,
     Emitter<AnnouncementState> emit,

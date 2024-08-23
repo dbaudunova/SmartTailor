@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:injectable/injectable.dart';
 // import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
+import 'package:neobis_smart_tailor/features/marketplace/data/models/search_model/advertisement_model.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
@@ -23,12 +25,14 @@ class ProfileRepoImpl implements ProfileRepo {
   final AuthService _authService;
   final Converter<PurchasesListModel, PurchasesListEntity> _converterPurchases;
   final Converter<MyHistoryModel, MyHistoryEntity> _converterHistory;
+  final Converter<AdvertisementResponseModel, AdvertisementResponseEntity> _advertisementResponceConverter;
 
   ProfileRepoImpl(
     this._dataSource,
     this._authService,
     this._converterPurchases,
     this._converterHistory,
+    this._advertisementResponceConverter,
   );
 
   @override
@@ -143,5 +147,12 @@ class ProfileRepoImpl implements ProfileRepo {
   @override
   Future<void> hideService({required int? serviceId}) async {
     await _dataSource.hideService(serviceId: serviceId);
+  }
+
+  @override
+  Future<AdvertisementResponseEntity> getSearchAdvertisement({required int pageNumber, required String query}) async {
+    var model = await _dataSource.getSearchAdvertisement(pageNumber: pageNumber, query: query);
+    final entity = _advertisementResponceConverter.convert(model);
+    return entity;
   }
 }

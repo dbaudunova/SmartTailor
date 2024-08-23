@@ -31,8 +31,7 @@ class HttpClient {
   void _addPrivateHeaders(RequestOptions options) {
     options.headers[HttpHeaders.contentTypeHeader] = 'application/json';
     log('Bearer ${_authService.cachedUser?.accessToken}');
-    options.headers[HttpHeaders.authorizationHeader] =
-        'Bearer ${_authService.cachedUser?.accessToken}';
+    options.headers[HttpHeaders.authorizationHeader] = 'Bearer ${_authService.cachedUser?.accessToken}';
   }
 
   void _addPrivateInterceptor(bool isRefresh) async {
@@ -48,8 +47,7 @@ class HttpClient {
           log('onResponseInterceptor ${response.requestOptions.method} ${response.realUri.path} - ${response.statusCode}');
           print(response.statusCode);
           if (response.statusCode! >= HttpErrors.badRequest) {
-            return handler.reject(DioException(
-                response: response, requestOptions: response.requestOptions));
+            return handler.reject(DioException(response: response, requestOptions: response.requestOptions));
           }
           return handler.next(response);
         },
@@ -58,15 +56,13 @@ class HttpClient {
             await _refreshToken();
             final newToken = _authService.cachedUser?.accessToken;
 
-            error.requestOptions.headers[HttpHeaders.authorizationHeader] =
-                'Bearer $newToken';
+            error.requestOptions.headers[HttpHeaders.authorizationHeader] = 'Bearer $newToken';
 
             final response = await _retry(error.requestOptions);
             return handler.resolve(response);
           } else if (error.response?.statusCode == HttpErrors.forbiddenError) {
             _authService.cachedUser = null;
-            throw Authorization(
-                message: 'Cached user is null or refresh token is null');
+            throw Authorization(message: 'Cached user is null or refresh token is null');
           } else {
             return handler.reject(error);
           }
@@ -76,16 +72,11 @@ class HttpClient {
   }
 
   Future<void> _refreshToken() async {
-    if (_authService.cachedUser == null ||
-        _authService.cachedUser!.accessToken == null) {
-      throw Authorization(
-          message: 'Cached user is null or refresh token is null');
+    if (_authService.cachedUser == null || _authService.cachedUser!.accessToken == null) {
+      throw Authorization(message: 'Cached user is null or refresh token is null');
     }
     final response = await post(HttpPaths.refreshToken,
-        queryParameters: {
-          'refreshToken': _authService.cachedUser!.refreshToken!
-        },
-        isSecure: false);
+        queryParameters: {'refreshToken': _authService.cachedUser!.refreshToken!}, isSecure: false);
     if (response.statusCode == 200) {
       final data = response.data;
       final updatedAuthData = AuthData(
@@ -96,8 +87,7 @@ class HttpClient {
       _authService.cachedUser = updatedAuthData;
     } else {
       // _authService.cachedUser = null;
-      throw Authorization(
-          message: 'Cached user is null or refresh token is null');
+      throw Authorization(message: 'Cached user is null or refresh token is null');
     }
   }
 
@@ -107,9 +97,7 @@ class HttpClient {
       headers: requestOptions.headers,
     );
     return _dio.request<dynamic>(requestOptions.path,
-        data: requestOptions.data,
-        queryParameters: requestOptions.queryParameters,
-        options: options);
+        data: requestOptions.data, queryParameters: requestOptions.queryParameters, options: options);
   }
 
   void _addPublicInterceptor() {
@@ -232,5 +220,27 @@ class HttpClient {
       options: options,
       cancelToken: cancelToken,
     );
+  }
+
+  Future<void> sendFcmToken(String token) async {
+    print('dfdf');
+    try {
+      final response = await post(
+        HttpPaths.sendToken,
+        data: {
+          'token': token,
+        },
+        isSecure: true, // Assuming you need authorization
+      );
+
+      if (response.statusCode == 200) {
+        log('FCM Token sent successfully: $token');
+      } else {
+        log('Failed to send FCM Token: ${response.statusCode} - ${response.data}');
+      }
+    } catch (e) {
+      log('Error sending FCM Token: $e');
+      rethrow;
+    }
   }
 }

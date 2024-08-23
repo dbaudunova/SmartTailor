@@ -4,42 +4,56 @@ import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_equipments_use_case.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_orders_use_case.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/get_services_ude_case.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/search_equipment_use_case.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/search_order_use_case.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/use_case/search_service_use_case.dart';
 
 part 'marketplace_event.dart';
 part 'marketplace_state.dart';
 part 'marketplace_bloc.freezed.dart';
 
-@singleton
+@injectable
 class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
   final GetEuipmentsUseCase getEuipmentsUseCase;
   final GetOrdersUseCase getOrdersUseCase;
   final GetServicesUseCase getServicesUseCase;
+  final SearchEquipmentUseCase searchEquipmentUseCase;
+  final SearchOrderUseCase searchOrderUseCase;
+  final SearchServiceUseCase searchServiceUseCase;
 
   MarketplaceBloc(
     this.getEuipmentsUseCase,
     this.getOrdersUseCase,
     this.getServicesUseCase,
+    this.searchEquipmentUseCase,
+    this.searchOrderUseCase,
+    this.searchServiceUseCase,
   ) : super(
           const MarketplaceState(
-              stateStatus: StateStatus.initial(),
-              services: [],
-              equipments: [],
-              orders: [],
-              lastForEquipment: false,
-              lastForOrders: false,
-              lastForServices: false,
-              ordersPageNumber: 0,
-              equipmentsPageNumber: 0,
-              servicesPageNumber: 0,
-              equipmentTotalCount: 0,
-              ordersTotalCount: 0,
-              servicesTotalCount: 0,
-              isLoadingMoreEquipments: false,
-              isLoadingMoreOrders: false,
-              isLoadingMoreServices: false),
+            stateStatus: StateStatus.initial(),
+            services: [],
+            equipments: [],
+            orders: [],
+            lastForEquipment: false,
+            lastForOrders: false,
+            lastForServices: false,
+            ordersPageNumber: 0,
+            equipmentsPageNumber: 0,
+            servicesPageNumber: 0,
+            equipmentTotalCount: 0,
+            ordersTotalCount: 0,
+            servicesTotalCount: 0,
+            isLoadingMoreEquipments: false,
+            isLoadingMoreOrders: false,
+            isLoadingMoreServices: false,
+            searchedEquipment: [],
+            searchedOrders: [],
+            searchedServices: [],
+          ),
         ) {
     on<_GetOrders>(_getOrders);
     on<_GetEquipments>(_getEquipments);
@@ -48,6 +62,54 @@ class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
     on<_LoadMoreOrders>(_loadMoreOrders);
     on<_LoadMoreEquipments>(_loadMoreEquipments);
     on<_LoadMoreServices>(_loadMoreServices);
+    on<_SearchOrder>(_searchOrder);
+    on<_SearchEquipment>(_searchEquipment);
+    on<_SearchService>(_searchServices);
+  }
+
+  Future<void> _searchEquipment(
+    _SearchEquipment event,
+    Emitter<MarketplaceState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+
+    try {
+      final result = await searchEquipmentUseCase.call(pageNumber: 0, query: event.query);
+      emit(state.copyWith(stateStatus: const StateStatus.success(), searchedEquipment: result.advertisement));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
+  }
+
+  Future<void> _searchServices(
+    _SearchService event,
+    Emitter<MarketplaceState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+
+    try {
+      final result = await searchServiceUseCase.call(pageNumber: 0, query: event.query);
+      emit(state.copyWith(stateStatus: const StateStatus.success(), searchedServices: result.advertisement));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
+  }
+
+  Future<void> _searchOrder(
+    _SearchOrder event,
+    Emitter<MarketplaceState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+
+    try {
+      final result = await searchOrderUseCase.call(pageNumber: 0, query: event.query);
+      emit(state.copyWith(stateStatus: const StateStatus.success(), searchedOrders: result.advertisement));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
   }
 
   Future<void> _getEquipments(

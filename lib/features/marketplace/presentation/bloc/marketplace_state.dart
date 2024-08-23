@@ -19,5 +19,8 @@ class MarketplaceState with _$MarketplaceState {
     required bool isLoadingMoreOrders,
     required bool isLoadingMoreEquipments,
     required bool isLoadingMoreServices,
+    required final List<AdvertisementEntity> searchedServices,
+    required final List<AdvertisementEntity> searchedOrders,
+    required final List<AdvertisementEntity> searchedEquipment,
   }) = _MarketplaceState;
 }

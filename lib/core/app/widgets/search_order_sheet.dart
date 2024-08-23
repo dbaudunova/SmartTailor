@@ -1,17 +1,44 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/services/microphone_services.dart';
 
-class SearchOrderSheet extends StatefulWidget {
-  const SearchOrderSheet({super.key});
+class SearchOrderSheet<T> extends StatefulWidget {
+  final Function(String)? onchange;
+  final void Function(T item) onTap;
+  final String Function(T item) titleBuilder;
+  final String Function(T item)? priceBuilder;
+  final List<T> items;
+
+  const SearchOrderSheet({
+    required this.titleBuilder,
+    required this.items,
+    this.priceBuilder,
+    required this.onTap,
+    super.key,
+    this.onchange,
+  });
 
   @override
-  State<SearchOrderSheet> createState() => _SearchOrderSheetState();
+  State<SearchOrderSheet<T>> createState() => _SearchOrderSheetState();
 }
 
-class _SearchOrderSheetState extends State<SearchOrderSheet> {
+class _SearchOrderSheetState<T> extends State<SearchOrderSheet<T>> {
+  Timer? _debounce;
+
+  void _onSearchChanged(String query) {
+    if (_debounce?.isActive ?? false) {
+      _debounce!.cancel();
+    }
+
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      widget.onchange!(query);
+    });
+  }
+
   final searchController = TextEditingController();
   final MicrophoneHandler microphoneHandler = MicrophoneHandler();
 
@@ -25,6 +52,7 @@ class _SearchOrderSheetState extends State<SearchOrderSheet> {
   void dispose() {
     searchController.dispose();
     microphoneHandler.dispose();
+    _debounce?.cancel();
     super.dispose();
   }
 
@@ -36,7 +64,7 @@ class _SearchOrderSheetState extends State<SearchOrderSheet> {
         children: [
           _buildPopButton(context),
           const SizedBox(height: AppProps.kPageMargin),
-          _buildTextField(context),
+          _buildTextField(context, widget.onchange),
           const SizedBox(height: AppProps.kPageMargin),
           Expanded(
             child: _buildRecentSearch(),
@@ -47,63 +75,57 @@ class _SearchOrderSheetState extends State<SearchOrderSheet> {
   }
 
   Widget _buildRecentSearch() {
-    return
-        // Center(
-        //   child: Text(
-        //     'По вашему запросу ничего не найдено! ☹️',
-        //     textAlign: TextAlign.center,
-        //     style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w600),
-        //   ),
-        // );
-        Column(
+    return Column(
       children: [
-        Align(
-          alignment: Alignment.topLeft,
-          child: Text(
-            'Недавний поиск',
-            style: AppTextStyle.s20w400Orange.copyWith(
-              color: AppColors.black,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
         Expanded(
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (BuildContext context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        'text',
-                        style: AppTextStyle.s20w400Orange.copyWith(
-                          color: AppColors.greyText,
-                          fontWeight: FontWeight.w600,
+          child: widget.items.isNotEmpty
+              ? ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: widget.items.length,
+                  itemBuilder: (context, index) {
+                    final item = widget.items[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: GestureDetector(
+                        onTap: () => widget.onTap(item),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.titleBuilder(item),
+                              style: AppTextStyle.textField16.copyWith(
+                                color: AppColors.greyText,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            widget.priceBuilder != null
+                                ? Text(
+                                    widget.priceBuilder!(item),
+                                    style: AppTextStyle.textField16.copyWith(
+                                      color: AppColors.greyText,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  )
+                                : const SizedBox.shrink(),
+                          ],
                         ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
-                        size: 20,
-                        Icons.clear_rounded,
-                      ),
-                    )
-                  ],
+                    );
+                  },
+                )
+              : Center(
+                  child: Text(
+                    'По вашему запросу ничего не найдено! ☹️',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w600),
+                  ),
                 ),
-              );
-            },
-          ),
         ),
       ],
     );
   }
 
-  Container _buildTextField(BuildContext context) {
+  Container _buildTextField(BuildContext context, void Function(String)? onChanged) {
     return Container(
       height: 36,
       decoration: BoxDecoration(
@@ -118,6 +140,7 @@ class _SearchOrderSheetState extends State<SearchOrderSheet> {
         children: [
           Expanded(
             child: TextField(
+              onChanged: _onSearchChanged,
               style: AppTextStyle.textField16,
               controller: searchController,
               decoration: InputDecoration(

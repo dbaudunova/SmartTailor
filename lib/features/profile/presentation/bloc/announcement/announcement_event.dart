@@ -16,4 +16,5 @@ class AnnouncementEvent with _$AnnouncementEvent {
       _AssignExecutorToOrder;
   const factory AnnouncementEvent.hide({required int? id, required AnnouncementType? type}) = _Hide;
   const factory AnnouncementEvent.delete({required int? id, required AnnouncementType? type}) = _Delete;
+  const factory AnnouncementEvent.searchAdvertisement({required String query}) = _SearchAdvertisement;
 }

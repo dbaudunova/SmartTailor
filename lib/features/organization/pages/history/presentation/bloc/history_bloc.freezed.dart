@@ -19,18 +19,21 @@ mixin _$HistoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getHistory,
+    required TResult Function(int id) getDetailedHistoryOrder,
     required TResult Function(int id) loadMoreHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getHistory,
+    TResult? Function(int id)? getDetailedHistoryOrder,
     TResult? Function(int id)? loadMoreHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getHistory,
+    TResult Function(int id)? getDetailedHistoryOrder,
     TResult Function(int id)? loadMoreHistory,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,22 @@ mixin _$HistoryEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetHistory value) getHistory,
+    required TResult Function(_GetDetailedHistoryOrder value)
+        getDetailedHistoryOrder,
     required TResult Function(_GetDetailsOrder value) loadMoreHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetHistory value)? getHistory,
+    TResult? Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
     TResult? Function(_GetDetailsOrder value)? loadMoreHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetHistory value)? getHistory,
+    TResult Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
     TResult Function(_GetDetailsOrder value)? loadMoreHistory,
     required TResult orElse(),
   }) =>
@@ -113,6 +120,7 @@ class _$GetHistoryImpl implements _GetHistory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getHistory,
+    required TResult Function(int id) getDetailedHistoryOrder,
     required TResult Function(int id) loadMoreHistory,
   }) {
     return getHistory();
@@ -122,6 +130,7 @@ class _$GetHistoryImpl implements _GetHistory {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getHistory,
+    TResult? Function(int id)? getDetailedHistoryOrder,
     TResult? Function(int id)? loadMoreHistory,
   }) {
     return getHistory?.call();
@@ -131,6 +140,7 @@ class _$GetHistoryImpl implements _GetHistory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getHistory,
+    TResult Function(int id)? getDetailedHistoryOrder,
     TResult Function(int id)? loadMoreHistory,
     required TResult orElse(),
   }) {
@@ -144,6 +154,8 @@ class _$GetHistoryImpl implements _GetHistory {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetHistory value) getHistory,
+    required TResult Function(_GetDetailedHistoryOrder value)
+        getDetailedHistoryOrder,
     required TResult Function(_GetDetailsOrder value) loadMoreHistory,
   }) {
     return getHistory(this);
@@ -153,6 +165,7 @@ class _$GetHistoryImpl implements _GetHistory {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetHistory value)? getHistory,
+    TResult? Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
     TResult? Function(_GetDetailsOrder value)? loadMoreHistory,
   }) {
     return getHistory?.call(this);
@@ -162,6 +175,7 @@ class _$GetHistoryImpl implements _GetHistory {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetHistory value)? getHistory,
+    TResult Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
     TResult Function(_GetDetailsOrder value)? loadMoreHistory,
     required TResult orElse(),
   }) {
@@ -174,6 +188,150 @@ class _$GetHistoryImpl implements _GetHistory {
 
 abstract class _GetHistory implements HistoryEvent {
   const factory _GetHistory() = _$GetHistoryImpl;
+}
+
+/// @nodoc
+abstract class _$$GetDetailedHistoryOrderImplCopyWith<$Res> {
+  factory _$$GetDetailedHistoryOrderImplCopyWith(
+          _$GetDetailedHistoryOrderImpl value,
+          $Res Function(_$GetDetailedHistoryOrderImpl) then) =
+      __$$GetDetailedHistoryOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$GetDetailedHistoryOrderImplCopyWithImpl<$Res>
+    extends _$HistoryEventCopyWithImpl<$Res, _$GetDetailedHistoryOrderImpl>
+    implements _$$GetDetailedHistoryOrderImplCopyWith<$Res> {
+  __$$GetDetailedHistoryOrderImplCopyWithImpl(
+      _$GetDetailedHistoryOrderImpl _value,
+      $Res Function(_$GetDetailedHistoryOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$GetDetailedHistoryOrderImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDetailedHistoryOrderImpl implements _GetDetailedHistoryOrder {
+  const _$GetDetailedHistoryOrderImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'HistoryEvent.getDetailedHistoryOrder(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDetailedHistoryOrderImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDetailedHistoryOrderImplCopyWith<_$GetDetailedHistoryOrderImpl>
+      get copyWith => __$$GetDetailedHistoryOrderImplCopyWithImpl<
+          _$GetDetailedHistoryOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getHistory,
+    required TResult Function(int id) getDetailedHistoryOrder,
+    required TResult Function(int id) loadMoreHistory,
+  }) {
+    return getDetailedHistoryOrder(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getHistory,
+    TResult? Function(int id)? getDetailedHistoryOrder,
+    TResult? Function(int id)? loadMoreHistory,
+  }) {
+    return getDetailedHistoryOrder?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getHistory,
+    TResult Function(int id)? getDetailedHistoryOrder,
+    TResult Function(int id)? loadMoreHistory,
+    required TResult orElse(),
+  }) {
+    if (getDetailedHistoryOrder != null) {
+      return getDetailedHistoryOrder(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetHistory value) getHistory,
+    required TResult Function(_GetDetailedHistoryOrder value)
+        getDetailedHistoryOrder,
+    required TResult Function(_GetDetailsOrder value) loadMoreHistory,
+  }) {
+    return getDetailedHistoryOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetHistory value)? getHistory,
+    TResult? Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
+    TResult? Function(_GetDetailsOrder value)? loadMoreHistory,
+  }) {
+    return getDetailedHistoryOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetHistory value)? getHistory,
+    TResult Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
+    TResult Function(_GetDetailsOrder value)? loadMoreHistory,
+    required TResult orElse(),
+  }) {
+    if (getDetailedHistoryOrder != null) {
+      return getDetailedHistoryOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDetailedHistoryOrder implements HistoryEvent {
+  const factory _GetDetailedHistoryOrder({required final int id}) =
+      _$GetDetailedHistoryOrderImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$GetDetailedHistoryOrderImplCopyWith<_$GetDetailedHistoryOrderImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -242,6 +400,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getHistory,
+    required TResult Function(int id) getDetailedHistoryOrder,
     required TResult Function(int id) loadMoreHistory,
   }) {
     return loadMoreHistory(id);
@@ -251,6 +410,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getHistory,
+    TResult? Function(int id)? getDetailedHistoryOrder,
     TResult? Function(int id)? loadMoreHistory,
   }) {
     return loadMoreHistory?.call(id);
@@ -260,6 +420,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getHistory,
+    TResult Function(int id)? getDetailedHistoryOrder,
     TResult Function(int id)? loadMoreHistory,
     required TResult orElse(),
   }) {
@@ -273,6 +434,8 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetHistory value) getHistory,
+    required TResult Function(_GetDetailedHistoryOrder value)
+        getDetailedHistoryOrder,
     required TResult Function(_GetDetailsOrder value) loadMoreHistory,
   }) {
     return loadMoreHistory(this);
@@ -282,6 +445,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetHistory value)? getHistory,
+    TResult? Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
     TResult? Function(_GetDetailsOrder value)? loadMoreHistory,
   }) {
     return loadMoreHistory?.call(this);
@@ -291,6 +455,7 @@ class _$GetDetailsOrderImpl implements _GetDetailsOrder {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetHistory value)? getHistory,
+    TResult Function(_GetDetailedHistoryOrder value)? getDetailedHistoryOrder,
     TResult Function(_GetDetailsOrder value)? loadMoreHistory,
     required TResult orElse(),
   }) {
@@ -315,6 +480,8 @@ abstract class _GetDetailsOrder implements HistoryEvent {
 mixin _$HistoryState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   List<HistoryEntity> get history => throw _privateConstructorUsedError;
+  CurrentDetailOrderEntity get detailedModel =>
+      throw _privateConstructorUsedError;
   int get totalCount => throw _privateConstructorUsedError;
   bool get isLast => throw _privateConstructorUsedError;
 
@@ -332,6 +499,7 @@ abstract class $HistoryStateCopyWith<$Res> {
   $Res call(
       {StateStatus stateStatus,
       List<HistoryEntity> history,
+      CurrentDetailOrderEntity detailedModel,
       int totalCount,
       bool isLast});
 
@@ -353,6 +521,7 @@ class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState>
   $Res call({
     Object? stateStatus = null,
     Object? history = null,
+    Object? detailedModel = null,
     Object? totalCount = null,
     Object? isLast = null,
   }) {
@@ -365,6 +534,10 @@ class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState>
           ? _value.history
           : history // ignore: cast_nullable_to_non_nullable
               as List<HistoryEntity>,
+      detailedModel: null == detailedModel
+          ? _value.detailedModel
+          : detailedModel // ignore: cast_nullable_to_non_nullable
+              as CurrentDetailOrderEntity,
       totalCount: null == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
@@ -396,6 +569,7 @@ abstract class _$$HistoryStateImplCopyWith<$Res>
   $Res call(
       {StateStatus stateStatus,
       List<HistoryEntity> history,
+      CurrentDetailOrderEntity detailedModel,
       int totalCount,
       bool isLast});
 
@@ -416,6 +590,7 @@ class __$$HistoryStateImplCopyWithImpl<$Res>
   $Res call({
     Object? stateStatus = null,
     Object? history = null,
+    Object? detailedModel = null,
     Object? totalCount = null,
     Object? isLast = null,
   }) {
@@ -428,6 +603,10 @@ class __$$HistoryStateImplCopyWithImpl<$Res>
           ? _value._history
           : history // ignore: cast_nullable_to_non_nullable
               as List<HistoryEntity>,
+      detailedModel: null == detailedModel
+          ? _value.detailedModel
+          : detailedModel // ignore: cast_nullable_to_non_nullable
+              as CurrentDetailOrderEntity,
       totalCount: null == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
@@ -446,6 +625,7 @@ class _$HistoryStateImpl implements _HistoryState {
   const _$HistoryStateImpl(
       {required this.stateStatus,
       required final List<HistoryEntity> history,
+      required this.detailedModel,
       required this.totalCount,
       required this.isLast})
       : _history = history;
@@ -461,13 +641,15 @@ class _$HistoryStateImpl implements _HistoryState {
   }
 
   @override
+  final CurrentDetailOrderEntity detailedModel;
+  @override
   final int totalCount;
   @override
   final bool isLast;
 
   @override
   String toString() {
-    return 'HistoryState(stateStatus: $stateStatus, history: $history, totalCount: $totalCount, isLast: $isLast)';
+    return 'HistoryState(stateStatus: $stateStatus, history: $history, detailedModel: $detailedModel, totalCount: $totalCount, isLast: $isLast)';
   }
 
   @override
@@ -478,14 +660,21 @@ class _$HistoryStateImpl implements _HistoryState {
             (identical(other.stateStatus, stateStatus) ||
                 other.stateStatus == stateStatus) &&
             const DeepCollectionEquality().equals(other._history, _history) &&
+            (identical(other.detailedModel, detailedModel) ||
+                other.detailedModel == detailedModel) &&
             (identical(other.totalCount, totalCount) ||
                 other.totalCount == totalCount) &&
             (identical(other.isLast, isLast) || other.isLast == isLast));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, stateStatus,
-      const DeepCollectionEquality().hash(_history), totalCount, isLast);
+  int get hashCode => Object.hash(
+      runtimeType,
+      stateStatus,
+      const DeepCollectionEquality().hash(_history),
+      detailedModel,
+      totalCount,
+      isLast);
 
   @JsonKey(ignore: true)
   @override
@@ -498,6 +687,7 @@ abstract class _HistoryState implements HistoryState {
   const factory _HistoryState(
       {required final StateStatus stateStatus,
       required final List<HistoryEntity> history,
+      required final CurrentDetailOrderEntity detailedModel,
       required final int totalCount,
       required final bool isLast}) = _$HistoryStateImpl;
 
@@ -505,6 +695,8 @@ abstract class _HistoryState implements HistoryState {
   StateStatus get stateStatus;
   @override
   List<HistoryEntity> get history;
+  @override
+  CurrentDetailOrderEntity get detailedModel;
   @override
   int get totalCount;
   @override

@@ -2,11 +2,8 @@ part of 'announcement_bloc.dart';
 
 @freezed
 class AnnouncementState with _$AnnouncementState {
-  const factory AnnouncementState ({
+  const factory AnnouncementState({
     required final StateStatus stateStatus,
-    final OrderDetailedEntity? detailedOrder,
-    final ServiceDetailedEntity? detailedService,
-    final EquipmentDetailedEntity? detailedEquipment,
     required final List<AnnouncementEntity> equipments,
     required final List<AnnouncementEntity> orders,
     required final List<AnnouncementEntity> services,
@@ -20,7 +17,10 @@ class AnnouncementState with _$AnnouncementState {
     required final int equipmentTotalCount,
     required final int servicesTotalCount,
     required bool isLoadingMore,
+    required final List<AdvertisementEntity> searchedAdvertisement,
+    final OrderDetailedEntity? detailedOrder,
+    final ServiceDetailedEntity? detailedService,
+    final EquipmentDetailedEntity? detailedEquipment,
     @Default(false) bool isAnnouncementsLoaded,
-}) = _AnnouncementState;
+  }) = _AnnouncementState;
 }
-

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
@@ -29,4 +30,5 @@ abstract class ProfileRepo {
   Future<void> deleteOrder({required int? orderId});
   Future<void> deleteEquipment({required int? equipmentId});
   Future<void> deleteService({required int? serviceId});
+  Future<AdvertisementResponseEntity> getSearchAdvertisement({required int pageNumber, required String query});
 }

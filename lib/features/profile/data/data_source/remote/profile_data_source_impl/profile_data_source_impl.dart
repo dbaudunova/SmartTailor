@@ -5,8 +5,9 @@ import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/http_client.dart';
 import 'package:neobis_smart_tailor/core/network/http_paths.dart';
 import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
+import 'package:neobis_smart_tailor/features/marketplace/data/models/search_model/advertisement_model.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
-import 'package:neobis_smart_tailor/features/profile/data/model/announcement_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/announcement_response_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
@@ -242,7 +243,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   Future<MyHistoryModel> getHistory({required String stage, required int page}) async {
     try {
       final response = await _client.get(
-        HttpPaths.getHistoryOrders,
+        HttpPaths.getHistoryOrdersForUser,
         queryParameters: {
           'pageNumber': page.toString(),
           'pageSize': '10',
@@ -468,6 +469,35 @@ class ProfileDataSourceImpl implements ProfileDataSource {
           status: response.statusCode,
           message: 'Не удалось редактировать профиль: ${response.statusMessage}',
         );
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
+  }
+
+  @override
+  Future<AdvertisementResponseModel> getSearchAdvertisement({required int pageNumber, required String query}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.getSearchAdvertisemnt,
+        queryParameters: {
+          'pageNumber': pageNumber.toString(),
+          'pageSize': '10',
+          'query': query,
+        },
+      );
+
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Неудалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        var model = AdvertisementResponseModel.fromJson(response.data);
+        print(model);
+        return model;
       }
     } on DioException catch (e) {
       throw handleDioException(e);

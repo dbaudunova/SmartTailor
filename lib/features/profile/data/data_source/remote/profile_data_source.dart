@@ -1,8 +1,9 @@
 import 'dart:io';
+import 'package:neobis_smart_tailor/features/marketplace/data/models/search_model/advertisement_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/announcement_response_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/equipment_detailed_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
-import 'package:neobis_smart_tailor/features/profile/data/model/equipment_detailed_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/order_detailed_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/service_detailed_model.dart';
@@ -30,4 +31,5 @@ abstract class ProfileDataSource {
   Future<void> deleteOrder({required int? orderId});
   Future<void> deleteEquipment({required int? equipmentId});
   Future<void> deleteService({required int? serviceId});
+  Future<AdvertisementResponseModel> getSearchAdvertisement({required int pageNumber, required String query});
 }

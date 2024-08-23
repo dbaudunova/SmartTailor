@@ -9,4 +9,7 @@ class MarketplaceEvent with _$MarketplaceEvent {
   const factory MarketplaceEvent.loadMoreOrders() = _LoadMoreOrders;
   const factory MarketplaceEvent.loadMoreEquipments() = _LoadMoreEquipments;
   const factory MarketplaceEvent.loadMoreServices() = _LoadMoreServices;
+  const factory MarketplaceEvent.searchOrder({required String query}) = _SearchOrder;
+  const factory MarketplaceEvent.searchEquipmnet({required String query}) = _SearchEquipment;
+  const factory MarketplaceEvent.searchService({required String query}) = _SearchService;
 }

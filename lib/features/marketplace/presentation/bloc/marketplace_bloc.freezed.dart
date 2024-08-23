@@ -25,6 +25,9 @@ mixin _$MarketplaceEvent {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +39,9 @@ mixin _$MarketplaceEvent {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +53,9 @@ mixin _$MarketplaceEvent {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +68,9 @@ mixin _$MarketplaceEvent {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +82,9 @@ mixin _$MarketplaceEvent {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +96,9 @@ mixin _$MarketplaceEvent {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -149,6 +167,9 @@ class _$GetOrdersImpl implements _GetOrders {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) {
     return getOrders();
   }
@@ -163,6 +184,9 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) {
     return getOrders?.call();
   }
@@ -177,6 +201,9 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -195,6 +222,9 @@ class _$GetOrdersImpl implements _GetOrders {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) {
     return getOrders(this);
   }
@@ -209,6 +239,9 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) {
     return getOrders?.call(this);
   }
@@ -223,6 +256,9 @@ class _$GetOrdersImpl implements _GetOrders {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -281,6 +317,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) {
     return getEquipments();
   }
@@ -295,6 +334,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) {
     return getEquipments?.call();
   }
@@ -309,6 +351,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) {
     if (getEquipments != null) {
@@ -327,6 +372,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) {
     return getEquipments(this);
   }
@@ -341,6 +389,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) {
     return getEquipments?.call(this);
   }
@@ -355,6 +406,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) {
     if (getEquipments != null) {
@@ -413,6 +467,9 @@ class _$GetServicesImpl implements _GetServices {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) {
     return getServices();
   }
@@ -427,6 +484,9 @@ class _$GetServicesImpl implements _GetServices {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) {
     return getServices?.call();
   }
@@ -441,6 +501,9 @@ class _$GetServicesImpl implements _GetServices {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -459,6 +522,9 @@ class _$GetServicesImpl implements _GetServices {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) {
     return getServices(this);
   }
@@ -473,6 +539,9 @@ class _$GetServicesImpl implements _GetServices {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) {
     return getServices?.call(this);
   }
@@ -487,6 +556,9 @@ class _$GetServicesImpl implements _GetServices {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) {
     if (getServices != null) {
@@ -545,6 +617,9 @@ class _$GetAllImpl implements _GetAll {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) {
     return getAll();
   }
@@ -559,6 +634,9 @@ class _$GetAllImpl implements _GetAll {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) {
     return getAll?.call();
   }
@@ -573,6 +651,9 @@ class _$GetAllImpl implements _GetAll {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) {
     if (getAll != null) {
@@ -591,6 +672,9 @@ class _$GetAllImpl implements _GetAll {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) {
     return getAll(this);
   }
@@ -605,6 +689,9 @@ class _$GetAllImpl implements _GetAll {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) {
     return getAll?.call(this);
   }
@@ -619,6 +706,9 @@ class _$GetAllImpl implements _GetAll {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) {
     if (getAll != null) {
@@ -677,6 +767,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) {
     return loadMoreOrders();
   }
@@ -691,6 +784,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) {
     return loadMoreOrders?.call();
   }
@@ -705,6 +801,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) {
     if (loadMoreOrders != null) {
@@ -723,6 +822,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) {
     return loadMoreOrders(this);
   }
@@ -737,6 +839,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) {
     return loadMoreOrders?.call(this);
   }
@@ -751,6 +856,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) {
     if (loadMoreOrders != null) {
@@ -809,6 +917,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) {
     return loadMoreEquipments();
   }
@@ -823,6 +934,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) {
     return loadMoreEquipments?.call();
   }
@@ -837,6 +951,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) {
     if (loadMoreEquipments != null) {
@@ -855,6 +972,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) {
     return loadMoreEquipments(this);
   }
@@ -869,6 +989,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) {
     return loadMoreEquipments?.call(this);
   }
@@ -883,6 +1006,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) {
     if (loadMoreEquipments != null) {
@@ -941,6 +1067,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     required TResult Function() loadMoreOrders,
     required TResult Function() loadMoreEquipments,
     required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
   }) {
     return loadMoreServices();
   }
@@ -955,6 +1084,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult? Function()? loadMoreOrders,
     TResult? Function()? loadMoreEquipments,
     TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
   }) {
     return loadMoreServices?.call();
   }
@@ -969,6 +1101,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult Function()? loadMoreOrders,
     TResult Function()? loadMoreEquipments,
     TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
     required TResult orElse(),
   }) {
     if (loadMoreServices != null) {
@@ -987,6 +1122,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     required TResult Function(_LoadMoreOrders value) loadMoreOrders,
     required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
     required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
   }) {
     return loadMoreServices(this);
   }
@@ -1001,6 +1139,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
   }) {
     return loadMoreServices?.call(this);
   }
@@ -1015,6 +1156,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
     TResult Function(_LoadMoreOrders value)? loadMoreOrders,
     TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
     TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
     required TResult orElse(),
   }) {
     if (loadMoreServices != null) {
@@ -1026,6 +1170,552 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
 
 abstract class _LoadMoreServices implements MarketplaceEvent {
   const factory _LoadMoreServices() = _$LoadMoreServicesImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchOrderImplCopyWith<$Res> {
+  factory _$$SearchOrderImplCopyWith(
+          _$SearchOrderImpl value, $Res Function(_$SearchOrderImpl) then) =
+      __$$SearchOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchOrderImplCopyWithImpl<$Res>
+    extends _$MarketplaceEventCopyWithImpl<$Res, _$SearchOrderImpl>
+    implements _$$SearchOrderImplCopyWith<$Res> {
+  __$$SearchOrderImplCopyWithImpl(
+      _$SearchOrderImpl _value, $Res Function(_$SearchOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchOrderImpl(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchOrderImpl implements _SearchOrder {
+  const _$SearchOrderImpl({required this.query});
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'MarketplaceEvent.searchOrder(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchOrderImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchOrderImplCopyWith<_$SearchOrderImpl> get copyWith =>
+      __$$SearchOrderImplCopyWithImpl<_$SearchOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
+  }) {
+    return searchOrder(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
+  }) {
+    return searchOrder?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
+    required TResult orElse(),
+  }) {
+    if (searchOrder != null) {
+      return searchOrder(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
+  }) {
+    return searchOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
+  }) {
+    return searchOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
+    required TResult orElse(),
+  }) {
+    if (searchOrder != null) {
+      return searchOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchOrder implements MarketplaceEvent {
+  const factory _SearchOrder({required final String query}) = _$SearchOrderImpl;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$SearchOrderImplCopyWith<_$SearchOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchEquipmentImplCopyWith<$Res> {
+  factory _$$SearchEquipmentImplCopyWith(_$SearchEquipmentImpl value,
+          $Res Function(_$SearchEquipmentImpl) then) =
+      __$$SearchEquipmentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchEquipmentImplCopyWithImpl<$Res>
+    extends _$MarketplaceEventCopyWithImpl<$Res, _$SearchEquipmentImpl>
+    implements _$$SearchEquipmentImplCopyWith<$Res> {
+  __$$SearchEquipmentImplCopyWithImpl(
+      _$SearchEquipmentImpl _value, $Res Function(_$SearchEquipmentImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchEquipmentImpl(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchEquipmentImpl implements _SearchEquipment {
+  const _$SearchEquipmentImpl({required this.query});
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'MarketplaceEvent.searchEquipmnet(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchEquipmentImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchEquipmentImplCopyWith<_$SearchEquipmentImpl> get copyWith =>
+      __$$SearchEquipmentImplCopyWithImpl<_$SearchEquipmentImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
+  }) {
+    return searchEquipmnet(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
+  }) {
+    return searchEquipmnet?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
+    required TResult orElse(),
+  }) {
+    if (searchEquipmnet != null) {
+      return searchEquipmnet(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
+  }) {
+    return searchEquipmnet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
+  }) {
+    return searchEquipmnet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
+    required TResult orElse(),
+  }) {
+    if (searchEquipmnet != null) {
+      return searchEquipmnet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchEquipment implements MarketplaceEvent {
+  const factory _SearchEquipment({required final String query}) =
+      _$SearchEquipmentImpl;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$SearchEquipmentImplCopyWith<_$SearchEquipmentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchServiceImplCopyWith<$Res> {
+  factory _$$SearchServiceImplCopyWith(
+          _$SearchServiceImpl value, $Res Function(_$SearchServiceImpl) then) =
+      __$$SearchServiceImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchServiceImplCopyWithImpl<$Res>
+    extends _$MarketplaceEventCopyWithImpl<$Res, _$SearchServiceImpl>
+    implements _$$SearchServiceImplCopyWith<$Res> {
+  __$$SearchServiceImplCopyWithImpl(
+      _$SearchServiceImpl _value, $Res Function(_$SearchServiceImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchServiceImpl(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchServiceImpl implements _SearchService {
+  const _$SearchServiceImpl({required this.query});
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'MarketplaceEvent.searchService(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchServiceImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchServiceImplCopyWith<_$SearchServiceImpl> get copyWith =>
+      __$$SearchServiceImplCopyWithImpl<_$SearchServiceImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(String query) searchOrder,
+    required TResult Function(String query) searchEquipmnet,
+    required TResult Function(String query) searchService,
+  }) {
+    return searchService(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(String query)? searchOrder,
+    TResult? Function(String query)? searchEquipmnet,
+    TResult? Function(String query)? searchService,
+  }) {
+    return searchService?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(String query)? searchOrder,
+    TResult Function(String query)? searchEquipmnet,
+    TResult Function(String query)? searchService,
+    required TResult orElse(),
+  }) {
+    if (searchService != null) {
+      return searchService(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_SearchOrder value) searchOrder,
+    required TResult Function(_SearchEquipment value) searchEquipmnet,
+    required TResult Function(_SearchService value) searchService,
+  }) {
+    return searchService(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_SearchOrder value)? searchOrder,
+    TResult? Function(_SearchEquipment value)? searchEquipmnet,
+    TResult? Function(_SearchService value)? searchService,
+  }) {
+    return searchService?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_SearchOrder value)? searchOrder,
+    TResult Function(_SearchEquipment value)? searchEquipmnet,
+    TResult Function(_SearchService value)? searchService,
+    required TResult orElse(),
+  }) {
+    if (searchService != null) {
+      return searchService(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchService implements MarketplaceEvent {
+  const factory _SearchService({required final String query}) =
+      _$SearchServiceImpl;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$SearchServiceImplCopyWith<_$SearchServiceImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1046,6 +1736,12 @@ mixin _$MarketplaceState {
   bool get isLoadingMoreOrders => throw _privateConstructorUsedError;
   bool get isLoadingMoreEquipments => throw _privateConstructorUsedError;
   bool get isLoadingMoreServices => throw _privateConstructorUsedError;
+  List<AdvertisementEntity> get searchedServices =>
+      throw _privateConstructorUsedError;
+  List<AdvertisementEntity> get searchedOrders =>
+      throw _privateConstructorUsedError;
+  List<AdvertisementEntity> get searchedEquipment =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MarketplaceStateCopyWith<MarketplaceState> get copyWith =>
@@ -1074,7 +1770,10 @@ abstract class $MarketplaceStateCopyWith<$Res> {
       int servicesTotalCount,
       bool isLoadingMoreOrders,
       bool isLoadingMoreEquipments,
-      bool isLoadingMoreServices});
+      bool isLoadingMoreServices,
+      List<AdvertisementEntity> searchedServices,
+      List<AdvertisementEntity> searchedOrders,
+      List<AdvertisementEntity> searchedEquipment});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -1108,6 +1807,9 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
     Object? isLoadingMoreOrders = null,
     Object? isLoadingMoreEquipments = null,
     Object? isLoadingMoreServices = null,
+    Object? searchedServices = null,
+    Object? searchedOrders = null,
+    Object? searchedEquipment = null,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
@@ -1174,6 +1876,18 @@ class _$MarketplaceStateCopyWithImpl<$Res, $Val extends MarketplaceState>
           ? _value.isLoadingMoreServices
           : isLoadingMoreServices // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchedServices: null == searchedServices
+          ? _value.searchedServices
+          : searchedServices // ignore: cast_nullable_to_non_nullable
+              as List<AdvertisementEntity>,
+      searchedOrders: null == searchedOrders
+          ? _value.searchedOrders
+          : searchedOrders // ignore: cast_nullable_to_non_nullable
+              as List<AdvertisementEntity>,
+      searchedEquipment: null == searchedEquipment
+          ? _value.searchedEquipment
+          : searchedEquipment // ignore: cast_nullable_to_non_nullable
+              as List<AdvertisementEntity>,
     ) as $Val);
   }
 
@@ -1210,7 +1924,10 @@ abstract class _$$MarketplaceStateImplCopyWith<$Res>
       int servicesTotalCount,
       bool isLoadingMoreOrders,
       bool isLoadingMoreEquipments,
-      bool isLoadingMoreServices});
+      bool isLoadingMoreServices,
+      List<AdvertisementEntity> searchedServices,
+      List<AdvertisementEntity> searchedOrders,
+      List<AdvertisementEntity> searchedEquipment});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -1243,6 +1960,9 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
     Object? isLoadingMoreOrders = null,
     Object? isLoadingMoreEquipments = null,
     Object? isLoadingMoreServices = null,
+    Object? searchedServices = null,
+    Object? searchedOrders = null,
+    Object? searchedEquipment = null,
   }) {
     return _then(_$MarketplaceStateImpl(
       stateStatus: null == stateStatus
@@ -1309,6 +2029,18 @@ class __$$MarketplaceStateImplCopyWithImpl<$Res>
           ? _value.isLoadingMoreServices
           : isLoadingMoreServices // ignore: cast_nullable_to_non_nullable
               as bool,
+      searchedServices: null == searchedServices
+          ? _value._searchedServices
+          : searchedServices // ignore: cast_nullable_to_non_nullable
+              as List<AdvertisementEntity>,
+      searchedOrders: null == searchedOrders
+          ? _value._searchedOrders
+          : searchedOrders // ignore: cast_nullable_to_non_nullable
+              as List<AdvertisementEntity>,
+      searchedEquipment: null == searchedEquipment
+          ? _value._searchedEquipment
+          : searchedEquipment // ignore: cast_nullable_to_non_nullable
+              as List<AdvertisementEntity>,
     ));
   }
 }
@@ -1332,10 +2064,16 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
       required this.servicesTotalCount,
       required this.isLoadingMoreOrders,
       required this.isLoadingMoreEquipments,
-      required this.isLoadingMoreServices})
+      required this.isLoadingMoreServices,
+      required final List<AdvertisementEntity> searchedServices,
+      required final List<AdvertisementEntity> searchedOrders,
+      required final List<AdvertisementEntity> searchedEquipment})
       : _equipments = equipments,
         _orders = orders,
-        _services = services;
+        _services = services,
+        _searchedServices = searchedServices,
+        _searchedOrders = searchedOrders,
+        _searchedEquipment = searchedEquipment;
 
   @override
   final StateStatus stateStatus;
@@ -1387,10 +2125,35 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
   final bool isLoadingMoreEquipments;
   @override
   final bool isLoadingMoreServices;
+  final List<AdvertisementEntity> _searchedServices;
+  @override
+  List<AdvertisementEntity> get searchedServices {
+    if (_searchedServices is EqualUnmodifiableListView)
+      return _searchedServices;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchedServices);
+  }
+
+  final List<AdvertisementEntity> _searchedOrders;
+  @override
+  List<AdvertisementEntity> get searchedOrders {
+    if (_searchedOrders is EqualUnmodifiableListView) return _searchedOrders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchedOrders);
+  }
+
+  final List<AdvertisementEntity> _searchedEquipment;
+  @override
+  List<AdvertisementEntity> get searchedEquipment {
+    if (_searchedEquipment is EqualUnmodifiableListView)
+      return _searchedEquipment;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchedEquipment);
+  }
 
   @override
   String toString() {
-    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMoreOrders: $isLoadingMoreOrders, isLoadingMoreEquipments: $isLoadingMoreEquipments, isLoadingMoreServices: $isLoadingMoreServices)';
+    return 'MarketplaceState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMoreOrders: $isLoadingMoreOrders, isLoadingMoreEquipments: $isLoadingMoreEquipments, isLoadingMoreServices: $isLoadingMoreServices, searchedServices: $searchedServices, searchedOrders: $searchedOrders, searchedEquipment: $searchedEquipment)';
   }
 
   @override
@@ -1428,28 +2191,38 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
                     other.isLoadingMoreEquipments, isLoadingMoreEquipments) ||
                 other.isLoadingMoreEquipments == isLoadingMoreEquipments) &&
             (identical(other.isLoadingMoreServices, isLoadingMoreServices) ||
-                other.isLoadingMoreServices == isLoadingMoreServices));
+                other.isLoadingMoreServices == isLoadingMoreServices) &&
+            const DeepCollectionEquality()
+                .equals(other._searchedServices, _searchedServices) &&
+            const DeepCollectionEquality()
+                .equals(other._searchedOrders, _searchedOrders) &&
+            const DeepCollectionEquality()
+                .equals(other._searchedEquipment, _searchedEquipment));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      stateStatus,
-      const DeepCollectionEquality().hash(_equipments),
-      const DeepCollectionEquality().hash(_orders),
-      const DeepCollectionEquality().hash(_services),
-      lastForOrders,
-      lastForServices,
-      lastForEquipment,
-      ordersPageNumber,
-      equipmentsPageNumber,
-      servicesPageNumber,
-      ordersTotalCount,
-      equipmentTotalCount,
-      servicesTotalCount,
-      isLoadingMoreOrders,
-      isLoadingMoreEquipments,
-      isLoadingMoreServices);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        stateStatus,
+        const DeepCollectionEquality().hash(_equipments),
+        const DeepCollectionEquality().hash(_orders),
+        const DeepCollectionEquality().hash(_services),
+        lastForOrders,
+        lastForServices,
+        lastForEquipment,
+        ordersPageNumber,
+        equipmentsPageNumber,
+        servicesPageNumber,
+        ordersTotalCount,
+        equipmentTotalCount,
+        servicesTotalCount,
+        isLoadingMoreOrders,
+        isLoadingMoreEquipments,
+        isLoadingMoreServices,
+        const DeepCollectionEquality().hash(_searchedServices),
+        const DeepCollectionEquality().hash(_searchedOrders),
+        const DeepCollectionEquality().hash(_searchedEquipment)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -1461,22 +2234,26 @@ class _$MarketplaceStateImpl implements _MarketplaceState {
 
 abstract class _MarketplaceState implements MarketplaceState {
   const factory _MarketplaceState(
-      {required final StateStatus stateStatus,
-      required final List<GeneralEntity> equipments,
-      required final List<GeneralEntity> orders,
-      required final List<GeneralEntity> services,
-      required final bool? lastForOrders,
-      required final bool? lastForServices,
-      required final bool? lastForEquipment,
-      required final int ordersPageNumber,
-      required final int equipmentsPageNumber,
-      required final int servicesPageNumber,
-      required final int ordersTotalCount,
-      required final int equipmentTotalCount,
-      required final int servicesTotalCount,
-      required final bool isLoadingMoreOrders,
-      required final bool isLoadingMoreEquipments,
-      required final bool isLoadingMoreServices}) = _$MarketplaceStateImpl;
+          {required final StateStatus stateStatus,
+          required final List<GeneralEntity> equipments,
+          required final List<GeneralEntity> orders,
+          required final List<GeneralEntity> services,
+          required final bool? lastForOrders,
+          required final bool? lastForServices,
+          required final bool? lastForEquipment,
+          required final int ordersPageNumber,
+          required final int equipmentsPageNumber,
+          required final int servicesPageNumber,
+          required final int ordersTotalCount,
+          required final int equipmentTotalCount,
+          required final int servicesTotalCount,
+          required final bool isLoadingMoreOrders,
+          required final bool isLoadingMoreEquipments,
+          required final bool isLoadingMoreServices,
+          required final List<AdvertisementEntity> searchedServices,
+          required final List<AdvertisementEntity> searchedOrders,
+          required final List<AdvertisementEntity> searchedEquipment}) =
+      _$MarketplaceStateImpl;
 
   @override
   StateStatus get stateStatus;
@@ -1510,6 +2287,12 @@ abstract class _MarketplaceState implements MarketplaceState {
   bool get isLoadingMoreEquipments;
   @override
   bool get isLoadingMoreServices;
+  @override
+  List<AdvertisementEntity> get searchedServices;
+  @override
+  List<AdvertisementEntity> get searchedOrders;
+  @override
+  List<AdvertisementEntity> get searchedEquipment;
   @override
   @JsonKey(ignore: true)
   _$$MarketplaceStateImplCopyWith<_$MarketplaceStateImpl> get copyWith =>

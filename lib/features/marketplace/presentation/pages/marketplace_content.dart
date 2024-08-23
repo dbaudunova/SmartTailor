@@ -10,9 +10,11 @@ import 'package:neobis_smart_tailor/core/app/widgets/loading_list_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/bloc/marketplace_bloc.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/widgets/list_view_widget.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
+import 'package:neobis_smart_tailor/injection/injection.dart';
 
 class MarketplaceContent extends StatefulWidget {
   const MarketplaceContent({super.key});
@@ -59,139 +61,185 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
           ),
         ),
       ),
-      child: Stack(
-        children: [
-          Column(
+      child: BlocBuilder<MarketplaceBloc, MarketplaceState>(
+        builder: (context, state) {
+          return Stack(
             children: [
-              _buildNavBar(segmentedControlMaxWidth, children),
-              const SizedBox(height: 16),
-              Expanded(
-                child: BlocBuilder<MarketplaceBloc, MarketplaceState>(
-                  builder: (context, state) {
-                    return state.stateStatus != StateStatus.loading
-                        ? PageView(
-                            controller: _pageController,
-                            onPageChanged: (index) {
-                              setState(() {
-                                currentSegment.value = index;
-                              });
-                            },
-                            children: [
-                              state.stateStatus != const StateStatus.loading()
-                                  ? state.orders.isNotEmpty
-                                      ? ListViewWidget<GeneralEntity>(
-                                          priceBuilder: (item) => _buildPrice(item),
-                                          dateBuilder: (item) => item.dateOfExecution,
-                                          descriptionBuilder: (item) => item.description!,
-                                          imageBuilder: (item) => item.imageUrl!,
-                                          titleBuilder: (item) => item.name!,
-                                          items: state.orders,
-                                          onNotification: (scrollNotification) {
-                                            if (state.lastForOrders!) {
-                                              return false;
-                                            } else if (scrollNotification is ScrollEndNotification &&
-                                                scrollNotification.metrics.extentAfter == 0) {
-                                              _bloc.add(const MarketplaceEvent.loadMoreOrders());
-                                            }
+              Column(
+                children: [
+                  _buildNavBar(segmentedControlMaxWidth, children),
+                  const SizedBox(height: 16),
+                  Expanded(
+                      child: state.stateStatus != StateStatus.loading
+                          ? PageView(
+                              controller: _pageController,
+                              onPageChanged: (index) {
+                                setState(() {
+                                  currentSegment.value = index;
+                                });
+                              },
+                              children: [
+                                state.stateStatus != const StateStatus.loading()
+                                    ? state.orders.isNotEmpty
+                                        ? ListViewWidget<GeneralEntity>(
+                                            priceBuilder: (item) => _buildPrice(item),
+                                            dateBuilder: (item) => item.dateOfExecution,
+                                            descriptionBuilder: (item) => item.description!,
+                                            imageBuilder: (item) => item.imageUrl!,
+                                            titleBuilder: (item) => item.name!,
+                                            items: state.orders,
+                                            onNotification: (scrollNotification) {
+                                              if (state.lastForOrders!) {
+                                                return false;
+                                              } else if (scrollNotification is ScrollEndNotification &&
+                                                  scrollNotification.metrics.extentAfter == 0) {
+                                                _bloc.add(const MarketplaceEvent.loadMoreOrders());
+                                              }
 
-                                            return false;
-                                          },
-                                          onRefresh: () async {
-                                            _bloc.add(const MarketplaceEvent.getOrders());
-                                          },
-                                          onTap: (item) => context.router.push(
-                                            OrderDetailRoute(id: item.id!),
-                                          ),
-                                        )
-                                      : EmptyRefreshListText(
-                                          onRefresh: () async {
+                                              return false;
+                                            },
+                                            onRefresh: () async {
+                                              _bloc.add(const MarketplaceEvent.getOrders());
+                                            },
+                                            onTap: (item) => context.router.push(
+                                              OrderDetailRoute(id: item.id!),
+                                            ),
+                                          )
+                                        : EmptyRefreshListText(
+                                            onRefresh: () async {
+                                              _bloc.add(
+                                                const MarketplaceEvent.getOrders(),
+                                              );
+                                            },
+                                          )
+                                    : const LoadingListWidget(),
+                                state.stateStatus != const StateStatus.loading()
+                                    ? state.equipments.isNotEmpty
+                                        ? ListViewWidget<GeneralEntity>(
+                                            priceBuilder: (item) => _buildPrice(item),
+                                            descriptionBuilder: (item) => item.description!,
+                                            imageBuilder: (item) => item.imageUrl!,
+                                            titleBuilder: (item) => item.name!,
+                                            items: state.equipments,
+                                            onNotification: (scrollNotification) {
+                                              if (state.lastForEquipment!) {
+                                                return false;
+                                              } else if (scrollNotification is ScrollEndNotification &&
+                                                  scrollNotification.metrics.extentAfter == 0) {
+                                                _bloc.add(const MarketplaceEvent.loadMoreEquipments());
+                                              }
+
+                                              return false;
+                                            },
+                                            onRefresh: () async {
+                                              _bloc.add(const MarketplaceEvent.getEquipments());
+                                            },
+                                            onTap: (item) => context.router.push(
+                                              EquipmentDetailRoute(id: item.id!),
+                                            ),
+                                          )
+                                        : EmptyRefreshListText(
+                                            onRefresh: () async {
+                                              _bloc.add(const MarketplaceEvent.getEquipments());
+                                            },
+                                          )
+                                    : const LoadingListWidget(),
+                                state.stateStatus != const StateStatus.loading()
+                                    ? state.services.isNotEmpty
+                                        ? ListViewWidget<GeneralEntity>(
+                                            descriptionBuilder: (item) => item.description!,
+                                            imageBuilder: (item) => item.imageUrl!,
+                                            titleBuilder: (item) => item.name!,
+                                            items: state.services,
+                                            onNotification: (scrollNotification) {
+                                              if (state.lastForOrders!) {
+                                                return false;
+                                              } else if (scrollNotification is ScrollEndNotification &&
+                                                  scrollNotification.metrics.extentAfter == 0) {
+                                                _bloc.add(const MarketplaceEvent.loadMoreServices());
+                                              }
+
+                                              return false;
+                                            },
+                                            onRefresh: () async {
+                                              _bloc.add(const MarketplaceEvent.getServices());
+                                            },
+                                            onTap: (item) => context.router.push(
+                                              ServiceDetailRoute(id: item.id!),
+                                            ),
+                                          )
+                                        : EmptyRefreshListText(onRefresh: () async {
                                             _bloc.add(
-                                              const MarketplaceEvent.getOrders(),
+                                              const MarketplaceEvent.getServices(),
                                             );
-                                          },
-                                        )
-                                  : const LoadingListWidget(),
-                              state.stateStatus != const StateStatus.loading()
-                                  ? state.equipments.isNotEmpty
-                                      ? ListViewWidget<GeneralEntity>(
-                                          priceBuilder: (item) => _buildPrice(item),
-                                          descriptionBuilder: (item) => item.description!,
-                                          imageBuilder: (item) => item.imageUrl!,
-                                          titleBuilder: (item) => item.name!,
-                                          items: state.equipments,
-                                          onNotification: (scrollNotification) {
-                                            if (state.lastForEquipment!) {
-                                              return false;
-                                            } else if (scrollNotification is ScrollEndNotification &&
-                                                scrollNotification.metrics.extentAfter == 0) {
-                                              _bloc.add(const MarketplaceEvent.loadMoreEquipments());
-                                            }
+                                          })
+                                    : const LoadingListWidget()
+                              ],
+                            )
+                          : const Center(
+                              child: CircularProgressIndicator(),
+                            )),
+                ],
+              ),
+              FabButtonWidget(
+                onTap: () {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    backgroundColor: AppColors.white,
+                    builder: (BuildContext context) {
+                      return BlocProvider(
+                        create: (context) => getIt<MarketplaceBloc>(),
+                        child: BlocBuilder<MarketplaceBloc, MarketplaceState>(
+                          builder: (context, state) {
+                            final _bloc = context.read<MarketplaceBloc>();
 
-                                            return false;
-                                          },
-                                          onRefresh: () async {
-                                            _bloc.add(const MarketplaceEvent.getEquipments());
-                                          },
-                                          onTap: (item) => context.router.push(
-                                            EquipmentDetailRoute(id: item.id!),
-                                          ),
-                                        )
-                                      : EmptyRefreshListText(
-                                          onRefresh: () async {
-                                            _bloc.add(const MarketplaceEvent.getEquipments());
-                                          },
-                                        )
-                                  : const LoadingListWidget(),
-                              state.stateStatus != const StateStatus.loading()
-                                  ? state.services.isNotEmpty
-                                      ? ListViewWidget<GeneralEntity>(
-                                          descriptionBuilder: (item) => item.description!,
-                                          imageBuilder: (item) => item.imageUrl!,
-                                          titleBuilder: (item) => item.name!,
-                                          items: state.services,
-                                          onNotification: (scrollNotification) {
-                                            if (state.lastForOrders!) {
-                                              return false;
-                                            } else if (scrollNotification is ScrollEndNotification &&
-                                                scrollNotification.metrics.extentAfter == 0) {
-                                              _bloc.add(const MarketplaceEvent.loadMoreServices());
-                                            }
-
-                                            return false;
-                                          },
-                                          onRefresh: () async {
-                                            _bloc.add(const MarketplaceEvent.getServices());
-                                          },
-                                          onTap: (item) => context.router.push(
-                                            ServiceDetailRoute(id: item.id!),
-                                          ),
-                                        )
-                                      : EmptyRefreshListText(onRefresh: () async {
-                                          _bloc.add(
-                                            const MarketplaceEvent.getServices(),
-                                          );
-                                        })
-                                  : const LoadingListWidget()
-                            ],
-                          )
-                        : const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                  },
-                ),
+                            if (currentSegment.value == 0) {
+                              return SearchOrderSheet<AdvertisementEntity>(
+                                items: state.searchedOrders,
+                                titleBuilder: (item) => (item).name,
+                                priceBuilder: (item) => (item).price!.toInt().toString(),
+                                onchange: (value) {
+                                  _bloc.add(MarketplaceEvent.searchOrder(query: value));
+                                },
+                                onTap: (item) => context.router.push(
+                                  OrderDetailRoute(id: item.id),
+                                ),
+                              );
+                            } else if (currentSegment.value == 1) {
+                              return SearchOrderSheet<AdvertisementEntity>(
+                                items: state.searchedEquipment,
+                                titleBuilder: (item) => (item).name,
+                                priceBuilder: (item) => (item).price!.toInt().toString(),
+                                onchange: (value) {
+                                  _bloc.add(MarketplaceEvent.searchEquipmnet(query: value));
+                                },
+                                onTap: (item) => context.router.push(
+                                  EquipmentDetailRoute(id: item.id),
+                                ),
+                              );
+                            } else {
+                              return SearchOrderSheet<AdvertisementEntity>(
+                                items: state.searchedServices,
+                                titleBuilder: (item) => (item).name,
+                                priceBuilder: (item) => (item).price!.toInt().toString(),
+                                onchange: (value) {
+                                  _bloc.add(MarketplaceEvent.searchService(query: value));
+                                },
+                                onTap: (item) => context.router.push(
+                                  ServiceDetailRoute(id: item.id),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
             ],
-          ),
-          FabButtonWidget(onTap: () {
-            showModalBottomSheet<void>(
-              context: context,
-              backgroundColor: AppColors.white,
-              builder: (BuildContext context) {
-                return const SearchOrderSheet();
-              },
-            );
-          }),
-        ],
+          );
+        },
       ),
     );
   }
