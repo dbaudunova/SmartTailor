@@ -11,6 +11,7 @@ import 'package:neobis_smart_tailor/features/organization/pages/current_order/do
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/use_case/change_order_status_use_case.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/use_case/complete_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/use_case/get_all_orders_use_case.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/use_case/get_cancel_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/domain/use_case/get_detailed_order_use_case.dart';
 
 part 'current_order_event.dart';
@@ -23,12 +24,14 @@ class CurrentOrderBloc extends Bloc<CurrentOrderEvent, CurrentOrderState> {
   final GetCurrentDetailOrderUseCase getCurrentDetailOrderUseCase;
   final ChangeOrderStatusUseCase changeOrderStatusUseCase;
   final CompleteOrderUseCase completeOrderUseCase;
+  final GetCancelOrderUseCase cancelOrderUseCase;
 
   CurrentOrderBloc(
     this.getAllOrdersUseCase,
     this.getCurrentDetailOrderUseCase,
     this.changeOrderStatusUseCase,
     this.completeOrderUseCase,
+    this.cancelOrderUseCase,
   ) : super(
           CurrentOrderState(
               stateStatus: const StateStatus.initial(),
@@ -40,6 +43,27 @@ class CurrentOrderBloc extends Bloc<CurrentOrderEvent, CurrentOrderState> {
     on<_GetDetailsOrder>(_getDetailedOrder);
     on<_ChangeOrderStatus>(_changeOrderStatus);
     on<_CompleteOrder>(_completeOrder);
+    on<_CancelOrder>(_cancelOrder);
+  }
+
+  Future<void> _cancelOrder(
+    _CancelOrder event,
+    Emitter<CurrentOrderState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+    try {
+      await cancelOrderUseCase.call(id: event.id);
+      emit(
+        state.copyWith(
+          stateStatus: const StateStatus.success(),
+        ),
+      );
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(
+        stateStatus: StateStatus.failure(message: errorMessage!),
+      ));
+    }
   }
 
   Future<void> _completeOrder(

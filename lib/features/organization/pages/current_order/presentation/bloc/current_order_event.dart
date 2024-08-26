@@ -6,4 +6,5 @@ class CurrentOrderEvent with _$CurrentOrderEvent {
   const factory CurrentOrderEvent.getDetailedOrder({required int id}) = _GetDetailsOrder;
   const factory CurrentOrderEvent.changeOrderStatus({required int id, required String value}) = _ChangeOrderStatus;
   const factory CurrentOrderEvent.completeOrder({required int id}) = _CompleteOrder;
+  const factory CurrentOrderEvent.cancelOrder({required int id}) = _CancelOrder;
 }

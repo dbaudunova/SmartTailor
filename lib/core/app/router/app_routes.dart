@@ -28,7 +28,7 @@ import 'package:neobis_smart_tailor/features/organization/pages/organization/pre
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/announcement_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/my_announcements_screen.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/notification_screen.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/presentation/notification_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/presentation/order_history_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/organization/profile_organization_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/personal_data/personal_data_screen.dart';

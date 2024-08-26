@@ -105,13 +105,6 @@ class _MyPurchasesContentState extends State<MyPurchasesContent> {
                     default:
                       throw Exception('Invalid Announcement Type');
                   }
-                  // if (Switch)
-                  // AutoRouter.of(context).push(
-                  //   PurchaseDetailRoute(
-                  //     id: purchaese.id!,
-                  //     type: typeFromString(purchaese.type),
-                  //   ),
-                  // );
                 },
               ),
             );

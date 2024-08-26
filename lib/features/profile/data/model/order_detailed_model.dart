@@ -18,7 +18,7 @@ class OrderDetailedModel extends OrderDetailedEntity {
     super.orderItems,
     super.ordersStatus,
     super.price,
-    super.organizationExecutor,
+    super.executor,
   });
 
   factory OrderDetailedModel.fromJson(Map<String, dynamic> json) =>

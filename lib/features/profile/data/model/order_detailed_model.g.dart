@@ -26,10 +26,10 @@ OrderDetailedModel _$OrderDetailedModelFromJson(Map<String, dynamic> json) =>
           .toList(),
       ordersStatus: json['ordersStatus'] as String?,
       price: (json['price'] as num?)?.toDouble(),
-      organizationExecutor: json['organizationExecutor'] == null
+      executor: json['executor'] == null
           ? null
           : OrganizationExecutor.fromJson(
-              json['organizationExecutor'] as Map<String, dynamic>),
+              json['executor'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OrderDetailedModelToJson(OrderDetailedModel instance) =>
@@ -46,5 +46,5 @@ Map<String, dynamic> _$OrderDetailedModelToJson(OrderDetailedModel instance) =>
       'ordersStatus': instance.ordersStatus,
       'orderItems': instance.orderItems,
       'orderCandidates': instance.orderCandidates,
-      'organizationExecutor': instance.organizationExecutor,
+      'executor': instance.executor,
     };

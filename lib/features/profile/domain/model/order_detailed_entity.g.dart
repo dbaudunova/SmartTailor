@@ -9,17 +9,21 @@ part of 'order_detailed_entity.dart';
 OrganizationExecutor _$OrganizationExecutorFromJson(
         Map<String, dynamic> json) =>
     OrganizationExecutor(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
-      description: json['description'] as String?,
+      employeeId: (json['employeeId'] as num?)?.toInt(),
+      employeeFullName: json['employeeFullName'] as String?,
+      employeeEmail: json['employeeEmail'] as String?,
+      employeePhoneNumber: json['employeePhoneNumber'] as String?,
+      organizationName: json['organizationName'] as String?,
     );
 
 Map<String, dynamic> _$OrganizationExecutorToJson(
         OrganizationExecutor instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'description': instance.description,
+      'employeeId': instance.employeeId,
+      'employeeFullName': instance.employeeFullName,
+      'employeeEmail': instance.employeeEmail,
+      'employeePhoneNumber': instance.employeePhoneNumber,
+      'organizationName': instance.organizationName,
     };
 
 OrderItems _$OrderItemsFromJson(Map<String, dynamic> json) => OrderItems(

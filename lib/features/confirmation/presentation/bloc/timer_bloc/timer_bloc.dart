@@ -9,7 +9,7 @@ part 'timer_bloc.freezed.dart';
 
 @singleton
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
-  static const int _initialDuration = 3;
+  static const int _initialDuration = 60;
   late final Ticker _ticker;
   StreamSubscription<int>? _tickerSubscription;
 
@@ -37,9 +37,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _onTicked(_Ticked event, Emitter<TimerState> emit) {
-    emit(event.duration > 0
-        ? TimerState.runInProgress(event.duration)
-        : const TimerState.runComplete());
+    emit(event.duration > 0 ? TimerState.runInProgress(event.duration) : const TimerState.runComplete());
   }
 
   @override

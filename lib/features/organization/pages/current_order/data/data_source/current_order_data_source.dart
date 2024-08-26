@@ -6,4 +6,5 @@ abstract class CurrentOrderDataSource {
   Future<CurrentDetailOrderModel> getDetailOrder({required int id});
   Future<void> changeOrderStatus({required int id, required String value});
   Future<void> completeOrder({required int id});
+  Future<void> cancelOrder({required int id});
 }

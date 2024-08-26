@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/http_client.dart';
-import 'package:neobis_smart_tailor/core/network/http_codes.dart';
 import 'package:neobis_smart_tailor/core/network/http_paths.dart';
 import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/history/data/data_source/orders_history_data_source.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/data/models/current_history_detail_model/current_history_detail_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
 
 @Injectable(as: OrdersHistoryDataSource)
@@ -43,8 +43,28 @@ class OrdersHistoryDataSourceImpl implements OrdersHistoryDataSource {
   }
 
   @override
-  Future<MyHistoryModel> getDetaileHistoryOrder({required int id}) {
-    // TODO: implement getDetaileHistoryOrder
-    throw UnimplementedError();
+  Future<CurrentHistoryDetailModel> getDetaileHistoryOrder({required int id}) async {
+    try {
+      final response = await _client.get(
+        HttpPaths.getHistoryOrdersForOrganizationById + id.toString(),
+      );
+      if (response.statusCode != 200) {
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
+        );
+      } else {
+        var responce = response.data;
+        print(responce);
+        var model = CurrentHistoryDetailModel.fromJson(responce);
+        print(model);
+
+        return model;
+      }
+    } on DioException catch (e) {
+      throw handleDioException(e);
+    } catch (e) {
+      throw handleGeneralException(e);
+    }
   }
 }

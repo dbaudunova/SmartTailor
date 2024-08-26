@@ -43,4 +43,9 @@ class CurrentOrderRepoImpl implements CurrentOrdersRepo {
   Future<void> completeOrder({required int id}) async {
     await _dataSource.completeOrder(id: id);
   }
+
+  @override
+  Future<void> cancelOrder({required int id}) async {
+    await _dataSource.cancelOrder(id: id);
+  }
 }

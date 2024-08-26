@@ -91,9 +91,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     HistoryDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<HistoryDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HistoryDetailScreen(),
+        child: HistoryDetailScreen(
+          id: args.id,
+          key: args.key,
+        ),
       );
     },
     InviteEmployeeRoute.name: (routeData) {
@@ -481,16 +485,40 @@ class EquipmentDetailRouteArgs {
 
 /// generated route for
 /// [HistoryDetailScreen]
-class HistoryDetailRoute extends PageRouteInfo<void> {
-  const HistoryDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class HistoryDetailRoute extends PageRouteInfo<HistoryDetailRouteArgs> {
+  HistoryDetailRoute({
+    required int id,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           HistoryDetailRoute.name,
+          args: HistoryDetailRouteArgs(
+            id: id,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HistoryDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<HistoryDetailRouteArgs> page =
+      PageInfo<HistoryDetailRouteArgs>(name);
+}
+
+class HistoryDetailRouteArgs {
+  const HistoryDetailRouteArgs({
+    required this.id,
+    this.key,
+  });
+
+  final int id;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'HistoryDetailRouteArgs{id: $id, key: $key}';
+  }
 }
 
 /// generated route for

@@ -66,9 +66,11 @@ class HttpPaths {
 
   static const changeOrderStatus = '$baseUrl/api/order/change-status/';
   static const completeOrder = '$baseUrl/api/order/complete/';
+  static const cancelOrder = '$baseUrl/api/order/cancel/';
 
   static const getHistoryOrdersForUser = '$baseUrl/api/order/order-history-for-user';
   static const getHistoryOrdersForOrganization = '$baseUrl/api/order/organization-order-history';
+  static const getHistoryOrdersForOrganizationById = '$baseUrl/api/order/organization-order-history/';
 
   static const getSearchOrders = '$baseUrl/api/search/order';
   static const getSearchEquipment = '$baseUrl/api/search/equipment';

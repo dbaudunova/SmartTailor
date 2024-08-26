@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/empty_refresh_list_text.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
+import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/announcement/announcement_bloc.dart';
@@ -27,10 +29,9 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
 
   @override
   void initState() {
-    final profileBloc = BlocProvider.of<AnnouncementBloc>(context);
-    if (!profileBloc.state.isAnnouncementsLoaded) {
-      profileBloc.add(const AnnouncementEvent.getAll());
-    }
+    BlocProvider.of<AnnouncementBloc>(context).add(
+      const AnnouncementEvent.getAll(),
+    );
     super.initState();
   }
 
@@ -73,31 +74,85 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
                         });
                       },
                       children: [
-                        AnnouncementListView<AnnouncementEvent, AnnouncementState>(
-                          getList: (context) => context.read<AnnouncementBloc>().state.orders,
-                          route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.order),
-                          isLast: state.lastForOrders!,
-                          loadMoreEvent: (context) => const AnnouncementEvent.loadMoreOrders(),
-                          loadfirstPage: (context) => const AnnouncementEvent.getOrders(),
-                          getBloc: (context) => context.read<AnnouncementBloc>(),
-                        ),
-                        AnnouncementListView<AnnouncementEvent, AnnouncementState>(
-                          getList: (context) => context.read<AnnouncementBloc>().state.equipments,
-                          route: ({required int id}) =>
-                              AnnouncementDetailRoute(id: id, type: AnnouncementType.equipment),
-                          isLast: state.lastForEquipment!,
-                          loadMoreEvent: (context) => const AnnouncementEvent.loadMoreEquipments(),
-                          loadfirstPage: (context) => const AnnouncementEvent.getEquipments(),
-                          getBloc: (context) => context.read<AnnouncementBloc>(),
-                        ),
-                        AnnouncementListView<AnnouncementEvent, AnnouncementState>(
-                          getList: (context) => context.read<AnnouncementBloc>().state.services,
-                          route: ({required int id}) => AnnouncementDetailRoute(id: id, type: AnnouncementType.service),
-                          isLast: state.lastForServices!,
-                          loadMoreEvent: (context) => const AnnouncementEvent.loadMoreServices(),
-                          loadfirstPage: (context) => const AnnouncementEvent.getServices(),
-                          getBloc: (context) => context.read<AnnouncementBloc>(),
-                        ),
+                        //return state.stateStatus != const StateStatus.loading()
+                        //                 ? state.purchases!.isNotEmpty
+                        //                     ? _buildListView(state)
+                        //                     : Center(
+                        //                         child: EmptyRefreshListText(
+                        //                           onRefresh: () async {
+                        //                             _bloc.add(const PurchasesEvent.getMyPurchases());
+                        //                           },
+                        //                         ),
+                        //                       )
+                        //                 : const Center(
+                        //                     child: CircularProgressIndicator(),
+                        //                   );
+                        state.stateStatus != const StateStatus.loading()
+                            ? state.orders.isNotEmpty
+                                ? _buildAnnouncementListView(
+                                    context: context,
+                                    list: state.orders,
+                                    isLast: state.lastForOrders,
+                                    loadMoreEvent: const AnnouncementEvent.loadMoreOrders(),
+                                    loadFirstPage: const AnnouncementEvent.getOrders(),
+                                    type: AnnouncementType.order,
+                                  )
+                                : Center(
+                                    child: EmptyRefreshListText(
+                                      onRefresh: () async {
+                                        BlocProvider.of<AnnouncementBloc>(context).add(
+                                          const AnnouncementEvent.getOrders(),
+                                        );
+                                      },
+                                    ),
+                                  )
+                            : const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                        state.stateStatus != const StateStatus.loading()
+                            ? state.equipments.isNotEmpty
+                                ? _buildAnnouncementListView(
+                                    context: context,
+                                    list: state.equipments,
+                                    isLast: state.lastForEquipment,
+                                    loadMoreEvent: const AnnouncementEvent.loadMoreEquipments(),
+                                    loadFirstPage: const AnnouncementEvent.getEquipments(),
+                                    type: AnnouncementType.equipment,
+                                  )
+                                : Center(
+                                    child: EmptyRefreshListText(
+                                      onRefresh: () async {
+                                        BlocProvider.of<AnnouncementBloc>(context).add(
+                                          const AnnouncementEvent.getEquipments(),
+                                        );
+                                      },
+                                    ),
+                                  )
+                            : const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                        state.stateStatus != const StateStatus.loading()
+                            ? state.services.isNotEmpty
+                                ? _buildAnnouncementListView(
+                                    context: context,
+                                    list: state.services,
+                                    isLast: state.lastForServices,
+                                    loadMoreEvent: const AnnouncementEvent.loadMoreServices(),
+                                    loadFirstPage: const AnnouncementEvent.getServices(),
+                                    type: AnnouncementType.service,
+                                  )
+                                : Center(
+                                    child: EmptyRefreshListText(
+                                      onRefresh: () async {
+                                        BlocProvider.of<AnnouncementBloc>(context).add(
+                                          const AnnouncementEvent.getServices(),
+                                        );
+                                      },
+                                    ),
+                                  )
+                            : const Center(
+                                child: CircularProgressIndicator(),
+                              ),
                       ],
                     );
                   },
@@ -195,7 +250,7 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
     );
   }
 
-  Text _buildSegmentText(String label, int index) {
+  Widget _buildSegmentText(String label, int index) {
     return Text(
       label,
       style: currentSegment.value == index
@@ -203,6 +258,32 @@ class _MyAnnouncementsScreenState extends State<MyAnnouncementsScreen> with Tick
               fontWeight: FontWeight.w600,
             )
           : AppTextStyle.text14,
+    );
+  }
+
+  Widget _buildAnnouncementListView({
+    required BuildContext context,
+    required List<dynamic> list,
+    required bool? isLast,
+    required AnnouncementEvent loadMoreEvent,
+    required AnnouncementEvent loadFirstPage,
+    required AnnouncementType type,
+  }) {
+    if (list.isEmpty) {
+      return EmptyRefreshListText(
+        onRefresh: () async {
+          context.read<AnnouncementBloc>().add(loadFirstPage);
+        },
+      );
+    }
+
+    return AnnouncementListView<AnnouncementEvent, AnnouncementState>(
+      getList: (context) => list,
+      route: ({required int id}) => AnnouncementDetailRoute(id: id, type: type),
+      isLast: isLast!,
+      loadMoreEvent: (context) => loadMoreEvent,
+      loadfirstPage: (context) => loadFirstPage,
+      getBloc: (BuildContext context) => context.read<AnnouncementBloc>(),
     );
   }
 

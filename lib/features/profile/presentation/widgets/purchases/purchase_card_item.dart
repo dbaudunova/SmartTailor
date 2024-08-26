@@ -40,14 +40,9 @@ class PurchaseCardItem extends StatelessWidget {
                 height: 104,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: CachedNetworkImage(
-                      imageUrl: purchaseImage,
-                      fit: BoxFit.cover,
-                    ),
+                  child: CachedNetworkImage(
+                    imageUrl: purchaseImage,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -59,10 +54,14 @@ class PurchaseCardItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          orderNumber,
-                          style: AppTextStyle.textField16,
+                        Flexible(
+                          child: Text(
+                            orderNumber,
+                            style: AppTextStyle.textField16,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
+                        const SizedBox(width: 8),
                         Text(
                           price,
                           style: AppTextStyle.textField16.copyWith(
@@ -86,13 +85,13 @@ class PurchaseCardItem extends StatelessWidget {
                             children: [
                               Text(
                                 authorName,
-                                maxLines: 2,
-                                overflow: TextOverflow.fade,
                                 style: AppTextStyle.s12w400,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               Text(
                                 'Автор объявления',
                                 style: AppTextStyle.s12w400.copyWith(color: AppColors.greyText),
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),

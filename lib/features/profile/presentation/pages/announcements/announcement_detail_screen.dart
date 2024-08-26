@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/author_info_widget.dart';
@@ -28,12 +29,14 @@ class AnnouncementDetailScreen extends StatefulWidget {
   });
 
   @override
-  State<AnnouncementDetailScreen> createState() => _AnnouncementDetailScreenState();
+  State<AnnouncementDetailScreen> createState() =>
+      _AnnouncementDetailScreenState();
 }
 
 class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
   bool _isCustomerExpanded = false;
   bool _isResponseExpanded = false;
+  bool _isOrderAccepted = false;
   late Map<String, dynamic> detailedData;
 
   AnnouncementBloc get _bloc => context.read<AnnouncementBloc>();
@@ -43,11 +46,17 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
     super.initState();
     switch (widget.type) {
       case AnnouncementType.order:
-        context.read<AnnouncementBloc>().add(AnnouncementEvent.getOrderDetailed(id: widget.id));
+        context
+            .read<AnnouncementBloc>()
+            .add(AnnouncementEvent.getOrderDetailed(id: widget.id));
       case AnnouncementType.equipment:
-        context.read<AnnouncementBloc>().add(AnnouncementEvent.getEquipmentDetailed(id: widget.id));
+        context
+            .read<AnnouncementBloc>()
+            .add(AnnouncementEvent.getEquipmentDetailed(id: widget.id));
       case AnnouncementType.service:
-        context.read<AnnouncementBloc>().add(AnnouncementEvent.getServiceDetailed(id: widget.id));
+        context
+            .read<AnnouncementBloc>()
+            .add(AnnouncementEvent.getServiceDetailed(id: widget.id));
     }
   }
 
@@ -69,6 +78,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
           BlocBuilder<AnnouncementBloc, AnnouncementState>(
             builder: (context, state) {
               detailedData = _getDetailedData(state);
+              _isOrderAccepted = detailedData['executor'] != null;
               if (state.stateStatus == const StateStatus.loading()) {
                 return const Center(child: CircularProgressIndicator());
               }
@@ -88,7 +98,9 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                                 children: [
                                   Text(
                                     getAnnouncementTypeLabel(widget.type),
-                                    style: AppTextStyle.textField16.copyWith(color: typeColor(widget.type)),
+                                    style: AppTextStyle.textField16.copyWith(
+                                      color: typeColor(widget.type),
+                                    ),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
@@ -97,13 +109,17 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                                   ),
                                   const SizedBox(height: 12),
                                   Text(
-                                    detailedData['description'] ?? 'Нет описания',
-                                    style: AppTextStyle.text14.copyWith(color: AppColors.greyText),
+                                    detailedData['description'] ??
+                                        'Нет описания',
+                                    style: AppTextStyle.text14
+                                        .copyWith(color: AppColors.greyText),
                                   ),
                                   const SizedBox(height: 40),
                                   AuthorInfoWidget(
-                                    authorImage: detailedData['authorImage'] ?? '',
-                                    authorName: detailedData['authorFullName'] ?? '',
+                                    authorImage:
+                                        detailedData['authorImage'] ?? '',
+                                    authorName:
+                                        detailedData['authorFullName'] ?? '',
                                   ),
                                   const SizedBox(height: 24),
                                   if (widget.type == AnnouncementType.order)
@@ -119,14 +135,16 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                                           isExpanded: _isCustomerExpanded,
                                           onPressed: () {
                                             setState(() {
-                                              _isCustomerExpanded = !_isCustomerExpanded;
+                                              _isCustomerExpanded =
+                                                  !_isCustomerExpanded;
                                             });
                                           },
                                         ),
                                       ),
                                     ),
                                   const SizedBox(height: 4),
-                                  if (_isCustomerExpanded && widget.type == AnnouncementType.order)
+                                  if (_isCustomerExpanded &&
+                                      widget.type == AnnouncementType.order)
                                     _buildSizeContainer(),
                                   const SizedBox(height: 8),
                                   SizedBox(
@@ -137,18 +155,24 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                                         vertical: 4,
                                       ),
                                       child: _buildExpandableButton(
-                                        title: widget.type == AnnouncementType.equipment ? 'Покупатели' : 'Отклики',
+                                        title: _isOrderAccepted
+                                            ? 'Исполнитель'
+                                            : widget.type == AnnouncementType.equipment
+                                            ? 'Покупатели'
+                                            : 'Отклики',
                                         isExpanded: _isResponseExpanded,
                                         onPressed: () {
                                           setState(() {
-                                            _isResponseExpanded = !_isResponseExpanded;
+                                            _isResponseExpanded =
+                                                !_isResponseExpanded;
                                           });
                                         },
                                       ),
                                     ),
                                   ),
                                   const SizedBox(height: 4),
-                                  if (_isResponseExpanded) _buildCustomerContainer(),
+                                  if (_isResponseExpanded)
+                                    _buildCustomerContainer(),
                                   const SizedBox(height: 130),
                                 ],
                               ),
@@ -157,12 +181,30 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                         ),
                       ],
                     )
-                  : const Center(child: CircularProgressIndicator());
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    );
             },
           ),
           _buildBottomButtons(context, widget.type),
         ],
       ),
+    );
+  }
+
+  void _showAcceptanceDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialogStyle(
+          title: 'Ура!',
+          content: 'Заказ был успешно принят!',
+          buttonText: 'Закрыть',
+          onButtonPressed: () {
+            AutoRouter.of(context).pushNamed('/my_announcements');
+          },
+        );
+      },
     );
   }
 
@@ -177,7 +219,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
           'authorImage': state.detailedOrder?.authorImage,
           'authorFullName': state.detailedOrder?.authorFullName,
           'orderItems': state.detailedOrder?.orderItems,
-          'orderCandidates': state.detailedOrder?.orderCandidates
+          'orderCandidates': state.detailedOrder?.orderCandidates,
+          'executor': state.detailedOrder?.executor,
         };
       case AnnouncementType.equipment:
         return {
@@ -202,6 +245,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
 
   Container _buildCustomerContainer() {
     var orderCandidates = <dynamic>[];
+    var executor = detailedData['executor'];
 
     switch (widget.type) {
       case AnnouncementType.order:
@@ -220,25 +264,38 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: orderCandidates.length,
+        itemCount: executor != null ? 1 : orderCandidates.length,
         itemBuilder: (context, index) {
           if (widget.type == AnnouncementType.order) {
-            final orderCandidate = orderCandidates[index] as OrderCandidates;
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: CustomerContainer(
-                onTap: () {
-                  _bloc.add(
-                    AnnouncementEvent.assignExecutorToOrder(
-                      executorId: orderCandidate.employeeId,
-                      orderId: widget.id,
-                    ),
-                  );
-                },
-                name: orderCandidate.employeeFullName ?? '',
-                email: orderCandidate.employeeEmail ?? '',
-              ),
-            );
+            if (executor != null) {
+              final orgExecutor = executor as OrganizationExecutor;
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomerContainer(
+                  name: orgExecutor.employeeFullName ?? '',
+                  email: orgExecutor.employeeEmail ?? '',
+                ),
+              );
+            } else {
+              final orderCandidate = orderCandidates[index] as OrderCandidates;
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomerContainer(
+                  isOrder: true,
+                  onTap: () {
+                    _bloc.add(
+                      AnnouncementEvent.assignExecutorToOrder(
+                        executorId: orderCandidate.employeeId,
+                        orderId: widget.id,
+                      ),
+                    );
+                    _showAcceptanceDialog(context);
+                  },
+                  name: orderCandidate.employeeFullName ?? '',
+                  email: orderCandidate.employeeEmail ?? '',
+                ),
+              );
+            }
           } else {
             final equipmentBuyer = orderCandidates[index] as EquipmentBuyers;
             return Padding(
@@ -272,7 +329,9 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
+            isExpanded
+                ? Icons.keyboard_arrow_up_rounded
+                : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),
@@ -299,6 +358,30 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
     );
   }
 
+  void _showHideDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return ExitAlert(
+          confirmButton: () {
+            _bloc.add(
+              AnnouncementEvent.hide(id: widget.id, type: widget.type),
+            );
+            AutoRouter.of(context).maybePop();
+            AppSnackBar.show(
+              context: context,
+              titleText: 'Объявление было скрыто',
+            );
+          },
+          cancelButton: () {
+            AutoRouter.of(context).maybePop();
+          },
+          title: 'Вы уверены, что хотите скрыть объявление?',
+        );
+      },
+    );
+  }
+
   Widget _buildBottomButtons(BuildContext context, AnnouncementType type) {
     return Positioned(
       bottom: 0,
@@ -315,10 +398,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
                 backgroundColor: Colors.white,
                 strokeColor: AppColors.greyText,
                 onPressed: () {
-                  _bloc.add(
-                    AnnouncementEvent.hide(id: widget.id, type: widget.type),
-                  );
-                  AutoRouter.of(context).push(const MyAnnouncementsRoute());
+                  _showHideDialog(context);
                 },
                 text: 'Скрыть объявление',
               ),
@@ -326,23 +406,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
               _buildTransparentButton(
                 backgroundColor: AppColors.error,
                 onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return ExitAlert(
-                        confirmButton: () {
-                          // AutoRouter.of(context).push(const MyAnnouncementsRoute());
-                          _bloc.add(
-                            AnnouncementEvent.delete(id: widget.id, type: widget.type),
-                          );
-                        },
-                        cancelButton: () {
-                          AutoRouter.of(context).maybePop();
-                        },
-                        title: 'Удалить объявление?',
-                      );
-                    },
-                  );
+                  _showDeleteDialog(context);
                 },
                 textColor: Colors.white,
                 text: 'Удалить',
@@ -351,6 +415,33 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void _showDeleteDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return ExitAlert(
+          confirmButton: () {
+            _bloc.add(
+              AnnouncementEvent.delete(
+                id: widget.id,
+                type: widget.type,
+              ),
+            );
+            AutoRouter.of(context).push(const ProfileRoute());
+            AppSnackBar.show(
+              context: context,
+              titleText: 'Объявление было удалено',
+            );
+          },
+          cancelButton: () {
+            AutoRouter.of(context).maybePop();
+          },
+          title: 'Удалить объявление?',
+        );
+      },
     );
   }
 

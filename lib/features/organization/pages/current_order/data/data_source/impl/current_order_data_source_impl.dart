@@ -118,4 +118,26 @@ class CurrentOrderDataSourceImpl implements CurrentOrderDataSource {
       throw handleGeneralException(e);
     }
   }
+
+  @override
+  Future<void> cancelOrder({required int id}) async {
+    try {
+      final response = await _client.put(
+        HttpPaths.cancelOrder + id.toString(),
+      );
+      if (response.statusCode != HttpSuccess.success) {
+        // ignore: only_throw_errors
+        throw Failure.request(
+          status: response.statusCode,
+          message: 'Failed, status code: ${response.statusCode}',
+        );
+      }
+    } on DioException catch (e) {
+      // ignore: only_throw_errors
+      throw handleDioException(e);
+    } catch (e) {
+      // ignore: only_throw_errors
+      throw handleGeneralException(e);
+    }
+  }
 }

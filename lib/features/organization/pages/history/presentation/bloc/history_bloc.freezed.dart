@@ -480,7 +480,7 @@ abstract class _GetDetailsOrder implements HistoryEvent {
 mixin _$HistoryState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   List<HistoryEntity> get history => throw _privateConstructorUsedError;
-  CurrentDetailOrderEntity get detailedModel =>
+  CurrentHistoryDetailEntity get detailedModel =>
       throw _privateConstructorUsedError;
   int get totalCount => throw _privateConstructorUsedError;
   bool get isLast => throw _privateConstructorUsedError;
@@ -499,7 +499,7 @@ abstract class $HistoryStateCopyWith<$Res> {
   $Res call(
       {StateStatus stateStatus,
       List<HistoryEntity> history,
-      CurrentDetailOrderEntity detailedModel,
+      CurrentHistoryDetailEntity detailedModel,
       int totalCount,
       bool isLast});
 
@@ -537,7 +537,7 @@ class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState>
       detailedModel: null == detailedModel
           ? _value.detailedModel
           : detailedModel // ignore: cast_nullable_to_non_nullable
-              as CurrentDetailOrderEntity,
+              as CurrentHistoryDetailEntity,
       totalCount: null == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
@@ -569,7 +569,7 @@ abstract class _$$HistoryStateImplCopyWith<$Res>
   $Res call(
       {StateStatus stateStatus,
       List<HistoryEntity> history,
-      CurrentDetailOrderEntity detailedModel,
+      CurrentHistoryDetailEntity detailedModel,
       int totalCount,
       bool isLast});
 
@@ -606,7 +606,7 @@ class __$$HistoryStateImplCopyWithImpl<$Res>
       detailedModel: null == detailedModel
           ? _value.detailedModel
           : detailedModel // ignore: cast_nullable_to_non_nullable
-              as CurrentDetailOrderEntity,
+              as CurrentHistoryDetailEntity,
       totalCount: null == totalCount
           ? _value.totalCount
           : totalCount // ignore: cast_nullable_to_non_nullable
@@ -641,7 +641,7 @@ class _$HistoryStateImpl implements _HistoryState {
   }
 
   @override
-  final CurrentDetailOrderEntity detailedModel;
+  final CurrentHistoryDetailEntity detailedModel;
   @override
   final int totalCount;
   @override
@@ -687,7 +687,7 @@ abstract class _HistoryState implements HistoryState {
   const factory _HistoryState(
       {required final StateStatus stateStatus,
       required final List<HistoryEntity> history,
-      required final CurrentDetailOrderEntity detailedModel,
+      required final CurrentHistoryDetailEntity detailedModel,
       required final int totalCount,
       required final bool isLast}) = _$HistoryStateImpl;
 
@@ -696,7 +696,7 @@ abstract class _HistoryState implements HistoryState {
   @override
   List<HistoryEntity> get history;
   @override
-  CurrentDetailOrderEntity get detailedModel;
+  CurrentHistoryDetailEntity get detailedModel;
   @override
   int get totalCount;
   @override

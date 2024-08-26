@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/employee_position/checkbox_style.dart';
 
 class StatusBottomSheet extends StatelessWidget {
@@ -17,7 +15,9 @@ class StatusBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final statusList = OrderStatus.values.where((status) => status != OrderStatus.notConfirmed).toList();
+    final statusList = OrderStatus.values
+        .where((status) => status != OrderStatus.notConfirmed && status != OrderStatus.completed)
+        .toList();
     int? currentCheckedIndex = statusList.indexOf(selectedStatus);
 
     return StatefulBuilder(
@@ -45,9 +45,7 @@ class StatusBottomSheet extends StatelessWidget {
                       if (value == true) {
                         if (currentCheckedIndex == null ||
                             (index == currentCheckedIndex! - 1 || index == currentCheckedIndex! + 1)) {
-                          // Определяем значение для события
                           final changeValue = index < currentCheckedIndex! ? 'MINUS' : 'PLUS';
-                          // Отправляем событие в BLoC
                           onTap(changeValue);
                           setState(() {
                             currentCheckedIndex = index;

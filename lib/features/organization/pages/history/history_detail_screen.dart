@@ -1,94 +1,50 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/history_detail_content.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/presentation/bloc/history_bloc.dart';
+import 'package:neobis_smart_tailor/injection/injection.dart';
 
 @RoutePage()
-class HistoryDetailScreen extends StatefulWidget {
-  const HistoryDetailScreen({super.key});
-
-  @override
-  State<HistoryDetailScreen> createState() => _HistoryDetailScreenState();
-}
-
-class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
-  final _orderName = TextEditingController();
-  final _orderDescription = TextEditingController();
-  final _employees = TextEditingController();
-  final _orderPrice = TextEditingController();
-  final _orderCompletionDate = TextEditingController();
-  final _customerFullName = TextEditingController();
-  final _customerContacts = TextEditingController();
-
-  @override
-  void dispose() {
-    _orderName.dispose();
-    _orderDescription.dispose();
-    _employees.dispose();
-    _orderPrice.dispose();
-    _orderCompletionDate.dispose();
-    _customerFullName.dispose();
-    _customerContacts.dispose();
-    super.dispose();
-  }
+class HistoryDetailScreen extends StatelessWidget {
+  final int id;
+  const HistoryDetailScreen({required this.id, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBarStyle(
-        title: 'Заказы',
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            AutoRouter.of(context).maybePop();
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-          ),
-        ),
+    return BlocProvider.value(
+      value: getIt<HistoryBloc>(),
+      child: BlocListener<HistoryBloc, HistoryState>(
+        listener: _listenerBloc,
+        child: HistoryDetailContent(id: id),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextFormFieldWidget(
-              controller: _orderName,
-              titleName: 'Название заказа',
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              controller: _orderDescription,
-              titleName: 'Описание заказа',
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              controller: _employees,
-              titleName: 'Сотрудники',
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              controller: _orderPrice,
-              titleName: 'Сумма заказа',
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              controller: _orderCompletionDate,
-              titleName: 'Дата выполнения заказа',
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              controller: _customerFullName,
-              titleName: 'ФИО заказчика',
-            ),
-            const SizedBox(height: 16),
-            TextFormFieldWidget(
-              controller: _customerContacts,
-              titleName: 'Контакты заказчика',
-            ),
-          ],
-        ),
-      ),
+    );
+  }
+
+  void _listenerBloc(BuildContext context, HistoryState state) {
+    state.stateStatus.whenOrNull(
+      success: (value) {
+        // _showCustomDialog(
+        //   context: context,
+        //   contentText:
+        //       'Созданные должности будут находиться ниже по Иерархии, и им нельзя выдать права доступа, которые недоступны человеку создающему новую роль',
+        //   buttonText: 'Понятно',
+        //   onButtonPressed: () {
+        //     _showCustomDialog(
+        //       context: context,
+        //       contentText: 'Выдача прав доступа сохранена!',
+        //       buttonText: 'Понятно',
+        //       onButtonPressed: () {
+        //         AutoRouter.of(context).pop();
+        //       },
+        //     );
+        //   },
+        // );
+      },
+      failure: (msg) {
+        AppSnackBar.show(context: context, titleText: msg, error: true);
+      },
     );
   }
 }

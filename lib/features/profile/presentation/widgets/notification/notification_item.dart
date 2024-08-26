@@ -4,8 +4,18 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/gen/assets.gen.dart';
 
 class NotificationItem extends StatelessWidget {
+  final String? title;
+  final String? body;
+  final String? date;
+  final String? imageUrl;
+  final String? data;
   const NotificationItem({
     super.key,
+    this.title,
+    this.body,
+    this.date,
+    this.imageUrl,
+    this.data,
   });
 
   @override
@@ -37,13 +47,13 @@ class NotificationItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Объявление №23',
+                    title!,
                     style: AppTextStyle.text14.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
-                    'Сегодня, в 11:34',
+                    date ?? 'dfdf',
                     style: AppTextStyle.s12w400.copyWith(
                       color: AppColors.greyText,
                     ),
@@ -52,7 +62,7 @@ class NotificationItem extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                'User 21 откликнулся на ваше объявление',
+                body!,
                 style: AppTextStyle.s12w400.copyWith(
                   color: AppColors.greyText,
                 ),

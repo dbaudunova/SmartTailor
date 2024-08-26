@@ -42,13 +42,6 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
   }
 
   bool _isEmployeeExpanded = false;
-  final List<Map> _statusList = [
-    {'name': 'В ожидании', 'isChecked': false},
-    {'name': 'В работе', 'isChecked': false},
-    {'name': 'Проверка', 'isChecked': false},
-    {'name': 'Отправка', 'isChecked': false},
-    {'name': 'Прибыл', 'isChecked': false},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +60,6 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
       ),
       body: BlocBuilder<CurrentOrderBloc, CurrentOrderState>(
         builder: (context, state) {
-          print(state.detailedOrder.status);
           var detailedOrder = state.detailedOrder;
           var dateStr = DateFormat('yyyy-MM-dd')
               .format(detailedOrder.dateOfExecution == null ? DateTime.now() : detailedOrder.dateOfExecution!);
@@ -169,12 +161,21 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
                               ),
                               const SizedBox(height: 8),
                               _buildTransparentButton(
-                                backgroundColor: AppColors.error,
+                                backgroundColor: AppColors.darkBlue,
                                 onPressed: () {
                                   _bloc.add(CurrentOrderEvent.completeOrder(id: detailedOrder.id!));
                                 },
                                 textColor: Colors.white,
                                 text: 'Завершить заказ',
+                              ),
+                              const SizedBox(height: 8),
+                              _buildTransparentButton(
+                                backgroundColor: AppColors.error,
+                                onPressed: () {
+                                  _bloc.add(CurrentOrderEvent.cancelOrder(id: detailedOrder.id!));
+                                },
+                                textColor: Colors.white,
+                                text: 'Отменить заказ',
                               ),
                               const SizedBox(height: 16),
                             ],

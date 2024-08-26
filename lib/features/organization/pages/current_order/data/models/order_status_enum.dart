@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-enum OrderStatus { waiting, inProcess, checking, sending, arrived, notConfirmed }
+enum OrderStatus { waiting, inProcess, checking, sending, arrived, notConfirmed, completed }
 
 OrderStatus typeFromString(String? typeString) {
   switch (typeString) {
@@ -14,6 +14,8 @@ OrderStatus typeFromString(String? typeString) {
       return OrderStatus.sending;
     case 'ARRIVED':
       return OrderStatus.arrived;
+    case 'COMPLETED':
+      return OrderStatus.completed;
     default:
       return OrderStatus.notConfirmed;
   }
@@ -31,6 +33,8 @@ String getOrderStatusTypeLabel(OrderStatus type) {
       return 'Отправка';
     case OrderStatus.arrived:
       return 'Прибыл';
+    case OrderStatus.completed:
+      return 'Завершен';
     case OrderStatus.notConfirmed:
       return 'Не подтвержден';
   }
@@ -54,6 +58,8 @@ class OrderStatusConverter implements JsonConverter<OrderStatus, String> {
         return OrderStatus.arrived;
       case 'NOT_CONFIRMED':
         return OrderStatus.notConfirmed;
+      case 'COMPLETED':
+        return OrderStatus.completed;
       default:
         throw ArgumentError(
             '`$json` is not one of the supported values: WAITING, IN_PROGRESS, CHECKING, SENDING, ARRIVED, NOT_CONFIRMED');
@@ -75,6 +81,8 @@ class OrderStatusConverter implements JsonConverter<OrderStatus, String> {
         return 'ARRIVED';
       case OrderStatus.notConfirmed:
         return 'NOT_CONFIRMED';
+      case OrderStatus.completed:
+        return 'COMPLETED';
     }
   }
 }

@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/empty_refresh_list_text.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/history/presentation/bloc/history_bloc.dart';
@@ -42,10 +44,9 @@ class _HistoryListContentState extends State<HistoryListContent> {
                             name: orderHistory.name!,
                             price: orderHistory.price!,
                             status: orderHistory.status,
-                            onTap: () {},
-                            // onTap: () {
-                            //   AutoRouter.of(context).push(const HistoryDetailRoute());
-                            // },
+                            onTap: () {
+                              AutoRouter.of(context).push(HistoryDetailRoute(id: orderHistory.id!));
+                            },
                           ),
                         );
                       },

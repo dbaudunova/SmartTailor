@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/author_info.dart';
-import 'package:neobis_smart_tailor/core/app/widgets/fab_button_widget.dart';
-import 'package:neobis_smart_tailor/core/app/widgets/search_order_sheet.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/custom_dropdown_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/bloc/purchases_bloc.dart';
@@ -24,15 +22,12 @@ class PurchaseDetailContent extends StatefulWidget {
 class _PurchaseDetailScreenState extends State<PurchaseDetailContent> {
   bool _isDescriptionExpanded = false;
   bool _isResponseExpanded = false;
-  final DateTime _orderDate = DateTime.now();
 
   PurchasesBloc get _bloc => context.read<PurchasesBloc>();
 
   @override
   void initState() {
     super.initState();
-    print('id: ${widget.id}');
-    print('type: ${widget.type}');
     _bloc.add(PurchasesEvent.getDetail(id: widget.id, type: widget.type));
   }
 
@@ -55,7 +50,6 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailContent> {
         children: [
           Column(
             children: [
-              //GalleryWidget(date: _orderDate.toString()),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -86,13 +80,8 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailContent> {
                             ),
                           ),
                         const SizedBox(height: 24),
-                        CustomDropdown(
+                        const CustomDropdown(
                           items: [],
-
-                          // style: AppTextStyle.textField16.copyWith(
-                          //   fontWeight: FontWeight.w500,
-                          //   fontSize: 20,
-                          // ),
                         ),
                         const SizedBox(height: 12),
                         SizedBox(
@@ -123,14 +112,6 @@ class _PurchaseDetailScreenState extends State<PurchaseDetailContent> {
               ),
             ],
           ),
-          // FabButtonWidget(onTap: () {
-          //   showModalBottomSheet<void>(
-          //     context: context,
-          //     builder: (BuildContext context) {
-          //       return const SearchOrderSheet();
-          //     },
-          //   );
-          // }),
         ],
       ),
     );

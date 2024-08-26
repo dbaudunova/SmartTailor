@@ -11,8 +11,9 @@ import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 class EquipmentDetailContent extends StatefulWidget {
   final int id;
+  final bool? buyButton;
 
-  const EquipmentDetailContent({required this.id, super.key});
+  const EquipmentDetailContent({required this.id, super.key, this.buyButton});
 
   @override
   State<EquipmentDetailContent> createState() => _EquipmentDetailContentState();
