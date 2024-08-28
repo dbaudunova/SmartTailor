@@ -103,7 +103,6 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await searchAdvertisementUseCase.call(pageNumber: 0, query: event.query);
-      print(result.advertisement.length);
       emit(state.copyWith(stateStatus: const StateStatus.success(), searchedAdvertisement: result.advertisement));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
@@ -128,8 +127,8 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
         case AnnouncementType.service:
           await hideServiceUseCase.call(serviceId: event.id);
           break;
-        default:
-          throw Exception('Invalid Announcement Type');
+
+        case null:
       }
 
       emit(state.copyWith(
@@ -148,12 +147,9 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
 
     try {
-      // Check if the event type is null
       if (event.type == null) {
         throw Exception('Invalid Announcement Type');
       }
-
-      // Use the switch statement to call the appropriate use case based on the type
       switch (event.type) {
         case AnnouncementType.order:
           await deleteOrderUseCase.call(orderId: event.id);
@@ -164,8 +160,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
         case AnnouncementType.service:
           await deleteServiceUseCase.call(serviceId: event.id);
           break;
-        default:
-          throw Exception('Invalid Announcement Type');
+        case null:
       }
 
       emit(state.copyWith(

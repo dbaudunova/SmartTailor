@@ -32,7 +32,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     required this.editProfileInfoUseCase,
     required this.uploadImageUseCase,
   }) : super(
-          ProfileState(stateStatus: StateStatus.initial(), subscriptionSend: false),
+          const ProfileState(
+            stateStatus: StateStatus.initial(),
+            subscriptionSend: false,
+          ),
         ) {
     on<_SignOut>(_signOut);
     on<_GetProfileInfo>(_getProfileInfo);
@@ -48,8 +51,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       await sendSubscriptionUseCase.call(null);
-
-      // Отметить подписку как отправленную
       emit(state.copyWith(stateStatus: const StateStatus.success(), subscriptionSend: true));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
@@ -84,7 +85,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         stateStatus: const StateStatus.success(),
         profile: profileEntity,
         isProfileLoaded: true,
-        subscriptionSend: isSubscriptionConfirmed! ? true : state.subscriptionSend,
+        subscriptionSend: isSubscriptionConfirmed ? true : state.subscriptionSend,
       ));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';

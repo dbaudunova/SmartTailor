@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/history/presentation/bloc/history_bloc.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/history/presentation/history_list_content.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/bloc/history_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/presentation/widget/history_list_widget.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 
 class HistoryListScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class HistoryListScreen extends StatelessWidget {
       value: getIt<HistoryBloc>(),
       child: BlocListener<HistoryBloc, HistoryState>(
         listener: _listenerBloc,
-        child: const HistoryListContent(),
+        child: const HistoryListWidget(),
       ),
     );
   }

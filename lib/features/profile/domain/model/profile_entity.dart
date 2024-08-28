@@ -7,7 +7,6 @@ class ProfileEntity {
   final String? email;
   final String? phoneNumber;
   final bool? hasSubscription;
-  //final isOrganization;
 
   ProfileEntity({
     this.id,

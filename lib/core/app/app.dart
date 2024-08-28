@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
-import 'package:neobis_smart_tailor/core/services/notification_service.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/announcement/announcement_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/profile/profile_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/presentation/bloc/notification_bloc.dart';
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: Builder(builder: (context) {
-        NotificationService.instance.initialize(context);
         return MaterialApp.router(
           theme: ThemeData(
             scaffoldBackgroundColor: AppColors.background,

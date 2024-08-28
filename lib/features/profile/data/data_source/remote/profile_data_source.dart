@@ -14,7 +14,6 @@ abstract class ProfileDataSource {
   Future<ProfileModel> editProfileInfo(ProfileModel params);
   Future<void> sendSubscription();
   Future<void> uploadImage(File imageFile);
-  // Future<List<AnnouncementModel>> getAnnouncements({required int pageNumber});
   Future<PurchasesListModel> getMyPurchases({required int pageNumber});
   Future<AnnouncementResponseModel> getMyEquipments({required int pageNumber});
   Future<AnnouncementResponseModel> getMyOrders({required int pageNumber});
@@ -27,7 +26,6 @@ abstract class ProfileDataSource {
   Future<void> hideOrder({required int? orderId});
   Future<void> hideEquipment({required int? equipmentId});
   Future<void> hideService({required int? serviceId});
-
   Future<void> deleteOrder({required int? orderId});
   Future<void> deleteEquipment({required int? equipmentId});
   Future<void> deleteService({required int? serviceId});

@@ -15,7 +15,9 @@ class SecureStorageService {
   Future<AuthData?> getUser() async {
     final value = await _secureStorage.read(key: _ssKey);
 
-    if (value == null || value.isEmpty) return null;
+    if (value == null || value.isEmpty) {
+      return null;
+    }
 
     return AuthData.fromJson(
       convert.jsonDecode(value),

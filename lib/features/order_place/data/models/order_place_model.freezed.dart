@@ -20,7 +20,6 @@ OrderPlaceModel _$OrderPlaceModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderPlaceModel {
-// required String type,
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
@@ -206,7 +205,6 @@ class _$OrderPlaceModelImpl implements _OrderPlaceModel {
   factory _$OrderPlaceModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderPlaceModelImplFromJson(json);
 
-// required String type,
   @override
   final String name;
   @override
@@ -302,7 +300,7 @@ abstract class _OrderPlaceModel implements OrderPlaceModel {
   factory _OrderPlaceModel.fromJson(Map<String, dynamic> json) =
       _$OrderPlaceModelImpl.fromJson;
 
-  @override // required String type,
+  @override
   String get name;
   @override
   String get description;

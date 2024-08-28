@@ -1,10 +1,6 @@
-import 'dart:convert';
-
 import 'package:auto_route/auto_route.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
@@ -26,29 +22,6 @@ class _NotificationContentState extends State<NotificationContent> {
     super.initState();
     context.read<NotificationBloc>().add(const NotificationEvent.loadNotifications());
   }
-
-  // void _showLocalNotification(RemoteNotification notification) {
-  //   const channel = AndroidNotificationChannel(
-  //     'high_importance_channel',
-  //     'High Importance Notifications',
-  //     description: 'This channel is used for important notifications.',
-  //     importance: Importance.max,
-  //   );
-  //   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  //   flutterLocalNotificationsPlugin.show(
-  //     notification.hashCode,
-  //     notification.title,
-  //     notification.body,
-  //     NotificationDetails(
-  //       android: AndroidNotificationDetails(
-  //         channel.id,
-  //         channel.name,
-  //         channelDescription: channel.description,
-  //         icon: 'ic_notification',
-  //       ),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +114,6 @@ class _NotificationContentState extends State<NotificationContent> {
           child: NotificationItem(
             title: notification.title,
             body: notification.body,
-            // receivedAt: notification.receivedAt,
             imageUrl: notification.imageUrl,
             data: notification.data,
           ),

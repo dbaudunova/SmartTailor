@@ -1,13 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/shared/app_constants.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/positions/domain/entitys/position_entity.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/bloc/positions_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/domain/entitys/position_entity.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/positions/bloc/positions_bloc.dart';
 
 class PositionsContent extends StatefulWidget {
   const PositionsContent({super.key});
@@ -82,18 +80,6 @@ class _PositionsContentState extends State<PositionsContent> {
                     ),
                     const SizedBox(height: 8),
                     _buildWeightSelection(state.weights),
-                    // TextFormFieldWidget(
-                    //   controller: _weightController,
-                    //   formatters: [FilteringTextInputFormatter.digitsOnly],
-                    //   titleName: 'Вес',
-                    //   hintText: 'Введите цифпу от 1 до 5',
-                    //   validator: (value) {
-                    //     if (int.tryParse(value!) == null || int.parse(value) > 5 || int.parse(value) < 1) {
-                    //       return 'Введите цифру от 1 до 5';
-                    //     }
-                    //     return null;
-                    //   },
-                    // ),
                     const SizedBox(height: 24),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,

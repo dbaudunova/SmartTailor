@@ -32,23 +32,6 @@ class CurrentOrderContainer extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Row(
             children: [
-              // SizedBox(
-              //   width: 72,
-              //   height: 68,
-              //   child: ClipRRect(
-              //     borderRadius: BorderRadius.circular(8),
-              //     child: Container(
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(8),
-              //       ),
-              //       child: CachedNetworkImage(
-              //         imageUrl:
-              //             'https://cdn.pixabay.com/photo/2023/10/30/16/54/sew-8353303_640.jpg',
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //   ),
-              // ),
               const SizedBox(width: 8),
               Expanded(
                 child: Column(

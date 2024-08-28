@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
@@ -51,9 +50,6 @@ class PurchasesBloc extends Bloc<PurchasesEvent, PurchasesState> {
   ) async {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
-      if (event.type == null) {
-        throw Exception('Invalid Announcement Type');
-      }
       switch (event.type) {
         case AnnouncementType.order:
           await getOrderUseCase.call(event.id);
@@ -64,8 +60,6 @@ class PurchasesBloc extends Bloc<PurchasesEvent, PurchasesState> {
         case AnnouncementType.service:
           await getServiceUseCase.call(event.id);
           break;
-        default:
-          throw Exception('Invalid Announcement Type');
       }
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';

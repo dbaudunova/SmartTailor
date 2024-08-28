@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/bloc/positions_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/positions/bloc/positions_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/positions_content.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 

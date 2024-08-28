@@ -267,10 +267,8 @@ class _MarketplaceContentState extends State<MarketplaceContent> with Restoratio
             children: children,
             onValueChanged: (int? newValue) {
               if (newValue != null) {
-                _pageController.animateToPage(
+                _pageController.jumpToPage(
                   newValue,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
                 );
               }
             },

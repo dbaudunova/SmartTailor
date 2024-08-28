@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/current_order/data/models/order_status_enum.dart';
+import 'package:neobis_smart_tailor/features/organization/data/models/order_status_enum.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/employee_position/checkbox_style.dart';
 
 class StatusBottomSheet extends StatelessWidget {

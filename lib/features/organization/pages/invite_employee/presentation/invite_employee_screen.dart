@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/bloc/invite_employee_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/bloc/invite_employee_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/invite_employee_content.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 

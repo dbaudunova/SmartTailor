@@ -5,8 +5,8 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/shared/app_constants.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/positions/domain/entitys/position_entity.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/bloc/positions_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/domain/entitys/position_entity.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/positions/bloc/positions_bloc.dart';
 
 class PositionsWidgetContent extends StatefulWidget {
   const PositionsWidgetContent({super.key});
@@ -123,7 +123,6 @@ class _PositionsWidgetContentState extends State<PositionsWidgetContent> {
           });
         },
         child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               actionsMap[positions[index].weight!] ?? positions[index].weight!,

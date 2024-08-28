@@ -9,6 +9,12 @@ import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.d
 class GeneralResponseMapper extends Converter<HistoryModel, HistoryEntity> {
   @override
   HistoryEntity convert(HistoryModel input) {
-    return HistoryEntity(date: input.date, status: input.status, id: input.id, name: input.name, price: input.price);
+    return HistoryEntity(
+      date: input.date,
+      status: input.status,
+      id: input.id,
+      name: input.name,
+      price: input.price,
+    );
   }
 }

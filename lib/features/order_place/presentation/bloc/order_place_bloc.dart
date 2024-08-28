@@ -13,7 +13,6 @@ import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_e
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/order_place/domain/useCase/create_service_use_case.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/order_type_picker_widget.dart';
-// import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 part 'order_place_event.dart';
 part 'order_place_state.dart';
@@ -56,26 +55,15 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
   ) async {
     final picker = ImagePicker();
     final pickedFiles = await picker.pickMultiImage(imageQuality: 10);
-    if (pickedFiles != null) {
-      final images = pickedFiles.take(5).map((file) => File(file.path)).toList();
-      int totalSizeInBytes = 0;
-      for (var photo in images) {
-        final bytes = await photo.readAsBytes();
-        totalSizeInBytes += bytes.length;
-      }
-
-      double totalSizeInMB = totalSizeInBytes / (1024 * 1024);
-
-      print("Total size of all photos: ${totalSizeInMB.toStringAsFixed(2)} MB");
-      emit(
-        state.copyWith(
-          images: images,
-          controller: TextEditingController(
-            text: 'Выбрано ${images.length} фото',
-          ),
+    final images = pickedFiles.take(5).map((file) => File(file.path)).toList();
+    emit(
+      state.copyWith(
+        images: images,
+        controller: TextEditingController(
+          text: 'Выбрано ${images.length} фото',
         ),
-      );
-    }
+      ),
+    );
   }
 
   Future<void> _handleCapturePhotos(
@@ -142,8 +130,8 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
             images: state.images,
           );
           break;
-        default:
-          throw UnimplementedError('Unknown order type: $type');
+
+        case null:
       }
       emit(state.copyWith(stateStatus: const StateStatus.success(true)));
     } catch (e) {
@@ -242,34 +230,14 @@ class OrderPlaceBloc extends Bloc<OrderPlaceEvent, OrderPlaceState> {
     );
   }
 
-  void _addPhotos(
+  Future<void> _addPhotos(
     _AddPhotos event,
     Emitter<OrderPlaceState> emit,
   ) async {
     var photos = event.photos;
-    // Read the bytes for each photo and calculate the total size
-    int totalSize = 0;
-    for (var photo in photos) {
-      final bytes = await photo.readAsBytes();
-      totalSize += bytes.length;
-    }
-
-    print("Total size of all photos: $totalSize bytes");
 
     emit(
       state.copyWith(images: photos),
     );
   }
-
-  // void _showFields(
-  //   _ShowFields event,
-  //   Emitter<OrderPlaceState> emit,
-  // ) {
-  //   var type = event.fieldType;
-  //   if (type.name == t.order) {
-  //     emit(state.copyWith(showFields: true, type: type));
-  //   } else {
-  //     emit(state.copyWith(showFields: false, type: type));
-  //   }
-  // }
 }

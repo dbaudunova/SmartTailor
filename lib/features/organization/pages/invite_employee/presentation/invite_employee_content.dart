@@ -5,9 +5,9 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/data/models/send_invite_model.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/bloc/invite_employee_bloc.dart';
-import 'package:neobis_smart_tailor/features/registration/presentation/registration_content.dart';
+import 'package:neobis_smart_tailor/features/authorization/presentation/pages/registration/registration_content.dart';
+import 'package:neobis_smart_tailor/features/organization/data/models/send_invite_model/send_invite_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/bloc/invite_employee_bloc.dart';
 import 'package:neobis_smart_tailor/gen/strings.g.dart';
 
 class InviteEmployeeContent extends StatefulWidget {

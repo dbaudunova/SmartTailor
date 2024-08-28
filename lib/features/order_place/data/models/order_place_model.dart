@@ -6,9 +6,7 @@ part 'order_place_model.g.dart';
 @freezed
 class OrderPlaceModel with _$OrderPlaceModel {
   factory OrderPlaceModel(
-      {
-      // required String type,
-      required String name,
+      {required String name,
       required String description,
       required List<String> images,
       required Set<Item> items,
@@ -29,8 +27,7 @@ class OrderPlaceModel with _$OrderPlaceModel {
         quantity: 0);
   }
 
-  factory OrderPlaceModel.fromJson(Map<String, dynamic> json) =>
-      _$OrderPlaceModelFromJson(json);
+  factory OrderPlaceModel.fromJson(Map<String, dynamic> json) => _$OrderPlaceModelFromJson(json);
 }
 
 @freezed

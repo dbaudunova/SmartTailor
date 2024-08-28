@@ -22,7 +22,9 @@ class MicrophoneHandler {
       onResult: (result) {
         searchController.text = result.recognizedWords;
       },
+
       listenFor: const Duration(minutes: 1),
+      // listenOptions: stt.SpeechListenOptions(cancelOnError: true),
       cancelOnError: true,
     );
   }
@@ -31,8 +33,7 @@ class MicrophoneHandler {
     return await speech.hasPermission;
   }
 
-  Future<void> handlePermissionResponse(
-      {required bool isPermissionGranted}) async {
+  Future<void> handlePermissionResponse({required bool isPermissionGranted}) async {
     if (isPermissionGranted) {
       Permission.microphone.request();
     } else {

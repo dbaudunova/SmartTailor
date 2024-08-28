@@ -13,9 +13,9 @@ class GeneralResponseMapper extends Converter<MyHistoryModel, MyHistoryEntity> {
   @override
   MyHistoryEntity convert(MyHistoryModel input) {
     return MyHistoryEntity(
-        isLast: input.isLast,
-        totalCount: input.totalCount,
-        advertisement:
-            input.advertisement?.map((advertisment) => _historyConverter.convert(advertisment)).toList() ?? []);
+      isLast: input.isLast,
+      totalCount: input.totalCount,
+      advertisement: input.advertisement?.map((advertisment) => _historyConverter.convert(advertisment)).toList() ?? [],
+    );
   }
 }

@@ -5,10 +5,10 @@ import 'package:neobis_smart_tailor/core/app/router/auth_route_guard.dart';
 import 'package:neobis_smart_tailor/core/app/router/organization_routes.dart';
 import 'package:neobis_smart_tailor/core/app/router/routes_path_const.dart';
 import 'package:neobis_smart_tailor/core/services/auth_service.dart';
+import 'package:neobis_smart_tailor/features/authorization/presentation/pages/enter_screen.dart';
 import 'package:neobis_smart_tailor/features/bottom_nav/bottom_nav_screen.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/confirmation_screen.dart';
-import 'package:neobis_smart_tailor/features/confirmation/presentation/pages/enter_screen.dart';
-import 'package:neobis_smart_tailor/features/login/presentation/email_input_screen.dart';
+import 'package:neobis_smart_tailor/features/authorization/presentation/pages/confirmation/confirmation_screen.dart';
+import 'package:neobis_smart_tailor/features/authorization/presentation/pages/login/email_input_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace/presentation/pages/marketplace_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/presentation/equipment_detail_screen.dart';
 import 'package:neobis_smart_tailor/core/app/router/marketplace_routes.dart';
@@ -17,13 +17,13 @@ import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_de
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/presentation/service_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/order_place_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/create_organization/presentation/create_organization_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_order_detail/current_order_detail_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employee_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/current_order/presentation/current_order_detail_screen/current_order_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employee_detail_screen/employee_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/positions/presentation/positions_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/history/history_detail_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/history/presentation/history_detail_screen/history_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/presentation/invite_employee_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_empty_screen.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_screen.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_screen/organization_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_wrapper_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/announcement_detail_screen.dart';
@@ -35,7 +35,7 @@ import 'package:neobis_smart_tailor/features/profile/presentation/pages/personal
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/profile_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/my_purchases_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/purchase_detail_screen.dart';
-import 'package:neobis_smart_tailor/features/registration/presentation/registration_screen.dart';
+import 'package:neobis_smart_tailor/features/authorization/presentation/pages/registration/registration_screen.dart';
 
 part 'app_routes.gr.dart';
 

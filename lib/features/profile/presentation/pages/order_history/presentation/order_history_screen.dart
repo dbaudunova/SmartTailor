@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/bloc/order_history_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/order_history/presentation/order_history_content.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';

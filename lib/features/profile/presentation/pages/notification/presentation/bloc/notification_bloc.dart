@@ -1,12 +1,9 @@
 import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_order_history_for_user_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/data/models/notification_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,7 +34,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     _LoadNotifications event,
     Emitter<NotificationState> emit,
   ) async {
-    print('loadNoti');
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -65,13 +61,10 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     _SaveNoti event,
     Emitter<NotificationState> emit,
   ) async {
-    print('saveNoti');
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final notification = event.notification;
       final updatedNotifications = List<NotificationModel>.from(state.notificationList!)..add(notification);
-
-      // Save to local storage (example using SharedPreferences)
       final prefs = await SharedPreferences.getInstance();
       final encodedData = jsonEncode(
         updatedNotifications.map((e) => e.toJson()).toList(),

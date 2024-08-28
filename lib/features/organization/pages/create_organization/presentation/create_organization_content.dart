@@ -6,12 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/order_place/presentation/widgets/action_sheet_widget.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/create_organization/data/models/create_organization_model/create_organixation_model.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/create_organization/presentation/create_organization_bloc/create_organization_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/data/models/create_organization_model/create_organixation_model.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/create_organization/create_organization_bloc/create_organization_bloc.dart';
 
 class CreateOrganizationContent extends StatefulWidget {
   const CreateOrganizationContent({super.key});

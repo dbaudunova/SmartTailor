@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/model/service_detailed_entity.dart';
@@ -14,7 +14,6 @@ abstract class ProfileRepo {
   Future<ProfileEntity> editProfileInfo(ProfileEntity params);
   Future<void> sendSubscription();
   Future<void> uploadImage(File imageFile);
-
   Future<PurchasesListEntity> getMyPurchases({required int pageNumber});
   Future<AnnouncementResponseEntity> getMyEquipments({required int pageNumber});
   Future<AnnouncementResponseEntity> getMyOrders({required int pageNumber});

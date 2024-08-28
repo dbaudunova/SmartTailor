@@ -3,15 +3,14 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class CheckboxStyle extends StatelessWidget {
   const CheckboxStyle({
-    super.key,
     required this.title,
     required this.value,
+    super.key,
     this.onChanged,
   });
-
+  final void Function(bool?)? onChanged;
   final String title;
   final bool value;
-  final void Function(bool?)? onChanged;
 
   @override
   Widget build(BuildContext context) {

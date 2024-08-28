@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/bloc/employee_bloc.dart';
-import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/employees_widget.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/employee/bloc/employee_bloc.dart';
+import 'package:neobis_smart_tailor/features/organization/pages/employee/presentation/widget/employees_widget.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';
 
 class EmployeesScreen extends StatelessWidget {

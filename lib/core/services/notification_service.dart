@@ -1,36 +1,43 @@
-import 'dart:convert';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/data/models/notification_model.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/presentation/bloc/notification_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  static const AndroidNotificationChannel _channel = AndroidNotificationChannel(
+    'high_importance_channel',
+    'High Importance Notifications',
+    description: 'This channel is used for important notifications.',
+    importance: Importance.max,
+  );
 
-  NotificationService._privateConstructor();
+  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-  static final NotificationService instance = NotificationService._privateConstructor();
-
-  void initialize(BuildContext context) {
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      if (message.notification != null) {
-        final notification = NotificationModel(
-          title: message.notification!.title ?? 'No Title',
-          body: message.notification!.body ?? 'No Body',
-          receivedAt: DateTime.now(),
-          imageUrl: message.notification?.android?.imageUrl,
-          data: message.data.isNotEmpty ? jsonEncode(message.data) : null,
-        );
-
-        context.read<NotificationBloc>().add(NotificationEvent.saveNoti(notification: notification));
-        _showLocalNotification(message.notification!);
-      }
-    });
+  Future<void> init() async {
+    await _createNotificationChannel();
+    _listenToMessages();
   }
 
-  void _showLocalNotification(RemoteNotification notification) {
-    print('dfdf');
+  Future<void> _createNotificationChannel() async {
+    await _flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(_channel);
+  }
+
+  void _listenToMessages() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      var notification = message.notification!;
+      _flutterLocalNotificationsPlugin.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            _channel.id,
+            _channel.name,
+            channelDescription: _channel.description,
+            icon: 'ic_notification',
+          ),
+        ),
+      );
+    });
   }
 }
