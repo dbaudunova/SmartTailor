@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_purchases.dart';
 
 @Injectable(as: Converter<PurchasesModel, PurchasesEntity>)
 class GeneralResponseMapper extends Converter<PurchasesModel, PurchasesEntity> {

@@ -19,9 +19,9 @@ class EquipmentDetailBloc extends Bloc<EquipmentDetailEvent, EquipmentDetailStat
     this.getEuipmentUseCase,
     this.buyEquipmentIdUseCase,
   ) : super(
-          EquipmentDetailState(
-            stateStatus: const StateStatus.initial(),
-            equipment: EquipmentDetailEntity.initial(),
+          const EquipmentDetailState(
+            stateStatus: StateStatus.initial(),
+            equipment: null,
           ),
         ) {
     on<_GetEquipment>(_getEquipments);

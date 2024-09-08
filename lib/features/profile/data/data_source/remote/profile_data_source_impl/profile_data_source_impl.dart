@@ -8,12 +8,12 @@ import 'package:neobis_smart_tailor/core/network/on_repository_exception.dart';
 import 'package:neobis_smart_tailor/features/marketplace/data/models/search_model/advertisement_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/announcement_response_model.dart';
-import 'package:neobis_smart_tailor/features/profile/data/model/equipment_detailed_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/my_detailde_announce_model/my_equipment_detailed_announce_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/my_detailde_announce_model/my_order_detailed_announce_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/my_detailde_announce_model/my_services_detailed_announce_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
-import 'package:neobis_smart_tailor/features/profile/data/model/order_detailed_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
-import 'package:neobis_smart_tailor/features/profile/data/model/service_detailed_model.dart';
 
 @Injectable(as: ProfileDataSource)
 class ProfileDataSourceImpl implements ProfileDataSource {
@@ -268,7 +268,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   }
 
   @override
-  Future<EquipmentDetailedModel> getEquipmentDetailedById({required int id}) async {
+  Future<MyEquipmentDetailedAnnounceModel> getEquipmentDetailedById({required int id}) async {
     try {
       final response = await _client.get(
         HttpPaths.getMyEquipmentsById + id.toString(),
@@ -280,7 +280,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
           message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
         );
       } else {
-        return EquipmentDetailedModel.fromJson(response.data);
+        return MyEquipmentDetailedAnnounceModel.fromJson(response.data);
       }
     } on DioException catch (e) {
       throw handleDioException(e);
@@ -290,7 +290,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   }
 
   @override
-  Future<OrderDetailedModel> getOrderDetailedById({required int id}) async {
+  Future<MyOrderAnnounceDetaileModel> getOrderDetailedById({required int id}) async {
     try {
       final response = await _client.get(
         HttpPaths.getMyOrdersById + id.toString(),
@@ -302,7 +302,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
           message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
         );
       } else {
-        return OrderDetailedModel.fromJson(response.data);
+        return MyOrderAnnounceDetaileModel.fromJson(response.data);
       }
     } on DioException catch (e) {
       throw handleDioException(e);
@@ -312,7 +312,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
   }
 
   @override
-  Future<ServiceDetailedModel> getServiceDetailedById({required int id}) async {
+  Future<MyServiceDetailedAnnounceModel> getServiceDetailedById({required int id}) async {
     try {
       final response = await _client.get(
         HttpPaths.getMyServicesById + id.toString(),
@@ -324,7 +324,7 @@ class ProfileDataSourceImpl implements ProfileDataSource {
           message: 'Не удалось загрузить, код ошибки: ${response.statusCode}',
         );
       } else {
-        return ServiceDetailedModel.fromJson(response.data);
+        return MyServiceDetailedAnnounceModel.fromJson(response.data);
       }
     } on DioException catch (e) {
       throw handleDioException(e);

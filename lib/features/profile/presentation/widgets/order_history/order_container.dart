@@ -26,6 +26,7 @@ class OrderContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,

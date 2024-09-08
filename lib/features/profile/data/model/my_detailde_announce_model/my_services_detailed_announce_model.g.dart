@@ -1,31 +1,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'service_detailed_model.dart';
+part of 'my_services_detailed_announce_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ServiceDetailedModel _$ServiceDetailedModelFromJson(
+MyServiceDetailedAnnounceModel _$MyServiceDetailedAnnounceModelFromJson(
         Map<String, dynamic> json) =>
-    ServiceDetailedModel(
-      authorFullName: json['authorFullName'] as String?,
-      authorImage: json['authorImage'] as String?,
-      contactInfo: json['contactInfo'] as String?,
-      description: json['description'] as String?,
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
-      price: (json['price'] as num?)?.toDouble(),
-      serviceImages: (json['serviceImages'] as List<dynamic>?)
-          ?.map((e) => e as String)
+    MyServiceDetailedAnnounceModel(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+      description: json['description'] as String,
+      price: (json['price'] as num).toDouble(),
+      contactInfo: json['contactInfo'] as String,
+      authorImage: json['authorImage'] as String,
+      authorFullName: json['authorFullName'] as String,
+      serviceImages: (json['serviceImages'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
       serviceApplicants: (json['serviceApplicants'] as List<dynamic>?)
           ?.map((e) => EquipmentBuyers.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$ServiceDetailedModelToJson(
-        ServiceDetailedModel instance) =>
+Map<String, dynamic> _$MyServiceDetailedAnnounceModelToJson(
+        MyServiceDetailedAnnounceModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

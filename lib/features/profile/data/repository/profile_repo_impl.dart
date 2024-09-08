@@ -7,15 +7,17 @@ import 'package:neobis_smart_tailor/features/marketplace/data/models/search_mode
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/data/data_source/remote/profile_data_source.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
+import 'package:neobis_smart_tailor/features/profile/data/model/my_detailde_announce_model/my_detailed_announce_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/my_purchases/my_purchases_list_model.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/profile_model.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/profile_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/service_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_response_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/equipment_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_detailed_annoucement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_history_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_purchases.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/order_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/profile_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/service_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart';
 
 @Injectable(as: ProfileRepo)
@@ -25,6 +27,7 @@ class ProfileRepoImpl implements ProfileRepo {
   final Converter<PurchasesListModel, PurchasesListEntity> _converterPurchases;
   final Converter<MyHistoryModel, MyHistoryEntity> _converterHistory;
   final Converter<AdvertisementResponseModel, AdvertisementResponseEntity> _advertisementResponceConverter;
+  final Converter<MyDetailedAnnounceModel, MyDetailedAnnounceEntity> _myDetailedAnnounceConverter;
 
   ProfileRepoImpl(
     this._dataSource,
@@ -32,6 +35,7 @@ class ProfileRepoImpl implements ProfileRepo {
     this._converterPurchases,
     this._converterHistory,
     this._advertisementResponceConverter,
+    this._myDetailedAnnounceConverter,
   );
 
   @override
@@ -99,18 +103,24 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<EquipmentDetailedEntity> getEquipmentDetailedById({required int id}) async {
-    return await _dataSource.getEquipmentDetailedById(id: id);
+  Future<MyDetailedAnnounceEntity> getEquipmentDetailedById({required int id}) async {
+    var model = await _dataSource.getEquipmentDetailedById(id: id);
+    var entity = _myDetailedAnnounceConverter.convert(model);
+    return entity;
   }
 
   @override
-  Future<OrderDetailedEntity> getOrderDetailedById({required int id}) async {
-    return await _dataSource.getOrderDetailedById(id: id);
+  Future<MyDetailedAnnounceEntity> getOrderDetailedById({required int id}) async {
+    var model = await _dataSource.getOrderDetailedById(id: id);
+    var entity = _myDetailedAnnounceConverter.convert(model);
+    return entity;
   }
 
   @override
-  Future<ServiceDetailedEntity> getServiceDetailedById({required int id}) async {
-    return await _dataSource.getServiceDetailedById(id: id);
+  Future<MyDetailedAnnounceEntity> getServiceDetailedById({required int id}) async {
+    var model = await _dataSource.getServiceDetailedById(id: id);
+    var entity = _myDetailedAnnounceConverter.convert(model);
+    return entity;
   }
 
   @override

@@ -51,7 +51,6 @@ class ImagePickerWidget extends StatelessWidget {
             .map(
               (type) => AppActionSheetWidget(
                 onPressed: () {
-                  // controller.text = 'dfdf';
                   if (type == ImagePickType.selectPhoto) {
                     onSelect();
                   } else if (type == ImagePickType.takePhoto) {

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/bloc/purchases_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/purchase_detail_content.dart';
 import 'package:neobis_smart_tailor/injection/injection.dart';

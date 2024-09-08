@@ -9,7 +9,7 @@ import 'package:neobis_smart_tailor/features/organization/domain/entitys/employe
 import 'package:neobis_smart_tailor/features/organization/domain/entitys/organization_info_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/domain/entitys/organization_list_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/domain/entitys/position_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_history_entity.dart';
 
 abstract class OrganizationRepo {
   Future<List<PositionEntity>> getAllPositions();

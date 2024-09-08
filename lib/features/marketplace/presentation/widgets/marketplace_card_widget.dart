@@ -4,14 +4,12 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 
 class MarketplaceCard extends StatelessWidget {
   final void Function() onTap;
-  // final int tabIndex;
   final String? data;
   final Text? price;
   final String description;
   final String title;
   final String image;
   const MarketplaceCard({
-    // required this.tabIndex,
     required this.description,
     required this.title,
     required this.onTap,
@@ -26,8 +24,17 @@ class MarketplaceCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
-        padding: const EdgeInsets.only(bottom: 4, left: 8, right: 16, top: 4),
+        margin: const EdgeInsets.only(
+          bottom: 16,
+          left: 16,
+          right: 16,
+        ),
+        padding: const EdgeInsets.only(
+          bottom: 4,
+          left: 8,
+          right: 16,
+          top: 4,
+        ),
         height: 87,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -35,8 +42,6 @@ class MarketplaceCard extends StatelessWidget {
           color: AppColors.white,
         ),
         child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildImage(),
             Expanded(
@@ -44,33 +49,8 @@ class MarketplaceCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            title,
-                            style: AppTextStyle.textField16,
-                          ),
-                        ),
-                        if (price != null) price!,
-                      ],
-                    ),
-                  ),
-                  Flexible(
-                    child: Text(
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      description,
-                      style: AppTextStyle.textField16.copyWith(
-                        fontSize: 14,
-                        color: AppColors.greyText,
-                      ),
-                    ),
-                  ),
+                  _buildTitleAndPrice(),
+                  _buildDescription(),
                   const SizedBox(height: 0),
                   data != null
                       ? Text(
@@ -86,6 +66,35 @@ class MarketplaceCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Text _buildDescription() {
+    return Text(
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+      description,
+      style: AppTextStyle.textField16.copyWith(
+        fontSize: 14,
+        color: AppColors.greyText,
+      ),
+    );
+  }
+
+  Row _buildTitleAndPrice() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Text(
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            title,
+            style: AppTextStyle.textField16,
+          ),
+        ),
+        if (price != null) price!,
+      ],
     );
   }
 

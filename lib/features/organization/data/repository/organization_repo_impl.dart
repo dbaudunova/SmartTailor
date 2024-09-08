@@ -21,7 +21,7 @@ import 'package:neobis_smart_tailor/features/organization/domain/entitys/organiz
 import 'package:neobis_smart_tailor/features/organization/domain/entitys/position_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/domain/repository/organization_repo.dart';
 import 'package:neobis_smart_tailor/features/profile/data/model/history_model/my_history_model.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_history_entity.dart';
 
 @Injectable(as: OrganizationRepo)
 class OrganizationRepoImpl implements OrganizationRepo {

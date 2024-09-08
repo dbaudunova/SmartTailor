@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AnnouncementEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -37,6 +40,9 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -55,6 +61,9 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -74,6 +83,9 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -93,6 +105,9 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -111,6 +126,9 @@ mixin _$AnnouncementEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -146,6 +164,685 @@ class _$AnnouncementEventCopyWithImpl<$Res, $Val extends AnnouncementEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$LoadMyOrdersImplCopyWith<$Res> {
+  factory _$$LoadMyOrdersImplCopyWith(
+          _$LoadMyOrdersImpl value, $Res Function(_$LoadMyOrdersImpl) then) =
+      __$$LoadMyOrdersImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int page});
+}
+
+/// @nodoc
+class __$$LoadMyOrdersImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$LoadMyOrdersImpl>
+    implements _$$LoadMyOrdersImplCopyWith<$Res> {
+  __$$LoadMyOrdersImplCopyWithImpl(
+      _$LoadMyOrdersImpl _value, $Res Function(_$LoadMyOrdersImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_$LoadMyOrdersImpl(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadMyOrdersImpl implements _LoadMyOrders {
+  const _$LoadMyOrdersImpl({required this.page});
+
+  @override
+  final int page;
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.loadMyOrders(page: $page)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMyOrdersImpl &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, page);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMyOrdersImplCopyWith<_$LoadMyOrdersImpl> get copyWith =>
+      __$$LoadMyOrdersImplCopyWithImpl<_$LoadMyOrdersImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
+    required TResult Function(int? id, AnnouncementType? type) hide,
+    required TResult Function(int? id, AnnouncementType? type) delete,
+    required TResult Function(String query) searchAdvertisement,
+  }) {
+    return loadMyOrders(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
+    TResult? Function(int? id, AnnouncementType? type)? hide,
+    TResult? Function(int? id, AnnouncementType? type)? delete,
+    TResult? Function(String query)? searchAdvertisement,
+  }) {
+    return loadMyOrders?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
+    TResult Function(int? id, AnnouncementType? type)? hide,
+    TResult Function(int? id, AnnouncementType? type)? delete,
+    TResult Function(String query)? searchAdvertisement,
+    required TResult orElse(),
+  }) {
+    if (loadMyOrders != null) {
+      return loadMyOrders(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
+    required TResult Function(_Hide value) hide,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_SearchAdvertisement value) searchAdvertisement,
+  }) {
+    return loadMyOrders(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+    TResult? Function(_Hide value)? hide,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_SearchAdvertisement value)? searchAdvertisement,
+  }) {
+    return loadMyOrders?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+    TResult Function(_Hide value)? hide,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_SearchAdvertisement value)? searchAdvertisement,
+    required TResult orElse(),
+  }) {
+    if (loadMyOrders != null) {
+      return loadMyOrders(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMyOrders implements AnnouncementEvent {
+  const factory _LoadMyOrders({required final int page}) = _$LoadMyOrdersImpl;
+
+  int get page;
+  @JsonKey(ignore: true)
+  _$$LoadMyOrdersImplCopyWith<_$LoadMyOrdersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadMyEquipmentsImplCopyWith<$Res> {
+  factory _$$LoadMyEquipmentsImplCopyWith(_$LoadMyEquipmentsImpl value,
+          $Res Function(_$LoadMyEquipmentsImpl) then) =
+      __$$LoadMyEquipmentsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int page});
+}
+
+/// @nodoc
+class __$$LoadMyEquipmentsImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$LoadMyEquipmentsImpl>
+    implements _$$LoadMyEquipmentsImplCopyWith<$Res> {
+  __$$LoadMyEquipmentsImplCopyWithImpl(_$LoadMyEquipmentsImpl _value,
+      $Res Function(_$LoadMyEquipmentsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_$LoadMyEquipmentsImpl(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadMyEquipmentsImpl implements _LoadMyEquipments {
+  const _$LoadMyEquipmentsImpl({required this.page});
+
+  @override
+  final int page;
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.loadMyEquipments(page: $page)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMyEquipmentsImpl &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, page);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMyEquipmentsImplCopyWith<_$LoadMyEquipmentsImpl> get copyWith =>
+      __$$LoadMyEquipmentsImplCopyWithImpl<_$LoadMyEquipmentsImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
+    required TResult Function(int? id, AnnouncementType? type) hide,
+    required TResult Function(int? id, AnnouncementType? type) delete,
+    required TResult Function(String query) searchAdvertisement,
+  }) {
+    return loadMyEquipments(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
+    TResult? Function(int? id, AnnouncementType? type)? hide,
+    TResult? Function(int? id, AnnouncementType? type)? delete,
+    TResult? Function(String query)? searchAdvertisement,
+  }) {
+    return loadMyEquipments?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
+    TResult Function(int? id, AnnouncementType? type)? hide,
+    TResult Function(int? id, AnnouncementType? type)? delete,
+    TResult Function(String query)? searchAdvertisement,
+    required TResult orElse(),
+  }) {
+    if (loadMyEquipments != null) {
+      return loadMyEquipments(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
+    required TResult Function(_Hide value) hide,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_SearchAdvertisement value) searchAdvertisement,
+  }) {
+    return loadMyEquipments(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+    TResult? Function(_Hide value)? hide,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_SearchAdvertisement value)? searchAdvertisement,
+  }) {
+    return loadMyEquipments?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+    TResult Function(_Hide value)? hide,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_SearchAdvertisement value)? searchAdvertisement,
+    required TResult orElse(),
+  }) {
+    if (loadMyEquipments != null) {
+      return loadMyEquipments(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMyEquipments implements AnnouncementEvent {
+  const factory _LoadMyEquipments({required final int page}) =
+      _$LoadMyEquipmentsImpl;
+
+  int get page;
+  @JsonKey(ignore: true)
+  _$$LoadMyEquipmentsImplCopyWith<_$LoadMyEquipmentsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadMyServicesImplCopyWith<$Res> {
+  factory _$$LoadMyServicesImplCopyWith(_$LoadMyServicesImpl value,
+          $Res Function(_$LoadMyServicesImpl) then) =
+      __$$LoadMyServicesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int page});
+}
+
+/// @nodoc
+class __$$LoadMyServicesImplCopyWithImpl<$Res>
+    extends _$AnnouncementEventCopyWithImpl<$Res, _$LoadMyServicesImpl>
+    implements _$$LoadMyServicesImplCopyWith<$Res> {
+  __$$LoadMyServicesImplCopyWithImpl(
+      _$LoadMyServicesImpl _value, $Res Function(_$LoadMyServicesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_$LoadMyServicesImpl(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadMyServicesImpl implements _LoadMyServices {
+  const _$LoadMyServicesImpl({required this.page});
+
+  @override
+  final int page;
+
+  @override
+  String toString() {
+    return 'AnnouncementEvent.loadMyServices(page: $page)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMyServicesImpl &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, page);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMyServicesImplCopyWith<_$LoadMyServicesImpl> get copyWith =>
+      __$$LoadMyServicesImplCopyWithImpl<_$LoadMyServicesImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
+    required TResult Function() getOrders,
+    required TResult Function() getEquipments,
+    required TResult Function() getServices,
+    required TResult Function() getAll,
+    required TResult Function() loadMoreOrders,
+    required TResult Function() loadMoreEquipments,
+    required TResult Function() loadMoreServices,
+    required TResult Function(int? id) getOrderDetailed,
+    required TResult Function(int? id) getEquipmentDetailed,
+    required TResult Function(int? id) getServiceDetailed,
+    required TResult Function(int? executorId, int? orderId)
+        assignExecutorToOrder,
+    required TResult Function(int? id, AnnouncementType? type) hide,
+    required TResult Function(int? id, AnnouncementType? type) delete,
+    required TResult Function(String query) searchAdvertisement,
+  }) {
+    return loadMyServices(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
+    TResult? Function()? getOrders,
+    TResult? Function()? getEquipments,
+    TResult? Function()? getServices,
+    TResult? Function()? getAll,
+    TResult? Function()? loadMoreOrders,
+    TResult? Function()? loadMoreEquipments,
+    TResult? Function()? loadMoreServices,
+    TResult? Function(int? id)? getOrderDetailed,
+    TResult? Function(int? id)? getEquipmentDetailed,
+    TResult? Function(int? id)? getServiceDetailed,
+    TResult? Function(int? executorId, int? orderId)? assignExecutorToOrder,
+    TResult? Function(int? id, AnnouncementType? type)? hide,
+    TResult? Function(int? id, AnnouncementType? type)? delete,
+    TResult? Function(String query)? searchAdvertisement,
+  }) {
+    return loadMyServices?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
+    TResult Function()? getOrders,
+    TResult Function()? getEquipments,
+    TResult Function()? getServices,
+    TResult Function()? getAll,
+    TResult Function()? loadMoreOrders,
+    TResult Function()? loadMoreEquipments,
+    TResult Function()? loadMoreServices,
+    TResult Function(int? id)? getOrderDetailed,
+    TResult Function(int? id)? getEquipmentDetailed,
+    TResult Function(int? id)? getServiceDetailed,
+    TResult Function(int? executorId, int? orderId)? assignExecutorToOrder,
+    TResult Function(int? id, AnnouncementType? type)? hide,
+    TResult Function(int? id, AnnouncementType? type)? delete,
+    TResult Function(String query)? searchAdvertisement,
+    required TResult orElse(),
+  }) {
+    if (loadMyServices != null) {
+      return loadMyServices(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
+    required TResult Function(_GetOrders value) getOrders,
+    required TResult Function(_GetEquipments value) getEquipments,
+    required TResult Function(_GetServices value) getServices,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_LoadMoreOrders value) loadMoreOrders,
+    required TResult Function(_LoadMoreEquipments value) loadMoreEquipments,
+    required TResult Function(_LoadMoreServices value) loadMoreServices,
+    required TResult Function(_GetOrderDetailed value) getOrderDetailed,
+    required TResult Function(_GetEquipmentDetailed value) getEquipmentDetailed,
+    required TResult Function(_GetServiceDetailed value) getServiceDetailed,
+    required TResult Function(_AssignExecutorToOrder value)
+        assignExecutorToOrder,
+    required TResult Function(_Hide value) hide,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_SearchAdvertisement value) searchAdvertisement,
+  }) {
+    return loadMyServices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
+    TResult? Function(_GetOrders value)? getOrders,
+    TResult? Function(_GetEquipments value)? getEquipments,
+    TResult? Function(_GetServices value)? getServices,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult? Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult? Function(_LoadMoreServices value)? loadMoreServices,
+    TResult? Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult? Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult? Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult? Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+    TResult? Function(_Hide value)? hide,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_SearchAdvertisement value)? searchAdvertisement,
+  }) {
+    return loadMyServices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
+    TResult Function(_GetOrders value)? getOrders,
+    TResult Function(_GetEquipments value)? getEquipments,
+    TResult Function(_GetServices value)? getServices,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_LoadMoreOrders value)? loadMoreOrders,
+    TResult Function(_LoadMoreEquipments value)? loadMoreEquipments,
+    TResult Function(_LoadMoreServices value)? loadMoreServices,
+    TResult Function(_GetOrderDetailed value)? getOrderDetailed,
+    TResult Function(_GetEquipmentDetailed value)? getEquipmentDetailed,
+    TResult Function(_GetServiceDetailed value)? getServiceDetailed,
+    TResult Function(_AssignExecutorToOrder value)? assignExecutorToOrder,
+    TResult Function(_Hide value)? hide,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_SearchAdvertisement value)? searchAdvertisement,
+    required TResult orElse(),
+  }) {
+    if (loadMyServices != null) {
+      return loadMyServices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMyServices implements AnnouncementEvent {
+  const factory _LoadMyServices({required final int page}) =
+      _$LoadMyServicesImpl;
+
+  int get page;
+  @JsonKey(ignore: true)
+  _$$LoadMyServicesImplCopyWith<_$LoadMyServicesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -186,6 +883,9 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -208,6 +908,9 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -229,6 +932,9 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -254,6 +960,9 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -276,6 +985,9 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -297,6 +1009,9 @@ class _$GetOrdersImpl implements _GetOrders {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -362,6 +1077,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -384,6 +1102,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -405,6 +1126,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -430,6 +1154,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -452,6 +1179,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -473,6 +1203,9 @@ class _$GetEquipmentsImpl implements _GetEquipments {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -538,6 +1271,9 @@ class _$GetServicesImpl implements _GetServices {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -560,6 +1296,9 @@ class _$GetServicesImpl implements _GetServices {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -581,6 +1320,9 @@ class _$GetServicesImpl implements _GetServices {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -606,6 +1348,9 @@ class _$GetServicesImpl implements _GetServices {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -628,6 +1373,9 @@ class _$GetServicesImpl implements _GetServices {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -649,6 +1397,9 @@ class _$GetServicesImpl implements _GetServices {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -714,6 +1465,9 @@ class _$GetAllImpl implements _GetAll {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -736,6 +1490,9 @@ class _$GetAllImpl implements _GetAll {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -757,6 +1514,9 @@ class _$GetAllImpl implements _GetAll {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -782,6 +1542,9 @@ class _$GetAllImpl implements _GetAll {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -804,6 +1567,9 @@ class _$GetAllImpl implements _GetAll {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -825,6 +1591,9 @@ class _$GetAllImpl implements _GetAll {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -890,6 +1659,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -912,6 +1684,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -933,6 +1708,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -958,6 +1736,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -980,6 +1761,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -1001,6 +1785,9 @@ class _$LoadMoreOrdersImpl implements _LoadMoreOrders {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -1066,6 +1853,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -1088,6 +1878,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -1109,6 +1902,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -1134,6 +1930,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -1156,6 +1955,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -1177,6 +1979,9 @@ class _$LoadMoreEquipmentsImpl implements _LoadMoreEquipments {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -1242,6 +2047,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -1264,6 +2072,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -1285,6 +2096,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -1310,6 +2124,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -1332,6 +2149,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -1353,6 +2173,9 @@ class _$LoadMoreServicesImpl implements _LoadMoreServices {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -1445,6 +2268,9 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -1467,6 +2293,9 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -1488,6 +2317,9 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -1513,6 +2345,9 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -1535,6 +2370,9 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -1556,6 +2394,9 @@ class _$GetOrderDetailedImpl implements _GetOrderDetailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -1654,6 +2495,9 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -1676,6 +2520,9 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -1697,6 +2544,9 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -1722,6 +2572,9 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -1744,6 +2597,9 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -1765,6 +2621,9 @@ class _$GetEquipmentDetailedImpl implements _GetEquipmentDetailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -1863,6 +2722,9 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -1885,6 +2747,9 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -1906,6 +2771,9 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -1931,6 +2799,9 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -1953,6 +2824,9 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -1974,6 +2848,9 @@ class _$GetServiceDetailedImpl implements _GetServiceDetailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -2082,6 +2959,9 @@ class _$AssignExecutorToOrderImpl implements _AssignExecutorToOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -2104,6 +2984,9 @@ class _$AssignExecutorToOrderImpl implements _AssignExecutorToOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -2125,6 +3008,9 @@ class _$AssignExecutorToOrderImpl implements _AssignExecutorToOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -2150,6 +3036,9 @@ class _$AssignExecutorToOrderImpl implements _AssignExecutorToOrder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -2172,6 +3061,9 @@ class _$AssignExecutorToOrderImpl implements _AssignExecutorToOrder {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -2193,6 +3085,9 @@ class _$AssignExecutorToOrderImpl implements _AssignExecutorToOrder {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -2299,6 +3194,9 @@ class _$HideImpl implements _Hide {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -2321,6 +3219,9 @@ class _$HideImpl implements _Hide {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -2342,6 +3243,9 @@ class _$HideImpl implements _Hide {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -2367,6 +3271,9 @@ class _$HideImpl implements _Hide {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -2389,6 +3296,9 @@ class _$HideImpl implements _Hide {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -2410,6 +3320,9 @@ class _$HideImpl implements _Hide {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -2517,6 +3430,9 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -2539,6 +3455,9 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -2560,6 +3479,9 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -2585,6 +3507,9 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -2607,6 +3532,9 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -2628,6 +3556,9 @@ class _$DeleteImpl implements _Delete {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -2728,6 +3659,9 @@ class _$SearchAdvertisementImpl implements _SearchAdvertisement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(int page) loadMyOrders,
+    required TResult Function(int page) loadMyEquipments,
+    required TResult Function(int page) loadMyServices,
     required TResult Function() getOrders,
     required TResult Function() getEquipments,
     required TResult Function() getServices,
@@ -2750,6 +3684,9 @@ class _$SearchAdvertisementImpl implements _SearchAdvertisement {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? loadMyOrders,
+    TResult? Function(int page)? loadMyEquipments,
+    TResult? Function(int page)? loadMyServices,
     TResult? Function()? getOrders,
     TResult? Function()? getEquipments,
     TResult? Function()? getServices,
@@ -2771,6 +3708,9 @@ class _$SearchAdvertisementImpl implements _SearchAdvertisement {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? loadMyOrders,
+    TResult Function(int page)? loadMyEquipments,
+    TResult Function(int page)? loadMyServices,
     TResult Function()? getOrders,
     TResult Function()? getEquipments,
     TResult Function()? getServices,
@@ -2796,6 +3736,9 @@ class _$SearchAdvertisementImpl implements _SearchAdvertisement {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyOrders value) loadMyOrders,
+    required TResult Function(_LoadMyEquipments value) loadMyEquipments,
+    required TResult Function(_LoadMyServices value) loadMyServices,
     required TResult Function(_GetOrders value) getOrders,
     required TResult Function(_GetEquipments value) getEquipments,
     required TResult Function(_GetServices value) getServices,
@@ -2818,6 +3761,9 @@ class _$SearchAdvertisementImpl implements _SearchAdvertisement {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadMyOrders value)? loadMyOrders,
+    TResult? Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult? Function(_LoadMyServices value)? loadMyServices,
     TResult? Function(_GetOrders value)? getOrders,
     TResult? Function(_GetEquipments value)? getEquipments,
     TResult? Function(_GetServices value)? getServices,
@@ -2839,6 +3785,9 @@ class _$SearchAdvertisementImpl implements _SearchAdvertisement {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyOrders value)? loadMyOrders,
+    TResult Function(_LoadMyEquipments value)? loadMyEquipments,
+    TResult Function(_LoadMyServices value)? loadMyServices,
     TResult Function(_GetOrders value)? getOrders,
     TResult Function(_GetEquipments value)? getEquipments,
     TResult Function(_GetServices value)? getServices,
@@ -2890,10 +3839,7 @@ mixin _$AnnouncementState {
   bool get isLoadingMore => throw _privateConstructorUsedError;
   List<AdvertisementEntity> get searchedAdvertisement =>
       throw _privateConstructorUsedError;
-  OrderDetailedEntity? get detailedOrder => throw _privateConstructorUsedError;
-  ServiceDetailedEntity? get detailedService =>
-      throw _privateConstructorUsedError;
-  EquipmentDetailedEntity? get detailedEquipment =>
+  MyDetailedAnnounceEntity? get myDetailedAnnounceEntity =>
       throw _privateConstructorUsedError;
   bool get isAnnouncementsLoaded => throw _privateConstructorUsedError;
 
@@ -2924,12 +3870,11 @@ abstract class $AnnouncementStateCopyWith<$Res> {
       int servicesTotalCount,
       bool isLoadingMore,
       List<AdvertisementEntity> searchedAdvertisement,
-      OrderDetailedEntity? detailedOrder,
-      ServiceDetailedEntity? detailedService,
-      EquipmentDetailedEntity? detailedEquipment,
+      MyDetailedAnnounceEntity? myDetailedAnnounceEntity,
       bool isAnnouncementsLoaded});
 
   $StateStatusCopyWith<$Res> get stateStatus;
+  $MyDetailedAnnounceEntityCopyWith<$Res>? get myDetailedAnnounceEntity;
 }
 
 /// @nodoc
@@ -2960,9 +3905,7 @@ class _$AnnouncementStateCopyWithImpl<$Res, $Val extends AnnouncementState>
     Object? servicesTotalCount = null,
     Object? isLoadingMore = null,
     Object? searchedAdvertisement = null,
-    Object? detailedOrder = freezed,
-    Object? detailedService = freezed,
-    Object? detailedEquipment = freezed,
+    Object? myDetailedAnnounceEntity = freezed,
     Object? isAnnouncementsLoaded = null,
   }) {
     return _then(_value.copyWith(
@@ -3026,18 +3969,10 @@ class _$AnnouncementStateCopyWithImpl<$Res, $Val extends AnnouncementState>
           ? _value.searchedAdvertisement
           : searchedAdvertisement // ignore: cast_nullable_to_non_nullable
               as List<AdvertisementEntity>,
-      detailedOrder: freezed == detailedOrder
-          ? _value.detailedOrder
-          : detailedOrder // ignore: cast_nullable_to_non_nullable
-              as OrderDetailedEntity?,
-      detailedService: freezed == detailedService
-          ? _value.detailedService
-          : detailedService // ignore: cast_nullable_to_non_nullable
-              as ServiceDetailedEntity?,
-      detailedEquipment: freezed == detailedEquipment
-          ? _value.detailedEquipment
-          : detailedEquipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentDetailedEntity?,
+      myDetailedAnnounceEntity: freezed == myDetailedAnnounceEntity
+          ? _value.myDetailedAnnounceEntity
+          : myDetailedAnnounceEntity // ignore: cast_nullable_to_non_nullable
+              as MyDetailedAnnounceEntity?,
       isAnnouncementsLoaded: null == isAnnouncementsLoaded
           ? _value.isAnnouncementsLoaded
           : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
@@ -3050,6 +3985,19 @@ class _$AnnouncementStateCopyWithImpl<$Res, $Val extends AnnouncementState>
   $StateStatusCopyWith<$Res> get stateStatus {
     return $StateStatusCopyWith<$Res>(_value.stateStatus, (value) {
       return _then(_value.copyWith(stateStatus: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MyDetailedAnnounceEntityCopyWith<$Res>? get myDetailedAnnounceEntity {
+    if (_value.myDetailedAnnounceEntity == null) {
+      return null;
+    }
+
+    return $MyDetailedAnnounceEntityCopyWith<$Res>(
+        _value.myDetailedAnnounceEntity!, (value) {
+      return _then(_value.copyWith(myDetailedAnnounceEntity: value) as $Val);
     });
   }
 }
@@ -3078,13 +4026,13 @@ abstract class _$$AnnouncementStateImplCopyWith<$Res>
       int servicesTotalCount,
       bool isLoadingMore,
       List<AdvertisementEntity> searchedAdvertisement,
-      OrderDetailedEntity? detailedOrder,
-      ServiceDetailedEntity? detailedService,
-      EquipmentDetailedEntity? detailedEquipment,
+      MyDetailedAnnounceEntity? myDetailedAnnounceEntity,
       bool isAnnouncementsLoaded});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
+  @override
+  $MyDetailedAnnounceEntityCopyWith<$Res>? get myDetailedAnnounceEntity;
 }
 
 /// @nodoc
@@ -3113,9 +4061,7 @@ class __$$AnnouncementStateImplCopyWithImpl<$Res>
     Object? servicesTotalCount = null,
     Object? isLoadingMore = null,
     Object? searchedAdvertisement = null,
-    Object? detailedOrder = freezed,
-    Object? detailedService = freezed,
-    Object? detailedEquipment = freezed,
+    Object? myDetailedAnnounceEntity = freezed,
     Object? isAnnouncementsLoaded = null,
   }) {
     return _then(_$AnnouncementStateImpl(
@@ -3179,18 +4125,10 @@ class __$$AnnouncementStateImplCopyWithImpl<$Res>
           ? _value._searchedAdvertisement
           : searchedAdvertisement // ignore: cast_nullable_to_non_nullable
               as List<AdvertisementEntity>,
-      detailedOrder: freezed == detailedOrder
-          ? _value.detailedOrder
-          : detailedOrder // ignore: cast_nullable_to_non_nullable
-              as OrderDetailedEntity?,
-      detailedService: freezed == detailedService
-          ? _value.detailedService
-          : detailedService // ignore: cast_nullable_to_non_nullable
-              as ServiceDetailedEntity?,
-      detailedEquipment: freezed == detailedEquipment
-          ? _value.detailedEquipment
-          : detailedEquipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentDetailedEntity?,
+      myDetailedAnnounceEntity: freezed == myDetailedAnnounceEntity
+          ? _value.myDetailedAnnounceEntity
+          : myDetailedAnnounceEntity // ignore: cast_nullable_to_non_nullable
+              as MyDetailedAnnounceEntity?,
       isAnnouncementsLoaded: null == isAnnouncementsLoaded
           ? _value.isAnnouncementsLoaded
           : isAnnouncementsLoaded // ignore: cast_nullable_to_non_nullable
@@ -3218,9 +4156,7 @@ class _$AnnouncementStateImpl implements _AnnouncementState {
       required this.servicesTotalCount,
       required this.isLoadingMore,
       required final List<AdvertisementEntity> searchedAdvertisement,
-      this.detailedOrder,
-      this.detailedService,
-      this.detailedEquipment,
+      required this.myDetailedAnnounceEntity,
       this.isAnnouncementsLoaded = false})
       : _equipments = equipments,
         _orders = orders,
@@ -3283,18 +4219,14 @@ class _$AnnouncementStateImpl implements _AnnouncementState {
   }
 
   @override
-  final OrderDetailedEntity? detailedOrder;
-  @override
-  final ServiceDetailedEntity? detailedService;
-  @override
-  final EquipmentDetailedEntity? detailedEquipment;
+  final MyDetailedAnnounceEntity? myDetailedAnnounceEntity;
   @override
   @JsonKey()
   final bool isAnnouncementsLoaded;
 
   @override
   String toString() {
-    return 'AnnouncementState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore, searchedAdvertisement: $searchedAdvertisement, detailedOrder: $detailedOrder, detailedService: $detailedService, detailedEquipment: $detailedEquipment, isAnnouncementsLoaded: $isAnnouncementsLoaded)';
+    return 'AnnouncementState(stateStatus: $stateStatus, equipments: $equipments, orders: $orders, services: $services, lastForOrders: $lastForOrders, lastForServices: $lastForServices, lastForEquipment: $lastForEquipment, ordersPageNumber: $ordersPageNumber, equipmentsPageNumber: $equipmentsPageNumber, servicesPageNumber: $servicesPageNumber, ordersTotalCount: $ordersTotalCount, equipmentTotalCount: $equipmentTotalCount, servicesTotalCount: $servicesTotalCount, isLoadingMore: $isLoadingMore, searchedAdvertisement: $searchedAdvertisement, myDetailedAnnounceEntity: $myDetailedAnnounceEntity, isAnnouncementsLoaded: $isAnnouncementsLoaded)';
   }
 
   @override
@@ -3330,39 +4262,33 @@ class _$AnnouncementStateImpl implements _AnnouncementState {
                 other.isLoadingMore == isLoadingMore) &&
             const DeepCollectionEquality()
                 .equals(other._searchedAdvertisement, _searchedAdvertisement) &&
-            (identical(other.detailedOrder, detailedOrder) ||
-                other.detailedOrder == detailedOrder) &&
-            (identical(other.detailedService, detailedService) ||
-                other.detailedService == detailedService) &&
-            (identical(other.detailedEquipment, detailedEquipment) ||
-                other.detailedEquipment == detailedEquipment) &&
+            (identical(
+                    other.myDetailedAnnounceEntity, myDetailedAnnounceEntity) ||
+                other.myDetailedAnnounceEntity == myDetailedAnnounceEntity) &&
             (identical(other.isAnnouncementsLoaded, isAnnouncementsLoaded) ||
                 other.isAnnouncementsLoaded == isAnnouncementsLoaded));
   }
 
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        stateStatus,
-        const DeepCollectionEquality().hash(_equipments),
-        const DeepCollectionEquality().hash(_orders),
-        const DeepCollectionEquality().hash(_services),
-        lastForOrders,
-        lastForServices,
-        lastForEquipment,
-        ordersPageNumber,
-        equipmentsPageNumber,
-        servicesPageNumber,
-        ordersTotalCount,
-        equipmentTotalCount,
-        servicesTotalCount,
-        isLoadingMore,
-        const DeepCollectionEquality().hash(_searchedAdvertisement),
-        detailedOrder,
-        detailedService,
-        detailedEquipment,
-        isAnnouncementsLoaded
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      stateStatus,
+      const DeepCollectionEquality().hash(_equipments),
+      const DeepCollectionEquality().hash(_orders),
+      const DeepCollectionEquality().hash(_services),
+      lastForOrders,
+      lastForServices,
+      lastForEquipment,
+      ordersPageNumber,
+      equipmentsPageNumber,
+      servicesPageNumber,
+      ordersTotalCount,
+      equipmentTotalCount,
+      servicesTotalCount,
+      isLoadingMore,
+      const DeepCollectionEquality().hash(_searchedAdvertisement),
+      myDetailedAnnounceEntity,
+      isAnnouncementsLoaded);
 
   @JsonKey(ignore: true)
   @override
@@ -3389,9 +4315,7 @@ abstract class _AnnouncementState implements AnnouncementState {
       required final int servicesTotalCount,
       required final bool isLoadingMore,
       required final List<AdvertisementEntity> searchedAdvertisement,
-      final OrderDetailedEntity? detailedOrder,
-      final ServiceDetailedEntity? detailedService,
-      final EquipmentDetailedEntity? detailedEquipment,
+      required final MyDetailedAnnounceEntity? myDetailedAnnounceEntity,
       final bool isAnnouncementsLoaded}) = _$AnnouncementStateImpl;
 
   @override
@@ -3425,11 +4349,7 @@ abstract class _AnnouncementState implements AnnouncementState {
   @override
   List<AdvertisementEntity> get searchedAdvertisement;
   @override
-  OrderDetailedEntity? get detailedOrder;
-  @override
-  ServiceDetailedEntity? get detailedService;
-  @override
-  EquipmentDetailedEntity? get detailedEquipment;
+  MyDetailedAnnounceEntity? get myDetailedAnnounceEntity;
   @override
   bool get isAnnouncementsLoaded;
   @override

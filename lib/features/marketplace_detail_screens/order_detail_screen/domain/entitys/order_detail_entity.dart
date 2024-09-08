@@ -24,19 +24,4 @@ class OrderDetailEntity {
     required this.dateOfExecution,
     required this.orderItems,
   });
-
-  factory OrderDetailEntity.initial() {
-    return OrderDetailEntity(
-      id: 0,
-      name: '',
-      description: '',
-      price: 0,
-      contactInfo: '',
-      authorImage: '',
-      authorFullName: '',
-      orderImages: [],
-      dateOfExecution: '',
-      orderItems: [],
-    );
-  }
 }

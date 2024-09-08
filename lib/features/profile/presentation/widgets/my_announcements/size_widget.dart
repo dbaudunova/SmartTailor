@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/order_detailed_entity.dart';
 
 class SizeWidget extends StatelessWidget {
   const SizeWidget({

@@ -34,7 +34,7 @@ class CurrentOrderBloc extends Bloc<CurrentOrderEvent, CurrentOrderState> {
           CurrentOrderState(
               stateStatus: const StateStatus.initial(),
               orders: OrganizationListEntity.initial(),
-              detailedOrder: CurrentDetailOrderEntity.initial(),
+              detailedOrder: null,
               status: OrderStatus.waiting),
         ) {
     on<_GetAllCurrentOrders>(_getAllOrders);

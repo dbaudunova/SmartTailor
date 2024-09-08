@@ -374,7 +374,7 @@ abstract class _SendRequestToService implements ServiceDetailEvent {
 /// @nodoc
 mixin _$ServiceDetailState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
-  ServiceDetailEntity get service => throw _privateConstructorUsedError;
+  ServiceDetailEntity? get service => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ServiceDetailStateCopyWith<ServiceDetailState> get copyWith =>
@@ -387,7 +387,7 @@ abstract class $ServiceDetailStateCopyWith<$Res> {
           ServiceDetailState value, $Res Function(ServiceDetailState) then) =
       _$ServiceDetailStateCopyWithImpl<$Res, ServiceDetailState>;
   @useResult
-  $Res call({StateStatus stateStatus, ServiceDetailEntity service});
+  $Res call({StateStatus stateStatus, ServiceDetailEntity? service});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -406,17 +406,17 @@ class _$ServiceDetailStateCopyWithImpl<$Res, $Val extends ServiceDetailState>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? service = null,
+    Object? service = freezed,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      service: null == service
+      service: freezed == service
           ? _value.service
           : service // ignore: cast_nullable_to_non_nullable
-              as ServiceDetailEntity,
+              as ServiceDetailEntity?,
     ) as $Val);
   }
 
@@ -437,7 +437,7 @@ abstract class _$$ServiceDetailStateImplCopyWith<$Res>
       __$$ServiceDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus, ServiceDetailEntity service});
+  $Res call({StateStatus stateStatus, ServiceDetailEntity? service});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -455,17 +455,17 @@ class __$$ServiceDetailStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? service = null,
+    Object? service = freezed,
   }) {
     return _then(_$ServiceDetailStateImpl(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      service: null == service
+      service: freezed == service
           ? _value.service
           : service // ignore: cast_nullable_to_non_nullable
-              as ServiceDetailEntity,
+              as ServiceDetailEntity?,
     ));
   }
 }
@@ -479,7 +479,7 @@ class _$ServiceDetailStateImpl implements _ServiceDetailState {
   @override
   final StateStatus stateStatus;
   @override
-  final ServiceDetailEntity service;
+  final ServiceDetailEntity? service;
 
   @override
   String toString() {
@@ -510,12 +510,12 @@ class _$ServiceDetailStateImpl implements _ServiceDetailState {
 abstract class _ServiceDetailState implements ServiceDetailState {
   const factory _ServiceDetailState(
       {required final StateStatus stateStatus,
-      required final ServiceDetailEntity service}) = _$ServiceDetailStateImpl;
+      required final ServiceDetailEntity? service}) = _$ServiceDetailStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
-  ServiceDetailEntity get service;
+  ServiceDetailEntity? get service;
   @override
   @JsonKey(ignore: true)
   _$$ServiceDetailStateImplCopyWith<_$ServiceDetailStateImpl> get copyWith =>

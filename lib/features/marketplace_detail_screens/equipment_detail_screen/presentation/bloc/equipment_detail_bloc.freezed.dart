@@ -372,7 +372,7 @@ abstract class _BuyEquipment implements EquipmentDetailEvent {
 /// @nodoc
 mixin _$EquipmentDetailState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
-  EquipmentDetailEntity get equipment => throw _privateConstructorUsedError;
+  EquipmentDetailEntity? get equipment => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EquipmentDetailStateCopyWith<EquipmentDetailState> get copyWith =>
@@ -385,7 +385,7 @@ abstract class $EquipmentDetailStateCopyWith<$Res> {
           $Res Function(EquipmentDetailState) then) =
       _$EquipmentDetailStateCopyWithImpl<$Res, EquipmentDetailState>;
   @useResult
-  $Res call({StateStatus stateStatus, EquipmentDetailEntity equipment});
+  $Res call({StateStatus stateStatus, EquipmentDetailEntity? equipment});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -405,17 +405,17 @@ class _$EquipmentDetailStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? equipment = null,
+    Object? equipment = freezed,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      equipment: null == equipment
+      equipment: freezed == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentDetailEntity,
+              as EquipmentDetailEntity?,
     ) as $Val);
   }
 
@@ -436,7 +436,7 @@ abstract class _$$EquipmentDetailStateImplCopyWith<$Res>
       __$$EquipmentDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus, EquipmentDetailEntity equipment});
+  $Res call({StateStatus stateStatus, EquipmentDetailEntity? equipment});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -454,17 +454,17 @@ class __$$EquipmentDetailStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? equipment = null,
+    Object? equipment = freezed,
   }) {
     return _then(_$EquipmentDetailStateImpl(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      equipment: null == equipment
+      equipment: freezed == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
-              as EquipmentDetailEntity,
+              as EquipmentDetailEntity?,
     ));
   }
 }
@@ -478,7 +478,7 @@ class _$EquipmentDetailStateImpl implements _EquipmentDetailState {
   @override
   final StateStatus stateStatus;
   @override
-  final EquipmentDetailEntity equipment;
+  final EquipmentDetailEntity? equipment;
 
   @override
   String toString() {
@@ -511,13 +511,13 @@ class _$EquipmentDetailStateImpl implements _EquipmentDetailState {
 abstract class _EquipmentDetailState implements EquipmentDetailState {
   const factory _EquipmentDetailState(
           {required final StateStatus stateStatus,
-          required final EquipmentDetailEntity equipment}) =
+          required final EquipmentDetailEntity? equipment}) =
       _$EquipmentDetailStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
-  EquipmentDetailEntity get equipment;
+  EquipmentDetailEntity? get equipment;
   @override
   @JsonKey(ignore: true)
   _$$EquipmentDetailStateImplCopyWith<_$EquipmentDetailStateImpl>

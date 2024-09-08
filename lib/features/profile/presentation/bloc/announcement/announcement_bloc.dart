@@ -4,11 +4,12 @@ import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/search_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/service_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/equipment_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_detailed_annoucement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/order_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/service_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/assign_executor_to_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_equipment_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/delete_order_use_case.dart';
@@ -64,6 +65,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     this.searchAdvertisementUseCase,
   ) : super(
           const AnnouncementState(
+              myDetailedAnnounceEntity: null,
               stateStatus: StateStatus.initial(),
               services: [],
               equipments: [],
@@ -80,6 +82,9 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
               isLoadingMore: false,
               searchedAdvertisement: []),
         ) {
+    on<_LoadMyOrders>(_loadOrders);
+    on<_LoadMyEquipments>(_loadEquipment);
+    on<_LoadMyServices>(_loadServices);
     on<_GetOrders>(_getMyOrders);
     on<_GetEquipments>(_getMyEquipments);
     on<_GetServices>(_getMyServices);
@@ -249,6 +254,66 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     }
   }
 
+  Future<void> _loadOrders(
+    _LoadMyOrders event,
+    Emitter<AnnouncementState> emit,
+  ) async {
+    try {
+      final result = await getMyOrdersUseCase.call(pageNumber: event.page);
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+        orders: result.advertisement!,
+        lastForOrders: result.isLast!,
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(
+        stateStatus: StateStatus.failure(message: errorMessage!),
+        isLoadingMore: false,
+      ));
+    }
+  }
+
+  Future<void> _loadEquipment(
+    _LoadMyEquipments event,
+    Emitter<AnnouncementState> emit,
+  ) async {
+    try {
+      final result = await getMyEquipmentsUseCase.call(pageNumber: event.page);
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+        equipments: result.advertisement!,
+        lastForEquipment: result.isLast!,
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(
+        stateStatus: StateStatus.failure(message: errorMessage!),
+        isLoadingMore: false,
+      ));
+    }
+  }
+
+  Future<void> _loadServices(
+    _LoadMyServices event,
+    Emitter<AnnouncementState> emit,
+  ) async {
+    try {
+      final result = await getMyServicesUseCase.call(pageNumber: event.page);
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+        services: result.advertisement!,
+        lastForServices: result.isLast!,
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(
+        stateStatus: StateStatus.failure(message: errorMessage!),
+        isLoadingMore: false,
+      ));
+    }
+  }
+
   Future<void> _loadMoreOrders(
     _LoadMoreOrders event,
     Emitter<AnnouncementState> emit,
@@ -372,7 +437,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getOrderDetailedByIdUseCase.call(event.id!);
-      emit(state.copyWith(stateStatus: const StateStatus.success(false), detailedOrder: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(false), myDetailedAnnounceEntity: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
@@ -386,7 +451,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getEquipmentDetailedByIdUseCase.call(event.id!);
-      emit(state.copyWith(stateStatus: const StateStatus.success(false), detailedEquipment: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(false), myDetailedAnnounceEntity: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
@@ -400,7 +465,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
     emit(state.copyWith(stateStatus: const StateStatus.loading()));
     try {
       final result = await getServiceDetailedByIdUseCase.call(event.id!);
-      emit(state.copyWith(stateStatus: const StateStatus.success(false), detailedService: result));
+      emit(state.copyWith(stateStatus: const StateStatus.success(false), myDetailedAnnounceEntity: result));
     } catch (e) {
       final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
       emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));

@@ -6,7 +6,7 @@ import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/organization/domain/entitys/current_history_detail_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/domain/use_case/get_detailed_order_use_case.dart';
 import 'package:neobis_smart_tailor/features/organization/domain/use_case/get_orders_history_use_case.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_history_entity.dart';
 
 part 'history_event.dart';
 part 'history_state.dart';

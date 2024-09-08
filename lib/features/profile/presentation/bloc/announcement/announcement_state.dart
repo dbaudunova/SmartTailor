@@ -18,9 +18,7 @@ class AnnouncementState with _$AnnouncementState {
     required final int servicesTotalCount,
     required bool isLoadingMore,
     required final List<AdvertisementEntity> searchedAdvertisement,
-    final OrderDetailedEntity? detailedOrder,
-    final ServiceDetailedEntity? detailedService,
-    final EquipmentDetailedEntity? detailedEquipment,
+    required final MyDetailedAnnounceEntity? myDetailedAnnounceEntity,
     @Default(false) bool isAnnouncementsLoaded,
   }) = _AnnouncementState;
 }

@@ -1,38 +1,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'order_detailed_model.dart';
+part of 'my_order_detailed_announce_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OrderDetailedModel _$OrderDetailedModelFromJson(Map<String, dynamic> json) =>
-    OrderDetailedModel(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
-      description: json['description'] as String?,
-      authorFullName: json['authorFullName'] as String?,
-      authorImage: json['authorImage'] as String?,
-      contactInfo: json['contactInfo'] as String?,
+MyOrderAnnounceDetaileModel _$MyOrderAnnounceDetaileModelFromJson(
+        Map<String, dynamic> json) =>
+    MyOrderAnnounceDetaileModel(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+      description: json['description'] as String,
+      price: (json['price'] as num).toDouble(),
+      contactInfo: json['contactInfo'] as String,
+      authorImage: json['authorImage'] as String,
+      authorFullName: json['authorFullName'] as String,
+      orderImages: (json['orderImages'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       dateOfExecution: json['dateOfExecution'] as String?,
-      orderCandidates: (json['orderCandidates'] as List<dynamic>?)
-          ?.map((e) => OrderCandidates.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      orderImages: (json['orderImages'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      ordersStatus: json['ordersStatus'] as String?,
       orderItems: (json['orderItems'] as List<dynamic>?)
           ?.map((e) => OrderItems.fromJson(e as Map<String, dynamic>))
           .toList(),
-      ordersStatus: json['ordersStatus'] as String?,
-      price: (json['price'] as num?)?.toDouble(),
+      orderCandidates: (json['orderCandidates'] as List<dynamic>?)
+          ?.map((e) => OrderCandidates.fromJson(e as Map<String, dynamic>))
+          .toList(),
       executor: json['executor'] == null
           ? null
           : OrganizationExecutor.fromJson(
               json['executor'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OrderDetailedModelToJson(OrderDetailedModel instance) =>
+Map<String, dynamic> _$MyOrderAnnounceDetaileModelToJson(
+        MyOrderAnnounceDetaileModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

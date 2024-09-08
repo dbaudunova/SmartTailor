@@ -66,10 +66,14 @@ class TextFormFieldWidget extends StatelessWidget {
                 color: AppColors.fieldBorder,
               ),
               hintText: hintText ?? '',
-              hintStyle: AppTextStyle.textField16.copyWith(color: Colors.grey),
+              hintStyle: AppTextStyle.textField16.copyWith(
+                color: Colors.grey,
+              ),
               errorBorder: _buildErrorBorder(),
               focusedErrorBorder: _buildErrorBorder(),
-              errorStyle: AppTextStyle.s12w400.copyWith(color: AppColors.error),
+              errorStyle: AppTextStyle.s12w400.copyWith(
+                color: AppColors.error,
+              ),
               focusedBorder: _buildBorder(),
               enabledBorder: _buildBorder(),
               disabledBorder: _buildBorder(),

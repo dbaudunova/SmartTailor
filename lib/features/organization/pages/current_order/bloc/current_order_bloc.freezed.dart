@@ -835,7 +835,7 @@ abstract class _CancelOrder implements CurrentOrderEvent {
 mixin _$CurrentOrderState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
   OrganizationListEntity get orders => throw _privateConstructorUsedError;
-  CurrentDetailOrderEntity get detailedOrder =>
+  CurrentDetailOrderEntity? get detailedOrder =>
       throw _privateConstructorUsedError;
   OrderStatus get status => throw _privateConstructorUsedError;
 
@@ -853,7 +853,7 @@ abstract class $CurrentOrderStateCopyWith<$Res> {
   $Res call(
       {StateStatus stateStatus,
       OrganizationListEntity orders,
-      CurrentDetailOrderEntity detailedOrder,
+      CurrentDetailOrderEntity? detailedOrder,
       OrderStatus status});
 
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -874,7 +874,7 @@ class _$CurrentOrderStateCopyWithImpl<$Res, $Val extends CurrentOrderState>
   $Res call({
     Object? stateStatus = null,
     Object? orders = null,
-    Object? detailedOrder = null,
+    Object? detailedOrder = freezed,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -886,10 +886,10 @@ class _$CurrentOrderStateCopyWithImpl<$Res, $Val extends CurrentOrderState>
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
               as OrganizationListEntity,
-      detailedOrder: null == detailedOrder
+      detailedOrder: freezed == detailedOrder
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
-              as CurrentDetailOrderEntity,
+              as CurrentDetailOrderEntity?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -917,7 +917,7 @@ abstract class _$$CurrentOrderStateImplCopyWith<$Res>
   $Res call(
       {StateStatus stateStatus,
       OrganizationListEntity orders,
-      CurrentDetailOrderEntity detailedOrder,
+      CurrentDetailOrderEntity? detailedOrder,
       OrderStatus status});
 
   @override
@@ -937,7 +937,7 @@ class __$$CurrentOrderStateImplCopyWithImpl<$Res>
   $Res call({
     Object? stateStatus = null,
     Object? orders = null,
-    Object? detailedOrder = null,
+    Object? detailedOrder = freezed,
     Object? status = null,
   }) {
     return _then(_$CurrentOrderStateImpl(
@@ -949,10 +949,10 @@ class __$$CurrentOrderStateImplCopyWithImpl<$Res>
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
               as OrganizationListEntity,
-      detailedOrder: null == detailedOrder
+      detailedOrder: freezed == detailedOrder
           ? _value.detailedOrder
           : detailedOrder // ignore: cast_nullable_to_non_nullable
-              as CurrentDetailOrderEntity,
+              as CurrentDetailOrderEntity?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -975,7 +975,7 @@ class _$CurrentOrderStateImpl implements _CurrentOrderState {
   @override
   final OrganizationListEntity orders;
   @override
-  final CurrentDetailOrderEntity detailedOrder;
+  final CurrentDetailOrderEntity? detailedOrder;
   @override
   final OrderStatus status;
 
@@ -1013,7 +1013,7 @@ abstract class _CurrentOrderState implements CurrentOrderState {
   const factory _CurrentOrderState(
       {required final StateStatus stateStatus,
       required final OrganizationListEntity orders,
-      required final CurrentDetailOrderEntity detailedOrder,
+      required final CurrentDetailOrderEntity? detailedOrder,
       required final OrderStatus status}) = _$CurrentOrderStateImpl;
 
   @override
@@ -1021,7 +1021,7 @@ abstract class _CurrentOrderState implements CurrentOrderState {
   @override
   OrganizationListEntity get orders;
   @override
-  CurrentDetailOrderEntity get detailedOrder;
+  CurrentDetailOrderEntity? get detailedOrder;
   @override
   OrderStatus get status;
   @override

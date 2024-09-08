@@ -16,8 +16,8 @@ class SearchOrderSheet<T> extends StatefulWidget {
   const SearchOrderSheet({
     required this.titleBuilder,
     required this.items,
-    this.priceBuilder,
     required this.onTap,
+    this.priceBuilder,
     super.key,
     this.onchange,
   });
@@ -75,53 +75,61 @@ class _SearchOrderSheetState<T> extends State<SearchOrderSheet<T>> {
   }
 
   Widget _buildRecentSearch() {
+    print('List lenght in search widget :  ${widget.items.length}');
     return Column(
       children: [
         Expanded(
-          child: widget.items.isNotEmpty
-              ? ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: widget.items.length,
-                  itemBuilder: (context, index) {
-                    final item = widget.items[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: GestureDetector(
-                        onTap: () => widget.onTap(item),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              widget.titleBuilder(item),
-                              style: AppTextStyle.textField16.copyWith(
-                                color: AppColors.greyText,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            widget.priceBuilder != null
-                                ? Text(
-                                    widget.priceBuilder!(item),
-                                    style: AppTextStyle.textField16.copyWith(
-                                      color: AppColors.greyText,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  )
-                                : const SizedBox.shrink(),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                )
-              : Center(
-                  child: Text(
-                    'По вашему запросу ничего не найдено! ☹️',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w600),
-                  ),
-                ),
+          child: widget.items.isNotEmpty ? _buildListView() : _buildEmptyText(),
         ),
       ],
+    );
+  }
+
+  ListView _buildListView() {
+    return ListView.builder(
+      padding: EdgeInsets.zero,
+      itemCount: widget.items.length,
+      itemBuilder: (context, index) {
+        print('List lenght in search widget :  ${widget.items.length}');
+        final item = widget.items[index];
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: GestureDetector(
+            onTap: () => widget.onTap(item),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  widget.titleBuilder(item),
+                  style: AppTextStyle.textField16.copyWith(
+                    color: AppColors.greyText,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                widget.priceBuilder != null
+                    ? Text(
+                        widget.priceBuilder!(item),
+                        style: AppTextStyle.textField16.copyWith(
+                          color: AppColors.greyText,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Center _buildEmptyText() {
+    return Center(
+      child: Text(
+        'По вашему запросу ничего не найдено! ☹️',
+        textAlign: TextAlign.center,
+        style: AppTextStyle.s20w400Orange.copyWith(color: AppColors.black, fontWeight: FontWeight.w600),
+      ),
     );
   }
 

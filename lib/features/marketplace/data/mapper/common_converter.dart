@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/features/marketplace/data/models/general_model/general_model.dart';
-import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/general_entity.dart';
 
 @Injectable(as: Converter<GeneralOrderModel, GeneralEntity>)
 class EquipmentMapper extends Converter<GeneralOrderModel, GeneralEntity> {

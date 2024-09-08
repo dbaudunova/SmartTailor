@@ -4,6 +4,6 @@ part of 'order_detail_bloc.dart';
 class OrderDetailState with _$OrderDetailState {
   const factory OrderDetailState({
     required final StateStatus stateStatus,
-    required final OrderDetailEntity order,
+    required final OrderDetailEntity? order,
   }) = _OrderDetailState;
 }

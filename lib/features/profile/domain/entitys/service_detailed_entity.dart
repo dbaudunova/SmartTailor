@@ -1,4 +1,4 @@
-import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/equipment_detailed_entity.dart';
 
 class ServiceDetailedEntity {
   final int? id;

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neobis_smart_tailor/core/network/entity/failure.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_history_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_history_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_order_history_for_user_use_case.dart';
 
 part 'order_history_event.dart';
@@ -34,6 +34,47 @@ class OrderHistoryBloc extends Bloc<OrderHistoryEvent, OrderHistoryState> {
     on<_GetCompletedHistory>(_getCompletedHistory);
     on<_LoadMoreCurrent>(_loadMoreCurrent);
     on<_LoadMoreCompleted>(_loadMoreCompleted);
+    on<_LoadCurrent>(_loadCurrent);
+    on<_LoadCompleted>(_loadCompleted);
+  }
+
+  Future<void> _loadCompleted(
+    _LoadCompleted event,
+    Emitter<OrderHistoryState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+    try {
+      var entity = await getOrderHistoryForUserUseCase.call(page: event.page, stage: 'completed');
+
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+        completedPurchases: entity.advertisement,
+        isLastforCompleted: entity.isLast!,
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
+  }
+
+  Future<void> _loadCurrent(
+    _LoadCurrent event,
+    Emitter<OrderHistoryState> emit,
+  ) async {
+    emit(state.copyWith(stateStatus: const StateStatus.loading()));
+    try {
+      var entity = await getOrderHistoryForUserUseCase.call(page: event.page, stage: 'current');
+      print(entity.advertisement!.length);
+      print(entity.isLast);
+      emit(state.copyWith(
+        stateStatus: const StateStatus.success(),
+        currentPurchases: entity.advertisement,
+        isLastforCurrent: entity.isLast!,
+      ));
+    } catch (e) {
+      final errorMessage = e is Failure ? e.message : 'Произошла ошибка';
+      emit(state.copyWith(stateStatus: StateStatus.failure(message: errorMessage!)));
+    }
   }
 
   Future<void> _loadMoreCurrent(

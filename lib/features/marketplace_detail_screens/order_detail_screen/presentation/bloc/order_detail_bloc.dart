@@ -19,9 +19,9 @@ class OrderDetailBloc extends Bloc<OrderDetailEvent, OrderDetailState> {
     this.getOrderUseCase,
     this.requestToExecuteUseCase,
   ) : super(
-          OrderDetailState(
-            stateStatus: const StateStatus.initial(),
-            order: OrderDetailEntity.initial(),
+          const OrderDetailState(
+            stateStatus: StateStatus.initial(),
+            order: null,
           ),
         ) {
     on<_GetOrder>(_getOrder);

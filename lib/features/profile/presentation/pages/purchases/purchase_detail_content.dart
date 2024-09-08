@@ -5,7 +5,7 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/author_info.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/custom_dropdown_widget.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/purchases/bloc/purchases_bloc.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/response_item.dart';

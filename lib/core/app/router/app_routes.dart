@@ -25,7 +25,7 @@ import 'package:neobis_smart_tailor/features/organization/pages/invite_employee/
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_empty_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_screen/organization_screen.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/organization/presentation/organization_wrapper_screen.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_type.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/announcement_detail_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/announcements/my_announcements_screen.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/pages/notification/presentation/notification_screen.dart';

@@ -2,6 +2,10 @@ part of 'announcement_bloc.dart';
 
 @freezed
 class AnnouncementEvent with _$AnnouncementEvent {
+  const factory AnnouncementEvent.loadMyOrders({required int page}) = _LoadMyOrders;
+  const factory AnnouncementEvent.loadMyEquipments({required int page}) = _LoadMyEquipments;
+  const factory AnnouncementEvent.loadMyServices({required int page}) = _LoadMyServices;
+
   const factory AnnouncementEvent.getOrders() = _GetOrders;
   const factory AnnouncementEvent.getEquipments() = _GetEquipments;
   const factory AnnouncementEvent.getServices() = _GetServices;

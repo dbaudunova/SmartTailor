@@ -1,4 +1,4 @@
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_entity.dart';
 
 class AnnouncementModel extends AnnouncementEntity {
   AnnouncementModel({

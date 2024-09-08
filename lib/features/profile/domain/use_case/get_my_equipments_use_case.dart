@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_response_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_response_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/repository/profile_repo.dart';
 
 @singleton

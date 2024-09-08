@@ -20,17 +20,4 @@ class EquipmentDetailEntity {
     required this.equipmentImages,
     required this.quantity,
   });
-  factory EquipmentDetailEntity.initial() {
-    return EquipmentDetailEntity(
-      id: 0,
-      name: '',
-      description: '',
-      price: 0,
-      contactInfo: '',
-      authorImage: '',
-      authorFullName: '',
-      equipmentImages: [],
-      quantity: 0,
-    );
-  }
 }

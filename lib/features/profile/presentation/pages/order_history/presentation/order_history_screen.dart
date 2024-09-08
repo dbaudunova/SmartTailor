@@ -23,29 +23,7 @@ class OrderHistoryScreen extends StatelessWidget {
 
   void _listenerBloc(BuildContext context, OrderHistoryState state) {
     state.stateStatus.whenOrNull(
-      success: (val) {
-        // if (val == true) {
-        //   showDialog(
-        //     context: context,
-        //     builder: (context) {
-        //       return AlertDialogStyle(
-        //         title: 'Ура!',
-        //         content: 'Вы успешно создали заказ!',
-        //         buttonText: 'Понятно',
-        //         onButtonPressed: () {
-        //           Navigator.of(context).pop();
-        //           WidgetsBinding.instance.addPostFrameCallback((_) {
-        //             AutoRouter.of(context).pushAndPopUntil(
-        //               const MarketplaceRoute(),
-        //               predicate: (route) => false,
-        //             );
-        //           });
-        //         },
-        //       );
-        //     },
-        //   );
-        // }
-      },
+      success: (val) {},
       failure: (msg) {
         AppSnackBar.show(context: context, titleText: msg!, error: true);
       },

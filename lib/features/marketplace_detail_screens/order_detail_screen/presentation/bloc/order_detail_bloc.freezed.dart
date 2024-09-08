@@ -372,7 +372,7 @@ abstract class _RequestToExecute implements OrderDetailEvent {
 /// @nodoc
 mixin _$OrderDetailState {
   StateStatus get stateStatus => throw _privateConstructorUsedError;
-  OrderDetailEntity get order => throw _privateConstructorUsedError;
+  OrderDetailEntity? get order => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderDetailStateCopyWith<OrderDetailState> get copyWith =>
@@ -385,7 +385,7 @@ abstract class $OrderDetailStateCopyWith<$Res> {
           OrderDetailState value, $Res Function(OrderDetailState) then) =
       _$OrderDetailStateCopyWithImpl<$Res, OrderDetailState>;
   @useResult
-  $Res call({StateStatus stateStatus, OrderDetailEntity order});
+  $Res call({StateStatus stateStatus, OrderDetailEntity? order});
 
   $StateStatusCopyWith<$Res> get stateStatus;
 }
@@ -404,17 +404,17 @@ class _$OrderDetailStateCopyWithImpl<$Res, $Val extends OrderDetailState>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? order = null,
+    Object? order = freezed,
   }) {
     return _then(_value.copyWith(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      order: null == order
+      order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
-              as OrderDetailEntity,
+              as OrderDetailEntity?,
     ) as $Val);
   }
 
@@ -435,7 +435,7 @@ abstract class _$$OrderDetailStateImplCopyWith<$Res>
       __$$OrderDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StateStatus stateStatus, OrderDetailEntity order});
+  $Res call({StateStatus stateStatus, OrderDetailEntity? order});
 
   @override
   $StateStatusCopyWith<$Res> get stateStatus;
@@ -453,17 +453,17 @@ class __$$OrderDetailStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stateStatus = null,
-    Object? order = null,
+    Object? order = freezed,
   }) {
     return _then(_$OrderDetailStateImpl(
       stateStatus: null == stateStatus
           ? _value.stateStatus
           : stateStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      order: null == order
+      order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
-              as OrderDetailEntity,
+              as OrderDetailEntity?,
     ));
   }
 }
@@ -477,7 +477,7 @@ class _$OrderDetailStateImpl implements _OrderDetailState {
   @override
   final StateStatus stateStatus;
   @override
-  final OrderDetailEntity order;
+  final OrderDetailEntity? order;
 
   @override
   String toString() {
@@ -508,12 +508,12 @@ class _$OrderDetailStateImpl implements _OrderDetailState {
 abstract class _OrderDetailState implements OrderDetailState {
   const factory _OrderDetailState(
       {required final StateStatus stateStatus,
-      required final OrderDetailEntity order}) = _$OrderDetailStateImpl;
+      required final OrderDetailEntity? order}) = _$OrderDetailStateImpl;
 
   @override
   StateStatus get stateStatus;
   @override
-  OrderDetailEntity get order;
+  OrderDetailEntity? get order;
   @override
   @JsonKey(ignore: true)
   _$$OrderDetailStateImplCopyWith<_$OrderDetailStateImpl> get copyWith =>

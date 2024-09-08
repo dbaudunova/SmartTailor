@@ -18,17 +18,4 @@ class ServiceDetailEntity {
     required this.authorFullName,
     required this.serviceImages,
   });
-
-  factory ServiceDetailEntity.initial() {
-    return ServiceDetailEntity(
-      id: 0,
-      name: '',
-      description: '',
-      price: 0,
-      contactInfo: '',
-      authorImage: '',
-      authorFullName: '',
-      serviceImages: [],
-    );
-  }
 }

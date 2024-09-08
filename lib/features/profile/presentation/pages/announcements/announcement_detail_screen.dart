@@ -5,15 +5,17 @@ import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/router/app_routes.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/alert_dialog_style.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/shimmer_for_screen.dart';
 import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/author_info_widget.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/gallery_widget.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/equipment_detailed_entity.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/order_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/equipment_detailed_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_detailed_annoucement_entity.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/order_detailed_entity.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/bloc/announcement/announcement_bloc.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/customer_container.dart';
-import 'package:neobis_smart_tailor/features/profile/presentation/widgets/announcements/size_widget.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/my_announcements/customer_container.dart';
+import 'package:neobis_smart_tailor/features/profile/presentation/widgets/my_announcements/size_widget.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/purchases/purchase_detail_button.dart';
 
@@ -29,14 +31,13 @@ class AnnouncementDetailScreen extends StatefulWidget {
   });
 
   @override
-  State<AnnouncementDetailScreen> createState() =>
-      _AnnouncementDetailScreenState();
+  State<AnnouncementDetailScreen> createState() => _AnnouncementDetailScreenState();
 }
 
 class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
   bool _isCustomerExpanded = false;
   bool _isResponseExpanded = false;
-  bool _isOrderAccepted = false;
+  final bool _isOrderAccepted = false;
   late Map<String, dynamic> detailedData;
 
   AnnouncementBloc get _bloc => context.read<AnnouncementBloc>();
@@ -46,17 +47,11 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
     super.initState();
     switch (widget.type) {
       case AnnouncementType.order:
-        context
-            .read<AnnouncementBloc>()
-            .add(AnnouncementEvent.getOrderDetailed(id: widget.id));
+        _bloc.add(AnnouncementEvent.getOrderDetailed(id: widget.id));
       case AnnouncementType.equipment:
-        context
-            .read<AnnouncementBloc>()
-            .add(AnnouncementEvent.getEquipmentDetailed(id: widget.id));
+        _bloc.add(AnnouncementEvent.getEquipmentDetailed(id: widget.id));
       case AnnouncementType.service:
-        context
-            .read<AnnouncementBloc>()
-            .add(AnnouncementEvent.getServiceDetailed(id: widget.id));
+        _bloc.add(AnnouncementEvent.getServiceDetailed(id: widget.id));
     }
   }
 
@@ -77,113 +72,102 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         children: [
           BlocBuilder<AnnouncementBloc, AnnouncementState>(
             builder: (context, state) {
-              detailedData = _getDetailedData(state);
-              _isOrderAccepted = detailedData['executor'] != null;
-              if (state.stateStatus == const StateStatus.loading()) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              return detailedData.isNotEmpty
-                  ? Column(
-                      children: [
-                        GalleryWidget(
-                          images: detailedData['images'] ?? [],
-                          date: detailedData['date'],
-                        ),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.all(16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    getAnnouncementTypeLabel(widget.type),
-                                    style: AppTextStyle.textField16.copyWith(
-                                      color: typeColor(widget.type),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    detailedData['title'] ?? 'Нет данных',
-                                    style: AppTextStyle.textField16,
-                                  ),
-                                  const SizedBox(height: 12),
-                                  Text(
-                                    detailedData['description'] ??
-                                        'Нет описания',
-                                    style: AppTextStyle.text14
-                                        .copyWith(color: AppColors.greyText),
-                                  ),
-                                  const SizedBox(height: 40),
-                                  AuthorInfoWidget(
-                                    authorImage:
-                                        detailedData['authorImage'] ?? '',
-                                    authorName:
-                                        detailedData['authorFullName'] ?? '',
-                                  ),
-                                  const SizedBox(height: 24),
-                                  if (widget.type == AnnouncementType.order)
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width,
-                                      child: PurchaseDetailButton(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 8,
-                                          vertical: 4,
-                                        ),
-                                        child: _buildExpandableButton(
-                                          title: 'Размеры',
-                                          isExpanded: _isCustomerExpanded,
-                                          onPressed: () {
-                                            setState(() {
-                                              _isCustomerExpanded =
-                                                  !_isCustomerExpanded;
-                                            });
-                                          },
+              var entity = state.myDetailedAnnounceEntity;
+
+              return entity != null
+                  ? state.stateStatus != const StateStatus.loading()
+                      ? Column(
+                          children: [
+                            GalleryWidget(
+                              images: entity.images,
+                              date: entity.dateOfExecution,
+                            ),
+                            Expanded(
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        getAnnouncementTypeLabel(widget.type),
+                                        style: AppTextStyle.textField16.copyWith(
+                                          color: typeColor(widget.type),
                                         ),
                                       ),
-                                    ),
-                                  const SizedBox(height: 4),
-                                  if (_isCustomerExpanded &&
-                                      widget.type == AnnouncementType.order)
-                                    _buildSizeContainer(),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width,
-                                    child: PurchaseDetailButton(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                        vertical: 4,
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        entity.name,
+                                        style: AppTextStyle.textField16,
                                       ),
-                                      child: _buildExpandableButton(
-                                        title: _isOrderAccepted
-                                            ? 'Исполнитель'
-                                            : widget.type == AnnouncementType.equipment
-                                            ? 'Покупатели'
-                                            : 'Отклики',
-                                        isExpanded: _isResponseExpanded,
-                                        onPressed: () {
-                                          setState(() {
-                                            _isResponseExpanded =
-                                                !_isResponseExpanded;
-                                          });
-                                        },
+                                      const SizedBox(height: 12),
+                                      Text(
+                                        entity.description,
+                                        style: AppTextStyle.text14.copyWith(color: AppColors.greyText),
                                       ),
-                                    ),
+                                      const SizedBox(height: 40),
+                                      AuthorInfoWidget(
+                                        authorImage: entity.authorImage,
+                                        authorName: entity.authorFullName,
+                                      ),
+                                      const SizedBox(height: 24),
+                                      if (widget.type == AnnouncementType.order)
+                                        SizedBox(
+                                          width: MediaQuery.of(context).size.width,
+                                          child: PurchaseDetailButton(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 4,
+                                            ),
+                                            child: _buildExpandableButton(
+                                              title: 'Размеры',
+                                              isExpanded: _isCustomerExpanded,
+                                              onPressed: () {
+                                                setState(() {
+                                                  _isCustomerExpanded = !_isCustomerExpanded;
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      const SizedBox(height: 4),
+                                      if (_isCustomerExpanded && widget.type == AnnouncementType.order)
+                                        _buildSizeContainer(entity),
+                                      const SizedBox(height: 8),
+                                      SizedBox(
+                                        width: MediaQuery.of(context).size.width,
+                                        child: PurchaseDetailButton(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8,
+                                            vertical: 4,
+                                          ),
+                                          child: _buildExpandableButton(
+                                            title: _isOrderAccepted
+                                                ? 'Исполнитель'
+                                                : widget.type == AnnouncementType.equipment
+                                                    ? 'Покупатели'
+                                                    : 'Отклики',
+                                            isExpanded: _isResponseExpanded,
+                                            onPressed: () {
+                                              setState(() {
+                                                _isResponseExpanded = !_isResponseExpanded;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      if (_isResponseExpanded) _buildCustomerContainer(entity),
+                                      const SizedBox(height: 130),
+                                    ],
                                   ),
-                                  const SizedBox(height: 4),
-                                  if (_isResponseExpanded)
-                                    _buildCustomerContainer(),
-                                  const SizedBox(height: 130),
-                                ],
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                          ],
+                        )
+                      : const ShimmerForScreen()
+                  : const ShimmerForScreen();
             },
           ),
           _buildBottomButtons(context, widget.type),
@@ -208,52 +192,17 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
     );
   }
 
-  Map<String, dynamic> _getDetailedData(AnnouncementState state) {
-    switch (widget.type) {
-      case AnnouncementType.order:
-        return {
-          'title': state.detailedOrder?.name,
-          'description': state.detailedOrder?.description,
-          'images': state.detailedOrder?.orderImages,
-          'date': state.detailedOrder?.dateOfExecution,
-          'authorImage': state.detailedOrder?.authorImage,
-          'authorFullName': state.detailedOrder?.authorFullName,
-          'orderItems': state.detailedOrder?.orderItems,
-          'orderCandidates': state.detailedOrder?.orderCandidates,
-          'executor': state.detailedOrder?.executor,
-        };
-      case AnnouncementType.equipment:
-        return {
-          'title': state.detailedEquipment?.name,
-          'description': state.detailedEquipment?.description,
-          'images': state.detailedEquipment?.equipmentImages,
-          'authorImage': state.detailedEquipment?.authorImage,
-          'authorFullName': state.detailedEquipment?.authorFullName,
-          'equipmentBuyers': state.detailedEquipment?.equipmentBuyers,
-        };
-      case AnnouncementType.service:
-        return {
-          'title': state.detailedService?.name,
-          'description': state.detailedService?.description,
-          'images': state.detailedService?.serviceImages,
-          'authorImage': state.detailedService?.authorImage,
-          'authorFullName': state.detailedService?.authorFullName,
-          'serviceApplicants': state.detailedService?.serviceApplicants
-        };
-    }
-  }
-
-  Container _buildCustomerContainer() {
+  Container _buildCustomerContainer(MyDetailedAnnounceEntity? entity) {
     var orderCandidates = <dynamic>[];
-    var executor = detailedData['executor'];
+    var executor = entity!.executor;
 
     switch (widget.type) {
       case AnnouncementType.order:
-        orderCandidates = detailedData['orderCandidates'] ?? [];
+        orderCandidates = entity.orderCandidates!;
       case AnnouncementType.equipment:
-        orderCandidates = detailedData['equipmentBuyers'] ?? [];
+        orderCandidates = entity.equipmentBuyers!;
       case AnnouncementType.service:
-        orderCandidates = detailedData['serviceApplicants'] ?? [];
+        orderCandidates = entity.serviceApplicants!;
     }
 
     return Container(
@@ -268,7 +217,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         itemBuilder: (context, index) {
           if (widget.type == AnnouncementType.order) {
             if (executor != null) {
-              final orgExecutor = executor as OrganizationExecutor;
+              final orgExecutor = executor;
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: CustomerContainer(
@@ -329,9 +278,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
         IconButton(
           onPressed: onPressed,
           icon: Icon(
-            isExpanded
-                ? Icons.keyboard_arrow_up_rounded
-                : Icons.keyboard_arrow_down_rounded,
+            isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
             color: Colors.black,
           ),
         ),
@@ -339,8 +286,8 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
     );
   }
 
-  Widget _buildSizeContainer() {
-    var orderItems = detailedData['orderItems'] ?? [];
+  Widget _buildSizeContainer(MyDetailedAnnounceEntity? entity) {
+    var orderItems = entity!.orderItems;
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -349,7 +296,7 @@ class _AnnouncementDetailScreenState extends State<AnnouncementDetailScreen> {
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: orderItems.length,
+        itemCount: orderItems!.length,
         itemBuilder: (context, index) {
           final item = orderItems[index];
           return SizeWidget(item: item);

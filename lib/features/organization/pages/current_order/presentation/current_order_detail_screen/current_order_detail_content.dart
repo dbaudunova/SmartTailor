@@ -4,25 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:neobis_smart_tailor/core/app/io_ui.dart';
 import 'package:neobis_smart_tailor/core/app/widgets/app_bar_style.dart';
+import 'package:neobis_smart_tailor/core/app/widgets/shimmer_for_screen.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/widgets/gallery_widget.dart';
 import 'package:neobis_smart_tailor/features/organization/data/models/order_status_enum.dart';
 import 'package:neobis_smart_tailor/features/organization/domain/entitys/current_detail_order_entity.dart';
 import 'package:neobis_smart_tailor/features/organization/pages/current_order/bloc/current_order_bloc.dart';
 import 'package:neobis_smart_tailor/features/organization/widgets/organization_info/status_bottom_sheet.dart';
 import 'package:neobis_smart_tailor/features/profile/presentation/widgets/exit_alert.dart';
-
-// extension AnnouncementTypeExtension on OrderStatus {
-//   String get translated {
-//     switch (this) {
-//       case OrderStatus.order:
-//         return 'Заказы';
-//       case OrderStatus.equipment:
-//         return 'Оборудование';
-//       case OrderStatus.service:
-//         return 'Услуги';
-//     }
-//   }
-// }
 
 class CurrentOrderDetailContent extends StatefulWidget {
   final int id;
@@ -61,133 +49,135 @@ class _CurrentOrderDetailContentState extends State<CurrentOrderDetailContent> {
       body: BlocBuilder<CurrentOrderBloc, CurrentOrderState>(
         builder: (context, state) {
           var detailedOrder = state.detailedOrder;
-          var dateStr = DateFormat('yyyy-MM-dd')
-              .format(detailedOrder.dateOfExecution == null ? DateTime.now() : detailedOrder.dateOfExecution!);
-          return Column(
-            children: [
-              GalleryWidget(
-                date: dateStr,
-                images: detailedOrder.images,
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
-                      ),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _buildStatusRow(detailedOrder),
-                              const SizedBox(height: 8),
-                              Text(
-                                detailedOrder.name!,
-                                style: AppTextStyle.textField16.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                detailedOrder.description!,
-                                style: AppTextStyle.s12w400.copyWith(
-                                  color: AppColors.greyText,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: AppColors.greyText,
-                                  ),
-                                ),
-                                child: _buildRow(
-                                  isExpanded: _isEmployeeExpanded,
-                                  onPressed: () {
-                                    setState(() {
-                                      _isEmployeeExpanded = !_isEmployeeExpanded;
-                                    });
-                                  },
-                                  title: 'Сотрудники',
-                                ),
-                              ),
-                              if (_isEmployeeExpanded)
-                                _buildEmployeeListView(
-                                  detailedOrder,
-                                ),
-                              const SizedBox(height: 16),
-                              _buildPriceRow(detailedOrder),
-                              const Padding(
-                                padding: EdgeInsets.only(
-                                  top: 16,
-                                  bottom: 24,
-                                ),
-                                child: Divider(
-                                  color: AppColors.greyText,
-                                ),
-                              ),
-                              _buildAuthorInfo(detailedOrder),
-                              const SizedBox(height: 16),
-                              _buildTransparentButton(
-                                backgroundColor: Colors.white,
-                                strokeColor: AppColors.greyText,
-                                onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return ExitAlert(
-                                        confirmButton: () {
-                                          Navigator.pop(context);
-                                          _buildShowModalBottomSheet(context, detailedOrder.status!, detailedOrder.id!);
+
+          return detailedOrder != null
+              ? Column(
+                  children: [
+                    GalleryWidget(
+                      date: DateFormat('yyyy-MM-dd').format(detailedOrder.dateOfExecution!),
+                      images: detailedOrder.images,
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 24),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _buildStatusRow(detailedOrder),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      detailedOrder.name!,
+                                      style: AppTextStyle.textField16.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      detailedOrder.description!,
+                                      style: AppTextStyle.s12w400.copyWith(
+                                        color: AppColors.greyText,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                          color: AppColors.greyText,
+                                        ),
+                                      ),
+                                      child: _buildRow(
+                                        isExpanded: _isEmployeeExpanded,
+                                        onPressed: () {
+                                          setState(() {
+                                            _isEmployeeExpanded = !_isEmployeeExpanded;
+                                          });
                                         },
-                                        cancelButton: () {
-                                          AutoRouter.of(context).maybePop();
-                                        },
-                                        title: 'Хотите изменить статус?',
-                                      );
-                                    },
-                                  );
-                                },
-                                text: 'Изменить статус',
+                                        title: 'Сотрудники',
+                                      ),
+                                    ),
+                                    if (_isEmployeeExpanded)
+                                      _buildEmployeeListView(
+                                        detailedOrder,
+                                      ),
+                                    const SizedBox(height: 16),
+                                    _buildPriceRow(detailedOrder),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 16,
+                                        bottom: 24,
+                                      ),
+                                      child: Divider(
+                                        color: AppColors.greyText,
+                                      ),
+                                    ),
+                                    _buildAuthorInfo(detailedOrder),
+                                    const SizedBox(height: 16),
+                                    _buildTransparentButton(
+                                      backgroundColor: Colors.white,
+                                      strokeColor: AppColors.greyText,
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return ExitAlert(
+                                              confirmButton: () {
+                                                Navigator.pop(context);
+                                                _buildShowModalBottomSheet(
+                                                    context, detailedOrder.status!, detailedOrder.id!);
+                                              },
+                                              cancelButton: () {
+                                                AutoRouter.of(context).maybePop();
+                                              },
+                                              title: 'Хотите изменить статус?',
+                                            );
+                                          },
+                                        );
+                                      },
+                                      text: 'Изменить статус',
+                                    ),
+                                    const SizedBox(height: 8),
+                                    _buildTransparentButton(
+                                      backgroundColor: AppColors.darkBlue,
+                                      onPressed: () {
+                                        _bloc.add(CurrentOrderEvent.completeOrder(id: detailedOrder.id!));
+                                      },
+                                      textColor: Colors.white,
+                                      text: 'Завершить заказ',
+                                    ),
+                                    const SizedBox(height: 8),
+                                    _buildTransparentButton(
+                                      backgroundColor: AppColors.error,
+                                      onPressed: () {
+                                        _bloc.add(CurrentOrderEvent.cancelOrder(id: detailedOrder.id!));
+                                      },
+                                      textColor: Colors.white,
+                                      text: 'Отменить заказ',
+                                    ),
+                                    const SizedBox(height: 16),
+                                  ],
+                                ),
                               ),
-                              const SizedBox(height: 8),
-                              _buildTransparentButton(
-                                backgroundColor: AppColors.darkBlue,
-                                onPressed: () {
-                                  _bloc.add(CurrentOrderEvent.completeOrder(id: detailedOrder.id!));
-                                },
-                                textColor: Colors.white,
-                                text: 'Завершить заказ',
-                              ),
-                              const SizedBox(height: 8),
-                              _buildTransparentButton(
-                                backgroundColor: AppColors.error,
-                                onPressed: () {
-                                  _bloc.add(CurrentOrderEvent.cancelOrder(id: detailedOrder.id!));
-                                },
-                                textColor: Colors.white,
-                                text: 'Отменить заказ',
-                              ),
-                              const SizedBox(height: 16),
-                            ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-            ],
-          );
+                  ],
+                )
+              : const ShimmerForScreen();
         },
       ),
     );

@@ -50,6 +50,7 @@ class MarketplaceDataSourceImpl implements MarketplaceDataSource {
         queryParameters: {
           'pageNumber': pageNumber.toString(),
           'pageSize': '10',
+          'df': '',
         },
       );
 

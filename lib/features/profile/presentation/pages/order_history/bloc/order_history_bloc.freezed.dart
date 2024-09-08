@@ -20,24 +20,30 @@ mixin _$OrderHistoryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getCurrentHistory,
     required TResult Function() loadMoreCurrent,
+    required TResult Function(int page) loadCurrent,
     required TResult Function() getComletedHistory,
     required TResult Function() loadMoreCompleted,
+    required TResult Function(int page) loadCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCurrentHistory,
     TResult? Function()? loadMoreCurrent,
+    TResult? Function(int page)? loadCurrent,
     TResult? Function()? getComletedHistory,
     TResult? Function()? loadMoreCompleted,
+    TResult? Function(int page)? loadCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCurrentHistory,
     TResult Function()? loadMoreCurrent,
+    TResult Function(int page)? loadCurrent,
     TResult Function()? getComletedHistory,
     TResult Function()? loadMoreCompleted,
+    TResult Function(int page)? loadCompleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +51,30 @@ mixin _$OrderHistoryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCurrentHistory value) getCurrentHistory,
     required TResult Function(_LoadMoreCurrent value) loadMoreCurrent,
+    required TResult Function(_LoadCurrent value) loadCurrent,
     required TResult Function(_GetCompletedHistory value) getComletedHistory,
     required TResult Function(_LoadMoreCompleted value) loadMoreCompleted,
+    required TResult Function(_LoadCompleted value) loadCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult? Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult? Function(_LoadCurrent value)? loadCurrent,
     TResult? Function(_GetCompletedHistory value)? getComletedHistory,
     TResult? Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult? Function(_LoadCompleted value)? loadCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult Function(_LoadCurrent value)? loadCurrent,
     TResult Function(_GetCompletedHistory value)? getComletedHistory,
     TResult Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult Function(_LoadCompleted value)? loadCompleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,8 +138,10 @@ class _$GetCurrentHistoryImpl implements _GetCurrentHistory {
   TResult when<TResult extends Object?>({
     required TResult Function() getCurrentHistory,
     required TResult Function() loadMoreCurrent,
+    required TResult Function(int page) loadCurrent,
     required TResult Function() getComletedHistory,
     required TResult Function() loadMoreCompleted,
+    required TResult Function(int page) loadCompleted,
   }) {
     return getCurrentHistory();
   }
@@ -137,8 +151,10 @@ class _$GetCurrentHistoryImpl implements _GetCurrentHistory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCurrentHistory,
     TResult? Function()? loadMoreCurrent,
+    TResult? Function(int page)? loadCurrent,
     TResult? Function()? getComletedHistory,
     TResult? Function()? loadMoreCompleted,
+    TResult? Function(int page)? loadCompleted,
   }) {
     return getCurrentHistory?.call();
   }
@@ -148,8 +164,10 @@ class _$GetCurrentHistoryImpl implements _GetCurrentHistory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCurrentHistory,
     TResult Function()? loadMoreCurrent,
+    TResult Function(int page)? loadCurrent,
     TResult Function()? getComletedHistory,
     TResult Function()? loadMoreCompleted,
+    TResult Function(int page)? loadCompleted,
     required TResult orElse(),
   }) {
     if (getCurrentHistory != null) {
@@ -163,8 +181,10 @@ class _$GetCurrentHistoryImpl implements _GetCurrentHistory {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCurrentHistory value) getCurrentHistory,
     required TResult Function(_LoadMoreCurrent value) loadMoreCurrent,
+    required TResult Function(_LoadCurrent value) loadCurrent,
     required TResult Function(_GetCompletedHistory value) getComletedHistory,
     required TResult Function(_LoadMoreCompleted value) loadMoreCompleted,
+    required TResult Function(_LoadCompleted value) loadCompleted,
   }) {
     return getCurrentHistory(this);
   }
@@ -174,8 +194,10 @@ class _$GetCurrentHistoryImpl implements _GetCurrentHistory {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult? Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult? Function(_LoadCurrent value)? loadCurrent,
     TResult? Function(_GetCompletedHistory value)? getComletedHistory,
     TResult? Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult? Function(_LoadCompleted value)? loadCompleted,
   }) {
     return getCurrentHistory?.call(this);
   }
@@ -185,8 +207,10 @@ class _$GetCurrentHistoryImpl implements _GetCurrentHistory {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult Function(_LoadCurrent value)? loadCurrent,
     TResult Function(_GetCompletedHistory value)? getComletedHistory,
     TResult Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult Function(_LoadCompleted value)? loadCompleted,
     required TResult orElse(),
   }) {
     if (getCurrentHistory != null) {
@@ -240,8 +264,10 @@ class _$LoadMoreCurrentImpl implements _LoadMoreCurrent {
   TResult when<TResult extends Object?>({
     required TResult Function() getCurrentHistory,
     required TResult Function() loadMoreCurrent,
+    required TResult Function(int page) loadCurrent,
     required TResult Function() getComletedHistory,
     required TResult Function() loadMoreCompleted,
+    required TResult Function(int page) loadCompleted,
   }) {
     return loadMoreCurrent();
   }
@@ -251,8 +277,10 @@ class _$LoadMoreCurrentImpl implements _LoadMoreCurrent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCurrentHistory,
     TResult? Function()? loadMoreCurrent,
+    TResult? Function(int page)? loadCurrent,
     TResult? Function()? getComletedHistory,
     TResult? Function()? loadMoreCompleted,
+    TResult? Function(int page)? loadCompleted,
   }) {
     return loadMoreCurrent?.call();
   }
@@ -262,8 +290,10 @@ class _$LoadMoreCurrentImpl implements _LoadMoreCurrent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCurrentHistory,
     TResult Function()? loadMoreCurrent,
+    TResult Function(int page)? loadCurrent,
     TResult Function()? getComletedHistory,
     TResult Function()? loadMoreCompleted,
+    TResult Function(int page)? loadCompleted,
     required TResult orElse(),
   }) {
     if (loadMoreCurrent != null) {
@@ -277,8 +307,10 @@ class _$LoadMoreCurrentImpl implements _LoadMoreCurrent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCurrentHistory value) getCurrentHistory,
     required TResult Function(_LoadMoreCurrent value) loadMoreCurrent,
+    required TResult Function(_LoadCurrent value) loadCurrent,
     required TResult Function(_GetCompletedHistory value) getComletedHistory,
     required TResult Function(_LoadMoreCompleted value) loadMoreCompleted,
+    required TResult Function(_LoadCompleted value) loadCompleted,
   }) {
     return loadMoreCurrent(this);
   }
@@ -288,8 +320,10 @@ class _$LoadMoreCurrentImpl implements _LoadMoreCurrent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult? Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult? Function(_LoadCurrent value)? loadCurrent,
     TResult? Function(_GetCompletedHistory value)? getComletedHistory,
     TResult? Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult? Function(_LoadCompleted value)? loadCompleted,
   }) {
     return loadMoreCurrent?.call(this);
   }
@@ -299,8 +333,10 @@ class _$LoadMoreCurrentImpl implements _LoadMoreCurrent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult Function(_LoadCurrent value)? loadCurrent,
     TResult Function(_GetCompletedHistory value)? getComletedHistory,
     TResult Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult Function(_LoadCompleted value)? loadCompleted,
     required TResult orElse(),
   }) {
     if (loadMoreCurrent != null) {
@@ -312,6 +348,163 @@ class _$LoadMoreCurrentImpl implements _LoadMoreCurrent {
 
 abstract class _LoadMoreCurrent implements OrderHistoryEvent {
   const factory _LoadMoreCurrent() = _$LoadMoreCurrentImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadCurrentImplCopyWith<$Res> {
+  factory _$$LoadCurrentImplCopyWith(
+          _$LoadCurrentImpl value, $Res Function(_$LoadCurrentImpl) then) =
+      __$$LoadCurrentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int page});
+}
+
+/// @nodoc
+class __$$LoadCurrentImplCopyWithImpl<$Res>
+    extends _$OrderHistoryEventCopyWithImpl<$Res, _$LoadCurrentImpl>
+    implements _$$LoadCurrentImplCopyWith<$Res> {
+  __$$LoadCurrentImplCopyWithImpl(
+      _$LoadCurrentImpl _value, $Res Function(_$LoadCurrentImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_$LoadCurrentImpl(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadCurrentImpl implements _LoadCurrent {
+  const _$LoadCurrentImpl({required this.page});
+
+  @override
+  final int page;
+
+  @override
+  String toString() {
+    return 'OrderHistoryEvent.loadCurrent(page: $page)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadCurrentImpl &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, page);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadCurrentImplCopyWith<_$LoadCurrentImpl> get copyWith =>
+      __$$LoadCurrentImplCopyWithImpl<_$LoadCurrentImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCurrentHistory,
+    required TResult Function() loadMoreCurrent,
+    required TResult Function(int page) loadCurrent,
+    required TResult Function() getComletedHistory,
+    required TResult Function() loadMoreCompleted,
+    required TResult Function(int page) loadCompleted,
+  }) {
+    return loadCurrent(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getCurrentHistory,
+    TResult? Function()? loadMoreCurrent,
+    TResult? Function(int page)? loadCurrent,
+    TResult? Function()? getComletedHistory,
+    TResult? Function()? loadMoreCompleted,
+    TResult? Function(int page)? loadCompleted,
+  }) {
+    return loadCurrent?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCurrentHistory,
+    TResult Function()? loadMoreCurrent,
+    TResult Function(int page)? loadCurrent,
+    TResult Function()? getComletedHistory,
+    TResult Function()? loadMoreCompleted,
+    TResult Function(int page)? loadCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadCurrent != null) {
+      return loadCurrent(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCurrentHistory value) getCurrentHistory,
+    required TResult Function(_LoadMoreCurrent value) loadMoreCurrent,
+    required TResult Function(_LoadCurrent value) loadCurrent,
+    required TResult Function(_GetCompletedHistory value) getComletedHistory,
+    required TResult Function(_LoadMoreCompleted value) loadMoreCompleted,
+    required TResult Function(_LoadCompleted value) loadCompleted,
+  }) {
+    return loadCurrent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCurrentHistory value)? getCurrentHistory,
+    TResult? Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult? Function(_LoadCurrent value)? loadCurrent,
+    TResult? Function(_GetCompletedHistory value)? getComletedHistory,
+    TResult? Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult? Function(_LoadCompleted value)? loadCompleted,
+  }) {
+    return loadCurrent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCurrentHistory value)? getCurrentHistory,
+    TResult Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult Function(_LoadCurrent value)? loadCurrent,
+    TResult Function(_GetCompletedHistory value)? getComletedHistory,
+    TResult Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult Function(_LoadCompleted value)? loadCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadCurrent != null) {
+      return loadCurrent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadCurrent implements OrderHistoryEvent {
+  const factory _LoadCurrent({required final int page}) = _$LoadCurrentImpl;
+
+  int get page;
+  @JsonKey(ignore: true)
+  _$$LoadCurrentImplCopyWith<_$LoadCurrentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -355,8 +548,10 @@ class _$GetCompletedHistoryImpl implements _GetCompletedHistory {
   TResult when<TResult extends Object?>({
     required TResult Function() getCurrentHistory,
     required TResult Function() loadMoreCurrent,
+    required TResult Function(int page) loadCurrent,
     required TResult Function() getComletedHistory,
     required TResult Function() loadMoreCompleted,
+    required TResult Function(int page) loadCompleted,
   }) {
     return getComletedHistory();
   }
@@ -366,8 +561,10 @@ class _$GetCompletedHistoryImpl implements _GetCompletedHistory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCurrentHistory,
     TResult? Function()? loadMoreCurrent,
+    TResult? Function(int page)? loadCurrent,
     TResult? Function()? getComletedHistory,
     TResult? Function()? loadMoreCompleted,
+    TResult? Function(int page)? loadCompleted,
   }) {
     return getComletedHistory?.call();
   }
@@ -377,8 +574,10 @@ class _$GetCompletedHistoryImpl implements _GetCompletedHistory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCurrentHistory,
     TResult Function()? loadMoreCurrent,
+    TResult Function(int page)? loadCurrent,
     TResult Function()? getComletedHistory,
     TResult Function()? loadMoreCompleted,
+    TResult Function(int page)? loadCompleted,
     required TResult orElse(),
   }) {
     if (getComletedHistory != null) {
@@ -392,8 +591,10 @@ class _$GetCompletedHistoryImpl implements _GetCompletedHistory {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCurrentHistory value) getCurrentHistory,
     required TResult Function(_LoadMoreCurrent value) loadMoreCurrent,
+    required TResult Function(_LoadCurrent value) loadCurrent,
     required TResult Function(_GetCompletedHistory value) getComletedHistory,
     required TResult Function(_LoadMoreCompleted value) loadMoreCompleted,
+    required TResult Function(_LoadCompleted value) loadCompleted,
   }) {
     return getComletedHistory(this);
   }
@@ -403,8 +604,10 @@ class _$GetCompletedHistoryImpl implements _GetCompletedHistory {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult? Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult? Function(_LoadCurrent value)? loadCurrent,
     TResult? Function(_GetCompletedHistory value)? getComletedHistory,
     TResult? Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult? Function(_LoadCompleted value)? loadCompleted,
   }) {
     return getComletedHistory?.call(this);
   }
@@ -414,8 +617,10 @@ class _$GetCompletedHistoryImpl implements _GetCompletedHistory {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult Function(_LoadCurrent value)? loadCurrent,
     TResult Function(_GetCompletedHistory value)? getComletedHistory,
     TResult Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult Function(_LoadCompleted value)? loadCompleted,
     required TResult orElse(),
   }) {
     if (getComletedHistory != null) {
@@ -469,8 +674,10 @@ class _$LoadMoreCompletedImpl implements _LoadMoreCompleted {
   TResult when<TResult extends Object?>({
     required TResult Function() getCurrentHistory,
     required TResult Function() loadMoreCurrent,
+    required TResult Function(int page) loadCurrent,
     required TResult Function() getComletedHistory,
     required TResult Function() loadMoreCompleted,
+    required TResult Function(int page) loadCompleted,
   }) {
     return loadMoreCompleted();
   }
@@ -480,8 +687,10 @@ class _$LoadMoreCompletedImpl implements _LoadMoreCompleted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCurrentHistory,
     TResult? Function()? loadMoreCurrent,
+    TResult? Function(int page)? loadCurrent,
     TResult? Function()? getComletedHistory,
     TResult? Function()? loadMoreCompleted,
+    TResult? Function(int page)? loadCompleted,
   }) {
     return loadMoreCompleted?.call();
   }
@@ -491,8 +700,10 @@ class _$LoadMoreCompletedImpl implements _LoadMoreCompleted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCurrentHistory,
     TResult Function()? loadMoreCurrent,
+    TResult Function(int page)? loadCurrent,
     TResult Function()? getComletedHistory,
     TResult Function()? loadMoreCompleted,
+    TResult Function(int page)? loadCompleted,
     required TResult orElse(),
   }) {
     if (loadMoreCompleted != null) {
@@ -506,8 +717,10 @@ class _$LoadMoreCompletedImpl implements _LoadMoreCompleted {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCurrentHistory value) getCurrentHistory,
     required TResult Function(_LoadMoreCurrent value) loadMoreCurrent,
+    required TResult Function(_LoadCurrent value) loadCurrent,
     required TResult Function(_GetCompletedHistory value) getComletedHistory,
     required TResult Function(_LoadMoreCompleted value) loadMoreCompleted,
+    required TResult Function(_LoadCompleted value) loadCompleted,
   }) {
     return loadMoreCompleted(this);
   }
@@ -517,8 +730,10 @@ class _$LoadMoreCompletedImpl implements _LoadMoreCompleted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult? Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult? Function(_LoadCurrent value)? loadCurrent,
     TResult? Function(_GetCompletedHistory value)? getComletedHistory,
     TResult? Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult? Function(_LoadCompleted value)? loadCompleted,
   }) {
     return loadMoreCompleted?.call(this);
   }
@@ -528,8 +743,10 @@ class _$LoadMoreCompletedImpl implements _LoadMoreCompleted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCurrentHistory value)? getCurrentHistory,
     TResult Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult Function(_LoadCurrent value)? loadCurrent,
     TResult Function(_GetCompletedHistory value)? getComletedHistory,
     TResult Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult Function(_LoadCompleted value)? loadCompleted,
     required TResult orElse(),
   }) {
     if (loadMoreCompleted != null) {
@@ -541,6 +758,163 @@ class _$LoadMoreCompletedImpl implements _LoadMoreCompleted {
 
 abstract class _LoadMoreCompleted implements OrderHistoryEvent {
   const factory _LoadMoreCompleted() = _$LoadMoreCompletedImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadCompletedImplCopyWith<$Res> {
+  factory _$$LoadCompletedImplCopyWith(
+          _$LoadCompletedImpl value, $Res Function(_$LoadCompletedImpl) then) =
+      __$$LoadCompletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int page});
+}
+
+/// @nodoc
+class __$$LoadCompletedImplCopyWithImpl<$Res>
+    extends _$OrderHistoryEventCopyWithImpl<$Res, _$LoadCompletedImpl>
+    implements _$$LoadCompletedImplCopyWith<$Res> {
+  __$$LoadCompletedImplCopyWithImpl(
+      _$LoadCompletedImpl _value, $Res Function(_$LoadCompletedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_$LoadCompletedImpl(
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadCompletedImpl implements _LoadCompleted {
+  const _$LoadCompletedImpl({required this.page});
+
+  @override
+  final int page;
+
+  @override
+  String toString() {
+    return 'OrderHistoryEvent.loadCompleted(page: $page)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadCompletedImpl &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, page);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadCompletedImplCopyWith<_$LoadCompletedImpl> get copyWith =>
+      __$$LoadCompletedImplCopyWithImpl<_$LoadCompletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getCurrentHistory,
+    required TResult Function() loadMoreCurrent,
+    required TResult Function(int page) loadCurrent,
+    required TResult Function() getComletedHistory,
+    required TResult Function() loadMoreCompleted,
+    required TResult Function(int page) loadCompleted,
+  }) {
+    return loadCompleted(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getCurrentHistory,
+    TResult? Function()? loadMoreCurrent,
+    TResult? Function(int page)? loadCurrent,
+    TResult? Function()? getComletedHistory,
+    TResult? Function()? loadMoreCompleted,
+    TResult? Function(int page)? loadCompleted,
+  }) {
+    return loadCompleted?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getCurrentHistory,
+    TResult Function()? loadMoreCurrent,
+    TResult Function(int page)? loadCurrent,
+    TResult Function()? getComletedHistory,
+    TResult Function()? loadMoreCompleted,
+    TResult Function(int page)? loadCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadCompleted != null) {
+      return loadCompleted(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetCurrentHistory value) getCurrentHistory,
+    required TResult Function(_LoadMoreCurrent value) loadMoreCurrent,
+    required TResult Function(_LoadCurrent value) loadCurrent,
+    required TResult Function(_GetCompletedHistory value) getComletedHistory,
+    required TResult Function(_LoadMoreCompleted value) loadMoreCompleted,
+    required TResult Function(_LoadCompleted value) loadCompleted,
+  }) {
+    return loadCompleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetCurrentHistory value)? getCurrentHistory,
+    TResult? Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult? Function(_LoadCurrent value)? loadCurrent,
+    TResult? Function(_GetCompletedHistory value)? getComletedHistory,
+    TResult? Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult? Function(_LoadCompleted value)? loadCompleted,
+  }) {
+    return loadCompleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetCurrentHistory value)? getCurrentHistory,
+    TResult Function(_LoadMoreCurrent value)? loadMoreCurrent,
+    TResult Function(_LoadCurrent value)? loadCurrent,
+    TResult Function(_GetCompletedHistory value)? getComletedHistory,
+    TResult Function(_LoadMoreCompleted value)? loadMoreCompleted,
+    TResult Function(_LoadCompleted value)? loadCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadCompleted != null) {
+      return loadCompleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadCompleted implements OrderHistoryEvent {
+  const factory _LoadCompleted({required final int page}) = _$LoadCompletedImpl;
+
+  int get page;
+  @JsonKey(ignore: true)
+  _$$LoadCompletedImplCopyWith<_$LoadCompletedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

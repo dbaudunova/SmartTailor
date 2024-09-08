@@ -6,8 +6,8 @@ import 'package:neobis_smart_tailor/core/network/entity/state_status.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/equipment_detail_screen/domain/use_case/get_equipmentby_id_use_case.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/order_detail_screen/domain/use_case/get_order_by_id_use_case.dart';
 import 'package:neobis_smart_tailor/features/marketplace_detail_screens/service_detail_screen/domain/use_case/get_service_by_id_use_case.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/announcement_type.dart';
-import 'package:neobis_smart_tailor/features/profile/domain/model/my_purchases.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/announcement_type.dart';
+import 'package:neobis_smart_tailor/features/profile/domain/entitys/my_purchases.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/get_my_purchases_use_case.dart';
 import 'package:neobis_smart_tailor/features/profile/domain/use_case/load_more_purchases_use_case.dart';
 

@@ -1,4 +1,4 @@
-import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/common_entity.dart';
+import 'package:neobis_smart_tailor/features/marketplace/domain/entitys/general_entity.dart';
 
 class GeneralResponceEntity {
   final List<GeneralEntity> listEntitys;

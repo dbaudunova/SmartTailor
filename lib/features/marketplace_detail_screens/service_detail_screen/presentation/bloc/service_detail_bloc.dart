@@ -19,9 +19,9 @@ class ServiceDetailBloc extends Bloc<ServiceDetailEvent, ServiceDetailState> {
     this.getServiceUseCase,
     this.sendRequestToServiceUseCase,
   ) : super(
-          ServiceDetailState(
-            stateStatus: const StateStatus.initial(),
-            service: ServiceDetailEntity.initial(),
+          const ServiceDetailState(
+            stateStatus: StateStatus.initial(),
+            service: null,
           ),
         ) {
     on<_GetService>(_getServices);
